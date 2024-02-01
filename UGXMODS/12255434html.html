@@ -1,0 +1,31 @@
+<!--
+title: 12255434html
+description: 
+published: true
+date: 2024-01-30T10:58:40.210Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:30:52.853Z
+-->
+
+<!--
+title: MT AllocIndex: failed memory allocation
+-->
+                    <pre>********************************
+MT_AllocIndex: failed memory allocation of 14 bytes for script usage
+Database: Assets Sync Started
+Database: Assets Sync Finished
+********************************
+0 subtree has 0 * 1 = 0 free buckets
+1 subtree has 0 * 2 = 0 free buckets
+2 subtree has 0 * 4 = 0 free buckets
+3 subtree has 0 * 8 = 0 free buckets
+4 subtree has 0 * 16 = 0 free buckets
+5 subtree has 0 * 32 = 0 free buckets
+6 subtree has 0 * 64 = 0 free buckets
+7 subtree has 0 * 128 = 0 free buckets
+8 subtree has 0 * 256 = 0 free buckets
+9 subtree has 0 * 512 = 0 free buckets
+10 subtree has 0 * 1024 = 0 free buckets
+</pre><p>This error is directly related to how many unique strings you've used in scripts, un-#include'ing files does not add to this error, removing lines of script does not remove this error, removing script lines which contain strings <strong>does</strong> remove this error.</p><p>bucket usage seems to be dynamic, buckets become free with time.</p><p>Recommended solution: reduce the amount of unique strings used in your custom scripts or remove unused Treyarch SP scripts from being loaded during compile.</p><h2 id="MTAllocIndex:failedmemoryallocation-Howtocheckcurrentstringmemoryusage"><span class="mw-headline">How to check current string memory usage</span></h2><p>Console command: &quot;stringUsage&quot;</p><p>&gt; Check console for substree bucket output.</p>
+                    

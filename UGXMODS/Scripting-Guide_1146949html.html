@@ -1,0 +1,188 @@
+<!--
+title: Scripting Guide
+description: 
+published: true
+date: 2024-01-30T10:32:47.908Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:32:46.649Z
+-->
+
+                    <p>This is a guide intended for the beginner who doesn't know any C syntax or CoD syntax. If you know basic C, you don't need most of this guide. Choose a topic below or start at the first topic. This is in no way, shape, or form a complete guide to CoD Syntax. I will do my best but there are so many aspects of it that it takes a while to think of it all and think of a way to explain it logically.</p><h1 id="ScriptingGuide-Beginning">Beginning</h1><p>Scripts are saved as .gsc and .csc. The major difference between the two is that GSC is run 'server-side' (on the host pc) and CSC is run on the 'client-side' (on connected players and the host, each separate). The syntax between the two is the same but practice and utility functions are slightly different. This tutorial will focus on GSC scripting. There are also menu scripts (.menu) which will be covered in a later tutorial.</p><p>All scripts must have '#include' statements which include basic functionality and include utility functions needed to define what you script. If you don't include these basic files, your script will get a &quot;unknown function&quot; error at runtime. Runtime is what you load your map and scripts are compiled.</p><p>While I'm on the subject of runtime errors, I want to go over how to see errors. CoD has a console, which can be accessed using the ~ key (to the left of the 1 key on a US keyboard). If you cannot access the console, go into Options&gt;Game Options and enable the console. The console lets you do lots of things, but right now I'm only going to focus on debug features. Pressing Shift+~ will bring the console into fullscreen view, which is what shows us more info about errors than the pop-up windows do (line numbers, file name, etc). Look for red text that has a relevant error to you. Obviously &quot;error: missing texture&quot; isn't going to help you or affect your scripts.</p><p>When you can't see enough info about your error, sometimes it is useful to enter 'developer 1' (without quotes) into the console and press enter. Then boot your map again. You will see more info about the error.</p><p><strong>Note</strong>: Enabling developer 1 will most likely prevent your map from booting. If you fix an error, make sure to turn developer 1 back to developer 0 before attempting to boot your map again.</p><h1 id="ScriptingGuide-BasicSyntax">Basic Syntax</h1><p>CoD GSC has a basic syntax that must be followed to have working scripts. If you get an error such as &quot;Bad Syntax: blah&quot; it means you made a syntax error. developer 1 and a full console view will tell you a line number to start looking near, and in some cases, there will be an * below the line under a certain character where the bad syntax starts. See <span class="confluence-link"><a href="#ScriptingGuide-Beginning">Beginning</a></span> for more info on debugging.</p><p><strong>Logic statements</strong>: if(), else if(), else(), while(), for(), function_declaration(), or similar.<br> <strong>Strings</strong>: information that is not variable. Strings are surrounded by double quotes.</p><ul><li>Every line MUST end with a ; unless it is a logic statement.</li><li>Comments can be a // before the comment, or a /* */ around a block of code.</li><li>There are three types of 'parenthesis' used. Brackets [], Curly Brackets {}, and Parenthesis ().</li><li>Brackets are used for arrays, Curly Brackets for functions (and loops, technically. See below examples), and parenthesis for logic statements and function args.</li></ul><p>/# and #/ are encapsulating tags used to create code blocks which only run when the game was booted with developer1 and developer_script 1 before the map was loaded. Setting the variables to 1 after the map has loaded will not allow the script to run because it is removed from the code in RAM during the map loading period if those dvars are not both set to 1.</p><p>Here are some examples. <strong>Don't worry if they don't make sense yet because I haven't explained them. Just remember to come back here for reference.</strong></p><p>Example of comment and strings syntax:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">code; //this is a comment. Comments do not affect the flow of code and are there solely for either your benefit or to explain code to others that view it later.
+code;
+/*
+code; these 3 lines are commented. it does not matter what I write in here because the game will ignore it.
+code;
+code;
+*/
+code; //these lines are not commented as the comment ends on the line before this one ( */ )
+string = &quot;spoons&quot;; //this is a string stored in a variable called &#39;string&#39;
+ 
+code;
+code;</pre>
+</div></div><p>Example of array syntax:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">group = []; //declares a variable as an array.
+group[0] = &quot;spoon&quot;; //stores the string &quot;spoon&quot; as the first value of the array.</pre>
+</div></div><p>Example of function syntax:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">self thread function();
+ 
+function()
+{
+	code;
+}</pre>
+</div></div><p>Example of logic statement syntax:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">while(1)
+{
+	code;
+}
+ 
+if(1 == 1)
+{
+	code;
+}</pre>
+</div></div><p> </p><h1 id="ScriptingGuide-Variables">Variables</h1><p><strong>Variables</strong> store info. Yes, it's really that simple. Variables can store strings, numbers, objects, arrays, etc. The list goes on.</p><p>Variables <strong>must</strong> be defined before you can use them. <strong>Undefined</strong> variables (variables that have never been declared or have a value of &quot;undefined&quot;) will cause errors if not handled correctly.</p><h2 id="ScriptingGuide-Declaring&amp;UsingVariables">Declaring &amp; Using Variables</h2><p>You declare a variable with the = operator. You create a new value 'on the left' of the operator and assign an existing or new value 'on the right' of the operator. <br> Example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">intelligence = 27; //I have declared (created) a variable called &#39;intelligence&#39; and have stored the number 27 in it.
+
+IQ = intelligence; //Here I have declared another new variable &#39;IQ&#39; and assigned the value of &#39;intelligence&#39; to be stored in it (27).
+
+height = 6;
+
+height = intelligence; //Here I have REASSIGNED the value of &#39;height&#39; from 6 to 27. Note that my declaration was on the left, and my new value was on the right.</pre>
+</div></div><p>Variables can be accessed an infinite amount of times <strong>within the function they were declared</strong>, and <strong>their value does not change until you reassign it</strong>.<br> If you wish to access one variable from multiple functions, there are two approaches. You have to either pass that variable into the function, or you have to declare that variable as 'global'. The CoD syntax for a global variable is to store said variable inside the 'level' variable using the dot operator.</p><p><strong>Dot Operator</strong>: A variable within a variable (inception!).</p><p>Example of passing a variable:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">get_intelligence()
+{
+	IQ = 27;
+	process_intelligence(IQ);
+}
+process_intelligence(number)
+{
+	iPrintLn(number); //Value of number is still 27
+}</pre>
+</div></div><p> </p><p>Example of globalizing a variable:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">get_intelligence()
+{
+	level.IQ = 27;
+	process_intelligence();
+}
+process_intelligence()
+{
+	iPrintLn(level.IQ); //Value is still 27
+}</pre>
+</div></div><h2 id="ScriptingGuide-self">self</h2><p>I'm sure at this point you've seen 'self' used as a variable in almost every script you've read. What is self? What is its purpose? Well little Timmy, self refers to whatever object a function has been called on. For instance,</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">trigger = getEnt(&quot;trigger&quot;,&quot;targetname&quot;);
+trigger setup();
+setup()
+{
+	self setHintString(&quot;Guess what self is!&quot;); //Good job, little Timmy! Self refers to the ent stored in the trigger variable, which this function was called on!
+}</pre>
+</div></div><p> </p><h2 id="ScriptingGuide-Arrays">Arrays</h2><p><strong>Arrays</strong> are a very useful form of variable. Like a variable, they store information. However, arrays are a special type of variable that can store multiple pieces of information that can be 'indexed'. You will learn to love arrays, and they will bring your line counts down immensely.</p><p><strong>Note</strong>: CoD and C start counting from ZERO, not ONE. So if you want to count to 15, you count to 14.</p><p>I'll start off with an example of a block of code that uses an array, and then the same block of code without using an array. I will throw a lot of code in there but just focus on the point, which is line count and syntax.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">boxes = getEntArray(&quot;money_box&quot;,&quot;targetname&quot;); //There are 15 boxes on the level, and this finds them all and puts them into an array (boxes[]).
+//Notice I didn&#39;t have to declare boxes as an array first. This is because getEntArray() does this for me.
+for(i=0;i&lt;boxes.size;i++)
+{
+	boxes[i] thread box_setup();
+}</pre>
+</div></div><p> </p><p>Without arrays:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">boxes = getEntArray(&quot;money_box&quot;,&quot;targetname&quot;); //There are 15 boxes on the level, and this finds them all and puts them into an array (boxes[]).
+boxes[0] thread box_setup();
+boxes[1] thread box_setup();
+boxes[2] thread box_setup();
+boxes[3] thread box_setup();
+boxes[4] thread box_setup();
+boxes[5] thread box_setup();
+boxes[6] thread box_setup();
+boxes[7] thread box_setup();
+boxes[8] thread box_setup();
+boxes[9] thread box_setup();
+boxes[10] thread box_setup();
+boxes[11] thread box_setup();
+boxes[12] thread box_setup();
+boxes[13] thread box_setup();
+boxes[14] thread box_setup(); //wow that was long and annoying. And it looks like crap D:</pre>
+</div></div><h2 id="ScriptingGuide-WorkingwithStrings">Working with Strings</h2><p>There are a few key points to go over with strings.</p><p><strong>Concatenation</strong>: Joining two strings together to form one line of text.</p><p>Example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">first = &quot;John&quot;;
+last = &quot;Doe&quot;;
+name = first+last; //Value of name is &quot;JohnDoe&quot;
+ 
+iPrintLn(&quot;Hello, my name is &quot;+name+&quot;. Again, my last name is &quot;+last+&quot;.); //Would print &quot;Hello, my name is JohnDoe. Again, my last name is Doe.&quot;</pre>
+</div></div><p> </p><p><strong>getSubStr(string, start, end)</strong>: CoD utility function which allows you to 'cut' the beginning of a string off and turn it into a new string. end is an optional arguement</p><p><strong>int(string)</strong>: CoD utility function which allows you to convert a string to an integer value for math purposes. There is no str().</p><p>Example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">weapon = &quot;zombie_kar98k_2&quot;;
+weapon_name = getSubStr(weapon, 6, 12); //Value of &#39;weapon_name&#39; is &quot;kar98k&quot;
+weapon_name = getSubStr(weapon, 6); //Value of &#39;weapon_name&#39; is &quot;kar98k_2&quot;
+number = &quot;100&quot;;
+number_int = int(number); //Value of &#39;number&#39; is now 100. This is not the same as &quot;100&quot;.</pre>
+</div></div><h2 id="ScriptingGuide-Math">Math</h2><p>Math is very straightforward in GSC. If you know any other programming languages, or if you passed basic math, this should be very easy to understand. If you failed basic math, shame on you.</p><p><strong>Operators</strong>: + - * / &lt; &lt;= =&gt; &gt; ++ -- = == += -= <br> <strong>+</strong> Addition<br> <strong>-</strong> Subtraction<br> <strong>*</strong> Multiplication<br> <strong>/</strong> Division<br> <strong>&lt;</strong> Less-than<br> <strong>&lt;=</strong> Less-than or equal to<br> <strong>=&gt;</strong> Greater-than or equal to<br> <strong>&gt;</strong> Greater-than<br> <strong>++</strong> Increment by +1<br> <strong>--</strong> Decrement by -1<br> <strong>=</strong> Equals or Assignment<br> <strong>==</strong> Is-Equal-To<br> <strong>+=</strong> Increment by<br> <strong>-=</strong> Decrement by</p><p> </p><p>Examples:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">number = 2+2; //4
+number = 2-2; //0
+number = 2*2; //4
+number = 2/2; //1
+if(2 &lt; 1) //false
+if(2 &lt;= 2) //true
+if(2 &gt; 2) //false
+if(2 &gt;= 3) //false
+ 
+number=1;
+number++; //number = 2
+number += 10; //number = 12
+number = 1;
+number--; //number = 0
+number -= 10; //number = -10
+ 
+if(1 == 1) //true</pre>
+</div></div><h1 id="ScriptingGuide-Functions">Functions</h1><p><strong>Function</strong>: A codeblock of logic and/or tasks.</p><h2 id="ScriptingGuide-MakingaFunction">Making a Function</h2><p>Functions have the following syntax:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">functionname(optional_arg1,optional_arg2, etc)
+{
+    code_or_logic;
+}</pre>
+</div></div><p><br> A function can either complete tasks (with no end statement) or complete logic (with an end statement).</p><p><strong>End Statement</strong>: return, continue, break.</p><p><strong>return</strong>: When code runs into this end statement, it will return to the function that called the current function and continue logic from there. If a variable is passed with the return, it will return that value to the variable that the current function was called on.</p><p><strong>continue</strong>: This statement can only be used within a loop. When the code runs into this end statement, it will skip the remaining code in the loop and start again from the beginning of the current loop. Think of this keyword as a &quot;restart&quot; ability for loops.</p><p><strong>break</strong>: This statement can only be used within a loop. When the code runs into this end statement, it will break from the current loop, which will continue by executing any remaining code after the loop.</p><p>If you're confused about the difference between continue and break, test them out and make your own conclusions.</p><p>Example of a return statement with a passing variable:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">number = get_number();
+iPrintLn(number); //Would print 2
+get_number()
+{
+    code_or_logic;
+    x = 2;
+    return x;
+}</pre>
+</div></div><p><strong>The BEST WAY TO LEARN how to use functions efficiently and intelligently is to look at existing ones! See how others conquered the issues you face. The beauty of programming is that there are almost always 100 different ways to code the same thing! Experiment with how short you can make your functions and still have them accomplish your goals. Don't be satisfied with a 300 line function that could be written in 34 lines.</strong></p><h2 id="ScriptingGuide-CallingaFunction(tothreadornottothread)">Calling a Function (to thread or not to thread)</h2><p>The key points of calling functions are 1)thread or no? 2) arguments? 3) calling to other files.</p><p><br> <strong>1)</strong> To thread, or not to thread? That seems to be the question on everyone's mind. To an experienced scripter its a pretty fundamental aspect of calling functions, but to the newbie it may seem like guessing on thread/not thread will fix their non-working functions. DON'T GUESS! I'm here to tell you when to use the all-important 'thread'.<br> The easiest way to explain (at least for me) is through a visual aid. Imagine yourself weaving a rope together. You have 3+ strands of thin pieces of rope and you weave them together to make one thicker, stronger piece of rope. When you wound up that rope, you had 3 different strands all being woven at the same time, right? Well, when you 'thread' a function, it's just like threading together a rope. Threading a function causes it to be run in the <strong>background</strong> while the function continues to run without waiting for the function to finish or return a value first. If you don't thread a function, the flow of execution will<strong> halt</strong> at the function call and wait for the called function to finish before executing any code after the call.<br> For example, if you call a function in your mapname.gsc before maps_zombiemode::main() is called, it will prevent zombiemode from ever starting (i.e. your zombies will not spawn, etc). If you <strong>thread</strong> that function, it will allow zombiemode to initialize without waiting for your function to finish.</p><p><strong>2)</strong> Arguments are variables or absolutes that you pass to a function for processing (<span class="confluence-link"> </span><a href="#ScriptingGuide-Variables"><span class="confluence-link">Example</span></a>). Arguments can be optional or required.</p><p><strong>3)</strong> You can use functions that are in other files<strong> without</strong>#including them at the top of your script. The way you do this is as follows:*</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">mapsscriptname::functionname(optional_args);</pre>
+</div></div><p>They work just like normal functions (for example, you can still assign a variable's value to a function outside of the current script using that same format.</p><h2 id="ScriptingGuide-While()andFor()loops"><br> While() and For() loops</h2><p>Loops are your second best friend (right up there with arrays). They allow you to repeat logic until something changes (or indefinitely). Again, the best way to show their importance is with visual examples.<br> Say I want to have a door that waits until the player walks up to it before it opens.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">door_trigger_wait()
+{
+	door = getEnt(&quot;door&quot;,&quot;targetname&quot;);
+	while(1) //while(1) is a shorthand way of saying while(true) which is basically an indefinite loop.
+	{
+		self waittill(&quot;trigger&quot;, player); //waittill() is a CoD utility function which will wait until the trigger is used. See the CoD Utility Functions for more info.
+		player playsound(&quot;door&quot;); //plays a door sound that has been made
+		door_open(door, player); //passes the door and player to a different function to continue the logic.
+	}
+}</pre>
+</div></div><p><br> You can also have while() loops that will end once a certain thing is true or false. For instance:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">door_trigger_wait()
+{
+	door = getEnt(&quot;door&quot;,&quot;targetname&quot;);
+	while(!flag(&quot;door_disabled&quot;)) //If the flag &quot;door_disabled&quot; is set elsewhere in the level, the loop will stop and the door will no longer wait for the player.
+	{
+		self waittill(&quot;trigger&quot;, player);
+		player playsound(&quot;door&quot;);
+		door_open(door, player);
+	}
+}</pre>
+</div></div><p><br> For() loops can also be indefinite, but that is not their primary use. This for() loop provides the same functionality as it did above with while():</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">door_trigger_wait()
+{
+    door = getEnt(&quot;door&quot;,&quot;targetname&quot;);
+    for(;;) //for(;;) is the same as while(1)
+    {
+        self waittill(&quot;trigger&quot;, player);
+        player playsound(&quot;door&quot;);
+        door_open(door, player);
+    }
+}</pre>
+</div></div><p><br>The primary function of for() loops is to loop through an array using an 'index'.</p><p><br> <strong>Index:</strong> A string or numerical value that corresponds to a value inside an array. An index is the same as the 'key' in a keys-and-values dictionary (if you want to think of it that way). Although strings can also be used, only numbers are supported for using in a for() loop through indexes. There are other ways to loop through an array of strings using getArrayKeys() which we will not discuss right now.</p><p><br>A great visual example of the power of for loops can be found way back up in the <span class="confluence-link"><a href="#ScriptingGuide-Variables">Variables</a></span> section. The syntax for a for() index loop is as follows, where 'variable' contains a numerical value from 0 to the size of the array:</p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">for(variable=0;variable&lt;array.size;variable++)
+{
+	arrayvariable code;
+}</pre>
+</div></div><p>This loop will run the same code over and over for each item stored in the array, starting at whatever number you specify and ending at whatever number you specify. In the above example, the loop starts with array<span class="confluence-link">0</span> and goes to the highest index in the array.</p><h2 id="ScriptingGuide-CoDUtilityFunctions">CoD Utility Functions</h2><p>There are a number of CoD-specific utility functions that you will find useful. They can ALL be found here <a class="external-link" href="http://ugx-mods.com/script" rel="nofollow">http://ugx-mods.com/script</a> and here <a class="external-link" href="http://zeroy.com/script" rel="nofollow">http://zeroy.com/script</a>. There are also other functions that Treyarch wrote for CoD5 and IW wrote for CoD4 that can be found in the raw/maps folder of your CoD5/CoD4 installation. The most used utility function is probably the getEnt() function, which is explained below:</p><h1 id="ScriptingGuide-AcquiringEntsandworkingwiththeminscript">Acquiring Ents and working with them in script</h1><p>So you want to move that purple box 10ft in the air and then make it disappear? Wow, that's really stupid, man. Why would you want to do that? Did you seriously just spend 45 minutes reading this entire page to accomplish that?</p><p>Just kidding! On with the actual info:</p><p>Acquiring entities is easy. You use getEnt(value, key) to get one ent (and there must only be one of that name!) and getEntArray(value,key) to get a group of ents with the same name. Most of the time, your key will be &quot;targetname&quot; and your value will be whatever you assigned it in Radiant, although you can acquire ents using other key/value pairs as well (but the question is why bother). To acquire any ent, it <strong>MUST BE SET AS A SCRIPT_MODEL (XMODEL) OR SCRIPT_BRUSHMODEL (BRUSH) IN ORDER TO BE SEEN BY SCRIPT.</strong> Read that sentence like 5 times. Maybe 10. Seriously. It's <em>REALLY</em> important that you understand that and that you don't forget it.</p><p><br> <strong>To be continued.</strong> Have questions? Suggestions? Comments? Parts to point out where I screwed up? Email me at <a class="external-link" href="mailto:treminaor@ugx-mods.com" rel="nofollow">treminaor@ugx-mods.com</a></p><p>Credit: Treminaor</p>
+                    

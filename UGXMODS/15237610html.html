@@ -1,0 +1,137 @@
+<!--
+title: BO3 | What&#39;s changed from WaW scripting?
+description: 
+published: true
+date: 2024-01-30T10:58:42.082Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:30:53.974Z
+-->
+
+                    <p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1706609478278 {padding: 0px;}
+div.rbtoc1706609478278 ul {margin-left: 0px;}
+div.rbtoc1706609478278 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p><div class='toc-macro rbtoc1706609478278'>
+<ul class='toc-indentation'>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-FunctionDeclaration'>Function Declaration</a>
+<ul class='toc-indentation'>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-FunctionParameters'>Function Parameters</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-FunctionScopes'>Function Scopes</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-FunctionDuplication'>Function Duplication</a></li>
+</ul>
+</li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-Namespaces'>Namespaces</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-CallingExternalFunctions'>Calling External Functions</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)'>Storing Functions in a Variable (pointers)</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-Flags'>Flags</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-GetStruct()andGetStructArray()'>GetStruct() and GetStructArray()</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)'>Weapon System (Giving, Getting, Switching, etc)</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-GetWorldModel()'>GetWorldModel()</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-TheCallbacksSystem'>The Callbacks System</a></li>
+<li><a href='#BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()'>enable_trigger() &amp; disable_trigger()</a></li>
+</ul>
+</div><h2 id="BO3|What&#39;schangedfromWaWscripting?-FunctionDeclaration">Function Declaration</h2><p>In World at War, functions could be written simply by writing the name of the function followed by any parameters you wish the function to have. In Black Ops 3, you simply need to add the &quot;function&quot; keyword before every function declaration you make: </p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">//WaW
+testfunction(parameter)
+{
+	some code()
+} 
+ 
+//BO3
+function testfunction(parameter)
+{
+	some code()
+} 
+</pre>
+</div></div><h3 id="BO3|What&#39;schangedfromWaWscripting?-FunctionParameters">Function Parameters</h3><p>Function parameters have had a small boost in ability since WaW. The main change to function parameters is that you are now able to set a parameter default. That looks like this:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: c#; gutter: false; theme: RDark" data-theme="RDark">function testingFunction( myPram = false )
+{
+}</pre>
+</div></div><p>The above code shows that if you where to call upon the variable &quot;myPram&quot; within the &quot;testingFunction&quot; without having declared what myPram is within the function call then it would fall back to its parameter default, of which in this instance is &quot;false&quot;.</p><h3 id="BO3|What&#39;schangedfromWaWscripting?-FunctionScopes">Function Scopes</h3><p>Now that Namespaces are open to us, we've also been given acces to function scopes. If you don't know what a function scope is then: A function can have a specific scope. Let's say we made a function with a private scope. this would mean we would only be able to use that function within our current .gsc file. If you have a global scope function the you would be able to call it externally ( from another .gsc file ).</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: c#; gutter: false; theme: RDark" data-theme="RDark">function private testingFunction( ) // this indicates that it is a private scope function 
+function testingFunction( )         // this indicates that its a public scope function</pre>
+</div></div><h3 id="BO3|What&#39;schangedfromWaWscripting?-FunctionDuplication">Function Duplication</h3><p>As well as being given function scopes with namespaces. We've also now got a way to declare duplicate function names. This means in one namespace we can have a function called &quot;init()&quot; and then in a different namespace we could have the same function name ( &quot;init()&quot; ) because of the namespaces these functions will not confict. Here's an example to better show the system off:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: c#; gutter: false; theme: RDark" data-theme="RDark">// zm_file_one.gsc
+#namespace zm_file_one			// Define our name space
+function init() {				// Declare our function init()
+	iPrintLn(&quot;Testing&quot;);
+} 
+ 
+// zm_file_two.gsc
+#using zm_file_one;
+function init() {				// Declare init() again in a different file.
+	iPrintLn(&quot;Testing two&quot;);
+	zm_file_one::init(); 		// See how I am able to use the same function name because its attached to a different name space
+}</pre>
+</div></div><p> </p><h2 id="BO3|What&#39;schangedfromWaWscripting?-Namespaces">Namespaces</h2><p>You can include an external script into your current script by doing:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">#using scripts\zm\zm_usermap;</pre>
+</div></div><p> </p><p>You can then call any function from that script by using the filename as a prefix:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">zm_usermap::some_func();</pre>
+</div></div><p> </p><h2 id="BO3|What&#39;schangedfromWaWscripting?-CallingExternalFunctions">Calling External Functions</h2><p>&lt;WIP&gt;</p><h2 id="BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)">Storing Functions in a Variable (pointers)</h2><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">function testfunction(parameter)
+{
+	myFunc = &amp;some_func;
+} 
+ 
+some_func()
+{
+ 
+}</pre>
+</div></div><p> </p><h2 id="BO3|What&#39;schangedfromWaWscripting?-Flags">Flags</h2><p>flag_init(), flag_set, flag(), and flag_clear have been moved to flag_shared</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">#using scripts\shared\flag_shared;
+ 
+function testfunction(parameter)
+{
+	//WaW: flag_init(&quot;flag&quot;);
+	level flag::init(&quot;flag&quot;);
+ 
+	//WaW: if(flag(&quot;flag&quot;))
+	if(level flag::get(&quot;flag&quot;))
+ 
+	//WaW: flag_set(&quot;flag&quot;);
+	level flag::set(&quot;flag&quot;);
+ 
+	//WaW: flag_clear(&quot;flag&quot;);
+	level flag::clear(&quot;flag&quot;);
+} </pre>
+</div></div><p> </p><h2 id="BO3|What&#39;schangedfromWaWscripting?-GetStruct()andGetStructArray()">GetStruct() and GetStructArray()</h2><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">#using scripts\codescripts\struct;
+
+function testfunction(parameter)
+{
+	//WaW:  struct = getStruct(&quot;something&quot;, &quot;targetname&quot;);
+	struct = struct::get(&quot;something&quot;, &quot;targetname&quot;);
+
+	//WaW:  structs = getStructArray(&quot;something&quot;, &quot;targetname&quot;);
+	structs = struct::get_array(&quot;something&quot;, &quot;targetname&quot;);
+} </pre>
+</div></div><p> </p><h2 id="BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)">Weapon System (Giving, Getting, Switching, etc)</h2><p>BO3 now treats weapons as entities instead of just strings. In order to do any weapon operations, you must first initialize a weapon variable from the string name:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">function testfunction(parameter)
+{
+	string = &quot;smg_standard&quot;;
+	weapon = getWeapon(string); //initialize the weapon
+	self giveWeapon(weapon); //giving an entity instead of just a string now.
+	self GiveMaxAmmo(weapon);
+	self SwitchToWeapon(weapon);
+}</pre>
+</div></div><p><br>Weapon Stats are now stored as fields of the weapon entitiy instead of obtained from engine functions:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">function testfunction(parameter)
+{
+	string = &quot;smg_standard&quot;;
+	weapon = getWeapon(string);
+	displayName = weapon.displayName;
+	ammo = weapon.ammo;
+}</pre>
+</div></div><h2 id="BO3|What&#39;schangedfromWaWscripting?-GetWorldModel()">GetWorldModel()</h2><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">function testfunction(parameter)
+{
+	string = &quot;smg_standard&quot;;
+	//WaW: model = GetWorldModel(string);
+	model = GetWeaponWorldModel(getWeapon(string)); //Must pass an initialized weapon entity and also note the function for getting the model has been renamed.
+}</pre>
+</div></div><h2 id="BO3|What&#39;schangedfromWaWscripting?-TheCallbacksSystem">The Callbacks System</h2><p>A much more elegant way of getting your scripts threaded into the level at the right time (preload, post load, post load with specific requirements). You can see a full explanation of this feature on the dedicated page: <a href="https://confluence.ugx-mods.com/display/UGXMODS/BO3+%7C+Callbacks+System">BO3 | Callbacks System</a></p><h2 id="BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()">enable_trigger() &amp; disable_trigger()</h2><p>These functions have been replaced with:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">trigger TriggerEnable(&lt;bool&gt;);</pre>
+</div></div><p>where passing true will enable the trigger and false will disable it.</p>
+                    

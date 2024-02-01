@@ -1,0 +1,1365 @@
+<!--
+title: Trader
+description: 
+published: true
+date: 2024-01-30T10:32:56.288Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:32:55.107Z
+-->
+
+                    <div class="confluence-information-macro confluence-information-macro-warning"><p class="title conf-macro-render">Warning!</p><span class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><span>This is not directly compatible with ZCT Mod as it uses different weapons than this is programmed for.</span></p></div></div><div class="confluence-information-macro confluence-information-macro-information"><p class="title conf-macro-render">Note</p><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p> <span>This script has not been verified as working. Some updates may need to be made to the script by its creator before it is in complete working order.</span></p></div></div><p></p><div class="confluence-information-macro confluence-information-macro-tip"><span class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong>NOTE</strong>: Before reading this guide, determine where your World at War root directory is located.</p><p><strong> Non-Steam Install</strong>: C:\Program Files (x86)\Activision\Call of Duty World at War\</p><p><strong>Steam Install</strong>: C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\</p><p>For the rest of this guide, it will be assumed that the word &quot;root&quot; refers to the appropriate installation path shown above.</p><p>Say 'Yes to all' if Windows asks you about replacing files when dragging files into your root directory.</p></div></div><br> This tutorial will walk you through how to implement a 'trader' in your map (think of Killing Floor) that will offer players ammo, guns, and attachments. By default the provided script includes code for soundaliases to be played when items are purchased, although you are not required to add any sound for functionality. This tutorial will not provide sounds or cover how to add them to your mod. Since this script is from <a class="external-link" href="http://ugx-mods.com/" rel="nofollow">UGX</a> Cabin, it only supports the weapons available in that map. If you would like to add more weapons, you will have to create more weapons files and add them to the script and your csv's.<h1 id="Trader-Changelog">Changelog</h1><p>Updated the Script Implementation section to have a precacheMenu() line. - 03:31, 24 June 2012 (UTC)</p><h1 id="Trader-Preparation">Preparation</h1><p>Download <a class="external-link" href="http://ugx-mods.com/downloads/ugx_upgrader_ammo.gsc" rel="nofollow">ugx_upgrader_ammo.gsc</a> and place it in mods/mapname/maps/. Download <a class="external-link" href="http://ugx-mods.com/downloads/ugx_trader_files.rar" rel="nofollow">ugx_trader_files.rar</a> and extract its contents to your root/mods/mapname/ directory, combining folders and overwriting files as it asks. The .rar contains weapons files for the weapons supported by this script, the menu file, the menu texture, and the menu material.</p><h1 id="Trader-Implementation">Implementation</h1><h2 id="Trader-Radiant">Radiant</h2><p>All that is required is a trigger - however you may create fancy brushes and place models and AI to make it look like a trader room if you wish. Create a trigger_use with this KvP:</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><p>Key</p></th><th class="confluenceTh"><p>Value</p></th></tr><tr><td class="confluenceTd"><p>targetname</p></td><td class="confluenceTd"><p>upgrader</p></td></tr></tbody></table></div><h2 id="Trader-Script">Script</h2><p>In order for ugx_upgrader_ammo.gsc to run, it must be 'called' in your root/raw/maps/mapname.gsc. Open this file with any <a href="Text-Editors_1146950.html">Text Editor</a> you prefer, although Windows Notepad will suffice.</p><p>Find the line:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">maps\_zombiemode::main();</pre>
+</div></div><p>Add:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">level thread maps\ugx_upgrader_ammo::init();</pre>
+</div></div><p>immediately below the 'maps_zombiemode::main();' line</p><p>and add:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">precacheMenu(&quot;ugx_upgrader&quot;);
+precacheShader(&quot;trader_bg&quot;);</pre>
+</div></div><p>right before</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">maps\_zombiemode::main();</pre>
+</div></div><p>It should look like this:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">precacheMenu(&quot;ugx_upgrader&quot;);
+precacheShader(&quot;trader_bg&quot;);
+maps\_zombiemode::main();
+level thread maps\ugx_upgrader_ammo::init();</pre>
+</div></div><p>Copy dlc3_code.gsc and _zombiemode_weapons.gsc from your root/raw/maps folder to mods/mapname/maps. Open them both with any <a href="Text-Editors_1146950.html">Text Editor</a>, although Windows Notepad will suffice.</p><p>If you are on a 1.1 map,open (not copy) your mapname.gsc instead of dlc3_code.gsc.</p><p>In dlc3_code.gsc (if you have it - otherwise skip this part), highlight the entire include_weapons() function, and replace it with this:</p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">include_weapons()
+{
+include_weapon( &quot;zombie_colt&quot; );
+include_weapon( &quot;zombie_colt_upgraded&quot;, false );
+include_weapon( &quot;zombie_sw_357&quot; );
+include_weapon( &quot;zombie_sw_357_upgraded&quot;, false );
+
+// Bolt Action
+include_weapon( &quot;zombie_kar98k&quot; );
+include_weapon( &quot;zombie_kar98k_b&quot; );
+include_weapon( &quot;zombie_kar98k_upgraded&quot;, false );
+
+// Semi Auto
+include_weapon( &quot;zombie_m1carbine&quot; );
+include_weapon( &quot;zombie_m1carbine_a_b&quot; );
+include_weapon( &quot;zombie_m1carbine_a_b_e&quot; );
+include_weapon( &quot;zombie_m1carbine_upgraded&quot;, false );
+include_weapon( &quot;zombie_m1garand&quot; );
+include_weapon( &quot;zombie_m1garand_upgraded&quot;, false );
+include_weapon( &quot;zombie_gewehr43&quot; );
+include_weapon( &quot;zombie_gewehr43_a&quot; );
+include_weapon( &quot;zombie_gewehr43_a_e&quot; );
+include_weapon( &quot;zombie_gewehr43_upgraded&quot;, false );
+
+// Full Auto
+include_weapon( &quot;zombie_stg44&quot; );
+include_weapon( &quot;zombie_stg44_a&quot; );
+include_weapon( &quot;zombie_stg44_a_e&quot; );
+include_weapon( &quot;zombie_stg44_upgraded&quot;, false );
+include_weapon( &quot;zombie_thompson&quot; );
+include_weapon( &quot;zombie_thompson_a&quot; );
+include_weapon( &quot;zombie_thompson_a_e&quot; );
+include_weapon( &quot;zombie_thompson_upgraded&quot;, false );
+include_weapon( &quot;zombie_mp40&quot; );
+include_weapon( &quot;zombie_mp40_a&quot; );
+include_weapon( &quot;zombie_mp40_a_e&quot; );
+include_weapon( &quot;zombie_mp40_upgraded&quot;, false );
+include_weapon( &quot;zombie_type100_smg&quot; );
+include_weapon( &quot;zombie_type100_smg_upgraded&quot;, false );
+
+// Scoped
+include_weapon( &quot;ptrs41_zombie&quot; );
+include_weapon( &quot;ptrs41_zombie_upgraded&quot;, false );
+
+// Grenade
+include_weapon( &quot;molotov&quot; );
+include_weapon( &quot;stielhandgranate&quot; );
+
+// Grenade Launcher
+include_weapon( &quot;m1garand_gl_zombie&quot; );
+include_weapon( &quot;m1garand_gl_zombie_upgraded&quot;, false );
+include_weapon( &quot;m7_launcher_zombie&quot; );
+include_weapon( &quot;m7_launcher_zombie_upgraded&quot;, false );
+
+// Flamethrower
+include_weapon( &quot;m2_flamethrower_zombie&quot; );
+include_weapon( &quot;m2_flamethrower_zombie_upgraded&quot;, false );
+
+// Shotgun
+include_weapon( &quot;zombie_doublebarrel&quot; );
+include_weapon( &quot;zombie_doublebarrel_g&quot; );
+include_weapon( &quot;zombie_doublebarrel_upgraded&quot;, false );
+include_weapon( &quot;zombie_shotgun&quot; );
+include_weapon( &quot;zombie_shotgun_b_g&quot; );
+include_weapon( &quot;zombie_shotgun_upgraded&quot;, false );
+
+// Heavy MG
+include_weapon( &quot;zombie_bar&quot; );
+include_weapon( &quot;zombie_bar_e&quot; );
+include_weapon( &quot;zombie_bar_upgraded&quot;, false );
+include_weapon( &quot;zombie_fg42&quot; );
+include_weapon( &quot;zombie_fg42_upgraded&quot;, false );
+
+include_weapon( &quot;zombie_30cal&quot; );
+include_weapon( &quot;zombie_30cal_upgraded&quot;, false );
+include_weapon( &quot;zombie_mg42&quot; );
+include_weapon( &quot;zombie_mg42_upgraded&quot;, false );
+include_weapon( &quot;zombie_ppsh&quot; );
+include_weapon( &quot;zombie_ppsh_a&quot; );
+include_weapon( &quot;zombie_ppsh_a_e&quot; );
+include_weapon( &quot;zombie_ppsh_upgraded&quot;, false );
+
+// Rocket Launcher
+include_weapon( &quot;panzerschrek_zombie&quot; );
+include_weapon( &quot;panzerschrek_zombie_upgraded&quot;, false );
+
+// Special
+include_weapon( &quot;ray_gun&quot;, true, ::factory_ray_gun_weighting_func );
+include_weapon( &quot;ray_gun_upgraded&quot;, false );
+include_weapon( &quot;tesla_gun&quot;, true );
+include_weapon( &quot;tesla_gun_upgraded&quot;, false );
+include_weapon( &quot;zombie_cymbal_monkey&quot;, true, ::factory_cymbal_monkey_weighting_func );
+//include_weapon( &quot;mortar_round&quot; );
+
+// Bouncing betties
+include_weapon( &quot;mine_bouncing_betty&quot;, false );
+
+// Added By Sniperbolt
+// include_weapon( &quot;zombie_the_sniperbolt&quot;, true );
+// include_weapon( &quot;zombie_the_sniperbolt_upgrated&quot;, false );
+
+// Limited weapons
+//maps_zombiemode_weapons::add_limited_weapon( &quot;zombie_colt&quot;, 0 );
+//maps_zombiemode_weapons::add_limited_weapon( &quot;zombie_gewehr43&quot;, 0 );
+//maps_zombiemode_weapons::add_limited_weapon( &quot;zombie_m1garand&quot;, 0 );
+}
+
+If you have mapname.gsc instead of dlc3_code.gsc, highlight and replace include_weapons() with this:
+
+include_weapons()
+{
+include_weapon( &quot;zombie_colt&quot; );
+include_weapon( &quot;zombie_sw_357&quot; );
+
+// Bolt Action
+include_weapon( &quot;zombie_kar98k&quot; );
+include_weapon( &quot;zombie_kar98k_b&quot; );
+
+// Semi Auto
+include_weapon( &quot;zombie_m1carbine&quot; );
+include_weapon( &quot;zombie_m1carbine_a_b&quot; );
+include_weapon( &quot;zombie_m1carbine_a_b_e&quot; );
+include_weapon( &quot;zombie_m1garand&quot; );
+include_weapon( &quot;zombie_gewehr43&quot; );
+include_weapon( &quot;zombie_gewehr43_a&quot; );
+include_weapon( &quot;zombie_gewehr43_a_e&quot; );
+
+// Full Auto
+include_weapon( &quot;zombie_stg44&quot; );
+include_weapon( &quot;zombie_stg44_a&quot; );
+include_weapon( &quot;zombie_stg44_a_e&quot; );
+include_weapon( &quot;zombie_thompson&quot; );
+include_weapon( &quot;zombie_thompson_a&quot; );
+include_weapon( &quot;zombie_thompson_a_e&quot; );
+include_weapon( &quot;zombie_mp40&quot; );
+include_weapon( &quot;zombie_mp40_a&quot; );
+include_weapon( &quot;zombie_mp40_a_e&quot; );
+include_weapon( &quot;zombie_type100_smg&quot; );
+
+// Scoped
+include_weapon( &quot;ptrs41_zombie&quot; );
+
+// Grenade
+include_weapon( &quot;molotov&quot; );
+include_weapon( &quot;stielhandgranate&quot; );
+
+// Grenade Launcher
+include_weapon( &quot;m1garand_gl_zombie&quot; );
+include_weapon( &quot;m7_launcher_zombie&quot; );
+
+// Flamethrower
+include_weapon( &quot;m2_flamethrower_zombie&quot; );
+
+// Shotgun
+include_weapon( &quot;zombie_doublebarrel&quot; );
+include_weapon( &quot;zombie_doublebarrel_g&quot; );
+include_weapon( &quot;zombie_shotgun&quot; );
+include_weapon( &quot;zombie_shotgun_b_g&quot; );
+
+// Heavy MG
+include_weapon( &quot;zombie_bar&quot; );
+include_weapon( &quot;zombie_bar_e&quot; );
+include_weapon( &quot;zombie_fg42&quot; );
+
+include_weapon( &quot;zombie_30cal&quot; );
+include_weapon( &quot;zombie_mg42&quot; );
+include_weapon( &quot;zombie_ppsh&quot; );
+include_weapon( &quot;zombie_ppsh_a&quot; );
+include_weapon( &quot;zombie_ppsh_a_e&quot; );
+
+// Rocket Launcher
+include_weapon( &quot;panzerschrek_zombie&quot; );
+
+// Special
+include_weapon( &quot;ray_gun&quot;);
+
+}</pre>
+</div></div><p> </p><p><strong>1.4 Tools:</strong> In _zombiemode_weapons.gsc, highlight the entire init_weapons() function and replace it with this:</p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">init_weapons()
+{
+// Zombify
+PrecacheItem( &quot;zombie_melee&quot; );
+
+// Pistols
+add_zombie_weapon( &quot;colt&quot;, &amp;&quot;ZOMBIE_WEAPON_COLT_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;colt_dirty_harry&quot;, &amp;&quot;ZOMBIE_WEAPON_COLT_DH_100&quot;, 100, &quot;vox_357&quot;, 5 );
+add_zombie_weapon( &quot;nambu&quot;, &amp;&quot;ZOMBIE_WEAPON_NAMBU_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;sw_357&quot;, &amp;&quot;ZOMBIE_WEAPON_SW357_100&quot;, 100, &quot;vox_357&quot;, 5 );
+add_zombie_weapon( &quot;zombie_sw_357&quot;, &amp;&quot;ZOMBIE_WEAPON_SW357_100&quot;, 100, &quot;vox_357&quot;, 5 );
+add_zombie_weapon( &quot;zombie_sw_357_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_SW357_100&quot;, 100, &quot;vox_357&quot;, 5 );
+add_zombie_weapon( &quot;tokarev&quot;, &amp;&quot;ZOMBIE_WEAPON_TOKAREV_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;walther&quot;, &amp;&quot;ZOMBIE_WEAPON_WALTHER_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;zombie_colt&quot;, &amp;&quot;ZOMBIE_WEAPON_ZOMBIECOLT_25&quot;, 25, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;zombie_colt_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_ZOMBIECOLT_25&quot;, 25, &quot;vox_crappy&quot;, 8 );
+
+// Bolt Action
+add_zombie_weapon( &quot;kar98k&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;zombie_kar98k&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;zombie_kar98k_b&quot;, &amp;&quot;Purchase Kar98k Bayonet 200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;zombie_kar98k_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;kar98k_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_B_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;mosin_rifle&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;mosin_rifle_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_B_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;springfield&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_springfield&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;springfield_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_B_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_type99_rifle&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_type99_rifle_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;type99_rifle_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_B_200&quot;, 200, &quot;&quot;, 0 );
+
+// Semi Auto
+add_zombie_weapon( &quot;zombie_gewehr43&quot;, &amp;&quot;ZOMBIE_WEAPON_GEWEHR43_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_gewehr43_a&quot;, &amp;&quot;ZOMBIE_WEAPON_GEWEHR43_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_gewehr43_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_GEWEHR43_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_gewehr43_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_GEWEHR43_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1carbine&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1carbine_a_b&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1carbine_a_b_e&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1carbine_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;m1carbine_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_B_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1garand&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1garand_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;m1garand_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_B_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;svt40&quot;, &amp;&quot;ZOMBIE_WEAPON_SVT40_600&quot;, 600, &quot;&quot; , 0 );
+
+// Grenades
+add_zombie_weapon( &quot;fraggrenade&quot;, &amp;&quot;ZOMBIE_WEAPON_FRAGGRENADE_250&quot;, 250, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;molotov&quot;, &amp;&quot;ZOMBIE_WEAPON_MOLOTOV_200&quot;, 200, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;molotov_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOLOTOV_200&quot;, 200, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;stick_grenade&quot;, &amp;&quot;ZOMBIE_WEAPON_STICKGRENADE_250&quot;, 250, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;stielhandgranate&quot;, &amp;&quot;ZOMBIE_WEAPON_STIELHANDGRANATE_250&quot;, 250, &quot;&quot; , 0, 250 );
+add_zombie_weapon( &quot;type97_frag&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE97FRAG_250&quot;, 250, &quot;&quot; , 0 );
+
+// Scoped
+add_zombie_weapon( &quot;kar98k_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;kar98k_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;mosin_rifle_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;mosin_rifle_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;ptrs41_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_PTRS41_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;ptrs41_zombie_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_PTRS41_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;springfield_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;springfield_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;type99_rifle_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;type99_rifle_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+
+// Full Auto
+add_zombie_weapon( &quot;zombie_mp40&quot;, &amp;&quot;ZOMBIE_WEAPON_MP40_1000&quot;, 1000, &quot;vox_mp40&quot;, 2 );
+add_zombie_weapon( &quot;zombie_mp40_a&quot;, &amp;&quot;ZOMBIE_WEAPON_MP40_1000&quot;, 1000, &quot;vox_mp40&quot;, 2 );
+add_zombie_weapon( &quot;zombie_mp40_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_MP40_1000&quot;, 1000, &quot;vox_mp40&quot;, 2 );
+add_zombie_weapon( &quot;zombie_mp40_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_MP40_1000&quot;, 1000, &quot;vox_mp40&quot;, 2 );
+add_zombie_weapon( &quot;zombie_ppsh&quot;, &amp;&quot;ZOMBIE_WEAPON_PPSH_2000&quot;, 2000, &quot;vox_ppsh&quot;, 5 );
+add_zombie_weapon( &quot;zombie_ppsh_a&quot;, &amp;&quot;ZOMBIE_WEAPON_PPSH_2000&quot;, 2000, &quot;vox_ppsh&quot;, 5 );
+add_zombie_weapon( &quot;zombie_ppsh_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_PPSH_2000&quot;, 2000, &quot;vox_ppsh&quot;, 5 );
+add_zombie_weapon( &quot;zombie_ppsh_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_PPSH_2000&quot;, 2000, &quot;vox_ppsh&quot;, 5 );
+add_zombie_weapon( &quot;zombie_stg44&quot;, &amp;&quot;ZOMBIE_WEAPON_STG44_1200&quot;, 1200, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_stg44_a&quot;, &amp;&quot;ZOMBIE_WEAPON_STG44_1200&quot;, 1200, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_stg44_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_STG44_1200&quot;, 1200, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_stg44_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_STG44_1200&quot;, 1200, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_thompson&quot;, &amp;&quot;ZOMBIE_WEAPON_THOMPSON_1200&quot;, 1200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_thompson_a&quot;, &amp;&quot;ZOMBIE_WEAPON_THOMPSON_1200&quot;, 1200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_thompson_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_THOMPSON_1200&quot;, 1200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_thompson_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_THOMPSON_1200&quot;, 1200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_type100_smg&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE100_1000&quot;, 1000, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_type100_smg_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE100_1000&quot;, 1000, &quot;&quot;, 0 );
+
+// Shotguns
+add_zombie_weapon( &quot;zombie_doublebarrel&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_doublebarrel_g&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_doublebarrel_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_doublebarrel_sawed&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_SAWED_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_doublebarrel_sawed_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_SAWED_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_shotgun&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_shotgun_b&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_shotgun_b_g&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_shotgun_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+
+// Heavy Machineguns
+add_zombie_weapon( &quot;zombie_30cal&quot;, &amp;&quot;ZOMBIE_WEAPON_30CAL_3000&quot;, 3000, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_30cal_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_30CAL_3000&quot;, 3000, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_bar&quot;, &amp;&quot;ZOMBIE_WEAPON_BAR_1800&quot;, 1800, &quot;vox_bar&quot;, 5 );
+add_zombie_weapon( &quot;zombie_bar_e&quot;, &amp;&quot;ZOMBIE_WEAPON_BAR_1800&quot;, 1800, &quot;vox_bar&quot;, 5 );
+add_zombie_weapon( &quot;zombie_bar_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_BAR_1800&quot;, 1800, &quot;vox_bar&quot;, 5 );
+add_zombie_weapon( &quot;dp28&quot;, &amp;&quot;ZOMBIE_WEAPON_DP28_2250&quot;, 2250, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;zombie_fg42&quot;, &amp;&quot;ZOMBIE_WEAPON_FG42_1500&quot;, 1500, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;zombie_fg42_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_FG42_1500&quot;, 1500, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;fg42_scoped&quot;, &amp;&quot;ZOMBIE_WEAPON_FG42_S_1500&quot;, 1500, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;zombie_mg42&quot;, &amp;&quot;ZOMBIE_WEAPON_MG42_3000&quot;, 3000, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;zombie_mg42_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_MG42_3000&quot;, 3000, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;type99_lmg&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_LMG_1750&quot;, 1750, &quot;vox_mg&quot; , 9 );
+
+// Grenade Launcher
+add_zombie_weapon( &quot;m1garand_gl_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_GL_1500&quot;, 1500, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;m1garand_gl_zombie_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_GL_1500&quot;, 1500, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;mosin_launcher_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_GL_1200&quot;, 1200, &quot;&quot;, 0 );
+
+// Bipods
+add_zombie_weapon( &quot;30cal_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_30CAL_BIPOD_3500&quot;, 3500, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;bar_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_BAR_BIPOD_2500&quot;, 2500, &quot;vox_bar&quot;, 5 );
+add_zombie_weapon( &quot;dp28_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_DP28_BIPOD_2500&quot;, 2500, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;fg42_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_FG42_BIPOD_2000&quot;, 2000, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;mg42_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_MG42_BIPOD_3250&quot;, 3250, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;type99_lmg_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_LMG_BIPOD_2250&quot;, 2250, &quot;vox_mg&quot;, 5 );
+
+// Rocket Launchers
+add_zombie_weapon( &quot;bazooka&quot;, &amp;&quot;ZOMBIE_WEAPON_BAZOOKA_2000&quot;, 2000, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;panzerschrek_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_PANZERSCHREK_2000&quot;, 2000, &quot;vox_panzer&quot;, 5 );
+add_zombie_weapon( &quot;panzerschrek_zombie_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_PANZERSCHREK_2000&quot;, 2000, &quot;vox_panzer&quot;, 5 );
+
+// Flamethrower
+add_zombie_weapon( &quot;m2_flamethrower_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_M2_FLAMETHROWER_3000&quot;, 3000, &quot;vox_flame&quot;, 7);
+add_zombie_weapon( &quot;m2_flamethrower_zombie_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_M2_FLAMETHROWER_3000&quot;, 3000, &quot;vox_flame&quot;, 7);
+
+// Special
+add_zombie_weapon( &quot;mine_bouncing_betty&quot;, &amp;&quot;ZOMBIE_WEAPON_SATCHEL_2000&quot;, 2000, &quot;&quot; );
+add_zombie_weapon( &quot;mortar_round&quot;, &amp;&quot;ZOMBIE_WEAPON_MORTARROUND_2000&quot;, 2000, &quot;&quot; );
+add_zombie_weapon( &quot;satchel_charge&quot;, &amp;&quot;ZOMBIE_WEAPON_SATCHEL_2000&quot;, 2000, &quot;vox_monkey&quot;, 3 );
+add_zombie_weapon( &quot;zombie_cymbal_monkey&quot;, &amp;&quot;ZOMBIE_WEAPON_SATCHEL_2000&quot;, 2000, &quot;vox_monkey&quot;, 3 );
+add_zombie_weapon( &quot;ray_gun&quot;, &amp;&quot;ZOMBIE_WEAPON_RAYGUN_10000&quot;, 10000, &quot;vox_raygun&quot;, 6 );
+add_zombie_weapon( &quot;ray_gun_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_RAYGUN_10000&quot;, 10000, &quot;vox_raygun&quot;, 6 );
+add_zombie_weapon( &quot;tesla_gun&quot;, &amp;&quot;ZOMBIE_BUY_TESLA&quot;, 10, &quot;vox_tesla&quot;, 5 );
+add_zombie_weapon( &quot;tesla_gun_upgraded&quot;, &amp;&quot;ZOMBIE_BUY_TESLA&quot;, 10, &quot;vox_tesla&quot;, 5 );
+
+if(level.script != &quot;nazi_zombie_prototype&quot;)
+{
+Precachemodel(&quot;zombie_teddybear&quot;);
+}
+// ONLY 1 OF THE BELOW SHOULD BE ALLOWED
+//add_limited_weapon( &quot;m2_flamethrower_zombie&quot;, 1 );
+add_limited_weapon( &quot;tesla_gun&quot;, 1);
+}</pre>
+</div></div><p> </p><p><strong>1.1 Tools:</strong> Replace the init_weapons() function in _zombiemode_weapons.gsc with this:</p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">init_weapons()
+{
+// Zombify
+PrecacheItem( &quot;zombie_melee&quot; );
+
+// Pistols
+add_zombie_weapon( &quot;colt&quot;, &amp;&quot;ZOMBIE_WEAPON_COLT_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;colt_dirty_harry&quot;, &amp;&quot;ZOMBIE_WEAPON_COLT_DH_100&quot;, 100, &quot;vox_357&quot;, 5 );
+add_zombie_weapon( &quot;nambu&quot;, &amp;&quot;ZOMBIE_WEAPON_NAMBU_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;sw_357&quot;, &amp;&quot;ZOMBIE_WEAPON_SW357_100&quot;, 100, &quot;vox_357&quot;, 5 );
+add_zombie_weapon( &quot;zombie_sw_357&quot;, &amp;&quot;ZOMBIE_WEAPON_SW357_100&quot;, 100, &quot;vox_357&quot;, 5 );
+
+add_zombie_weapon( &quot;tokarev&quot;, &amp;&quot;ZOMBIE_WEAPON_TOKAREV_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;walther&quot;, &amp;&quot;ZOMBIE_WEAPON_WALTHER_50&quot;, 50, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;zombie_colt&quot;, &amp;&quot;ZOMBIE_WEAPON_ZOMBIECOLT_25&quot;, 25, &quot;vox_crappy&quot;, 8 );
+
+// Bolt Action
+add_zombie_weapon( &quot;kar98k&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;zombie_kar98k&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;zombie_kar98k_b&quot;, &amp;&quot;Purchase Kar98k Bayonet 200&quot;, 200, &quot;&quot;, 0);
+
+add_zombie_weapon( &quot;kar98k_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_B_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;mosin_rifle&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_200&quot;, 200, &quot;&quot;, 0);
+add_zombie_weapon( &quot;mosin_rifle_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_B_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;springfield&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_springfield&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;springfield_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_B_200&quot;, 200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_type99_rifle&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_200&quot;, 200, &quot;&quot;, 0 );
+
+add_zombie_weapon( &quot;type99_rifle_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_B_200&quot;, 200, &quot;&quot;, 0 );
+
+// Semi Auto
+add_zombie_weapon( &quot;zombie_gewehr43&quot;, &amp;&quot;ZOMBIE_WEAPON_GEWEHR43_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_gewehr43_a&quot;, &amp;&quot;ZOMBIE_WEAPON_GEWEHR43_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_gewehr43_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_GEWEHR43_600&quot;, 600, &quot;&quot; , 0 );
+
+add_zombie_weapon( &quot;zombie_m1carbine&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1carbine_a_b&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1carbine_a_b_e&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_600&quot;, 600, &quot;&quot; , 0 );
+
+add_zombie_weapon( &quot;m1carbine_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_M1CARBINE_B_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;zombie_m1garand&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_600&quot;, 600, &quot;&quot; , 0 );
+
+add_zombie_weapon( &quot;m1garand_bayonet&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_B_600&quot;, 600, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;svt40&quot;, &amp;&quot;ZOMBIE_WEAPON_SVT40_600&quot;, 600, &quot;&quot; , 0 );
+
+// Grenades
+add_zombie_weapon( &quot;fraggrenade&quot;, &amp;&quot;ZOMBIE_WEAPON_FRAGGRENADE_250&quot;, 250, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;molotov&quot;, &amp;&quot;ZOMBIE_WEAPON_MOLOTOV_200&quot;, 200, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;molotov_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOLOTOV_200&quot;, 200, &quot;vox_crappy&quot;, 8 );
+add_zombie_weapon( &quot;stick_grenade&quot;, &amp;&quot;ZOMBIE_WEAPON_STICKGRENADE_250&quot;, 250, &quot;&quot; , 0 );
+add_zombie_weapon( &quot;stielhandgranate&quot;, &amp;&quot;ZOMBIE_WEAPON_STIELHANDGRANATE_250&quot;, 250, &quot;&quot; , 0, 250 );
+add_zombie_weapon( &quot;type97_frag&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE97FRAG_250&quot;, 250, &quot;&quot; , 0 );
+
+// Scoped
+add_zombie_weapon( &quot;kar98k_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;kar98k_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_KAR98K_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;mosin_rifle_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;mosin_rifle_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;ptrs41_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_PTRS41_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+
+add_zombie_weapon( &quot;springfield_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;springfield_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_SPRINGFIELD_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;type99_rifle_scoped_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_S_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+add_zombie_weapon( &quot;type99_rifle_scoped_bayonet_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_S_B_750&quot;, 750, &quot;vox_ppsh&quot;, 5);
+
+// Full Auto
+add_zombie_weapon( &quot;zombie_mp40&quot;, &amp;&quot;ZOMBIE_WEAPON_MP40_1000&quot;, 1000, &quot;vox_mp40&quot;, 2 );
+add_zombie_weapon( &quot;zombie_mp40_a&quot;, &amp;&quot;ZOMBIE_WEAPON_MP40_1000&quot;, 1000, &quot;vox_mp40&quot;, 2 );
+add_zombie_weapon( &quot;zombie_mp40_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_MP40_1000&quot;, 1000, &quot;vox_mp40&quot;, 2 );
+
+add_zombie_weapon( &quot;zombie_ppsh&quot;, &amp;&quot;ZOMBIE_WEAPON_PPSH_2000&quot;, 2000, &quot;vox_ppsh&quot;, 5 );
+add_zombie_weapon( &quot;zombie_ppsh_a&quot;, &amp;&quot;ZOMBIE_WEAPON_PPSH_2000&quot;, 2000, &quot;vox_ppsh&quot;, 5 );
+add_zombie_weapon( &quot;zombie_ppsh_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_PPSH_2000&quot;, 2000, &quot;vox_ppsh&quot;, 5 );
+
+add_zombie_weapon( &quot;zombie_stg44&quot;, &amp;&quot;ZOMBIE_WEAPON_STG44_1200&quot;, 1200, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_stg44_a&quot;, &amp;&quot;ZOMBIE_WEAPON_STG44_1200&quot;, 1200, &quot;vox_mg&quot;, 9 );
+add_zombie_weapon( &quot;zombie_stg44_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_STG44_1200&quot;, 1200, &quot;vox_mg&quot;, 9 );
+
+add_zombie_weapon( &quot;zombie_thompson&quot;, &amp;&quot;ZOMBIE_WEAPON_THOMPSON_1200&quot;, 1200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_thompson_a&quot;, &amp;&quot;ZOMBIE_WEAPON_THOMPSON_1200&quot;, 1200, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;zombie_thompson_a_e&quot;, &amp;&quot;ZOMBIE_WEAPON_THOMPSON_1200&quot;, 1200, &quot;&quot;, 0 );
+
+add_zombie_weapon( &quot;zombie_type100_smg&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE100_1000&quot;, 1000, &quot;&quot;, 0 );
+
+// Shotguns
+add_zombie_weapon( &quot;zombie_doublebarrel&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_doublebarrel_g&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+
+add_zombie_weapon( &quot;zombie_doublebarrel_sawed&quot;, &amp;&quot;ZOMBIE_WEAPON_DOUBLEBARREL_SAWED_1200&quot;, 1200, &quot;vox_shotgun&quot;, 6);
+
+add_zombie_weapon( &quot;zombie_shotgun&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_shotgun_b&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_shotgun_b_g&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+add_zombie_weapon( &quot;zombie_shotgun_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_SHOTGUN_1500&quot;, 1500, &quot;vox_shotgun&quot;, 6);
+
+// Heavy Machineguns
+add_zombie_weapon( &quot;zombie_30cal&quot;, &amp;&quot;ZOMBIE_WEAPON_30CAL_3000&quot;, 3000, &quot;vox_mg&quot;, 9 );
+
+add_zombie_weapon( &quot;zombie_bar&quot;, &amp;&quot;ZOMBIE_WEAPON_BAR_1800&quot;, 1800, &quot;vox_bar&quot;, 5 );
+add_zombie_weapon( &quot;zombie_bar_e&quot;, &amp;&quot;ZOMBIE_WEAPON_BAR_1800&quot;, 1800, &quot;vox_bar&quot;, 5 );
+
+add_zombie_weapon( &quot;dp28&quot;, &amp;&quot;ZOMBIE_WEAPON_DP28_2250&quot;, 2250, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;zombie_fg42&quot;, &amp;&quot;ZOMBIE_WEAPON_FG42_1500&quot;, 1500, &quot;vox_mg&quot; , 9 );
+
+add_zombie_weapon( &quot;fg42_scoped&quot;, &amp;&quot;ZOMBIE_WEAPON_FG42_S_1500&quot;, 1500, &quot;vox_mg&quot; , 9 );
+add_zombie_weapon( &quot;zombie_mg42&quot;, &amp;&quot;ZOMBIE_WEAPON_MG42_3000&quot;, 3000, &quot;vox_mg&quot; , 9 );
+
+add_zombie_weapon( &quot;type99_lmg&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_LMG_1750&quot;, 1750, &quot;vox_mg&quot; , 9 );
+
+// Grenade Launcher
+add_zombie_weapon( &quot;m1garand_gl_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_GL_1500&quot;, 1500, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;m1garand_gl_zombie_upgraded&quot;, &amp;&quot;ZOMBIE_WEAPON_M1GARAND_GL_1500&quot;, 1500, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;mosin_launcher_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_MOSIN_GL_1200&quot;, 1200, &quot;&quot;, 0 );
+
+// Bipods
+add_zombie_weapon( &quot;30cal_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_30CAL_BIPOD_3500&quot;, 3500, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;bar_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_BAR_BIPOD_2500&quot;, 2500, &quot;vox_bar&quot;, 5 );
+add_zombie_weapon( &quot;dp28_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_DP28_BIPOD_2500&quot;, 2500, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;fg42_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_FG42_BIPOD_2000&quot;, 2000, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;mg42_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_MG42_BIPOD_3250&quot;, 3250, &quot;vox_mg&quot;, 5 );
+add_zombie_weapon( &quot;type99_lmg_bipod&quot;, &amp;&quot;ZOMBIE_WEAPON_TYPE99_LMG_BIPOD_2250&quot;, 2250, &quot;vox_mg&quot;, 5 );
+
+// Rocket Launchers
+add_zombie_weapon( &quot;bazooka&quot;, &amp;&quot;ZOMBIE_WEAPON_BAZOOKA_2000&quot;, 2000, &quot;&quot;, 0 );
+add_zombie_weapon( &quot;panzerschrek_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_PANZERSCHREK_2000&quot;, 2000, &quot;vox_panzer&quot;, 5 );
+
+// Flamethrower
+add_zombie_weapon( &quot;m2_flamethrower_zombie&quot;, &amp;&quot;ZOMBIE_WEAPON_M2_FLAMETHROWER_3000&quot;, 3000, &quot;vox_flame&quot;, 7);
+
+// Special
+add_zombie_weapon( &quot;mine_bouncing_betty&quot;, &amp;&quot;ZOMBIE_WEAPON_SATCHEL_2000&quot;, 2000, &quot;&quot; );
+add_zombie_weapon( &quot;mortar_round&quot;, &amp;&quot;ZOMBIE_WEAPON_MORTARROUND_2000&quot;, 2000, &quot;&quot; );
+add_zombie_weapon( &quot;satchel_charge&quot;, &amp;&quot;ZOMBIE_WEAPON_SATCHEL_2000&quot;, 2000, &quot;vox_monkey&quot;, 3 );
+add_zombie_weapon( &quot;ray_gun&quot;, &amp;&quot;ZOMBIE_WEAPON_RAYGUN_10000&quot;, 10000, &quot;vox_raygun&quot;, 6 );
+
+if(level.script != &quot;nazi_zombie_prototype&quot;)
+{
+Precachemodel(&quot;zombie_teddybear&quot;);
+}
+}</pre>
+</div></div><p> </p><h2 id="Trader-CSV">CSV</h2><p>In order for the menu to work, it must be included in your CSV.</p><p><strong>1.4 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname_patch.csv and open it with Notepad.</p><p><strong>1.1 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.</p><p>Add these lines:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">menufile,ui/scriptmenus/ugx_upgrader.menu
+xanim,viewmodel_trenchgun_grip_idle
+xanim,viewmodel_trenchgun_grip_ads_down
+xanim,viewmodel_trenchgun_grip_ads_idle
+xanim,viewmodel_trenchgun_grip_ads_up
+xanim,viewmodel_trenchgun_grip_fire
+xanim,viewmodel_trenchgun_grip_fire_ads
+xanim,viewmodel_trenchgun_grip_reload_start
+xanim,viewmodel_trenchgun_grip_idle
+xanim,viewmodel_trenchgun_grip_melee
+xanim,viewmodel_trenchgun_grip_pullout
+xanim,viewmodel_trenchgun_grip_pullout_fast
+xanim,viewmodel_trenchgun_grip_putaway
+xanim,viewmodel_trenchgun_grip_putaway_fast
+xanim,viewmodel_trenchgun_grip_rechamber
+xanim,viewmodel_trenchgun_grip_reload_end
+xanim,viewmodel_trenchgun_grip_reload_loop
+xanim,viewmodel_carbine_bayonet_thrust
+xanim,viewmodel_carbine_bayonet_first_raise
+xanim,viewmodel_carbine_bayonet_swipe
+weapon,sp/zombie_kar98k_b
+weapon,sp/zombie_m1carbine_a_b
+weapon,sp/zombie_m1carbine_a_b_e
+weapon,sp/zombie_bar_e
+weapon,sp/zombie_thompson_a
+weapon,sp/zombie_thompson_a_e
+weapon,sp/zombie_shotgun_b_g
+weapon,sp/zombie_shotgun_b_g_e
+weapon,sp/zombie_doublebarrel_g
+weapon,sp/zombie_mp40_a
+weapon,sp/zombie_mp40_a_e
+weapon,sp/zombie_ppsh_a
+weapon,sp/zombie_ppsh_a_e
+weapon,sp/zombie_stg44_a
+weapon,sp/zombie_stg44_a_e
+weapon,sp/zombie_gewehr43_a
+weapon,sp/zombie_gewehr43_a_e
+material,mtl_weapon_mp_thompson_drum
+material,mtl_weapon_mp40_expander
+material,mtl_weapon_mp_ppsh41_clip
+material,mtl_weapon_mp_ppsh41
+material,mtl_usa_bayonet
+material,mtl_weapon_aperture_and_acog
+material,mtl_weapon_mp_apature_glass
+material,mtl_weapon_mp_apature_crosshair
+</pre>
+</div></div><h2 id="Trader-IWD">IWD</h2><p>Open Launcher and go to the Mods tab. Select your map from the list. Scroll down in the box on the left until you see ugx_upgrader_ammo.gsc. Check the box next to it.<br> Add:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">material,trader_bg
+</pre>
+</div></div><p>to the Mod FF box.</p><h1 id="Trader-FinishingUp">Finishing Up</h1><p>Once you have completed the above steps, compile your map, patch(1.4 only), and mod.</p><h1 id="Trader-Source">Source</h1><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||| Name   : ugx_upgrader_ammo.gsc 
+//|||| Info     : handles weapon upgrades and ammo handouts in armoury for UGX Cabin
+//|||| Site     : www.ugx-mods.com
+//|||| Author : [UGX] treminaor
+//|||| Notes  : w = currentweapon, nw =  newweapon
+//|||| To-Do  :n/a
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ 
+#include common_scripts\utility; 
+#include maps\_utility;
+#include maps\_zombiemode_utility; 
+ 
+init()
+{
+	upgrade_trigger = getEnt(&quot;upgrader&quot;,&quot;targetname&quot;);
+	upgrade_trigger thread upgrade_think();
+}
+ 
+/*
+weapons list:
+===================
+zombie_kar98k 			
+zombie_m1carbine		
+zombie_bar				
+ptrs41_zombie			
+zombie_colt				
+zombie_thompson		
+zombie_sw_357			
+zombie_shotgun			
+zombie_doublebarrel	
+zombie_mp40			
+zombie_mg42		
+zombie_ppsh		
+zombie_stg44			
+zombie_walther			
+zombie_gewehr43
+===================
+*/
+ 
+upgrade_think()
+{
+	self setHintString(&quot;Press &amp;&amp;1 to open trader menu&quot;);
+	self setCursorHint(&quot;HINT_NOICON&quot;);
+ 
+	player = undefined;
+ 
+	players = getplayers();
+	for(i=0;i&lt;players.size;i++)
+	{
+		players[i].trader_title = undefined;
+		players[i].trader_1 = undefined;
+		players[i].trader_2 = undefined;
+		players[i].trader_3 = undefined;
+		players[i].trader_end = undefined;
+	}	
+ 
+	while(1)
+	{
+		self waittill(&quot;trigger&quot;, player);
+		menu_choice_wait(player);
+ 
+	}
+}
+ 
+menu_choice_wait(player)
+{
+	close = false;
+	level endon( &quot;intermission&quot; );
+	level endon( &quot;disconect&quot; );
+	russian = getent(&quot;russian&quot;,&quot;targetname&quot;);
+	view = getStruct(&quot;russian_view&quot;,&quot;targetname&quot;); 
+ 
+	viewTag = &quot;tag_origin&quot;;
+    self.view = Spawn( &quot;script_model&quot;, view.origin );
+    self.view SetModel( &quot;tag_origin&quot; );
+    self.view.angles = view.angles;
+    self.view.origin = view.origin;
+    self.view LinkTo( view, viewTag );
+ 
+	player freezeControls(true);
+	player disableWeapons();	
+	player lerp_player_view_to_tag( self.view, &quot;tag_origin&quot;, 0.5, 1, 20, 20, 10, 10 ); 
+	menu = &quot;ugx_upgrader&quot;;
+	player openMenu( menu ); 
+ 
+	player trader_menu(1);
+ 
+	player waittill(&quot;menuresponse&quot;, menu, response);
+	 if(menu == &quot;ugx_upgrader&quot;)
+	 switch( response )
+		{
+			case &quot;1&quot;: // random weapon
+					player random_weapon_give();
+					player freezeControls(false);
+					player enableWeapons();	
+					self.view delete();
+					player trader_menu(0);
+					if(isDefined(level.randweaponvox))
+					{
+						weapvox = randomint(2);
+						self playsound(&quot;trader_randweapon&quot;+ (weapvox+1));
+						if(weapvox == 0)
+							wait 2;
+						else if(weapvox == 1)
+							wait 1;
+						else
+							wait 5;
+					}
+					else
+					{
+						nomoneyvox = randomint(2);
+						self playsound(&quot;trader_notenoughmoney&quot;+ (nomoneyvox+1));
+						if(nomoneyvox == 0)
+							wait 1;
+						else if(nomoneyvox == 1)
+							wait 4;
+						else
+							wait 2;
+					}
+ 
+					return;
+			case &quot;2&quot;: // attachments
+					player upgrade_decide();
+					player freezeControls(false);
+					player enableWeapons();	
+					self.view delete();
+					player trader_menu(0);
+					if(isDefined(level.upgrade_vox))
+					{
+						weapvox = randomint(2);
+						self playsound(&quot;trader_weapupgrade&quot;+ (weapvox+1));
+						if(weapvox == 1)
+							wait 3;
+						else
+							wait 2;
+					 }
+					 else if(isDefined(level.upgrade_nomoney))
+					{
+						nomoneyvox = randomint(2);
+						self playsound(&quot;trader_notenoughmoney&quot;+ (nomoneyvox+1));
+						if(nomoneyvox == 0)
+							wait 1;
+						else if(nomoneyvox == 1)
+							wait 4;
+						else
+							wait 2;
+					}
+ 
+					 return;
+			case &quot;3&quot;: //ammo
+					player ammo_giver();
+					player freezeControls(false);
+					player enableWeapons();	
+					self.view delete();
+					player trader_menu(0);
+					if(isDefined(level.ammo_vox))
+					{
+						vox = randomint(2);
+						self playsound(&quot;trader_ammo&quot;+ (vox+1));
+						if(vox == 0)
+							wait 6;
+						else
+							wait 5;
+					}
+					 else if(isDefined(level.nomoneyvox))
+					{
+						nomoneyvox = randomint(2);
+						self playsound(&quot;trader_notenoughmoney&quot;+ (nomoneyvox+1));
+						if(nomoneyvox == 0)
+							wait 1;
+						else if(nomoneyvox == 1)
+							wait 4;
+						else
+							wait 2;
+					}
+ 
+					return;
+			case &quot;4&quot;: //close
+				close = true;
+				player enableWeapons();		
+				player freezeControls(false);	
+				self.view delete();
+				player trader_menu(0);
+				break;
+			default:
+			    close = true;
+				player enableWeapons();		
+				player freezeControls(false);	
+				self.view delete();
+				player trader_menu(0);
+				break;
+		}
+ 
+	//player enableWeapons();		
+	//player freezeControls(false);	
+	player closeMenu( &quot;ugx_upgrader&quot; );
+	player trader_menu(0);
+	player freezeControls(false);
+	player enableWeapons();	
+	self.view delete();
+}
+ 
+trader_menu(alpha)
+{
+if(!isDefined(self.trader_title))
+		self.trader_title = create_simple_hud(self);
+	self.trader_title.foreground = true; 
+	self.trader_title.sort = 3; 
+	self.trader_title.hidewheninmenu = false; 
+	self.trader_title.alignX = &quot;center&quot;; 
+	self.trader_title.alignY = &quot;middle&quot;;
+	self.trader_title.horzAlign = &quot;center&quot;; 
+	self.trader_title.vertAlign = &quot;middle&quot;;
+	self.trader_title.x = 0;
+	self.trader_title.y = -78; 
+	self.trader_title.alpha = alpha;
+	self.trader_title.fontScale = 1;
+	self.trader_title.color = ( 1, 1, 1 );
+	self.trader_title SetText(&quot;Trader Menu&quot;);
+ 
+	if(!isDefined(self.trader_1))
+		self.trader_1 = create_simple_hud(self);
+	self.trader_1.foreground = true; 
+	self.trader_1.sort = 3; 
+	self.trader_1.hidewheninmenu = false; 
+	self.trader_1.alignX = &quot;center&quot;; 
+	self.trader_1.alignY = &quot;middle&quot;;
+	self.trader_1.horzAlign = &quot;center&quot;; 
+	self.trader_1.vertAlign = &quot;middle&quot;;
+	self.trader_1.x = -35;
+	self.trader_1.y = -66; 
+	self.trader_1.alpha = alpha;
+	self.trader_1.fontScale = 1;
+	self.trader_1.color = ( 1, 1, 1 );
+	self.trader_1 SetText(&quot;Press 1 for a Random Weapon [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
+ 
+	if(!isDefined(self.trader_2))
+		self.trader_2 = create_simple_hud(self);
+	self.trader_2.foreground = true; 
+	self.trader_2.sort = 3; 
+	self.trader_2.hidewheninmenu = false; 
+	self.trader_2.alignX = &quot;center&quot;; 
+	self.trader_2.alignY = &quot;middle&quot;;
+	self.trader_2.horzAlign = &quot;center&quot;; 
+	self.trader_2.vertAlign = &quot;middle&quot;;
+	self.trader_2.x = 0;
+	self.trader_2.y = -54; 
+	self.trader_2.alpha = alpha;
+	self.trader_2.fontScale = 1;
+	self.trader_2.color = ( 1, 1, 1 );
+	self.trader_2 SetText(&quot;Press 2 for an attachment [Cost: 1st is 3000, 2nd is 5000]&quot;);
+ 
+	if(!isDefined(self.trader_3))
+		self.trader_3 = create_simple_hud(self);
+	self.trader_3.foreground = true; 
+	self.trader_3.sort = 3; 
+	self.trader_3.hidewheninmenu = false; 
+	self.trader_3.alignX = &quot;center&quot;; 
+	self.trader_3.alignY = &quot;middle&quot;;
+	self.trader_3.horzAlign = &quot;center&quot;; 
+	self.trader_3.vertAlign = &quot;middle&quot;;
+	self.trader_3.x = -65;
+	self.trader_3.y = -42; 
+	self.trader_3.alpha = alpha;
+	self.trader_3.fontScale = 1;
+	self.trader_3.color = ( 1, 1, 1 );
+	self.trader_3 SetText(&quot;Press 3 for ammo [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
+ 
+	if(!isDefined(self.trader_end))
+		self.trader_end = create_simple_hud(self);
+	self.trader_end.foreground = true; 
+	self.trader_end.sort = 3; 
+	self.trader_end.hidewheninmenu = false; 
+	self.trader_end.alignX = &quot;center&quot;; 
+	self.trader_end.alignY = &quot;middle&quot;;
+	self.trader_end.horzAlign = &quot;center&quot;; 
+	self.trader_end.vertAlign = &quot;middle&quot;;
+	self.trader_end.x = 70;
+	self.trader_end.y = -30; 
+	self.trader_end.alpha = alpha;
+	self.trader_end.fontScale = 1;
+	self.trader_end.color = ( 1, 1, 1 );
+	self.trader_end SetText(&quot;Press ESC to close.&quot;);
+ 
+	////SHADOWS (its too hard to read otherwise)
+	if(!isDefined(self.trader_title_shadow))
+		self.trader_title_shadow = create_simple_hud(self);
+	self.trader_title_shadow.foreground = true; 
+	self.trader_title_shadow.sort = 2; 
+	self.trader_title_shadow.hidewheninmenu = false; 
+	self.trader_title_shadow.alignX = &quot;center&quot;; 
+	self.trader_title_shadow.alignY = &quot;middle&quot;;
+	self.trader_title_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_title_shadow.vertAlign = &quot;middle&quot;;
+	self.trader_title_shadow.x = -1;
+	self.trader_title_shadow.y = -77; 
+	if(alpha &gt; 0)
+		self.trader_title_shadow.alpha = .6;
+	else
+		self.trader_title_shadow.alpha = 0;
+	self.trader_title_shadow.fontScale = 1;
+	self.trader_title_shadow.color = ( 0.1, 0.1, 0.1 );
+	self.trader_title_shadow SetText(&quot;Trader Menu&quot;);
+ 
+	if(!isDefined(self.trader_1_shadow))
+		self.trader_1_shadow = create_simple_hud(self);
+	self.trader_1_shadow.foreground = true; 
+	self.trader_1_shadow.sort = 2; 
+	self.trader_1_shadow.hidewheninmenu = false; 
+	self.trader_1_shadow.alignX = &quot;center&quot;; 
+	self.trader_1_shadow.alignY = &quot;middle&quot;;
+	self.trader_1_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_1_shadow.vertAlign = &quot;middle&quot;;
+	self.trader_1_shadow.x = -36;
+	self.trader_1_shadow.y = -65; 
+	if(alpha &gt; 0)
+		self.trader_1_shadow.alpha = 0.6;
+	else
+		self.trader_1_shadow.alpha = 0;
+	self.trader_1_shadow.fontScale = 1;
+	self.trader_1_shadow.color = ( 0.1, 0.1, 0.1 );
+	self.trader_1_shadow SetText(&quot;Press 1 for a Random Weapon [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
+ 
+	if(!isDefined(self.trader_2_shadow))
+		self.trader_2_shadow = create_simple_hud(self);
+	self.trader_2_shadow.foreground = true; 
+	self.trader_2_shadow.sort = 2; 
+	self.trader_2_shadow.hidewheninmenu = false; 
+	self.trader_2_shadow.alignX = &quot;center&quot;; 
+	self.trader_2_shadow.alignY = &quot;middle&quot;;
+	self.trader_2_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_2_shadow.vertAlign = &quot;middle&quot;;
+	self.trader_2_shadow.x = -1;
+	self.trader_2_shadow.y = -53; 
+	if(alpha &gt; 0)
+		self.trader_2_shadow.alpha = 0.6;
+	else
+		self.trader_2_shadow.alpha = 0;
+	self.trader_2_shadow.fontScale = 1;
+	self.trader_2_shadow.color = ( 0.1, 0.1, 0.1 );
+	self.trader_2_shadow SetText(&quot;Press 2 for an attachment [Cost: 1st is 3000, 2nd is 5000]&quot;);
+ 
+	if(!isDefined(self.trader_3_shadow))
+		self.trader_3_shadow = create_simple_hud(self);
+	self.trader_3_shadow.foreground = true; 
+	self.trader_3_shadow.sort = 2; 
+	self.trader_3_shadow.hidewheninmenu = false; 
+	self.trader_3_shadow.alignX = &quot;center&quot;; 
+	self.trader_3_shadow.alignY = &quot;middle&quot;;
+	self.trader_3_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_3_shadow.vertAlign = &quot;middle&quot;;
+	self.trader_3_shadow.x = -66;
+	self.trader_3_shadow.y = -41; 
+	if(alpha &gt; 0)
+		self.trader_3_shadow.alpha = 0.6;
+	else
+		self.trader_3_shadow.alpha = 0;
+	self.trader_3_shadow.fontScale = 1;
+	self.trader_3_shadow.color = ( 0.1, 0.1, 0.1 );
+	self.trader_3_shadow SetText(&quot;Press 3 for ammo [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
+ 
+	if(!isDefined(self.trader_end_shadow))
+		self.trader_end_shadow = create_simple_hud(self);
+	self.trader_end_shadow.foreground = true; 
+	self.trader_end_shadow.sort = 2; 
+	self.trader_end_shadow.hidewheninmenu = false; 
+	self.trader_end_shadow.alignX = &quot;center&quot;; 
+	self.trader_end_shadow.alignY = &quot;middle&quot;;
+	self.trader_end_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_end_shadow.vertAlign = &quot;middle&quot;;
+	self.trader_end_shadow.x = 69;
+	self.trader_end_shadow.y = -29; 
+	if(alpha &gt; 0)
+		self.trader_end_shadow.alpha = 0.6;
+	else
+		self.trader_end_shadow.alpha = 0;
+	self.trader_end_shadow.fontScale = 1;
+	self.trader_end_shadow.color = ( 0.1, 0.1, 0.1 );
+	self.trader_end_shadow SetText(&quot;Press ESC to close.&quot;);
+	////END SHADOWS
+ 
+	if(!isDefined(self.trader_bg))
+		self.trader_bg = create_simple_hud(self);
+	self.trader_bg.foreground = false; 
+	self.trader_bg.sort = 1; 
+	self.trader_bg.hidewheninmenu = false; 
+	self.trader_bg.alignX = &quot;center&quot;; 
+	self.trader_bg.alignY = &quot;middle&quot;;
+	self.trader_bg.horzAlign = &quot;center&quot;; 
+	self.trader_bg.vertAlign = &quot;middle&quot;;
+	self.trader_bg.x = 0;
+	self.trader_bg.y = -55; 
+	if(alpha &gt; 0)
+		self.trader_bg.alpha = 1;
+	else
+		self.trader_bg.alpha = 0;
+	self.trader_bg.fontScale = 1;
+	self.trader_bg.color = ( 1, 1, 1 );
+	self.trader_bg SetShader(&quot;trader_bg&quot;, 300, 72);
+}
+ 
+upgrade_decide()
+{
+		w = self getCurrentWeapon();
+		if(w == &quot;zombie_kar98k&quot;)
+		{
+			nw = &quot;zombie_kar98k_b&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_kar98k_b&quot;) //bayonet only
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_m1carbine&quot;)
+		{
+			nw = &quot;zombie_m1carbine_a_b&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_m1carbine_a_b&quot;) //give bayonet and aperture in one go
+		{
+			nw = &quot;zombie_m1carbine_a_b_e&quot;;
+			cost = 4000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_m1carbine_a_b_e&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_bar&quot;)
+		{
+			nw = &quot;zombie_bar_e&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_bar_e&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;ptrs41_zombie&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_colt&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_thompson&quot;)
+		{
+			nw = &quot;zombie_thompson_a&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_thompson_a&quot;)
+		{
+			nw = &quot;zombie_thompson_a_e&quot;;
+			cost = 4000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_thompson_a_e&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_sw_357&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_shotgun&quot;)
+		{
+			nw = &quot;zombie_shotgun_b_g&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_shotgun_b_g&quot;) // bayonet+grip one go
+		{
+			nw = &quot;zombie_shotgun_b_g_e&quot;;
+			cost = 4000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_shotgun_b_g_e&quot;)
+		{
+			self upgrade_give(&quot;none&quot;);
+		}
+ 
+		else if(w == &quot;zombie_doublebarrel&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_doublebarrel_g&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_mp40&quot;)
+		{
+			nw = &quot;zombie_mp40_a&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_mp40_a&quot;)
+		{
+			nw = &quot;zombie_mp40_a_e&quot;;
+			cost = 4000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_mp40_a_e&quot;) // No grip?
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_mg42&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_ppsh&quot;)
+		{
+			nw = &quot;zombie_ppsh_a&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_ppsh_a&quot;)
+		{
+			nw = &quot;zombie_ppsh_a_e&quot;;
+			cost = 4000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_ppsh_a_e&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_stg44&quot;)
+		{
+			nw = &quot;zombie_stg44_a&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_stg44_a&quot;)
+		{
+			nw = &quot;zombie_stg44_a_e&quot;;
+			cost = 4000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_stg44_a_e&quot;) // no grip?
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_walther&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else if(w == &quot;zombie_gewehr43&quot;)
+		{
+			nw = &quot;zombie_gewehr43_a&quot;;
+			cost = 2000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_gewehr43_a&quot;)
+		{
+			nw = &quot;zombie_gewehr43_a_e&quot;;
+			cost = 4000;
+			self upgrade_give(nw, cost);
+		}
+ 
+		else if(w == &quot;zombie_gewehr43_a_e&quot;)
+		{
+			self upgrade_give(&quot;none&quot;, 0);
+		}
+ 
+		else
+			iPrintLn(&quot;ERROR: UNKNOWN GUN &#39;&quot;+w+&quot;&#39; - ADD TO UGX_UPGRADER.GSC&quot;);
+}
+ 
+upgrade_give(nw, cost)
+{
+	level.upgrade_vox = undefined;
+	level.upgrade_nomoney = undefined;
+	if(nw == &quot;none&quot;)
+		iPrintLn(self.playername+&quot;, there are no available upgrades for your current weapon.&quot;);
+	else
+	{
+		if(self.score &gt;= cost)
+		{
+			w = self getCurrentWeapon();
+			self TakeWeapon(w);
+			self GiveWeapon(nw);
+			self SwitchtoWeapon(nw);
+			self maps\_zombiemode_score::minus_to_player_score( cost );
+			self playsound(&quot;cha_ching&quot;);
+			level.upgrade_vox = 1;
+		}
+		else
+		{
+			//self playsound(&quot;no_cha_ching&quot;);
+			level.upgrade_nomoney = 1;
+		}
+	}
+}
+ 
+ammo_giver()
+{	
+	level.ammo_vox = undefined;
+	level.nomoneyvox = undefined;
+	cost = (1000*level.round_number)/2.5;
+	if(self.score &gt;= cost)
+	{
+		self playsound(&quot;cha_ching&quot;);
+		weapon = self GetCurrentWeapon();
+		self ammo_calc(weapon);
+	}
+	else
+	{
+		//self iPrintLn(&quot;Russian: Come back with a bit more incentive next time and I will probably help you.&quot;);
+		level.nomoneyvox = 1;
+		//self playsound(&quot;no_cha_ching&quot;);
+	}	
+}
+ 
+ammo_calc(weapon) // ammo math is from ammobox.gsc - too lazy to rewrite it any better
+{
+	chance = randomInt(100);
+	stock = self getWeaponAmmoStock(weapon);
+	current_ammo = stock + self getWeaponAmmoClip(weapon);
+	max_ammo = WeaponMaxAmmo(weapon);
+	max_ammo = max_ammo + WeaponClipSize(weapon);
+	if(current_ammo != max_ammo)
+	{
+		ammo = int(((max_ammo-current_ammo)*randomIntRange(30,80)) / 100);
+		self SetWeaponAmmoStock(weapon, ammo+stock);
+		level.ammo_vox = 1;
+ 
+ 
+		//if(vox == 1)
+		//	self iPrintLn(&quot;Russian: Here&#39;s &quot;+ammo+&quot; bullets. Don&#39;t waste &#39;em.&quot;);
+		//else if(vox == 2)
+		//	self iPrintLn(&quot;Russian: Here&#39;s &quot;+ammo+&quot; more fucking bullets.&quot;);
+		//else if(vox == 3)
+		//	self iPrintLn(&quot;Russian: You need more already? Take &quot;+ammo+&quot; bullets.&quot;);
+		//else
+		//	self iPrintLn(&quot;Russian: You&#39;re going to take all my bullets! Here&#39;s &quot;+ammo+&quot; more bullets. Don&#39;t waste &#39;em.&quot;);
+	}
+	else
+		iPrintLn(&quot;^1ADD VOX: ^7You already have enough ammo&quot;);
+}
+ 
+random_weapon_give()
+{
+	cost = (1000*level.round_number)/2.5;
+	if(self.score &gt;= cost)
+	{
+	tier = randomint(100);
+	if(tier &gt;= 25) // worst, most common guns
+	{
+		rand = randomint(7); //index: kar98k, m1carbine, ptrs41, colt, doublebarrel, walther, gewehr43
+		if(rand == 0) //kar98k
+		{
+				self random_give(cost, &quot;zombie_kar98k&quot;);
+		}
+		else if(rand == 1) //m1 carbine
+		{
+				self random_give(cost, &quot;zombie_m1carbine&quot;);
+		}
+		else if(rand == 2) // ptrs41
+		{
+			self random_give(cost, &quot;ptrs41_zombie&quot;);
+		}
+		else if(rand == 3) //colt
+		{
+			self random_give(cost, &quot;zombie_colt&quot;);
+		}
+		else if(rand == 4) //double barrel
+		{
+				self random_give(cost, &quot;zombie_doublebarrel&quot;);
+		}
+		else if(rand == 5) //walther
+		{
+			self random_give(cost, &quot;walther&quot;);
+		}
+		else if(rand == 6)
+		{
+				self random_give(cost, &quot;zombie_gewehr43&quot;);
+		}
+		else
+		{
+			iPrintLn(&quot;^2Index out of range (tier 1 weapons) index: ^5&quot; +rand);
+		}
+	}
+	else if(tier &gt; 8 &amp;&amp; tier &lt;= 24) // midline, less common guns
+	{
+		rand = randomint(6); //index: thompson, mp40, bar, 357, shotgun, stg44.
+		if(rand == 0) //thompson
+		{
+				self random_give(cost, &quot;zombie_thompson&quot;);
+		}
+		else if(rand == 1) //mp40
+		{
+				self random_give(cost, &quot;zombie_mp40&quot;);
+		}
+		else if(rand == 2) // bar
+		{
+				self random_give(cost, &quot;zombie_bar&quot;);
+		}
+		else if(rand == 3) //357
+		{
+			self random_give(cost, &quot;zombie_sw_357&quot;);
+		}
+		else if(rand == 4) //shotgun
+		{
+				self random_give(cost, &quot;zombie_shotgun&quot;);
+		}
+		else if(rand == 5) //stg44
+		{
+				self random_give(cost, &quot;zombie_stg44&quot;);
+		}
+		else
+		{
+			iPrintLn(&quot;^2Index out of range (tier 2 weapons) index: ^5&quot; +rand);
+		}
+	}
+	else //rare, awesome, not common guns
+	{
+		rand = randomint(2); //index: ppsh, mg42
+		if(rand == 0)
+		{
+					self random_give(cost, &quot;zombie_ppsh&quot;);
+		}
+		else if(rand == 1)
+		{
+			self random_give(cost, &quot;zombie_mg42&quot;);
+		}
+		else
+			iPrintLn(&quot;Index out of range (tier 3 weapons) index: ^5&quot; +rand);
+	}
+	}
+	else
+	{
+	//self playsound(&quot;no_cha_ching&quot;);
+	nomoneyvox = randomint(2);
+	self playsound(&quot;trader_notenoughmoney&quot;+ (nomoneyvox+1));
+	if(nomoneyvox == 0)
+		wait 1;
+	else if(nomoneyvox == 1)
+		wait 4;
+	else
+		wait 2;
+	}
+}
+ 
+random_give(cost, weapon)
+{
+	level.randweaponvox = undefined;
+	primaryWeapons = self GetWeaponsListPrimaries(); 
+	ammo = self decide_ammo(weapon);
+	if( primaryWeapons.size &gt;= 2 ) // he has two weapons, replace his current
+	{
+		current_weapon = self getCurrentWeapon();
+		self TakeWeapon( current_weapon ); 
+		self GiveWeapon( weapon );
+		self SetWeaponAmmoStock( weapon, ammo );
+	}
+	else // he has one weapon, give him another
+	{
+		self GiveWeapon( weapon );
+		self SetWeaponAmmoStock( weapon, ammo );
+	}				
+	self playsound(&quot;ammo_pickup_plr&quot;);
+	self SwitchToWeapon( weapon );
+	self maps\_zombiemode_score::minus_to_player_score( cost );
+	level.randweaponvox = 1; 
+}
+ 
+decide_ammo(weapon) // Usage: trigger decide_ammo(); - returns ammo amount based on random int&#39;s.
+{
+	if(weapon == &quot;zombie_30cal&quot; || weapon == &quot;zombie_fg42&quot; || weapon == &quot;zombie_mg42&quot; || weapon == &quot;zombie_bar&quot; || weapon == &quot;zombie_ppsh&quot;) 
+		{
+			ammo = randomInt(300); // auto&#39;s need more ammo
+			if(ammo &lt;= 75)
+				ammo = 75;
+		}
+	else
+		{
+			ammo = randomInt(75); // semi&#39;s need less
+			if(ammo &lt;= 15)
+				ammo = 15;
+		}
+	return ammo; 
+}</pre>
+</div></div><p> </p><p>Credit: Treminaor</p>
+                    

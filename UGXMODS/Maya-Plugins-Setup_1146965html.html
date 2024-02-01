@@ -1,0 +1,35 @@
+<!--
+title: Maya Plugins Setup
+description: 
+published: true
+date: 2024-01-30T10:32:31.242Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:32:30.258Z
+-->
+
+                    <p>This tutorial will outline the needed steps to get Treyarch's XMODEL/XANIM Export tools setup in Maya. This will allow you to export your own 3D assets and animations to WaW.</p><h2 id="MayaPluginsSetup-Installation">Installation</h2><hr><p>To start off, you need to set up the</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">usersetup.mel</pre>
+</div></div><p>and</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">maya.env</pre>
+</div></div><p>files so Maya can find our tools.</p><p><span class="inline-comment-marker" data-ref="097cdfec-01a1-4a46-ba3b-86b231837e60">T</span>he maya.env file creates the environment variables to point to the locations of plugins and scripts located in the tree, and should be put in</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">My Documents\maya\*VERSION*</pre>
+</div></div><p>(*VERSION* = 7.0, 8.0 or 8.5)<br> Example paths are:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">MAYA_SCRIPT_PATH = C:\Program Files (x86)\Activision\Call of Duty - World at War\bin\maya
+MAYA_PLUG_IN_PATH = C:\Program Files (x86)\Activision\Call of Duty - World at War\bin\maya\Maya8_Plugins</pre>
+</div></div><p>If you use Steam, example paths would be:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">MAYA_SCRIPT_PATH = C:\Program Files (x86)\Steam\steamapps\cod waw\bin\maya
+MAYA_PLUG_IN_PATH = C:\Program Files (x86)\Steam\steamapps\cod waw\bin\maya\Maya8_Plugins</pre>
+</div></div><p>These will tell Maya to look here for our plugins and scripts.<br> Don't forget to unzip the appropriate MLL scripts, either</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">Maya7_Plugins.zip</pre>
+</div></div><p>or</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">Maya8_Plugins.zip</pre>
+</div></div><p>The usersetup.mel file will tell Maya what to add on startup of Maya. This invokes the startup of our 'COD Tools' menu. Create a new plaintext document called &quot;usersetup.mel&quot; at the path specified below.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">My Documents\maya\&#39;&#39;VERSION&#39;&#39;\scripts\usersetup.mel</pre>
+</div></div><p>Copy the following code into the file and save it.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">source CODToolsMenu;
+CODStartup;
+CODToolsMenu;
+</pre>
+</div></div><p> </p><p>Credit: CustomCOD Wiki</p>
+                    
