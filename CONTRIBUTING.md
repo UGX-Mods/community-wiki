@@ -26,6 +26,8 @@ Then ensure it's properly formatted and create a Pull Request (see below).
 
 VSCode in combination with prettier is used
 
+> ⚠️ Ensure the files follow the naming convention of Wiki.js (https://docs.requarks.io/guide/pages#naming-restrictions)
+
 ### Pull Request
 
 Before opening any pull request, be sure that the changes are formatted, valid and follow all guidelines.
