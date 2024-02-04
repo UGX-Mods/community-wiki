@@ -1,6 +1,9 @@
-const path = require("path");
-const fs = require("fs");
-const HTMLParser = require("node-html-parser");
+/**
+ * Helper script to convert confluence exported html files to better WikiJS files
+ */
+const path = require('path');
+const fs = require('fs');
+const HTMLParser = require('node-html-parser');
 
 const confIdInNameRegex = /_?(\d{4,})html\.html$/;
 const numOnlyFilename = /(\d{4,})\.html$/;
@@ -11,8 +14,14 @@ fs.readdir(directoryPath, { recursive: true }, function (err, files) {
     return console.error(err);
   }
 
-  // fixFileNames(files);
+  fixFileNames(files);
   fixNumberFileNameOnly(files);
+
+  console.log(
+    'HTML File Count:',
+    files.filter((f) => !f.includes('/node_modules/') && f.endsWith('.html'))
+      .length
+  );
 });
 
 /**
@@ -27,14 +36,14 @@ function fixFileNames(files) {
        */
       file
     ) => {
-      if (file.endsWith(".html") && confIdInNameRegex.test(file)) {
+      if (file.endsWith('.html') && confIdInNameRegex.test(file)) {
         const match = file.match(confIdInNameRegex);
 
         const id = match[1];
 
         fs.readFile(
           path.join(directoryPath, file),
-          "utf8",
+          'utf8',
           function (err, data) {
             const parsedHtml = HTMLParser.parse(data, { comment: true });
 
@@ -51,9 +60,9 @@ function fixFileNames(files) {
               HTMLParser.parse(comment, { comment: true })
             );
 
-            let newFile = file.replace(confIdInNameRegex, ".html");
-            if (newFile.endsWith("\\.html")) {
-              newFile = newFile.replace("\\.html", `\\${id}.html`);
+            let newFile = file.replace(confIdInNameRegex, '.html');
+            if (newFile.endsWith('\\.html')) {
+              newFile = newFile.replace('\\.html', `\\${id}.html`);
             }
 
             const page_data = parsedHtml.innerHTML;
@@ -79,29 +88,29 @@ function fixNumberFileNameOnly(files) {
        */
       file
     ) => {
-      if (file.endsWith(".html") && numOnlyFilename.test(file)) {
+      if (file.endsWith('.html') && numOnlyFilename.test(file)) {
         fs.readFile(
           path.join(directoryPath, file),
-          "utf8",
+          'utf8',
           function (err, data) {
             const parsedHtml = HTMLParser.parse(data, { comment: true });
 
             //
 
             let title = parsedHtml.innerHTML.match(
-              new RegExp(/^title: (.*)$/, "m")
+              new RegExp(/^title: (.*)$/, 'm')
             )[1];
             if (!title) return;
 
             const newTitle = title
-              .replace("&#39;", "")
-              .replace("&amp;", "and")
-              .replace(/(\s+|,|\||\(|\)|\/|\?)/g, "-")
-              .replace(/\./g, "_")
-              .replace(/-+/g, "-")
-              .replace(/^WaW-/, "")
-              .replace(/^BO3-/, "")
-              .replace(/-$/, "");
+              .replace('&#39;', '')
+              .replace('&amp;', 'and')
+              .replace(/(\s+|,|\||\(|\)|\/|\?)/g, '-')
+              .replace(/\./g, '_')
+              .replace(/-+/g, '-')
+              .replace(/^WaW-/, '')
+              .replace(/^BO3-/, '')
+              .replace(/-$/, '');
 
             const newFile = file.replace(numOnlyFilename, `${newTitle}.html`);
             console.log(`${title} -> ${newTitle}`);
