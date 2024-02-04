@@ -1,0 +1,11 @@
+{
+  "name": "ugx-community-wiki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "node-html-parser": "^6.1.12"
+  },
+  "author": "Alexander 'Delta' Diller",
+  "license": ""
+}
