@@ -1,0 +1,42 @@
+<!--
+title: Debugging of UGXLIN
+description: 
+published: true
+date: 2024-01-30T10:57:11.998Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:30:06.692Z
+-->
+
+<!-- conf id: 9732263 -->
+
+
+                    <div class="contentLayout2">
+<div class="columnLayout two-right-sidebar" data-layout="two-right-sidebar">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p>The UGXL Installer is written from scratch.</p><p>You can help us to improve the installer by verifying if everything worked correctly.</p><p>This page is especially helpful, if you encounter issues and you would like to report us more information why and where the issue happens.</p><h2 id="DebuggingofUGXLIN-StartDebugging">Start Debugging</h2><p>You need to start the application in DEBUG mode:</p><ol><li>Either make a shortcut of the executable...</li><li><p>or create a *.bat file in the same folder as the UGXL Installer<br>And give it this content:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Debug.bat</b></div><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">&quot;UGXL Installer.exe&quot; -d</pre>
+</div></div></li></ol><p><strong><br></strong></p><p><strong>If you sccessfully enabled the debug mode, an additional window should open:</strong></p><p><strong><a class="external-link" href="http://i.imgur.com/TgXadbd.png" rel="nofollow"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="http://i.imgur.com/TgXadbd.png" data-image-src="http://i.imgur.com/TgXadbd.png"></span><br></a></strong></p><p><strong><br></strong></p><h2 id="DebuggingofUGXLIN-Logfile">Logfile</h2><div class="confluence-information-macro confluence-information-macro-information"><p class="title conf-macro-render">Note</p><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>While in beta, the logfile writing is forced!</p></div></div><p>The logfile path is:</p><div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>%TEMP%\UGXLIN</pre>
+</div></div><p>and is called</p><div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>ugxlin.log</pre>
+</div></div></div>
+</div>
+<div class="cell aside" data-type="aside">
+<div class="innerCell">
+<p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1706609272562 {padding: 0px;}
+div.rbtoc1706609272562 ul {margin-left: 0px;}
+div.rbtoc1706609272562 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p><div class='toc-macro rbtoc1706609272562'>
+<ul class='toc-indentation'>
+<li><a href='#DebuggingofUGXLIN-StartDebugging'>Start Debugging</a></li>
+<li><a href='#DebuggingofUGXLIN-Logfile'>Logfile</a></li>
+</ul>
+</div></div>
+</div>
+</div>
+</div>
+                    

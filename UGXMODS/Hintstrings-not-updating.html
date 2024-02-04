@@ -1,0 +1,163 @@
+<!--
+title: Hintstrings not updating
+description: 
+published: true
+date: 2024-01-30T10:32:23.741Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:32:22.494Z
+-->
+
+<!-- conf id: 1146946 -->
+
+
+                    <p><br></p><div class="confluence-information-macro confluence-information-macro-tip"><span class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong>NOTE</strong>: Before reading this guide, determine where your World at War root directory is located.</p><p><strong> Non-Steam Install</strong>: C:\Program Files (x86)\Activision\Call of Duty World at War\</p><p><strong>Steam Install</strong>: C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\</p><p>For the rest of this guide, it will be assumed that the word &quot;root&quot; refers to the appropriate installation path shown above.</p><p>Say 'Yes to all' if Windows asks you about replacing files when dragging files into your root directory.</p></div></div><br> The CoD5 engine has a limit of 48 different hintstrings on any one map at a time. If you have a lot of perk machines, doors with different prices, or custom triggers you may run into an issue where your perk hintstrings don't update when the power turns on or other weird issues with hintstrings that don't change when they are supposed to.<h1 id="Hintstringsnotupdating-TheIdea">The Idea</h1><p>Since the engine will not update any more hintstrings once the count exceeds 48, the idea is to use hud.menu to display the hintstrings instead of setHintString().</p><h1 id="Hintstringsnotupdating-ImplementingtheScript">Implementing the Script</h1><p>Download <a class="external-link" href="http://ugx-mods.com/downloads/tutorials/trem_hintstrings.iwd" rel="nofollow">trem_hintstrings.iwd v1.4</a> and drop it in <strong>root/mods/&lt;mapname&gt;/</strong>, then recompile any part of your map or mod. Launcher will auto-copy it to your <strong>AppData/mods/&lt;mapname&gt;</strong> folder next time you compile your mod.</p><p>Download <a class="external-link" href="http://ugx-mods.com/downloads/tutorials/trem_hintstrings_hud.zip" rel="nofollow">trem_hintstrings_hud.zip v1.1</a> and drop it in <strong>root/raw/ui/</strong>. If you have never made changes to your hud.menu then just click yes to replace the existing file - a backup of the original has already been included in the download. If you have already made changes to your hud,menu, then read <a href="#Hintstringsnotupdating-Merginghudchangeswithexistinghud.menu">section 5</a>. Now recompile your mapname_patch.ff using Launcher, as this file's csv has an include line for hud.menu already. If you have moved your hud.menu to a different FF then compile that one instead obviously.</p><h1 id="Hintstringsnotupdating-PracticalUsage">Practical Usage</h1><p>Instead of using setHintString on your triggers, you need to add</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">#include maps\trem_hintstrings;</pre>
+</div></div><p>to the top of any file you want to use the custom _setHintString() function in. I do not suggest using cross-file calls such as maps\ugxm_util::_setHintString() because WaW has a limit on how many times you can make these calls.</p><p>Once you have added the above line, you simply use _setHintString() exactly as you would use setHintString on a trigger:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">trig _setHintString(&quot;This is a hintstring&quot;);
+trig setCursorHint(&quot;HINT_NOICON&quot;);</pre>
+</div></div><p>I also suggest implementing this to the following stock scripts for maximum effectiveness:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">_zombiemode_blockers_new.gsc
+_zombiemode_weapons.gsc
+</pre>
+</div></div><p>Simply open each of those files, add the #include line to the top of the files, then do a Find and Replace for &quot;setHintString&quot; to &quot;_setHintString&quot;. Also do a find and replace for</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">&amp;&quot;ZOMBIE_FLAMES_UNAVAILABLE&quot;</pre>
+</div></div><p>and replace it with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">&quot;The power must be activated first!&quot;</pre>
+</div></div><p>You can also apply it to _zombiemode_perks.gsc, but you will have to replace all localized strings with regular strings first. If you are using the UGX Modtools Patch, you can download these patched versions of those files and simply drop them into your mod's maps folder:<br> <strong>&lt;Link Coming Soon&gt;</strong></p><h1 id="Hintstringsnotupdating-Notes">Notes</h1><ul><li><p>You can call _setHintString() on the same trigger as many times as you want - the new thread will kill the old one before any string conflicts occur.</p></li><li>This fix <strong>does not work with localized strings</strong>. Use regular strings instead.</li><li>If you want to display a cursorhint on your trigger, you should use setHintString() instead of this one because the engine will display the cursor hint properly next to the hintstring.</li></ul><h1 id="Hintstringsnotupdating-Merginghudchangeswithexistinghud.menu">Merging hud changes with existing hud.menu</h1><p>If you already made changes to your hud.menu and do not want to overwrite the file, simply open your hud.menu and scroll down a small amount until you find this:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">// Cursor hints
+menuDef
+{
+	name &quot;Cursorhints&quot;
+	rect 0 70 40 40 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+	fullScreen 0
+	visible when ( CHAPLIN_CHEAT_OFF &amp;&amp; ( dvarString( mapname ) != &quot;credits&quot; ) );
+    itemDef
+    {
+    	name &quot;chRect&quot;
+    	rect 0 0 40 40 // 64x64
+    	textscale TEXTSIZE_SMALL
+    	textstyle ITEM_TEXTSTYLE_SHADOWED
+    	ownerdraw CG_CURSORHINT
+    	visible 1
+    	decoration
+    }
+}</pre>
+</div></div><p>Replace that section with this:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">// Cursor hints
+menuDef
+{
+    name &quot;Cursorhints&quot;
+    rect 0 70 40 40 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+    fullScreen 0
+    visible when ( CHAPLIN_CHEAT_OFF &amp;&amp; ( dvarString( mapname ) != &quot;credits&quot; ) );
+    itemDef
+    {
+        name &quot;chRect&quot;
+        rect 0 0 40 40 // 64x64
+        textscale TEXTSIZE_SMALL
+        textstyle ITEM_TEXTSTYLE_SHADOWED
+        ownerdraw CG_CURSORHINT
+        visible 1
+        decoration
+    }
+    itemDef
+    {
+        name &quot;trem_hintstring&quot;
+        rect 0 0 0 0
+        textscale TEXTSIZE_SMALL
+        textstyle ITEM_TEXTSTYLE_SHADOWED
+        textalign ITEM_ALIGN_CENTER
+        exp text (dvarString(&quot;trem_hintstring_left&quot;) + KeyBinding(&quot;+activate&quot;) + dvarString(&quot;trem_hintstring_right&quot;))
+        visible when(dvarInt(&quot;trem_hintstring_vis&quot;) == 1 &amp;&amp; dvarString(&quot;trem_hintstring_left&quot;) != &quot;&quot; &amp;&amp; dvarString(&quot;trem_hintstring_left&quot;) != &quot; &quot; &amp;&amp; dvarString(&quot;trem_hintstring_right&quot;) != &quot;&quot; &amp;&amp; dvarString(&quot;trem_hintstring_right&quot;) != &quot; &quot;)
+        decoration
+    }
+    itemDef
+    {
+        name &quot;trem_hintstring_nobind&quot;
+        rect 0 0 0 0
+        textscale TEXTSIZE_SMALL
+        textstyle ITEM_TEXTSTYLE_SHADOWED
+        textalign ITEM_ALIGN_CENTER
+        exp text dvarString(&quot;trem_hintstring_left&quot;)
+        visible when(dvarInt(&quot;trem_hintstring_vis&quot;) == 1 &amp;&amp; dvarString(&quot;trem_hintstring_left&quot;) != &quot;&quot; &amp;&amp; dvarString(&quot;trem_hintstring_left&quot;) != &quot; &quot; &amp;&amp; (dvarString(&quot;trem_hintstring_right&quot;) == &quot;&quot; || dvarString(&quot;trem_hintstring_right&quot;) == &quot; &quot;))
+        decoration
+    }
+}</pre>
+</div></div><p><br></p><h1 id="Hintstringsnotupdating-SourceCode">Source Code</h1><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||| Name		: trem_hintstrings.gsc
+//|||| Info		: Fixes hintstrings that don&#39;t update.
+//|||| Site		: www.ugx-mods.com
+//|||| Author		: [UGX] treminaor
+//|||| Notes		: v1.3
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ 
+#include maps\_utility;
+ 
+_setHintString(string) //#bestengine2014
+{
+	self thread setHintString_fixed_thread(string); //so that i don&#39;t have to write &quot;thread&quot; before all of my trig calls.
+}
+setHintString_fixed_thread(string)
+{
+	self notify(&quot;new_thread&quot;);
+	self endon(&quot;new_thread&quot;);
+	if(!isDefined(string)) return;
+	tokens = strTok(string, &quot; &quot;);
+	end = false;
+	leftstring = &quot;&quot;;
+	rightstring = &quot;&quot;;
+	for(i=0;i&lt;tokens.size;i++)
+	{
+		if(tokens[i] == &quot;&amp;&amp;1&quot; || tokens[i] == &quot;F&quot; || tokens[i] == &quot;[{+activate}]&quot; || tokens[i] == &quot;[Use]&quot;) //use key will be added by the menufile
+		{
+			tokens[i] = &quot;&quot;;
+			end = true;
+		}
+		if(end) rightstring = rightstring + tokens[i] + &quot; &quot;;
+		else leftstring = leftstring + tokens[i] + &quot; &quot;;
+	}
+	players = getPlayers();
+	while(isDefined(self))
+	{
+		for(k=0;k&lt;players.size;k++)
+			if(players[k] islookingatent(self) &amp;&amp; (distance(players[k].origin, self.origin) &lt; 75) || players[k] isTouching(self))
+			{
+				players[k].leftstring = leftstring;
+				players[k].rightstring = rightstring;
+				players[k] thread setHintString_show(self, leftstring, rightstring);
+			}
+		wait 0.1;
+	}
+}
+setHintString_show(trig, leftstring, rightstring)
+{
+	if(isDefined(self.lookingattrig) &amp;&amp; self.lookingattrig == trig) return; //no need to keep calling the thread if we&#39;re still standing at the same trig
+	while(isDefined(trig) &amp;&amp; isDefined(self.leftstring) &amp;&amp; self.leftstring == leftstring &amp;&amp; isDefined(self.rightstring) &amp;&amp; self.rightstring == rightstring &amp;&amp; (self islookingatent(trig) &amp;&amp; (distance(self.origin, trig.origin) &lt; 75) || self isTouching(trig)))
+	{
+		self.lookingattrig = trig;
+		self setClientDvar(&quot;trem_hintstring_left&quot;, string(leftstring));
+		self setClientDvar(&quot;trem_hintstring_right&quot;, string(rightstring));
+		self setClientDvar(&quot;trem_hintstring_vis&quot;, 1);
+		wait 0.001;
+	}
+	self.lookingattrig = undefined;
+	self setClientDvar(&quot;trem_hintstring_left&quot;, &quot; &quot;);
+	self setClientDvar(&quot;trem_hintstring_right&quot;, &quot; &quot;);
+	self setClientDvar(&quot;trem_hintstring_vis&quot;, 0);
+}
+isLookingAtEnt(ent)
+{
+	normalvec = vectorNormalize(ent.origin-self geteye());
+	veccomp = vectorNormalize((ent.origin-(0,0,256))-self geteye());
+	insidedot = vectordot(normalvec,veccomp);
+ 
+	anglevec = anglestoforward(self getplayerangles());
+	vectordot = vectordot(anglevec,normalvec);
+	if(vectordot &gt; insidedot)
+		return true;
+	return false;
+}</pre>
+</div></div><p>Credit: Treminaor</p>
+                    

@@ -1,0 +1,52 @@
+<!--
+title: T4M
+description: 
+published: true
+date: 2024-01-30T10:56:15.244Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:29:32.826Z
+-->
+
+<!-- conf id: 10420463 -->
+
+
+                    <div class="contentLayout2">
+<div class="columnLayout two-right-sidebar" data-layout="two-right-sidebar">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="http://i.imgur.com/7zg9HHX.png" data-image-src="http://i.imgur.com/7zg9HHX.png"></span></p><h2 id="T4M-WhatisT4M?">What is T4M?</h2><p>T4M is a dll which hooks into CoDWaW's process. The dll is loaded through DirectX (d3d9.dll) and adds/extends features to the game which Treyarch never gave us.</p><h3 id="T4M-Features:"><span class="bbc_color" style="color: rgb(0,51,102);"><span class="bbc_u">Features:</span></span></h3><ul class="bbc_list"><li>Increased asset limits to T5 (Black Ops 1) standard or higher (FX = 600, Image = 4096, Loaded Sound = 2400, Material = 4096, Stringtable = 80, Weapon = 320*, XModel = 1500 [r41])</li><li>Memory limit has been increased from 314572800 bytes to <del>343932928</del> bytes (425721856 bytes in r42 and afterwards)</li><li>Windowed - <strong>Borderless Mode</strong> (Enter this into console to enable no border -&gt; r_fullscreen 0;vid_xpos 0;vid_ypos 0;r_noborder 1;vid_restart)</li><li>FoV dvars unlocked (cg_fov, cg_fovMin, cg_fovScale)</li><li>DVar's display what type they are in console.</li><li>External Console has been unlocked along with in-game console to be never disabled.</li><li>External Console has a bool dvar (r_externalconsole in r42, con_external in r43+) for it to show or not show. (r42)</li><li>Added listassetpool and forgot a bunch of other stuff, mainly WIP stuff.</li><li>Added entity count in cg_drawfps 2</li></ul><h3 id="T4M-GameFixes:"><br><span class="bbc_color" style="color: rgb(0,51,102);"><span class="bbc_u">Game Fixes:</span></span></h3><ul class="bbc_list"><li>Console spam has been suppressed.</li><li>Solo scoreboard has been enabled (r39).</li><li>Notetrack in CSC will now work on all notes, not only for the ones that start with &quot;tesla_&quot; (r40).</li><li>An extra fastfile named &quot;mod_ex&quot; will be loaded if a mod is loaded and exists in that mod, it has priority over all others (so it overrides mod). (r42)</li></ul><h2 id="T4M-WhydoIneedT4M?">Why do I need T4M?</h2><p>Some map makers in the community have developed maps which exceed the limits of the standard version of CoDWaW.<br>They contain more textures/weapons/features than the game was originally designed to allow.<br>These maps <strong>will not run without T4M installed</strong><strong>.</strong></p><p>If you wish to play a map which requires T4M, you will need to let the UGX Launcher install it for you.<br>If you don't wish to install T4M, simply ignore maps which require it (using the Filters option in UGXL for example).</p><h2 id="T4M-SupportedGameVersions">Supported Game Versions</h2><p>Only the official Steam version of the CoDWaW exe or the &quot;LanFixed&quot; pirate exe will work with T4M.<br>The standard DVD version of the CoDWaW exe is <strong>not compatible</strong> with T4M due to increased difficulty from protections by Treyarch.</p><p>If you do not own the Steam version of CoDWaW, we suggest buying it from Steam to gain T4M compatibility.</p><p>We do not condone finding the pirated LanFixed.exe to make DVD versions of the game compatible.</p><h2 id="T4M-FAQaboutT4M">FAQ about T4M</h2><h3 id="T4M-Q:Isitsecure?">Q: Is it secure?</h3><p>A: Yes! We test each version of T4M and run a virus test against it.</p><h3 id="T4M-Q:Ican&#39;tplayT4MmapseventhoughIhavealegalDVDversionofCoDWaW!">Q: I can't play T4M maps even though I have a legal DVD version of CoDWaW!</h3><p>A: Sorry, the DVD version of CoD WaW is not compatible with T4M. See &quot;Supported Game Versions&quot; above for more info.</p><h3 id="T4M-Q:WhenIplayamapthetexturesareallmessedup/weird/glitchy:">Q: When I play a map the textures are all messed up/weird/glitchy:</h3><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource" draggable="false" height="250" src="http://i.imgur.com/h4Ug4Mb.jpg" data-image-src="http://i.imgur.com/h4Ug4Mb.jpg"></span></p><p>A: This is a common issue with T4M and Windows 10-users. If you get this with T4M and/or Windows 10, there are few ways to fix this issue:</p><p><span style="color: rgb(0,51,102);"><span style="color: rgb(0,51,102);"><a class="external-link" href="http://i.imgur.com/h4Ug4Mb.jpg" rel="nofollow">1</a>st: Sometimes just restarting mod can fix this, but it's unlikely to happen. Try this, if you are playing solo as it's easy and quick to test.</span></span></p><p><span style="color: rgb(0,51,102);"><span style="color: rgb(0,51,102);">2nd: Open Options/Texture Settings, turn Texture Quality from Automatic to Manual (if it's set as Automatic) and then turn all settings from your settings to one step lower, for example turn Extra to High. Do this on all three settings that are shown (Texture Resolution, Normal Map Resolution and Specular Map Resolution) Then launch the map ( do not do this in-game as it can crash the whole game)</span></span></p><p><span style="color: rgb(0,51,102);"><span style="color: rgb(0,51,102);">3rd: Open Options/Graphics and turn off Specular Map and/or Shadows.</span></span></p><h2 id="T4M-Disclaimer">Disclaimer</h2><p>This dll is not developed or maintained by UGX-Mods! We are not responsible for any issues related to its use or distribution.</p><h2 id="T4M-Credits">Credits</h2><p><span style="color: rgb(0,51,102);"><span class="bbc_color"><span class="bbc_u"><strong>Developers</strong></span></span>:</span></p><ul class="bbc_list"><li>DidUknowiPwn</li><li>momo5502</li><li>SE2Dev</li><li>TheApadayo</li></ul><p><br><span style="color: rgb(0,51,102);"><span class="bbc_color"><span class="bbc_u"><strong>Contributions</strong></span></span>:</span></p><ul class="bbc_list"><li>HitmanVere</li><li>Ray1235</li><li>ProGamerzFTW</li></ul><h2 id="T4M-Development">Development</h2><p>UGX-Mods Forum Topic: <a class="external-link" href="http://ugx-mods.com/forum/index.php?topic=8092.0" rel="nofollow">http://ugx-mods.com/forum/index.php?topic=8092.0</a></p></div>
+</div>
+<div class="cell aside" data-type="aside">
+<div class="innerCell">
+<p><strong>Content:</strong></p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1706609295163 {padding: 0px;}
+div.rbtoc1706609295163 ul {margin-left: 0px;}
+div.rbtoc1706609295163 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p><div class='toc-macro rbtoc1706609295163'>
+<ul class='toc-indentation'>
+<li><a href='#T4M-WhatisT4M?'>What is T4M?</a>
+<ul class='toc-indentation'>
+<li><a href='#T4M-Features:'>Features:</a></li>
+<li><a href='#T4M-GameFixes:'>Game Fixes:</a></li>
+</ul>
+</li>
+<li><a href='#T4M-WhydoIneedT4M?'>Why do I need T4M?</a></li>
+<li><a href='#T4M-SupportedGameVersions'>Supported Game Versions</a></li>
+<li><a href='#T4M-FAQaboutT4M'>FAQ about T4M</a>
+<ul class='toc-indentation'>
+<li><a href='#T4M-Q:Isitsecure?'>Q: Is it secure?</a></li>
+<li><a href='#T4M-Q:Ican&#39;tplayT4MmapseventhoughIhavealegalDVDversionofCoDWaW!'>Q: I can&#39;t play T4M maps even though I have a legal DVD version of CoDWaW!</a></li>
+<li><a href='#T4M-Q:WhenIplayamapthetexturesareallmessedup/weird/glitchy:'>Q: When I play a map the textures are all messed up/weird/glitchy:</a></li>
+</ul>
+</li>
+<li><a href='#T4M-Disclaimer'>Disclaimer</a></li>
+<li><a href='#T4M-Credits'>Credits</a></li>
+<li><a href='#T4M-Development'>Development</a></li>
+</ul>
+</div></div>
+</div>
+</div>
+</div>
+                    

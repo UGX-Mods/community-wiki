@@ -1,0 +1,63 @@
+<!--
+title: Vision File &amp; Settings Guide
+description: 
+published: true
+date: 2024-01-30T10:58:07.890Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:30:38.031Z
+-->
+
+<!-- conf id: 1146951 -->
+
+
+                    <p>This is a guide on how to use vision files, and a brief explanation of the vision settings available in CoD5.</p><p></p><div class="confluence-information-macro confluence-information-macro-tip"><span class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong>NOTE</strong>: Before reading this guide, determine where your World at War root directory is located.</p><p><strong> Non-Steam Install</strong>: C:\Program Files (x86)\Activision\Call of Duty World at War\</p><p><strong>Steam Install</strong>: C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\</p><p>For the rest of this guide, it will be assumed that the word &quot;root&quot; refers to the appropriate installation path shown above.</p><p>Say 'Yes to all' if Windows asks you about replacing files when dragging files into your root directory.</p></div></div><div class="confluence-information-macro confluence-information-macro-warning"><span class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong style="white-space: normal;">WARNING</strong><span style="white-space: normal;">: If after following this guide precisely your vision is not working, it is most likely because you are using Sniperbolt's base scripts (or you used a script placer) which sets your vision to &quot;zombie_factory&quot; be default. If this is the case for you, see below:</span></p></div></div><p>Open Root/raw/maps/createart/&lt;mapname&gt;_art.gsc.</p><p>Find this line and <strong>delete</strong> this line:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">level thread maps\_utility::set_all_players_visionset( &quot;zombie_factory&quot;, 0.1 );</pre>
+</div></div><p>Guide starts here:</p><h1 id="VisionFile&amp;SettingsGuide-Createa.visionfile">Create a .vision file</h1><p>Create a new file with any <a href="Text-Editors_1146950.html">Text Editor</a> you prefer most. Create a new text file containing this code:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">r_glow                    &quot;1&quot;
+r_glowRadius0             &quot;5&quot;
+r_glowRadius1             &quot;0&quot;
+r_glowBloomCutoff         &quot;0.260564&quot;
+r_glowBloomDesaturation   &quot;0&quot;
+r_glowBloomIntensity0     &quot;0.65&quot;
+r_glowBloomIntensity1     &quot;0&quot;
+r_glowSkyBleedIntensity0  &quot;0&quot;
+r_glowSkyBleedIntensity1  &quot;0&quot;
+ 
+r_filmEnable              &quot;1&quot;
+r_filmContrast            &quot;1.6&quot;
+r_filmBrightness          &quot;0.34&quot;
+r_filmDesaturation        &quot;0.175&quot;
+r_filmInvert              &quot;0&quot;
+r_filmLightTint           &quot;0.930 0.8676 0.754&quot;
+r_filmDarkTint            &quot;0.315 0.299 0.275&quot;
+
+r_reviveFX_enable		&quot;0&quot;
+r_reviveFX_contrastEdge		&quot;0&quot;
+r_reviveFX_brightnessEdge	&quot;0&quot;
+r_reviveFX_desaturationEdge	&quot;0&quot;
+r_reviveFX_darkTintEdge		&quot;1 1 1&quot;
+r_reviveFX_lightTintEdge	&quot;1 1 1&quot;
+r_reviveFX_blurRadiusEdge	&quot;0&quot;
+r_reviveFX_motionblurWeight	&quot;0&quot;
+r_reviveFX_contrastCenter	&quot;0&quot;
+r_reviveFX_brightnessCenter	&quot;0&quot;
+r_reviveFX_desaturationCenter	&quot;0&quot;
+r_reviveFX_darkTintCenter	&quot;1 1 1&quot;
+r_reviveFX_lightTintCenter	&quot;1 1 1&quot;
+</pre>
+</div></div><p>Those are the default vision settings for mp_airfield. Save the file as &lt;mapname&gt;.vision, where &lt;mapname&gt; represents the map you want to use the vision for. This is not required, but is suggested.</p><p>Save your vision file in Root/raw/vision.</p><h1 id="VisionFile&amp;SettingsGuide-Enableyour.visioninamap">Enable your .vision in a map</h1><h2 id="VisionFile&amp;SettingsGuide-Addingthe.visiontomapassets">Adding the .vision to map assets</h2><p>To enable your vision in a map, first you must add the .vision to your map's assets.</p><p><strong>1.4 Map:</strong> Open Root/zone_source/&lt;mapname&gt;_patch.csv</p><p><strong>1.1 Map:</strong> Open Root/zone_source/&lt;mapname&gt;.csv</p><p>Add this line to the top of the file:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">rawfile,vision/&lt;visionfilename&gt;.vision
+</pre>
+</div></div><p>Save and close the file.</p><h2 id="VisionFile&amp;SettingsGuide-Enablingthe.visioninyourmap">Enabling the .vision in your map</h2><p>Now it is time to actually set the .vision file to be used in your map.</p><p>Open Root/raw/maps/&lt;mapname&gt;.gsc in a text editor.</p><p>Add</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
+</pre>
+</div></div><p>immediately after:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">maps\_zombiemode::main();
+</pre>
+</div></div><p>so that it looks like:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">maps\_zombiemode::main();
+set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
+</pre>
+</div></div><p>Where &lt;visionfilename&gt; is the file name of the vision file you created, <strong>without the .vision extension</strong>. Example: &quot;ugx_cabin.vision&quot; would be entered as &quot;ugx_cabin&quot;.</p><p>to the end of the main() function of your Root/raw/maps/&lt;mapname&gt;.gsc.</p><h1 id="VisionFile&amp;SettingsGuide-Compilingthechanges">Compiling the changes</h1><p>You are almost finished. To see your changes, you need to:</p><p><strong>1.4 Map:</strong> Compile your map once now, so that your changes to Root/raw/maps/&lt;mapname&gt;.gsc will take effect, then compile &lt;mapname&gt;_patch once now, and again every time you make a change to the .vision file.</p><p><strong>1.1 Map:</strong> Compile your map once now, and again every time you make a change to the .vision file.</p><h1 id="VisionFile&amp;SettingsGuide-SettingsforVisionFiles">Settings for Vision Files</h1><p><strong>All values can only be from 0 to 1 unless otherwise noted.</strong><br> You can view pictures of what each setting does below the table.</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><p>Setting</p></th><th class="confluenceTh"><p>Description</p></th></tr><tr><td class="confluenceTd"><p><strong>r_filmEnable</strong></p></td><td class="confluenceTd"><p><strong>Note:</strong> Value can only be 0 or 1. This enables (0) and disables (1) the effects of the r_film settings in this file.</p></td></tr><tr><td class="confluenceTd"><p><strong>r_filmContrast</strong></p></td><td class="confluenceTd"><p><strong>Note:</strong> Values can be from 0 to 4. This increases the contrast of the vision. If you don't know what contrast is, look it up on Google. Basically a higher value will increase the dramatic difference between light and dark.</p></td></tr><tr><td class="confluenceTd"><p><strong>r_filmBrightness</strong></p></td><td class="confluenceTd"><p>This controls the white balance of your vision. Full brightness = white-tinted vision.</p></td></tr><tr><td class="confluenceTd"><p><strong>r_filmDesaturation</strong></p></td><td class="confluenceTd"><p>This controls the desaturation level of the vision. Full desaturation = greyscale vision. Anything less than 1 will decrease the greyscale effect, letting some color through.</p></td></tr><tr><td class="confluenceTd"><p><strong>r_filmInvert</strong></p></td><td class="confluenceTd"><p>This inverts the color spectrum. White becomes black, black becomes white, and everything in between.</p></td></tr><tr><td class="confluenceTd"><p><strong>r_filmLightTint</strong></p></td><td class="confluenceTd"><p>This amplifies all white/specular color in the map. For example, when you have a subway light can model, full lighttint will make the inside of the can a blinding white, while the lowest lighttint will make it dull and grey</p></td></tr><tr><td class="confluenceTd"><p><strong>r_filmDarkTint</strong></p></td><td class="confluenceTd"><p><strong>Note:</strong> setting this to (0 0 0) will cause your vision to be a solid color. Must be above 0 in order to work properly. This setting is similar to the black level on your TV. The lower this value is, the blacker your vision is and the harder it is to see.</p></td></tr></tbody></table></div><h1 id="VisionFile&amp;SettingsGuide-PicturesofDifferent.visioneffects">Pictures of Different .vision effects</h1><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="http://i.imgur.com/GPzu9GC.png" data-image-src="http://i.imgur.com/GPzu9GC.png"></span><br> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="http://i.imgur.com/TOC2AAC.png" data-image-src="http://i.imgur.com/TOC2AAC.png"></span><br> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="http://i.imgur.com/c7WL07Q.png" data-image-src="http://i.imgur.com/c7WL07Q.png"></span><br> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="This is the effect of enabling r_filmInvert." src="http://i.imgur.com/RZTpfeE.png" data-image-src="http://i.imgur.com/RZTpfeE.png"></span><br> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="This is the effect of setting r_filmDesaturation to (1 1 1)." src="http://i.imgur.com/q3AL0ns.png" data-image-src="http://i.imgur.com/q3AL0ns.png"></span><br> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="This is the effect of setting r_filmBrightness to (1 1 1)." src="http://i.imgur.com/5wGC2rp.png" data-image-src="http://i.imgur.com/5wGC2rp.png"></span><br> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="This is what a r_filmContrast setting of 1.5 looks like on a dark map." src="http://i.imgur.com/NTpq3N5.png" data-image-src="http://i.imgur.com/NTpq3N5.png"></span></p><p>Credit: Treminaor</p><p> </p>
+                    

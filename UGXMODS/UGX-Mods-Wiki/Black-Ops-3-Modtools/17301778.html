@@ -1,0 +1,19 @@
+<!--
+title: BO3 | Adding Timed Gameplay to Zombiemode
+description: 
+published: true
+date: 2024-01-30T10:31:25.186Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:31:24.249Z
+-->
+
+<!-- conf id: 17301778 -->
+
+
+                    <p>Timed Gameplay is possible in BO3 by overriding specific functions running in _zm.gsc. This is necessary because _zm.gsc is not directly editable at this time (Modtools Beta).</p><p>If you are already overriding any of the functions used in this script, simply take that code out of the file and add it to your existing override function.</p><p>Currently this is an adapted script from the upcoming version of UGX Mod for BO3. The script will be improved over time after some feedback.</p><h2 id="BO3|AddingTimedGameplaytoZombiemode-Installation">Installation</h2><p>Download <a href="attachments/17301778/17301781.gsc" data-linked-resource-id="17301781" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="ugxmods_timedgp.gsc" data-linked-resource-content-type="application/octet-stream" data-linked-resource-container-id="17301778" data-linked-resource-container-version="5">ugxmods_timedgp.gsc</a> (version 1.0) and place it in <strong>root/usermaps/mapname/scripts/zm</strong></p><p>Add this line to the top of your mapname.gsc:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">#using scripts\zm\ugxmods_timedgp;</pre>
+</div></div><p>Add this line to your mapname.zone:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">scriptparsetree,scripts/zm/ugxmods_timedgp.gsc</pre>
+</div></div><h2 id="BO3|AddingTimedGameplaytoZombiemode-Usage">Usage</h2><p>You should see a timer in the lower left corner of the screen now and zombies should continuously spawn without delay for the entire game. Currently we have not found a way to hide the round counter yet but we are working on it.</p>
+                    

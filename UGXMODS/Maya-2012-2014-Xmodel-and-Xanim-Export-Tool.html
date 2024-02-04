@@ -1,0 +1,17 @@
+<!--
+title: Maya 2012-2014 Xmodel and Xanim Export Tool
+description: 
+published: true
+date: 2024-01-30T10:32:30.188Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:32:29.103Z
+-->
+
+<!-- conf id: 1146918 -->
+
+
+                    <hr><p>This plugin exports XModels and XAnims (with Notetrack support) from Maya 2012-2014 (though it may work on other versions), and also has the same rigging and gunsleeve features that are in Treyarch's Maya 8.5 exporter. v1.5 Also allows importing of static and animated models directly from the xmodel format to the Maya editor.</p><h1 id="Maya20122014XmodelandXanimExportTool-Installation">Installation</h1><hr><p><strong>Note: If you have the old &quot;CoDExportTools&quot; version of this program, make sure to uninstall it first!</strong></p><p>1) <a class="external-link" href="http://ugx-mods.com/forum/index.php?topic=1295.0" rel="nofollow">Download the script here</a>, and save it to *My Documents\maya\&lt;maya version&gt;\scripts*</p><p>2) In the same folder as Step 1, create <strong>usersetup.mel</strong> (if you don't already have one). Add this code to the end of the file:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">python(&quot;import CoDMayaTools&quot;);</pre>
+</div></div><p>3) Restart Maya</p><h1 id="Maya20122014XmodelandXanimExportTool-HowToUse">How To Use</h1><hr><p>All of the tools are under the <strong>Call of Duty 5 Tools</strong> menu at the top of the main window.</p><p>To export a model, go to <strong>Call of Duty 5 Tools &gt; Export XModel...</strong>. Select the meshes and joints in the scene you want to export, and select a path by typing the path manually or pressing the <strong>...</strong> button to open a file browser. Click <strong>Export Selected</strong> to export. If you want to save a selection and export path for future use, click <strong>Save Selection</strong> which will save to the active Slot. You can get the selection and path back by going to the Slot you saved it to and clicking <strong>Get Saved Selection</strong>.</p><p>To export an animation, go to <strong>Call of Duty 5 Tools &gt; Export XAnim...</strong>. Everything except for the animation settings in the middle is the same as the XModel Export window. Select the frame range and FPS of the export. To add Notetracks to the animation, click the <strong>Add Note</strong> button, which adds to the Notetrack list of the current Slot. You can change the frame of the Note by selecting it in the list and changing the value of the <strong>Frame</strong> input box, below the <strong>Remove Note</strong> button. To remove a note, select it and click <strong>Remove Note</strong>.</p><p>All of the GunSleeve and ViewModel tools are the same as in Treyarch's exporter, under the <strong>Call of Duty 5 Tools &gt; ViewModel Tools</strong> menu. The plugin will attempt to locate you Call of Duty 5 root folder automatically, but if it can't find it, you can set it manually by clicking <strong>Call of Duty 5 Tools &gt; Set CoD Root Folder</strong>.</p><p>For extra information, almost every button and box has a mouse-hover ToolTip that tells what it does.</p><ul style="list-style-type: square;"><li>Export tool and written guide courtesy of <a class="external-link" href="http://ugx-mods.com/forum/index.php?action=profile;u=8" rel="nofollow">Aidan</a></li></ul>
+                    

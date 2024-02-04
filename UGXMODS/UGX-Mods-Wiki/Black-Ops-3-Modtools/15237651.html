@@ -1,0 +1,19 @@
+<!--
+title: BO3 | Adding custom sounds
+description: 
+published: true
+date: 2024-01-30T10:58:55.713Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:30:59.368Z
+-->
+
+<!-- conf id: 15237651 -->
+
+
+                    <p>Adding custom sounds in Black Ops 3 is much simpler than it was in World at War.</p><h2 id="BO3|Addingcustomsounds-Preparingyoursoundfiles">Preparing your sound files</h2><p>Your sound file needs to be WAV format, 48000Hz. In order to convert it, download the free program <a class="external-link" href="http://www.audacityteam.org/download/" rel="nofollow">Audacity</a> and open your sound file.</p><p>In the bottom left corner of the application, set your Project Hz to 48000 and then go to File → Export.</p><p>In the &quot;Save as Type&quot; dropdown, select &quot;<strong>WAV (Microsoft) signed 16bit PCM</strong>&quot;. Save the file to a location of your choice within root/sound_assets.</p><h2 id="BO3|Addingcustomsounds-AddingaSoundaliasEntry">Adding a Soundalias Entry</h2><p>In order for your sound to be played, it needs an alias entry. The easiest way to add one is to use the existing alias file Treyarch's tools generate for you.</p><p>Open user_aliases.csv located in root/share/raw/sound/aliases with a <a href="Text-Editors_1146950.html">Text Editor</a> and duplicate the &quot;test_sound&quot; line.</p><p>Change &quot;test_sound&quot; to an alias name of your choice, and change the file location to the location you saved your exported WAV file in the previous step.</p><h2 id="BO3|Addingcustomsounds-BuildtheSound">Build the Sound</h2><p>In order for the sound to be converted, you must run the Link compile on your map. Watch the console output window to make sure no errors are generated about your sound. If you see any errors about </p><ul style="list-style-type: square;"><li>Missing source checksum</li><li>Object reference not set to an instance of an object.<br><br></li></ul><p>...you can ignore them - this is a bug in the current version of the modtools.</p><h2 id="BO3|Addingcustomsounds-PlaytheSound">Play the Sound</h2><p>Depending on your intended purpose for adding a custom sound, you may want to play it from a script. You can do this exactly how you would have in World at War - simply choose the relevant sound-playing function and specify your alias as the parameter. Example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">player playlocalsound(&quot;test_sound&quot;);
+ent playsound(&quot;test_sound&quot;);
+playsoundatposition(ent.origin, &quot;test_sound&quot;);</pre>
+</div></div>
+                    

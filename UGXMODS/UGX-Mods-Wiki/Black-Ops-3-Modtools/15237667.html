@@ -1,0 +1,28 @@
+<!--
+title: BO3 | Playing an animation on a script model
+description: 
+published: true
+date: 2024-01-30T10:31:06.369Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-30T10:31:05.120Z
+-->
+
+<!-- conf id: 15237667 -->
+
+
+                    <p>Black Ops 3 has a new asset called scriptbundles which seems to be used to automate scripted tasks, mainly fx and animation playing. However, you can also play animations manually by following this page.</p><h2 id="BO3|Playingananimationonascriptmodel-Preparingyouranimation">Preparing your animation</h2><p>First you need to import your custom animation by following the page <a href="15237659.html">BO3 | Adding custom animations</a>.</p><h3 id="BO3|Playingananimationonascriptmodel-Precaching">Precaching</h3><p>You need to precache your animation in your script using the following line:</p><h3 id="BO3|Playingananimationonascriptmodel-Addinganimtree(atr)&amp;xaimtozonefile">Adding animtree (atr) &amp; xaim to zone file</h3><p>Add your atr file and xanim to your map's zone csv located at root/usermaps/yourmap/zone_source/yourmap.zone by opening it with a <a href="Text-Editors_1146950.html">Text Editor</a> and adding the line:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">rawfile,animtrees/yourATRFileName.atr
+xanim,yourAnimFileName</pre>
+</div></div><h3 id="BO3|Playingananimationonascriptmodel-RunLinker">Run Linker</h3><p>To compile your xanim and save your changes, run Link compile from Launcher at least once.</p><h2 id="BO3|Playingananimationonascriptmodel-Playingyouranimation">Playing your animation</h2><p>To play your animation on a script model, you simply use the AnimScripted() function:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">#precache( &quot;xanim&quot;, &quot;yourAnimFileName&quot;);
+#using_animtree(&quot;yourATRfile&quot;);
+ 
+function test()
+{
+	model = getEnt(&quot;model&quot;, &quot;targetname&quot;);
+	model useanimtree(#animtree);
+	model AnimScripted( &quot;optionalNotify&quot;, model.origin , model.angles, %yourAnimFileName);
+}</pre>
+</div></div>
+                    
