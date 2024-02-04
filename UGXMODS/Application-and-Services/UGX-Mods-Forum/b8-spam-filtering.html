@@ -10,34 +10,416 @@ dateCreated: 2024-01-30T10:34:07.074Z
 
 <!-- conf id: 93290547 -->
 
+<div class="contentLayout2">
+  <div class="columnLayout two-right-sidebar" data-layout="two-right-sidebar">
+    <div class="cell normal" data-type="normal">
+      <div class="innerCell">
+        <p>
+          The UGX-Mods Forum supports a b8 spam filter since
+          <a href="UGXSMF-v0.8.8-beta_77103157.html">UGXSMF v0.8.8-beta</a>.
+        </p>
+        <h2 id="b8spamfiltering-QuickGuide">Quick Guide</h2>
+        <ul>
+          <li>Every message is classified as unlearned.</li>
+          <li>
+            A message should be learned as SPAM or HARMLESS depending on what
+            type it is.
+            <ul>
+              <li>
+                Only content which is identified as SPAM should be learned as
+                such, this includes for example
+                <ul>
+                  <li>
+                    Link to disallowed content (NSFW content, products,
+                    suspicious content, etc.)
+                  </li>
+                  <li>Repeatedly the same content by different accounts</li>
+                  <li>Whatever you think is SPAM</li>
+                </ul>
+              </li>
+              <li>
+                Content which doesn't follow our rules, but is written by an
+                individual and not a SPAM Bot is therefore no spam and is
+                harmless, but shouldn't be allowed (hide or remove it)
+              </li>
+            </ul>
+          </li>
+          <li>
+            Messages can be classified. This returns a score, based on the
+            previous learned words.
+          </li>
+          <li>
+            So the more content has been learned, the more likely and accurate
+            is the score.
+          </li>
+          <li>The score goes from 0.0 (no spam) to 1.0 (spam)</li>
+          <li>At the moment we consider SPAM which is &gt;= 0.7</li>
+          <li>
+            Visit
+            <a
+              class="external-link"
+              href="https://www.ugx-mods.com/forum/moderate/area=antispam-posts"
+              rel="nofollow"
+              >https://www.ugx-mods.com/forum/moderate/area=antispam-posts</a
+            >
+            for b8 overview
+          </li>
+          <li>
+            Be sure to learn from time to time some messages. (not all messages
+            of the forum need to be learned, but different written types of SPAM
+            and HARMLESS content is important)
+          </li>
+          <li>
+            Messages can be reclassified (over time, so their score can change)
+          </li>
+          <li>
+            Messages can also be unlearned again, previously classified content
+            won't update though!
+          </li>
+        </ul>
+        <h2 id="b8spamfiltering-AntiSpamForumPostsOverview">
+          Anti Spam Forum Posts Overview
+        </h2>
+        <p>
+          The page at
+          <a
+            class="external-link"
+            href="https://www.ugx-mods.com/forum/moderate/area=antispam-posts"
+            rel="nofollow"
+            >https://www.ugx-mods.com/forum/moderate/area=antispam-posts</a
+          >
+          shows all forum posts (recent first) and the b8 status.
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="400"
+              src="attachments/93290547/93290536.png"
+              data-image-src="attachments/93290547/93290536.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="93290536"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="image2021-9-20_16-19-6.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="93290547"
+              data-linked-resource-container-version="2"
+              alt=""
+          /></span>
+        </p>
+        <p>You can use the filters to reduce the amount of posts.</p>
+        <h2 id="b8spamfiltering-Display/Status">Display / Status</h2>
+        <p>
+          The current b8 status is displayed on the forum post with a robot
+          icon.
+        </p>
+        <p>If no robot is present, b8 has not been executed on it.</p>
+        <p>
+          Otherwise a robot icon, followed by the score is shown if it has been
+          classified.
+        </p>
+        <p>An additional Icon will be shown if it has been learned.</p>
+        <p><br /></p>
+        <div class="table-wrap">
+          <table class="wrapped confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <th class="confluenceTh">Example</th>
+                <th class="confluenceTh"><br /></th>
+              </tr>
+              <tr>
+                <td colspan="1" class="confluenceTd">
+                  <div class="content-wrapper">
+                    <p>
+                      <span
+                        class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+                        ><img
+                          class="confluence-embedded-image confluence-thumbnail"
+                          draggable="false"
+                          height="29"
+                          src="attachments/93290547/93290543.png"
+                          data-image-src="attachments/93290547/93290543.png"
+                          data-unresolved-comment-count="0"
+                          data-linked-resource-id="93290543"
+                          data-linked-resource-version="1"
+                          data-linked-resource-type="attachment"
+                          data-linked-resource-default-alias="image2021-9-21_2-20-28.png"
+                          data-base-url="https://confluence.ugx-mods.com"
+                          data-linked-resource-content-type="image/png"
+                          data-linked-resource-container-id="93290547"
+                          data-linked-resource-container-version="2"
+                          alt=""
+                      /></span>
+                    </p>
+                  </div>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                  Red - dead robot. This content is SPAM (&gt;0.9). The stop /
+                  attention icon means that this content has been learned as
+                  SPAM.
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" class="confluenceTd">
+                  <div class="content-wrapper">
+                    <p>
+                      <span
+                        class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+                        ><img
+                          class="confluence-embedded-image confluence-thumbnail"
+                          draggable="false"
+                          height="25"
+                          src="attachments/93290547/93290544.png"
+                          data-image-src="attachments/93290547/93290544.png"
+                          data-unresolved-comment-count="0"
+                          data-linked-resource-id="93290544"
+                          data-linked-resource-version="1"
+                          data-linked-resource-type="attachment"
+                          data-linked-resource-default-alias="image2021-9-21_2-21-37.png"
+                          data-base-url="https://confluence.ugx-mods.com"
+                          data-linked-resource-content-type="image/png"
+                          data-linked-resource-container-id="93290547"
+                          data-linked-resource-container-version="2"
+                          alt=""
+                      /></span>
+                    </p>
+                  </div>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                  Red - angry robot. This content is most likely SPAM (&gt;0.7
+                  &amp;&amp; &lt;0.9)
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" class="confluenceTd">
+                  <div class="content-wrapper">
+                    <p>
+                      <span
+                        class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+                        ><img
+                          class="confluence-embedded-image confluence-thumbnail"
+                          draggable="false"
+                          height="32"
+                          src="attachments/93290547/93290545.png"
+                          data-image-src="attachments/93290547/93290545.png"
+                          data-unresolved-comment-count="0"
+                          data-linked-resource-id="93290545"
+                          data-linked-resource-version="1"
+                          data-linked-resource-type="attachment"
+                          data-linked-resource-default-alias="image2021-9-21_2-22-51.png"
+                          data-base-url="https://confluence.ugx-mods.com"
+                          data-linked-resource-content-type="image/png"
+                          data-linked-resource-container-id="93290547"
+                          data-linked-resource-container-version="2"
+                          alt=""
+                      /></span>
+                    </p>
+                  </div>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                  yellow - confused robot. This content is eventually SPAM
+                  (&gt;=0.35 &amp;&amp; &lt;0.7) | This will be most likely
+                  shown for many posts during the learning phase.
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" class="confluenceTd">
+                  <div class="content-wrapper">
+                    <p>
+                      <span
+                        class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+                        ><img
+                          class="confluence-embedded-image confluence-thumbnail"
+                          draggable="false"
+                          height="33"
+                          src="attachments/93290547/93290542.png"
+                          data-image-src="attachments/93290547/93290542.png"
+                          data-unresolved-comment-count="0"
+                          data-linked-resource-id="93290542"
+                          data-linked-resource-version="1"
+                          data-linked-resource-type="attachment"
+                          data-linked-resource-default-alias="image2021-9-21_2-19-36.png"
+                          data-base-url="https://confluence.ugx-mods.com"
+                          data-linked-resource-content-type="image/png"
+                          data-linked-resource-container-id="93290547"
+                          data-linked-resource-container-version="2"
+                          alt=""
+                      /></span>
+                    </p>
+                  </div>
+                </td>
+                <td colspan="1" class="confluenceTd">
+                  Green - happy robot. Content is okay (&lt;0.35). The okay hand
+                  means this content has been learned as HARMLESS.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          You can hover over the icons or score to get an tooltip when this
+          content was classified / learned last. (updated means, that it takes
+          either classified at or learned at depending on which is more recent)
+        </p>
+        <h2 id="b8spamfiltering-ForumMessageOverview">
+          Forum Message Overview
+        </h2>
+        <p>
+          If a message has been analyzed, the current status is displayed (for
+          moderators) on the message
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="250"
+              src="attachments/93290547/93290537.png"
+              data-image-src="attachments/93290547/93290537.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="93290537"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="image2021-9-20_16-21-21.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="93290547"
+              data-linked-resource-container-version="2"
+              alt=""
+          /></span>
+        </p>
+        <h3 id="b8spamfiltering-ForumPostModeration">Forum Post Moderation</h3>
+        <p>
+          Each message can be (un)learned and classified in the post moderation
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image confluence-thumbnail"
+              draggable="false"
+              height="246"
+              src="attachments/93290547/93290541.png"
+              data-image-src="attachments/93290547/93290541.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="93290541"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="image2021-9-21_2-15-54.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="93290547"
+              data-linked-resource-container-version="2"
+              alt=""
+          /></span>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="238"
+              src="attachments/93290547/93290546.png"
+              data-image-src="attachments/93290547/93290546.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="93290546"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="image2021-9-21_2-34-56.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="93290547"
+              data-linked-resource-container-version="2"
+              alt=""
+          /></span>
+        </p>
+        <h2 id="b8spamfiltering-ModerationApprove">Moderation Approve</h2>
+        <p>
+          On the approval site, the Anti Spam dropdown is available to classify
+          and (un)learn the message.
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="100"
+              src="attachments/93290547/93290540.png"
+              data-image-src="attachments/93290547/93290540.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="93290540"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="image2021-9-21_2-14-22.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="93290547"
+              data-linked-resource-container-version="2"
+              alt=""
+          /></span>
+        </p>
+        <p><br /></p>
+      </div>
+    </div>
+    <div class="cell aside" data-type="aside">
+      <div class="innerCell">
+        <p>
+          <style type="text/css">
+            /*<![CDATA[*/
+            div.rbtoc1706609476640 {
+              padding: 0px;
+            }
+            div.rbtoc1706609476640 ul {
+              margin-left: 0px;
+            }
+            div.rbtoc1706609476640 li {
+              margin-left: 0px;
+              padding-left: 0px;
+            }
 
-                    <div class="contentLayout2">
-<div class="columnLayout two-right-sidebar" data-layout="two-right-sidebar">
-<div class="cell normal" data-type="normal">
-<div class="innerCell">
-<p>The UGX-Mods Forum supports a b8 spam filter since <a href="UGXSMF-v0.8.8-beta_77103157.html">UGXSMF v0.8.8-beta</a>.</p><h2 id="b8spamfiltering-QuickGuide">Quick Guide</h2><ul><li>Every message is classified as unlearned.</li><li>A message should be learned as SPAM or HARMLESS depending on what type it is.<ul><li>Only content which is identified as SPAM should be learned as such, this includes for example<ul><li>Link to disallowed content (NSFW content, products, suspicious content, etc.)</li><li>Repeatedly the same content by different accounts</li><li>Whatever you think is SPAM</li></ul></li><li>Content which doesn't follow our rules, but is written by an individual and not a SPAM Bot is therefore no spam and is harmless, but shouldn't be allowed (hide or remove it)</li></ul></li><li>Messages can be classified. This returns a score, based on the previous learned words.</li><li>So the more content has been learned, the more likely and accurate is the score.</li><li>The score goes from 0.0 (no spam) to 1.0 (spam)</li><li>At the moment we consider SPAM which is &gt;= 0.7</li><li>Visit <a class="external-link" href="https://www.ugx-mods.com/forum/moderate/area=antispam-posts" rel="nofollow">https://www.ugx-mods.com/forum/moderate/area=antispam-posts</a> for b8 overview</li><li>Be sure to learn from time to time some messages. (not all messages of the forum need to be learned, but different written types of SPAM and HARMLESS content is important)</li><li>Messages can be reclassified (over time, so their score can change)</li><li>Messages can also be unlearned again, previously classified content won't update though!</li></ul><h2 id="b8spamfiltering-AntiSpamForumPostsOverview">Anti Spam Forum Posts Overview</h2><p>The page at <a class="external-link" href="https://www.ugx-mods.com/forum/moderate/area=antispam-posts" rel="nofollow">https://www.ugx-mods.com/forum/moderate/area=antispam-posts</a> shows all forum posts (recent first) and the b8 status.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/93290547/93290536.png" data-image-src="attachments/93290547/93290536.png" data-unresolved-comment-count="0" data-linked-resource-id="93290536" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-20_16-19-6.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p><p>You can use the filters to reduce the amount of posts.</p><h2 id="b8spamfiltering-Display/Status">Display / Status</h2><p>The current b8 status is displayed on the forum post with a robot icon.</p><p>If no robot is present, b8 has not been executed on it.</p><p>Otherwise a robot icon, followed by the score is shown if it has been classified.</p><p>An additional Icon will be shown if it has been learned.</p><p><br></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col><col></colgroup><tbody><tr><th class="confluenceTh">Example</th><th class="confluenceTh"><br></th></tr><tr><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="29" src="attachments/93290547/93290543.png" data-image-src="attachments/93290547/93290543.png" data-unresolved-comment-count="0" data-linked-resource-id="93290543" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-21_2-20-28.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p></div></td><td colspan="1" class="confluenceTd">Red - dead robot. This content is SPAM (&gt;0.9). The stop / attention icon means that this content has been learned as SPAM.</td></tr><tr><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="25" src="attachments/93290547/93290544.png" data-image-src="attachments/93290547/93290544.png" data-unresolved-comment-count="0" data-linked-resource-id="93290544" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-21_2-21-37.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p></div></td><td colspan="1" class="confluenceTd">Red - angry robot. This content is most likely SPAM (&gt;0.7 &amp;&amp; &lt;0.9)</td></tr><tr><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="32" src="attachments/93290547/93290545.png" data-image-src="attachments/93290547/93290545.png" data-unresolved-comment-count="0" data-linked-resource-id="93290545" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-21_2-22-51.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p></div></td><td colspan="1" class="confluenceTd">yellow - confused robot. This content is eventually SPAM (&gt;=0.35 &amp;&amp; &lt;0.7) | This will be most likely shown for many posts during the learning phase.</td></tr><tr><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="33" src="attachments/93290547/93290542.png" data-image-src="attachments/93290547/93290542.png" data-unresolved-comment-count="0" data-linked-resource-id="93290542" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-21_2-19-36.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p></div></td><td colspan="1" class="confluenceTd">Green - happy robot. Content is okay (&lt;0.35). The okay hand means this content has been learned as HARMLESS.</td></tr></tbody></table></div><p>You can hover over the icons or score to get an tooltip when this content was classified / learned last. (updated means, that it takes either classified at or learned at depending on which is more recent)</p><h2 id="b8spamfiltering-ForumMessageOverview">Forum Message Overview</h2><p>If a message has been analyzed, the current status is displayed (for moderators) on the message</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/93290547/93290537.png" data-image-src="attachments/93290547/93290537.png" data-unresolved-comment-count="0" data-linked-resource-id="93290537" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-20_16-21-21.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p><h3 id="b8spamfiltering-ForumPostModeration">Forum Post Moderation</h3><p>Each message can be (un)learned and classified in the post moderation</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="246" src="attachments/93290547/93290541.png" data-image-src="attachments/93290547/93290541.png" data-unresolved-comment-count="0" data-linked-resource-id="93290541" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-21_2-15-54.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span> <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="238" src="attachments/93290547/93290546.png" data-image-src="attachments/93290547/93290546.png" data-unresolved-comment-count="0" data-linked-resource-id="93290546" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-21_2-34-56.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p><h2 id="b8spamfiltering-ModerationApprove">Moderation Approve</h2><p>On the approval site, the Anti Spam dropdown is available to classify and (un)learn the message.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="100" src="attachments/93290547/93290540.png" data-image-src="attachments/93290547/93290540.png" data-unresolved-comment-count="0" data-linked-resource-id="93290540" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-9-21_2-14-22.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93290547" data-linked-resource-container-version="2" alt=""></span></p><p><br></p></div>
+            /*]]>*/
+          </style>
+        </p>
+        <div class="toc-macro rbtoc1706609476640">
+          <ul class="toc-indentation">
+            <li><a href="#b8spamfiltering-QuickGuide">Quick Guide</a></li>
+            <li>
+              <a href="#b8spamfiltering-AntiSpamForumPostsOverview"
+                >Anti Spam Forum Posts Overview</a
+              >
+            </li>
+            <li>
+              <a href="#b8spamfiltering-Display/Status">Display / Status</a>
+            </li>
+            <li>
+              <a href="#b8spamfiltering-ForumMessageOverview"
+                >Forum Message Overview</a
+              >
+              <ul class="toc-indentation">
+                <li>
+                  <a href="#b8spamfiltering-ForumPostModeration"
+                    >Forum Post Moderation</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#b8spamfiltering-ModerationApprove"
+                >Moderation Approve</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="cell aside" data-type="aside">
-<div class="innerCell">
-<p><style type='text/css'>/*<![CDATA[*/
-div.rbtoc1706609476640 {padding: 0px;}
-div.rbtoc1706609476640 ul {margin-left: 0px;}
-div.rbtoc1706609476640 li {margin-left: 0px;padding-left: 0px;}
-
-/*]]>*/</style></p><div class='toc-macro rbtoc1706609476640'>
-<ul class='toc-indentation'>
-<li><a href='#b8spamfiltering-QuickGuide'>Quick Guide</a></li>
-<li><a href='#b8spamfiltering-AntiSpamForumPostsOverview'>Anti Spam Forum Posts Overview</a></li>
-<li><a href='#b8spamfiltering-Display/Status'>Display / Status</a></li>
-<li><a href='#b8spamfiltering-ForumMessageOverview'>Forum Message Overview</a>
-<ul class='toc-indentation'>
-<li><a href='#b8spamfiltering-ForumPostModeration'>Forum Post Moderation</a></li>
-</ul>
-</li>
-<li><a href='#b8spamfiltering-ModerationApprove'>Moderation Approve</a></li>
-</ul>
-</div></div>
-</div>
-</div>
-</div>
-                    

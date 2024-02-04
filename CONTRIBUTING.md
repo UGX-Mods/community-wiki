@@ -3,10 +3,10 @@
 We appreciate your thought to contribute to open source. :heart:
 
 > 👉 **NOTE**: Before participating, please read the [CODE OF CONDUCT](/CODE_OF_CONDUCT).
-> 
+>
 > By interacting with this repository, organization, or community you agree to abide by its terms.
 
-Feel free to join our Discord (https://www.ugx-mods.com/discord/) and join the `#community-wiki` room. 
+Feel free to join our Discord (https://www.ugx-mods.com/discord/) and join the `#community-wiki` room.
 
 ## Feature / Bugfix / Improvement request
 

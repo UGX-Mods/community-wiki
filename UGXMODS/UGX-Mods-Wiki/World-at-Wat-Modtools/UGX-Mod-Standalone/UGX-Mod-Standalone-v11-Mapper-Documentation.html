@@ -10,30 +10,232 @@ dateCreated: 2024-01-30T10:33:07.156Z
 
 <!-- conf id: 8356595 -->
 
+<p>
+  This is a documentation page aimed at mappers who plan to use UGX Mod
+  Standalone v1.1 on their maps. If you need instructions on how to install the
+  mod, see this page:
+  <a href="UGX-Mod-Standalone-v1.1-Installation-Guide_7635204.html"
+    >UGX Mod Standalone v1.1 Installation Guide</a
+  >
+</p>
+<p>
+  <style type="text/css">
+    /*<![CDATA[*/
+    div.rbtoc1706609479691 {
+      padding: 0px;
+    }
+    div.rbtoc1706609479691 ul {
+      margin-left: 0px;
+    }
+    div.rbtoc1706609479691 li {
+      margin-left: 0px;
+      padding-left: 0px;
+    }
 
-                    <p>This is a documentation page aimed at mappers who plan to use UGX Mod Standalone v1.1 on their maps. If you need instructions on how to install the mod, see this page: <a href="UGX-Mod-Standalone-v1.1-Installation-Guide_7635204.html">UGX Mod Standalone v1.1 Installation Guide</a></p><p><style type='text/css'>/*<![CDATA[*/
-div.rbtoc1706609479691 {padding: 0px;}
-div.rbtoc1706609479691 ul {margin-left: 0px;}
-div.rbtoc1706609479691 li {margin-left: 0px;padding-left: 0px;}
-
-/*]]>*/</style></p><div class='toc-macro rbtoc1706609479691'>
-<ul class='toc-indentation'>
-<li><span class='TOCOutline'>1</span> <a href='#UGXModStandalonev1.1MapperDocumentation-RadiantPrefabs'>Radiant Prefabs</a>
-<ul class='toc-indentation'>
-<li><span class='TOCOutline'>1.1</span> <a href='#UGXModStandalonev1.1MapperDocumentation-WallWeapons'>Wall Weapons</a></li>
-<li><span class='TOCOutline'>1.2</span> <a href='#UGXModStandalonev1.1MapperDocumentation-MysteryBoxes'>Mystery Boxes</a></li>
-<li><span class='TOCOutline'>1.3</span> <a href='#UGXModStandalonev1.1MapperDocumentation-TrapsMachine'>Traps Machine</a></li>
-<li><span class='TOCOutline'>1.4</span> <a href='#UGXModStandalonev1.1MapperDocumentation-PerksMachines'>Perks Machines</a></li>
-<li><span class='TOCOutline'>1.5</span> <a href='#UGXModStandalonev1.1MapperDocumentation-Elemental&amp;Pack-a-PunchMachines'>Elemental &amp; Pack-a-Punch Machines</a></li>
-<li><span class='TOCOutline'>1.6</span> <a href='#UGXModStandalonev1.1MapperDocumentation-GamemodeSpawnpoints'>Gamemode Spawnpoints</a></li>
-</ul>
-</li>
-<li><span class='TOCOutline'>2</span> <a href='#UGXModStandalonev1.1MapperDocumentation-ScriptConfigurationSettings(ugxm_user_settings.gsc)'>Script Configuration Settings (ugxm_user_settings.gsc)</a></li>
-<li><span class='TOCOutline'>3</span> <a href='#UGXModStandalonev1.1MapperDocumentation-Tips&amp;Tricks'>Tips &amp; Tricks</a>
-<ul class='toc-indentation'>
-<li><span class='TOCOutline'>3.1</span> <a href='#UGXModStandalonev1.1MapperDocumentation-Preventingplayersfrombeingteleportedtobadareas&amp;more'>Preventing players from being teleported to bad areas &amp; more</a></li>
-</ul>
-</li>
-</ul>
-</div><h1 id="UGXModStandalonev1.1MapperDocumentation-RadiantPrefabs">Radiant Prefabs</h1><h2 id="UGXModStandalonev1.1MapperDocumentation-WallWeapons">Wall Weapons</h2><p>UGX Mod Standalone v1.1 has a redesigned Wall Weapon system. If you wish instead to use traditional wall weapon chalk prefabs, you are free to do so - they are still supported. These prefabs are not provided with the mod and will need to be created manually.</p><p>To place a UGX wall weapon box, use the prefab: <strong>map_source\_prefabs\ugx_mod\ugx_wallweapon.map</strong></p><p>In order to position the prefab correctly, you should ensure that clips are visible in your filter settings (open your filter window with the F key on your keyboard). Once clips are visible, you will be able to see the outline of where the UGX Wall Weapon box model will be spawned in-game.</p><p>Once you have positioned the prefab, you need to stamp it into the world using the stamp button in Radiant: <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="http://img.andy-king.me/e4268a0f23c76eb2daa70137545886b6.png" data-image-src="http://img.andy-king.me/e4268a0f23c76eb2daa70137545886b6.png"></span></p><p>After stamping the prefab, you may select the trigger and change its &quot;zombie_weapon_upgrade&quot; key value to the weapon name you wish to use. To see a list of available weapons, check this page: <a href="UGX-Mod-Standalone-v1.1-Available-Weapons_8356594.html">UGX Mod Standalone v1.1 Available Weapons</a></p><h2 id="UGXModStandalonev1.1MapperDocumentation-MysteryBoxes">Mystery Boxes</h2><p>The mystery box start prefab is located at: <strong>map_source\_prefabs\ugx_mod\ugx_random_box_start.map</strong></p><p>To place additional box locations, use the prefab: <strong>map_source\_prefabs\ugx_mod\ugx_random_box.map</strong></p><p>No additional configuration is needed - you don't need to bother updating or setting the &quot;chest&quot; list in your mapname.gsc any more.</p><h2 id="UGXModStandalonev1.1MapperDocumentation-TrapsMachine">Traps Machine</h2><p>The traps machine prefab is located at: <strong>map_source\_prefabs\ugx_mod\ugx_trap_machine.map</strong></p><p>No additional configuration is needed.</p><h2 id="UGXModStandalonev1.1MapperDocumentation-PerksMachines">Perks Machines</h2><p>The non-WaW style perk machines are all located in the folder: <strong>map_source\_prefabs\ugx_mod\new_perk_machines</strong>\</p><p>When you place them, you will not see the perk machine model. You will see a large colored box which has been colored to resemble the color of the perk machine. The actual models will be spawned-ingame. Use the clips in the prefab to judge the size of the machine properly.</p><h2 id="UGXModStandalonev1.1MapperDocumentation-Elemental&amp;Pack-a-PunchMachines">Elemental &amp; Pack-a-Punch Machines</h2><p>The elemental machine prefab is located at: <strong>map_source\_prefabs\ugx_mod\ugx_elemental_machine.map. <br></strong>You can place multiple elemental machines and they will all function at once.</p><p>The PaP machine prefab is located at: <strong>map_source\_prefabs\ugx_mod\ugx_moving_pap.map.</strong></p><p>You can place multiple PaP machines and they will all function at once. If you enable the &quot;multiple_paps&quot; setting in <strong>ugx_mod.iwd\maps\ugxm_user_settings.gsc</strong>, the PaP will move similarly to the random box between each location you placed. You can also adjust the move interval or min/max uses.</p><h2 id="UGXModStandalonev1.1MapperDocumentation-GamemodeSpawnpoints">Gamemode Spawnpoints</h2><p>&lt;TBA&gt;</p><p> </p><hr><h1 id="UGXModStandalonev1.1MapperDocumentation-ScriptConfigurationSettings(ugxm_user_settings.gsc)">Script Configuration Settings (ugxm_user_settings.gsc)</h1><p>If you open <strong>ugx_mod.iwd\maps\ugxm_user_settings.gsc</strong>, you will find many configurable settings for UGX Mod. Each setting is explained within the file.</p><p> </p><hr><h1 id="UGXModStandalonev1.1MapperDocumentation-Tips&amp;Tricks">Tips &amp; Tricks</h1><h2 id="UGXModStandalonev1.1MapperDocumentation-Preventingplayersfrombeingteleportedtobadareas&amp;more">Preventing players from being teleported to bad areas &amp; more</h2><p>Certain things like the Gersch Device have the ability to dynamically choose a spot to teleport players to on a map. It generates a list of potential teleport locations by taking all the pathnodes on the map and running tests on them to ensure they are a valid location to spawn players. The script assumes that any pathnode that is not inside of a playable_area trigger is not a valid pathnode to use. However, sometimes you might end up with areas which are covered in a playable_area trigger but should not have players teleported to them (ex. if you are a lazy mapper). A way to prevent these nodes from being seen as &quot;valid&quot; is to give them the targetname &quot;nospawn&quot;. This will give them a green outline in the Radiant 3D view, and the scripts will completely ignore these pathnodes as potential locations to move a player or spawn any items in gamemodes such as Chaos Mode.</p><p> </p>
-                    
+    /*]]>*/
+  </style>
+</p>
+<div class="toc-macro rbtoc1706609479691">
+  <ul class="toc-indentation">
+    <li>
+      <span class="TOCOutline">1</span>
+      <a href="#UGXModStandalonev1.1MapperDocumentation-RadiantPrefabs"
+        >Radiant Prefabs</a
+      >
+      <ul class="toc-indentation">
+        <li>
+          <span class="TOCOutline">1.1</span>
+          <a href="#UGXModStandalonev1.1MapperDocumentation-WallWeapons"
+            >Wall Weapons</a
+          >
+        </li>
+        <li>
+          <span class="TOCOutline">1.2</span>
+          <a href="#UGXModStandalonev1.1MapperDocumentation-MysteryBoxes"
+            >Mystery Boxes</a
+          >
+        </li>
+        <li>
+          <span class="TOCOutline">1.3</span>
+          <a href="#UGXModStandalonev1.1MapperDocumentation-TrapsMachine"
+            >Traps Machine</a
+          >
+        </li>
+        <li>
+          <span class="TOCOutline">1.4</span>
+          <a href="#UGXModStandalonev1.1MapperDocumentation-PerksMachines"
+            >Perks Machines</a
+          >
+        </li>
+        <li>
+          <span class="TOCOutline">1.5</span>
+          <a
+            href="#UGXModStandalonev1.1MapperDocumentation-Elemental&amp;Pack-a-PunchMachines"
+            >Elemental &amp; Pack-a-Punch Machines</a
+          >
+        </li>
+        <li>
+          <span class="TOCOutline">1.6</span>
+          <a href="#UGXModStandalonev1.1MapperDocumentation-GamemodeSpawnpoints"
+            >Gamemode Spawnpoints</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span class="TOCOutline">2</span>
+      <a
+        href="#UGXModStandalonev1.1MapperDocumentation-ScriptConfigurationSettings(ugxm_user_settings.gsc)"
+        >Script Configuration Settings (ugxm_user_settings.gsc)</a
+      >
+    </li>
+    <li>
+      <span class="TOCOutline">3</span>
+      <a href="#UGXModStandalonev1.1MapperDocumentation-Tips&amp;Tricks"
+        >Tips &amp; Tricks</a
+      >
+      <ul class="toc-indentation">
+        <li>
+          <span class="TOCOutline">3.1</span>
+          <a
+            href="#UGXModStandalonev1.1MapperDocumentation-Preventingplayersfrombeingteleportedtobadareas&amp;more"
+            >Preventing players from being teleported to bad areas &amp; more</a
+          >
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<h1 id="UGXModStandalonev1.1MapperDocumentation-RadiantPrefabs">
+  Radiant Prefabs
+</h1>
+<h2 id="UGXModStandalonev1.1MapperDocumentation-WallWeapons">Wall Weapons</h2>
+<p>
+  UGX Mod Standalone v1.1 has a redesigned Wall Weapon system. If you wish
+  instead to use traditional wall weapon chalk prefabs, you are free to do so -
+  they are still supported. These prefabs are not provided with the mod and will
+  need to be created manually.
+</p>
+<p>
+  To place a UGX wall weapon box, use the prefab:
+  <strong>map_source\_prefabs\ugx_mod\ugx_wallweapon.map</strong>
+</p>
+<p>
+  In order to position the prefab correctly, you should ensure that clips are
+  visible in your filter settings (open your filter window with the F key on
+  your keyboard). Once clips are visible, you will be able to see the outline of
+  where the UGX Wall Weapon box model will be spawned in-game.
+</p>
+<p>
+  Once you have positioned the prefab, you need to stamp it into the world using
+  the stamp button in Radiant:
+  <span class="confluence-embedded-file-wrapper"
+    ><img
+      class="confluence-embedded-image confluence-external-resource"
+      draggable="false"
+      src="http://img.andy-king.me/e4268a0f23c76eb2daa70137545886b6.png"
+      data-image-src="http://img.andy-king.me/e4268a0f23c76eb2daa70137545886b6.png"
+  /></span>
+</p>
+<p>
+  After stamping the prefab, you may select the trigger and change its
+  &quot;zombie_weapon_upgrade&quot; key value to the weapon name you wish to
+  use. To see a list of available weapons, check this page:
+  <a href="UGX-Mod-Standalone-v1.1-Available-Weapons_8356594.html"
+    >UGX Mod Standalone v1.1 Available Weapons</a
+  >
+</p>
+<h2 id="UGXModStandalonev1.1MapperDocumentation-MysteryBoxes">Mystery Boxes</h2>
+<p>
+  The mystery box start prefab is located at:
+  <strong>map_source\_prefabs\ugx_mod\ugx_random_box_start.map</strong>
+</p>
+<p>
+  To place additional box locations, use the prefab:
+  <strong>map_source\_prefabs\ugx_mod\ugx_random_box.map</strong>
+</p>
+<p>
+  No additional configuration is needed - you don't need to bother updating or
+  setting the &quot;chest&quot; list in your mapname.gsc any more.
+</p>
+<h2 id="UGXModStandalonev1.1MapperDocumentation-TrapsMachine">Traps Machine</h2>
+<p>
+  The traps machine prefab is located at:
+  <strong>map_source\_prefabs\ugx_mod\ugx_trap_machine.map</strong>
+</p>
+<p>No additional configuration is needed.</p>
+<h2 id="UGXModStandalonev1.1MapperDocumentation-PerksMachines">
+  Perks Machines
+</h2>
+<p>
+  The non-WaW style perk machines are all located in the folder:
+  <strong>map_source\_prefabs\ugx_mod\new_perk_machines</strong>\
+</p>
+<p>
+  When you place them, you will not see the perk machine model. You will see a
+  large colored box which has been colored to resemble the color of the perk
+  machine. The actual models will be spawned-ingame. Use the clips in the prefab
+  to judge the size of the machine properly.
+</p>
+<h2
+  id="UGXModStandalonev1.1MapperDocumentation-Elemental&amp;Pack-a-PunchMachines"
+>
+  Elemental &amp; Pack-a-Punch Machines
+</h2>
+<p>
+  The elemental machine prefab is located at:
+  <strong>map_source\_prefabs\ugx_mod\ugx_elemental_machine.map. <br /></strong
+  >You can place multiple elemental machines and they will all function at once.
+</p>
+<p>
+  The PaP machine prefab is located at:
+  <strong>map_source\_prefabs\ugx_mod\ugx_moving_pap.map.</strong>
+</p>
+<p>
+  You can place multiple PaP machines and they will all function at once. If you
+  enable the &quot;multiple_paps&quot; setting in
+  <strong>ugx_mod.iwd\maps\ugxm_user_settings.gsc</strong>, the PaP will move
+  similarly to the random box between each location you placed. You can also
+  adjust the move interval or min/max uses.
+</p>
+<h2 id="UGXModStandalonev1.1MapperDocumentation-GamemodeSpawnpoints">
+  Gamemode Spawnpoints
+</h2>
+<p>&lt;TBA&gt;</p>
+<p> </p>
+<hr />
+<h1
+  id="UGXModStandalonev1.1MapperDocumentation-ScriptConfigurationSettings(ugxm_user_settings.gsc)"
+>
+  Script Configuration Settings (ugxm_user_settings.gsc)
+</h1>
+<p>
+  If you open <strong>ugx_mod.iwd\maps\ugxm_user_settings.gsc</strong>, you will
+  find many configurable settings for UGX Mod. Each setting is explained within
+  the file.
+</p>
+<p> </p>
+<hr />
+<h1 id="UGXModStandalonev1.1MapperDocumentation-Tips&amp;Tricks">
+  Tips &amp; Tricks
+</h1>
+<h2
+  id="UGXModStandalonev1.1MapperDocumentation-Preventingplayersfrombeingteleportedtobadareas&amp;more"
+>
+  Preventing players from being teleported to bad areas &amp; more
+</h2>
+<p>
+  Certain things like the Gersch Device have the ability to dynamically choose a
+  spot to teleport players to on a map. It generates a list of potential
+  teleport locations by taking all the pathnodes on the map and running tests on
+  them to ensure they are a valid location to spawn players. The script assumes
+  that any pathnode that is not inside of a playable_area trigger is not a valid
+  pathnode to use. However, sometimes you might end up with areas which are
+  covered in a playable_area trigger but should not have players teleported to
+  them (ex. if you are a lazy mapper). A way to prevent these nodes from being
+  seen as &quot;valid&quot; is to give them the targetname &quot;nospawn&quot;.
+  This will give them a green outline in the Radiant 3D view, and the scripts
+  will completely ignore these pathnodes as potential locations to move a player
+  or spawn any items in gamemodes such as Chaos Mode.
+</p>
+<p> </p>

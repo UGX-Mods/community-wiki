@@ -4,7 +4,6 @@ about: Create a report to help us to improve
 title: ''
 labels: bug
 assignees: ''
-
 ---
 
 **Describe the bug / issue**
@@ -22,7 +21,7 @@ assignees: ''
 **Screenshots**
 
 > If applicable, add screenshots to help explain your problem.
-> 
+>
 > ⚠️ Blur / remove / blackout sensitive / personal information ⚠️
 
 **Additional context**

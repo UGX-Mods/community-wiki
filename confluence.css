@@ -327,7 +327,7 @@ hr {
 
 .page-history-view a:before {
   display: inline-block;
-  content: "·";
+  content: '·';
   padding: 0 10px;
 }
 
@@ -337,7 +337,7 @@ hr {
 
 .page-history-view a:first-child:before {
   display: none;
-  content: "";
+  content: '';
   padding: 0;
 }
 
@@ -514,11 +514,11 @@ body.people .blank-experience-people {
 }
 
 .blank-experience-blog {
-  background: url("../../images/icons/blog-empty-placeholder.png") no-repeat
+  background: url('../../images/icons/blog-empty-placeholder.png') no-repeat
     right bottom;
 }
 .blank-experience-page {
-  background: url("../../images/icons/pages-empty-placeholder.png") no-repeat
+  background: url('../../images/icons/pages-empty-placeholder.png') no-repeat
     right bottom;
 }
 
@@ -625,7 +625,7 @@ a.blogHeading {
 }
 
 .blank-experience-blog {
-  background: url("../../images/icons/blog-empty-placeholder.png") no-repeat
+  background: url('../../images/icons/blog-empty-placeholder.png') no-repeat
     right bottom;
 }
 
@@ -966,8 +966,8 @@ a.blogHeading {
 }
 
 /* CONF-23497 - Work around rendering issue in Webkit and IE9. Works fine for IE8 and Firefox. */
-li[style*="text-align: center"],
-li[style*="text-align: right"] {
+li[style*='text-align: center'],
+li[style*='text-align: right'] {
   list-style-position: inside;
 }
 
@@ -1112,7 +1112,7 @@ div.large + div.sidebars,
 .code pre,
 .preformatted pre {
   /* needs 'pre' to override TinyMCE style */
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   line-height: 1.3;
 }
 
@@ -1242,7 +1242,7 @@ should not use bg css in time element, because user can set cursor at beginning 
 but input content is outside of time element
 */
 .wiki-content time:before {
-  content: "";
+  content: '';
   width: 1.143em; /* 16px */
   height: 1.143em; /* 16px */
   padding: 0;
@@ -1419,7 +1419,7 @@ span.content-type-status,
 
 .icon-blog-large,
 .icon-blogpost-large {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAB6klEQVRYw+2YMWvDMBCF/Z/6W/o/zA1BZCheAjWlQyCLhyyBBIIpHTzGc9euWTx5KKXwlmA6dHgdjGNZdWJJdrb6Ji36pLv3ZOmCwPjWh4hiHavi9S5w+RYQCmecD4aiYsiQii/31tOvD0LhFiV+wGIoKoQMKS6IiMK9xdRNhAz5RKHi/tEKIJzxwxFwwjOFwm1iBZjzxxHA4htPtgjhnPbTNwAWJ1uEL8B6Fz6ALzSaiocRPoAMXYTiFeu5ApYMe2JVTAao0IcQTgb4GyfMbgtgof4BEwI2qM/7JVMccQNAV3yK6dlSNwHUkaLCTQEhFd8xESBDhoRRD2SDSVX0hRwmJualVHnL9GhALiFG+SDDMMKxyBE30ItaQg3UwktFEd/QImINkWMymcYs0RRdaaI1zTfCB60DSlxOk5MPEioD0qQq1xDdPTir6Nj5LapzouILe/CS6buW9YgNuIVO4ANdnhnMO4V+mHsbrdRWXBvsDSbSEVAhR64dz62P61JX53FCD0AF1Vlv34RNoZc+gFaIrVsTo9AbdMejAW2S+scjU6RLswuYqMj/F68gCITK6RHoAXB7xvZdEK5e3yMKt6MAOwgfONBK2Fm2Esz4RAqhcH2waIYoi3aIGTMKhQsMNkRc2jndiHpW/wvq3C3j5KdB0wAAAABJRU5ErkJggg==");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAB6klEQVRYw+2YMWvDMBCF/Z/6W/o/zA1BZCheAjWlQyCLhyyBBIIpHTzGc9euWTx5KKXwlmA6dHgdjGNZdWJJdrb6Ji36pLv3ZOmCwPjWh4hiHavi9S5w+RYQCmecD4aiYsiQii/31tOvD0LhFiV+wGIoKoQMKS6IiMK9xdRNhAz5RKHi/tEKIJzxwxFwwjOFwm1iBZjzxxHA4htPtgjhnPbTNwAWJ1uEL8B6Fz6ALzSaiocRPoAMXYTiFeu5ApYMe2JVTAao0IcQTgb4GyfMbgtgof4BEwI2qM/7JVMccQNAV3yK6dlSNwHUkaLCTQEhFd8xESBDhoRRD2SDSVX0hRwmJualVHnL9GhALiFG+SDDMMKxyBE30ItaQg3UwktFEd/QImINkWMymcYs0RRdaaI1zTfCB60DSlxOk5MPEioD0qQq1xDdPTir6Nj5LapzouILe/CS6buW9YgNuIVO4ANdnhnMO4V+mHsbrdRWXBvsDSbSEVAhR64dz62P61JX53FCD0AF1Vlv34RNoZc+gFaIrVsTo9AbdMejAW2S+scjU6RLswuYqMj/F68gCITK6RHoAXB7xvZdEK5e3yMKt6MAOwgfONBK2Fm2Esz4RAqhcH2waIYoi3aIGTMKhQsMNkRc2jndiHpW/wvq3C3j5KdB0wAAAABJRU5ErkJggg==');
 }
 
 .icon-content-template-large {
@@ -1427,7 +1427,7 @@ span.content-type-status,
 }
 
 .icon-blank-page-large {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABFUlEQVRYw+3YsWrDMBSFYb9Tn6XvIe5ghAdvgZTQoZClg0d7CJQMHf0smjqUEriLCR0y/J08xDHRlZtABuns+myuDNYpislq+hoxZxv2T0XKWqkglFTReDwOh+fj2bx90wtCq196UkIsR3U4JIWoEXaGrcc4HBsET7c2AULJdyIw6CuC0L6bgIpTIkD41Y2VECrs248AYbASSwHzWywBDjqeqZc4sQT41HPCc+XTSwXecDPZhpsBR50jhJsBlxm0vC9A8BnIQAYeCHCk5fGAPOQ85DzkPOQ85DzkOwI+6RK4AEi7xl7mcP33vUZo/wV0KtREqoTOWCVM86M7FYSmN5Qh3lCHTFMiCCuNFiIpdc556pmn/wM4KkViCznJbQAAAABJRU5ErkJggg==");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABFUlEQVRYw+3YsWrDMBSFYb9Tn6XvIe5ghAdvgZTQoZClg0d7CJQMHf0smjqUEriLCR0y/J08xDHRlZtABuns+myuDNYpislq+hoxZxv2T0XKWqkglFTReDwOh+fj2bx90wtCq196UkIsR3U4JIWoEXaGrcc4HBsET7c2AULJdyIw6CuC0L6bgIpTIkD41Y2VECrs248AYbASSwHzWywBDjqeqZc4sQT41HPCc+XTSwXecDPZhpsBR50jhJsBlxm0vC9A8BnIQAYeCHCk5fGAPOQ85DzkPOQ85DzkOwI+6RK4AEi7xl7mcP33vUZo/wV0KtREqoTOWCVM86M7FYSmN5Qh3lCHTFMiCCuNFiIpdc556pmn/wM4KkViCznJbQAAAABJRU5ErkJggg==');
 }
 
 .subheading .rss-icon,
@@ -1883,7 +1883,7 @@ hr {
 
 .page-history-view a:before {
   display: inline-block;
-  content: "·";
+  content: '·';
   padding: 0 10px;
 }
 
@@ -1893,7 +1893,7 @@ hr {
 
 .page-history-view a:first-child:before {
   display: none;
-  content: "";
+  content: '';
   padding: 0;
 }
 
@@ -2070,11 +2070,11 @@ body.people .blank-experience-people {
 }
 
 .blank-experience-blog {
-  background: url("../../images/icons/blog-empty-placeholder.png") no-repeat
+  background: url('../../images/icons/blog-empty-placeholder.png') no-repeat
     right bottom;
 }
 .blank-experience-page {
-  background: url("../../images/icons/pages-empty-placeholder.png") no-repeat
+  background: url('../../images/icons/pages-empty-placeholder.png') no-repeat
     right bottom;
 }
 
@@ -2181,7 +2181,7 @@ a.blogHeading {
 }
 
 .blank-experience-blog {
-  background: url("../../images/icons/blog-empty-placeholder.png") no-repeat
+  background: url('../../images/icons/blog-empty-placeholder.png') no-repeat
     right bottom;
 }
 
@@ -2776,14 +2776,14 @@ body.spaces .aui-tabs > .tabs-menu .menu-item a:visited {
   color: #ffffff;
 }
 
-.aui-header .aui-quicksearch input[type="text"],
-.aui-header .aui-quicksearch input[type="text"][type="text"]:focus {
+.aui-header .aui-quicksearch input[type='text'],
+.aui-header .aui-quicksearch input[type='text'][type='text']:focus {
   background: rgba(9, 30, 66, 0.48);
 }
 
 .aui-header .aui-quicksearch:after,
-.aui-header .aui-quicksearch input[type="text"],
-.aui-header .aui-quicksearch input[type="text"][type="text"]:focus {
+.aui-header .aui-quicksearch input[type='text'],
+.aui-header .aui-quicksearch input[type='text'][type='text']:focus {
   color: #deebff;
 }
 
@@ -2924,7 +2924,7 @@ body.spaces .aui-tabs > .tabs-menu .menu-item a:visited {
 }
 
 #breadcrumbs li:before {
-  content: "/";
+  content: '/';
   display: inline-block;
   padding: 0 2px 0 6px;
 }

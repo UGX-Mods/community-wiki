@@ -3,7 +3,7 @@
 This is the official repository for the UGX-Mods Community Wiki.
 
 > ⚠️ The Wiki was imported from our Confluence Server instance (which will be discontinued).
-> 
+>
 > Expect issues like bad formatting, non functional elements or invalid links!
 
 ## Website

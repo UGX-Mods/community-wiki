@@ -10,8 +10,95 @@ dateCreated: 2024-01-30T10:31:16.276Z
 
 <!-- conf id: 17301594 -->
 
-
-                    <p>In the current version of the BO3 Modtools (Beta), dog spawners are missing from the test map but are not disabled in the scripts by default. This causes you to get stuck on an infinite dog round when you play your map. You can fix this by adding dog spawners or disabling dogs in your map file. Treyarch also did not include a dog spawner prefab with the tools at this time, so you would normally have to grab stuff from The Giant mapfile. </p><h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-DisablingDogRounds">Disabling Dog Rounds</h2><p>Add this line to your usermap.gsc file, before zm_usermap::main();:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">level.dog_rounds_allowed = false;</pre>
-</div></div><h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-InstallingtheSpawnerPrefab">Installing the Spawner Prefab</h2><p>Download the prefab: <a href="attachments/17301594/17301592.map" data-linked-resource-id="17301592" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="dog_spawner.map" data-nice-type="Text File" data-linked-resource-content-type="text/plain" data-linked-resource-container-id="17301594" data-linked-resource-container-version="6">dog_spawner.map</a> and place it anywhere within your _prefabs folder, which can be found at <strong>Call of Duty Black Ops III\map_source\_prefabs</strong></p><h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-PlacingthePrefab">Placing the Prefab</h2><p>From the Entity Browser, drag a Misc\_prefab into your scene and navigate to the dog_spawner.map prefab in the file browser window. </p><p>Next, with the prefab still selected, stamp the prefab into your map using the Stamp menu item:</p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/17301594/17301593.png" data-image-src="attachments/17301594/17301593.png" data-unresolved-comment-count="0" data-linked-resource-id="17301593" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="ef27d37e6e7068c21b862951d8888d20.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="17301594" data-linked-resource-container-version="6" alt=""></span></p><p>Once you stamp the prefab, it will separate the dog spawner from the spawner struct. Move the dog spawner (looks like a hellhound model) somewhere under your map or to a hidden location of your choice. It doesn't matter where it is, just hide it.</p><h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-ConfiguringtheSpawnPoints">Configuring the Spawn Points</h2><p>Select the struct that you got from stamping the prefab earlier. Notice it has a targetname &quot;start_zone_spawners&quot; - you need to change this to match whatever zone you are setting this spawner for. If you are configuring the spawner for your start zone then just leave this KVP alone.</p><p>You can copy and paste this struct all over your map to create more spawn points, taking care to change the targetname when you paste it within a new zone volume.</p>
-                    
+<p>
+  In the current version of the BO3 Modtools (Beta), dog spawners are missing
+  from the test map but are not disabled in the scripts by default. This causes
+  you to get stuck on an infinite dog round when you play your map. You can fix
+  this by adding dog spawners or disabling dogs in your map file. Treyarch also
+  did not include a dog spawner prefab with the tools at this time, so you would
+  normally have to grab stuff from The Giant mapfile. 
+</p>
+<h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-DisablingDogRounds">
+  Disabling Dog Rounds
+</h2>
+<p>Add this line to your usermap.gsc file, before zm_usermap::main();:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+level.dog_rounds_allowed = false;</pre
+    >
+  </div>
+</div>
+<h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-InstallingtheSpawnerPrefab">
+  Installing the Spawner Prefab
+</h2>
+<p>
+  Download the prefab: <a
+    href="attachments/17301594/17301592.map"
+    data-linked-resource-id="17301592"
+    data-linked-resource-version="1"
+    data-linked-resource-type="attachment"
+    data-linked-resource-default-alias="dog_spawner.map"
+    data-nice-type="Text File"
+    data-linked-resource-content-type="text/plain"
+    data-linked-resource-container-id="17301594"
+    data-linked-resource-container-version="6"
+    >dog_spawner.map</a
+  >
+  and place it anywhere within your _prefabs folder, which can be found
+  at <strong>Call of Duty Black Ops III\map_source\_prefabs</strong>
+</p>
+<h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-PlacingthePrefab">
+  Placing the Prefab
+</h2>
+<p>
+  From the Entity Browser, drag a Misc\_prefab into your scene and navigate to
+  the dog_spawner.map prefab in the file browser window. 
+</p>
+<p>
+  Next, with the prefab still selected, stamp the prefab into your map using the
+  Stamp menu item:
+</p>
+<p>
+  <span class="confluence-embedded-file-wrapper"
+    ><img
+      class="confluence-embedded-image"
+      draggable="false"
+      src="attachments/17301594/17301593.png"
+      data-image-src="attachments/17301594/17301593.png"
+      data-unresolved-comment-count="0"
+      data-linked-resource-id="17301593"
+      data-linked-resource-version="1"
+      data-linked-resource-type="attachment"
+      data-linked-resource-default-alias="ef27d37e6e7068c21b862951d8888d20.png"
+      data-base-url="https://confluence.ugx-mods.com"
+      data-linked-resource-content-type="image/png"
+      data-linked-resource-container-id="17301594"
+      data-linked-resource-container-version="6"
+      alt=""
+  /></span>
+</p>
+<p>
+  Once you stamp the prefab, it will separate the dog spawner from the spawner
+  struct. Move the dog spawner (looks like a hellhound model) somewhere under
+  your map or to a hidden location of your choice. It doesn't matter where it
+  is, just hide it.
+</p>
+<h2 id="BO3|AddingDogSpawnersorDisablingDogRounds-ConfiguringtheSpawnPoints">
+  Configuring the Spawn Points
+</h2>
+<p>
+  Select the struct that you got from stamping the prefab earlier. Notice it has
+  a targetname &quot;start_zone_spawners&quot; - you need to change this to
+  match whatever zone you are setting this spawner for. If you are configuring
+  the spawner for your start zone then just leave this KVP alone.
+</p>
+<p>
+  You can copy and paste this struct all over your map to create more spawn
+  points, taking care to change the targetname when you paste it within a new
+  zone volume.
+</p>

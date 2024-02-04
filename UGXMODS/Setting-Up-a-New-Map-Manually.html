@@ -10,16 +10,125 @@ dateCreated: 2024-01-30T10:32:49.256Z
 
 <!-- conf id: 1146924 -->
 
-
-                    <p></p><div class="confluence-information-macro confluence-information-macro-tip"><span class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong>NOTE</strong>: Before reading this guide, determine where your World at War root directory is located.</p><p><strong> Non-Steam Install</strong>: C:\Program Files (x86)\Activision\Call of Duty World at War\</p><p><strong>Steam Install</strong>: C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\</p><p>For the rest of this guide, it will be assumed that the word &quot;root&quot; refers to the appropriate installation path shown above.</p><p>Say 'Yes to all' if Windows asks you about replacing files when dragging files into your root directory.</p></div></div><h1 id="SettingUpaNewMapManually-Preparation">Preparation</h1><p>You will need to download <a class="external-link" href="http://ugx-mods.com/downloads/nazi_zombie_oldtown_src.zip" rel="nofollow">nazi_zombie_oldtown_src.zip (2.3MB)</a>. Keep this .zip in a safe place so you can find it each time you want to start a new map.</p><p>Using WinRAR or another zip extraction program, extract the nazi_zombie_oldtown_src folder from the zip into any directory on your computer.</p><p>Next, open <a href="Text-Editors_1146950.html">Text Editors</a>. Go to Search -&gt; Find in Files (Shortcut: Ctrl+Shift+F). In the directory box, locate your nazi_zombie_oldtown_src folder. In my case, I put in root\src\nazi_zombie_oldtown_src.</p><p>In the &quot;Find what:&quot; box, enter:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">nazi_zombie_oldtown</pre>
-</div></div><p>In the &quot;Replace with:&quot; box, enter your new map name. In my case, I am entering:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">nazi_zombie_testmap</pre>
-</div></div><p>In &quot;Filters:&quot; box, enter:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">*
-</pre>
-</div></div><p>Here is a picture of what my Find window looks like:<br> <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource" draggable="false" width="530" src="http://i.imgur.com/ef2NeKg.png" data-image-src="http://i.imgur.com/ef2NeKg.png"></span><br> Now press the 'Replace in Files' button. This will replace all instances of the oldtown mapname with your new mapname. Once the replace finishes, it will tell you how many instances it replaced. Press OK and minimize or close Notepad++.</p><h1 id="SettingUpaNewMapManually-Renamingfiles">Renaming files</h1><p>We're almost done. Now we need to manually rename any files that contain the words 'nazi_zombie_oldtown'. Here is a list of the files that need to be renamed:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">bin\Launcher\map_settings\nazi_zombie_oldtown_patch.cfg
+<p></p>
+<div class="confluence-information-macro confluence-information-macro-tip">
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
+  ></span>
+  <div class="confluence-information-macro-body">
+    <p>
+      <strong>NOTE</strong>: Before reading this guide, determine where your
+      World at War root directory is located.
+    </p>
+    <p>
+      <strong> Non-Steam Install</strong>: C:\Program Files
+      (x86)\Activision\Call of Duty World at War\
+    </p>
+    <p>
+      <strong>Steam Install</strong>: C:\Program Files
+      (x86)\Steam\steamapps\common\Call of Duty World at War\
+    </p>
+    <p>
+      For the rest of this guide, it will be assumed that the word
+      &quot;root&quot; refers to the appropriate installation path shown above.
+    </p>
+    <p>
+      Say 'Yes to all' if Windows asks you about replacing files when dragging
+      files into your root directory.
+    </p>
+  </div>
+</div>
+<h1 id="SettingUpaNewMapManually-Preparation">Preparation</h1>
+<p>
+  You will need to download
+  <a
+    class="external-link"
+    href="http://ugx-mods.com/downloads/nazi_zombie_oldtown_src.zip"
+    rel="nofollow"
+    >nazi_zombie_oldtown_src.zip (2.3MB)</a
+  >. Keep this .zip in a safe place so you can find it each time you want to
+  start a new map.
+</p>
+<p>
+  Using WinRAR or another zip extraction program, extract the
+  nazi_zombie_oldtown_src folder from the zip into any directory on your
+  computer.
+</p>
+<p>
+  Next, open <a href="Text-Editors_1146950.html">Text Editors</a>. Go to Search
+  -&gt; Find in Files (Shortcut: Ctrl+Shift+F). In the directory box, locate
+  your nazi_zombie_oldtown_src folder. In my case, I put in
+  root\src\nazi_zombie_oldtown_src.
+</p>
+<p>In the &quot;Find what:&quot; box, enter:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+nazi_zombie_oldtown</pre
+    >
+  </div>
+</div>
+<p>
+  In the &quot;Replace with:&quot; box, enter your new map name. In my case, I
+  am entering:
+</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+nazi_zombie_testmap</pre
+    >
+  </div>
+</div>
+<p>In &quot;Filters:&quot; box, enter:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+*
+</pre
+    >
+  </div>
+</div>
+<p>
+  Here is a picture of what my Find window looks like:<br />
+  <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+    ><img
+      class="confluence-embedded-image confluence-external-resource"
+      draggable="false"
+      width="530"
+      src="http://i.imgur.com/ef2NeKg.png"
+      data-image-src="http://i.imgur.com/ef2NeKg.png" /></span
+  ><br />
+  Now press the 'Replace in Files' button. This will replace all instances of
+  the oldtown mapname with your new mapname. Once the replace finishes, it will
+  tell you how many instances it replaced. Press OK and minimize or close
+  Notepad++.
+</p>
+<h1 id="SettingUpaNewMapManually-Renamingfiles">Renaming files</h1>
+<p>
+  We're almost done. Now we need to manually rename any files that contain the
+  words 'nazi_zombie_oldtown'. Here is a list of the files that need to be
+  renamed:
+</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+bin\Launcher\map_settings\nazi_zombie_oldtown_patch.cfg
 bin\Launcher\map_settings\nazi_zombie_oldtown.cfg
 bin\Launcher\map_settings\nazi_zombie_oldtown_geo.cfg
 bin\Launcher\map_settings\nazi_zombie_oldtown_load.cfg
@@ -37,6 +146,18 @@ raw\images\menu_map_nazi_zombie_oldtown.iwi
 zone_source\nazi_zombie_oldtown_load.csv
 zone_source\nazi_zombie_oldtown_patch.csv
 zone_source\nazi_zombie_oldtown.csv
-</pre>
-</div></div><h1 id="SettingUpaNewMapManually-FinalNote">Final Note</h1><p>Now that you have renamed every single instance of &quot;nazi_zombie_oldtown&quot; to your new map name, go <strong>inside</strong> your nazi_zombie_oldtown_src folder and <em>select all the folders inside*. Copy and paste the group into your*root</em>' directory.</p><p>Done!</p><p>Credit: Treminaor</p>
-                    
+</pre
+    >
+  </div>
+</div>
+<h1 id="SettingUpaNewMapManually-FinalNote">Final Note</h1>
+<p>
+  Now that you have renamed every single instance of
+  &quot;nazi_zombie_oldtown&quot; to your new map name, go
+  <strong>inside</strong> your nazi_zombie_oldtown_src folder and
+  <em
+    >select all the folders inside*. Copy and paste the group into your*root</em
+  >' directory.
+</p>
+<p>Done!</p>
+<p>Credit: Treminaor</p>

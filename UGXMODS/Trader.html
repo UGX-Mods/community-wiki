@@ -10,23 +10,220 @@ dateCreated: 2024-01-30T10:32:55.107Z
 
 <!-- conf id: 1146941 -->
 
-
-                    <div class="confluence-information-macro confluence-information-macro-warning"><p class="title conf-macro-render">Warning!</p><span class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><span>This is not directly compatible with ZCT Mod as it uses different weapons than this is programmed for.</span></p></div></div><div class="confluence-information-macro confluence-information-macro-information"><p class="title conf-macro-render">Note</p><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p> <span>This script has not been verified as working. Some updates may need to be made to the script by its creator before it is in complete working order.</span></p></div></div><p></p><div class="confluence-information-macro confluence-information-macro-tip"><span class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong>NOTE</strong>: Before reading this guide, determine where your World at War root directory is located.</p><p><strong> Non-Steam Install</strong>: C:\Program Files (x86)\Activision\Call of Duty World at War\</p><p><strong>Steam Install</strong>: C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\</p><p>For the rest of this guide, it will be assumed that the word &quot;root&quot; refers to the appropriate installation path shown above.</p><p>Say 'Yes to all' if Windows asks you about replacing files when dragging files into your root directory.</p></div></div><br> This tutorial will walk you through how to implement a 'trader' in your map (think of Killing Floor) that will offer players ammo, guns, and attachments. By default the provided script includes code for soundaliases to be played when items are purchased, although you are not required to add any sound for functionality. This tutorial will not provide sounds or cover how to add them to your mod. Since this script is from <a class="external-link" href="http://ugx-mods.com/" rel="nofollow">UGX</a> Cabin, it only supports the weapons available in that map. If you would like to add more weapons, you will have to create more weapons files and add them to the script and your csv's.<h1 id="Trader-Changelog">Changelog</h1><p>Updated the Script Implementation section to have a precacheMenu() line. - 03:31, 24 June 2012 (UTC)</p><h1 id="Trader-Preparation">Preparation</h1><p>Download <a class="external-link" href="http://ugx-mods.com/downloads/ugx_upgrader_ammo.gsc" rel="nofollow">ugx_upgrader_ammo.gsc</a> and place it in mods/mapname/maps/. Download <a class="external-link" href="http://ugx-mods.com/downloads/ugx_trader_files.rar" rel="nofollow">ugx_trader_files.rar</a> and extract its contents to your root/mods/mapname/ directory, combining folders and overwriting files as it asks. The .rar contains weapons files for the weapons supported by this script, the menu file, the menu texture, and the menu material.</p><h1 id="Trader-Implementation">Implementation</h1><h2 id="Trader-Radiant">Radiant</h2><p>All that is required is a trigger - however you may create fancy brushes and place models and AI to make it look like a trader room if you wish. Create a trigger_use with this KvP:</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><p>Key</p></th><th class="confluenceTh"><p>Value</p></th></tr><tr><td class="confluenceTd"><p>targetname</p></td><td class="confluenceTd"><p>upgrader</p></td></tr></tbody></table></div><h2 id="Trader-Script">Script</h2><p>In order for ugx_upgrader_ammo.gsc to run, it must be 'called' in your root/raw/maps/mapname.gsc. Open this file with any <a href="Text-Editors_1146950.html">Text Editor</a> you prefer, although Windows Notepad will suffice.</p><p>Find the line:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">maps\_zombiemode::main();</pre>
-</div></div><p>Add:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">level thread maps\ugx_upgrader_ammo::init();</pre>
-</div></div><p>immediately below the 'maps_zombiemode::main();' line</p><p>and add:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">precacheMenu(&quot;ugx_upgrader&quot;);
-precacheShader(&quot;trader_bg&quot;);</pre>
-</div></div><p>right before</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">maps\_zombiemode::main();</pre>
-</div></div><p>It should look like this:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">precacheMenu(&quot;ugx_upgrader&quot;);
+<div class="confluence-information-macro confluence-information-macro-warning">
+  <p class="title conf-macro-render">Warning!</p>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
+  ></span>
+  <div class="confluence-information-macro-body">
+    <p>
+      <span
+        >This is not directly compatible with ZCT Mod as it uses different
+        weapons than this is programmed for.</span
+      >
+    </p>
+  </div>
+</div>
+<div
+  class="confluence-information-macro confluence-information-macro-information"
+>
+  <p class="title conf-macro-render">Note</p>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"
+  ></span>
+  <div class="confluence-information-macro-body">
+    <p>
+       <span
+        >This script has not been verified as working. Some updates may need to
+        be made to the script by its creator before it is in complete working
+        order.</span
+      >
+    </p>
+  </div>
+</div>
+<p></p>
+<div class="confluence-information-macro confluence-information-macro-tip">
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
+  ></span>
+  <div class="confluence-information-macro-body">
+    <p>
+      <strong>NOTE</strong>: Before reading this guide, determine where your
+      World at War root directory is located.
+    </p>
+    <p>
+      <strong> Non-Steam Install</strong>: C:\Program Files
+      (x86)\Activision\Call of Duty World at War\
+    </p>
+    <p>
+      <strong>Steam Install</strong>: C:\Program Files
+      (x86)\Steam\steamapps\common\Call of Duty World at War\
+    </p>
+    <p>
+      For the rest of this guide, it will be assumed that the word
+      &quot;root&quot; refers to the appropriate installation path shown above.
+    </p>
+    <p>
+      Say 'Yes to all' if Windows asks you about replacing files when dragging
+      files into your root directory.
+    </p>
+  </div>
+</div>
+<br />
+This tutorial will walk you through how to implement a 'trader' in your map
+(think of Killing Floor) that will offer players ammo, guns, and attachments. By
+default the provided script includes code for soundaliases to be played when
+items are purchased, although you are not required to add any sound for
+functionality. This tutorial will not provide sounds or cover how to add them to
+your mod. Since this script is from
+<a class="external-link" href="http://ugx-mods.com/" rel="nofollow">UGX</a>
+Cabin, it only supports the weapons available in that map. If you would like to
+add more weapons, you will have to create more weapons files and add them to the
+script and your csv's.
+<h1 id="Trader-Changelog">Changelog</h1>
+<p>
+  Updated the Script Implementation section to have a precacheMenu() line. -
+  03:31, 24 June 2012 (UTC)
+</p>
+<h1 id="Trader-Preparation">Preparation</h1>
+<p>
+  Download
+  <a
+    class="external-link"
+    href="http://ugx-mods.com/downloads/ugx_upgrader_ammo.gsc"
+    rel="nofollow"
+    >ugx_upgrader_ammo.gsc</a
+  >
+  and place it in mods/mapname/maps/. Download
+  <a
+    class="external-link"
+    href="http://ugx-mods.com/downloads/ugx_trader_files.rar"
+    rel="nofollow"
+    >ugx_trader_files.rar</a
+  >
+  and extract its contents to your root/mods/mapname/ directory, combining
+  folders and overwriting files as it asks. The .rar contains weapons files for
+  the weapons supported by this script, the menu file, the menu texture, and the
+  menu material.
+</p>
+<h1 id="Trader-Implementation">Implementation</h1>
+<h2 id="Trader-Radiant">Radiant</h2>
+<p>
+  All that is required is a trigger - however you may create fancy brushes and
+  place models and AI to make it look like a trader room if you wish. Create a
+  trigger_use with this KvP:
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>targetname</p></td>
+        <td class="confluenceTd"><p>upgrader</p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="Trader-Script">Script</h2>
+<p>
+  In order for ugx_upgrader_ammo.gsc to run, it must be 'called' in your
+  root/raw/maps/mapname.gsc. Open this file with any <a
+    href="Text-Editors_1146950.html"
+    >Text Editor</a
+  > you prefer, although Windows Notepad will suffice.
+</p>
+<p>Find the line:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+maps\_zombiemode::main();</pre
+    >
+  </div>
+</div>
+<p>Add:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+level thread maps\ugx_upgrader_ammo::init();</pre
+    >
+  </div>
+</div>
+<p>immediately below the 'maps_zombiemode::main();' line</p>
+<p>and add:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+precacheMenu(&quot;ugx_upgrader&quot;);
+precacheShader(&quot;trader_bg&quot;);</pre
+    >
+  </div>
+</div>
+<p>right before</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+maps\_zombiemode::main();</pre
+    >
+  </div>
+</div>
+<p>It should look like this:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+precacheMenu(&quot;ugx_upgrader&quot;);
 precacheShader(&quot;trader_bg&quot;);
 maps\_zombiemode::main();
-level thread maps\ugx_upgrader_ammo::init();</pre>
-</div></div><p>Copy dlc3_code.gsc and _zombiemode_weapons.gsc from your root/raw/maps folder to mods/mapname/maps. Open them both with any <a href="Text-Editors_1146950.html">Text Editor</a>, although Windows Notepad will suffice.</p><p>If you are on a 1.1 map,open (not copy) your mapname.gsc instead of dlc3_code.gsc.</p><p>In dlc3_code.gsc (if you have it - otherwise skip this part), highlight the entire include_weapons() function, and replace it with this:</p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">include_weapons()
+level thread maps\ugx_upgrader_ammo::init();</pre
+    >
+  </div>
+</div>
+<p>
+  Copy dlc3_code.gsc and _zombiemode_weapons.gsc from your root/raw/maps folder
+  to mods/mapname/maps. Open them both with any <a
+    href="Text-Editors_1146950.html"
+    >Text Editor</a
+  >, although Windows Notepad will suffice.
+</p>
+<p>
+  If you are on a 1.1 map,open (not copy) your mapname.gsc instead of
+  dlc3_code.gsc.
+</p>
+<p>
+  In dlc3_code.gsc (if you have it - otherwise skip this part), highlight the
+  entire include_weapons() function, and replace it with this:
+</p>
+<p> </p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+include_weapons()
 {
 include_weapon( &quot;zombie_colt&quot; );
 include_weapon( &quot;zombie_colt_upgraded&quot;, false );
@@ -202,9 +399,24 @@ include_weapon( &quot;panzerschrek_zombie&quot; );
 // Special
 include_weapon( &quot;ray_gun&quot;);
 
-}</pre>
-</div></div><p> </p><p><strong>1.4 Tools:</strong> In _zombiemode_weapons.gsc, highlight the entire init_weapons() function and replace it with this:</p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">init_weapons()
+}</pre
+    >
+  </div>
+</div>
+<p> </p>
+<p>
+  <strong>1.4 Tools:</strong> In _zombiemode_weapons.gsc, highlight the entire
+  init_weapons() function and replace it with this:
+</p>
+<p> </p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+init_weapons()
 {
 // Zombify
 PrecacheItem( &quot;zombie_melee&quot; );
@@ -355,9 +567,24 @@ Precachemodel(&quot;zombie_teddybear&quot;);
 // ONLY 1 OF THE BELOW SHOULD BE ALLOWED
 //add_limited_weapon( &quot;m2_flamethrower_zombie&quot;, 1 );
 add_limited_weapon( &quot;tesla_gun&quot;, 1);
-}</pre>
-</div></div><p> </p><p><strong>1.1 Tools:</strong> Replace the init_weapons() function in _zombiemode_weapons.gsc with this:</p><p> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">init_weapons()
+}</pre
+    >
+  </div>
+</div>
+<p> </p>
+<p>
+  <strong>1.1 Tools:</strong> Replace the init_weapons() function in
+  _zombiemode_weapons.gsc with this:
+</p>
+<p> </p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+init_weapons()
 {
 // Zombify
 PrecacheItem( &quot;zombie_melee&quot; );
@@ -497,9 +724,30 @@ if(level.script != &quot;nazi_zombie_prototype&quot;)
 {
 Precachemodel(&quot;zombie_teddybear&quot;);
 }
-}</pre>
-</div></div><p> </p><h2 id="Trader-CSV">CSV</h2><p>In order for the menu to work, it must be included in your CSV.</p><p><strong>1.4 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname_patch.csv and open it with Notepad.</p><p><strong>1.1 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.</p><p>Add these lines:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">menufile,ui/scriptmenus/ugx_upgrader.menu
+}</pre
+    >
+  </div>
+</div>
+<p> </p>
+<h2 id="Trader-CSV">CSV</h2>
+<p>In order for the menu to work, it must be included in your CSV.</p>
+<p>
+  <strong>1.4 Map:</strong> Navigate to
+  root/zone_source/nazi_zombie_mapname_patch.csv and open it with Notepad.
+</p>
+<p>
+  <strong>1.1 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname.csv
+  and open it with Notepad.
+</p>
+<p>Add these lines:</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+menufile,ui/scriptmenus/ugx_upgrader.menu
 xanim,viewmodel_trenchgun_grip_idle
 xanim,viewmodel_trenchgun_grip_ads_down
 xanim,viewmodel_trenchgun_grip_ads_idle
@@ -544,12 +792,44 @@ material,mtl_usa_bayonet
 material,mtl_weapon_aperture_and_acog
 material,mtl_weapon_mp_apature_glass
 material,mtl_weapon_mp_apature_crosshair
-</pre>
-</div></div><h2 id="Trader-IWD">IWD</h2><p>Open Launcher and go to the Mods tab. Select your map from the list. Scroll down in the box on the left until you see ugx_upgrader_ammo.gsc. Check the box next to it.<br> Add:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">material,trader_bg
-</pre>
-</div></div><p>to the Mod FF box.</p><h1 id="Trader-FinishingUp">Finishing Up</h1><p>Once you have completed the above steps, compile your map, patch(1.4 only), and mod.</p><h1 id="Trader-Source">Source</h1><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+</pre
+    >
+  </div>
+</div>
+<h2 id="Trader-IWD">IWD</h2>
+<p>
+  Open Launcher and go to the Mods tab. Select your map from the list. Scroll
+  down in the box on the left until you see ugx_upgrader_ammo.gsc. Check the box
+  next to it.<br />
+  Add:
+</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+material,trader_bg
+</pre
+    >
+  </div>
+</div>
+<p>to the Mod FF box.</p>
+<h1 id="Trader-FinishingUp">Finishing Up</h1>
+<p>
+  Once you have completed the above steps, compile your map, patch(1.4 only),
+  and mod.
+</p>
+<h1 id="Trader-Source">Source</h1>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeContent panelContent pdl">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+      data-theme="RDark"
+    >
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name   : ugx_upgrader_ammo.gsc 
 //|||| Info     : handles weapon upgrades and ammo handouts in armoury for UGX Cabin
 //|||| Site     : www.ugx-mods.com
@@ -1363,6 +1643,9 @@ decide_ammo(weapon) // Usage: trigger decide_ammo(); - returns ammo amount based
 				ammo = 15;
 		}
 	return ammo; 
-}</pre>
-</div></div><p> </p><p>Credit: Treminaor</p>
-                    
+}</pre
+    >
+  </div>
+</div>
+<p> </p>
+<p>Credit: Treminaor</p>

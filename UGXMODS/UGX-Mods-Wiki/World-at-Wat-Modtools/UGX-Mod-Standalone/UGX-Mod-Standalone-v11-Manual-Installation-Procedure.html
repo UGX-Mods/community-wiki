@@ -1,59 +1,195 @@
 <!--
 title: UGX Mod Standalone v1.1 Manual Installation Procedure
-description: 
+description:
 published: true
 date: 2024-01-30T10:33:07.059Z
-tags: 
+tags:
 editor: ckeditor
 dateCreated: 2024-01-30T10:33:05.969Z
 -->
 
 <!-- conf id: 7635200 -->
 
-
-                    <p><em><strong><span style="color: rgb(255,0,0);">Please don't release any UGX Mod v1.1 maps yet until Requiem is released publicly and you have the OK from me. Until that happens you do not have permission!</span></strong></em></p><p>If you wish to install UGX Mod v1.1 manually, follow the instructions on this page. For automated installation, use the <a href="UGX-Mod-Standalone-v1.1-Installation-Guide_7635204.html">UGX Mod Standalone v1.1 Installation Guide</a></p><h2 id="UGXModStandalonev1.1ManualInstallationProcedure-One-timeinstallationprocedure:">One-time installation procedure:</h2><p>These steps only need to be completed once to prepare your root folder to compile UGX Mod maps.</p><ol><li>Navigate to your World at War root directory and backup the following items to a safe location of your preference:<br><ol><li>raw/ui folder</li><li>raw/ui_mp folder</li><li>zone_source/dlc3.csv file</li><li><p>zone_source/zombiemode.csv file</p><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body">If you ever want to uninstall UGX Mod, simply restore your backups of these files and recompile your map(s).</div></div></li></ol></li><li>Download the latest <a class="external-link" href="http://ugx-mods.com/downloads/manager/ugx_mod_standalone_v1.1.1.zip" rel="nofollow">UGX Mod v1.1 Release Package</a></li><li>Open the release package with your archive program of choice, such as WinRAR or 7-Zip.</li><li>Extract the contents to your World at War root directory. <strong>Choose &quot;Yes to all&quot; when asked if you want to overwrite existing files and folders! No critical files are overwritten except your ui/ui_mp folders which you already backed up.</strong></li></ol><h2 id="UGXModStandalonev1.1ManualInstallationProcedure-CreatingaUGXMod-enabledmap:">Creating a UGX Mod-enabled map:</h2><p>These steps will need to be repeated for every map you want to compile with UGX Mod. Please note that is reccomended you use the script placer functionality built into the UGX Mod Helper application to generate your map scripts instead of doing this process manually.</p><ol><li>Generate your map scripts using whatever script placer you want to use. <strong>Make sure that you don't have any unnecessary files in your map's mod folder such as a DLC3_Weapons.iwd or a _loadout.gsc. These files will break UGX Mod.</strong></li><li>Make a copy of raw/ui/mapname.ui. Rename the copy to the name of your map. Example: nazi_zombie_testmap.menu</li><li>Open your renamed copy of mapname.ui with a text editor such as Notepad++ or similar:<ol><li>Under &quot;UGX_USER_MAPNAME&quot;, change the mapname within the quotations to match your map's name. Example: nazi_zombie_testmap</li><li>Under &quot;UGX_USER_MAPNAME_STRING&quot;, change the &quot;UGX Mod v1.1 Map&quot; text to whatever you want to be displayed in the lower left corner of the screen when your map is launched. Example: &quot;Welcome to Nazi Zombie Testmap by Example Mapper&quot;. If you don't want anything to be displayed, leave the area in the quotations blank: &quot; &quot;</li><li>Under &quot;UGX_ENABLE_CONSOLE&quot;, choose whether you want users to be able to open the console in your map. Set to 1 if yes, 0 if no.</li></ol></li><li>Open Launcher, go to the Mod Builder tab, and choose your map from the dropdown list.</li><li>Ensure that build FF and build IWD are checked. Click inside the &quot;Fastfile mod.csv&quot; add following text into the box (<strong>Replace &quot;mapname.menu&quot; with the name of your map's menu file. Example: &quot;nazi_zombie_testmap.menu&quot;</strong>):<br><pre>// UGX Mod v1.1</pre><pre>include,ugx_mod_assets</pre><pre>menufile,ui/mapname.menu</pre><pre>// End UGX Mod v1.1</pre><p> </p></li><li>Finally, compile the mod.ff for your map to save these changes. If you haven't already, you also need to compile your map, map_patch, and build your map's IWD before it will run. The CoD Project Mover is not needed for UGX Mod v1.1. You are now done.</li></ol><h2 id="UGXModStandalonev1.1ManualInstallationProcedure-Relatedarticles">Related articles</h2><p></p><p>
-
-
-
-
-
-
-
-
-
-
+<p>
+  <em
+    ><strong
+      ><span style="color: rgb(255, 0, 0)"
+        >Please don't release any UGX Mod v1.1 maps yet until Requiem is
+        released publicly and you have the OK from me. Until that happens you do
+        not have permission!</span
+      ></strong
+    ></em
+  >
+</p>
+<p>
+  If you wish to install UGX Mod v1.1 manually, follow the instructions on this
+  page. For automated installation, use the
+  <a href="UGX-Mod-Standalone-v1.1-Installation-Guide_7635204.html"
+    >UGX Mod Standalone v1.1 Installation Guide</a
+  >
+</p>
+<h2
+  id="UGXModStandalonev1.1ManualInstallationProcedure-One-timeinstallationprocedure:"
+>
+  One-time installation procedure:
+</h2>
+<p>
+  These steps only need to be completed once to prepare your root folder to
+  compile UGX Mod maps.
+</p>
+<ol>
+  <li>
+    Navigate to your World at War root directory and backup the following items
+    to a safe location of your preference:<br />
+    <ol>
+      <li>raw/ui folder</li>
+      <li>raw/ui_mp folder</li>
+      <li>zone_source/dlc3.csv file</li>
+      <li>
+        <p>zone_source/zombiemode.csv file</p>
+        <div
+          class="confluence-information-macro confluence-information-macro-information"
+        >
+          <span
+            class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"
+          ></span>
+          <div class="confluence-information-macro-body">
+            If you ever want to uninstall UGX Mod, simply restore your backups
+            of these files and recompile your map(s).
+          </div>
+        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    Download the latest
+    <a
+      class="external-link"
+      href="http://ugx-mods.com/downloads/manager/ugx_mod_standalone_v1.1.1.zip"
+      rel="nofollow"
+      >UGX Mod v1.1 Release Package</a
+    >
+  </li>
+  <li>
+    Open the release package with your archive program of choice, such as WinRAR
+    or 7-Zip.
+  </li>
+  <li>
+    Extract the contents to your World at War root directory.
+    <strong
+      >Choose &quot;Yes to all&quot; when asked if you want to overwrite
+      existing files and folders! No critical files are overwritten except your
+      ui/ui_mp folders which you already backed up.</strong
+    >
+  </li>
+</ol>
+<h2
+  id="UGXModStandalonev1.1ManualInstallationProcedure-CreatingaUGXMod-enabledmap:"
+>
+  Creating a UGX Mod-enabled map:
+</h2>
+<p>
+  These steps will need to be repeated for every map you want to compile with
+  UGX Mod. Please note that is reccomended you use the script placer
+  functionality built into the UGX Mod Helper application to generate your map
+  scripts instead of doing this process manually.
+</p>
+<ol>
+  <li>
+    Generate your map scripts using whatever script placer you want to use.
+    <strong
+      >Make sure that you don't have any unnecessary files in your map's mod
+      folder such as a DLC3_Weapons.iwd or a _loadout.gsc. These files will
+      break UGX Mod.</strong
+    >
+  </li>
+  <li>
+    Make a copy of raw/ui/mapname.ui. Rename the copy to the name of your map.
+    Example: nazi_zombie_testmap.menu
+  </li>
+  <li>
+    Open your renamed copy of mapname.ui with a text editor such as Notepad++ or
+    similar:
+    <ol>
+      <li>
+        Under &quot;UGX_USER_MAPNAME&quot;, change the mapname within the
+        quotations to match your map's name. Example: nazi_zombie_testmap
+      </li>
+      <li>
+        Under &quot;UGX_USER_MAPNAME_STRING&quot;, change the &quot;UGX Mod v1.1
+        Map&quot; text to whatever you want to be displayed in the lower left
+        corner of the screen when your map is launched. Example: &quot;Welcome
+        to Nazi Zombie Testmap by Example Mapper&quot;. If you don't want
+        anything to be displayed, leave the area in the quotations blank: &quot;
+        &quot;
+      </li>
+      <li>
+        Under &quot;UGX_ENABLE_CONSOLE&quot;, choose whether you want users to
+        be able to open the console in your map. Set to 1 if yes, 0 if no.
+      </li>
+    </ol>
+  </li>
+  <li>
+    Open Launcher, go to the Mod Builder tab, and choose your map from the
+    dropdown list.
+  </li>
+  <li>
+    Ensure that build FF and build IWD are checked. Click inside the
+    &quot;Fastfile mod.csv&quot; add following text into the box (<strong
+      >Replace &quot;mapname.menu&quot; with the name of your map's menu file.
+      Example: &quot;nazi_zombie_testmap.menu&quot;</strong
+    >):<br />
+    <pre>// UGX Mod v1.1</pre>
+    <pre>include,ugx_mod_assets</pre>
+    <pre>menufile,ui/mapname.menu</pre>
+    <pre>// End UGX Mod v1.1</pre>
+    <p> </p>
+  </li>
+  <li>
+    Finally, compile the mod.ff for your map to save these changes. If you
+    haven't already, you also need to compile your map, map_patch, and build
+    your map's IWD before it will run. The CoD Project Mover is not needed for
+    UGX Mod v1.1. You are now done.
+  </li>
+</ol>
+<h2 id="UGXModStandalonev1.1ManualInstallationProcedure-Relatedarticles">
+  Related articles
+</h2>
+<p></p>
 
 <ul class="content-by-label">
-        <li>
-        <div>
-                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+  <li>
+    <div>
+      <span class="icon aui-icon content-type-page" title="Page">Page:</span>
+    </div>
 
-        <div class="details">
-                        <a href="/display/UGXMODS/UGX+Mod+Standalone+v1.1+Manual+Installation+Procedure">UGX Mod Standalone v1.1 Manual Installation Procedure</a>
-                
-                        
-                    </div>
-    </li>
-        <li>
-        <div>
-                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+    <div class="details">
+      <a
+        href="/display/UGXMODS/UGX+Mod+Standalone+v1.1+Manual+Installation+Procedure"
+        >UGX Mod Standalone v1.1 Manual Installation Procedure</a
+      >
+    </div>
+  </li>
+  <li>
+    <div>
+      <span class="icon aui-icon content-type-page" title="Page">Page:</span>
+    </div>
 
-        <div class="details">
-                        <a href="/display/UGXMODS/UGX+Mod+Standalone+v1.1+Installation+Guide">UGX Mod Standalone v1.1 Installation Guide</a>
-                
-                        
-                    </div>
-    </li>
-        <li>
-        <div>
-                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+    <div class="details">
+      <a href="/display/UGXMODS/UGX+Mod+Standalone+v1.1+Installation+Guide"
+        >UGX Mod Standalone v1.1 Installation Guide</a
+      >
+    </div>
+  </li>
+  <li>
+    <div>
+      <span class="icon aui-icon content-type-page" title="Page">Page:</span>
+    </div>
 
-        <div class="details">
-                        <a href="/display/UGXMODS/UGX+Mod+Standalone+v1.0.3+Manual+Installation">UGX Mod Standalone v1.0.3 Manual Installation</a>
-                
-                        
-                    </div>
-    </li>
-    </ul>
-</p>
-                    
+    <div class="details">
+      <a href="/display/UGXMODS/UGX+Mod+Standalone+v1.0.3+Manual+Installation"
+        >UGX Mod Standalone v1.0.3 Manual Installation</a
+      >
+    </div>
+  </li>
+</ul>

@@ -10,16 +10,320 @@ dateCreated: 2024-01-30T10:29:15.883Z
 
 <!-- conf id: 12845109 -->
 
-
-                    <p>The UGX Launcher can be started with launch parameters (command line parameters) to influence the UGX Launcher.</p><p> </p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col><col><col><col></colgroup><tbody><tr><th class="confluenceTh"> Short</th><th class="confluenceTh">Long</th><th class="confluenceTh">Description</th><th class="confluenceTh">Note</th></tr><tr><td class="confluenceTd"><pre>-d</pre></td><td class="confluenceTd"><pre>-debug</pre></td><td class="confluenceTd"><p>Enable Debug Mode (<a href="12845119.html">Logger &amp; Debugger</a>)</p></td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><pre><span>-log</span></pre></td><td class="confluenceTd"><pre><span>-logfile</span></pre></td><td class="confluenceTd"><p><span>Enable logging to logfile </span></p></td><td class="confluenceTd">Force Enabled during Beta Phase</td></tr><tr><td colspan="1" class="confluenceTd"><pre>-logcat</pre></td><td colspan="1" class="confluenceTd"><pre>-logcategories</pre></td><td colspan="1" class="confluenceTd">Allow logging for categories to be enabled or disabled in a flexible way</td><td colspan="1" class="confluenceTd"><p>For more information read the official Qt5 documentation: <a class="external-link" href="http://doc.qt.io/qt-5/qloggingcategory.html#logging-rules" rel="nofollow">http://doc.qt.io/qt-5/qloggingcategory.html#logging-rules</a></p><p>Read below about all available log categories.</p></td></tr><tr><td class="confluenceTd"><pre>-off</pre></td><td class="confluenceTd"><pre>-offline</pre></td><td class="confluenceTd"><p>Force offline mode (not implemented yet)</p></td><td class="confluenceTd"><p>Not supported yet!</p></td></tr><tr><td colspan="1" class="confluenceTd"><pre>-des</pre></td><td colspan="1" class="confluenceTd"><pre>-designer</pre></td><td colspan="1" class="confluenceTd">Designer Mode, so styling will be easier</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><pre>-map</pre></td><td colspan="1" class="confluenceTd"><pre>-launch</pre></td><td colspan="1" class="confluenceTd"><p>Launch map</p></td><td colspan="1" class="confluenceTd"><p>Not implemented yet!</p></td></tr><tr><td colspan="1" class="confluenceTd"><pre>-type</pre></td><td colspan="1" class="confluenceTd"><pre>-launch_type</pre></td><td colspan="1" class="confluenceTd"><p>COOP or SP</p></td><td colspan="1" class="confluenceTd"><p><span>Not implemented yet!</span></p></td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"><pre>-nodonor</pre></td><td colspan="1" class="confluenceTd">Disable any donors specific benefits (will turn a donor account into non donor)</td><td colspan="1" class="confluenceTd">Note that certain donor permissions are untouched (like beta access)</td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"><pre>-reset</pre></td><td colspan="1" class="confluenceTd">Reset UGXL to default. (Settings and group order)</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"><pre>-clearcache</pre></td><td colspan="1" class="confluenceTd">Will clear any cached files. (including webcache)</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"> </td><td colspan="1" class="confluenceTd"><pre>-profile &lt;name&gt;</pre></td><td colspan="1" class="confluenceTd">Set the profile to &lt;profile&gt;</td><td colspan="1" class="confluenceTd">Depending on the name, a new config file will be created. Default is settings.default.ini</td></tr></tbody></table></div><p> </p><h2 id="LaunchParameters-Debugging">Debugging</h2><p>After enabling the Debug Mode (-d | -debug) you will get access to the <a href="12845119.html">Logger &amp; Debugger</a>.</p><h2 id="LaunchParameters-Logging">Logging</h2><div class="confluence-information-macro confluence-information-macro-information"><p class="title conf-macro-render">Logging is forced in Beta</p><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>While in Beta, the logfile is forced to help development.</p></div></div><h3 id="LaunchParameters-LogFile">Log File</h3><p>After enabling logfile support (-log | -logfile) any availabke log messages will be written to the logfile.</p><p>There can be up to 5 logfiles stored in the log folder, located at</p><div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
-<pre>&lt;ugxl_root&gt;/logs
+<p>
+  The UGX Launcher can be started with launch parameters (command line
+  parameters) to influence the UGX Launcher.
+</p>
+<p> </p>
+<div class="table-wrap">
+  <table class="wrapped confluenceTable">
+    <colgroup>
+      <col />
+      <col />
+      <col />
+      <col />
+    </colgroup>
+    <tbody>
+      <tr>
+        <th class="confluenceTh"> Short</th>
+        <th class="confluenceTh">Long</th>
+        <th class="confluenceTh">Description</th>
+        <th class="confluenceTh">Note</th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><pre>-d</pre></td>
+        <td class="confluenceTd"><pre>-debug</pre></td>
+        <td class="confluenceTd">
+          <p>
+            Enable Debug Mode (<a href="12845119.html">Logger &amp; Debugger</a
+            >)
+          </p>
+        </td>
+        <td class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td class="confluenceTd">
+          <pre><span>-log</span></pre>
+        </td>
+        <td class="confluenceTd">
+          <pre><span>-logfile</span></pre>
+        </td>
+        <td class="confluenceTd">
+          <p><span>Enable logging to logfile </span></p>
+        </td>
+        <td class="confluenceTd">Force Enabled during Beta Phase</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>-logcat</pre></td>
+        <td colspan="1" class="confluenceTd"><pre>-logcategories</pre></td>
+        <td colspan="1" class="confluenceTd">
+          Allow logging for categories to be enabled or disabled in a flexible
+          way
+        </td>
+        <td colspan="1" class="confluenceTd">
+          <p>
+            For more information read the official Qt5 documentation:
+            <a
+              class="external-link"
+              href="http://doc.qt.io/qt-5/qloggingcategory.html#logging-rules"
+              rel="nofollow"
+              >http://doc.qt.io/qt-5/qloggingcategory.html#logging-rules</a
+            >
+          </p>
+          <p>Read below about all available log categories.</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><pre>-off</pre></td>
+        <td class="confluenceTd"><pre>-offline</pre></td>
+        <td class="confluenceTd">
+          <p>Force offline mode (not implemented yet)</p>
+        </td>
+        <td class="confluenceTd"><p>Not supported yet!</p></td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>-des</pre></td>
+        <td colspan="1" class="confluenceTd"><pre>-designer</pre></td>
+        <td colspan="1" class="confluenceTd">
+          Designer Mode, so styling will be easier
+        </td>
+        <td colspan="1" class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>-map</pre></td>
+        <td colspan="1" class="confluenceTd"><pre>-launch</pre></td>
+        <td colspan="1" class="confluenceTd"><p>Launch map</p></td>
+        <td colspan="1" class="confluenceTd"><p>Not implemented yet!</p></td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>-type</pre></td>
+        <td colspan="1" class="confluenceTd"><pre>-launch_type</pre></td>
+        <td colspan="1" class="confluenceTd"><p>COOP or SP</p></td>
+        <td colspan="1" class="confluenceTd">
+          <p><span>Not implemented yet!</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"><pre>-nodonor</pre></td>
+        <td colspan="1" class="confluenceTd">
+          Disable any donors specific benefits (will turn a donor account into
+          non donor)
+        </td>
+        <td colspan="1" class="confluenceTd">
+          Note that certain donor permissions are untouched (like beta access)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"><pre>-reset</pre></td>
+        <td colspan="1" class="confluenceTd">
+          Reset UGXL to default. (Settings and group order)
+        </td>
+        <td colspan="1" class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"><pre>-clearcache</pre></td>
+        <td colspan="1" class="confluenceTd">
+          Will clear any cached files. (including webcache)
+        </td>
+        <td colspan="1" class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd"> </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"> </td>
+        <td colspan="1" class="confluenceTd">
+          <pre>-profile &lt;name&gt;</pre>
+        </td>
+        <td colspan="1" class="confluenceTd">
+          Set the profile to &lt;profile&gt;
+        </td>
+        <td colspan="1" class="confluenceTd">
+          Depending on the name, a new config file will be created. Default is
+          settings.default.ini
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p> </p>
+<h2 id="LaunchParameters-Debugging">Debugging</h2>
+<p>
+  After enabling the Debug Mode (-d | -debug) you will get access to the <a
+    href="12845119.html"
+    >Logger &amp; Debugger</a
+  >.
+</p>
+<h2 id="LaunchParameters-Logging">Logging</h2>
+<div
+  class="confluence-information-macro confluence-information-macro-information"
+>
+  <p class="title conf-macro-render">Logging is forced in Beta</p>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"
+  ></span>
+  <div class="confluence-information-macro-body">
+    <p>While in Beta, the logfile is forced to help development.</p>
+  </div>
+</div>
+<h3 id="LaunchParameters-LogFile">Log File</h3>
+<p>
+  After enabling logfile support (-log | -logfile) any availabke log messages
+  will be written to the logfile.
+</p>
+<p>There can be up to 5 logfiles stored in the log folder, located at</p>
+<div class="preformatted panel" style="border-width: 1px">
+  <div class="preformattedContent panelContent">
+    <pre>
+&lt;ugxl_root&gt;/logs
 
 &lt;ugxl_root&gt;/logs/ugxl.log | main logfile of current / latest application run
-&lt;ugxl_root&gt;/logs/ugxl.*.log | where * = 1 up to 3, each time the application runs it will be incremented up, on 4 it will be deleted</pre>
-</div></div><p> </p><h3 id="LaunchParameters-LogCategories">Log Categories</h3><p><strong>Possible Types</strong>: <code>debug</code>, <code>info</code>, <code>warning</code>, or <code>critical</code></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col><col></colgroup><tbody><tr><th class="confluenceTh">Category</th><th class="confluenceTh">Information</th></tr><tr><td class="confluenceTd"><pre>default</pre></td><td class="confluenceTd">Default log</td></tr><tr><td class="confluenceTd"><pre>socket.io</pre></td><td class="confluenceTd">Socket.io logging</td></tr><tr><td colspan="1" class="confluenceTd"><pre>awe.js</pre></td><td colspan="1" class="confluenceTd">Awesomium Javascript</td></tr><tr><td colspan="1" class="confluenceTd"><pre>awe</pre></td><td colspan="1" class="confluenceTd">Awesomium</td></tr><tr><td colspan="1" class="confluenceTd"><pre>mod.ent</pre></td><td colspan="1" class="confluenceTd">Mod Entity (represents a mod, like UGX Requiem)</td></tr><tr><td colspan="1" class="confluenceTd"><pre>mod.dl</pre></td><td colspan="1" class="confluenceTd">Mod Download</td></tr><tr><td colspan="1" class="confluenceTd"><pre>mod.man</pre></td><td colspan="1" class="confluenceTd">Mod Manager</td></tr><tr><td colspan="1" class="confluenceTd"><pre>man.set</pre></td><td colspan="1" class="confluenceTd">Settings Manager</td></tr><tr><td colspan="1" class="confluenceTd"><pre>man.not</pre></td><td colspan="1" class="confluenceTd">Notification Manager</td></tr><tr><td colspan="1" class="confluenceTd"><pre>man.game</pre></td><td colspan="1" class="confluenceTd">Game Manager</td></tr><tr><td colspan="1" class="confluenceTd"><pre>man.wmi</pre></td><td colspan="1" class="confluenceTd">WMI Manager</td></tr><tr><td colspan="1" class="confluenceTd"><pre>man.fitler</pre></td><td colspan="1" class="confluenceTd">Filter Manager</td></tr><tr><td colspan="1" class="confluenceTd"><pre>man.acc</pre></td><td colspan="1" class="confluenceTd">Account Manager</td></tr><tr><td colspan="1" class="confluenceTd"><pre>addon.t4m</pre></td><td colspan="1" class="confluenceTd">T4M</td></tr><tr><td colspan="1" class="confluenceTd"><pre>webreq</pre></td><td colspan="1" class="confluenceTd">Web Request</td></tr><tr><td colspan="1" class="confluenceTd"><pre>login</pre></td><td colspan="1" class="confluenceTd">Login (UI)</td></tr><tr><td colspan="1" class="confluenceTd"><pre>mod.list</pre></td><td colspan="1" class="confluenceTd">Mod List (UI)</td></tr><tr><td colspan="1" class="confluenceTd"><pre>mod.view</pre></td><td colspan="1" class="confluenceTd">Mod View (UI)</td></tr><tr><td colspan="1" class="confluenceTd"><pre>settings</pre></td><td colspan="1" class="confluenceTd">Settings (UI)</td></tr><tr><td colspan="1" class="confluenceTd"><pre>uninstall</pre></td><td colspan="1" class="confluenceTd">Uninstall (UI)</td></tr><tr><td colspan="1" class="confluenceTd"><pre>dloadman</pre></td><td colspan="1" class="confluenceTd">Download Manager (UI)</td></tr></tbody></table></div><p>To enable / disable certain categories, use the following format:</p><p>Each entry needs to be in a new line, so two or more entries need to be seperated by \n (new line)</p><div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
-<pre>-logcat &quot;default.debug=false&quot; | Hide all default debug massages
+&lt;ugxl_root&gt;/logs/ugxl.*.log | where * = 1 up to 3, each time the application runs it will be incremented up, on 4 it will be deleted</pre
+    >
+  </div>
+</div>
+<p> </p>
+<h3 id="LaunchParameters-LogCategories">Log Categories</h3>
+<p>
+  <strong>Possible Types</strong>: <code>debug</code>, <code>info</code>,
+  <code>warning</code>, or <code>critical</code>
+</p>
+<div class="table-wrap">
+  <table class="wrapped confluenceTable">
+    <colgroup>
+      <col />
+      <col />
+    </colgroup>
+    <tbody>
+      <tr>
+        <th class="confluenceTh">Category</th>
+        <th class="confluenceTh">Information</th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><pre>default</pre></td>
+        <td class="confluenceTd">Default log</td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><pre>socket.io</pre></td>
+        <td class="confluenceTd">Socket.io logging</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>awe.js</pre></td>
+        <td colspan="1" class="confluenceTd">Awesomium Javascript</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>awe</pre></td>
+        <td colspan="1" class="confluenceTd">Awesomium</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>mod.ent</pre></td>
+        <td colspan="1" class="confluenceTd">
+          Mod Entity (represents a mod, like UGX Requiem)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>mod.dl</pre></td>
+        <td colspan="1" class="confluenceTd">Mod Download</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>mod.man</pre></td>
+        <td colspan="1" class="confluenceTd">Mod Manager</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>man.set</pre></td>
+        <td colspan="1" class="confluenceTd">Settings Manager</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>man.not</pre></td>
+        <td colspan="1" class="confluenceTd">Notification Manager</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>man.game</pre></td>
+        <td colspan="1" class="confluenceTd">Game Manager</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>man.wmi</pre></td>
+        <td colspan="1" class="confluenceTd">WMI Manager</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>man.fitler</pre></td>
+        <td colspan="1" class="confluenceTd">Filter Manager</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>man.acc</pre></td>
+        <td colspan="1" class="confluenceTd">Account Manager</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>addon.t4m</pre></td>
+        <td colspan="1" class="confluenceTd">T4M</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>webreq</pre></td>
+        <td colspan="1" class="confluenceTd">Web Request</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>login</pre></td>
+        <td colspan="1" class="confluenceTd">Login (UI)</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>mod.list</pre></td>
+        <td colspan="1" class="confluenceTd">Mod List (UI)</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>mod.view</pre></td>
+        <td colspan="1" class="confluenceTd">Mod View (UI)</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>settings</pre></td>
+        <td colspan="1" class="confluenceTd">Settings (UI)</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>uninstall</pre></td>
+        <td colspan="1" class="confluenceTd">Uninstall (UI)</td>
+      </tr>
+      <tr>
+        <td colspan="1" class="confluenceTd"><pre>dloadman</pre></td>
+        <td colspan="1" class="confluenceTd">Download Manager (UI)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>To enable / disable certain categories, use the following format:</p>
+<p>
+  Each entry needs to be in a new line, so two or more entries need to be
+  seperated by \n (new line)
+</p>
+<div class="preformatted panel" style="border-width: 1px">
+  <div class="preformattedContent panelContent">
+    <pre>
+-logcat &quot;default.debug=false&quot; | Hide all default debug massages
 -logcat &quot;default.*=false&quot; | Hide all default messages
 -logcat &quot;default.*=false\ndefault.critical=true&quot; | Hide all default messages and enable critical messages again
--logcat &quot;*.*=false\nsettings.debug=true&quot; | Disable all messages and enable debug settings messages agai</pre>
-</div></div>
-                    
+-logcat &quot;*.*=false\nsettings.debug=true&quot; | Disable all messages and enable debug settings messages agai</pre
+    >
+  </div>
+</div>

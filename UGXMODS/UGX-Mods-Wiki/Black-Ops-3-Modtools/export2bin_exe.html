@@ -10,44 +10,284 @@ dateCreated: 2024-01-30T10:31:09.552Z
 
 <!-- conf id: 15237688 -->
 
-
-                    <div class="contentLayout2">
-<div class="columnLayout two-right-sidebar" data-layout="two-right-sidebar">
-<div class="cell normal" data-type="normal">
-<div class="innerCell">
-<p>export2bin.exe is a utility included in the modtools which Treyarch gave us to convert XMODEL_EXPORT and .XANIM_EXPORT into a new format used in BO3 called XMODEL/XANIM_BIN.</p><h2 id="BO3|export2bin.exe-InitialSetup">Initial Setup</h2><p>You will want to add export2bin.exe to your Windows Environment Path so that you can use the command from any directory on your computer effortlessly.</p><p>Open your Start Menu and type &quot;environment&quot;. A suggested option should be called &quot;Edit the system environment variables&quot; - click that.</p><p>From the &quot;System Properties&quot; window that comes up, choose the Environment Variables button.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/15237688/15237692.png" data-image-src="attachments/15237688/15237692.png" data-unresolved-comment-count="0" data-linked-resource-id="15237692" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="SystemPropertiesAdvanced_2016-08-16_16-08-30.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="15237688" data-linked-resource-container-version="6" alt=""></span></p><p><br>Next, under the System variables section scroll down until you see a row named &quot;Path&quot;. Select it and then click Edit.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/15237688/15237693.png" data-image-src="attachments/15237688/15237693.png" data-unresolved-comment-count="0" data-linked-resource-id="15237693" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="SystemPropertiesAdvanced_2016-08-16_16-09-30.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="15237688" data-linked-resource-container-version="6" alt=""></span></p><p>Click inside the &quot;Variable value&quot; text area and scroll to the end of it. Add a semicolon followed by the path to your BO3 Modtools bin directory. Example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark">;E:\Steam\SteamApps\common\Call of Duty Black Ops III\bin</pre>
-</div></div><p>Click OK on all open windows to save your changes.</p><h2 id="BO3|export2bin.exe-Usage">Usage</h2><p>export2bin.exe is a command line application, which means it is run from the windows command prompt (cmd). </p><h3 id="BO3|export2bin.exe-Option1">Option 1</h3><p>Simply navigate to your folder and type into the address bar &quot;cmd&quot;.</p><p>That will open the CMD console with the current path as working directory.</p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="http://i.imgur.com/hzYjxM6.gif" data-image-src="http://i.imgur.com/hzYjxM6.gif"></span></p><h3 id="BO3|export2bin.exe-Option2">Option 2</h3><p>Click your Start Menu and search for &quot;cmd&quot; in the searchbox, then open cmd.exe from the results list.</p><p>If you type export2.bin into the prompt and press Enter, you should see this output:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/15237688/15237694.png" data-image-src="attachments/15237688/15237694.png" data-unresolved-comment-count="0" data-linked-resource-id="15237694" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="cmd_2016-08-16_16-12-12.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="15237688" data-linked-resource-container-version="6" alt=""></span></p><p> </p><p>If you do not see that output, you did not set your environment variable correctly. Please follow the steps under Initial Setup carefully.</p><p>Now, change the working directory to the location of your XANIM / MODEL_EXPORT files you wish to convert using the &quot;cd&quot; command. Example:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/15237688/15237696.png" data-image-src="attachments/15237688/15237696.png" data-unresolved-comment-count="0" data-linked-resource-id="15237696" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="explorer_2016-08-16_16-14-17.png" data-base-url="https://confluence.ugx-mods.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="15237688" data-linked-resource-container-version="6" alt=""></span></p><div class="confluence-information-macro confluence-information-macro-note"><span class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Remember to change to the drive letter which contains your modtools first! Do this by just typing the drive letter followed by a colon. Example: &quot;E:&quot;. Then you can cd to the desired subdirectory on the drive.</p></div></div><p> </p><p>You are now ready to type the export commands.</p><h2 id="BO3|export2bin.exe-ExportCommands">Export Commands</h2><p>export2bin has some options which you can see when you type the program name with no arguments.</p><p>The main things you want to know are:</p><ul style="list-style-type: square;"><li>You can convert a single file by typing its filename as an argument.</li><li>You can convert multiple files using an * wildcard. For example if you have multiple files in the directory with the prefix of &quot;ugx_&quot;, you could use the command &quot;export2bin ugx_*&quot; to convert them all at once.<ul style="list-style-type: square;"><li>If you just use the wildcard command *, it will try to convert all files</li></ul></li><li>You can convert sub folders by using the /s parameter</li><li>You get verbose information by using the /v parameter</li></ul><p>Once you run the export command, you should see .XANIM / MODEL_BIN files in the same directory as the XANIM / MODEL_EXPORT files you started with. </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
-<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark" data-theme="RDark"># export all files, including subfolders
+<div class="contentLayout2">
+  <div class="columnLayout two-right-sidebar" data-layout="two-right-sidebar">
+    <div class="cell normal" data-type="normal">
+      <div class="innerCell">
+        <p>
+          export2bin.exe is a utility included in the modtools which Treyarch
+          gave us to convert XMODEL_EXPORT and .XANIM_EXPORT into a new format
+          used in BO3 called XMODEL/XANIM_BIN.
+        </p>
+        <h2 id="BO3|export2bin.exe-InitialSetup">Initial Setup</h2>
+        <p>
+          You will want to add export2bin.exe to your Windows Environment Path
+          so that you can use the command from any directory on your computer
+          effortlessly.
+        </p>
+        <p>
+          Open your Start Menu and type &quot;environment&quot;. A suggested
+          option should be called &quot;Edit the system environment
+          variables&quot; - click that.
+        </p>
+        <p>
+          From the &quot;System Properties&quot; window that comes up, choose
+          the Environment Variables button.
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="250"
+              src="attachments/15237688/15237692.png"
+              data-image-src="attachments/15237688/15237692.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="15237692"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="SystemPropertiesAdvanced_2016-08-16_16-08-30.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="15237688"
+              data-linked-resource-container-version="6"
+              alt=""
+          /></span>
+        </p>
+        <p>
+          <br />Next, under the System variables section scroll down until you
+          see a row named &quot;Path&quot;. Select it and then click Edit.
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="250"
+              src="attachments/15237688/15237693.png"
+              data-image-src="attachments/15237688/15237693.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="15237693"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="SystemPropertiesAdvanced_2016-08-16_16-09-30.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="15237688"
+              data-linked-resource-container-version="6"
+              alt=""
+          /></span>
+        </p>
+        <p>
+          Click inside the &quot;Variable value&quot; text area and scroll to
+          the end of it. Add a semicolon followed by the path to your BO3
+          Modtools bin directory. Example:
+        </p>
+        <div class="code panel pdl" style="border-width: 1px">
+          <div class="codeContent panelContent pdl">
+            <pre
+              class="syntaxhighlighter-pre"
+              data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+              data-theme="RDark"
+            >
+;E:\Steam\SteamApps\common\Call of Duty Black Ops III\bin</pre
+            >
+          </div>
+        </div>
+        <p>Click OK on all open windows to save your changes.</p>
+        <h2 id="BO3|export2bin.exe-Usage">Usage</h2>
+        <p>
+          export2bin.exe is a command line application, which means it is run
+          from the windows command prompt (cmd). 
+        </p>
+        <h3 id="BO3|export2bin.exe-Option1">Option 1</h3>
+        <p>
+          Simply navigate to your folder and type into the address bar
+          &quot;cmd&quot;.
+        </p>
+        <p>
+          That will open the CMD console with the current path as working
+          directory.
+        </p>
+        <p>
+          <span class="confluence-embedded-file-wrapper"
+            ><img
+              class="confluence-embedded-image confluence-external-resource"
+              draggable="false"
+              src="http://i.imgur.com/hzYjxM6.gif"
+              data-image-src="http://i.imgur.com/hzYjxM6.gif"
+          /></span>
+        </p>
+        <h3 id="BO3|export2bin.exe-Option2">Option 2</h3>
+        <p>
+          Click your Start Menu and search for &quot;cmd&quot; in the searchbox,
+          then open cmd.exe from the results list.
+        </p>
+        <p>
+          If you type export2.bin into the prompt and press Enter, you should
+          see this output:
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="250"
+              src="attachments/15237688/15237694.png"
+              data-image-src="attachments/15237688/15237694.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="15237694"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="cmd_2016-08-16_16-12-12.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="15237688"
+              data-linked-resource-container-version="6"
+              alt=""
+          /></span>
+        </p>
+        <p> </p>
+        <p>
+          If you do not see that output, you did not set your environment
+          variable correctly. Please follow the steps under Initial Setup
+          carefully.
+        </p>
+        <p>
+          Now, change the working directory to the location of your XANIM /
+          MODEL_EXPORT files you wish to convert using the &quot;cd&quot;
+          command. Example:
+        </p>
+        <p>
+          <span
+            class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
+            ><img
+              class="confluence-embedded-image"
+              draggable="false"
+              height="250"
+              src="attachments/15237688/15237696.png"
+              data-image-src="attachments/15237688/15237696.png"
+              data-unresolved-comment-count="0"
+              data-linked-resource-id="15237696"
+              data-linked-resource-version="1"
+              data-linked-resource-type="attachment"
+              data-linked-resource-default-alias="explorer_2016-08-16_16-14-17.png"
+              data-base-url="https://confluence.ugx-mods.com"
+              data-linked-resource-content-type="image/png"
+              data-linked-resource-container-id="15237688"
+              data-linked-resource-container-version="6"
+              alt=""
+          /></span>
+        </p>
+        <div
+          class="confluence-information-macro confluence-information-macro-note"
+        >
+          <span
+            class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon"
+          ></span>
+          <div class="confluence-information-macro-body">
+            <p>
+              Remember to change to the drive letter which contains your
+              modtools first! Do this by just typing the drive letter followed
+              by a colon. Example: &quot;E:&quot;. Then you can cd to the
+              desired subdirectory on the drive.
+            </p>
+          </div>
+        </div>
+        <p> </p>
+        <p>You are now ready to type the export commands.</p>
+        <h2 id="BO3|export2bin.exe-ExportCommands">Export Commands</h2>
+        <p>
+          export2bin has some options which you can see when you type the
+          program name with no arguments.
+        </p>
+        <p>The main things you want to know are:</p>
+        <ul style="list-style-type: square">
+          <li>
+            You can convert a single file by typing its filename as an argument.
+          </li>
+          <li>
+            You can convert multiple files using an * wildcard. For example if
+            you have multiple files in the directory with the prefix of
+            &quot;ugx_&quot;, you could use the command &quot;export2bin
+            ugx_*&quot; to convert them all at once.
+            <ul style="list-style-type: square">
+              <li>
+                If you just use the wildcard command *, it will try to convert
+                all files
+              </li>
+            </ul>
+          </li>
+          <li>You can convert sub folders by using the /s parameter</li>
+          <li>You get verbose information by using the /v parameter</li>
+        </ul>
+        <p>
+          Once you run the export command, you should see .XANIM / MODEL_BIN
+          files in the same directory as the XANIM / MODEL_EXPORT files you
+          started with. 
+        </p>
+        <div class="code panel pdl" style="border-width: 1px">
+          <div class="codeContent panelContent pdl">
+            <pre
+              class="syntaxhighlighter-pre"
+              data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
+              data-theme="RDark"
+            >
+# export all files, including subfolders
 export2bin /s *
 
 # export all files which are new only, including subfolders
 export2bin /s /u *
 
 # use 4 threads (faster processing)
-export2bin /nt=4 /s /u *</pre>
-</div></div><p> </p><p> </p></div>
-</div>
-<div class="cell aside" data-type="aside">
-<div class="innerCell">
-<p><style type='text/css'>/*<![CDATA[*/
-div.rbtoc1706609477727 {padding: 0px;}
-div.rbtoc1706609477727 ul {margin-left: 0px;}
-div.rbtoc1706609477727 li {margin-left: 0px;padding-left: 0px;}
+export2bin /nt=4 /s /u *</pre
+            >
+          </div>
+        </div>
+        <p> </p>
+        <p> </p>
+      </div>
+    </div>
+    <div class="cell aside" data-type="aside">
+      <div class="innerCell">
+        <p>
+          <style type="text/css">
+            /*<![CDATA[*/
+            div.rbtoc1706609477727 {
+              padding: 0px;
+            }
+            div.rbtoc1706609477727 ul {
+              margin-left: 0px;
+            }
+            div.rbtoc1706609477727 li {
+              margin-left: 0px;
+              padding-left: 0px;
+            }
 
-/*]]>*/</style></p><div class='toc-macro rbtoc1706609477727'>
-<ul class='toc-indentation'>
-<li><a href='#BO3|export2bin.exe-InitialSetup'>Initial Setup</a></li>
-<li><a href='#BO3|export2bin.exe-Usage'>Usage</a>
-<ul class='toc-indentation'>
-<li><a href='#BO3|export2bin.exe-Option1'>Option 1</a></li>
-<li><a href='#BO3|export2bin.exe-Option2'>Option 2</a></li>
-</ul>
-</li>
-<li><a href='#BO3|export2bin.exe-ExportCommands'>Export Commands</a></li>
-</ul>
-</div></div>
+            /*]]>*/
+          </style>
+        </p>
+        <div class="toc-macro rbtoc1706609477727">
+          <ul class="toc-indentation">
+            <li>
+              <a href="#BO3|export2bin.exe-InitialSetup">Initial Setup</a>
+            </li>
+            <li>
+              <a href="#BO3|export2bin.exe-Usage">Usage</a>
+              <ul class="toc-indentation">
+                <li><a href="#BO3|export2bin.exe-Option1">Option 1</a></li>
+                <li><a href="#BO3|export2bin.exe-Option2">Option 2</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#BO3|export2bin.exe-ExportCommands">Export Commands</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-                    

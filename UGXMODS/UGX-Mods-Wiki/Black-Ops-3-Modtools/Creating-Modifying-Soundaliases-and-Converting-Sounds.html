@@ -10,6 +10,95 @@ dateCreated: 2024-01-30T10:31:27.348Z
 
 <!-- conf id: 18939923 -->
 
-
-                    <div class="confluence-information-macro confluence-information-macro-warning"><span class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>This page is a work in progress.</p></div></div><p>Soundaliases are created for connecting sound to your map/mod. With soundalias, you can define how loud sound is, what range it's going to be played at, is it 2D/3D and so on.</p><p><strong>Converting soundfile</strong></p><p>First, make your soundfile .wav format so programs like Audacity can read it.</p><p>Drop soundfile in Audacity. Check that Hz is 48000:</p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" src="https://i.gyazo.com/a1b0b2724d3d11859347e759303ca260.png" data-image-src="https://i.gyazo.com/a1b0b2724d3d11859347e759303ca260.png"></span></p><p>Then select Export Audio at top left drop down menu. Make sure you select Other Packaged Files and Signed 16-bit PCM. Then just export it as .wav, your file should be ready for Black Ops 3.</p><p> </p><p><strong>Adding soundalias in your mod</strong></p><p>Now that you have sound ready, let's take a look how to include the sound.</p><p>There are few ways to include the sound, I will explain few of them.</p><p><u><span style="color: rgb(0,51,102);">Longer, more reliable way</span></u></p><p>Go to root / share / raw / sound / aliases /. In this folder, you will find user_aliases.csv. Copy this in same folder and name it to your maps/mods .ff file.</p><p><em>ZM Mod uses zm_mod.ff, so file should be named zm_mod.csv</em></p><p><em>MP Mod uses mp_mod.ff, so file should be named mp_mod.csv</em></p><p><em>Maps .ff is your mapname, so name file either zm_mapname.csv or mp_mapname.csv, depending on gamemode.</em></p><p><em><br></em></p><p>Now that you have the file done, let's quickly add it in zonefile.</p><p>Open Launcher, right click your map/mod and do Edit Zone File. Here, add in new line:</p><p>sound,csv_file_name without .csv at end. Now you have soundalias included in your mod.</p><p><u>Easiest way, but not the best option</u></p><p>If you fail the step before, then just edit user_aliases.csv, it will be automatically included in your map,</p><p>But beware, this soundalias gets overwritten with every update/verify integrity on cache, so keep backup of this file in case it gets overwritten</p><p> </p><p>For easier access to soundalias and modifying keys/values, we recommend installing UGX Alias Editor</p><p>Note though, it is meant for World at War and is in Beta. It doesn't show keys/values info in BO3 soundaliases, but it works fine for quick jobs.</p><p><a class="external-link" href="http://ugx-mods.com/forum/index.php/topic,1800.0.html" rel="nofollow">http://ugx-mods.com/forum/index.php/topic,1800.0.html</a></p>
-                    
+<div class="confluence-information-macro confluence-information-macro-warning">
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
+  ></span>
+  <div class="confluence-information-macro-body">
+    <p>This page is a work in progress.</p>
+  </div>
+</div>
+<p>
+  Soundaliases are created for connecting sound to your map/mod. With
+  soundalias, you can define how loud sound is, what range it's going to be
+  played at, is it 2D/3D and so on.
+</p>
+<p><strong>Converting soundfile</strong></p>
+<p>
+  First, make your soundfile .wav format so programs like Audacity can read it.
+</p>
+<p>Drop soundfile in Audacity. Check that Hz is 48000:</p>
+<p>
+  <span class="confluence-embedded-file-wrapper"
+    ><img
+      class="confluence-embedded-image confluence-external-resource"
+      draggable="false"
+      src="https://i.gyazo.com/a1b0b2724d3d11859347e759303ca260.png"
+      data-image-src="https://i.gyazo.com/a1b0b2724d3d11859347e759303ca260.png"
+  /></span>
+</p>
+<p>
+  Then select Export Audio at top left drop down menu. Make sure you select
+  Other Packaged Files and Signed 16-bit PCM. Then just export it as .wav, your
+  file should be ready for Black Ops 3.
+</p>
+<p> </p>
+<p><strong>Adding soundalias in your mod</strong></p>
+<p>
+  Now that you have sound ready, let's take a look how to include the sound.
+</p>
+<p>There are few ways to include the sound, I will explain few of them.</p>
+<p>
+  <u><span style="color: rgb(0, 51, 102)">Longer, more reliable way</span></u>
+</p>
+<p>
+  Go to root / share / raw / sound / aliases /. In this folder, you will
+  find user_aliases.csv. Copy this in same folder and name it to your maps/mods
+  .ff file.
+</p>
+<p><em>ZM Mod uses zm_mod.ff, so file should be named zm_mod.csv</em></p>
+<p><em>MP Mod uses mp_mod.ff, so file should be named mp_mod.csv</em></p>
+<p>
+  <em
+    >Maps .ff is your mapname, so name file either zm_mapname.csv or
+    mp_mapname.csv, depending on gamemode.</em
+  >
+</p>
+<p>
+  <em><br /></em>
+</p>
+<p>Now that you have the file done, let's quickly add it in zonefile.</p>
+<p>
+  Open Launcher, right click your map/mod and do Edit Zone File. Here, add in
+  new line:
+</p>
+<p>
+  sound,csv_file_name without .csv at end. Now you have soundalias included in
+  your mod.
+</p>
+<p><u>Easiest way, but not the best option</u></p>
+<p>
+  If you fail the step before, then just edit user_aliases.csv, it will be
+  automatically included in your map,
+</p>
+<p>
+  But beware, this soundalias gets overwritten with every update/verify
+  integrity on cache, so keep backup of this file in case it gets overwritten
+</p>
+<p> </p>
+<p>
+  For easier access to soundalias and modifying keys/values, we recommend
+  installing UGX Alias Editor
+</p>
+<p>
+  Note though, it is meant for World at War and is in Beta. It doesn't show
+  keys/values info in BO3 soundaliases, but it works fine for quick jobs.
+</p>
+<p>
+  <a
+    class="external-link"
+    href="http://ugx-mods.com/forum/index.php/topic,1800.0.html"
+    rel="nofollow"
+    >http://ugx-mods.com/forum/index.php/topic,1800.0.html</a
+  >
+</p>

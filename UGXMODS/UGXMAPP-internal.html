@@ -10,581 +10,1180 @@ dateCreated: 2024-01-30T10:30:34.280Z
 
 <!-- conf id: 11403295 -->
 
-
-                    <div class="contentLayout2">
-<div class="columnLayout single" data-layout="single">
-<div class="cell normal" data-type="normal">
-<div class="innerCell">
-<div class='plugin-tabmeta-details'><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Date</th><td class="confluenceTd">May 30, 2016</td></tr><tr><th class="confluenceTh">Issues</th><td class="confluenceTd"><span class="static-jira-issues_count" >
-            <a class="issue-link" href="https://jira.ugx-mods.com/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=project+%3D+UGXMAPP+AND+key+in+%28UGXMAPP-1%2C+UGXMAPP-2%2C+UGXMAPP-4%2C+UGXMAPP-6%2C+UGXMAPP-7%2C+UGXMAPP-8%2C+UGXMAPP-9%2C+UGXMAPP-10%2C+UGXMAPP-11%2C+UGXMAPP-17%29+&amp;src=confmacro">
-                            10 issues
-                    </a>
-        </span>
-</td></tr><tr><th colspan="1" class="confluenceTh">Status</th><td colspan="1" class="confluenceTd"><span class="status-macro aui-lozenge aui-lozenge-success aui-lozenge-subtle">RELEASED</span></td></tr><tr><th colspan="1" class="confluenceTh"><span>Revision</span></th><td colspan="1" class="confluenceTd"><span>2</span></td></tr><tr><th colspan="1" class="confluenceTh">Version</th><td colspan="1" class="confluenceTd">beta v0.2 internal (r2 / 30)</td></tr><tr><th colspan="1" class="confluenceTh">Version Mode</th><td colspan="1" class="confluenceTd">Developer</td></tr></tbody></table></div></div><h2 id="UGXMAPPinternal1-Summary">Summary</h2><p>I'm happy to announce that first UGX MapPacker internal release which is built with Qt.<br>This version is a preview how the UGXMAPP will work.</p><p>Because <a class="unresolved" href="#">UGXPLAY</a> is not ready yet, an extra developer mode was introduced, which creates SQL queries to easily add the map / mod to <a class="unresolved" href="#">UGX Play</a> (and therefore to <a href="https://confluence.ugx-mods.com/display/UGXL">UGX Launcher</a>)</p></div>
-</div>
-</div>
-<div class="columnLayout single" data-layout="single">
-<div class="cell normal" data-type="normal">
-<div class="innerCell">
-<h2 id="UGXMAPPinternal1-Importanthighlightsfromthisrelease">Important highlights from this release</h2><ol><li>First Qt Version</li><li>New design</li><li>SQL Developer Mode</li></ol><h2 id="UGXMAPPinternal1-Allupdatesforthisrelease">All updates for this release</h2><p>
-
-
-
-
-
-</p><div id="refresh-module-15596854" class="refresh-module-id jira-table" >
-<p>
-    
-        
-    
-        
-    </p><div id="jira-issues-15596854" style="width: 100%;  overflow: auto;"
-         class="jira-issues">
-        <table class="aui" >
-            <tbody>
-                <tr></tr>                 <tr>
-                                                                                                                                    <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="key">Key</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="summary">Summary</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="type">T</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="created">Created</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="updated">Updated</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="due">Due</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="assignee">Assignee</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="reporter">Reporter</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="priority">P</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="status">Status</span>
-                                </th>
-                                                                                                                                                                                        <th style="text-align: left;"
-                                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                                    <span class="jim-table-header-content" sort-column-key="resolution">Resolution</span>
-                                </th>
-                                                                                        </tr>
-                                                                                                                    <tr class="rowNormal">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-17?src=confmacro">UGXMAPP-17</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-17?src=confmacro">
-                                            Developer SQL Mode
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-17?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 25, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowAlternate">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-11?src=confmacro">UGXMAPP-11</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-11?src=confmacro">
-                                            Add SelfUpdater
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-11?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Apr 22, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowNormal">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-10?src=confmacro">UGXMAPP-10</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-10?src=confmacro">
-                                            Use file read improvements from UGXL
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-10?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
-                                                 alt="Improvement"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Apr 04, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/major.svg"
-                                             alt="Major"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Resolved
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowAlternate">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-9?src=confmacro">UGXMAPP-9</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-9?src=confmacro">
-                                            Implement 7z properly and backport it to other apps
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-9?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 27, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 27, 2016
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/critical.svg"
-                                             alt="Critical"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowNormal">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-8?src=confmacro">UGXMAPP-8</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-8?src=confmacro">
-                                            Welcome Screen
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-8?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 25, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowAlternate">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-7?src=confmacro">UGXMAPP-7</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-7?src=confmacro">
-                                            Duplicate / Availability online check
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-7?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 25, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowNormal">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-6?src=confmacro">UGXMAPP-6</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-6?src=confmacro">
-                                            Add proxy settings
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-6?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 23, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowAlternate">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-4?src=confmacro">UGXMAPP-4</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-4?src=confmacro">
-                                            Application Version Check
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-4?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 11, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowNormal">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-2?src=confmacro">UGXMAPP-2</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-2?src=confmacro">
-                                            Map packing logic
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-2?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 10, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                                                        <tr class="rowAlternate">
-                                                                                                                        <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-1?src=confmacro">UGXMAPP-1</a>
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-1?src=confmacro">
-                                            Wizard GUI
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <a href="https://jira.ugx-mods.com/browse/UGXMAPP-1?src=confmacro">
-                                            <img src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
-                                                 alt="Task"
-                                                 class="icon">
-                                        </a>
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            Feb 10, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            May 30, 2016
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Alexander Diller
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            <img src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
-                                             alt="Minor"
-                                             class="icon">
-                                                                    </td>
-                                                            <td nowrap="true"                                    class="jira-macro-table-underline-pdfexport" >
-                                                                            
-                                                                                    <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
-    ">
-                                                Closed
-                                            </span>
-                                                                                                            </td>
-                                                            <td class="jira-macro-table-underline-pdfexport" >
-                                                                            Done
-                                                                    </td>
-                                                    </tr>
-                                                                                                                    </tbody>
-        </table>
+<div class="contentLayout2">
+  <div class="columnLayout single" data-layout="single">
+    <div class="cell normal" data-type="normal">
+      <div class="innerCell">
+        <div class="plugin-tabmeta-details">
+          <div class="table-wrap">
+            <table class="confluenceTable">
+              <tbody>
+                <tr>
+                  <th class="confluenceTh">Date</th>
+                  <td class="confluenceTd">May 30, 2016</td>
+                </tr>
+                <tr>
+                  <th class="confluenceTh">Issues</th>
+                  <td class="confluenceTd">
+                    <span class="static-jira-issues_count">
+                      <a
+                        class="issue-link"
+                        href="https://jira.ugx-mods.com/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=project+%3D+UGXMAPP+AND+key+in+%28UGXMAPP-1%2C+UGXMAPP-2%2C+UGXMAPP-4%2C+UGXMAPP-6%2C+UGXMAPP-7%2C+UGXMAPP-8%2C+UGXMAPP-9%2C+UGXMAPP-10%2C+UGXMAPP-11%2C+UGXMAPP-17%29+&amp;src=confmacro"
+                      >
+                        10 issues
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="1" class="confluenceTh">Status</th>
+                  <td colspan="1" class="confluenceTd">
+                    <span
+                      class="status-macro aui-lozenge aui-lozenge-success aui-lozenge-subtle"
+                      >RELEASED</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="1" class="confluenceTh">
+                    <span>Revision</span>
+                  </th>
+                  <td colspan="1" class="confluenceTd"><span>2</span></td>
+                </tr>
+                <tr>
+                  <th colspan="1" class="confluenceTh">Version</th>
+                  <td colspan="1" class="confluenceTd">
+                    beta v0.2 internal (r2 / 30)
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="1" class="confluenceTh">Version Mode</th>
+                  <td colspan="1" class="confluenceTd">Developer</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <h2 id="UGXMAPPinternal1-Summary">Summary</h2>
+        <p>
+          I'm happy to announce that first UGX MapPacker internal release which
+          is built with Qt.<br />This version is a preview how the UGXMAPP will
+          work.
+        </p>
+        <p>
+          Because <a class="unresolved" href="#">UGXPLAY</a> is not ready yet,
+          an extra developer mode was introduced, which creates SQL queries to
+          easily add the map / mod to
+          <a class="unresolved" href="#">UGX Play</a> (and therefore to
+          <a href="https://confluence.ugx-mods.com/display/UGXL">UGX Launcher</a
+          >)
+        </p>
+      </div>
     </div>
-            <div class="refresh-issues-bottom">
-                            <span id="total-issues-count" class="total-issues-count">
-                                                                    <a rel="nofollow" title="View all matching issues in Jira."
-                           href="https://jira.ugx-mods.com/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=project+%3D+UGXMAPP+AND+key+in+%28UGXMAPP-1%2C+UGXMAPP-2%2C+UGXMAPP-4%2C+UGXMAPP-6%2C+UGXMAPP-7%2C+UGXMAPP-8%2C+UGXMAPP-9%2C+UGXMAPP-10%2C+UGXMAPP-11%2C+UGXMAPP-17%29+&amp;src=confmacro">
-                                                            10 issues
-                                                    </a>
-                                        </span>
-                                </div>
-        
-
-    
+  </div>
+  <div class="columnLayout single" data-layout="single">
+    <div class="cell normal" data-type="normal">
+      <div class="innerCell">
+        <h2 id="UGXMAPPinternal1-Importanthighlightsfromthisrelease">
+          Important highlights from this release
+        </h2>
+        <ol>
+          <li>First Qt Version</li>
+          <li>New design</li>
+          <li>SQL Developer Mode</li>
+        </ol>
+        <h2 id="UGXMAPPinternal1-Allupdatesforthisrelease">
+          All updates for this release
+        </h2>
+        <p></p>
+        <div id="refresh-module-15596854" class="refresh-module-id jira-table">
+          <p></p>
+          <div
+            id="jira-issues-15596854"
+            style="width: 100%; overflow: auto"
+            class="jira-issues"
+          >
+            <table class="aui">
+              <tbody>
+                <tr></tr>
+                <tr>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span class="jim-table-header-content" sort-column-key="key"
+                      >Key</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="summary"
+                      >Summary</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="type"
+                      >T</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="created"
+                      >Created</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="updated"
+                      >Updated</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span class="jim-table-header-content" sort-column-key="due"
+                      >Due</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="assignee"
+                      >Assignee</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="reporter"
+                      >Reporter</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="priority"
+                      >P</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="status"
+                      >Status</span
+                    >
+                  </th>
+                  <th
+                    style="text-align: left"
+                    class="jira-macro-table-underline-pdfexport jira-tablesorter-header"
+                  >
+                    <span
+                      class="jim-table-header-content"
+                      sort-column-key="resolution"
+                      >Resolution</span
+                    >
+                  </th>
+                </tr>
+                <tr class="rowNormal">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-17?src=confmacro"
+                      >UGXMAPP-17</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-17?src=confmacro"
+                    >
+                      Developer SQL Mode
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-17?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 25, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowAlternate">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-11?src=confmacro"
+                      >UGXMAPP-11</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-11?src=confmacro"
+                    >
+                      Add SelfUpdater
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-11?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Apr 22, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowNormal">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-10?src=confmacro"
+                      >UGXMAPP-10</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-10?src=confmacro"
+                    >
+                      Use file read improvements from UGXL
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-10?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
+                        alt="Improvement"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Apr 04, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/major.svg"
+                      alt="Major"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Resolved
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowAlternate">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-9?src=confmacro"
+                      >UGXMAPP-9</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-9?src=confmacro"
+                    >
+                      Implement 7z properly and backport it to other apps
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-9?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 27, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 27, 2016
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/critical.svg"
+                      alt="Critical"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowNormal">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-8?src=confmacro"
+                      >UGXMAPP-8</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-8?src=confmacro"
+                    >
+                      Welcome Screen
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-8?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 25, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowAlternate">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-7?src=confmacro"
+                      >UGXMAPP-7</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-7?src=confmacro"
+                    >
+                      Duplicate / Availability online check
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-7?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 25, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowNormal">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-6?src=confmacro"
+                      >UGXMAPP-6</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-6?src=confmacro"
+                    >
+                      Add proxy settings
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-6?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 23, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowAlternate">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-4?src=confmacro"
+                      >UGXMAPP-4</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-4?src=confmacro"
+                    >
+                      Application Version Check
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-4?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 11, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowNormal">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-2?src=confmacro"
+                      >UGXMAPP-2</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-2?src=confmacro"
+                    >
+                      Map packing logic
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-2?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 10, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+                <tr class="rowAlternate">
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-1?src=confmacro"
+                      >UGXMAPP-1</a
+                    >
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-1?src=confmacro"
+                    >
+                      Wizard GUI
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <a
+                      href="https://jira.ugx-mods.com/browse/UGXMAPP-1?src=confmacro"
+                    >
+                      <img
+                        src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
+                        alt="Task"
+                        class="icon"
+                      />
+                    </a>
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    Feb 10, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    May 30, 2016
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  ></td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">
+                    Alexander Diller
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <img
+                      src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
+                      alt="Minor"
+                      class="icon"
+                    />
+                  </td>
+                  <td
+                    nowrap="true"
+                    class="jira-macro-table-underline-pdfexport"
+                  >
+                    <span
+                      class="aui-lozenge aui-lozenge-subtle aui-lozenge-success"
+                    >
+                      Closed
+                    </span>
+                  </td>
+                  <td class="jira-macro-table-underline-pdfexport">Done</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="refresh-issues-bottom">
+            <span id="total-issues-count" class="total-issues-count">
+              <a
+                rel="nofollow"
+                title="View all matching issues in Jira."
+                href="https://jira.ugx-mods.com/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=project+%3D+UGXMAPP+AND+key+in+%28UGXMAPP-1%2C+UGXMAPP-2%2C+UGXMAPP-4%2C+UGXMAPP-6%2C+UGXMAPP-7%2C+UGXMAPP-8%2C+UGXMAPP-9%2C+UGXMAPP-10%2C+UGXMAPP-11%2C+UGXMAPP-17%29+&amp;src=confmacro"
+              >
+                10 issues
+              </a>
+            </span>
+          </div>
+        </div>
+        <p> </p>
+      </div>
+    </div>
+  </div>
+  <div class="columnLayout single" data-layout="single">
+    <div class="cell normal" data-type="normal">
+      <div class="innerCell">
+        <h2 id="UGXMAPPinternal1-Notes">Notes</h2>
+        <p>
+          This is a <strong>developer version</strong> and sharing with someone
+          else is obviously <strong>disallowed</strong>.
+        </p>
+        <p>Only users with MySQL access can actually use the SQL queries.</p>
+        <h2 id="UGXMAPPinternal1-HowtousetheSQLDeveloperMode">
+          How to use the SQL Developer Mode
+        </h2>
+        <p> </p>
+        <div class="panel" style="border-width: 1px">
+          <div class="panelContent">
+            <p><strong>Make sure to use the paramter:</strong></p>
+            <pre>-no-archive-password</pre>
+            <p>
+              or the archive will have a random generated password which can't
+              be used yet!
+            </p>
+          </div>
+        </div>
+        <div class="panel" style="border-width: 1px">
+          <div class="panelContent">
+            <p><strong>You can use this parameter </strong></p>
+            <pre>-sqldev<strong><br/></strong></pre>
+            <p>
+              which will go directly into that mode (to create SQL quieres
+              without a mod / map)
+            </p>
+          </div>
+        </div>
+        <p> </p>
+        <p>
+          Otherwise, select the mod / map folder in step one, validate and
+          create the archive.
+        </p>
+        <p>
+          Once this is done, fill in the missing information for the first table
+          and hit the 1. button.
+          <strong>This will copy an SQL query to your clipboard.</strong>
+        </p>
+        <p> </p>
+        <p>
+          Execute the SQL query from your clipboard within the SMF Database
+          (<strong
+            >this is important, be in that database in phpmyadmin and click on
+            SQL</strong
+          >). Paste the query and press <strong>Go.</strong>
+        </p>
+        <p>
+          After inserting, copy the <strong>mid</strong> (Map ID) from the
+          created row and add it in the proper input field in UGXMAPP. (the get
+          rid of the placeholder text, either select all or use the up / down
+          key or the buttons, then you can paste the number)
+        </p>
+        <p>
+          Usually for a new mod, the revision is 1 - but for
+          <strong>multiple versions</strong> the revision needs to be
+          incremented. For example version 1.0 would be rev1, while 1.1 would be
+          rev2!
+        </p>
+        <p>
+          The version input is the text form, visible to the user instead of the
+          revision (which is used internally!)
+        </p>
+        <p> </p>
+        <p>
+          If this version is a beta version, check it and add a strong random
+          generated password. The
+          <a href="https://confluence.ugx-mods.com/display/UGXL/UGX+Launcher"
+            >UGX Launcher</a
+          >
+          and later the UGX MapValidator can decrypt the archive with this
+          password then.
+        </p>
+        <p> </p>
+        <p>
+          Description and Changelog can be HTML. Description will describe the
+          general map, while the Changelog lists all the changes of the version.
+        </p>
+        <p>
+          Please keep these information, including the release date as close as
+          possible and take it seriously! This will ensure good quality.
+        </p>
+        <p>
+          To convert the text to html, used this:
+          <a
+            class="external-link"
+            href="http://www.textfixer.com/html/convert-text-html.php"
+            rel="nofollow"
+            >http://www.textfixer.com/html/convert-text-html.php</a
+          >
+          (and use <strong>&lt;br /&gt;</strong>: Use line break tags only)
+        </p>
+        <p> </p>
+        <p>
+          The status public will show the mod / map in UGXL / UGX Play, while
+          private will keep it hidden <strong>for everyone</strong> for further
+          processing.<br />If it's public,
+          <strong>make sure that the archive is uploaded already</strong> or
+          users will experience issues with downloading.
+        </p>
+        <p> </p>
+        <p>
+          If you created the compressed archive, the generated hash will be
+          inserted into the correct cell as well!
+        </p>
+        <p> </p>
+        <p>
+          The last query is the creators table, which will list creator,
+          submitter and co.<br />The coloums are: &quot;uid&quot; (User ID of
+          SMF user), &quot;role&quot; (role of the UGC) - select the proper one
+          from the combobox, &quot;Description&quot; (what this user did)<br />The
+          data will be then used to list creators and put all ppl to the credits
+          list.
+        </p>
+        <p> </p>
+        <p>
+          <strong
+            >If an user doesn't exist as UGX Account, use the UID 0</strong
+          >
+          - this will be a special ID and write the username simply in the
+          description as well for example &quot;Thanks to ABZ for XYZ&quot; or
+          &quot;Dolphin for helping me with eee ee eeeeee&quot;
+        </p>
+        <p> </p>
+        <p>
+          Once all queries are inserted, you are done
+          <img
+            class="emoticon emoticon-wink"
+            src="images/icons/emoticons/wink.svg"
+            data-emoticon-name="wink"
+            alt="(wink)"
+            data-emoji-short-name=":wink:"
+          />
+        </p>
+        <p>The 7z needs to be uploaded to:</p>
+        <pre>/home/ugx-mods.com/public_html/ugxl/maps/&lt;modname&gt;/</pre>
+        <p>
+          a <strong>preview.jpg</strong> will be used for preview. (size is
+          currently: 294x172)
+        </p>
+        <pre>
+/home/ugx-mods.com/public_html/ugxl/maps/&lt;modname&gt;/media</pre
+        >
+        <p>
+          can contain media files for the slider.<br />The name needs to be 1,
+          2, 3 and so one (for the oder)<br />t_1 would be the thumbnail (good
+          for youtube videos)
+        </p>
+        <p> </p>
+        <p>review other added maps for reference (requiem / comosea)</p>
+        <h2 id="UGXMAPPinternal1-Testing">Testing</h2>
+        <p>
+          This release introduced a couple of new features / additions, which
+          need to be well tested to ensure it works with the rest of the
+          application.
+        </p>
+        <p>
+          Especially feedback on the SelfUpdater (when next version arrives)
+          would be great!
+        </p>
+        <h2 id="UGXMAPPinternal1-Knownissues">Known issues</h2>
+        <p>
+          The SQL Developer Mode might have some UI glitches, which
+          <strong>won't be fixed</strong>!
+        </p>
+        <h2 id="UGXMAPPinternal1-Download">Download</h2>
+        <ul>
+          <li>
+            Link:
+            <a
+              class="external-link"
+              href="https://www.ugx-mods.com/ugxl/download/mapp/dev/UGX MapPacker.exe"
+              rel="nofollow"
+              >https://www.ugx-mods.com/ugxl/download/mapp/dev/UGX
+              MapPacker.exe</a
+            >
+          </li>
+          <li>
+            User: <strong><code>UGXSTAFF</code></strong>
+          </li>
+          <li>
+            Password: <strong><code>Finally!</code></strong>
+          </li>
+        </ul>
+        <h2 id="UGXMAPPinternal1-Whatsnext?">Whats next?</h2>
+        <ul>
+          <li>Focus on the release of UGXL and UGXLIN.</li>
+          <li>Working on UGX Play</li>
+          <li>
+            Improving UGX MapPacker with UpdateMode and Multi-Game Support -
+            better integration int UGX Play
+          </li>
+        </ul>
+        <p> </p>
+      </div>
+    </div>
+  </div>
 </div>
-<p> </p></div>
-</div>
-</div>
-<div class="columnLayout single" data-layout="single">
-<div class="cell normal" data-type="normal">
-<div class="innerCell">
-<h2 id="UGXMAPPinternal1-Notes">Notes</h2><p>This is a <strong>developer version</strong> and sharing with someone else is obviously <strong>disallowed</strong>.</p><p>Only users with MySQL access can actually use the SQL queries.</p><h2 id="UGXMAPPinternal1-HowtousetheSQLDeveloperMode">How to use the SQL Developer Mode</h2><p> </p><div class="panel" style="border-width: 1px;"><div class="panelContent">
-<p><strong>Make sure to use the paramter:</strong></p><pre>-no-archive-password</pre><p>or the archive will have a random generated password which can't be used yet!</p>
-</div></div><div class="panel" style="border-width: 1px;"><div class="panelContent">
-<p><strong>You can use this parameter </strong></p><pre>-sqldev<strong><br/></strong></pre><p>which will go directly into that mode (to create SQL quieres without a mod / map)</p>
-</div></div><p> </p><p>Otherwise, select the mod / map folder in step one, validate and create the archive.</p><p>Once this is done, fill in the missing information for the first table and hit the 1. button. <strong>This will copy an SQL query to your clipboard.</strong></p><p> </p><p>Execute the SQL query from your clipboard within the SMF Database (<strong>this is important, be in that database in phpmyadmin and click on SQL</strong>). Paste the query and press <strong>Go.</strong></p><p>After inserting, copy the <strong>mid</strong> (Map ID) from the created row and add it in the proper input field in UGXMAPP. (the get rid of the placeholder text, either select all or use the up / down key or the buttons, then you can paste the number)</p><p>Usually for a new mod, the revision is 1 - but for <strong>multiple versions</strong> the revision needs to be incremented. For example version 1.0 would be rev1, while 1.1 would be rev2!</p><p>The version input is the text form, visible to the user instead of the revision (which is used internally!)</p><p> </p><p>If this version is a beta version, check it and add a strong random generated password. The <a href="https://confluence.ugx-mods.com/display/UGXL/UGX+Launcher">UGX Launcher</a> and later the UGX MapValidator can decrypt the archive with this password then.</p><p> </p><p>Description and Changelog can be HTML. Description will describe the general map, while the Changelog lists all the changes of the version.</p><p>Please keep these information, including the release date as close as possible and take it seriously! This will ensure good quality.</p><p>To convert the text to html, used this: <a class="external-link" href="http://www.textfixer.com/html/convert-text-html.php" rel="nofollow">http://www.textfixer.com/html/convert-text-html.php</a> (and use <strong>&lt;br /&gt;</strong>: Use line break tags only)</p><p> </p><p>The status public will show the mod / map in UGXL / UGX Play, while private will keep it hidden <strong>for everyone</strong> for further processing.<br>If it's public, <strong>make sure that the archive is uploaded already</strong> or users will experience issues with downloading.</p><p> </p><p>If you created the compressed archive, the generated hash will be inserted into the correct cell as well!</p><p> </p><p>The last query is the creators table, which will list creator, submitter and co.<br>The coloums are: &quot;uid&quot; (User ID of SMF user), &quot;role&quot; (role of the UGC) - select the proper one from the combobox, &quot;Description&quot; (what this user did)<br>The data will be then used to list creators and put all ppl to the credits list.</p><p> </p><p><strong>If an user doesn't exist as UGX Account, use the UID 0</strong> - this will be a special ID and write the username simply in the description as well for example &quot;Thanks to ABZ for XYZ&quot; or &quot;Dolphin for helping me with eee ee eeeeee&quot;</p><p> </p><p>Once all queries are inserted, you are done <img class="emoticon emoticon-wink" src="images/icons/emoticons/wink.svg" data-emoticon-name="wink" alt="(wink)" data-emoji-short-name=":wink:"></p><p>The 7z needs to be uploaded to:</p><pre>/home/ugx-mods.com/public_html/ugxl/maps/&lt;modname&gt;/</pre><p>a <strong>preview.jpg</strong> will be used for preview. (size is currently: 294x172)</p><pre>/home/ugx-mods.com/public_html/ugxl/maps/&lt;modname&gt;/media</pre><p>can contain media files for the slider.<br>The name needs to be 1, 2, 3 and so one (for the oder)<br>t_1 would be the thumbnail (good for youtube videos)</p><p> </p><p>review other added maps for reference (requiem / comosea)</p><h2 id="UGXMAPPinternal1-Testing">Testing</h2><p>This release introduced a couple of new features / additions, which need to be well tested to ensure it works with the rest of the application.</p><p>Especially feedback on the SelfUpdater (when next version arrives) would be great!</p><h2 id="UGXMAPPinternal1-Knownissues">Known issues</h2><p>The SQL Developer Mode might have some UI glitches, which <strong>won't be fixed</strong>!</p><h2 id="UGXMAPPinternal1-Download">Download</h2><ul><li>Link: <a class="external-link" href="https://www.ugx-mods.com/ugxl/download/mapp/dev/UGX MapPacker.exe" rel="nofollow">https://www.ugx-mods.com/ugxl/download/mapp/dev/UGX MapPacker.exe</a></li><li>User: <strong><code>UGXSTAFF</code></strong></li><li>Password: <strong><code>Finally!</code></strong></li></ul><h2 id="UGXMAPPinternal1-Whatsnext?">Whats next?</h2><ul><li>Focus on the release of UGXL and UGXLIN.</li><li>Working on UGX Play</li><li>Improving UGX MapPacker with UpdateMode and Multi-Game Support - better integration int UGX Play</li></ul><p> </p></div>
-</div>
-</div>
-</div>
-                    
