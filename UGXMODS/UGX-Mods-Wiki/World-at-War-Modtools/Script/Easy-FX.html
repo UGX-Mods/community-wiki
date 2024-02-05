@@ -1,9 +1,9 @@
 <!--
 title: Easy-FX
-description: 
+description:
 published: true
 date: 2024-01-30T10:32:13.448Z
-tags: 
+tags:
 editor: ckeditor
 dateCreated: 2024-01-30T10:32:12.251Z
 -->
@@ -184,11 +184,8 @@ dateCreated: 2024-01-30T10:32:12.251Z
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre data-language="C#" spellcheck="false">
+      <code>
 fx,env/fire/fx_fire_brush_smolder_sm
 fx,env/fire/fx_fire_detail_fade_14
 fx,env/fire/fx_fire_blown_md_blk_smk_distant_w
@@ -206,8 +203,7 @@ fx,env/smoke/fx_smoke_wood_chimney_med
 fx,explosions/fx_default_explosion
 fx,explosions/tank_impact_dirt
 fx,maps/zombie/fx_zombie_wire_spark
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
@@ -240,13 +236,9 @@ maps\_zombiemode::main();</pre
 <p>Add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-thread maps\ugx_easy_fx::fx_start();</pre
-    >
+    <pre>
+      <code class="language-cs">
+thread maps\ugx_easy_fx::fx_start();</code></pre>
   </div>
 </div>
 <p>immediately below the 'maps\_zombiemode::main();' line.</p>
@@ -421,15 +413,15 @@ stationary_loop
       data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
       data-theme="RDark"
     >
-fx_setup() //This is where the FX are precached. Any FX you want to use must be added to your mapname_patch.csv as well as listed below. 
+fx_setup() //This is where the FX are precached. Any FX you want to use must be added to your mapname_patch.csv as well as listed below.
 {
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- 
+
 	//Usage: level._effect[&quot;alias&quot;] 			= loadFX(&quot;path/to/fx/name&quot;);
 	//Where &#39;alias&#39; is your personal name for the fx that you will use later in the code, and &#39;path/to/fx/name&#39; is the file location + name of the fx you want to assign to the variable. See below for examples:
 	//When entering the fx path, be sure to only include folder names that are within /raw/fx, and make sure to leave off the file extension (.efx).
 	//If you want to preview any of these FX, open Launcher, click the EffectsEd button, then File&gt;Open the file you wish to preview. Then press the green play button.
- 
+
 	//Fire\\
 	level._effect[&quot;fire1&quot;] 			= loadFX(&quot;env/fire/fx_fire_brush_smolder_sm&quot;);
 	level._effect[&quot;fire2&quot;] 			= loadFX(&quot;env/fire/fx_fire_detail_fade_14&quot;);
@@ -438,43 +430,43 @@ fx_setup() //This is where the FX are precached. Any FX you want to use must be 
 	level._effect[&quot;fire5&quot;] 			= loadFX(&quot;env/fire/fx_fire_campfire_small&quot;);
 	level._effect[&quot;fire6&quot;] 			= loadFX(&quot;env/fire/fx_fire_player_torso&quot;);
 	//End Fire\\
- 
+
 	//Smoke/Smolder\\
 	level._effect[&quot;smoke1&quot;]			= loadFX(&quot;env/smoke/fx_smoke_smolder_sm_blk&quot;);
 	level._effect[&quot;smoke2&quot;]			= loadFX(&quot;env/smoke/fx_smoke_smolder_md_gry&quot;);
 	level._effect[&quot;smoke3&quot;]			= loadFX(&quot;env/smoke/fx_smoke_smolder_lg_gry&quot;);
 	level._effect[&quot;smoke4&quot;]			= loadFX(&quot;env/smoke/fx_smoke_wood_chimney_med&quot;);
 	//End Smoke/Smolder\\
- 
- 
+
+
 	//Explosions\\
 	level._effect[&quot;explosion1&quot;]			= loadFX(&quot;explosions/fx_default_explosion&quot;); //non stationary
 	level._effect[&quot;explosion2&quot;]			= loadFX(&quot;explosions/tank_impact_dirt&quot;); //non stationary
 	//End Explosions\\
- 
- 
+
+
 	//Light Rays\\
 	level._effect[&quot;light1&quot;] 			= loadFX(&quot;env/light/fx_glow_hanginglamp&quot;);
 	level._effect[&quot;light2&quot;]			= loadFX(&quot;env/light/fx_glow_emergency_red_blink&quot;);
 	//End Light Rays\\
- 
- 
+
+
 	//Electrical\\
 	level._effect[&quot;electric1&quot;]		= loadFX(&quot;env/electrical/fx_elec_player_md&quot;); // 1.4 only!
 	level._effect[&quot;electric2&quot;]		= loadFX(&quot;maps/zombie/fx_zombie_wire_spark&quot;); // 1.4 only!
 	//End Electrical\\
- 
- 
+
+
 	//User-Additions\\
 	//Place your fx lines below this line, or below other fx in their respective sections.
 	level._effect[&quot;bugs1&quot;]		= loadFX(&quot;bio/insects/fx_insect_carcass_flies&quot;);
 	//End User-Additions\\
- 
+
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 	//DEBUG SETTING:
- 
+
 	level.fx_debug = 1; // &#39;1&#39; = ON, &#39;undefined&#39; = OFF
- 
+
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 	//Do not edit or add anything below this line.
 }</pre
@@ -615,7 +607,7 @@ level.fx_debug = undefined;</pre
       data-theme="RDark"
     >
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//|||| Name   : ugx_fx.gsc 
+//|||| Name   : ugx_fx.gsc
 //|||| Info     : Easiest way to implement FX in your map.
 //|||| Site     : www.ugx-mods.com
 //|||| Author : [UGX] treminaor
@@ -623,7 +615,7 @@ level.fx_debug = undefined;</pre
 //|||| Version : 1.1 (7/17/2011) Changes: Added &#39;stationary_loop&#39; function.
 //|||| Instructions: Read the code comments. I strongly advise that you download Notepad++ (free text editor) and go to Language&gt;C&gt;C++ so that this is easy to read (syntax highlighting)
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- 
+
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //Initial Setup:
 // Open your raw/maps/mapname.gsc
@@ -648,7 +640,7 @@ level.fx_debug = undefined;</pre
 //
 // REQUIRED KvP&#39;s FOR USE AND TOUCH SETUP
 // script_string, hint (this is for the TRIGGER, not the STRUCT - where hint is the hint string you want for the trigger, example: Press &amp;&amp;1 to start the fire) &#39;&amp;&amp;1&#39; will automatically change to the players USE button (F usually)
-// 
+//
 // REQUIRED KvP&#39;s FOR NON-LOOPING FX THAT YOU WANT TO LOOP
 //
 // If you are using stationary as your usage, you are done. Otherwise, continue:
@@ -685,7 +677,7 @@ fx,explosions/fx_default_explosion
 fx,explosions/tank_impact_dirt
 fx,maps/zombie/fx_zombie_wire_spark
 */
-// 
+//
 //
 // NEXT (1.4): Compile your map to save the structs
 // Older versions: don&#39;t compile until you&#39;re done with everything.
@@ -698,20 +690,20 @@ fx,maps/zombie/fx_zombie_wire_spark
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // IF YOU REACH THE 400FX LIMIT, YOU MUST COMMENT OUT ( // before the line) ANY FX YOU DO NOT WANT IN fx_setup() - YOU ALSO MUST REMOVE THE INCLUDE LINE FROM YOUR CSV. THIS WILL PREVENT THE FX FROM LOADING INTO YOUR MAP.
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- 
-#include common_scripts\utility; 
+
+#include common_scripts\utility;
 #include maps\_utility;
-#include maps\_zombiemode_utility; 
- 
-fx_setup() //This is where the FX are precached. Any FX you want to use must be added to your mapname_patch.csv as well as listed below. 
+#include maps\_zombiemode_utility;
+
+fx_setup() //This is where the FX are precached. Any FX you want to use must be added to your mapname_patch.csv as well as listed below.
 {
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- 
+
 	//Usage: level._effect[&quot;alias&quot;] 			= loadFX(&quot;path/to/fx/name&quot;);
 	//Where &#39;alias&#39; is your personal name for the fx that you will use later in the code, and &#39;path/to/fx/name&#39; is the file location + name of the fx you want to assign to the variable. See below for examples:
 	//When entering the fx path, be sure to only include folder names that are within /raw/fx, and make sure to leave off the file extension (.efx).
 	//If you want to preview any of these FX, open Launcher, click the EffectsEd button, then File&gt;Open the file you wish to preview. Then press the green play button.
- 
+
 	//Fire\\
 	level._effect[&quot;fire1&quot;] 			= loadFX(&quot;env/fire/fx_fire_brush_smolder_sm&quot;);
 	level._effect[&quot;fire2&quot;] 			= loadFX(&quot;env/fire/fx_fire_detail_fade_14&quot;);
@@ -720,51 +712,51 @@ fx_setup() //This is where the FX are precached. Any FX you want to use must be 
 	level._effect[&quot;fire5&quot;] 			= loadFX(&quot;env/fire/fx_fire_campfire_small&quot;);
 	level._effect[&quot;fire6&quot;] 			= loadFX(&quot;env/fire/fx_fire_player_torso&quot;);
 	//End Fire\\
- 
+
 	//Smoke/Smolder\\
 	level._effect[&quot;smoke1&quot;]			= loadFX(&quot;env/smoke/fx_smoke_smolder_sm_blk&quot;);
 	level._effect[&quot;smoke2&quot;]			= loadFX(&quot;env/smoke/fx_smoke_smolder_md_gry&quot;);
 	level._effect[&quot;smoke3&quot;]			= loadFX(&quot;env/smoke/fx_smoke_smolder_lg_gry&quot;);
 	level._effect[&quot;smoke4&quot;]			= loadFX(&quot;env/smoke/fx_smoke_wood_chimney_med&quot;);
 	//End Smoke/Smolder\\
- 
- 
+
+
 	//Explosions\\
 	level._effect[&quot;explosion1&quot;]			= loadFX(&quot;explosions/fx_default_explosion&quot;); //non stationary
 	level._effect[&quot;explosion2&quot;]			= loadFX(&quot;explosions/tank_impact_dirt&quot;); //non stationary
 	//End Explosions\\
- 
- 
+
+
 	//Light Rays\\
 	level._effect[&quot;light1&quot;] 			= loadFX(&quot;env/light/fx_glow_hanginglamp&quot;);
 	level._effect[&quot;light2&quot;]			= loadFX(&quot;env/light/fx_glow_emergency_red_blink&quot;);
 	//End Light Rays\\
- 
- 
+
+
 	//Electrical\\
 	level._effect[&quot;electric1&quot;]		= loadFX(&quot;env/electrical/fx_elec_player_md&quot;); // 1.4 only!
 	level._effect[&quot;electric2&quot;]		= loadFX(&quot;maps/zombie/fx_zombie_wire_spark&quot;); // 1.4 only!
 	//End Electrical\\
- 
- 
+
+
 	//User-Additions\\
 	//Place your fx lines below this line, or below other fx in their respective sections.
 	level._effect[&quot;bugs1&quot;]		= loadFX(&quot;bio/insects/fx_insect_carcass_flies&quot;);
 	//End User-Additions\\
- 
+
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 	//DEBUG SETTING:
- 
+
 	level.fx_debug = 1; // &#39;1&#39; = ON, &#39;undefined&#39; = OFF
- 
+
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 	//Do not edit or add anything below this line.
 }
- 
+
 fx_start()
 {
 	fx_spots = getstructarray(&quot;fx&quot;,&quot;targetname&quot;);
- 
+
 	if(isDefined(level.fx_debug))
 	{
 		if(fx_spots.size == 0 || !isDefined(fx_spots))
@@ -772,8 +764,8 @@ fx_start()
 		else
 			iPrintLn(&quot;Easy-FX found &quot;+fx_spots.size+&quot; fx structs in your level.&quot;);
 	}
- 
- 
+
+
 	for(i=0;i&lt;fx_spots.size;i++)
 	{
 		usage = fx_spots[i].script_string;
@@ -793,21 +785,21 @@ fx_start()
 			if(isDefined(level.fx_debug)) iPrintLn(&quot;Easy-FX: ^1ERROR: ^7FX struct at origin &quot;+fx_spots[i].origin+&quot; is missing its stript_string for fx usage! Set it as stationary, use, or touch.&quot;);
 	}
 }
- 
+
 stationary_fx(loop) //These are untriggered FX that will play on loop while the level is running.
 {
- 
+
 	fx = self.script_noteworthy;
 	if(!isDefined(fx) &amp;&amp; isDefined(level.fx_debug)) iPrintLn(&quot;Easy-FX: ^1ERROR: ^7 FX struct at origin &quot;+self.origin+&quot; is missing its script_noteworthy for fx name!&quot;);
- 
+
     fxTag = &quot;tag_origin&quot;;
- 
+
     self.fx = Spawn( &quot;script_model&quot;, self.origin );
     self.fx SetModel( &quot;tag_origin&quot; );
     self.fx.angles = self.angles;
     self.fx.origin = self.origin;
     self.fx LinkTo( self, fxTag );
- 
+
 	if(isDefined(loop))
 	{
 		if(!isDefined(self.speed))
@@ -818,9 +810,9 @@ stationary_fx(loop) //These are untriggered FX that will play on loop while the 
 		PlayLoopedFX(level._effect[fx], self.speed, self.origin);
 	}
 	else
-		PlayFxOnTag( level._effect[fx], self.fx, fxTag ); 
+		PlayFxOnTag( level._effect[fx], self.fx, fxTag );
 }
- 
+
 triggered_touch_fx(loop) //These are triggered FX. They are triggered when the player walks though a trigger_multiple that you create in Radiant.
 {
 	trigger = getEnt(self.target,&quot;targetname&quot;);
@@ -830,14 +822,14 @@ triggered_touch_fx(loop) //These are triggered FX. They are triggered when the p
 	trigger SetCursorHint(&quot;HINT_NOICON&quot;);
 	fx = self.script_noteworthy;
 	trigger waittill(&quot;trigger&quot;);
- 
+
 	fxTag = &quot;tag_origin&quot;;
     self.fx = Spawn( &quot;script_model&quot;, self.origin );
     self.fx SetModel( &quot;tag_origin&quot; );
     self.fx.angles = self.angles;
     self.fx.origin = self.origin;
     self.fx LinkTo( self, fxTag );
- 
+
 	if(isDefined(loop))
 	{
 		if(!isDefined(self.speed))
@@ -848,9 +840,9 @@ triggered_touch_fx(loop) //These are triggered FX. They are triggered when the p
 		PlayLoopedFX(level._effect[fx], self.speed, self.origin);
 	}
 	else
-		PlayFxOnTag( level._effect[fx], self.fx, fxTag ); 
+		PlayFxOnTag( level._effect[fx], self.fx, fxTag );
 }
- 
+
 triggered_use_fx(loop) //These are triggered FX. They are triggered when the player uses a trigger (by pressing F) that you create in Radiant.
 {
 	trigger = getEnt(self.target,&quot;targetname&quot;);
@@ -860,14 +852,14 @@ triggered_use_fx(loop) //These are triggered FX. They are triggered when the pla
 	trigger SetCursorHint(&quot;HINT_NOICON&quot;);
 	fx = self.script_noteworthy;
 	trigger waittill(&quot;trigger&quot;);
- 
+
 	fxTag = &quot;tag_origin&quot;;
     self.fx = Spawn( &quot;script_model&quot;, self.origin );
     self.fx SetModel( &quot;tag_origin&quot; );
     self.fx.angles = self.angles;
     self.fx.origin = self.origin;
     self.fx LinkTo( self, fxTag );
- 
+
 	if(isDefined(loop))
 	{
 		if(!isDefined(self.speed))
@@ -878,7 +870,7 @@ triggered_use_fx(loop) //These are triggered FX. They are triggered when the pla
 		PlayLoopedFX(level._effect[fx], self.speed, self.origin);
 	}
 	else
-		PlayFxOnTag( level._effect[fx], self.fx, fxTag ); 
+		PlayFxOnTag( level._effect[fx], self.fx, fxTag );
 }
  </pre
     >
