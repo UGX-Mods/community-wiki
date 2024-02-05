@@ -1,17 +1,14 @@
 <!--
-title: MT AllocIndex failed memory allocation
-description:
+title: MT AllocIndex: failed memory allocation
+description: 
 published: true
-date: 2024-01-30T10:58:40.210Z
-tags:
+date: 2024-02-05T08:20:05.048Z
+tags: 
 editor: ckeditor
-dateCreated: 2024-01-30T10:30:52.853Z
+dateCreated: 2024-02-04T15:26:24.494Z
 -->
 
-<!-- conf id: 12255434 -->
-
-<pre>
-********************************
+<pre><code class="language-plaintext">********************************
 MT_AllocIndex: failed memory allocation of 14 bytes for script usage
 Database: Assets Sync Started
 Database: Assets Sync Finished
@@ -27,20 +24,10 @@ Database: Assets Sync Finished
 8 subtree has 0 * 256 = 0 free buckets
 9 subtree has 0 * 512 = 0 free buckets
 10 subtree has 0 * 1024 = 0 free buckets
-</pre>
-<p>
-  This error is directly related to how many unique strings you've used in
-  scripts, un-#include'ing files does not add to this error, removing lines of
-  script does not remove this error, removing script lines which contain strings
-  <strong>does</strong> remove this error.
-</p>
+</code></pre>
+<p>This error is directly related to how many unique strings you've used in scripts, un-#include'ing files does not add to this error, removing lines of script does not remove this error, removing script lines which contain strings <strong>does</strong> remove this error.</p>
 <p>bucket usage seems to be dynamic, buckets become free with time.</p>
-<p>
-  Recommended solution: reduce the amount of unique strings used in your custom
-  scripts or remove unused Treyarch SP scripts from being loaded during compile.
-</p>
-<h2 id="MTAllocIndex:failedmemoryallocation-Howtocheckcurrentstringmemoryusage">
-  <span class="mw-headline">How to check current string memory usage</span>
-</h2>
-<p>Console command: &quot;stringUsage&quot;</p>
+<p>Recommended solution: reduce the amount of unique strings used in your custom scripts or remove unused Treyarch SP scripts from being loaded during compile.</p>
+<h2>How to check current string memory usage</h2>
+<p>Console command: "stringUsage"</p>
 <p>&gt; Check console for substree bucket output.</p>
