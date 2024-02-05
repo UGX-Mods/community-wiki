@@ -12,38 +12,34 @@ dateCreated: 2024-01-30T10:32:55.107Z
 
 <div class="confluence-information-macro confluence-information-macro-warning">
   <p class="title conf-macro-render">Warning!</p>
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
     <p>
-      <span
-        >This is not directly compatible with ZCT Mod as it uses different
-        weapons than this is programmed for.</span
-      >
+      <span>This is not directly compatible with ZCT Mod as it uses different
+        weapons than this is programmed for.</span>
     </p>
   </div>
 </div>
-<div
+<div 
   class="confluence-information-macro confluence-information-macro-information"
 >
   <p class="title conf-macro-render">Note</p>
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
     <p>
-       <span
-        >This script has not been verified as working. Some updates may need to
+       <span>This script has not been verified as working. Some updates may need to
         be made to the script by its creator before it is in complete working
-        order.</span
-      >
+        order.</span>
     </p>
   </div>
 </div>
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -69,7 +65,7 @@ dateCreated: 2024-01-30T10:32:55.107Z
     </p>
   </div>
 </div>
-<br />
+<br>
 This tutorial will walk you through how to implement a 'trader' in your map
 (think of Killing Floor) that will offer players ammo, guns, and attachments. By
 default the provided script includes code for soundaliases to be played when
@@ -88,19 +84,17 @@ script and your csv's.
 <h1 id="Trader-Preparation">Preparation</h1>
 <p>
   Download
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/ugx_upgrader_ammo.gsc"
     rel="nofollow"
-    >ugx_upgrader_ammo.gsc</a
-  >
+    >ugx_upgrader_ammo.gsc</a>
   and place it in mods/mapname/maps/. Download
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/ugx_trader_files.rar"
     rel="nofollow"
-    >ugx_trader_files.rar</a
-  >
+    >ugx_trader_files.rar</a>
   and extract its contents to your root/mods/mapname/ directory, combining
   folders and overwriting files as it asks. The .rar contains weapons files for
   the weapons supported by this script, the menu file, the menu texture, and the
@@ -130,82 +124,55 @@ script and your csv's.
 <h2 id="Trader-Script">Script</h2>
 <p>
   In order for ugx_upgrader_ammo.gsc to run, it must be 'called' in your
-  root/raw/maps/mapname.gsc. Open this file with any <a
+  root/raw/maps/mapname.gsc. Open this file with any <a 
     href="Text-Editors_1146950.html"
-    >Text Editor</a
-  > you prefer, although Windows Notepad will suffice.
+    >Text Editor</a> you prefer, although Windows Notepad will suffice.
 </p>
 <p>Find the line:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-maps\_zombiemode::main();</pre
-    >
+    <pre><code class="language-cpp">
+maps\_zombiemode::main();</code></pre>
   </div>
 </div>
 <p>Add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-level thread maps\ugx_upgrader_ammo::init();</pre
-    >
+    <pre><code class="language-cpp">
+level thread maps\ugx_upgrader_ammo::init();</code></pre>
   </div>
 </div>
 <p>immediately below the 'maps_zombiemode::main();' line</p>
 <p>and add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 precacheMenu(&quot;ugx_upgrader&quot;);
-precacheShader(&quot;trader_bg&quot;);</pre
-    >
+precacheShader(&quot;trader_bg&quot;);</code></pre>
   </div>
 </div>
 <p>right before</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-maps\_zombiemode::main();</pre
-    >
+    <pre><code class="language-cpp">
+maps\_zombiemode::main();</code></pre>
   </div>
 </div>
 <p>It should look like this:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 precacheMenu(&quot;ugx_upgrader&quot;);
 precacheShader(&quot;trader_bg&quot;);
 maps\_zombiemode::main();
-level thread maps\ugx_upgrader_ammo::init();</pre
-    >
+level thread maps\ugx_upgrader_ammo::init();</code></pre>
   </div>
 </div>
 <p>
   Copy dlc3_code.gsc and _zombiemode_weapons.gsc from your root/raw/maps folder
-  to mods/mapname/maps. Open them both with any <a
+  to mods/mapname/maps. Open them both with any <a 
     href="Text-Editors_1146950.html"
-    >Text Editor</a
-  >, although Windows Notepad will suffice.
+    >Text Editor</a>, although Windows Notepad will suffice.
 </p>
 <p>
   If you are on a 1.1 map,open (not copy) your mapname.gsc instead of
@@ -218,11 +185,7 @@ level thread maps\ugx_upgrader_ammo::init();</pre
 <p> </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 include_weapons()
 {
 include_weapon( &quot;zombie_colt&quot; );
@@ -399,8 +362,7 @@ include_weapon( &quot;panzerschrek_zombie&quot; );
 // Special
 include_weapon( &quot;ray_gun&quot;);
 
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>
@@ -411,11 +373,7 @@ include_weapon( &quot;ray_gun&quot;);
 <p> </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 init_weapons()
 {
 // Zombify
@@ -567,8 +525,7 @@ Precachemodel(&quot;zombie_teddybear&quot;);
 // ONLY 1 OF THE BELOW SHOULD BE ALLOWED
 //add_limited_weapon( &quot;m2_flamethrower_zombie&quot;, 1 );
 add_limited_weapon( &quot;tesla_gun&quot;, 1);
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>
@@ -579,11 +536,7 @@ add_limited_weapon( &quot;tesla_gun&quot;, 1);
 <p> </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 init_weapons()
 {
 // Zombify
@@ -724,8 +677,7 @@ if(level.script != &quot;nazi_zombie_prototype&quot;)
 {
 Precachemodel(&quot;zombie_teddybear&quot;);
 }
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>
@@ -742,11 +694,7 @@ Precachemodel(&quot;zombie_teddybear&quot;);
 <p>Add these lines:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 menufile,ui/scriptmenus/ugx_upgrader.menu
 xanim,viewmodel_trenchgun_grip_idle
 xanim,viewmodel_trenchgun_grip_ads_down
@@ -792,27 +740,21 @@ material,mtl_usa_bayonet
 material,mtl_weapon_aperture_and_acog
 material,mtl_weapon_mp_apature_glass
 material,mtl_weapon_mp_apature_crosshair
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <h2 id="Trader-IWD">IWD</h2>
 <p>
   Open Launcher and go to the Mods tab. Select your map from the list. Scroll
   down in the box on the left until you see ugx_upgrader_ammo.gsc. Check the box
-  next to it.<br />
+  next to it.<br>
   Add:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 material,trader_bg
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>to the Mod FF box.</p>
@@ -824,11 +766,7 @@ material,trader_bg
 <h1 id="Trader-Source">Source</h1>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name   : ugx_upgrader_ammo.gsc 
 //|||| Info     : handles weapon upgrades and ammo handouts in armoury for UGX Cabin
@@ -1643,8 +1581,7 @@ decide_ammo(weapon) // Usage: trigger decide_ammo(); - returns ammo amount based
 				ammo = 15;
 		}
 	return ammo; 
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>

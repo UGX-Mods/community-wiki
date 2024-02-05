@@ -13,7 +13,7 @@ dateCreated: 2024-01-30T10:31:25.233Z
 <h2 id="BO3|AddingBuyableEndingtoZombiemode-Installation">Installation</h2>
 <p>
   Download
-  <a
+  <a 
     href="attachments/17301793/17301792.gsc"
     data-linked-resource-id="17301792"
     data-linked-resource-version="1"
@@ -22,34 +22,21 @@ dateCreated: 2024-01-30T10:31:25.233Z
     data-linked-resource-content-type="application/octet-stream"
     data-linked-resource-container-id="17301793"
     data-linked-resource-container-version="1"
-    >ugxmods_buyable_ending.gsc</a
-  >
-  (Version 1.0) and place it in <strong
-    >root/usermaps/mapname/scripts/zm</strong
-  >
+    >ugxmods_buyable_ending.gsc</a>
+  (Version 1.0) and place it in <strong>root/usermaps/mapname/scripts/zm</strong>
 </p>
 <p>Add this line to the top of your mapname.gsc:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-#using scripts\zm\ugxmods_buyable_ending;</pre
-    >
+    <pre><code class="language-cpp">
+#using scripts\zm\ugxmods_buyable_ending;</code></pre>
   </div>
 </div>
 <p>Add this line to your mapname.zone:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-scriptparsetree,scripts/zm/ugxmods_buyable_ending.gsc</pre
-    >
+    <pre><code class="language-cpp">
+scriptparsetree,scripts/zm/ugxmods_buyable_ending.gsc</code></pre>
   </div>
 </div>
 <h2 id="BO3|AddingBuyableEndingtoZombiemode-Configuration">Configuration</h2>

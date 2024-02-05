@@ -10,9 +10,9 @@ dateCreated: 2024-01-30T10:31:41.866Z
 
 <!-- conf id: 1146930 -->
 
-<p><br /></p>
+<p><br></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -71,87 +71,65 @@ dateCreated: 2024-01-30T10:31:41.866Z
 <p>Find the line:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-maps\_zombiemode::main();</pre
-    >
+    <pre><code class="language-cpp">
+maps\_zombiemode::main();</code></pre>
   </div>
 </div>
 <p>Add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 plane = getEnt(&quot;plane&quot;,&quot;targetname&quot;);
 maps\_planeweapons::build_bomb_explosions( &quot;corsair&quot;, 1, 2, 1024, 768, 2000, 2000 );
 maps\_planeweapons::build_bombs( &quot;corsair&quot;, &quot;aircraft_bomb&quot;, &quot;explosions/fx_mortarExp_dirt&quot;, &quot;tank_impact_full&quot; );
 plane maps\_planeweapons::bomb_init( 25 );
-level._effect[&quot;corsair_prop_full&quot;] = loadFX(&quot;vehicle/props/fx_corsair_prop_spin&quot;);</pre
-    >
+level._effect[&quot;corsair_prop_full&quot;] = loadFX(&quot;vehicle/props/fx_corsair_prop_spin&quot;);</code></pre>
   </div>
 </div>
 <p>immediately above it. It should look like:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 plane = getEnt(&quot;plane&quot;,&quot;targetname&quot;);
 maps\_planeweapons::build_bomb_explosions( &quot;corsair&quot;, 1, 2, 1024, 768, 2000, 2000 );
 maps\_planeweapons::build_bombs( &quot;corsair&quot;, &quot;aircraft_bomb&quot;, &quot;explosions/fx_mortarExp_dirt&quot;, &quot;tank_impact_full&quot; );
 plane maps\_planeweapons::bomb_init( 25 );
 level._effect[&quot;corsair_prop_full&quot;] = loadFX(&quot;vehicle/props/fx_corsair_prop_spin&quot;);
-maps\_zombiemode::main();</pre
-    >
+maps\_zombiemode::main();</code></pre>
   </div>
 </div>
 <h3 id="Airstrike-Sound">Sound</h3>
 <p>
   I have already converted
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/amb_corsair_01.wav"
     rel="nofollow"
-    >amb_corsair_01.wav</a
-  >
+    >amb_corsair_01.wav</a>
   (a CoD Sound) for use, although you can use any sound you want (just made sure
   you change the soundalias in the bomb_run() function - sound conversion is not
   covered in this tutorial)
 </p>
 <p>
-  If you would like to add a sound, you must make a soundalias. <br />
-  Create a new file in root/raw/soundaliases/ called plane_sound.csv.<br />
+  If you would like to add a sound, you must make a soundalias. <br>
+  Create a new file in root/raw/soundaliases/ called plane_sound.csv.<br>
   Paste this code inside and save the file:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 name,file,platform,sequence,vol_min,vol_max,dist_min,dist_max,limit_count,limit_type,entity_limit_count,entity_limit_type,bus,volume_min_falloff_curve,volumefalloffcurve,reverb_send,dist_reverb_max,reverb_min_falloff_curve,reverb_falloff_curve,pitch_min,pitch_max,randomize_type,spatialized,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,chainaliasname,startdelay,speakermap,lfe percentage,center percentage,envelop_min,envelop_max,envelop percentage,occlusion_level,occlusion_wet_dry,real_delay,distance_lpf,move_type,move_time,min_priority,max_priority,min_priority_threshold,max_priority_threshold,,isbig
 ambient_corsair,amb_corsair_01.wav,,,1,1,,,,,,,music,,,0,,,,,,,2d,streamed,,,,,,,,,,music_all,,,,,,0,,,,,,100,100,0.25,1,,
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
   Next, you must place
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/amb_corsair_01.wav"
     rel="nofollow"
-    >amb_corsair_01.wav</a
-  >
+    >amb_corsair_01.wav</a>
   in root/mods/mapname/sound.
 </p>
 <p>
@@ -160,14 +138,9 @@ ambient_corsair,amb_corsair_01.wav,,,1,1,,,,,,,music,,,0,,,,,,,2d,streamed,,,,,,
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 sound,plane_sound,,all_sp
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
@@ -191,18 +164,13 @@ sound,plane_sound,,all_sp
 <p>Add this anywhere in the file:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 fx,explosions/fx_mortarExp_dirt
 fx,vehicle/props/fx_corsair_prop_spin
 rawfile,maps/_planeweapons.gsc
 xmodel,aircraft_bomb
 material,mtl_aircraft_bomb
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <h3 id="Airstrike-Function(updated)">Function (updated)</h3>
@@ -215,11 +183,7 @@ material,mtl_aircraft_bomb
 <p>Here is an example function for a bombing run:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 bomb_run()
 {
     plane = getEnt(&quot;plane&quot;,&quot;targetname&quot;);
@@ -297,25 +261,19 @@ corsair_spin_prop()
  
 		wait(0.1);
 	}
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>
-  <br />
+  <br>
   Note that there are 25 instances of 'plane notify(&quot;drop_bombs&quot;); -
   this must match what you set previously in your mapname.gsc, the line:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 plane maps\_planeweapons::bomb_init( 25 );
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
@@ -329,11 +287,7 @@ plane maps\_planeweapons::bomb_init( 25 );
 <p>Here is a simple function for a buyable trigger:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 bomb_run_trig()
 {
 	trigger = getEnt(&quot;bomb_run_trig&quot;,&quot;targetname&quot;);
@@ -355,61 +309,44 @@ bomb_run_trig()
 		else
 			player playsound(&quot;no_cha_ching&quot;);
 	}
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>
   Create a file in root/mods/mapname/maps/ called
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/bomb_run.gsc"
     rel="nofollow"
-    >bomb_run.gsc</a
-  >
+    >bomb_run.gsc</a>
   and place both bomb_run() and bomb_run_trig() inside, along with the standard
   includes.
 </p>
 <p>Open root/raw/maps/mapname.gsc with the usual text editor and add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 thread maps\bomb_run::bomb_run_trig();
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
-  immediately below:<br />
+  immediately below:<br>
   Find the line:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-maps\_zombiemode::main();</pre
-    >
+    <pre><code class="language-cpp">
+maps\_zombiemode::main();</code></pre>
   </div>
 </div>
 <p>so that it looks like:</p>
 <p>Find the line:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 maps\_zombiemode::main();
-thread maps\bomb_run::bomb_run_trig();</pre
-    >
+thread maps\bomb_run::bomb_run_trig();</code></pre>
   </div>
 </div>
 <h1 id="Airstrike-Radiant">Radiant</h1>
@@ -483,7 +420,7 @@ thread maps\bomb_run::bomb_run_trig();</pre
   </table>
 </div>
 <p>
-  Note: Anywhere from 85 to 100 is a good speed for bombing runs.<br />
+  Note: Anywhere from 85 to 100 is a good speed for bombing runs.<br>
   Note: You <strong>MUST</strong> check the 'START-NODE' box on this first node.
 </p>
 <p>
@@ -503,13 +440,13 @@ thread maps\bomb_run::bomb_run_trig();</pre
 </p>
 <p>
   <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/JxmiD8c.png"
       data-image-src="http://i.imgur.com/JxmiD8c.png"
-  /></span>
+  ></span>
 </p>
 <h2 id="Airstrike-BombRunTrigger">Bomb Run Trigger</h2>
 <p>
@@ -536,11 +473,7 @@ thread maps\bomb_run::bomb_run_trig();</pre
 <h2 id="Airstrike-bomb_run.gsc">bomb_run.gsc</h2>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name   : bomb_run.gsc 
 //|||| Info     : script for bombing runs
@@ -653,8 +586,7 @@ corsair_spin_prop()
 				
 		wait(0.1);
 	}
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>

@@ -16,7 +16,7 @@ dateCreated: 2024-01-30T10:30:38.031Z
 </p>
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -43,19 +43,17 @@ dateCreated: 2024-01-30T10:30:38.031Z
   </div>
 </div>
 <div class="confluence-information-macro confluence-information-macro-warning">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong style="white-space: normal">WARNING</strong
-      ><span style="white-space: normal"
+      <strong style="white-space: normal">WARNING</strong><span style="white-space: normal"
         >: If after following this guide precisely your vision is not working,
         it is most likely because you are using Sniperbolt's base scripts (or
         you used a script placer) which sets your vision to
         &quot;zombie_factory&quot; be default. If this is the case for you, see
-        below:</span
-      >
+        below:</span>
     </p>
   </div>
 </div>
@@ -63,13 +61,8 @@ dateCreated: 2024-01-30T10:30:38.031Z
 <p>Find this line and <strong>delete</strong> this line:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-level thread maps\_utility::set_all_players_visionset( &quot;zombie_factory&quot;, 0.1 );</pre
-    >
+    <pre><code class="language-cpp">
+level thread maps\_utility::set_all_players_visionset( &quot;zombie_factory&quot;, 0.1 );</code></pre>
   </div>
 </div>
 <p>Guide starts here:</p>
@@ -82,11 +75,7 @@ level thread maps\_utility::set_all_players_visionset( &quot;zombie_factory&quot
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 r_glow                    &quot;1&quot;
 r_glowRadius0             &quot;5&quot;
 r_glowRadius1             &quot;0&quot;
@@ -118,8 +107,7 @@ r_reviveFX_brightnessCenter	&quot;0&quot;
 r_reviveFX_desaturationCenter	&quot;0&quot;
 r_reviveFX_darkTintCenter	&quot;1 1 1&quot;
 r_reviveFX_lightTintCenter	&quot;1 1 1&quot;
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
@@ -143,14 +131,9 @@ r_reviveFX_lightTintCenter	&quot;1 1 1&quot;
 <p>Add this line to the top of the file:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 rawfile,vision/&lt;visionfilename&gt;.vision
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>Save and close the file.</p>
@@ -162,41 +145,26 @@ rawfile,vision/&lt;visionfilename&gt;.vision
 <p>Add</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>immediately after:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 maps\_zombiemode::main();
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>so that it looks like:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 maps\_zombiemode::main();
 set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
@@ -225,8 +193,7 @@ set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
   Settings for Vision Files
 </h1>
 <p>
-  <strong>All values can only be from 0 to 1 unless otherwise noted.</strong
-  ><br />
+  <strong>All values can only be from 0 to 1 unless otherwise noted.</strong><br>
   You can view pictures of what each setting does below the table.
 </p>
 <div class="table-wrap">
@@ -329,58 +296,52 @@ set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
 </h1>
 <p>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       src="http://i.imgur.com/GPzu9GC.png"
-      data-image-src="http://i.imgur.com/GPzu9GC.png" /></span
-  ><br />
+      data-image-src="http://i.imgur.com/GPzu9GC.png" ></span><br>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       src="http://i.imgur.com/TOC2AAC.png"
-      data-image-src="http://i.imgur.com/TOC2AAC.png" /></span
-  ><br />
+      data-image-src="http://i.imgur.com/TOC2AAC.png" ></span><br>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       src="http://i.imgur.com/c7WL07Q.png"
-      data-image-src="http://i.imgur.com/c7WL07Q.png" /></span
-  ><br />
+      data-image-src="http://i.imgur.com/c7WL07Q.png" ></span><br>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="This is the effect of enabling r_filmInvert."
       src="http://i.imgur.com/RZTpfeE.png"
-      data-image-src="http://i.imgur.com/RZTpfeE.png" /></span
-  ><br />
+      data-image-src="http://i.imgur.com/RZTpfeE.png" ></span><br>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="This is the effect of setting r_filmDesaturation to (1 1 1)."
       src="http://i.imgur.com/q3AL0ns.png"
-      data-image-src="http://i.imgur.com/q3AL0ns.png" /></span
-  ><br />
+      data-image-src="http://i.imgur.com/q3AL0ns.png" ></span><br>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="This is the effect of setting r_filmBrightness to (1 1 1)."
       src="http://i.imgur.com/5wGC2rp.png"
-      data-image-src="http://i.imgur.com/5wGC2rp.png" /></span
-  ><br />
+      data-image-src="http://i.imgur.com/5wGC2rp.png" ></span><br>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="This is what a r_filmContrast setting of 1.5 looks like on a dark map."
       src="http://i.imgur.com/NTpq3N5.png"
       data-image-src="http://i.imgur.com/NTpq3N5.png"
-  /></span>
+  ></span>
 </p>
 <p>Credit: Treminaor</p>
 <p> </p>

@@ -20,12 +20,11 @@ dateCreated: 2024-01-30T10:30:59.368Z
 <p>
   Your sound file needs to be WAV format, 48000Hz. In order to convert it,
   download the free program
-  <a
+  <a 
     class="external-link"
     href="http://www.audacityteam.org/download/"
     rel="nofollow"
-    >Audacity</a
-  >
+    >Audacity</a>
   and open your sound file.
 </p>
 <p>
@@ -33,9 +32,7 @@ dateCreated: 2024-01-30T10:30:59.368Z
   then go to File → Export.
 </p>
 <p>
-  In the &quot;Save as Type&quot; dropdown, select &quot;<strong
-    >WAV (Microsoft) signed 16bit PCM</strong
-  >&quot;. Save the file to a location of your choice within root/sound_assets.
+  In the &quot;Save as Type&quot; dropdown, select &quot;<strong>WAV (Microsoft) signed 16bit PCM</strong>&quot;. Save the file to a location of your choice within root/sound_assets.
 </p>
 <h2 id="BO3|Addingcustomsounds-AddingaSoundaliasEntry">
   Adding a Soundalias Entry
@@ -46,10 +43,9 @@ dateCreated: 2024-01-30T10:30:59.368Z
   you.
 </p>
 <p>
-  Open user_aliases.csv located in root/share/raw/sound/aliases with a <a
+  Open user_aliases.csv located in root/share/raw/sound/aliases with a <a 
     href="Text-Editors_1146950.html"
-    >Text Editor</a
-  >
+    >Text Editor</a>
   and duplicate the &quot;test_sound&quot; line.
 </p>
 <p>
@@ -65,7 +61,7 @@ dateCreated: 2024-01-30T10:30:59.368Z
 </p>
 <ul style="list-style-type: square">
   <li>Missing source checksum</li>
-  <li>Object reference not set to an instance of an object.<br /><br /></li>
+  <li>Object reference not set to an instance of an object.<br><br></li>
 </ul>
 <p>
   ...you can ignore them - this is a bug in the current version of the modtools.
@@ -79,14 +75,9 @@ dateCreated: 2024-01-30T10:30:59.368Z
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 player playlocalsound(&quot;test_sound&quot;);
 ent playsound(&quot;test_sound&quot;);
-playsoundatposition(ent.origin, &quot;test_sound&quot;);</pre
-    >
+playsoundatposition(ent.origin, &quot;test_sound&quot;);</code></pre>
   </div>
 </div>

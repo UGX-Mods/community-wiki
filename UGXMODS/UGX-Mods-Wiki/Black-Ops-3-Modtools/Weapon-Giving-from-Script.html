@@ -17,11 +17,7 @@ dateCreated: 2024-01-30T10:31:22.090Z
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
@@ -29,34 +25,27 @@ function testfunction(parameter)
 	self giveWeapon(weapon); //giving an entity instead of just a string now.
 	self GiveMaxAmmo(weapon);
 	self SwitchToWeapon(weapon);
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>
-  <br />Weapon Stats are now stored as fields of the weapon entitiy instead of
+  <br>Weapon Stats are now stored as fields of the weapon entitiy instead of
   obtained from engine functions:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
 	weapon = getWeapon(string);
 	displayName = weapon.displayName;
 	ammo = weapon.ammo;
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>
-  For a list of the weapon fields on weapon entities in script, see <a
+  For a list of the weapon fields on weapon entities in script, see <a 
     href="15237762.html"
-    >BO3 | Weapon entity field list</a
-  >
+    >BO3 | Weapon entity field list</a>
 </p>

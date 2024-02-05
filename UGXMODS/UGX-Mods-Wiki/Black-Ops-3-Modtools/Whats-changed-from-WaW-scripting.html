@@ -31,70 +31,58 @@ dateCreated: 2024-01-30T10:30:53.974Z
   <ul class="toc-indentation">
     <li>
       <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionDeclaration"
-        >Function Declaration</a
-      >
+        >Function Declaration</a>
       <ul class="toc-indentation">
         <li>
           <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionParameters"
-            >Function Parameters</a
-          >
+            >Function Parameters</a>
         </li>
         <li>
           <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionScopes"
-            >Function Scopes</a
-          >
+            >Function Scopes</a>
         </li>
         <li>
           <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionDuplication"
-            >Function Duplication</a
-          >
+            >Function Duplication</a>
         </li>
       </ul>
     </li>
     <li>
       <a href="#BO3|What&#39;schangedfromWaWscripting?-Namespaces"
-        >Namespaces</a
-      >
+        >Namespaces</a>
     </li>
     <li>
       <a href="#BO3|What&#39;schangedfromWaWscripting?-CallingExternalFunctions"
-        >Calling External Functions</a
-      >
+        >Calling External Functions</a>
     </li>
     <li>
-      <a
+      <a 
         href="#BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)"
-        >Storing Functions in a Variable (pointers)</a
-      >
+        >Storing Functions in a Variable (pointers)</a>
     </li>
     <li><a href="#BO3|What&#39;schangedfromWaWscripting?-Flags">Flags</a></li>
     <li>
-      <a
+      <a 
         href="#BO3|What&#39;schangedfromWaWscripting?-GetStruct()andGetStructArray()"
-        >GetStruct() and GetStructArray()</a
-      >
+        >GetStruct() and GetStructArray()</a>
     </li>
     <li>
-      <a
+      <a 
         href="#BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)"
-        >Weapon System (Giving, Getting, Switching, etc)</a
-      >
+        >Weapon System (Giving, Getting, Switching, etc)</a>
     </li>
     <li>
       <a href="#BO3|What&#39;schangedfromWaWscripting?-GetWorldModel()"
-        >GetWorldModel()</a
-      >
+        >GetWorldModel()</a>
     </li>
     <li>
       <a href="#BO3|What&#39;schangedfromWaWscripting?-TheCallbacksSystem"
-        >The Callbacks System</a
-      >
+        >The Callbacks System</a>
     </li>
     <li>
-      <a
+      <a 
         href="#BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()"
-        >enable_trigger() &amp; disable_trigger()</a
-      >
+        >enable_trigger() &amp; disable_trigger()</a>
     </li>
   </ul>
 </div>
@@ -110,11 +98,7 @@ dateCreated: 2024-01-30T10:30:53.974Z
 <p> </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 //WaW
 testfunction(parameter)
 {
@@ -126,8 +110,7 @@ function testfunction(parameter)
 {
 	some code()
 } 
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <h3 id="BO3|What&#39;schangedfromWaWscripting?-FunctionParameters">
@@ -140,15 +123,10 @@ function testfunction(parameter)
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: c#; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-c#">
 function testingFunction( myPram = false )
 {
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>
@@ -170,14 +148,9 @@ function testingFunction( myPram = false )
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: c#; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-c#">
 function private testingFunction( ) // this indicates that it is a private scope function 
-function testingFunction( )         // this indicates that its a public scope function</pre
-    >
+function testingFunction( )         // this indicates that its a public scope function</code></pre>
   </div>
 </div>
 <h3 id="BO3|What&#39;schangedfromWaWscripting?-FunctionDuplication">
@@ -193,11 +166,7 @@ function testingFunction( )         // this indicates that its a public scope fu
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: c#; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-c#">
 // zm_file_one.gsc
 #namespace zm_file_one			// Define our name space
 function init() {				// Declare our function init()
@@ -209,8 +178,7 @@ function init() {				// Declare our function init()
 function init() {				// Declare init() again in a different file.
 	iPrintLn(&quot;Testing two&quot;);
 	zm_file_one::init(); 		// See how I am able to use the same function name because its attached to a different name space
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>
@@ -218,13 +186,8 @@ function init() {				// Declare init() again in a different file.
 <p>You can include an external script into your current script by doing:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-#using scripts\zm\zm_usermap;</pre
-    >
+    <pre><code class="language-cpp">
+#using scripts\zm\zm_usermap;</code></pre>
   </div>
 </div>
 <p> </p>
@@ -234,13 +197,8 @@ function init() {				// Declare init() again in a different file.
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-zm_usermap::some_func();</pre
-    >
+    <pre><code class="language-cpp">
+zm_usermap::some_func();</code></pre>
   </div>
 </div>
 <p> </p>
@@ -248,18 +206,14 @@ zm_usermap::some_func();</pre
   Calling External Functions
 </h2>
 <p>&lt;WIP&gt;</p>
-<h2
+<h2 
   id="BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)"
 >
   Storing Functions in a Variable (pointers)
 </h2>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	myFunc = &amp;some_func;
@@ -268,8 +222,7 @@ function testfunction(parameter)
 some_func()
 {
  
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>
@@ -279,11 +232,7 @@ some_func()
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 #using scripts\shared\flag_shared;
  
 function testfunction(parameter)
@@ -299,8 +248,7 @@ function testfunction(parameter)
  
 	//WaW: flag_clear(&quot;flag&quot;);
 	level flag::clear(&quot;flag&quot;);
-} </pre
-    >
+} </code></pre>
   </div>
 </div>
 <p> </p>
@@ -309,11 +257,7 @@ function testfunction(parameter)
 </h2>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 #using scripts\codescripts\struct;
 
 function testfunction(parameter)
@@ -323,12 +267,11 @@ function testfunction(parameter)
 
 	//WaW:  structs = getStructArray(&quot;something&quot;, &quot;targetname&quot;);
 	structs = struct::get_array(&quot;something&quot;, &quot;targetname&quot;);
-} </pre
-    >
+} </code></pre>
   </div>
 </div>
 <p> </p>
-<h2
+<h2 
   id="BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)"
 >
   Weapon System (Giving, Getting, Switching, etc)
@@ -340,11 +283,7 @@ function testfunction(parameter)
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
@@ -352,29 +291,23 @@ function testfunction(parameter)
 	self giveWeapon(weapon); //giving an entity instead of just a string now.
 	self GiveMaxAmmo(weapon);
 	self SwitchToWeapon(weapon);
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>
-  <br />Weapon Stats are now stored as fields of the weapon entitiy instead of
+  <br>Weapon Stats are now stored as fields of the weapon entitiy instead of
   obtained from engine functions:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
 	weapon = getWeapon(string);
 	displayName = weapon.displayName;
 	ammo = weapon.ammo;
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-GetWorldModel()">
@@ -382,18 +315,13 @@ function testfunction(parameter)
 </h2>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
 	//WaW: model = GetWorldModel(string);
 	model = GetWeaponWorldModel(getWeapon(string)); //Must pass an initialized weapon entity and also note the function for getting the model has been renamed.
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-TheCallbacksSystem">
@@ -402,12 +330,11 @@ function testfunction(parameter)
 <p>
   A much more elegant way of getting your scripts threaded into the level at the
   right time (preload, post load, post load with specific requirements). You can
-  see a full explanation of this feature on the dedicated page: <a
+  see a full explanation of this feature on the dedicated page: <a 
     href="https://confluence.ugx-mods.com/display/UGXMODS/BO3+%7C+Callbacks+System"
-    >BO3 | Callbacks System</a
-  >
+    >BO3 | Callbacks System</a>
 </p>
-<h2
+<h2 
   id="BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()"
 >
   enable_trigger() &amp; disable_trigger()
@@ -415,13 +342,8 @@ function testfunction(parameter)
 <p>These functions have been replaced with:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-trigger TriggerEnable(&lt;bool&gt;);</pre
-    >
+    <pre><code class="language-cpp">
+trigger TriggerEnable(&lt;bool&gt;);</code></pre>
   </div>
 </div>
 <p>where passing true will enable the trigger and false will disable it.</p>

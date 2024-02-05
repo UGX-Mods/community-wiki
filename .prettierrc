@@ -2,5 +2,9 @@
   "tabWidth": 2,
   "useTabs": false,
   "endOfLine": "lf",
-  "singleQuote": true
+  "singleQuote": true,
+  "semi": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "bracketSameLine": true,
+  "trailingComma": "all"
 }

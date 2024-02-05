@@ -41,9 +41,9 @@ dateCreated: 2024-01-30T10:33:59.801Z
     <div class="cell normal" data-type="normal">
       <div class="innerCell">
         <p>
-          <span
+          <span 
             class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-            ><img
+            ><img 
               class="confluence-embedded-image confluence-external-resource confluence-content-image-border"
               draggable="false"
               alt="Aerial view of zones on UGX Comosea"
@@ -51,7 +51,7 @@ dateCreated: 2024-01-30T10:33:59.801Z
               width="610"
               src="http://i.imgur.com/rBV7Fej.jpg"
               data-image-src="http://i.imgur.com/rBV7Fej.jpg"
-          /></span>
+          ></span>
         </p>
       </div>
     </div>
@@ -67,21 +67,19 @@ dateCreated: 2024-01-30T10:33:59.801Z
           To create a zone volume in Radiant, right-click the 2d view and from
           the Info menu, click Volume. This will create a brush with the
           &quot;Volume Texture&quot; on it.
-          <strong
-            >You must create volumes this way. You cannot just draw a normal
-            brush and then apply the Volume tool-texture to it</strong
-          >.
+          <strong>You must create volumes this way. You cannot just draw a normal
+            brush and then apply the Volume tool-texture to it</strong>.
         </p>
         <p>
           Stretch the brush to cover a section of your map. You want each zone
           to represent an area which has been sectioned off by buy-able
           barriers/debris.
         </p>
-        <div
+        <div 
           class="confluence-information-macro confluence-information-macro-warning"
         >
           <p class="title conf-macro-render">Warning</p>
-          <span
+          <span 
             class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
           ></span>
           <div class="confluence-information-macro-body">
@@ -101,10 +99,10 @@ dateCreated: 2024-01-30T10:33:59.801Z
           Setting the KVP's
         </h3>
         <p></p>
-        <div
+        <div 
           class="confluence-information-macro confluence-information-macro-tip"
         >
-          <span
+          <span 
             class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
           ></span>
           <div class="confluence-information-macro-body">
@@ -117,7 +115,7 @@ dateCreated: 2024-01-30T10:33:59.801Z
               will likely cause your map to crash while loading! In these pages,
               KVP's are referred to in this format: Key | Value. Note they are
               separated by a pipe ( | ) character. This character should be
-              ignored when entering the Key-Value Pair.<br />
+              ignored when entering the Key-Value Pair.<br>
               <strong>To properly add a KVP to an entity:</strong>
             </p>
             <ul>
@@ -142,7 +140,7 @@ dateCreated: 2024-01-30T10:33:59.801Z
             </ul>
           </div>
         </div>
-        <br />
+        <br>
         Select the zone volume(s) and give them the following KVP's:
         <div class="table-wrap">
           <table class="confluenceTable">
@@ -174,10 +172,10 @@ dateCreated: 2024-01-30T10:33:59.801Z
               entering the target value - this will tell the zone which zombie
               spawners it will activate.
             </p>
-            <div
+            <div 
               class="confluence-information-macro confluence-information-macro-tip"
             >
-              <span
+              <span 
                 class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
               ></span>
               <div class="confluence-information-macro-body">
@@ -200,13 +198,11 @@ dateCreated: 2024-01-30T10:33:59.801Z
           For more info on how to create a zombie or dog spawner, see
           <span class="confluence-link"
             ><a href="Creating-Zombie-and-Dog-Spawners_1146956.html"
-              >Creating Zombie and Dog Spawners</a
-            ></span
-          >
+              >Creating Zombie and Dog Spawners</a></span>
         </p>
         <p>
           Select the spawners which you want to link to a zone. Give them the
-          following KVP:<br />
+          following KVP:<br>
           Select the zone volume(s) and give them the following KVP's:
         </p>
         <div class="table-wrap">
@@ -237,18 +233,16 @@ dateCreated: 2024-01-30T10:33:59.801Z
           Remember that all of your riser and dog structs need to have the
           proper targetname to work properly with zones. See
           <a href="Creating-Zombie-and-Dog-Spawners_1146956.html"
-            >Creating Zombie and Dog Spawners</a
-          > for more info.
+            >Creating Zombie and Dog Spawners</a> for more info.
         </p>
         <h2 id="UltimateGuidetoZonesinv1.4Maps-ScriptChanges">
           Script Changes
         </h2>
         <p>
-          <code
-            ><div
+          <code><div 
               class="confluence-information-macro confluence-information-macro-tip"
             >
-              <span
+              <span 
                 class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
               ></span>
               <div class="confluence-information-macro-body">
@@ -270,14 +264,12 @@ dateCreated: 2024-01-30T10:33:59.801Z
                   gamestate starts and should be threaded.
                 </p>
                 <p>
-                  <strong
-                    >The gamestate is started by this line in
-                    mapname.gsc:</strong
-                  >
+                  <strong>The gamestate is started by this line in
+                    mapname.gsc:</strong>
                 </p>
                 <div class="mw-geshi" style="text-align: left">
                   <div class="cpp source-cpp">
-                    <pre
+                    <pre 
                       class="de1"
                     >maps\_zombiemode<span class="sy4">::</span><span class="me2">main</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></pre>
                   </div>
@@ -299,8 +291,8 @@ dateCreated: 2024-01-30T10:33:59.801Z
                 </ul>
               </div>
             </div>
-            <br
-          /></code>
+            <br 
+          ></code>
         </p>
         <h3 id="UltimateGuidetoZonesinv1.4Maps-Declaringthestartzone">
           Declaring the start zone
@@ -313,14 +305,9 @@ dateCreated: 2024-01-30T10:33:59.801Z
         <p>Find this line in your mapname.gsc</p>
         <div class="code panel pdl" style="border-width: 1px">
           <div class="codeContent panelContent pdl">
-            <pre
-              class="syntaxhighlighter-pre"
-              data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-              data-theme="RDark"
-            >
+            <pre><code class="language-cpp">
 zones = [];
-zones[zones.size] = &quot;initial_zone&quot; </pre
-            >
+zones[zones.size] = &quot;initial_zone&quot; </code></pre>
           </div>
         </div>
         <p>
@@ -334,17 +321,12 @@ zones[zones.size] = &quot;initial_zone&quot; </pre
         <p>
           In order for the game to know which zones are
           <a href='#UltimateGuidetoZonesinv1.4Maps-Whatare"adjacent"zones?'
-            ><span class="confluence-link">&quot;adjacent&quot;</span></a
-          >, you must set the zones up in your mapname.gsc.
+            ><span class="confluence-link">&quot;adjacent&quot;</span></a>, you must set the zones up in your mapname.gsc.
         </p>
         <p>Find this block of code in your mapname.gsc:</p>
         <div class="code panel pdl" style="border-width: 1px">
           <div class="codeContent panelContent pdl">
-            <pre
-              class="syntaxhighlighter-pre"
-              data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-              data-theme="RDark"
-            >
+            <pre><code class="language-cpp">
 dlc3_zone_init()
 {
 /*
@@ -363,12 +345,11 @@ h2. ///ScriptDocBegin
 
 // Outside East Door
 //add_adjacent_zone( &quot;receiver_zone&quot;, &quot;outside_east_zone&quot;, &quot;enter_outside_east&quot; );
-}</pre
-            >
+}</code></pre>
           </div>
         </div>
         <p>
-          <br />
+          <br>
           Here you should see that Treyarch has already been kind enough to
           provide a brief description of how to set up your zones. I will not go
           to the trouble of repeating what is already written there, instead I
@@ -382,13 +363,8 @@ h2. ///ScriptDocBegin
         </p>
         <div class="code panel pdl" style="border-width: 1px">
           <div class="codeContent panelContent pdl">
-            <pre
-              class="syntaxhighlighter-pre"
-              data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-              data-theme="RDark"
-            >
-add_adjacent_zone( &quot;zone_name&quot;, &quot;adjacent_zone_name&quot;, &quot;flag_to_activate_zone_name&quot; );</pre
-            >
+            <pre><code class="language-cpp">
+add_adjacent_zone( &quot;zone_name&quot;, &quot;adjacent_zone_name&quot;, &quot;flag_to_activate_zone_name&quot; );</code></pre>
           </div>
         </div>
         <ul>
@@ -433,11 +409,7 @@ add_adjacent_zone( &quot;zone_name&quot;, &quot;adjacent_zone_name&quot;, &quot;
         </p>
         <div class="code panel pdl" style="border-width: 1px">
           <div class="codeContent panelContent pdl">
-            <pre
-              class="syntaxhighlighter-pre"
-              data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-              data-theme="RDark"
-            >
+            <pre><code class="language-cpp">
 dlc3_zone_init()
 {
 add_adjacent_zone( &quot;start_zone&quot;, &quot;leftside_spawn_house&quot;, &quot;enter_leftside_spawn_house&quot; );
@@ -459,8 +431,7 @@ add_adjacent_zone( &quot;garage&quot;, &quot;far_left_area&quot;, &quot;enter_fa
 add_adjacent_zone( &quot;far_left_area&quot;, &quot;far_left_room&quot;, &quot;enter_far_left_area&quot; );
 add_adjacent_zone( &quot;back_right_area&quot;, &quot;center_breezeway&quot;, &quot;enter_leftside_spawn_house&quot; );
 add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quot;enter_leftside_spawn_house&quot; );
-}</pre
-            >
+}</code></pre>
           </div>
         </div>
         <p>As you can see, one zone can have multiple adjacent ones.</p>
@@ -477,31 +448,24 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
           <li>
             <span class="confluence-link"
               ><a href="Creating-a-Debris-Blocker_1146929.html"
-                >Creating a Debris Blocker</a
-              ></span
-            >
+                >Creating a Debris Blocker</a></span>
           </li>
           <li>
             <span class="confluence-link"
               ><a href="Creating-a-Moving-Door-Blocker_1146927.html"
-                >Creating a Moving Door Blocker</a
-              ></span
-            >
+                >Creating a Moving Door Blocker</a></span>
           </li>
           <li>
             <span class="confluence-link"
               ><a href="Creating-a-Swinging-Door-Blocker_1146925.html"
-                >Creating a Swinging Door Blocker</a
-              ></span
-            >
+                >Creating a Swinging Door Blocker</a></span>
           </li>
           <li>
             <span class="confluence-link"
-              ><a href="1146942.html">Creating a flagwait() Blocker</a></span
-            >
+              ><a href="1146942.html">Creating a flagwait() Blocker</a></span>
           </li>
         </ul>
-        <h1
+        <h1 
           id="UltimateGuidetoZonesinv1.4Maps-Help!Igetascript_runtimeerrorormygamelags..."
         >
           Help! I get a script_runtime error or my game lags...
@@ -512,24 +476,20 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
         <p>
           You probably forgot to set up your start_zone in your mapname.gsc. See
           <a href="#UltimateGuidetoZonesinv1.4Maps-Declaringthestartzone"
-            >Declaring the start zone</a
-          >.
+            >Declaring the start zone</a>.
         </p>
         <h2 id="UltimateGuidetoZonesinv1.4Maps-...whenIenteranewzone">
           ...when I enter a new zone
         </h2>
         <p>
           Add
-          <a
+          <a 
             class="external-link"
             href="http://ugx-mods.com/downloads/tutorials/zone_debugger.iwd"
             rel="nofollow"
-            >zone_debugger.iwd</a
-          >
+            >zone_debugger.iwd</a>
           to your
-          <strong
-            >C:\Users\&lt;USERNAME&gt;\AppData\Local\Activision\CoDWaW\mods\mapname</strong
-          >
+          <strong>C:\Users\&lt;USERNAME&gt;\AppData\Local\Activision\CoDWaW\mods\mapname</strong>
           folder and run the map. Pause the game and check the console output
           after you spawn.
         </p>
@@ -542,12 +502,12 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
         </p>
         <p>
           <span class="confluence-embedded-file-wrapper"
-            ><img
+            ><img 
               class="confluence-embedded-image confluence-external-resource"
               draggable="false"
               src="http://i.imgur.com/rh7H4x9.png"
               data-image-src="http://i.imgur.com/rh7H4x9.png"
-          /></span>
+          ></span>
         </p>
         <p>
           If you don't see any yellow [
@@ -560,10 +520,8 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
           that the lines give you.
         </p>
         <p>
-          <strong
-            >Please remember to REMOVE the zone_debugger IWD from your map
-            folder before releasing your map.</strong
-          >
+          <strong>Please remember to REMOVE the zone_debugger IWD from your map
+            folder before releasing your map.</strong>
         </p>
         <p><span class="confluence-link">Credit:</span> Treminaor</p>
       </div>

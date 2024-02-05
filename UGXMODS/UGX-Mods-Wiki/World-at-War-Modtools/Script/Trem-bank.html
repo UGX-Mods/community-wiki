@@ -12,7 +12,7 @@ dateCreated: 2024-01-30T10:32:56.350Z
 
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -46,7 +46,7 @@ dateCreated: 2024-01-30T10:32:56.350Z
   limit on the amount of bank withdraws per round.
 </p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -57,12 +57,11 @@ dateCreated: 2024-01-30T10:32:56.350Z
 </div>
 <p>
   Files:
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/trem_bank_2.1.rar"
     rel="nofollow"
-    >trem_bank_2.1.rar</a
-  >
+    >trem_bank_2.1.rar</a>
 </p>
 <h1 id="Trembank-Changelog">Changelog</h1>
 <p>
@@ -72,16 +71,16 @@ dateCreated: 2024-01-30T10:32:56.350Z
 </p>
 <h1 id="Trembank-Preparation">Preparation</h1>
 <p>
-  Download the files above. <br />
+  Download the files above. <br>
   Copy these files to the following locations:
 </p>
 <div class="panel" style="border-width: 1px">
   <div class="panelContent">
     <p>
-      trem_bank_2.gsc -&gt; root\mods\MAPNAME\maps<br />
-      trem_bank_mouse.menu -&gt; root\raw\ui\scriptmenus<br />
-      trem_bank_keyboard -&gt; root\raw\ui\scriptmenus<br />
-      images/trem_bank_bg.iwi -&gt; root\mods\MAPNAME\images<br />
+      trem_bank_2.gsc -&gt; root\mods\MAPNAME\maps<br>
+      trem_bank_mouse.menu -&gt; root\raw\ui\scriptmenus<br>
+      trem_bank_keyboard -&gt; root\raw\ui\scriptmenus<br>
+      images/trem_bank_bg.iwi -&gt; root\mods\MAPNAME\images<br>
       materials/trem_bank_bg -&gt; root\raw\materials\
     </p>
   </div>
@@ -96,7 +95,7 @@ dateCreated: 2024-01-30T10:32:56.350Z
 <p>
   Place a trigger_use by first creating a brush using the 2D window in Radiant,
   then with the brush selected, right click the 2D window and choose trigger
-  -&gt; trigger_use.<br />
+  -&gt; trigger_use.<br>
   Give the trigger the following KvP by selecting the trigger and pressing N on
   your keyboard:
 </p>
@@ -119,10 +118,8 @@ dateCreated: 2024-01-30T10:32:56.350Z
   You must include the trem_bank.menu in your mod.ff in order for it to show
   on-screen in-game. To do this, first open Launcher and go to the Mods tab.
   Next, select your mod from the dropdown box.
-  <strong
-    >If you are using ZCT mod, do this in your
-    root/zone_source/nazi_zombie_mapname.csv instead.</strong
-  >
+  <strong>If you are using ZCT mod, do this in your
+    root/zone_source/nazi_zombie_mapname.csv instead.</strong>
 </p>
 <p>
   In the textbox below the dropdown box, add this to the top or bottom of the
@@ -130,16 +127,11 @@ dateCreated: 2024-01-30T10:32:56.350Z
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 menufile,ui/scriptmenus/trem_bank_mouse.menu
 menufile,ui/scriptmenus/trem_bank_keyboard.menu
 material,trem_bank_bg
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <h2 id="Trembank-IWD">IWD</h2>
@@ -159,72 +151,47 @@ material,trem_bank_bg
 <p>Find:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 maps\_zombiemode::main();
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>and add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 precacheMenu(&quot;trem_bank_mouse&quot;);
 precacheMenu(&quot;trem_bank_keyboard&quot;);
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>immediately before 'maps_zombiemode::main();'. It should look like:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 precacheMenu(&quot;trem_bank_mouse&quot;);
 precacheMenu(&quot;trem_bank_keyboard&quot;);
 maps\_zombiemode::main();
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>Then add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 level thread maps\trem_bank_2::bank();
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>immediately after 'maps_zombiemode::main();'. It should look like:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 precacheMenu(&quot;trem_bank_mouse&quot;);
 precacheMenu(&quot;trem_bank_keyboard&quot;);
 maps\_zombiemode::main();
 level thread maps\trem_bank_2::bank();
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <h2 id="Trembank-Customization">Customization</h2>
@@ -246,7 +213,7 @@ level thread maps\trem_bank_2::bank();
 <p>Keyboard:</p>
 <p>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image"
       draggable="false"
       src="attachments/1146922/1605636.png"
@@ -261,27 +228,20 @@ level thread maps\trem_bank_2::bank();
       data-linked-resource-container-id="1146922"
       data-linked-resource-container-version="5"
       alt=""
-  /></span>
+  ></span>
 </p>
 <h1 id="Trembank-Finishingup">Finishing up</h1>
 <p>
   After completing
   <span class="confluence-link"
-    ><a href="#Trembank-Preparation">Preparation</a></span
-  >
-  and <span class="confluence-link"> </span
-  ><a href="#Trembank-Setup"><span class="confluence-link">Setup</span></a
-  >, you must compile your map and mod.
+    ><a href="#Trembank-Preparation">Preparation</a></span>
+  and <span class="confluence-link"> </span><a href="#Trembank-Setup"><span class="confluence-link">Setup</span></a>, you must compile your map and mod.
 </p>
 <h1 id="Trembank-Source">Source</h1>
 <h2 id="Trembank-trem_bank_2.gsc">trem_bank_2.gsc</h2>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name    : trem_bank_2.gsc 
 //|||| Info   	 : This is a bank system where players can deposit and withdraw points from one global total. I am aware this idea has been toyed with many times by many people, but I don&#39;t care as I wanted to make my own. This is completely and totally my code, and has not been ripped/taken from anyone else&#39;s code that I have seen or used. 
@@ -425,8 +385,7 @@ watch_bank_dvar()
 			setDvar(&quot;bank_total&quot;, level.bank[&quot;total&quot;]);
 		wait 0.5;
 	}
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>Credit: Treminaor</p>

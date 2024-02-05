@@ -15,8 +15,7 @@ dateCreated: 2024-01-30T10:32:08.776Z
   weapons to CoD. The only two prerequisites to this tutorial are that you have
   Maya 8.5 with IW's xAnim/xModel Export Plugin or Maya 2012-2014 with
   <a href="Maya-2012-2014-Xmodel-and-Xanim-Export-Tool_1146918.html"
-    >Aidan's xAnim/xModel Export Plugin</a
-  >
+    >Aidan's xAnim/xModel Export Plugin</a>
   as well as an already completed weapon mesh to work with.
 </p>
 <h1 id="CustomWeapon-SettingupyourVMGun">Setting up your VMGun</h1>
@@ -74,10 +73,8 @@ dateCreated: 2024-01-30T10:32:08.776Z
     The material names here will match the names of the materials we will be
     creating in asset manager. Make sure that all materials have appropriate
     names. For example, if I had a material that colored the main piece of the
-    weapon, I would call it &quot;mtl_*WEAPONNAME<em
-      >main&quot;. Or if I had a material that was applied to a scope on the
-      weapon I would call it &quot;mtl</em
-    >WEAPONNAME_scope&quot;.
+    weapon, I would call it &quot;mtl_*WEAPONNAME<em>main&quot;. Or if I had a material that was applied to a scope on the
+      weapon I would call it &quot;mtl</em>WEAPONNAME_scope&quot;.
   </li>
 </ul>
 <h3 id="CustomWeapon-Rigging">Rigging</h3>
@@ -155,7 +152,7 @@ dateCreated: 2024-01-30T10:32:08.776Z
 <h1 id="CustomWeapon-Animation">Animation</h1>
 <h3 id="CustomWeapon-Preparation">Preparation</h3>
 <p>
-  Open /bin/maya/model_src/modern_weapons/m16/weapon_m16.mb with Maya.<br />
+  Open /bin/maya/model_src/modern_weapons/m16/weapon_m16.mb with Maya.<br>
   Open Outliner and expand the J_Gun tree. Hold Shift and select m16_high, then
   select the last join in the J_Gun tree. Go to Modify -&gt; Freeze
   Transformations, then Edit -&gt; Delete All by Type -&gt; History. Now, in the
@@ -198,7 +195,7 @@ dateCreated: 2024-01-30T10:32:08.776Z
   user of the gun will see.
 </p>
 <p>
-  Open /bin/maya/animation_src/viewmodel/m16/m16.VMGun.mb in Maya.<br />
+  Open /bin/maya/animation_src/viewmodel/m16/m16.VMGun.mb in Maya.<br>
   Now we are going to do the same thing we did for the rigging: Open Outliner
   again and expand the 'm16' and 'J_Gun' trees. Hold shift and select all items
   within these two trees and go to Skin -&gt; Detach. Now delete the 'm16' tree
@@ -267,7 +264,7 @@ dateCreated: 2024-01-30T10:32:08.776Z
   'xmodel' and press New Entry. Give the model a name such as viewmodel_gunname
   (although it can be whatever you want - keep it lowercase). For type, choose
   <strong>animated</strong>. In the first Filename box, locate your
-  weapon_gunname.xmodel_export and press OK.<br />
+  weapon_gunname.xmodel_export and press OK.<br>
   Now go to PC Convert -&gt; Current Asset Only. It should convert successfully.
 </p>
 <h2 id="CustomWeapon-Addingtheanims">Adding the anims</h2>
@@ -300,15 +297,10 @@ dateCreated: 2024-01-30T10:32:08.776Z
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 xanim,nameofxanim
 xmodel,nameofxmodel
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p><strong>Note:</strong> Edit the names to match what you are adding.</p>

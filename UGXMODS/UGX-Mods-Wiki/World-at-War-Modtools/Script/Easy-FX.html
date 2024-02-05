@@ -13,20 +13,20 @@ dateCreated: 2024-01-30T10:32:12.251Z
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -40,28 +40,30 @@ dateCreated: 2024-01-30T10:32:12.251Z
 </div>
 <div class="confluence-information-macro confluence-information-macro-warning">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
-    <strong>Warning:</strong> This is not to be used for weather! Use
-    root/maps/_weather.gsc. No tutorial is available yet.
+    <strong>Warning:</strong>
+    This is not to be used for weather! Use root/maps/_weather.gsc. No tutorial
+    is available yet.
   </div>
 </div>
 <p>
-  Easy-FX is a script by <span class="confluence-link">UGX</span> treminaor that
-  allows easy FX placement using only Radiant (no annoying origin copy/pasting
-  across multiple files).
+  Easy-FX is a script by
+  <span class="confluence-link">UGX</span>
+  treminaor that allows easy FX placement using only Radiant (no annoying origin
+  copy/pasting across multiple files).
 </p>
 <p>
-  <strong
-    >THIS METHOD WORKS JUST AS WELL AS THE CSC METHOD, AND IN MOST CASES IS ALSO
-    A BETTER CHOICE.</strong
-  >
+  <strong>
+    THIS METHOD WORKS JUST AS WELL AS THE CSC METHOD, AND IN MOST CASES IS ALSO
+    A BETTER CHOICE.
+  </strong>
   Here is why:
 </p>
 <p>
   1) Clientscripts play looping fx by frame, while serverscipt fx loop per unit
-  of time.<br />
+  of time.
+  <br />
   -This means that with CSC, your looping fx will play faster or slower based on
   the client's current FPS (in most cases, this is a terrible idea).
   Serverscript (Easy-FX way) will play at the same rate regardless of FPS,
@@ -83,9 +85,9 @@ dateCreated: 2024-01-30T10:32:12.251Z
   <a
     class="external-link"
     href="http://ugx-mods.com/downloads/ugx_easy_fx.gsc"
-    rel="nofollow"
-    >ugx_easy_fx.gsc</a
-  >
+    rel="nofollow">
+    ugx_easy_fx.gsc
+  </a>
 </p>
 <p>
   Before you can use the Easy-FX script, you must complete the preparation steps
@@ -97,20 +99,21 @@ dateCreated: 2024-01-30T10:32:12.251Z
   script_struct). It looks like a red box (Figure 1).
 </p>
 <p>
-  <span class="confluence-embedded-file-wrapper"
-    ><img
+  <span class="confluence-embedded-file-wrapper">
+    <img
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="Script-Struct"
       src="http://i.imgur.com/yH4HtfA.png"
-      data-image-src="http://i.imgur.com/yH4HtfA.png"
-  /></span>
+      data-image-src="http://i.imgur.com/yH4HtfA.png" />
+  </span>
 </p>
 <p>
   2) Select the struct (shift+mouse click the struct) and open the Entity window
   (N on your keyboard). 'alias' must be a valid FX name and 'usage' must be a
-  valid usage (see <a href="#EasyFX-FXandLooping">FX and Looping</a> for a
-  list). Enter the following KvP's, and refer to Figure 2.
+  valid usage (see
+  <a href="#EasyFX-FXandLooping">FX and Looping</a>
+  for a list). Enter the following KvP's, and refer to Figure 2.
 </p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -135,18 +138,20 @@ dateCreated: 2024-01-30T10:32:12.251Z
   </table>
 </div>
 <p>
-  <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+  <span
+    class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+    <img
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/0Zgssos.png"
-      data-image-src="http://i.imgur.com/0Zgssos.png"
-  /></span>
+      data-image-src="http://i.imgur.com/0Zgssos.png" />
+  </span>
 </p>
 <p>
   If you are using a trigger with your fx, continue, Otherwise skip to
-  <a href="#EasyFX-CSV">CSV</a>.
+  <a href="#EasyFX-CSV">CSV</a>
+  .
 </p>
 <p>
   If your usage is 'use', you must create a trigger_use. If your usage is
@@ -164,14 +169,15 @@ dateCreated: 2024-01-30T10:32:12.251Z
   an arrow pointing at the trigger (Figure 3)
 </p>
 <p>
-  <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+  <span
+    class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+    <img
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/e1vAi1L.png"
-      data-image-src="http://i.imgur.com/e1vAi1L.png"
-  /></span>
+      data-image-src="http://i.imgur.com/e1vAi1L.png" />
+  </span>
 </p>
 <h2 id="EasyFX-CSV">CSV</h2>
 <p>
@@ -184,8 +190,8 @@ dateCreated: 2024-01-30T10:32:12.251Z
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre data-language="C#" spellcheck="false">
-      <code>
+    <pre>
+      <code class="language-cs">
 fx,env/fire/fx_fire_brush_smolder_sm
 fx,env/fire/fx_fire_detail_fade_14
 fx,env/fire/fx_fire_blown_md_blk_smk_distant_w
@@ -207,30 +213,27 @@ fx,maps/zombie/fx_zombie_wire_spark
   </div>
 </div>
 <p>
-  <strong>Note:</strong> if you receive an error upon loading your map that says
-  &quot;Error: 400 fx assests limit reached&quot;, you must remove unused fx
-  from the above list in your CSV.<br />
-  <strong>Note:</strong> You can put the csv lines into any FF. It does not have
-  to be your mod.ff (ex you can use nazi_zombie_mapname.csv or
-  mapaname_patch.csv)
+  <strong>Note:</strong>
+  if you receive an error upon loading your map that says &quot;Error: 400 fx
+  assests limit reached&quot;, you must remove unused fx from the above list in
+  your CSV.
+  <br />
+  <strong>Note:</strong>
+  You can put the csv lines into any FF. It does not have to be your mod.ff (ex
+  you can use nazi_zombie_mapname.csv or mapaname_patch.csv)
 </p>
 <h2 id="EasyFX-Script">Script</h2>
 <p>
   In order for Easy-FX to run, it must be 'called' in your
   root/maps/mapname.gsc. Open this file with a
-  <a href="Text-Editors_1146950.html">Text Editors</a>, although Windows Notepad
-  will suffice.
+  <a href="Text-Editors_1146950.html">Text Editors</a>
+  , although Windows Notepad will suffice.
 </p>
 <p>Find the line:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-maps\_zombiemode::main();</pre
-    >
+    <pre><code class="language-cpp">
+maps\_zombiemode::main();</code></pre>
   </div>
 </div>
 <p>Add:</p>
@@ -245,61 +248,43 @@ thread maps\ugx_easy_fx::fx_start();</code></pre>
 <p>It should look like this:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 maps\_zombiemode::main();
-thread maps\ugx_easy_fx::fx_start();</pre
-    >
+thread maps\ugx_easy_fx::fx_start();</code></pre>
   </div>
 </div>
 <p> </p>
 <p>Next, add:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-maps\ugx_easy_fx::fx_setup();</pre
-    >
+    <pre><code class="language-cpp">
+maps\ugx_easy_fx::fx_setup();</code></pre>
   </div>
 </div>
 <p>right above the lines:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 maps\_zombiemode::main();
-thread maps\ugx_easy_fx::fx_start();</pre
-    >
+thread maps\ugx_easy_fx::fx_start();</code></pre>
   </div>
 </div>
 <p>It should look like:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 maps\ugx_easy_fx::fx_setup();
 maps\_zombiemode::main();
-level thread maps\ugx_easy_fx::fx_start();</pre
-    >
+level thread maps\ugx_easy_fx::fx_start();</code></pre>
   </div>
 </div>
 <h2 id="EasyFX-IWD">IWD</h2>
 <p>
   Copy ugx_easy_fx.gsc (you can download this from the top of this wiki, or
-  create your own copy from <a href="#EasyFX-Source">here</a>) to
-  root/mods/mapname/maps/.<br />
+  create your own copy from
+  <a href="#EasyFX-Source">here</a>
+  ) to root/mods/mapname/maps/.
+  <br />
   Open Launcher and go to the Mods tab. Select your map from the list. Scroll
   down in the box on the left until you see ugx_easy_fx.gsc. Check the box next
   to it.
@@ -308,11 +293,7 @@ level thread maps\ugx_easy_fx::fx_start();</pre
 <p>Here is a list of available out-of-the-box fx:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 Looping:
 fire1
 fire2
@@ -333,26 +314,20 @@ bugs1
 One-Shot:
 explosion1
 explosion2
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>List of usages:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 use
 use_loop
 touch
 touch_loop
 stationary
 stationary_loop
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <h2 id="EasyFX-LoopingOne-ShotFX">Looping One-Shot FX</h2>
@@ -397,22 +372,20 @@ stationary_loop
 <h2 id="EasyFX-AddingnewFX">Adding new FX</h2>
 <p>
   Once you have completed the above steps, you can
-  <strong>optionally</strong> add new fx for Easy-FX to use. All steps in this
-  Customization section are <strong>NOT</strong> required.<br />
-  Open root/mods/mapname/maps/ugx_easy_fx.gsc with (preferably)<a
-    href="Text-Editors_1146950.html"
-    >Text Editors</a
-  >, although Windows Notepad will suffice.
+  <strong>optionally</strong>
+  add new fx for Easy-FX to use. All steps in this Customization section are
+  <strong>NOT</strong>
+  required.
+  <br />
+  Open root/mods/mapname/maps/ugx_easy_fx.gsc with (preferably)
+  <a href="Text-Editors_1146950.html">Text Editors</a>
+  , although Windows Notepad will suffice.
 </p>
 <p>Find the function 'fx_setup()'. It looks like this:</p>
 <p> </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 fx_setup() //This is where the FX are precached. Any FX you want to use must be added to your mapname_patch.csv as well as listed below.
 {
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -469,21 +442,15 @@ fx_setup() //This is where the FX are precached. Any FX you want to use must be 
 
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 	//Do not edit or add anything below this line.
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p> </p>
 <p>The syntax for adding fx to the script is as follows:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-level._effect[&quot;alias&quot;] 			= loadFX(&quot;path/to/fx/name&quot;);</pre
-    >
+    <pre><code class="language-cpp">
+level._effect[&quot;alias&quot;] 			= loadFX(&quot;path/to/fx/name&quot;);</code></pre>
   </div>
 </div>
 <p>
@@ -491,31 +458,32 @@ level._effect[&quot;alias&quot;] 			= loadFX(&quot;path/to/fx/name&quot;);</pre
   'path/to/fx/name' is the file location within the raw/fx/ folder of the fx.
   See the above code for examples.
 </p>
-<p>Once you have added a fx, you <strong>must</strong> add it to your csv.</p>
 <p>
-  <strong>1.4 Map:</strong> Navigate to
-  root/zone_source/nazi_zombie_mapname_patch.csv and open it with Notepad.
+  Once you have added a fx, you
+  <strong>must</strong>
+  add it to your csv.
 </p>
 <p>
-  <strong>1.1 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname.csv
-  and open it with Notepad.
+  <strong>1.4 Map:</strong>
+  Navigate to root/zone_source/nazi_zombie_mapname_patch.csv and open it with
+  Notepad.
+</p>
+<p>
+  <strong>1.1 Map:</strong>
+  Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.
 </p>
 <p>The format for fx include lines is as follows:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 fx,filelocation
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
   where 'filelocation' is the location of the fx within raw/fx/. See
-  <a href="#EasyFX-CSV">CSV</a> for examples.
+  <a href="#EasyFX-CSV">CSV</a>
+  for examples.
 </p>
 <p>
   Once you have completed both of these steps, you may use the fx by setting
@@ -544,21 +512,23 @@ fx,filelocation
 </div>
 <p>
   where 'hintstring' is the hintstring you want (enter without any quotes). For
-  reference, '&amp;&amp;1' is a special character that represents the player's
-  '<span class="confluence-link">Use</span>' key. In most cases this will show
-  as 'F'.
+  reference, '&amp;&amp;1' is a special character that represents the player's '
+  <span class="confluence-link">Use</span>
+  ' key. In most cases this will show as 'F'.
 </p>
 <h1 id="EasyFX-Finishingup">Finishing up</h1>
 <p>
   You must compile your map completely ONCE to save the script_struct locations.
 </p>
 <p>
-  <strong>1.4 Map:</strong> To save changes to your fx include lines in your
-  mapname_patch.csv, you must compile mapname_patch in Launcher.
+  <strong>1.4 Map:</strong>
+  To save changes to your fx include lines in your mapname_patch.csv, you must
+  compile mapname_patch in Launcher.
 </p>
 <p>
-  <strong>1.1 Map:</strong> To save changes to your fx include lines in your
-  mapname.csv, you must compile mapname in Launcher.
+  <strong>1.1 Map:</strong>
+  To save changes to your fx include lines in your mapname.csv, you must compile
+  mapname in Launcher.
 </p>
 <p>
   Then you must compile your Mod on the mod tab ONCE to load ugx_easy_fx into
@@ -573,25 +543,15 @@ fx,filelocation
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-level.fx_debug = 1;</pre
-    >
+    <pre><code class="language-cpp">
+level.fx_debug = 1;</code></pre>
   </div>
 </div>
 <p>and change it to:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-level.fx_debug = undefined;</pre
-    >
+    <pre><code class="language-cpp">
+level.fx_debug = undefined;</code></pre>
   </div>
 </div>
 <p>
@@ -601,11 +561,7 @@ level.fx_debug = undefined;</pre
 <h1 id="EasyFX-Source">Source</h1>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name   : ugx_fx.gsc
 //|||| Info     : Easiest way to implement FX in your map.
@@ -872,14 +828,16 @@ triggered_use_fx(loop) //These are triggered FX. They are triggered when the pla
 	else
 		PlayFxOnTag( level._effect[fx], self.fx, fxTag );
 }
- </pre
-    >
+ </code></pre>
   </div>
 </div>
 <p> </p>
 <p>
-  Author: <span class="confluence-link">UGX</span> treminaor<br />
-  Testers: Cinnober (1.1) and --<span style="text-decoration: line-through"
-    >Church</span
-  >-- (1.4)
+  Author:
+  <span class="confluence-link">UGX</span>
+  treminaor
+  <br />
+  Testers: Cinnober (1.1) and --
+  <span style="text-decoration: line-through">Church</span>
+  -- (1.4)
 </p>

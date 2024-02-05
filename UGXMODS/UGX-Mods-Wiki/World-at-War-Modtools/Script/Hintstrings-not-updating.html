@@ -10,9 +10,9 @@ dateCreated: 2024-01-30T10:32:22.494Z
 
 <!-- conf id: 1146946 -->
 
-<p><br /></p>
+<p><br></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -38,7 +38,7 @@ dateCreated: 2024-01-30T10:32:22.494Z
     </p>
   </div>
 </div>
-<br />
+<br>
 The CoD5 engine has a limit of 48 different hintstrings on any one map at a
 time. If you have a lot of perk machines, doors with different prices, or custom
 triggers you may run into an issue where your perk hintstrings don't update when
@@ -55,12 +55,11 @@ they are supposed to.
 </h1>
 <p>
   Download
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/tutorials/trem_hintstrings.iwd"
     rel="nofollow"
-    >trem_hintstrings.iwd v1.4</a
-  >
+    >trem_hintstrings.iwd v1.4</a>
   and drop it in <strong>root/mods/&lt;mapname&gt;/</strong>, then recompile any
   part of your map or mod. Launcher will auto-copy it to your
   <strong>AppData/mods/&lt;mapname&gt;</strong> folder next time you compile
@@ -68,19 +67,17 @@ they are supposed to.
 </p>
 <p>
   Download
-  <a
+  <a 
     class="external-link"
     href="http://ugx-mods.com/downloads/tutorials/trem_hintstrings_hud.zip"
     rel="nofollow"
-    >trem_hintstrings_hud.zip v1.1</a
-  >
+    >trem_hintstrings_hud.zip v1.1</a>
   and drop it in <strong>root/raw/ui/</strong>. If you have never made changes
   to your hud.menu then just click yes to replace the existing file - a backup
   of the original has already been included in the download. If you have already
   made changes to your hud,menu, then read
   <a href="#Hintstringsnotupdating-Merginghudchangeswithexistinghud.menu"
-    >section 5</a
-  >. Now recompile your mapname_patch.ff using Launcher, as this file's csv has
+    >section 5</a>. Now recompile your mapname_patch.ff using Launcher, as this file's csv has
   an include line for hud.menu already. If you have moved your hud.menu to a
   different FF then compile that one instead obviously.
 </p>
@@ -88,13 +85,8 @@ they are supposed to.
 <p>Instead of using setHintString on your triggers, you need to add</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-#include maps\trem_hintstrings;</pre
-    >
+    <pre><code class="language-cpp">
+#include maps\trem_hintstrings;</code></pre>
   </div>
 </div>
 <p>
@@ -109,14 +101,9 @@ they are supposed to.
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 trig _setHintString(&quot;This is a hintstring&quot;);
-trig setCursorHint(&quot;HINT_NOICON&quot;);</pre
-    >
+trig setCursorHint(&quot;HINT_NOICON&quot;);</code></pre>
   </div>
 </div>
 <p>
@@ -125,15 +112,10 @@ trig setCursorHint(&quot;HINT_NOICON&quot;);</pre
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 _zombiemode_blockers_new.gsc
 _zombiemode_weapons.gsc
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
@@ -143,32 +125,22 @@ _zombiemode_weapons.gsc
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-&amp;&quot;ZOMBIE_FLAMES_UNAVAILABLE&quot;</pre
-    >
+    <pre><code class="language-cpp">
+&amp;&quot;ZOMBIE_FLAMES_UNAVAILABLE&quot;</code></pre>
   </div>
 </div>
 <p>and replace it with</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
-&quot;The power must be activated first!&quot;</pre
-    >
+    <pre><code class="language-cpp">
+&quot;The power must be activated first!&quot;</code></pre>
   </div>
 </div>
 <p>
   You can also apply it to _zombiemode_perks.gsc, but you will have to replace
   all localized strings with regular strings first. If you are using the UGX
   Modtools Patch, you can download these patched versions of those files and
-  simply drop them into your mod's maps folder:<br />
+  simply drop them into your mod's maps folder:<br>
   <strong>&lt;Link Coming Soon&gt;</strong>
 </p>
 <h1 id="Hintstringsnotupdating-Notes">Notes</h1>
@@ -200,11 +172,7 @@ _zombiemode_weapons.gsc
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 // Cursor hints
 menuDef
 {
@@ -222,18 +190,13 @@ menuDef
     	visible 1
     	decoration
     }
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>Replace that section with this:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 // Cursor hints
 menuDef
 {
@@ -273,19 +236,14 @@ menuDef
         visible when(dvarInt(&quot;trem_hintstring_vis&quot;) == 1 &amp;&amp; dvarString(&quot;trem_hintstring_left&quot;) != &quot;&quot; &amp;&amp; dvarString(&quot;trem_hintstring_left&quot;) != &quot; &quot; &amp;&amp; (dvarString(&quot;trem_hintstring_right&quot;) == &quot;&quot; || dvarString(&quot;trem_hintstring_right&quot;) == &quot; &quot;))
         decoration
     }
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
-<p><br /></p>
+<p><br></p>
 <h1 id="Hintstringsnotupdating-SourceCode">Source Code</h1>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name		: trem_hintstrings.gsc
 //|||| Info		: Fixes hintstrings that don&#39;t update.
@@ -359,8 +317,7 @@ isLookingAtEnt(ent)
 	if(vectordot &gt; insidedot)
 		return true;
 	return false;
-}</pre
-    >
+}</code></pre>
   </div>
 </div>
 <p>Credit: Treminaor</p>

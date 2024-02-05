@@ -13,7 +13,7 @@ dateCreated: 2024-01-30T10:32:21.360Z
 <p> </p>
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -47,15 +47,15 @@ dateCreated: 2024-01-30T10:32:21.360Z
 <p>
   The hideTags option is for hiding meshes which are bound to tags (joints) on
   your gun. For instance, typically IW and Treyarch export their MP viewmodel
-  with every single attachment placed on it at once (see Fig 1).<br /><span
+  with every single attachment placed on it at once (see Fig 1).<br><span 
     class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="250"
       src="http://i.imgur.com/MTh1ptR.png"
       data-image-src="http://i.imgur.com/MTh1ptR.png"
-  /></span>
+  ></span>
 </p>
 <p>
   <em><strong>Figure 1</strong></em>
@@ -72,11 +72,9 @@ dateCreated: 2024-01-30T10:32:21.360Z
   <li>Re-adding into their mod.</li>
 </ul>
 <p>
-  <strong
-    >While this does work, this is a complete waste of asset room (and time,
+  <strong>While this does work, this is a complete waste of asset room (and time,
     until you master this process). The same effect can be accomplished by using
-    hideTags on the original mp model!</strong
-  >
+    hideTags on the original mp model!</strong>
 </p>
 <h1 id="GuidetohideTagswithCoD4ViewhandsinCoD5-UsinghideTags">
   Using hideTags
@@ -102,13 +100,13 @@ dateCreated: 2024-01-30T10:32:21.360Z
 </p>
 <p>
   <span class="confluence-embedded-file-wrapper"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="Figure 2"
       src="http://i.imgur.com/oKuEjFU.png"
       data-image-src="http://i.imgur.com/oKuEjFU.png"
-  /></span>
+  ></span>
 </p>
 <p>
   <strong><em>Figure 2</em></strong>
@@ -125,14 +123,14 @@ dateCreated: 2024-01-30T10:32:21.360Z
   After you open the xmodelparts file with <code>Notepad</code>, you will see
   some gibberish again, but if you look in the right place you will find the
   list of joints for the viewmodel! See Fig 3, the tags are highlighted in
-  yellow for emphasis.<br /><span class="confluence-embedded-file-wrapper"
-    ><img
+  yellow for emphasis.<br><span class="confluence-embedded-file-wrapper"
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="Figure 3"
       src="http://i.imgur.com/tI518Fg.png"
       data-image-src="http://i.imgur.com/tI518Fg.png"
-  /></span>
+  ></span>
 </p>
 <p>
   <em><strong>Figure 3</strong></em>
@@ -150,27 +148,20 @@ dateCreated: 2024-01-30T10:32:21.360Z
     Organize the tag list alphabetically. This includes their prefix; J_Gun
     would come before TAG_Reflex_sight alphabetically. Sometimes you will find
     that Treyarch already alphabetized their joint list before exporting their
-    model, but this is not always the case so be sure to check it carefully.<br />
-    <code
-      >note|You can use
-      <a
+    model, but this is not always the case so be sure to check it carefully.<br>
+    <code>note|You can use
+      <a 
         class="external-link"
         href="http://alphabetizer.flap.tv/"
         rel="nofollow"
-        >http://alphabetizer.flap.tv/</a
-      >
-      to automatically alphabetize these lists.</code
-    >
+        >http://alphabetizer.flap.tv/</a>
+      to automatically alphabetize these lists.</code>
   </li>
 </ul>
 <p>Here is a correctly-organized list of tags for viewmodel_mp_thompson:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 j_bolt
 j_clip
 j_gun
@@ -179,8 +170,7 @@ tag_aperture
 tag_brass
 tag_flash
 tag_silencer
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-UsinghideTags.1">
@@ -228,7 +218,7 @@ tag_silencer
   not need to be bound to anything; it just needs to be part of the joint
   hierarchy.
 </p>
-<h3
+<h3 
   id="GuidetohideTagswithCoD4ViewhandsinCoD5-Inputtingtagnamesintoweaponfiles"
 >
   Inputting tag names into weaponfiles

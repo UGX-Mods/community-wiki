@@ -15,8 +15,7 @@ dateCreated: 2024-01-30T10:32:07.629Z
   when someone launches into your mod. An Example of this can be found here:
 </p>
 <p>
-  <code
-    ><iframe
+  <code><iframe 
       class="youtube-player"
       type="text/html"
       style="width: 400px; height: 300px"
@@ -28,18 +27,17 @@ dateCreated: 2024-01-30T10:32:07.629Z
     >
     </iframe>
 
-    <br
-  /></code>
+    <br 
+  ></code>
 </p>
 <h1 id="CustomMainMenuMusic-RequiredPrograms:">Required Programs:</h1>
 <p>-Audacity(Or another audio editing program)</p>
 <p>
-  <a
+  <a 
     class="external-link"
     href="http://audacity.googlecode.com/files/audacity-win-2.0.3.exe"
     rel="nofollow"
-    >Download</a
-  >
+    >Download</a>
 </p>
 <h1 id="CustomMainMenuMusic-ExportingAudio:">Exporting Audio:</h1>
 <p>
@@ -49,13 +47,13 @@ dateCreated: 2024-01-30T10:32:07.629Z
 </p>
 <p>
   <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/OKZOY2t.png"
       data-image-src="http://i.imgur.com/OKZOY2t.png"
-  /></span>
+  ></span>
 </p>
 <p>
   Step 2) As you can see here there are two tracks, which means this audio is
@@ -64,13 +62,13 @@ dateCreated: 2024-01-30T10:32:07.629Z
 </p>
 <p>
   <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/Fu40Adu.png"
       data-image-src="http://i.imgur.com/Fu40Adu.png"
-  /></span>
+  ></span>
 </p>
 <p>
   Step 3) Now that we have done that we want to export our sound. To do this we
@@ -82,30 +80,30 @@ dateCreated: 2024-01-30T10:32:07.629Z
   file somewhere on your computer. This next step is really important, when you
   have a dialog will pop up asking you to edit tags, you want to hit
   &quot;Clear&quot; to clear the tags otherwise we will run into issues with
-  converting the sound through launcher later.<br />
+  converting the sound through launcher later.<br>
   <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/Z8MB6nm.png"
       data-image-src="http://i.imgur.com/Z8MB6nm.png"
-  /></span>
+  ></span>
 </p>
 <p>
   <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+    ><img 
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/788tkeD.png"
       data-image-src="http://i.imgur.com/788tkeD.png"
-  /></span>
+  ></span>
 </p>
 <h1 id="CustomMainMenuMusic-ImplementingtoCOD">Implementing to COD</h1>
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
   ></span>
   <div class="confluence-information-macro-body">
@@ -131,18 +129,18 @@ dateCreated: 2024-01-30T10:32:07.629Z
     </p>
   </div>
 </div>
-<br />
+<br>
 Step 1) Now that our file is saved we want to copy it and paste it into the
 directory of &quot;root/sound_assets/raw/sound/music_mainmenu&quot; (if the
 directory does not exist, create it). Next rename the sound from whatever you
-named it to &quot;garbar_loop&quot;.<br />
+named it to &quot;garbar_loop&quot;.<br>
 <span class="confluence-embedded-file-wrapper"
-  ><img
+  ><img 
     class="confluence-embedded-image confluence-external-resource"
     draggable="false"
     src="http://i.imgur.com/fiCf8Wq.png"
     data-image-src="http://i.imgur.com/fiCf8Wq.png"
-/></span>
+></span>
 <p>
   Step 2) Now we have to create a sound alias for our sound. Go to the directory
   &quot;root/raw/soundaliases&quot; and create a new text file called
@@ -150,15 +148,10 @@ named it to &quot;garbar_loop&quot;.<br />
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 name,file,platform,sequence,vol_min,vol_max,dist_min,dist_max,limit_count,limit_type,entity_limit_count,entity_limit_type,bus,volume_min_falloff_curve,volumefalloffcurve,reverb_send,dist_reverb_max,reverb_min_falloff_curve,reverb_falloff_curve,pitch_min,pitch_max,randomize_type,spatialized,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,chainaliasname,startdelay,speakermap,lfe percentage,center percentage,envelop_min,envelop_max,envelop percentage,occlusion_level,occlusion_wet_dry,real_delay,distance_lpf,move_type,move_time,min_priority,max_priority,min_priority_threshold,max_priority_threshold,,isbig
 music_mainmenu,music_mainmenu\garbar_loop.wav,,,0.6,0.6,,,,,,,music,,,0,,,,,,,2d,streamed,,looping,,all_sp,,,,,,music_all,,,,,,0,,,,,,100,100,0.25,1,,
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>Once that is done you can save the file.</p>
@@ -168,14 +161,9 @@ music_mainmenu,music_mainmenu\garbar_loop.wav,,,0.6,0.6,,,,,,,music,,,0,,,,,,,2d
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
-    <pre
-      class="syntaxhighlighter-pre"
-      data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: RDark"
-      data-theme="RDark"
-    >
+    <pre><code class="language-cpp">
 sound,menu_music,,all_sp
-</pre
-    >
+</code></pre>
   </div>
 </div>
 <p>
