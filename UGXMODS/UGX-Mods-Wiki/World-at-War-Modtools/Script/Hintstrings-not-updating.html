@@ -10,23 +10,23 @@ dateCreated: 2024-01-30T10:32:22.494Z
 
 <!-- conf id: 1146946 -->
 
-<p><br></p>
+<p><br /></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -38,7 +38,7 @@ dateCreated: 2024-01-30T10:32:22.494Z
     </p>
   </div>
 </div>
-<br>
+<br />
 The CoD5 engine has a limit of 48 different hintstrings on any one map at a
 time. If you have a lot of perk machines, doors with different prices, or custom
 triggers you may run into an issue where your perk hintstrings don't update when
@@ -55,29 +55,36 @@ they are supposed to.
 </h1>
 <p>
   Download
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/tutorials/trem_hintstrings.iwd"
-    rel="nofollow"
-    >trem_hintstrings.iwd v1.4</a>
-  and drop it in <strong>root/mods/&lt;mapname&gt;/</strong>, then recompile any
-  part of your map or mod. Launcher will auto-copy it to your
-  <strong>AppData/mods/&lt;mapname&gt;</strong> folder next time you compile
-  your mod.
+    rel="nofollow">
+    trem_hintstrings.iwd v1.4
+  </a>
+  and drop it in
+  <strong>root/mods/&lt;mapname&gt;/</strong>
+  , then recompile any part of your map or mod. Launcher will auto-copy it to
+  your
+  <strong>AppData/mods/&lt;mapname&gt;</strong>
+  folder next time you compile your mod.
 </p>
 <p>
   Download
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/tutorials/trem_hintstrings_hud.zip"
-    rel="nofollow"
-    >trem_hintstrings_hud.zip v1.1</a>
-  and drop it in <strong>root/raw/ui/</strong>. If you have never made changes
-  to your hud.menu then just click yes to replace the existing file - a backup
-  of the original has already been included in the download. If you have already
-  made changes to your hud,menu, then read
-  <a href="#Hintstringsnotupdating-Merginghudchangeswithexistinghud.menu"
-    >section 5</a>. Now recompile your mapname_patch.ff using Launcher, as this file's csv has
+    rel="nofollow">
+    trem_hintstrings_hud.zip v1.1
+  </a>
+  and drop it in
+  <strong>root/raw/ui/</strong>
+  . If you have never made changes to your hud.menu then just click yes to
+  replace the existing file - a backup of the original has already been included
+  in the download. If you have already made changes to your hud,menu, then read
+  <a href="#Hintstringsnotupdating-Merginghudchangeswithexistinghud.menu">
+    section 5
+  </a>
+  . Now recompile your mapname_patch.ff using Launcher, as this file's csv has
   an include line for hud.menu already. If you have moved your hud.menu to a
   different FF then compile that one instead obviously.
 </p>
@@ -140,7 +147,8 @@ _zombiemode_weapons.gsc
   You can also apply it to _zombiemode_perks.gsc, but you will have to replace
   all localized strings with regular strings first. If you are using the UGX
   Modtools Patch, you can download these patched versions of those files and
-  simply drop them into your mod's maps folder:<br>
+  simply drop them into your mod's maps folder:
+  <br />
   <strong>&lt;Link Coming Soon&gt;</strong>
 </p>
 <h1 id="Hintstringsnotupdating-Notes">Notes</h1>
@@ -153,8 +161,9 @@ _zombiemode_weapons.gsc
     </p>
   </li>
   <li>
-    This fix <strong>does not work with localized strings</strong>. Use regular
-    strings instead.
+    This fix
+    <strong>does not work with localized strings</strong>
+    . Use regular strings instead.
   </li>
   <li>
     If you want to display a cursorhint on your trigger, you should use
@@ -239,7 +248,7 @@ menuDef
 }</code></pre>
   </div>
 </div>
-<p><br></p>
+<p><br /></p>
 <h1 id="Hintstringsnotupdating-SourceCode">Source Code</h1>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">

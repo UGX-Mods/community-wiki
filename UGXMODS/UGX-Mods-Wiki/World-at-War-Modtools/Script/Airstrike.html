@@ -10,23 +10,23 @@ dateCreated: 2024-01-30T10:31:41.866Z
 
 <!-- conf id: 1146930 -->
 
-<p><br></p>
+<p><br /></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -41,11 +41,12 @@ dateCreated: 2024-01-30T10:31:41.866Z
 <p>
   Treyarch has lots of SP scripts for vehicles (mostly left over from COD4) that
   can be used in zombiemode with just a little bit of scripting and some time
-  spent in Radiant. <span class="confluence-link">UGX</span> Cabin features an
-  airstrike that was made with this method, and that is what this tutorial will
-  focus on. This will cover placing a plane model in Radiant, creating a vehicle
-  path for it, customizing the bomb drop, configuring explosion fx, giving the
-  plane a propeller, and giving the plane engine sound.
+  spent in Radiant.
+  <span class="confluence-link">UGX</span>
+  Cabin features an airstrike that was made with this method, and that is what
+  this tutorial will focus on. This will cover placing a plane model in Radiant,
+  creating a vehicle path for it, customizing the bomb drop, configuring
+  explosion fx, giving the plane a propeller, and giving the plane engine sound.
 </p>
 <h1 id="Airstrike-Changelog">Changelog</h1>
 <p>Fixed zombie_cost on the bomb run trigger - 01:32, 22 January 2014 (UTC)</p>
@@ -65,8 +66,8 @@ dateCreated: 2024-01-30T10:31:41.866Z
   In order for the plane to function, it must be initialized. This is similar to
   precaching as it must be done before _zombiemode::main() is started. To do
   this, open your root/raw/maps/mapname.gsc with (prefered)
-  <a href="Text-Editors_1146950.html">Text Editors</a>, although Windows Notepad
-  will suffice.
+  <a href="Text-Editors_1146950.html">Text Editors</a>
+  , although Windows Notepad will suffice.
 </p>
 <p>Find the line:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -101,18 +102,21 @@ maps\_zombiemode::main();</code></pre>
 <h3 id="Airstrike-Sound">Sound</h3>
 <p>
   I have already converted
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/amb_corsair_01.wav"
-    rel="nofollow"
-    >amb_corsair_01.wav</a>
+    rel="nofollow">
+    amb_corsair_01.wav
+  </a>
   (a CoD Sound) for use, although you can use any sound you want (just made sure
   you change the soundalias in the bomb_run() function - sound conversion is not
   covered in this tutorial)
 </p>
 <p>
-  If you would like to add a sound, you must make a soundalias. <br>
-  Create a new file in root/raw/soundaliases/ called plane_sound.csv.<br>
+  If you would like to add a sound, you must make a soundalias.
+  <br />
+  Create a new file in root/raw/soundaliases/ called plane_sound.csv.
+  <br />
   Paste this code inside and save the file:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -125,11 +129,12 @@ ambient_corsair,amb_corsair_01.wav,,,1,1,,,,,,,music,,,0,,,,,,,2d,streamed,,,,,,
 </div>
 <p>
   Next, you must place
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/amb_corsair_01.wav"
-    rel="nofollow"
-    >amb_corsair_01.wav</a>
+    rel="nofollow">
+    amb_corsair_01.wav
+  </a>
   in root/mods/mapname/sound.
 </p>
 <p>
@@ -154,12 +159,13 @@ sound,plane_sound,,all_sp
   If you want the FX to work and the bomb model to show, you must do this step.
 </p>
 <p>
-  <strong>1.4 Map:</strong> Navigate to
-  root/zone_source/nazi_zombie_mapname_patch.csv and open it with Notepad.
+  <strong>1.4 Map:</strong>
+  Navigate to root/zone_source/nazi_zombie_mapname_patch.csv and open it with
+  Notepad.
 </p>
 <p>
-  <strong>1.1 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname.csv
-  and open it with Notepad.
+  <strong>1.1 Map:</strong>
+  Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.
 </p>
 <p>Add this anywhere in the file:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -265,7 +271,7 @@ corsair_spin_prop()
   </div>
 </div>
 <p>
-  <br>
+  <br />
   Note that there are 25 instances of 'plane notify(&quot;drop_bombs&quot;); -
   this must match what you set previously in your mapname.gsc, the line:
 </p>
@@ -314,11 +320,12 @@ bomb_run_trig()
 </div>
 <p>
   Create a file in root/mods/mapname/maps/ called
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/bomb_run.gsc"
-    rel="nofollow"
-    >bomb_run.gsc</a>
+    rel="nofollow">
+    bomb_run.gsc
+  </a>
   and place both bomb_run() and bomb_run_trig() inside, along with the standard
   includes.
 </p>
@@ -331,7 +338,8 @@ thread maps\bomb_run::bomb_run_trig();
   </div>
 </div>
 <p>
-  immediately below:<br>
+  immediately below:
+  <br />
   Find the line:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -355,9 +363,9 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
 <p>
   For this tutorial, we have made preparations to use the corsair plane. Right
   click the 2D view of your map and choose script -&gt;
-  <strong>vehicle</strong>. Select
-  root/raw/xmodel/vehicle_usa_aircraft_f4ucorsair. Select the model and press N
-  to open the Entity window. Add these KvPs:
+  <strong>vehicle</strong>
+  . Select root/raw/xmodel/vehicle_usa_aircraft_f4ucorsair. Select the model and
+  press N to open the Entity window. Add these KvPs:
 </p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -420,8 +428,11 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
   </table>
 </div>
 <p>
-  Note: Anywhere from 85 to 100 is a good speed for bombing runs.<br>
-  Note: You <strong>MUST</strong> check the 'START-NODE' box on this first node.
+  Note: Anywhere from 85 to 100 is a good speed for bombing runs.
+  <br />
+  Note: You
+  <strong>MUST</strong>
+  check the 'START-NODE' box on this first node.
 </p>
 <p>
   If you have done everything correctly thus far, you should see a green line
@@ -439,14 +450,15 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
   path with turns looks like:
 </p>
 <p>
-  <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img 
+  <span
+    class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+    <img
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/JxmiD8c.png"
-      data-image-src="http://i.imgur.com/JxmiD8c.png"
-  ></span>
+      data-image-src="http://i.imgur.com/JxmiD8c.png" />
+  </span>
 </p>
 <h2 id="Airstrike-BombRunTrigger">Bomb Run Trigger</h2>
 <p>

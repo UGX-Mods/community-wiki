@@ -30,59 +30,72 @@ dateCreated: 2024-01-30T10:30:53.974Z
 <div class="toc-macro rbtoc1706609478278">
   <ul class="toc-indentation">
     <li>
-      <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionDeclaration"
-        >Function Declaration</a>
+      <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionDeclaration">
+        Function Declaration
+      </a>
       <ul class="toc-indentation">
         <li>
-          <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionParameters"
-            >Function Parameters</a>
+          <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionParameters">
+            Function Parameters
+          </a>
         </li>
         <li>
-          <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionScopes"
-            >Function Scopes</a>
+          <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionScopes">
+            Function Scopes
+          </a>
         </li>
         <li>
-          <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionDuplication"
-            >Function Duplication</a>
+          <a href="#BO3|What&#39;schangedfromWaWscripting?-FunctionDuplication">
+            Function Duplication
+          </a>
         </li>
       </ul>
     </li>
     <li>
-      <a href="#BO3|What&#39;schangedfromWaWscripting?-Namespaces"
-        >Namespaces</a>
+      <a href="#BO3|What&#39;schangedfromWaWscripting?-Namespaces">
+        Namespaces
+      </a>
     </li>
     <li>
-      <a href="#BO3|What&#39;schangedfromWaWscripting?-CallingExternalFunctions"
-        >Calling External Functions</a>
+      <a
+        href="#BO3|What&#39;schangedfromWaWscripting?-CallingExternalFunctions">
+        Calling External Functions
+      </a>
     </li>
     <li>
-      <a 
-        href="#BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)"
-        >Storing Functions in a Variable (pointers)</a>
+      <a
+        href="#BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)">
+        Storing Functions in a Variable (pointers)
+      </a>
     </li>
     <li><a href="#BO3|What&#39;schangedfromWaWscripting?-Flags">Flags</a></li>
     <li>
-      <a 
-        href="#BO3|What&#39;schangedfromWaWscripting?-GetStruct()andGetStructArray()"
-        >GetStruct() and GetStructArray()</a>
+      <a
+        href="#BO3|What&#39;schangedfromWaWscripting?-GetStruct()andGetStructArray()">
+        GetStruct() and GetStructArray()
+      </a>
     </li>
     <li>
-      <a 
-        href="#BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)"
-        >Weapon System (Giving, Getting, Switching, etc)</a>
+      <a
+        href="#BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)">
+        Weapon System (Giving, Getting, Switching, etc)
+      </a>
     </li>
     <li>
-      <a href="#BO3|What&#39;schangedfromWaWscripting?-GetWorldModel()"
-        >GetWorldModel()</a>
+      <a href="#BO3|What&#39;schangedfromWaWscripting?-GetWorldModel()">
+        GetWorldModel()
+      </a>
     </li>
     <li>
-      <a href="#BO3|What&#39;schangedfromWaWscripting?-TheCallbacksSystem"
-        >The Callbacks System</a>
+      <a href="#BO3|What&#39;schangedfromWaWscripting?-TheCallbacksSystem">
+        The Callbacks System
+      </a>
     </li>
     <li>
-      <a 
-        href="#BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()"
-        >enable_trigger() &amp; disable_trigger()</a>
+      <a
+        href="#BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()">
+        enable_trigger() &amp; disable_trigger()
+      </a>
     </li>
   </ul>
 </div>
@@ -206,9 +219,8 @@ zm_usermap::some_func();</code></pre>
   Calling External Functions
 </h2>
 <p>&lt;WIP&gt;</p>
-<h2 
-  id="BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)"
->
+<h2
+  id="BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)">
   Storing Functions in a Variable (pointers)
 </h2>
 <div class="code panel pdl" style="border-width: 1px">
@@ -271,9 +283,8 @@ function testfunction(parameter)
   </div>
 </div>
 <p> </p>
-<h2 
-  id="BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)"
->
+<h2
+  id="BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)">
   Weapon System (Giving, Getting, Switching, etc)
 </h2>
 <p>
@@ -295,7 +306,8 @@ function testfunction(parameter)
   </div>
 </div>
 <p>
-  <br>Weapon Stats are now stored as fields of the weapon entitiy instead of
+  <br />
+  Weapon Stats are now stored as fields of the weapon entitiy instead of
   obtained from engine functions:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -330,13 +342,14 @@ function testfunction(parameter)
 <p>
   A much more elegant way of getting your scripts threaded into the level at the
   right time (preload, post load, post load with specific requirements). You can
-  see a full explanation of this feature on the dedicated page: <a 
-    href="https://confluence.ugx-mods.com/display/UGXMODS/BO3+%7C+Callbacks+System"
-    >BO3 | Callbacks System</a>
+  see a full explanation of this feature on the dedicated page: 
+  <a
+    href="https://confluence.ugx-mods.com/display/UGXMODS/BO3+%7C+Callbacks+System">
+    BO3 | Callbacks System
+  </a>
 </p>
-<h2 
-  id="BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()"
->
+<h2
+  id="BO3|What&#39;schangedfromWaWscripting?-enable_trigger()&amp;disable_trigger()">
   enable_trigger() &amp; disable_trigger()
 </h2>
 <p>These functions have been replaced with:</p>

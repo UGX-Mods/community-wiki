@@ -14,8 +14,9 @@ dateCreated: 2024-01-30T10:32:08.776Z
   This is a comprehensive (and long overdue) tutorial on adding custom, animated
   weapons to CoD. The only two prerequisites to this tutorial are that you have
   Maya 8.5 with IW's xAnim/xModel Export Plugin or Maya 2012-2014 with
-  <a href="Maya-2012-2014-Xmodel-and-Xanim-Export-Tool_1146918.html"
-    >Aidan's xAnim/xModel Export Plugin</a>
+  <a href="Maya-2012-2014-Xmodel-and-Xanim-Export-Tool_1146918.html">
+    Aidan's xAnim/xModel Export Plugin
+  </a>
   as well as an already completed weapon mesh to work with.
 </p>
 <h1 id="CustomWeapon-SettingupyourVMGun">Setting up your VMGun</h1>
@@ -73,8 +74,12 @@ dateCreated: 2024-01-30T10:32:08.776Z
     The material names here will match the names of the materials we will be
     creating in asset manager. Make sure that all materials have appropriate
     names. For example, if I had a material that colored the main piece of the
-    weapon, I would call it &quot;mtl_*WEAPONNAME<em>main&quot;. Or if I had a material that was applied to a scope on the
-      weapon I would call it &quot;mtl</em>WEAPONNAME_scope&quot;.
+    weapon, I would call it &quot;mtl_*WEAPONNAME
+    <em>
+      main&quot;. Or if I had a material that was applied to a scope on the
+      weapon I would call it &quot;mtl
+    </em>
+    WEAPONNAME_scope&quot;.
   </li>
 </ul>
 <h3 id="CustomWeapon-Rigging">Rigging</h3>
@@ -152,7 +157,8 @@ dateCreated: 2024-01-30T10:32:08.776Z
 <h1 id="CustomWeapon-Animation">Animation</h1>
 <h3 id="CustomWeapon-Preparation">Preparation</h3>
 <p>
-  Open /bin/maya/model_src/modern_weapons/m16/weapon_m16.mb with Maya.<br>
+  Open /bin/maya/model_src/modern_weapons/m16/weapon_m16.mb with Maya.
+  <br />
   Open Outliner and expand the J_Gun tree. Hold Shift and select m16_high, then
   select the last join in the J_Gun tree. Go to Modify -&gt; Freeze
   Transformations, then Edit -&gt; Delete All by Type -&gt; History. Now, in the
@@ -195,7 +201,8 @@ dateCreated: 2024-01-30T10:32:08.776Z
   user of the gun will see.
 </p>
 <p>
-  Open /bin/maya/animation_src/viewmodel/m16/m16.VMGun.mb in Maya.<br>
+  Open /bin/maya/animation_src/viewmodel/m16/m16.VMGun.mb in Maya.
+  <br />
   Now we are going to do the same thing we did for the rigging: Open Outliner
   again and expand the 'm16' and 'J_Gun' trees. Hold shift and select all items
   within these two trees and go to Skin -&gt; Detach. Now delete the 'm16' tree
@@ -263,8 +270,10 @@ dateCreated: 2024-01-30T10:32:08.776Z
   After adding materials, you can safely add your weapon model. Scroll down to
   'xmodel' and press New Entry. Give the model a name such as viewmodel_gunname
   (although it can be whatever you want - keep it lowercase). For type, choose
-  <strong>animated</strong>. In the first Filename box, locate your
-  weapon_gunname.xmodel_export and press OK.<br>
+  <strong>animated</strong>
+  . In the first Filename box, locate your weapon_gunname.xmodel_export and
+  press OK.
+  <br />
   Now go to PC Convert -&gt; Current Asset Only. It should convert successfully.
 </p>
 <h2 id="CustomWeapon-Addingtheanims">Adding the anims</h2>
@@ -274,20 +283,26 @@ dateCreated: 2024-01-30T10:32:08.776Z
 </p>
 <p>For Anim File, navigate to and select your .XANIM_EXPORT file.</p>
 <p>
-  For Model File, navigate to your <strong>gunsleeve</strong> .xmodel_export.
-  Leave notetrack blank unless you know what you are doing.
-  <strong>Uncheck</strong> Looping and <strong>Uncheck</strong> Use Bones.
-  Change <strong>type</strong> to <strong>relative</strong>. Now select PC
-  Convert -&gt; Current Asset Only.
+  For Model File, navigate to your
+  <strong>gunsleeve</strong>
+  .xmodel_export. Leave notetrack blank unless you know what you are doing.
+  <strong>Uncheck</strong>
+  Looping and
+  <strong>Uncheck</strong>
+  Use Bones. Change
+  <strong>type</strong>
+  to
+  <strong>relative</strong>
+  . Now select PC Convert -&gt; Current Asset Only.
 </p>
 <h1 id="CustomWeapon-WeaponFile">Weapon File</h1>
 <p>
   Now you must create a weapon file for your gun. You can use
-  <a href="1146972.html">UGX WeaponsEditor++</a> if you wish, or copy/paste a
-  treyarch weapon file and edit it to your needs. What is important is that you
-  change the value for key 'gunModel' to your xmodel, and the value for the key
-  of your desired anim to your anim name. Add the weapon file to
-  mods/mapname/weapons/sp.
+  <a href="1146972.html">UGX WeaponsEditor++</a>
+  if you wish, or copy/paste a treyarch weapon file and edit it to your needs.
+  What is important is that you change the value for key 'gunModel' to your
+  xmodel, and the value for the key of your desired anim to your anim name. Add
+  the weapon file to mods/mapname/weapons/sp.
 </p>
 <h1 id="CustomWeapon-CSVs&amp;IWD">CSVs &amp; IWD</h1>
 <p>
@@ -303,6 +318,9 @@ xmodel,nameofxmodel
 </code></pre>
   </div>
 </div>
-<p><strong>Note:</strong> Edit the names to match what you are adding.</p>
+<p>
+  <strong>Note:</strong>
+  Edit the names to match what you are adding.
+</p>
 <p>Add the same files you included in your FF to your /mods/mapname folders.</p>
 <p>Authors: UGX SajeOne, UGX treminaor &amp; Darkmapper</p>

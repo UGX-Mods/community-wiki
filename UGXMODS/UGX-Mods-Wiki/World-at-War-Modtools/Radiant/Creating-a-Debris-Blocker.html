@@ -29,18 +29,20 @@ dateCreated: 2024-01-30T10:32:01.848Z
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> KVP is an abbreviation for &quot;Key-Value
-      Pair&quot;. When entering a KVP in the Radiant Entity Window,
-      <strong>ensure that you have the entity selected first</strong>. If you do
-      not have an entity selected, Radiant will automatically add the KVP to the
-      &quot;worldspawn&quot; entity. This is BAD and will likely cause your map
-      to crash while loading! In these pages, KVP's are referred to in this
-      format: Key | Value. Note they are separated by a pipe ( | ) character.
-      This character should be ignored when entering the Key-Value Pair.<br />
+      <strong>NOTE:</strong>
+      KVP is an abbreviation for &quot;Key-Value Pair&quot;. When entering a KVP
+      in the Radiant Entity Window,
+      <strong>ensure that you have the entity selected first</strong>
+      . If you do not have an entity selected, Radiant will automatically add
+      the KVP to the &quot;worldspawn&quot; entity. This is BAD and will likely
+      cause your map to crash while loading! In these pages, KVP's are referred
+      to in this format: Key | Value. Note they are separated by a pipe ( | )
+      character. This character should be ignored when entering the Key-Value
+      Pair.
+      <br />
       <strong>To properly add a KVP to an entity:</strong>
     </p>
     <ul>
@@ -98,38 +100,40 @@ dateCreated: 2024-01-30T10:32:01.848Z
 <ul>
   <li>
     Items highlighted in
-    <span style="color: rgb(51, 153, 102)"><code>green</code></span> are
-    optional.
+    <span style="color: rgb(51, 153, 102)"><code>green</code></span>
+    are optional.
   </li>
   <li>script_flag's value should be set to the zone name the door unlocks.</li>
   <li>
     <p>
       By default, zombie_cost sets itself to 1000. If you would like to set a
       custom price, set the
-      <span style="color: rgb(51, 153, 102)"><code>zombie_cost</code></span> key
-      and replace '&lt;any number&gt;' with a numerical value.
+      <span style="color: rgb(51, 153, 102)"><code>zombie_cost</code></span>
+      key and replace '&lt;any number&gt;' with a numerical value.
     </p>
     <div
-      class="confluence-information-macro confluence-information-macro-warning"
-    >
+      class="confluence-information-macro confluence-information-macro-warning">
       <span
-        class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
-      ></span>
+        class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
       <div class="confluence-information-macro-body">
-        <strong>Warning: </strong>The zombie_cost key can only be set to any
-        value if you have applied the UGX Modtools Patch to your World at War
-        installation. To install the patch, refer to
+        <strong>Warning:</strong>
+        The zombie_cost key can only be set to any value if you have applied the
+        UGX Modtools Patch to your World at War installation. To install the
+        patch, refer to
         <a
           href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles"
-          rel="nofollow"
-          >&quot;Installing the Files&quot;</a
-        ><span class="confluence-link"> </span> in the
-        <span class="confluence-link"> </span
-        ><a
+          rel="nofollow">
+          &quot;Installing the Files&quot;
+        </a>
+        <span class="confluence-link"> </span>
+        in the
+        <span class="confluence-link"> </span>
+        <a
           href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide"
-          rel="nofollow"
-          ><span class="confluence-link">Modtools Installation Guide</span></a
-        >. If you do not install the UGX Modtools Patch, you can only use the
+          rel="nofollow">
+          <span class="confluence-link">Modtools Installation Guide</span>
+        </a>
+        . If you do not install the UGX Modtools Patch, you can only use the
         following prices for debris: 100, 200, 250, 500, 750, 1000, 1250, 1500,
         1750, 2000
       </div>
@@ -194,33 +198,35 @@ dateCreated: 2024-01-30T10:32:01.848Z
 <ul>
   <li>
     Items highlighted in
-    <span style="color: rgb(51, 153, 102)"><code>green</code></span> are
-    optional.
+    <span style="color: rgb(51, 153, 102)"><code>green</code></span>
+    are optional.
   </li>
   <li>
     If you would like to have a fx play when the blocker is purchased, set the
-    <span style="color: rgb(51, 153, 102)"><code>script_firefx</code></span> key
-    and replace '&lt;fx_name&gt;' with any included, loaded, and declared fx
+    <span style="color: rgb(51, 153, 102)"><code>script_firefx</code></span>
+    key and replace '&lt;fx_name&gt;' with any included, loaded, and declared fx
     name. Treyarch maps use &quot;poltergeist&quot; (without quotes). You can
-    use this fx as it is included, loaded, and declared already.<br />
-    <code
-      >warning|The script_firefx fx will only play if you have defined a
+    use this fx as it is included, loaded, and declared already.
+    <br />
+    <code>
+      warning|The script_firefx fx will only play if you have defined a
       script_linkTo struct for the debris to fly to. If you have applied the UGX
       Modtools Patch to your World at War installation, the fx will play
       regardless of the presence of a script_linkTo struct for your convenience.
       To install the patch, refer to section 2.2 of the
-      <span class="confluence-link"
-        ><a href="Modtools-Installation-Guide_1146962.html"
-          >Modtools Installation Guide</a
-        ></span
-      >.</code
-    >
+      <span class="confluence-link">
+        <a href="Modtools-Installation-Guide_1146962.html">
+          Modtools Installation Guide
+        </a>
+      </span>
+      .
+    </code>
   </li>
   <li>
     If you would like to have a fx play when the blocker finished moving, set
     the
-    <span style="color: rgb(51, 153, 102)"><code>script_fxid</code></span> key
-    and replace '&lt;fx_name&gt;' with any included, loaded, and declared fx
+    <span style="color: rgb(51, 153, 102)"><code>script_fxid</code></span>
+    key and replace '&lt;fx_name&gt;' with any included, loaded, and declared fx
     name. Treyarch maps use &quot;poltergeist&quot; (without quotes). You can
     use this fx as it is included, loaded, and declared already. If you do not
     create a script_linkTo struct, this KVP is irrelevant and the fx will never
@@ -237,9 +243,9 @@ dateCreated: 2024-01-30T10:32:01.848Z
     By default, the debris take 0.5 seconds to transition from their origin to
     the script_linkTo struct origin. If you would like to use a custom
     transition time, set the
-    <span style="color: rgb(51, 153, 102)"
-      ><code>script_transition_time</code></span
-    >
+    <span style="color: rgb(51, 153, 102)">
+      <code>script_transition_time</code>
+    </span>
     key and replace '&lt;any_number&gt;' with a numerical value (measured in
     seconds). If you do not create a script_linkTo struct, this KVP is
     irrelevant and the fx will never play because nothing will move.
@@ -269,22 +275,24 @@ dateCreated: 2024-01-30T10:32:01.848Z
 <h3 id="CreatingaDebrisBlocker-LinkingtheEntities">Linking the Entities</h3>
 <p>
   Now that you have created all of the necessary items and given them the
-  correct KVP's, it is time to link the items together using targeting.<br />
+  correct KVP's, it is time to link the items together using targeting.
+  <br />
 </p>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> &quot;targeting&quot; is a method for linking
-      entities together in a group. Targeting has menu useful applications, such
-      as controlling an entity that has multiple pieces. For example, the
-      Mystery Box uses targeting to link each separate script_model part of the
-      box to the main trigger_use. Targeting generates automatic targetname and
-      target KVP's on the affected entities. When two items are properly linked
-      together, a red or blue line is drawn from the main entity to each of its
-      targets/links in Radiant. <br />
+      <strong>NOTE:</strong>
+      &quot;targeting&quot; is a method for linking entities together in a
+      group. Targeting has menu useful applications, such as controlling an
+      entity that has multiple pieces. For example, the Mystery Box uses
+      targeting to link each separate script_model part of the box to the main
+      trigger_use. Targeting generates automatic targetname and target KVP's on
+      the affected entities. When two items are properly linked together, a red
+      or blue line is drawn from the main entity to each of its targets/links in
+      Radiant.
+      <br />
       <strong>To properly target one item to another:</strong>
     </p>
     <ul>
@@ -302,12 +310,18 @@ dateCreated: 2024-01-30T10:32:01.848Z
         &quot;targetname&quot;);
       </li>
       <li>Deselect all items by pressing ESC on your keyboard</li>
-      <li>Select the <strong>root entity</strong> first.</li>
       <li>
-        Next, select <strong>one</strong> of the target/link entities and press
-        W on your keyboard. This will create the link between the two entities.
-        Repeat this step for all target/link children of the root entity until
-        all entities have red or blue lines connecting them to the root entity.
+        Select the
+        <strong>root entity</strong>
+        first.
+      </li>
+      <li>
+        Next, select
+        <strong>one</strong>
+        of the target/link entities and press W on your keyboard. This will
+        create the link between the two entities. Repeat this step for all
+        target/link children of the root entity until all entities have red or
+        blue lines connecting them to the root entity.
       </li>
     </ul>
   </div>
@@ -315,7 +329,8 @@ dateCreated: 2024-01-30T10:32:01.848Z
 <br />
 In this case, the root entity is the trigger_use. If you have more than one
 trigger_use, just pick one to link all entities to. Later we will include the
-remaining trigger_use's.<br />
+remaining trigger_use's.
+<br />
 The children of the trigger_use are the clip(s) and debris model(s). Link them
 to the root entity using the instructions above.
 <p>
@@ -356,10 +371,10 @@ to the root entity using the instructions above.
   </li>
 </ul>
 <p>
-  <strong
-    >Replace &lt;linkName&gt; with a unique name of your choosing. *Do not use
-    the same linkName for more than one script_struct!</strong
-  >
+  <strong>
+    Replace &lt;linkName&gt; with a unique name of your choosing. *Do not use
+    the same linkName for more than one script_struct!
+  </strong>
 </p>
 <ul>
   <li>

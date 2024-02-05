@@ -25,9 +25,18 @@ Database: Assets Sync Finished
 9 subtree has 0 * 512 = 0 free buckets
 10 subtree has 0 * 1024 = 0 free buckets
 </code></pre>
-<p>This error is directly related to how many unique strings you've used in scripts, un-#include'ing files does not add to this error, removing lines of script does not remove this error, removing script lines which contain strings <strong>does</strong> remove this error.</p>
+<p>
+  This error is directly related to how many unique strings you've used in
+  scripts, un-#include'ing files does not add to this error, removing lines of
+  script does not remove this error, removing script lines which contain strings
+  <strong>does</strong>
+  remove this error.
+</p>
 <p>bucket usage seems to be dynamic, buckets become free with time.</p>
-<p>Recommended solution: reduce the amount of unique strings used in your custom scripts or remove unused Treyarch SP scripts from being loaded during compile.</p>
+<p>
+  Recommended solution: reduce the amount of unique strings used in your custom
+  scripts or remove unused Treyarch SP scripts from being loaded during compile.
+</p>
 <h2>How to check current string memory usage</h2>
 <p>Console command: "stringUsage"</p>
 <p>&gt; Check console for substree bucket output.</p>

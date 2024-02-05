@@ -16,7 +16,8 @@ dateCreated: 2024-01-30T10:32:59.682Z
   installation.
 </p>
 <p>
-  <code><iframe 
+  <code>
+    <iframe
       class="youtube-player"
       type="text/html"
       style="width: 400px; height: 300px"
@@ -24,30 +25,28 @@ dateCreated: 2024-01-30T10:32:59.682Z
       frameborder="0"
       webkitallowfullscreen
       mozallowfullscreen
-      allowfullscreen
-    >
-    </iframe>
+      allowfullscreen></iframe>
 
-    <br 
-  ></code>
+    <br />
+  </code>
 </p>
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -63,17 +62,19 @@ dateCreated: 2024-01-30T10:32:59.682Z
 <h2 id="UGXJukeboxGuide-Download">Download</h2>
 <p>
   Download the UGX Jukebox installation files here:
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/UGX%20Jukebox%20v1.0.4.rar"
-    rel="nofollow"
-    >UGX Jukebox v1.0.4.rar (25.1MB)</a>
+    rel="nofollow">
+    UGX Jukebox v1.0.4.rar (25.1MB)
+  </a>
 </p>
 <p>
-  Extract the archive to it's own folder anywhere using WinRAR or equivalent.<br>
+  Extract the archive to it's own folder anywhere using WinRAR or equivalent.
+  <br />
   Navigate into the mods/ folder and
-  <strong>rename the MAPNAME folder to the name of your map's folder</strong> in
-  your root directory (example: nazi_zombie_testmap)
+  <strong>rename the MAPNAME folder to the name of your map's folder</strong>
+  in your root directory (example: nazi_zombie_testmap)
 </p>
 <h3 id="UGXJukeboxGuide-Changelog">Changelog</h3>
 <ul>
@@ -108,16 +109,18 @@ dateCreated: 2024-01-30T10:32:59.682Z
 </p>
 <h2 id="UGXJukeboxGuide-CallingtheFunctions">Calling the Functions</h2>
 <p>
-  You need to add two lines to your mapname.gsc before the Jukebox will run.<br>
+  You need to add two lines to your mapname.gsc before the Jukebox will run.
+  <br />
 </p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> <strong>&quot;mapname.gsc&quot;</strong> refers to
-      your map's main gsc file, which is named the same name as your map.
+      <strong>NOTE:</strong>
+      <strong>&quot;mapname.gsc&quot;</strong>
+      refers to your map's main gsc file, which is named the same name as your
+      map.
     </p>
     <p>
       For example, a map called &quot;nazi_zombie_example&quot; would have a
@@ -135,22 +138,26 @@ dateCreated: 2024-01-30T10:32:59.682Z
     </p>
     <div class="mw-geshi" style="text-align: left">
       <div class="cpp source-cpp">
-        <pre 
-          class="de1"
-        >maps\_zombiemode<span class="sy4">::</span><span class="me2">main</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></pre>
+        <pre
+          class="de1">maps\_zombiemode<span class="sy4">::</span><span class="me2">main</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></pre>
       </div>
     </div>
     <p><strong>To add lines to your mapname.gsc:</strong></p>
     <ul>
       <li>
         Open your mapname.gsc file, which can be found in
-        <strong>root/mods/mapname/maps</strong>.
+        <strong>root/mods/mapname/maps</strong>
+        .
       </li>
       <li>
-        For Precache Lines, add them <strong>before</strong> the gamestate line.
+        For Precache Lines, add them
+        <strong>before</strong>
+        the gamestate line.
       </li>
       <li>
-        For Thread Lines, add them <strong>after</strong> the gamestate line.
+        For Thread Lines, add them
+        <strong>after</strong>
+        the gamestate line.
       </li>
     </ul>
   </div>
@@ -201,18 +208,21 @@ level.jukebox[&quot;cost&quot;] = 10;</code></pre>
 <h2 id="UGXJukeboxGuide-RadiantPlacement">Radiant Placement</h2>
 <p>
   To place one or more Jukeboxes in your map, use the prefab
-  <strong>root/map_source/_prefabs/ugx_mod/ugx_jukebox.map</strong>. <br>
+  <strong>root/map_source/_prefabs/ugx_mod/ugx_jukebox.map</strong>
+  .
+  <br />
 </p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> <strong>&quot;Prefab&quot;</strong> is shorthand
-      for &quot;prefabrication&quot;. A prefab is a pre-assembled group of
-      brushes, models, or terrain patches which can be placed and moved as a
-      group in Radiant. <br>
+      <strong>NOTE:</strong>
+      <strong>&quot;Prefab&quot;</strong>
+      is shorthand for &quot;prefabrication&quot;. A prefab is a pre-assembled
+      group of brushes, models, or terrain patches which can be placed and moved
+      as a group in Radiant.
+      <br />
       <strong>To Place a Prefab:</strong>
     </p>
     <ul>
@@ -229,43 +239,49 @@ level.jukebox[&quot;cost&quot;] = 10;</code></pre>
     </ul>
     <p>
       To stamp a prefab, select the prefab and press the
-      <a 
+      <a
         class="external-link"
         href="http://i.imgur.com/5mfwdPu.png"
-        rel="nofollow"
-        ><span 
-          class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-          ><img 
+        rel="nofollow">
+        <span
+          class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+          <img
             class="confluence-embedded-image confluence-external-resource"
             draggable="false"
             alt="stamp"
             height="24"
             width="24"
             src="http://ugx-mods.com/wiki/images/2/29/Stamp_button.png.pagespeed.ce.HNleJljfPv.png"
-            data-image-src="http://ugx-mods.com/wiki/images/2/29/Stamp_button.png.pagespeed.ce.HNleJljfPv.png" ></span></a>
+            data-image-src="http://ugx-mods.com/wiki/images/2/29/Stamp_button.png.pagespeed.ce.HNleJljfPv.png" />
+        </span>
+      </a>
       button from the toolbar.
     </p>
   </div>
 </div>
-<br>
+<br />
 The prefab does not need to be stamped to work. There is no limit to how many
 Jukeboxes can be placed in a single map.
 <h2 id="UGXJukeboxGuide-Compiling">Compiling</h2>
 <p>
   Once you have done the above steps, you are ready to finalize the
   installation. If you would like to add custom songs to your Jukebox, read
-  section 3 before completing this step.<strong>
-    To finalize your installation of the Jukebox, complete the following
-    steps:</strong>
+  section 3 before completing this step.
+  <strong>
+    To finalize your installation of the Jukebox, complete the following steps:
+  </strong>
 </p>
 <ul>
   <li>
-    Open Launcher and<strong> recompile your map</strong>. This is necessary
-    because we added the Jukebox prefab to your map file.
+    Open Launcher and
+    <strong>recompile your map</strong>
+    . This is necessary because we added the Jukebox prefab to your map file.
   </li>
   <li>
-    <strong>S</strong>witch to the Mod Builder tab and select your map from the
-    dropdown list. Add the following lines to the top of your <strong>mod.csv</strong>
+    <strong>S</strong>
+    witch to the Mod Builder tab and select your map from the dropdown list. Add
+    the following lines to the top of your 
+    <strong>mod.csv</strong>
     box:
   </li>
 </ul>
@@ -286,12 +302,17 @@ xanim,jukebox_loop_anim
   </div>
 </div>
 <p>
-  Check the box for<strong> animscripts/jukebox_animscript.gsc</strong> in the
-  files list on the right side.<br>
-  Check the box for<strong> animtrees/_jukebox.atr</strong> in the files list on
-  the right side.<br>
-  Check the boxes for the following<strong> image files</strong> in the files
-  list on the right side:
+  Check the box for
+  <strong>animscripts/jukebox_animscript.gsc</strong>
+  in the files list on the right side.
+  <br />
+  Check the box for
+  <strong>animtrees/_jukebox.atr</strong>
+  in the files list on the right side.
+  <br />
+  Check the boxes for the following
+  <strong>image files</strong>
+  in the files list on the right side:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
@@ -305,17 +326,24 @@ jukebox_n.iwi
   </div>
 </div>
 <p>
-  Check the box for<strong> maps/ugx_jukebox.gsc</strong> in the files list on
-  the right side.<br>
-  Check the box for<strong> weapons/sp/jukebox_button_press</strong> in the
-  files list on the right side.<br>
-  Check the boxes for<strong>
-    &quot;Build mod.ff fastfile&quot; and &quot;Build IWD&quot;</strong><br>
-  Click the <strong>&quot;Build MOD&quot;</strong> button.
+  Check the box for
+  <strong>maps/ugx_jukebox.gsc</strong>
+  in the files list on the right side.
+  <br />
+  Check the box for
+  <strong>weapons/sp/jukebox_button_press</strong>
+  in the files list on the right side.
+  <br />
+  Check the boxes for
+  <strong>&quot;Build mod.ff fastfile&quot; and &quot;Build IWD&quot;</strong>
+  <br />
+  Click the
+  <strong>&quot;Build MOD&quot;</strong>
+  button.
 </p>
 <p>
-  <strong>You are finished!</strong> You can now boot your map and enjoy the UGX
-  Jukebox.
+  <strong>You are finished!</strong>
+  You can now boot your map and enjoy the UGX Jukebox.
 </p>
 <h1 id="UGXJukeboxGuide-AddingCustomSongs">Adding Custom Songs</h1>
 <h2 id="UGXJukeboxGuide-SongFiles">Song Files</h2>
@@ -358,16 +386,15 @@ add_song(display_name, soundalias_name)
 </p>
 <p> </p>
 <div class="confluence-information-macro confluence-information-macro-warning">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
-    <strong>Warning:</strong> If you are adding songs which are not
-    copyright-free, PLEASE change the youtube_safe setting to false on line 16
-    inside the jukebox_settings function. This will disable the &quot;COPYRIGHT
-    FREE&quot; message on the Jukebox menu, notifying players that a song that
-    they play may trigger a copyright notice on YouTube. This is purely a
-    courtesy to players.
+    <strong>Warning:</strong>
+    If you are adding songs which are not copyright-free, PLEASE change the
+    youtube_safe setting to false on line 16 inside the jukebox_settings
+    function. This will disable the &quot;COPYRIGHT FREE&quot; message on the
+    Jukebox menu, notifying players that a song that they play may trigger a
+    copyright notice on YouTube. This is purely a courtesy to players.
   </div>
 </div>
 <p> </p>

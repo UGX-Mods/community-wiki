@@ -13,21 +13,21 @@ dateCreated: 2024-01-30T10:32:21.360Z
 <p> </p>
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -47,15 +47,17 @@ dateCreated: 2024-01-30T10:32:21.360Z
 <p>
   The hideTags option is for hiding meshes which are bound to tags (joints) on
   your gun. For instance, typically IW and Treyarch export their MP viewmodel
-  with every single attachment placed on it at once (see Fig 1).<br><span 
-    class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img 
+  with every single attachment placed on it at once (see Fig 1).
+  <br />
+  <span
+    class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+    <img
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="250"
       src="http://i.imgur.com/MTh1ptR.png"
-      data-image-src="http://i.imgur.com/MTh1ptR.png"
-  ></span>
+      data-image-src="http://i.imgur.com/MTh1ptR.png" />
+  </span>
 </p>
 <p>
   <em><strong>Figure 1</strong></em>
@@ -72,9 +74,11 @@ dateCreated: 2024-01-30T10:32:21.360Z
   <li>Re-adding into their mod.</li>
 </ul>
 <p>
-  <strong>While this does work, this is a complete waste of asset room (and time,
+  <strong>
+    While this does work, this is a complete waste of asset room (and time,
     until you master this process). The same effect can be accomplished by using
-    hideTags on the original mp model!</strong>
+    hideTags on the original mp model!
+  </strong>
 </p>
 <h1 id="GuidetohideTagswithCoD4ViewhandsinCoD5-UsinghideTags">
   Using hideTags
@@ -87,50 +91,68 @@ dateCreated: 2024-01-30T10:32:21.360Z
   There are a couple programs that will generate a list for you, but in this
   tutorial we will do this manually.
 </p>
-<p><strong>Navigate to *root/raw/xmodel</strong>.</p>
+<p>
+  <strong>Navigate to *root/raw/xmodel</strong>
+  .
+</p>
 <ul>
   <li>Find the file which corresponds to your model.</li>
-  <li>Open the xmodel file with <code>Notepad</code>.</li>
+  <li>
+    Open the xmodel file with
+    <code>Notepad</code>
+    .
+  </li>
 </ul>
 <p>
   Near the beginning of the file, you will see some gibberish that looks
-  <strong>similar</strong> to 'F¼Á¸F¼Á¸F¼Á¸F¼A¸F¼A¸F¼A'. Shortly after this, you
-  will see some readable text. This is the name of the xmodelparts file we need.
-  Copy it to clipboard or memorize it. See Fig. 2.
+  <strong>similar</strong>
+  to 'F¼Á¸F¼Á¸F¼Á¸F¼A¸F¼A¸F¼A'. Shortly after this, you will see some readable
+  text. This is the name of the xmodelparts file we need. Copy it to clipboard
+  or memorize it. See Fig. 2.
 </p>
 <p>
-  <span class="confluence-embedded-file-wrapper"
-    ><img 
+  <span class="confluence-embedded-file-wrapper">
+    <img
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="Figure 2"
       src="http://i.imgur.com/oKuEjFU.png"
-      data-image-src="http://i.imgur.com/oKuEjFU.png"
-  ></span>
+      data-image-src="http://i.imgur.com/oKuEjFU.png" />
+  </span>
 </p>
 <p>
   <strong><em>Figure 2</em></strong>
 </p>
-<p><strong>Navigate to *root/raw/xmodelparts</strong>.</p>
+<p>
+  <strong>Navigate to *root/raw/xmodelparts</strong>
+  .
+</p>
 <ul>
   <li>Find the file which has the name we found in the xmodel file.</li>
-  <li>Open the xmodelparts file with <code>Notepad</code>.</li>
+  <li>
+    Open the xmodelparts file with
+    <code>Notepad</code>
+    .
+  </li>
 </ul>
 <h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Findingthetagslist">
   Finding the tags list
 </h2>
 <p>
-  After you open the xmodelparts file with <code>Notepad</code>, you will see
-  some gibberish again, but if you look in the right place you will find the
-  list of joints for the viewmodel! See Fig 3, the tags are highlighted in
-  yellow for emphasis.<br><span class="confluence-embedded-file-wrapper"
-    ><img 
+  After you open the xmodelparts file with
+  <code>Notepad</code>
+  , you will see some gibberish again, but if you look in the right place you
+  will find the list of joints for the viewmodel! See Fig 3, the tags are
+  highlighted in yellow for emphasis.
+  <br />
+  <span class="confluence-embedded-file-wrapper">
+    <img
       class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="Figure 3"
       src="http://i.imgur.com/tI518Fg.png"
-      data-image-src="http://i.imgur.com/tI518Fg.png"
-  ></span>
+      data-image-src="http://i.imgur.com/tI518Fg.png" />
+  </span>
 </p>
 <p>
   <em><strong>Figure 3</strong></em>
@@ -148,14 +170,18 @@ dateCreated: 2024-01-30T10:32:21.360Z
     Organize the tag list alphabetically. This includes their prefix; J_Gun
     would come before TAG_Reflex_sight alphabetically. Sometimes you will find
     that Treyarch already alphabetized their joint list before exporting their
-    model, but this is not always the case so be sure to check it carefully.<br>
-    <code>note|You can use
-      <a 
+    model, but this is not always the case so be sure to check it carefully.
+    <br />
+    <code>
+      note|You can use
+      <a
         class="external-link"
         href="http://alphabetizer.flap.tv/"
-        rel="nofollow"
-        >http://alphabetizer.flap.tv/</a>
-      to automatically alphabetize these lists.</code>
+        rel="nofollow">
+        http://alphabetizer.flap.tv/
+      </a>
+      to automatically alphabetize these lists.
+    </code>
   </li>
 </ul>
 <p>Here is a correctly-organized list of tags for viewmodel_mp_thompson:</p>
@@ -218,13 +244,15 @@ tag_silencer
   not need to be bound to anything; it just needs to be part of the joint
   hierarchy.
 </p>
-<h3 
-  id="GuidetohideTagswithCoD4ViewhandsinCoD5-Inputtingtagnamesintoweaponfiles"
->
+<h3
+  id="GuidetohideTagswithCoD4ViewhandsinCoD5-Inputtingtagnamesintoweaponfiles">
   Inputting tag names into weaponfiles
 </h3>
 <ul>
-  <li>Open your weaponfile using <code>Notepad</code></li>
+  <li>
+    Open your weaponfile using
+    <code>Notepad</code>
+  </li>
   <li>Find the hideTags setting (near the end of the first line)</li>
   <li>
     Add your chosen tag names, separated by a RETURN. This means you hit the

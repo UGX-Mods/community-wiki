@@ -12,48 +12,50 @@ dateCreated: 2024-01-30T10:32:55.107Z
 
 <div class="confluence-information-macro confluence-information-macro-warning">
   <p class="title conf-macro-render">Warning!</p>
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <span>This is not directly compatible with ZCT Mod as it uses different
-        weapons than this is programmed for.</span>
+      <span>
+        This is not directly compatible with ZCT Mod as it uses different
+        weapons than this is programmed for.
+      </span>
     </p>
   </div>
 </div>
-<div 
-  class="confluence-information-macro confluence-information-macro-information"
->
+<div
+  class="confluence-information-macro confluence-information-macro-information">
   <p class="title conf-macro-render">Note</p>
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-       <span>This script has not been verified as working. Some updates may need to
+       
+      <span>
+        This script has not been verified as working. Some updates may need to
         be made to the script by its creator before it is in complete working
-        order.</span>
+        order.
+      </span>
     </p>
   </div>
 </div>
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -65,7 +67,7 @@ dateCreated: 2024-01-30T10:32:55.107Z
     </p>
   </div>
 </div>
-<br>
+<br />
 This tutorial will walk you through how to implement a 'trader' in your map
 (think of Killing Floor) that will offer players ammo, guns, and attachments. By
 default the provided script includes code for soundaliases to be played when
@@ -84,17 +86,19 @@ script and your csv's.
 <h1 id="Trader-Preparation">Preparation</h1>
 <p>
   Download
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/ugx_upgrader_ammo.gsc"
-    rel="nofollow"
-    >ugx_upgrader_ammo.gsc</a>
+    rel="nofollow">
+    ugx_upgrader_ammo.gsc
+  </a>
   and place it in mods/mapname/maps/. Download
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/ugx_trader_files.rar"
-    rel="nofollow"
-    >ugx_trader_files.rar</a>
+    rel="nofollow">
+    ugx_trader_files.rar
+  </a>
   and extract its contents to your root/mods/mapname/ directory, combining
   folders and overwriting files as it asks. The .rar contains weapons files for
   the weapons supported by this script, the menu file, the menu texture, and the
@@ -124,9 +128,9 @@ script and your csv's.
 <h2 id="Trader-Script">Script</h2>
 <p>
   In order for ugx_upgrader_ammo.gsc to run, it must be 'called' in your
-  root/raw/maps/mapname.gsc. Open this file with any <a 
-    href="Text-Editors_1146950.html"
-    >Text Editor</a> you prefer, although Windows Notepad will suffice.
+  root/raw/maps/mapname.gsc. Open this file with any 
+  <a href="Text-Editors_1146950.html">Text Editor</a>
+   you prefer, although Windows Notepad will suffice.
 </p>
 <p>Find the line:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -170,9 +174,9 @@ level thread maps\ugx_upgrader_ammo::init();</code></pre>
 </div>
 <p>
   Copy dlc3_code.gsc and _zombiemode_weapons.gsc from your root/raw/maps folder
-  to mods/mapname/maps. Open them both with any <a 
-    href="Text-Editors_1146950.html"
-    >Text Editor</a>, although Windows Notepad will suffice.
+  to mods/mapname/maps. Open them both with any 
+  <a href="Text-Editors_1146950.html">Text Editor</a>
+  , although Windows Notepad will suffice.
 </p>
 <p>
   If you are on a 1.1 map,open (not copy) your mapname.gsc instead of
@@ -367,8 +371,9 @@ include_weapon( &quot;ray_gun&quot;);
 </div>
 <p> </p>
 <p>
-  <strong>1.4 Tools:</strong> In _zombiemode_weapons.gsc, highlight the entire
-  init_weapons() function and replace it with this:
+  <strong>1.4 Tools:</strong>
+  In _zombiemode_weapons.gsc, highlight the entire init_weapons() function and
+  replace it with this:
 </p>
 <p> </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -530,8 +535,8 @@ add_limited_weapon( &quot;tesla_gun&quot;, 1);
 </div>
 <p> </p>
 <p>
-  <strong>1.1 Tools:</strong> Replace the init_weapons() function in
-  _zombiemode_weapons.gsc with this:
+  <strong>1.1 Tools:</strong>
+  Replace the init_weapons() function in _zombiemode_weapons.gsc with this:
 </p>
 <p> </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -684,12 +689,13 @@ Precachemodel(&quot;zombie_teddybear&quot;);
 <h2 id="Trader-CSV">CSV</h2>
 <p>In order for the menu to work, it must be included in your CSV.</p>
 <p>
-  <strong>1.4 Map:</strong> Navigate to
-  root/zone_source/nazi_zombie_mapname_patch.csv and open it with Notepad.
+  <strong>1.4 Map:</strong>
+  Navigate to root/zone_source/nazi_zombie_mapname_patch.csv and open it with
+  Notepad.
 </p>
 <p>
-  <strong>1.1 Map:</strong> Navigate to root/zone_source/nazi_zombie_mapname.csv
-  and open it with Notepad.
+  <strong>1.1 Map:</strong>
+  Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.
 </p>
 <p>Add these lines:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -747,7 +753,8 @@ material,mtl_weapon_mp_apature_crosshair
 <p>
   Open Launcher and go to the Mods tab. Select your map from the list. Scroll
   down in the box on the left until you see ugx_upgrader_ammo.gsc. Check the box
-  next to it.<br>
+  next to it.
+  <br />
   Add:
 </p>
 <div class="code panel pdl" style="border-width: 1px">

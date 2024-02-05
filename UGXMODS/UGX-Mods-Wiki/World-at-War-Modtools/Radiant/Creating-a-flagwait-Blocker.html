@@ -17,24 +17,26 @@ dateCreated: 2024-01-30T10:30:36.926Z
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-warning">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>WARNING:</strong> This tutorial can only be used if you have
-      applied the UGX Modtools Patch to your World at War installation. To
-      install the patch, refer to
+      <strong>WARNING:</strong>
+      This tutorial can only be used if you have applied the UGX Modtools Patch
+      to your World at War installation. To install the patch, refer to
       <a
         href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles"
-        rel="nofollow"
-        >&quot;Installing the Files&quot;</a
-      ><span class="confluence-link"> </span> in the
-      <span class="confluence-link"> </span
-      ><a
+        rel="nofollow">
+        &quot;Installing the Files&quot;
+      </a>
+      <span class="confluence-link"> </span>
+      in the
+      <span class="confluence-link"> </span>
+      <a
         href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide"
-        rel="nofollow"
-        ><span class="confluence-link">Modtools Installation Guide</span></a
-      >.
+        rel="nofollow">
+        <span class="confluence-link">Modtools Installation Guide</span>
+      </a>
+      .
     </p>
   </div>
 </div>
@@ -55,18 +57,20 @@ dateCreated: 2024-01-30T10:30:36.926Z
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> KVP is an abbreviation for &quot;Key-Value
-      Pair&quot;. When entering a KVP in the Radiant Entity Window,
-      <strong>ensure that you have the entity selected first</strong>. If you do
-      not have an entity selected, Radiant will automatically add the KVP to the
-      &quot;worldspawn&quot; entity. This is BAD and will likely cause your map
-      to crash while loading! In these pages, KVP's are referred to in this
-      format: Key | Value. Note they are separated by a pipe ( | ) character.
-      This character should be ignored when entering the Key-Value Pair.<br />
+      <strong>NOTE:</strong>
+      KVP is an abbreviation for &quot;Key-Value Pair&quot;. When entering a KVP
+      in the Radiant Entity Window,
+      <strong>ensure that you have the entity selected first</strong>
+      . If you do not have an entity selected, Radiant will automatically add
+      the KVP to the &quot;worldspawn&quot; entity. This is BAD and will likely
+      cause your map to crash while loading! In these pages, KVP's are referred
+      to in this format: Key | Value. Note they are separated by a pipe ( | )
+      character. This character should be ignored when entering the Key-Value
+      Pair.
+      <br />
       <strong>To properly add a KVP to an entity:</strong>
     </p>
     <ul>
@@ -92,8 +96,9 @@ dateCreated: 2024-01-30T10:30:36.926Z
 </div>
 <h3 id="Creatingaflagwait()Blocker-Debris">Debris</h3>
 <p>
-  Select <strong>one</strong> debris script_brushmodel or script_model and give
-  it the following KVP's:
+  Select
+  <strong>one</strong>
+  debris script_brushmodel or script_model and give it the following KVP's:
 </p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -157,22 +162,24 @@ dateCreated: 2024-01-30T10:30:36.926Z
 <h3 id="Creatingaflagwait()Blocker-LinkingtheEntities">Linking the Entities</h3>
 <p>
   Now that you have created all of the necessary items and given them the
-  correct KVP's, it is time to link the items together using targeting.<br />
+  correct KVP's, it is time to link the items together using targeting.
+  <br />
 </p>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> &quot;targeting&quot; is a method for linking
-      entities together in a group. Targeting has menu useful applications, such
-      as controlling an entity that has multiple pieces. For example, the
-      Mystery Box uses targeting to link each separate script_model part of the
-      box to the main trigger_use. Targeting generates automatic targetname and
-      target KVP's on the affected entities. When two items are properly linked
-      together, a red or blue line is drawn from the main entity to each of its
-      targets/links in Radiant. <br />
+      <strong>NOTE:</strong>
+      &quot;targeting&quot; is a method for linking entities together in a
+      group. Targeting has menu useful applications, such as controlling an
+      entity that has multiple pieces. For example, the Mystery Box uses
+      targeting to link each separate script_model part of the box to the main
+      trigger_use. Targeting generates automatic targetname and target KVP's on
+      the affected entities. When two items are properly linked together, a red
+      or blue line is drawn from the main entity to each of its targets/links in
+      Radiant.
+      <br />
       <strong>To properly target one item to another:</strong>
     </p>
     <ul>
@@ -190,19 +197,26 @@ dateCreated: 2024-01-30T10:30:36.926Z
         &quot;targetname&quot;);
       </li>
       <li>Deselect all items by pressing ESC on your keyboard</li>
-      <li>Select the <strong>root entity</strong> first.</li>
       <li>
-        Next, select <strong>one</strong> of the target/link entities and press
-        W on your keyboard. This will create the link between the two entities.
-        Repeat this step for all target/link children of the root entity until
-        all entities have red or blue lines connecting them to the root entity.
+        Select the
+        <strong>root entity</strong>
+        first.
+      </li>
+      <li>
+        Next, select
+        <strong>one</strong>
+        of the target/link entities and press W on your keyboard. This will
+        create the link between the two entities. Repeat this step for all
+        target/link children of the root entity until all entities have red or
+        blue lines connecting them to the root entity.
       </li>
     </ul>
   </div>
 </div>
 <br />
 In this case, the root entity is the debris entity that you gave the
-script_flag_wait KVP. <br />
+script_flag_wait KVP.
+<br />
 The children of the root entity are the remaining clip(s) and debris model(s).
 Link them to the root entity using the instructions above.
 <h3 id="Creatingaflagwait()Blocker-Definingascript_linkTo">
@@ -238,10 +252,10 @@ Link them to the root entity using the instructions above.
   </li>
 </ul>
 <p>
-  <strong
-    >Replace &lt;linkName&gt; with a unique name of your choosing. *Do not use
-    the same linkName for more than one script_struct!</strong
-  >
+  <strong>
+    Replace &lt;linkName&gt; with a unique name of your choosing. *Do not use
+    the same linkName for more than one script_struct!
+  </strong>
 </p>
 <ul>
   <li>
@@ -275,8 +289,7 @@ Link them to the root entity using the instructions above.
 </h1>
 <h3
   class="_mce_tagged_br"
-  id="Creatingaflagwait()Blocker-CreatingcopiesoftheDebris"
->
+  id="Creatingaflagwait()Blocker-CreatingcopiesoftheDebris">
   Creating copies of the Debris
 </h3>
 <p>

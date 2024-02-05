@@ -14,32 +14,38 @@ dateCreated: 2024-01-30T10:31:28.373Z
 <ol>
   <li>
     Open the game with a mod so we can access the
-    <span style="color: rgb(255, 0, 0)">console</span>.
+    <span style="color: rgb(255, 0, 0)">console</span>
+    .
   </li>
   <li>
-    Go to Multiplayer → <span style="color: rgb(255, 0, 0)">Custom Games</span>
+    Go to Multiplayer →
+    <span style="color: rgb(255, 0, 0)">Custom Games</span>
   </li>
   <li>
-    Setup Game → <span style="color: rgb(255, 0, 0)">Edit Game Rules</span>
+    Setup Game →
+    <span style="color: rgb(255, 0, 0)">Edit Game Rules</span>
   </li>
   <li>
-    Select <span style="color: rgb(255, 0, 0)">Create a Class</span> and begin
-    editing the classes.
+    Select
+    <span style="color: rgb(255, 0, 0)">Create a Class</span>
+    and begin editing the classes.
     <ol>
       <li>
         Some information about the Settings tab within this screen is:
         <ol>
           <li>
-            <u>Custom Classes</u>: Allow players own classes to show when
-            in-game.
+            <u>Custom Classes</u>
+            : Allow players own classes to show when in-game.
           </li>
           <li>
-            <u>Selections Allow</u>: Maximum number of create a class slots
-            shown (is not affected by Preset Classes).
+            <u>Selections Allow</u>
+            : Maximum number of create a class slots shown (is not affected by
+            Preset Classes).
           </li>
           <li>
-            <u>Preset Classes</u>: Global = Both teams use these classes,
-            Per-Team each team has their own classes
+            <u>Preset Classes</u>
+            : Global = Both teams use these classes, Per-Team each team has
+            their own classes
           </li>
         </ol>
       </li>
@@ -47,75 +53,78 @@ dateCreated: 2024-01-30T10:31:28.373Z
   </li>
   <li>
     Once your classes have been set return to
-    <span style="color: rgb(255, 0, 0)">Custom Games</span> main menu.
+    <span style="color: rgb(255, 0, 0)">Custom Games</span>
+    main menu.
   </li>
   <li>
-    Open console and enter the command: <span style="color: rgb(255, 0, 0)"
-      >\gamesettings_generateconfig </span
-    >
+    Open console and enter the command: 
+    <span style="color: rgb(255, 0, 0)">\gamesettings_generateconfig </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      >The game will hitch for a moment but now we can exit out of the
-      game.</span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      The game will hitch for a moment but now we can exit out of the game.
+    </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      >Go to your Black Ops III root directory and open the folder <span
-        style="color: rgb(255, 0, 0)"
-        >local_storage<span style="color: rgb(0, 0, 0)">.</span></span
-      ></span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      Go to your Black Ops III root directory and open the folder 
+      <span style="color: rgb(255, 0, 0)">
+        local_storage
+        <span style="color: rgb(0, 0, 0)">.</span>
+      </span>
+    </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      ><span style="color: rgb(255, 0, 0)"
-        ><span style="color: rgb(0, 0, 0)"
-          >Find the most recent created
-          <span style="color: rgb(255, 0, 0)">.cfg</span> file (usually it's the
-          one ending in _v55 but that can be changed) and open it.</span
-        ></span
-      ></span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      <span style="color: rgb(255, 0, 0)">
+        <span style="color: rgb(0, 0, 0)">
+          Find the most recent created
+          <span style="color: rgb(255, 0, 0)">.cfg</span>
+          file (usually it's the one ending in _v55 but that can be changed) and
+          open it.
+        </span>
+      </span>
+    </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      ><span style="color: rgb(255, 0, 0)"
-        ><span style="color: rgb(0, 0, 0)"
-          >Inside you'll see what makes the game set all the classes for you and
-          various other modified settings from the Custom Games screen.</span
-        ></span
-      ></span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      <span style="color: rgb(255, 0, 0)">
+        <span style="color: rgb(0, 0, 0)">
+          Inside you'll see what makes the game set all the classes for you and
+          various other modified settings from the Custom Games screen.
+        </span>
+      </span>
+    </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      >What we need to do right now is cut out the second column:
-      <strong
-        ><span style="color: rgb(255, 0, 0)">gametypesettings</span></strong
-      ><span style="color: rgb(255, 0, 0)"> </span>use Notepad++ to remove it
-      all for you or use Search &amp; Replace in your text editor.</span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      What we need to do right now is cut out the second column:
+      <strong>
+        <span style="color: rgb(255, 0, 0)">gametypesettings</span>
+      </strong>
+      <span style="color: rgb(255, 0, 0)"> </span>
+      use Notepad++ to remove it all for you or use Search &amp; Replace in your
+      text editor.
+    </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      >Now our lines should be similar to this: gametype_setting cacloadouts 0
-      customclass 0 primaryattachment1 0</span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      Now our lines should be similar to this: gametype_setting cacloadouts 0
+      customclass 0 primaryattachment1 0
+    </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      >Copy the entirety of the config to your own
-      <span style="color: rgb(255, 0, 0)">mp_mod.cfg</span> (if you don't have
-      this file create it in the root of your mod).</span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      Copy the entirety of the config to your own
+      <span style="color: rgb(255, 0, 0)">mp_mod.cfg</span>
+      (if you don't have this file create it in the root of your mod).
+    </span>
   </li>
   <li>
-    <span style="color: rgb(0, 0, 0)"
-      >Now launch the game and make sure to load the mod from the Main Menu as
-      of now the config isn't executed from command line/Launcher (this has been
-      fixed by Treyarch and will be included in a later update).</span
-    >
+    <span style="color: rgb(0, 0, 0)">
+      Now launch the game and make sure to load the mod from the Main Menu as of
+      now the config isn't executed from command line/Launcher (this has been
+      fixed by Treyarch and will be included in a later update).
+    </span>
   </li>
 </ol>

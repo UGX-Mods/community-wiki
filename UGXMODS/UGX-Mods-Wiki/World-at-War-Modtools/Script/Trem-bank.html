@@ -12,21 +12,21 @@ dateCreated: 2024-01-30T10:32:56.350Z
 
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -40,15 +40,15 @@ dateCreated: 2024-01-30T10:32:56.350Z
 </div>
 <p>
   trem_bank_2.gsc is a banking system made by
-  <span class="confluence-link">UGX</span> treminaor that allows players to
-  deposit money in a 'bank' for other players to withdraw from. Optionally, the
-  map's creator can enable interest gain on the bank balance as well as put a
-  limit on the amount of bank withdraws per round.
+  <span class="confluence-link">UGX</span>
+  treminaor that allows players to deposit money in a 'bank' for other players
+  to withdraw from. Optionally, the map's creator can enable interest gain on
+  the bank balance as well as put a limit on the amount of bank withdraws per
+  round.
 </p>
 <div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+  <span
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     trem_bank was recently updated to version 2.1. Please update your
     installation accordingly with the new files. This wiki article has been
@@ -57,11 +57,12 @@ dateCreated: 2024-01-30T10:32:56.350Z
 </div>
 <p>
   Files:
-  <a 
+  <a
     class="external-link"
     href="http://ugx-mods.com/downloads/trem_bank_2.1.rar"
-    rel="nofollow"
-    >trem_bank_2.1.rar</a>
+    rel="nofollow">
+    trem_bank_2.1.rar
+  </a>
 </p>
 <h1 id="Trembank-Changelog">Changelog</h1>
 <p>
@@ -71,16 +72,21 @@ dateCreated: 2024-01-30T10:32:56.350Z
 </p>
 <h1 id="Trembank-Preparation">Preparation</h1>
 <p>
-  Download the files above. <br>
+  Download the files above.
+  <br />
   Copy these files to the following locations:
 </p>
 <div class="panel" style="border-width: 1px">
   <div class="panelContent">
     <p>
-      trem_bank_2.gsc -&gt; root\mods\MAPNAME\maps<br>
-      trem_bank_mouse.menu -&gt; root\raw\ui\scriptmenus<br>
-      trem_bank_keyboard -&gt; root\raw\ui\scriptmenus<br>
-      images/trem_bank_bg.iwi -&gt; root\mods\MAPNAME\images<br>
+      trem_bank_2.gsc -&gt; root\mods\MAPNAME\maps
+      <br />
+      trem_bank_mouse.menu -&gt; root\raw\ui\scriptmenus
+      <br />
+      trem_bank_keyboard -&gt; root\raw\ui\scriptmenus
+      <br />
+      images/trem_bank_bg.iwi -&gt; root\mods\MAPNAME\images
+      <br />
       materials/trem_bank_bg -&gt; root\raw\materials\
     </p>
   </div>
@@ -95,7 +101,8 @@ dateCreated: 2024-01-30T10:32:56.350Z
 <p>
   Place a trigger_use by first creating a brush using the 2D window in Radiant,
   then with the brush selected, right click the 2D window and choose trigger
-  -&gt; trigger_use.<br>
+  -&gt; trigger_use.
+  <br />
   Give the trigger the following KvP by selecting the trigger and pressing N on
   your keyboard:
 </p>
@@ -118,8 +125,10 @@ dateCreated: 2024-01-30T10:32:56.350Z
   You must include the trem_bank.menu in your mod.ff in order for it to show
   on-screen in-game. To do this, first open Launcher and go to the Mods tab.
   Next, select your mod from the dropdown box.
-  <strong>If you are using ZCT mod, do this in your
-    root/zone_source/nazi_zombie_mapname.csv instead.</strong>
+  <strong>
+    If you are using ZCT mod, do this in your
+    root/zone_source/nazi_zombie_mapname.csv instead.
+  </strong>
 </p>
 <p>
   In the textbox below the dropdown box, add this to the top or bottom of the
@@ -145,8 +154,8 @@ material,trem_bank_bg
 <p>
   In order for trem_bank_2 to run in your map, it must be 'called' in your
   root/raw/maps/mapname.gsc. Open this file with (preferably)
-  <a href="Text-Editors_1146950.html">Text Editors</a>, although Windows Notepad
-  will suffice.
+  <a href="Text-Editors_1146950.html">Text Editors</a>
+  , although Windows Notepad will suffice.
 </p>
 <p>Find:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -212,8 +221,8 @@ level thread maps\trem_bank_2::bank();
 <p>For reference, This is what the menu looks like:</p>
 <p>Keyboard:</p>
 <p>
-  <span class="confluence-embedded-file-wrapper"
-    ><img 
+  <span class="confluence-embedded-file-wrapper">
+    <img
       class="confluence-embedded-image"
       draggable="false"
       src="attachments/1146922/1605636.png"
@@ -227,15 +236,19 @@ level thread maps\trem_bank_2::bank();
       data-linked-resource-content-type="image/png"
       data-linked-resource-container-id="1146922"
       data-linked-resource-container-version="5"
-      alt=""
-  ></span>
+      alt="" />
+  </span>
 </p>
 <h1 id="Trembank-Finishingup">Finishing up</h1>
 <p>
   After completing
-  <span class="confluence-link"
-    ><a href="#Trembank-Preparation">Preparation</a></span>
-  and <span class="confluence-link"> </span><a href="#Trembank-Setup"><span class="confluence-link">Setup</span></a>, you must compile your map and mod.
+  <span class="confluence-link">
+    <a href="#Trembank-Preparation">Preparation</a>
+  </span>
+  and
+  <span class="confluence-link"> </span>
+  <a href="#Trembank-Setup"><span class="confluence-link">Setup</span></a>
+  , you must compile your map and mod.
 </p>
 <h1 id="Trembank-Source">Source</h1>
 <h2 id="Trembank-trem_bank_2.gsc">trem_bank_2.gsc</h2>

@@ -13,20 +13,20 @@ dateCreated: 2024-01-30T10:32:51.606Z
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -40,20 +40,22 @@ dateCreated: 2024-01-30T10:32:51.606Z
 </div>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      Black Ops 3 root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your Black Ops 3 root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty Black Ops III\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty Black Ops III\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\<span>Call of Duty Black Ops III</span>\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\
+      <span>Call of Duty Black Ops III</span>
+      \
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -67,18 +69,20 @@ dateCreated: 2024-01-30T10:32:51.606Z
 </div>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> KVP is an abbreviation for &quot;Key-Value
-      Pair&quot;. When entering a KVP in the Radiant Entity Window,
-      <strong>ensure that you have the entity selected first</strong>. If you do
-      not have an entity selected, Radiant will automatically add the KVP to the
-      &quot;worldspawn&quot; entity. This is BAD and will likely cause your map
-      to crash while loading! In these pages, KVP's are referred to in this
-      format: Key | Value. Note they are separated by a pipe ( | ) character.
-      This character should be ignored when entering the Key-Value Pair.<br />
+      <strong>NOTE:</strong>
+      KVP is an abbreviation for &quot;Key-Value Pair&quot;. When entering a KVP
+      in the Radiant Entity Window,
+      <strong>ensure that you have the entity selected first</strong>
+      . If you do not have an entity selected, Radiant will automatically add
+      the KVP to the &quot;worldspawn&quot; entity. This is BAD and will likely
+      cause your map to crash while loading! In these pages, KVP's are referred
+      to in this format: Key | Value. Note they are separated by a pipe ( | )
+      character. This character should be ignored when entering the Key-Value
+      Pair.
+      <br />
       <strong>To properly add a KVP to an entity:</strong>
     </p>
     <ul>
@@ -104,12 +108,13 @@ dateCreated: 2024-01-30T10:32:51.606Z
 </div>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> <strong>&quot;mapname.gsc&quot;</strong> refers to
-      your map's main gsc file, which is named the same name as your map.
+      <strong>NOTE:</strong>
+      <strong>&quot;mapname.gsc&quot;</strong>
+      refers to your map's main gsc file, which is named the same name as your
+      map.
     </p>
     <p>
       For example, a map called &quot;nazi_zombie_example&quot; would have a
@@ -128,35 +133,40 @@ dateCreated: 2024-01-30T10:32:51.606Z
     <div class="mw-geshi" style="text-align: left">
       <div class="cpp source-cpp">
         <pre
-          class="de1"
-        >maps\_zombiemode<span class="sy4">::</span><span class="me2">main</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></pre>
+          class="de1">maps\_zombiemode<span class="sy4">::</span><span class="me2">main</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></pre>
       </div>
     </div>
     <p><strong>To add lines to your mapname.gsc:</strong></p>
     <ul>
       <li>
         Open your mapname.gsc file, which can be found in
-        <strong>root/mods/mapname/maps</strong>.
+        <strong>root/mods/mapname/maps</strong>
+        .
       </li>
       <li>
-        For Precache Lines, add them <strong>before</strong> the gamestate line.
+        For Precache Lines, add them
+        <strong>before</strong>
+        the gamestate line.
       </li>
       <li>
-        For Thread Lines, add them <strong>after</strong> the gamestate line.
+        For Thread Lines, add them
+        <strong>after</strong>
+        the gamestate line.
       </li>
     </ul>
   </div>
 </div>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> <strong>&quot;Prefab&quot;</strong> is shorthand
-      for &quot;prefabrication&quot;. A prefab is a pre-assembled group of
-      brushes, models, or terrain patches which can be placed and moved as a
-      group in Radiant. <br />
+      <strong>NOTE:</strong>
+      <strong>&quot;Prefab&quot;</strong>
+      is shorthand for &quot;prefabrication&quot;. A prefab is a pre-assembled
+      group of brushes, models, or terrain patches which can be placed and moved
+      as a group in Radiant.
+      <br />
       <strong>To Place a Prefab:</strong>
     </p>
     <ul>
@@ -176,59 +186,63 @@ dateCreated: 2024-01-30T10:32:51.606Z
       <a
         class="external-link"
         href="http://i.imgur.com/5mfwdPu.png"
-        rel="nofollow"
-        ><span
-          class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-          ><img
+        rel="nofollow">
+        <span
+          class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+          <img
             class="confluence-embedded-image confluence-external-resource"
             draggable="false"
             alt="stamp"
             height="24"
             width="24"
             src="http://ugx-mods.com/wiki/images/2/29/Stamp_button.png.pagespeed.ce.HNleJljfPv.png"
-            data-image-src="http://ugx-mods.com/wiki/images/2/29/Stamp_button.png.pagespeed.ce.HNleJljfPv.png" /></span
-      ></a>
+            data-image-src="http://ugx-mods.com/wiki/images/2/29/Stamp_button.png.pagespeed.ce.HNleJljfPv.png" />
+        </span>
+      </a>
       button from the toolbar.
     </p>
   </div>
 </div>
 <div class="confluence-information-macro confluence-information-macro-warning">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>WARNING:</strong> This tutorial can only be used if you have
-      applied the UGX Modtools Patch to your World at War installation. To
-      install the patch, refer to
+      <strong>WARNING:</strong>
+      This tutorial can only be used if you have applied the UGX Modtools Patch
+      to your World at War installation. To install the patch, refer to
       <a
         href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles"
-        rel="nofollow"
-        >&quot;Installing the Files&quot;</a
-      ><span class="confluence-link"> </span> in the
-      <span class="confluence-link"> </span
-      ><a
+        rel="nofollow">
+        &quot;Installing the Files&quot;
+      </a>
+      <span class="confluence-link"> </span>
+      in the
+      <span class="confluence-link"> </span>
+      <a
         href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide"
-        rel="nofollow"
-        ><span class="confluence-link">Modtools Installation Guide</span></a
-      >.
+        rel="nofollow">
+        <span class="confluence-link">Modtools Installation Guide</span>
+      </a>
+      .
     </p>
   </div>
 </div>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE:</strong> &quot;targeting&quot; is a method for linking
-      entities together in a group. Targeting has menu useful applications, such
-      as controlling an entity that has multiple pieces. For example, the
-      Mystery Box uses targeting to link each separate script_model part of the
-      box to the main trigger_use. Targeting generates automatic targetname and
-      target KVP's on the affected entities. When two items are properly linked
-      together, a red or blue line is drawn from the main entity to each of its
-      targets/links in Radiant. <br />
+      <strong>NOTE:</strong>
+      &quot;targeting&quot; is a method for linking entities together in a
+      group. Targeting has menu useful applications, such as controlling an
+      entity that has multiple pieces. For example, the Mystery Box uses
+      targeting to link each separate script_model part of the box to the main
+      trigger_use. Targeting generates automatic targetname and target KVP's on
+      the affected entities. When two items are properly linked together, a red
+      or blue line is drawn from the main entity to each of its targets/links in
+      Radiant.
+      <br />
       <strong>To properly target one item to another:</strong>
     </p>
     <ul>
@@ -246,38 +260,48 @@ dateCreated: 2024-01-30T10:32:51.606Z
         &quot;targetname&quot;);
       </li>
       <li>Deselect all items by pressing ESC on your keyboard</li>
-      <li>Select the <strong>root entity</strong> first.</li>
       <li>
-        Next, select <strong>one</strong> of the target/link entities and press
-        W on your keyboard. This will create the link between the two entities.
-        Repeat this step for all target/link children of the root entity until
-        all entities have red or blue lines connecting them to the root entity.
+        Select the
+        <strong>root entity</strong>
+        first.
+      </li>
+      <li>
+        Next, select
+        <strong>one</strong>
+        of the target/link entities and press W on your keyboard. This will
+        create the link between the two entities. Repeat this step for all
+        target/link children of the root entity until all entities have red or
+        blue lines connecting them to the root entity.
       </li>
     </ul>
   </div>
 </div>
 <div class="confluence-information-macro confluence-information-macro-warning">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <span
-        ><strong>WARNING:</strong> If you have not yet installed the UGX
-        Modtools Patch, you MUST place MORE THAN ONE dog struct per zone. If you
-        place </span
-      ><strong>exactly 1 struct</strong
-      ><span>
+      <span>
+        <strong>WARNING:</strong>
+        If you have not yet installed the UGX Modtools Patch, you MUST place
+        MORE THAN ONE dog struct per zone. If you place
+      </span>
+      <strong>exactly 1 struct</strong>
+      <span>
         in a zone, your game will freeze when you enter the zone. To install the
-        patch, refer to </span
-      ><a
-        href="Modtools-Installation-Guide_1146962.html#ModtoolsInstallationGuide-InstallingtheFiles"
-        >&quot;Installing the Files&quot;</a
-      ><span class="confluence-link"> </span><span> in the </span
-      ><span class="confluence-link"> </span
-      ><a href="Modtools-Installation-Guide_1146962.html"
-        ><span class="confluence-link">Modtools Installation Guide</span></a
-      ><span>.</span>
+        patch, refer to
+      </span>
+      <a
+        href="Modtools-Installation-Guide_1146962.html#ModtoolsInstallationGuide-InstallingtheFiles">
+        &quot;Installing the Files&quot;
+      </a>
+      <span class="confluence-link"> </span>
+      <span>in the</span>
+      <span class="confluence-link"> </span>
+      <a href="Modtools-Installation-Guide_1146962.html">
+        <span class="confluence-link">Modtools Installation Guide</span>
+      </a>
+      <span>.</span>
     </p>
   </div>
 </div>

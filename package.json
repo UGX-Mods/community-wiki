@@ -7,5 +7,8 @@
     "node-html-parser": "^6.1.12"
   },
   "author": "Alexander 'Delta' Diller",
-  "license": "AGPL-3.0"
+  "license": "AGPL-3.0",
+  "scripts": {
+    "lint": "prettier **/*.html -w"
+  }
 }

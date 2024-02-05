@@ -51,9 +51,10 @@ dateCreated: 2024-01-30T10:32:46.649Z
   boot your map again. You will see more info about the error.
 </p>
 <p>
-  <strong>Note</strong>: Enabling developer 1 will most likely prevent your map
-  from booting. If you fix an error, make sure to turn developer 1 back to
-  developer 0 before attempting to boot your map again.
+  <strong>Note</strong>
+  : Enabling developer 1 will most likely prevent your map from booting. If you
+  fix an error, make sure to turn developer 1 back to developer 0 before
+  attempting to boot your map again.
 </p>
 <h1 id="ScriptingGuide-BasicSyntax">Basic Syntax</h1>
 <p>
@@ -62,15 +63,17 @@ dateCreated: 2024-01-30T10:32:46.649Z
   syntax error. developer 1 and a full console view will tell you a line number
   to start looking near, and in some cases, there will be an * below the line
   under a certain character where the bad syntax starts. See
-  <span class="confluence-link"
-    ><a href="#ScriptingGuide-Beginning">Beginning</a></span>
+  <span class="confluence-link">
+    <a href="#ScriptingGuide-Beginning">Beginning</a>
+  </span>
   for more info on debugging.
 </p>
 <p>
-  <strong>Logic statements</strong>: if(), else if(), else(), while(), for(),
-  function_declaration(), or similar.<br>
-  <strong>Strings</strong>: information that is not variable. Strings are
-  surrounded by double quotes.
+  <strong>Logic statements</strong>
+  : if(), else if(), else(), while(), for(), function_declaration(), or similar.
+  <br />
+  <strong>Strings</strong>
+  : information that is not variable. Strings are surrounded by double quotes.
 </p>
 <ul>
   <li>Every line MUST end with a ; unless it is a logic statement.</li>
@@ -96,8 +99,10 @@ dateCreated: 2024-01-30T10:32:46.649Z
 </p>
 <p>
   Here are some examples.
-  <strong>Don't worry if they don't make sense yet because I haven't explained them.
-    Just remember to come back here for reference.</strong>
+  <strong>
+    Don't worry if they don't make sense yet because I haven't explained them.
+    Just remember to come back here for reference.
+  </strong>
 </p>
 <p>Example of comment and strings syntax:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -155,14 +160,17 @@ if(1 == 1)
 <p> </p>
 <h1 id="ScriptingGuide-Variables">Variables</h1>
 <p>
-  <strong>Variables</strong> store info. Yes, it's really that simple. Variables
-  can store strings, numbers, objects, arrays, etc. The list goes on.
+  <strong>Variables</strong>
+  store info. Yes, it's really that simple. Variables can store strings,
+  numbers, objects, arrays, etc. The list goes on.
 </p>
 <p>
-  Variables <strong>must</strong> be defined before you can use them.
-  <strong>Undefined</strong> variables (variables that have never been declared
-  or have a value of &quot;undefined&quot;) will cause errors if not handled
-  correctly.
+  Variables
+  <strong>must</strong>
+  be defined before you can use them.
+  <strong>Undefined</strong>
+  variables (variables that have never been declared or have a value of
+  &quot;undefined&quot;) will cause errors if not handled correctly.
 </p>
 <h2 id="ScriptingGuide-Declaring&amp;UsingVariables">
   Declaring &amp; Using Variables
@@ -170,7 +178,8 @@ if(1 == 1)
 <p>
   You declare a variable with the = operator. You create a new value 'on the
   left' of the operator and assign an existing or new value 'on the right' of
-  the operator. <br>
+  the operator.
+  <br />
   Example:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -187,15 +196,21 @@ height = intelligence; //Here I have REASSIGNED the value of &#39;height&#39; fr
 </div>
 <p>
   Variables can be accessed an infinite amount of times
-  <strong>within the function they were declared</strong>, and
-  <strong>their value does not change until you reassign it</strong>.<br>
+  <strong>within the function they were declared</strong>
+  , and
+  <strong>their value does not change until you reassign it</strong>
+  .
+  <br />
   If you wish to access one variable from multiple functions, there are two
   approaches. You have to either pass that variable into the function, or you
   have to declare that variable as 'global'. The CoD syntax for a global
   variable is to store said variable inside the 'level' variable using the dot
   operator.
 </p>
-<p><strong>Dot Operator</strong>: A variable within a variable (inception!).</p>
+<p>
+  <strong>Dot Operator</strong>
+  : A variable within a variable (inception!).
+</p>
 <p>Example of passing a variable:</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
@@ -247,14 +262,16 @@ setup()
 <p> </p>
 <h2 id="ScriptingGuide-Arrays">Arrays</h2>
 <p>
-  <strong>Arrays</strong> are a very useful form of variable. Like a variable,
-  they store information. However, arrays are a special type of variable that
-  can store multiple pieces of information that can be 'indexed'. You will learn
-  to love arrays, and they will bring your line counts down immensely.
+  <strong>Arrays</strong>
+  are a very useful form of variable. Like a variable, they store information.
+  However, arrays are a special type of variable that can store multiple pieces
+  of information that can be 'indexed'. You will learn to love arrays, and they
+  will bring your line counts down immensely.
 </p>
 <p>
-  <strong>Note</strong>: CoD and C start counting from ZERO, not ONE. So if you
-  want to count to 15, you count to 14.
+  <strong>Note</strong>
+  : CoD and C start counting from ZERO, not ONE. So if you want to count to 15,
+  you count to 14.
 </p>
 <p>
   I'll start off with an example of a block of code that uses an array, and then
@@ -298,8 +315,8 @@ boxes[14] thread box_setup(); //wow that was long and annoying. And it looks lik
 <h2 id="ScriptingGuide-WorkingwithStrings">Working with Strings</h2>
 <p>There are a few key points to go over with strings.</p>
 <p>
-  <strong>Concatenation</strong>: Joining two strings together to form one line
-  of text.
+  <strong>Concatenation</strong>
+  : Joining two strings together to form one line of text.
 </p>
 <p>Example:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -314,13 +331,14 @@ iPrintLn(&quot;Hello, my name is &quot;+name+&quot;. Again, my last name is &quo
 </div>
 <p> </p>
 <p>
-  <strong>getSubStr(string, start, end)</strong>: CoD utility function which
-  allows you to 'cut' the beginning of a string off and turn it into a new
-  string. end is an optional arguement
+  <strong>getSubStr(string, start, end)</strong>
+  : CoD utility function which allows you to 'cut' the beginning of a string off
+  and turn it into a new string. end is an optional arguement
 </p>
 <p>
-  <strong>int(string)</strong>: CoD utility function which allows you to convert
-  a string to an integer value for math purposes. There is no str().
+  <strong>int(string)</strong>
+  : CoD utility function which allows you to convert a string to an integer
+  value for math purposes. There is no str().
 </p>
 <p>Example:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -340,22 +358,50 @@ number_int = int(number); //Value of &#39;number&#39; is now 100. This is not th
   understand. If you failed basic math, shame on you.
 </p>
 <p>
-  <strong>Operators</strong>: + - * / &lt; &lt;= =&gt; &gt; ++ -- = == += -=
-  <br>
-  <strong>+</strong> Addition<br>
-  <strong>-</strong> Subtraction<br>
-  <strong>*</strong> Multiplication<br>
-  <strong>/</strong> Division<br>
-  <strong>&lt;</strong> Less-than<br>
-  <strong>&lt;=</strong> Less-than or equal to<br>
-  <strong>=&gt;</strong> Greater-than or equal to<br>
-  <strong>&gt;</strong> Greater-than<br>
-  <strong>++</strong> Increment by +1<br>
-  <strong>--</strong> Decrement by -1<br>
-  <strong>=</strong> Equals or Assignment<br>
-  <strong>==</strong> Is-Equal-To<br>
-  <strong>+=</strong> Increment by<br>
-  <strong>-=</strong> Decrement by
+  <strong>Operators</strong>
+  : + - * / &lt; &lt;= =&gt; &gt; ++ -- = == += -=
+  <br />
+  <strong>+</strong>
+  Addition
+  <br />
+  <strong>-</strong>
+  Subtraction
+  <br />
+  <strong>*</strong>
+  Multiplication
+  <br />
+  <strong>/</strong>
+  Division
+  <br />
+  <strong>&lt;</strong>
+  Less-than
+  <br />
+  <strong>&lt;=</strong>
+  Less-than or equal to
+  <br />
+  <strong>=&gt;</strong>
+  Greater-than or equal to
+  <br />
+  <strong>&gt;</strong>
+  Greater-than
+  <br />
+  <strong>++</strong>
+  Increment by +1
+  <br />
+  <strong>--</strong>
+  Decrement by -1
+  <br />
+  <strong>=</strong>
+  Equals or Assignment
+  <br />
+  <strong>==</strong>
+  Is-Equal-To
+  <br />
+  <strong>+=</strong>
+  Increment by
+  <br />
+  <strong>-=</strong>
+  Decrement by
 </p>
 <p> </p>
 <p>Examples:</p>
@@ -382,7 +428,10 @@ if(1 == 1) //true</code></pre>
   </div>
 </div>
 <h1 id="ScriptingGuide-Functions">Functions</h1>
-<p><strong>Function</strong>: A codeblock of logic and/or tasks.</p>
+<p>
+  <strong>Function</strong>
+  : A codeblock of logic and/or tasks.
+</p>
 <h2 id="ScriptingGuide-MakingaFunction">Making a Function</h2>
 <p>Functions have the following syntax:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -395,27 +444,33 @@ functionname(optional_arg1,optional_arg2, etc)
   </div>
 </div>
 <p>
-  <br>
+  <br />
   A function can either complete tasks (with no end statement) or complete logic
   (with an end statement).
 </p>
-<p><strong>End Statement</strong>: return, continue, break.</p>
 <p>
-  <strong>return</strong>: When code runs into this end statement, it will
-  return to the function that called the current function and continue logic
-  from there. If a variable is passed with the return, it will return that value
-  to the variable that the current function was called on.
+  <strong>End Statement</strong>
+  : return, continue, break.
 </p>
 <p>
-  <strong>continue</strong>: This statement can only be used within a loop. When
-  the code runs into this end statement, it will skip the remaining code in the
-  loop and start again from the beginning of the current loop. Think of this
-  keyword as a &quot;restart&quot; ability for loops.
+  <strong>return</strong>
+  : When code runs into this end statement, it will return to the function that
+  called the current function and continue logic from there. If a variable is
+  passed with the return, it will return that value to the variable that the
+  current function was called on.
 </p>
 <p>
-  <strong>break</strong>: This statement can only be used within a loop. When
-  the code runs into this end statement, it will break from the current loop,
-  which will continue by executing any remaining code after the loop.
+  <strong>continue</strong>
+  : This statement can only be used within a loop. When the code runs into this
+  end statement, it will skip the remaining code in the loop and start again
+  from the beginning of the current loop. Think of this keyword as a
+  &quot;restart&quot; ability for loops.
+</p>
+<p>
+  <strong>break</strong>
+  : This statement can only be used within a loop. When the code runs into this
+  end statement, it will break from the current loop, which will continue by
+  executing any remaining code after the loop.
 </p>
 <p>
   If you're confused about the difference between continue and break, test them
@@ -436,12 +491,14 @@ get_number()
   </div>
 </div>
 <p>
-  <strong>The BEST WAY TO LEARN how to use functions efficiently and intelligently is
+  <strong>
+    The BEST WAY TO LEARN how to use functions efficiently and intelligently is
     to look at existing ones! See how others conquered the issues you face. The
     beauty of programming is that there are almost always 100 different ways to
     code the same thing! Experiment with how short you can make your functions
     and still have them accomplish your goals. Don't be satisfied with a 300
-    line function that could be written in 34 lines.</strong>
+    line function that could be written in 34 lines.
+  </strong>
 </p>
 <h2 id="ScriptingGuide-CallingaFunction(tothreadornottothread)">
   Calling a Function (to thread or not to thread)
@@ -451,38 +508,50 @@ get_number()
   calling to other files.
 </p>
 <p>
-  <br>
-  <strong>1)</strong> To thread, or not to thread? That seems to be the question
-  on everyone's mind. To an experienced scripter its a pretty fundamental aspect
-  of calling functions, but to the newbie it may seem like guessing on
-  thread/not thread will fix their non-working functions. DON'T GUESS! I'm here
-  to tell you when to use the all-important 'thread'.<br>
+  <br />
+  <strong>1)</strong>
+  To thread, or not to thread? That seems to be the question on everyone's mind.
+  To an experienced scripter its a pretty fundamental aspect of calling
+  functions, but to the newbie it may seem like guessing on thread/not thread
+  will fix their non-working functions. DON'T GUESS! I'm here to tell you when
+  to use the all-important 'thread'.
+  <br />
   The easiest way to explain (at least for me) is through a visual aid. Imagine
   yourself weaving a rope together. You have 3+ strands of thin pieces of rope
   and you weave them together to make one thicker, stronger piece of rope. When
   you wound up that rope, you had 3 different strands all being woven at the
   same time, right? Well, when you 'thread' a function, it's just like threading
   together a rope. Threading a function causes it to be run in the
-  <strong>background</strong> while the function continues to run without
-  waiting for the function to finish or return a value first. If you don't
-  thread a function, the flow of execution will<strong> halt</strong> at the
-  function call and wait for the called function to finish before executing any
-  code after the call.<br>
+  <strong>background</strong>
+  while the function continues to run without waiting for the function to finish
+  or return a value first. If you don't thread a function, the flow of execution
+  will
+  <strong>halt</strong>
+  at the function call and wait for the called function to finish before
+  executing any code after the call.
+  <br />
   For example, if you call a function in your mapname.gsc before
   maps_zombiemode::main() is called, it will prevent zombiemode from ever
   starting (i.e. your zombies will not spawn, etc). If you
-  <strong>thread</strong> that function, it will allow zombiemode to initialize
-  without waiting for your function to finish.
+  <strong>thread</strong>
+  that function, it will allow zombiemode to initialize without waiting for your
+  function to finish.
 </p>
 <p>
-  <strong>2)</strong> Arguments are variables or absolutes that you pass to a
-  function for processing (<span class="confluence-link"> </span><a href="#ScriptingGuide-Variables"
-    ><span class="confluence-link">Example</span></a>). Arguments can be optional or required.
+  <strong>2)</strong>
+  Arguments are variables or absolutes that you pass to a function for
+  processing (
+  <span class="confluence-link"> </span>
+  <a href="#ScriptingGuide-Variables">
+    <span class="confluence-link">Example</span>
+  </a>
+  ). Arguments can be optional or required.
 </p>
 <p>
-  <strong>3)</strong> You can use functions that are in other files<strong>
-    without</strong>#including them at the top of your script. The way you do this is as
-  follows:*
+  <strong>3)</strong>
+  You can use functions that are in other files
+  <strong>without</strong>
+  #including them at the top of your script. The way you do this is as follows:*
 </p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
@@ -496,13 +565,14 @@ mapsscriptname::functionname(optional_args);</code></pre>
   format.
 </p>
 <h2 id="ScriptingGuide-While()andFor()loops">
-  <br>
+  <br />
   While() and For() loops
 </h2>
 <p>
   Loops are your second best friend (right up there with arrays). They allow you
   to repeat logic until something changes (or indefinitely). Again, the best way
-  to show their importance is with visual examples.<br>
+  to show their importance is with visual examples.
+  <br />
   Say I want to have a door that waits until the player walks up to it before it
   opens.
 </p>
@@ -522,7 +592,7 @@ door_trigger_wait()
   </div>
 </div>
 <p>
-  <br>
+  <br />
   You can also have while() loops that will end once a certain thing is true or
   false. For instance:
 </p>
@@ -542,7 +612,7 @@ door_trigger_wait()
   </div>
 </div>
 <p>
-  <br>
+  <br />
   For() loops can also be indefinite, but that is not their primary use. This
   for() loop provides the same functionality as it did above with while():
 </p>
@@ -562,23 +632,27 @@ door_trigger_wait()
   </div>
 </div>
 <p>
-  <br>The primary function of for() loops is to loop through an array using an
+  <br />
+  The primary function of for() loops is to loop through an array using an
   'index'.
 </p>
 <p>
-  <br>
-  <strong>Index:</strong> A string or numerical value that corresponds to a
-  value inside an array. An index is the same as the 'key' in a keys-and-values
-  dictionary (if you want to think of it that way). Although strings can also be
-  used, only numbers are supported for using in a for() loop through indexes.
-  There are other ways to loop through an array of strings using getArrayKeys()
-  which we will not discuss right now.
+  <br />
+  <strong>Index:</strong>
+  A string or numerical value that corresponds to a value inside an array. An
+  index is the same as the 'key' in a keys-and-values dictionary (if you want to
+  think of it that way). Although strings can also be used, only numbers are
+  supported for using in a for() loop through indexes. There are other ways to
+  loop through an array of strings using getArrayKeys() which we will not
+  discuss right now.
 </p>
 <p>
-  <br>A great visual example of the power of for loops can be found way back
-  up in the
-  <span class="confluence-link"
-    ><a href="#ScriptingGuide-Variables">Variables</a></span>
+  <br />
+  A great visual example of the power of for loops can be found way back up in
+  the
+  <span class="confluence-link">
+    <a href="#ScriptingGuide-Variables">Variables</a>
+  </span>
   section. The syntax for a for() index loop is as follows, where 'variable'
   contains a numerical value from 0 to the size of the array:
 </p>
@@ -595,23 +669,25 @@ for(variable=0;variable&lt;array.size;variable++)
 <p>
   This loop will run the same code over and over for each item stored in the
   array, starting at whatever number you specify and ending at whatever number
-  you specify. In the above example, the loop starts with array<span 
-    class="confluence-link"
-    >0</span>
+  you specify. In the above example, the loop starts with array
+  <span class="confluence-link">0</span>
   and goes to the highest index in the array.
 </p>
 <h2 id="ScriptingGuide-CoDUtilityFunctions">CoD Utility Functions</h2>
 <p>
   There are a number of CoD-specific utility functions that you will find
   useful. They can ALL be found here
-  <a class="external-link" href="http://ugx-mods.com/script" rel="nofollow"
-    >http://ugx-mods.com/script</a>
+  <a class="external-link" href="http://ugx-mods.com/script" rel="nofollow">
+    http://ugx-mods.com/script
+  </a>
   and here
-  <a class="external-link" href="http://zeroy.com/script" rel="nofollow"
-    >http://zeroy.com/script</a>. There are also other functions that Treyarch wrote for CoD5 and IW wrote
-  for CoD4 that can be found in the raw/maps folder of your CoD5/CoD4
-  installation. The most used utility function is probably the getEnt()
-  function, which is explained below:
+  <a class="external-link" href="http://zeroy.com/script" rel="nofollow">
+    http://zeroy.com/script
+  </a>
+  . There are also other functions that Treyarch wrote for CoD5 and IW wrote for
+  CoD4 that can be found in the raw/maps folder of your CoD5/CoD4 installation.
+  The most used utility function is probably the getEnt() function, which is
+  explained below:
 </p>
 <h1 id="ScriptingGuide-AcquiringEntsandworkingwiththeminscript">
   Acquiring Ents and working with them in script
@@ -630,17 +706,21 @@ for(variable=0;variable&lt;array.size;variable++)
   &quot;targetname&quot; and your value will be whatever you assigned it in
   Radiant, although you can acquire ents using other key/value pairs as well
   (but the question is why bother). To acquire any ent, it
-  <strong>MUST BE SET AS A SCRIPT_MODEL (XMODEL) OR SCRIPT_BRUSHMODEL (BRUSH) IN
-    ORDER TO BE SEEN BY SCRIPT.</strong>
+  <strong>
+    MUST BE SET AS A SCRIPT_MODEL (XMODEL) OR SCRIPT_BRUSHMODEL (BRUSH) IN ORDER
+    TO BE SEEN BY SCRIPT.
+  </strong>
   Read that sentence like 5 times. Maybe 10. Seriously. It's
-  <em>REALLY</em> important that you understand that and that you don't forget
-  it.
+  <em>REALLY</em>
+  important that you understand that and that you don't forget it.
 </p>
 <p>
-  <br>
-  <strong>To be continued.</strong> Have questions? Suggestions? Comments? Parts
-  to point out where I screwed up? Email me at
-  <a class="external-link" href="mailto:treminaor@ugx-mods.com" rel="nofollow"
-    >treminaor@ugx-mods.com</a>
+  <br />
+  <strong>To be continued.</strong>
+  Have questions? Suggestions? Comments? Parts to point out where I screwed up?
+  Email me at
+  <a class="external-link" href="mailto:treminaor@ugx-mods.com" rel="nofollow">
+    treminaor@ugx-mods.com
+  </a>
 </p>
 <p>Credit: Treminaor</p>

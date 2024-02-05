@@ -18,20 +18,20 @@ dateCreated: 2024-01-30T10:31:38.635Z
 <p></p>
 <div class="confluence-information-macro confluence-information-macro-tip">
   <span
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"
-  ></span>
+    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>
-      <strong>NOTE</strong>: Before reading this guide, determine where your
-      World at War root directory is located.
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
     </p>
     <p>
-      <strong> Non-Steam Install</strong>: C:\Program Files
-      (x86)\Activision\Call of Duty World at War\
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
     </p>
     <p>
-      <strong>Steam Install</strong>: C:\Program Files
-      (x86)\Steam\steamapps\common\Call of Duty World at War\
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
     </p>
     <p>
       For the rest of this guide, it will be assumed that the word
@@ -54,17 +54,17 @@ dateCreated: 2024-01-30T10:31:38.635Z
   The first thing we want to do is find our texture we want to put into Radiant.
   An easy way to do this is by using Google (Or any other Search Engine). There
   are also specific sites focused on providing textures, one of these sites can
-  be found <a
-    class="external-link"
-    href="http://www.cgtextures.com/"
-    rel="nofollow"
-    >here</a
-  >.
+  be found 
+  <a class="external-link" href="http://www.cgtextures.com/" rel="nofollow">
+    here
+  </a>
+  .
 </p>
 <p>In this tutorial I will be using this texture:</p>
 <p>
-  <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"
-    ><img
+  <span
+    class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+    <img
       class="confluence-embedded-image confluence-thumbnail"
       draggable="false"
       width="200"
@@ -79,8 +79,8 @@ dateCreated: 2024-01-30T10:31:38.635Z
       data-linked-resource-content-type="image/jpeg"
       data-linked-resource-container-id="8355939"
       data-linked-resource-container-version="3"
-      alt=""
-  /></span>
+      alt="" />
+  </span>
 </p>
 <p> </p>
 <p>
@@ -90,14 +90,16 @@ dateCreated: 2024-01-30T10:31:38.635Z
 </p>
 <p>
   Select it and click &quot;new entry&quot;. Now you need to enter the name of
-  your new material. This <strong>doesn't</strong> have to be the same as the
-  filename of your texture! Once you entered your material name, click OK to
-  finish the dialog.
+  your new material. This
+  <strong>doesn't</strong>
+  have to be the same as the filename of your texture! Once you entered your
+  material name, click OK to finish the dialog.
 </p>
 <p>
   After that, we have to set every option correctly. Copy over the next
-  settings <strong>which are surrounded by a red box! </strong>The ones which
-  are not surrounded by a box will be explained later.
+  settings 
+  <strong>which are surrounded by a red box! </strong>
+  The ones which are not surrounded by a box will be explained later.
 </p>
 <h3 id="AddingaCustomTexturetoRadiant-GeneralSettings">General Settings</h3>
 <h3 id="AddingaCustomTexturetoRadiant-materialType">
@@ -118,8 +120,9 @@ dateCreated: 2024-01-30T10:31:38.635Z
         <td class="confluenceTd"><p>2d</p></td>
         <td class="confluenceTd">
           <p>
-            <em>2d</em> is used for flat images which are commonly used as
-            either HUD overlay, Menu Background, Mission Screen, ...
+            <em>2d</em>
+            is used for flat images which are commonly used as either HUD
+            overlay, Menu Background, Mission Screen, ...
           </p>
         </td>
       </tr>
@@ -127,29 +130,29 @@ dateCreated: 2024-01-30T10:31:38.635Z
         <td class="confluenceTd">model phong</td>
         <td class="confluenceTd">
           <p>
-            <em>model phong</em> is used for textures on models/guns. They can't
-            be used in Radiant
+            <em>model phong</em>
+            is used for textures on models/guns. They can't be used in Radiant
           </p>
         </td>
       </tr>
       <tr>
         <td colspan="1" class="confluenceTd">model unlit</td>
         <td colspan="1" class="confluenceTd">
-          <em>model unlit</em
-          ><span>
+          <em>model unlit</em>
+          <span>
             is used for textures on models/guns. They can't be used in Radiant
             and will not respond to lighting, meaning that the textures are
-            always bright.</span
-          >
+            always bright.
+          </span>
         </td>
       </tr>
       <tr>
         <td class="confluenceTd">world phong</td>
         <td class="confluenceTd">
           <p>
-            <em>world phong</em> is used for textures used in Radiant and on
-            Geometry. This kind of textures will respond to the lighting in your
-            map.
+            <em>world phong</em>
+             is used for textures used in Radiant and on Geometry. This kind of
+            textures will respond to the lighting in your map.
           </p>
         </td>
       </tr>
@@ -157,11 +160,13 @@ dateCreated: 2024-01-30T10:31:38.635Z
         <td colspan="1" class="confluenceTd">world unlit</td>
         <td colspan="1" class="confluenceTd">
           <p>
-            <span
-              ><em>world unlit</em> is used for textures used in Radiant and on
-              Geometry. This kind of textures will <strong>not</strong> respond
-              to lighting, meaning that the textures are always bright.</span
-            >
+            <span>
+              <em>world unlit</em>
+              is used for textures used in Radiant and on Geometry. This kind of
+              textures will 
+              <strong>not</strong>
+               respond to lighting, meaning that the textures are always bright.
+            </span>
           </p>
         </td>
       </tr>
@@ -169,38 +174,37 @@ dateCreated: 2024-01-30T10:31:38.635Z
   </table>
 </div>
 <p>
-  <span style="line-height: 1.4285715"
-    >   These are the most common ones used. The other ones are barely needed,
+  <span style="line-height: 1.4285715">
+       These are the most common ones used. The other ones are barely needed,
     and won't be explained in this tutorial. In my case I will be using
-    &quot;world phong&quot;.</span
-  >
+    &quot;world phong&quot;.
+  </span>
 </p>
 <h3 id="AddingaCustomTexturetoRadiant-surfaceType">
   <span style="line-height: 1.4285715">surfaceType</span>
 </h3>
 <p style="text-align: left">
-  <span style="line-height: 1.4285715"
-    >      The surfaceType option allows you to choose the sort of impact FX
+  <span style="line-height: 1.4285715">
+          The surfaceType option allows you to choose the sort of impact FX
     played on bullet impact, and also determines the sound played when you walk
-    on it. Select the one who comes closest to the material you want to
-    create. </span
-  >
+    on it. Select the one who comes closest to the material you want to create. 
+  </span>
 </p>
 <p>
-  <span style="line-height: 1.4285715"
-    >      In my case I will be using the &quot;brick&quot; surfaceType.</span
-  >
+  <span style="line-height: 1.4285715">
+          In my case I will be using the &quot;brick&quot; surfaceType.
+  </span>
 </p>
 <h3 id="AddingaCustomTexturetoRadiant-usage">
   <span style="line-height: 1.4285715">usage</span>
 </h3>
 <p style="text-align: left; margin-left: 30px">
-  <span style="line-height: 1.4285715"
-    >The usage category tells radiant in what group of textures this one has to
+  <span style="line-height: 1.4285715">
+    The usage category tells radiant in what group of textures this one has to
     be placed in. This setting does not affect the texture itself, so it doesn't
     matter which usage you set here. Make sure to remember the usage you chose
-    so you can use it in radiant!</span
-  >
+    so you can use it in radiant!
+  </span>
 </p>
 <p style="text-align: left"> </p>
 <p> </p>
@@ -221,8 +225,8 @@ dateCreated: 2024-01-30T10:31:38.635Z
   <a
     class="external-link"
     href="http://ugx-mods.com/forum/index.php?action=profile;u=16378"
-    rel="nofollow"
-    >UGX</a
-  >
+    rel="nofollow">
+    UGX
+  </a>
   lukkie1998
 </p>
