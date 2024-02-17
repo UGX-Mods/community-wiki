@@ -9,7 +9,7 @@ window.boot.register('page-ready', () => {
      * @type {HTMLElement}
      */
     const btn = n.querySelector('button.expandable-button');
-    const nodeContent = n.querySelector('> div.expandable-content');
+    const nodeContent = n.querySelector('div.expandable-content');
     btn.onclick = () => {
       const expanded = nodeContent.classList.contains('expanded');
       nodeContent.classList.toggle('expanded', !expanded);
