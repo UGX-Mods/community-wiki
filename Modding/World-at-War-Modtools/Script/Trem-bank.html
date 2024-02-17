@@ -1,20 +1,20 @@
 <!--
 title: Trem bank
-description: 
+description:
 published: true
 date: 2024-01-30T10:32:57.400Z
-tags: confluence:1146922  
+tags: confluence:1146922
 editor: ckeditor
 dateCreated: 2024-01-30T10:32:56.350Z
 -->
 
 <p></p>
-<div class="banner banner-info">
+<div class="banner banner-tip">
   <img
-    src="/attachments/icons/information-information-outline.png"
+    src="/attachments/icons/information-check-decagram.png"
     alt=""
     class="banner-icon" />
-  undefined
+
   <div class="banner-body">
     <p>
       <strong>NOTE</strong>
@@ -47,12 +47,12 @@ dateCreated: 2024-01-30T10:32:56.350Z
   the bank balance as well as put a limit on the amount of bank withdraws per
   round.
 </p>
-<div class="banner banner-info">
+<div class="banner banner-tip">
   <img
-    src="/attachments/icons/information-information-outline.png"
+    src="/attachments/icons/information-check-decagram.png"
     alt=""
     class="banner-icon" />
-  undefined
+
   <div class="banner-body">
     trem_bank was recently updated to version 2.1. Please update your
     installation accordingly with the new files. This wiki article has been
@@ -257,14 +257,14 @@ level thread maps\trem_bank_2::bank();
   <div class="codeContent panelContent pdl">
     <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//|||| Name    : trem_bank_2.gsc 
-//|||| Info   	 : This is a bank system where players can deposit and withdraw points from one global total. I am aware this idea has been toyed with many times by many people, but I don&#39;t care as I wanted to make my own. This is completely and totally my code, and has not been ripped/taken from anyone else&#39;s code that I have seen or used. 
+//|||| Name    : trem_bank_2.gsc
+//|||| Info   	 : This is a bank system where players can deposit and withdraw points from one global total. I am aware this idea has been toyed with many times by many people, but I don&#39;t care as I wanted to make my own. This is completely and totally my code, and has not been ripped/taken from anyone else&#39;s code that I have seen or used.
 //|||| Site       : ugx-mods.com
 //|||| Author  : [UGX] treminaor
 //|||| Notes    : menu file: trem_bank_mouse.menu or trem_bank_keyboard.menu depending on what you want
 //|||| Ver	     : 2.1 - 7/20/2014 | Fixed the default notify waittill name, it was set to a flag. Fixed the Withdrawl limit reached iPrintLn
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-#include common_scripts\utility; 
+#include common_scripts\utility;
 #include maps\_zombiemode_utility;
 #include maps\_utility;
 bank()
@@ -305,7 +305,7 @@ bank()
 		thread watch_bank_dvar();
 	}
 }
- 
+
 bank_hint_swap()
 {
 	while(1)
@@ -317,13 +317,13 @@ bank_hint_swap()
 		wait 0.5;
 	}
 }
- 
+
 bank_trig_setup()
 {
-	if(level.bank[&quot;wait_for_notify&quot;]) 
+	if(level.bank[&quot;wait_for_notify&quot;])
 		level waittill( level.bank[&quot;notify&quot;] );
 	while(1)
-	{		
+	{
 		player = undefined;
 		self waittill(&quot;trigger&quot;,player);
 		menu = &quot;trem_bank_&quot;+level.bank[&quot;menu_type&quot;];
@@ -337,14 +337,14 @@ bank_trig_setup()
 		}
 	}
 }
- 
+
 bank_logic(menu)
 {
 	self waittill(&quot;menuresponse&quot;, menu, action);
 	type = getSubStr(action, 0, 1);
 	amount = int(getSubStr(action, 2));
 	if(type == &quot;d&quot;) //deposit
-	{	
+	{
 		if(self.score &gt;= amount)
 		{
 			self maps\_zombiemode_score::minus_to_player_score(amount);

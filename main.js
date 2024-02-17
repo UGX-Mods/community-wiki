@@ -352,11 +352,11 @@ async function cleanupConfluenceHtml(files) {
 
     // remove black color
     parsedHtml.querySelectorAll('span').forEach((s) => {
-      if (!s.attributes['style']) return;
+      if (!s.hasAttribute('style')) return;
 
-      s.attributes['style'] = s.attributes['style'].replace(
-        /rgb(0,\s+?0,\s+?0);?/,
-        '',
+      s.setAttribute(
+        'style',
+        s.getAttribute('style').replace(/color: *?rgb\(0, *?0, *?0\);?/gi, ''),
       );
 
       if (!s.attributes['style']) {
@@ -399,7 +399,7 @@ async function cleanupConfluenceHtml(files) {
           createHtmlBanner(
             title,
             content,
-            typeMatch?.length > 2 ? typeMatch[1] : 'info',
+            typeMatch?.length === 2 ? typeMatch[1] : 'info',
           ),
         );
       });
@@ -469,7 +469,7 @@ function createHtmlBanner(title, content, type) {
   }
 
   let icon;
-  switch (icon) {
+  switch (type) {
     case 'tip':
       icon = 'check-decagram';
       break;
@@ -486,6 +486,8 @@ function createHtmlBanner(title, content, type) {
 
   if (title) {
     title = `<p class="banner-title">${title}</p>`;
+  } else {
+    title = '';
   }
 
   return `<div class="banner banner-${type}">

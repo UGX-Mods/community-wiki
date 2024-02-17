@@ -1,16 +1,16 @@
 <!--
 title: Trader
-description: 
+description:
 published: true
 date: 2024-01-30T10:32:56.288Z
-tags: confluence:1146941  
+tags: confluence:1146941
 editor: ckeditor
 dateCreated: 2024-01-30T10:32:55.107Z
 -->
 
-<div class="banner banner-info">
+<div class="banner banner-warning">
   <img
-    src="/attachments/icons/information-information-outline.png"
+    src="/attachments/icons/information-alert-octagon.png"
     alt=""
     class="banner-icon" />
   <p class="banner-title">Warning!</p>
@@ -41,12 +41,12 @@ dateCreated: 2024-01-30T10:32:55.107Z
   </div>
 </div>
 <p></p>
-<div class="banner banner-info">
+<div class="banner banner-tip">
   <img
-    src="/attachments/icons/information-information-outline.png"
+    src="/attachments/icons/information-check-decagram.png"
     alt=""
     class="banner-icon" />
-  undefined
+
   <div class="banner-body">
     <p>
       <strong>NOTE</strong>
@@ -773,52 +773,52 @@ material,trader_bg
   <div class="codeContent panelContent pdl">
     <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//|||| Name   : ugx_upgrader_ammo.gsc 
+//|||| Name   : ugx_upgrader_ammo.gsc
 //|||| Info     : handles weapon upgrades and ammo handouts in armoury for UGX Cabin
 //|||| Site     : www.ugx-mods.com
 //|||| Author : [UGX] treminaor
 //|||| Notes  : w = currentweapon, nw =  newweapon
 //|||| To-Do  :n/a
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- 
-#include common_scripts\utility; 
+
+#include common_scripts\utility;
 #include maps\_utility;
-#include maps\_zombiemode_utility; 
- 
+#include maps\_zombiemode_utility;
+
 init()
 {
 	upgrade_trigger = getEnt(&quot;upgrader&quot;,&quot;targetname&quot;);
 	upgrade_trigger thread upgrade_think();
 }
- 
+
 /*
 weapons list:
 ===================
-zombie_kar98k 			
-zombie_m1carbine		
-zombie_bar				
-ptrs41_zombie			
-zombie_colt				
-zombie_thompson		
-zombie_sw_357			
-zombie_shotgun			
-zombie_doublebarrel	
-zombie_mp40			
-zombie_mg42		
-zombie_ppsh		
-zombie_stg44			
-zombie_walther			
+zombie_kar98k
+zombie_m1carbine
+zombie_bar
+ptrs41_zombie
+zombie_colt
+zombie_thompson
+zombie_sw_357
+zombie_shotgun
+zombie_doublebarrel
+zombie_mp40
+zombie_mg42
+zombie_ppsh
+zombie_stg44
+zombie_walther
 zombie_gewehr43
 ===================
 */
- 
+
 upgrade_think()
 {
 	self setHintString(&quot;Press &amp;&amp;1 to open trader menu&quot;);
 	self setCursorHint(&quot;HINT_NOICON&quot;);
- 
+
 	player = undefined;
- 
+
 	players = getplayers();
 	for(i=0;i&lt;players.size;i++)
 	{
@@ -827,39 +827,39 @@ upgrade_think()
 		players[i].trader_2 = undefined;
 		players[i].trader_3 = undefined;
 		players[i].trader_end = undefined;
-	}	
- 
+	}
+
 	while(1)
 	{
 		self waittill(&quot;trigger&quot;, player);
 		menu_choice_wait(player);
- 
+
 	}
 }
- 
+
 menu_choice_wait(player)
 {
 	close = false;
 	level endon( &quot;intermission&quot; );
 	level endon( &quot;disconect&quot; );
 	russian = getent(&quot;russian&quot;,&quot;targetname&quot;);
-	view = getStruct(&quot;russian_view&quot;,&quot;targetname&quot;); 
- 
+	view = getStruct(&quot;russian_view&quot;,&quot;targetname&quot;);
+
 	viewTag = &quot;tag_origin&quot;;
     self.view = Spawn( &quot;script_model&quot;, view.origin );
     self.view SetModel( &quot;tag_origin&quot; );
     self.view.angles = view.angles;
     self.view.origin = view.origin;
     self.view LinkTo( view, viewTag );
- 
+
 	player freezeControls(true);
-	player disableWeapons();	
-	player lerp_player_view_to_tag( self.view, &quot;tag_origin&quot;, 0.5, 1, 20, 20, 10, 10 ); 
+	player disableWeapons();
+	player lerp_player_view_to_tag( self.view, &quot;tag_origin&quot;, 0.5, 1, 20, 20, 10, 10 );
 	menu = &quot;ugx_upgrader&quot;;
-	player openMenu( menu ); 
- 
+	player openMenu( menu );
+
 	player trader_menu(1);
- 
+
 	player waittill(&quot;menuresponse&quot;, menu, response);
 	 if(menu == &quot;ugx_upgrader&quot;)
 	 switch( response )
@@ -867,7 +867,7 @@ menu_choice_wait(player)
 			case &quot;1&quot;: // random weapon
 					player random_weapon_give();
 					player freezeControls(false);
-					player enableWeapons();	
+					player enableWeapons();
 					self.view delete();
 					player trader_menu(0);
 					if(isDefined(level.randweaponvox))
@@ -892,12 +892,12 @@ menu_choice_wait(player)
 						else
 							wait 2;
 					}
- 
+
 					return;
 			case &quot;2&quot;: // attachments
 					player upgrade_decide();
 					player freezeControls(false);
-					player enableWeapons();	
+					player enableWeapons();
 					self.view delete();
 					player trader_menu(0);
 					if(isDefined(level.upgrade_vox))
@@ -920,12 +920,12 @@ menu_choice_wait(player)
 						else
 							wait 2;
 					}
- 
+
 					 return;
 			case &quot;3&quot;: //ammo
 					player ammo_giver();
 					player freezeControls(false);
-					player enableWeapons();	
+					player enableWeapons();
 					self.view delete();
 					player trader_menu(0);
 					if(isDefined(level.ammo_vox))
@@ -948,127 +948,127 @@ menu_choice_wait(player)
 						else
 							wait 2;
 					}
- 
+
 					return;
 			case &quot;4&quot;: //close
 				close = true;
-				player enableWeapons();		
-				player freezeControls(false);	
+				player enableWeapons();
+				player freezeControls(false);
 				self.view delete();
 				player trader_menu(0);
 				break;
 			default:
 			    close = true;
-				player enableWeapons();		
-				player freezeControls(false);	
+				player enableWeapons();
+				player freezeControls(false);
 				self.view delete();
 				player trader_menu(0);
 				break;
 		}
- 
-	//player enableWeapons();		
-	//player freezeControls(false);	
+
+	//player enableWeapons();
+	//player freezeControls(false);
 	player closeMenu( &quot;ugx_upgrader&quot; );
 	player trader_menu(0);
 	player freezeControls(false);
-	player enableWeapons();	
+	player enableWeapons();
 	self.view delete();
 }
- 
+
 trader_menu(alpha)
 {
 if(!isDefined(self.trader_title))
 		self.trader_title = create_simple_hud(self);
-	self.trader_title.foreground = true; 
-	self.trader_title.sort = 3; 
-	self.trader_title.hidewheninmenu = false; 
-	self.trader_title.alignX = &quot;center&quot;; 
+	self.trader_title.foreground = true;
+	self.trader_title.sort = 3;
+	self.trader_title.hidewheninmenu = false;
+	self.trader_title.alignX = &quot;center&quot;;
 	self.trader_title.alignY = &quot;middle&quot;;
-	self.trader_title.horzAlign = &quot;center&quot;; 
+	self.trader_title.horzAlign = &quot;center&quot;;
 	self.trader_title.vertAlign = &quot;middle&quot;;
 	self.trader_title.x = 0;
-	self.trader_title.y = -78; 
+	self.trader_title.y = -78;
 	self.trader_title.alpha = alpha;
 	self.trader_title.fontScale = 1;
 	self.trader_title.color = ( 1, 1, 1 );
 	self.trader_title SetText(&quot;Trader Menu&quot;);
- 
+
 	if(!isDefined(self.trader_1))
 		self.trader_1 = create_simple_hud(self);
-	self.trader_1.foreground = true; 
-	self.trader_1.sort = 3; 
-	self.trader_1.hidewheninmenu = false; 
-	self.trader_1.alignX = &quot;center&quot;; 
+	self.trader_1.foreground = true;
+	self.trader_1.sort = 3;
+	self.trader_1.hidewheninmenu = false;
+	self.trader_1.alignX = &quot;center&quot;;
 	self.trader_1.alignY = &quot;middle&quot;;
-	self.trader_1.horzAlign = &quot;center&quot;; 
+	self.trader_1.horzAlign = &quot;center&quot;;
 	self.trader_1.vertAlign = &quot;middle&quot;;
 	self.trader_1.x = -35;
-	self.trader_1.y = -66; 
+	self.trader_1.y = -66;
 	self.trader_1.alpha = alpha;
 	self.trader_1.fontScale = 1;
 	self.trader_1.color = ( 1, 1, 1 );
 	self.trader_1 SetText(&quot;Press 1 for a Random Weapon [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
- 
+
 	if(!isDefined(self.trader_2))
 		self.trader_2 = create_simple_hud(self);
-	self.trader_2.foreground = true; 
-	self.trader_2.sort = 3; 
-	self.trader_2.hidewheninmenu = false; 
-	self.trader_2.alignX = &quot;center&quot;; 
+	self.trader_2.foreground = true;
+	self.trader_2.sort = 3;
+	self.trader_2.hidewheninmenu = false;
+	self.trader_2.alignX = &quot;center&quot;;
 	self.trader_2.alignY = &quot;middle&quot;;
-	self.trader_2.horzAlign = &quot;center&quot;; 
+	self.trader_2.horzAlign = &quot;center&quot;;
 	self.trader_2.vertAlign = &quot;middle&quot;;
 	self.trader_2.x = 0;
-	self.trader_2.y = -54; 
+	self.trader_2.y = -54;
 	self.trader_2.alpha = alpha;
 	self.trader_2.fontScale = 1;
 	self.trader_2.color = ( 1, 1, 1 );
 	self.trader_2 SetText(&quot;Press 2 for an attachment [Cost: 1st is 3000, 2nd is 5000]&quot;);
- 
+
 	if(!isDefined(self.trader_3))
 		self.trader_3 = create_simple_hud(self);
-	self.trader_3.foreground = true; 
-	self.trader_3.sort = 3; 
-	self.trader_3.hidewheninmenu = false; 
-	self.trader_3.alignX = &quot;center&quot;; 
+	self.trader_3.foreground = true;
+	self.trader_3.sort = 3;
+	self.trader_3.hidewheninmenu = false;
+	self.trader_3.alignX = &quot;center&quot;;
 	self.trader_3.alignY = &quot;middle&quot;;
-	self.trader_3.horzAlign = &quot;center&quot;; 
+	self.trader_3.horzAlign = &quot;center&quot;;
 	self.trader_3.vertAlign = &quot;middle&quot;;
 	self.trader_3.x = -65;
-	self.trader_3.y = -42; 
+	self.trader_3.y = -42;
 	self.trader_3.alpha = alpha;
 	self.trader_3.fontScale = 1;
 	self.trader_3.color = ( 1, 1, 1 );
 	self.trader_3 SetText(&quot;Press 3 for ammo [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
- 
+
 	if(!isDefined(self.trader_end))
 		self.trader_end = create_simple_hud(self);
-	self.trader_end.foreground = true; 
-	self.trader_end.sort = 3; 
-	self.trader_end.hidewheninmenu = false; 
-	self.trader_end.alignX = &quot;center&quot;; 
+	self.trader_end.foreground = true;
+	self.trader_end.sort = 3;
+	self.trader_end.hidewheninmenu = false;
+	self.trader_end.alignX = &quot;center&quot;;
 	self.trader_end.alignY = &quot;middle&quot;;
-	self.trader_end.horzAlign = &quot;center&quot;; 
+	self.trader_end.horzAlign = &quot;center&quot;;
 	self.trader_end.vertAlign = &quot;middle&quot;;
 	self.trader_end.x = 70;
-	self.trader_end.y = -30; 
+	self.trader_end.y = -30;
 	self.trader_end.alpha = alpha;
 	self.trader_end.fontScale = 1;
 	self.trader_end.color = ( 1, 1, 1 );
 	self.trader_end SetText(&quot;Press ESC to close.&quot;);
- 
+
 	////SHADOWS (its too hard to read otherwise)
 	if(!isDefined(self.trader_title_shadow))
 		self.trader_title_shadow = create_simple_hud(self);
-	self.trader_title_shadow.foreground = true; 
-	self.trader_title_shadow.sort = 2; 
-	self.trader_title_shadow.hidewheninmenu = false; 
-	self.trader_title_shadow.alignX = &quot;center&quot;; 
+	self.trader_title_shadow.foreground = true;
+	self.trader_title_shadow.sort = 2;
+	self.trader_title_shadow.hidewheninmenu = false;
+	self.trader_title_shadow.alignX = &quot;center&quot;;
 	self.trader_title_shadow.alignY = &quot;middle&quot;;
-	self.trader_title_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_title_shadow.horzAlign = &quot;center&quot;;
 	self.trader_title_shadow.vertAlign = &quot;middle&quot;;
 	self.trader_title_shadow.x = -1;
-	self.trader_title_shadow.y = -77; 
+	self.trader_title_shadow.y = -77;
 	if(alpha &gt; 0)
 		self.trader_title_shadow.alpha = .6;
 	else
@@ -1076,18 +1076,18 @@ if(!isDefined(self.trader_title))
 	self.trader_title_shadow.fontScale = 1;
 	self.trader_title_shadow.color = ( 0.1, 0.1, 0.1 );
 	self.trader_title_shadow SetText(&quot;Trader Menu&quot;);
- 
+
 	if(!isDefined(self.trader_1_shadow))
 		self.trader_1_shadow = create_simple_hud(self);
-	self.trader_1_shadow.foreground = true; 
-	self.trader_1_shadow.sort = 2; 
-	self.trader_1_shadow.hidewheninmenu = false; 
-	self.trader_1_shadow.alignX = &quot;center&quot;; 
+	self.trader_1_shadow.foreground = true;
+	self.trader_1_shadow.sort = 2;
+	self.trader_1_shadow.hidewheninmenu = false;
+	self.trader_1_shadow.alignX = &quot;center&quot;;
 	self.trader_1_shadow.alignY = &quot;middle&quot;;
-	self.trader_1_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_1_shadow.horzAlign = &quot;center&quot;;
 	self.trader_1_shadow.vertAlign = &quot;middle&quot;;
 	self.trader_1_shadow.x = -36;
-	self.trader_1_shadow.y = -65; 
+	self.trader_1_shadow.y = -65;
 	if(alpha &gt; 0)
 		self.trader_1_shadow.alpha = 0.6;
 	else
@@ -1095,18 +1095,18 @@ if(!isDefined(self.trader_title))
 	self.trader_1_shadow.fontScale = 1;
 	self.trader_1_shadow.color = ( 0.1, 0.1, 0.1 );
 	self.trader_1_shadow SetText(&quot;Press 1 for a Random Weapon [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
- 
+
 	if(!isDefined(self.trader_2_shadow))
 		self.trader_2_shadow = create_simple_hud(self);
-	self.trader_2_shadow.foreground = true; 
-	self.trader_2_shadow.sort = 2; 
-	self.trader_2_shadow.hidewheninmenu = false; 
-	self.trader_2_shadow.alignX = &quot;center&quot;; 
+	self.trader_2_shadow.foreground = true;
+	self.trader_2_shadow.sort = 2;
+	self.trader_2_shadow.hidewheninmenu = false;
+	self.trader_2_shadow.alignX = &quot;center&quot;;
 	self.trader_2_shadow.alignY = &quot;middle&quot;;
-	self.trader_2_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_2_shadow.horzAlign = &quot;center&quot;;
 	self.trader_2_shadow.vertAlign = &quot;middle&quot;;
 	self.trader_2_shadow.x = -1;
-	self.trader_2_shadow.y = -53; 
+	self.trader_2_shadow.y = -53;
 	if(alpha &gt; 0)
 		self.trader_2_shadow.alpha = 0.6;
 	else
@@ -1114,18 +1114,18 @@ if(!isDefined(self.trader_title))
 	self.trader_2_shadow.fontScale = 1;
 	self.trader_2_shadow.color = ( 0.1, 0.1, 0.1 );
 	self.trader_2_shadow SetText(&quot;Press 2 for an attachment [Cost: 1st is 3000, 2nd is 5000]&quot;);
- 
+
 	if(!isDefined(self.trader_3_shadow))
 		self.trader_3_shadow = create_simple_hud(self);
-	self.trader_3_shadow.foreground = true; 
-	self.trader_3_shadow.sort = 2; 
-	self.trader_3_shadow.hidewheninmenu = false; 
-	self.trader_3_shadow.alignX = &quot;center&quot;; 
+	self.trader_3_shadow.foreground = true;
+	self.trader_3_shadow.sort = 2;
+	self.trader_3_shadow.hidewheninmenu = false;
+	self.trader_3_shadow.alignX = &quot;center&quot;;
 	self.trader_3_shadow.alignY = &quot;middle&quot;;
-	self.trader_3_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_3_shadow.horzAlign = &quot;center&quot;;
 	self.trader_3_shadow.vertAlign = &quot;middle&quot;;
 	self.trader_3_shadow.x = -66;
-	self.trader_3_shadow.y = -41; 
+	self.trader_3_shadow.y = -41;
 	if(alpha &gt; 0)
 		self.trader_3_shadow.alpha = 0.6;
 	else
@@ -1133,18 +1133,18 @@ if(!isDefined(self.trader_title))
 	self.trader_3_shadow.fontScale = 1;
 	self.trader_3_shadow.color = ( 0.1, 0.1, 0.1 );
 	self.trader_3_shadow SetText(&quot;Press 3 for ammo [Cost: &quot;+(1000*level.round_number) / 2.5+&quot;]&quot;);
- 
+
 	if(!isDefined(self.trader_end_shadow))
 		self.trader_end_shadow = create_simple_hud(self);
-	self.trader_end_shadow.foreground = true; 
-	self.trader_end_shadow.sort = 2; 
-	self.trader_end_shadow.hidewheninmenu = false; 
-	self.trader_end_shadow.alignX = &quot;center&quot;; 
+	self.trader_end_shadow.foreground = true;
+	self.trader_end_shadow.sort = 2;
+	self.trader_end_shadow.hidewheninmenu = false;
+	self.trader_end_shadow.alignX = &quot;center&quot;;
 	self.trader_end_shadow.alignY = &quot;middle&quot;;
-	self.trader_end_shadow.horzAlign = &quot;center&quot;; 
+	self.trader_end_shadow.horzAlign = &quot;center&quot;;
 	self.trader_end_shadow.vertAlign = &quot;middle&quot;;
 	self.trader_end_shadow.x = 69;
-	self.trader_end_shadow.y = -29; 
+	self.trader_end_shadow.y = -29;
 	if(alpha &gt; 0)
 		self.trader_end_shadow.alpha = 0.6;
 	else
@@ -1153,18 +1153,18 @@ if(!isDefined(self.trader_title))
 	self.trader_end_shadow.color = ( 0.1, 0.1, 0.1 );
 	self.trader_end_shadow SetText(&quot;Press ESC to close.&quot;);
 	////END SHADOWS
- 
+
 	if(!isDefined(self.trader_bg))
 		self.trader_bg = create_simple_hud(self);
-	self.trader_bg.foreground = false; 
-	self.trader_bg.sort = 1; 
-	self.trader_bg.hidewheninmenu = false; 
-	self.trader_bg.alignX = &quot;center&quot;; 
+	self.trader_bg.foreground = false;
+	self.trader_bg.sort = 1;
+	self.trader_bg.hidewheninmenu = false;
+	self.trader_bg.alignX = &quot;center&quot;;
 	self.trader_bg.alignY = &quot;middle&quot;;
-	self.trader_bg.horzAlign = &quot;center&quot;; 
+	self.trader_bg.horzAlign = &quot;center&quot;;
 	self.trader_bg.vertAlign = &quot;middle&quot;;
 	self.trader_bg.x = 0;
-	self.trader_bg.y = -55; 
+	self.trader_bg.y = -55;
 	if(alpha &gt; 0)
 		self.trader_bg.alpha = 1;
 	else
@@ -1173,7 +1173,7 @@ if(!isDefined(self.trader_title))
 	self.trader_bg.color = ( 1, 1, 1 );
 	self.trader_bg SetShader(&quot;trader_bg&quot;, 300, 72);
 }
- 
+
 upgrade_decide()
 {
 		w = self getCurrentWeapon();
@@ -1183,196 +1183,196 @@ upgrade_decide()
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_kar98k_b&quot;) //bayonet only
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_m1carbine&quot;)
 		{
 			nw = &quot;zombie_m1carbine_a_b&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_m1carbine_a_b&quot;) //give bayonet and aperture in one go
 		{
 			nw = &quot;zombie_m1carbine_a_b_e&quot;;
 			cost = 4000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_m1carbine_a_b_e&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_bar&quot;)
 		{
 			nw = &quot;zombie_bar_e&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_bar_e&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;ptrs41_zombie&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_colt&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_thompson&quot;)
 		{
 			nw = &quot;zombie_thompson_a&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_thompson_a&quot;)
 		{
 			nw = &quot;zombie_thompson_a_e&quot;;
 			cost = 4000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_thompson_a_e&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_sw_357&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_shotgun&quot;)
 		{
 			nw = &quot;zombie_shotgun_b_g&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_shotgun_b_g&quot;) // bayonet+grip one go
 		{
 			nw = &quot;zombie_shotgun_b_g_e&quot;;
 			cost = 4000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_shotgun_b_g_e&quot;)
 		{
 			self upgrade_give(&quot;none&quot;);
 		}
- 
+
 		else if(w == &quot;zombie_doublebarrel&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_doublebarrel_g&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_mp40&quot;)
 		{
 			nw = &quot;zombie_mp40_a&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_mp40_a&quot;)
 		{
 			nw = &quot;zombie_mp40_a_e&quot;;
 			cost = 4000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_mp40_a_e&quot;) // No grip?
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_mg42&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_ppsh&quot;)
 		{
 			nw = &quot;zombie_ppsh_a&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_ppsh_a&quot;)
 		{
 			nw = &quot;zombie_ppsh_a_e&quot;;
 			cost = 4000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_ppsh_a_e&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_stg44&quot;)
 		{
 			nw = &quot;zombie_stg44_a&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_stg44_a&quot;)
 		{
 			nw = &quot;zombie_stg44_a_e&quot;;
 			cost = 4000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_stg44_a_e&quot;) // no grip?
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_walther&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else if(w == &quot;zombie_gewehr43&quot;)
 		{
 			nw = &quot;zombie_gewehr43_a&quot;;
 			cost = 2000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_gewehr43_a&quot;)
 		{
 			nw = &quot;zombie_gewehr43_a_e&quot;;
 			cost = 4000;
 			self upgrade_give(nw, cost);
 		}
- 
+
 		else if(w == &quot;zombie_gewehr43_a_e&quot;)
 		{
 			self upgrade_give(&quot;none&quot;, 0);
 		}
- 
+
 		else
 			iPrintLn(&quot;ERROR: UNKNOWN GUN &#39;&quot;+w+&quot;&#39; - ADD TO UGX_UPGRADER.GSC&quot;);
 }
- 
+
 upgrade_give(nw, cost)
 {
 	level.upgrade_vox = undefined;
@@ -1398,9 +1398,9 @@ upgrade_give(nw, cost)
 		}
 	}
 }
- 
+
 ammo_giver()
-{	
+{
 	level.ammo_vox = undefined;
 	level.nomoneyvox = undefined;
 	cost = (1000*level.round_number)/2.5;
@@ -1415,9 +1415,9 @@ ammo_giver()
 		//self iPrintLn(&quot;Russian: Come back with a bit more incentive next time and I will probably help you.&quot;);
 		level.nomoneyvox = 1;
 		//self playsound(&quot;no_cha_ching&quot;);
-	}	
+	}
 }
- 
+
 ammo_calc(weapon) // ammo math is from ammobox.gsc - too lazy to rewrite it any better
 {
 	chance = randomInt(100);
@@ -1430,8 +1430,8 @@ ammo_calc(weapon) // ammo math is from ammobox.gsc - too lazy to rewrite it any 
 		ammo = int(((max_ammo-current_ammo)*randomIntRange(30,80)) / 100);
 		self SetWeaponAmmoStock(weapon, ammo+stock);
 		level.ammo_vox = 1;
- 
- 
+
+
 		//if(vox == 1)
 		//	self iPrintLn(&quot;Russian: Here&#39;s &quot;+ammo+&quot; bullets. Don&#39;t waste &#39;em.&quot;);
 		//else if(vox == 2)
@@ -1444,7 +1444,7 @@ ammo_calc(weapon) // ammo math is from ammobox.gsc - too lazy to rewrite it any 
 	else
 		iPrintLn(&quot;^1ADD VOX: ^7You already have enough ammo&quot;);
 }
- 
+
 random_weapon_give()
 {
 	cost = (1000*level.round_number)/2.5;
@@ -1547,16 +1547,16 @@ random_weapon_give()
 		wait 2;
 	}
 }
- 
+
 random_give(cost, weapon)
 {
 	level.randweaponvox = undefined;
-	primaryWeapons = self GetWeaponsListPrimaries(); 
+	primaryWeapons = self GetWeaponsListPrimaries();
 	ammo = self decide_ammo(weapon);
 	if( primaryWeapons.size &gt;= 2 ) // he has two weapons, replace his current
 	{
 		current_weapon = self getCurrentWeapon();
-		self TakeWeapon( current_weapon ); 
+		self TakeWeapon( current_weapon );
 		self GiveWeapon( weapon );
 		self SetWeaponAmmoStock( weapon, ammo );
 	}
@@ -1564,16 +1564,16 @@ random_give(cost, weapon)
 	{
 		self GiveWeapon( weapon );
 		self SetWeaponAmmoStock( weapon, ammo );
-	}				
+	}
 	self playsound(&quot;ammo_pickup_plr&quot;);
 	self SwitchToWeapon( weapon );
 	self maps\_zombiemode_score::minus_to_player_score( cost );
-	level.randweaponvox = 1; 
+	level.randweaponvox = 1;
 }
- 
+
 decide_ammo(weapon) // Usage: trigger decide_ammo(); - returns ammo amount based on random int&#39;s.
 {
-	if(weapon == &quot;zombie_30cal&quot; || weapon == &quot;zombie_fg42&quot; || weapon == &quot;zombie_mg42&quot; || weapon == &quot;zombie_bar&quot; || weapon == &quot;zombie_ppsh&quot;) 
+	if(weapon == &quot;zombie_30cal&quot; || weapon == &quot;zombie_fg42&quot; || weapon == &quot;zombie_mg42&quot; || weapon == &quot;zombie_bar&quot; || weapon == &quot;zombie_ppsh&quot;)
 		{
 			ammo = randomInt(300); // auto&#39;s need more ammo
 			if(ammo &lt;= 75)
@@ -1585,7 +1585,7 @@ decide_ammo(weapon) // Usage: trigger decide_ammo(); - returns ammo amount based
 			if(ammo &lt;= 15)
 				ammo = 15;
 		}
-	return ammo; 
+	return ammo;
 }</code></pre>
   </div>
 </div>

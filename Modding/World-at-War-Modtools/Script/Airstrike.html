@@ -1,20 +1,20 @@
 <!--
 title: Airstrike
-description: 
+description:
 published: true
 date: 2024-01-30T10:31:43.097Z
-tags: confluence:1146930  
+tags: confluence:1146930
 editor: ckeditor
 dateCreated: 2024-01-30T10:31:41.866Z
 -->
 
 <p><br /></p>
-<div class="banner banner-info">
+<div class="banner banner-tip">
   <img
-    src="/attachments/icons/information-information-outline.png"
+    src="/attachments/icons/information-check-decagram.png"
     alt=""
     class="banner-icon" />
-  undefined
+
   <div class="banner-body">
     <p>
       <strong>NOTE</strong>
@@ -193,13 +193,13 @@ bomb_run()
     plane thread maps\_vehicle::vehicle_paths(plane_path);
     maps\_vehicle::vehicle_init(plane);
     plane thread corsair_spin_prop();
- 
+
     plane StartPath( plane_path );
     wait 2;
     players = getplayers();
     for(i=0;i&lt;players.size;i++)
 	players[i] playsound(&quot;ambient_corsair&quot;);
- 
+
     plane notify(&quot;drop_bombs&quot;);
     wait 0.5;
     plane notify(&quot;drop_bombs&quot;);
@@ -250,16 +250,16 @@ bomb_run()
     wait 0.5;
     plane notify(&quot;drop_bombs&quot;);
 }
- 
+
 corsair_spin_prop()
 {
 	self endon(&quot;hide_prop&quot;);
 	self endon(&quot;death&quot;);
- 
+
 	while(1)
 	{
 		PlayFXOnTag(level._effect[&quot;corsair_prop_full&quot;], self, &quot;tag_prop&quot;);
- 
+
 		wait(0.1);
 	}
 }</code></pre>
@@ -479,16 +479,16 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
   <div class="codeContent panelContent pdl">
     <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//|||| Name   : bomb_run.gsc 
+//|||| Name   : bomb_run.gsc
 //|||| Info     : script for bombing runs
 //|||| Site     : www.ugx-mods.com
 //|||| Author : [UGX] treminaor
 //|||| Notes  : goes with Airstrike tutorial on UGX-Wiki
 //|||| To-Do : n/a
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-#include common_scripts\utility; 
+#include common_scripts\utility;
 #include maps\_utility;
-#include maps\_zombiemode_utility; 
+#include maps\_zombiemode_utility;
 
 bomb_run_trig()
 {
@@ -497,7 +497,7 @@ bomb_run_trig()
 	player = undefined;
 	trigger setCursorHint(&quot;HINT_NOICON&quot;);
 	trigger setHintString(&quot;Press &amp;&amp;1 to call in an Airstrike [Cost: &quot;+zombie_cost+&quot;]&quot;);
-	
+
 	while(1)
 	{
 		trigger waittill(&quot;trigger&quot;,player);
@@ -521,7 +521,7 @@ bomb_run()
     plane thread maps\_vehicle::vehicle_paths(plane_path);
     maps\_vehicle::vehicle_init(plane);
     plane thread corsair_spin_prop();
-	
+
     plane StartPath( plane_path );
     wait 2;
 	players = getplayers();
@@ -583,11 +583,11 @@ corsair_spin_prop()
 {
 	self endon(&quot;hide_prop&quot;);
 	self endon(&quot;death&quot;);
-	
+
 	while(1)
 	{
 		PlayFXOnTag(level._effect[&quot;corsair_prop_full&quot;], self, &quot;tag_prop&quot;);
-				
+
 		wait(0.1);
 	}
 }</code></pre>

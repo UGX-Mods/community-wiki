@@ -1,20 +1,20 @@
 <!--
 title: Hintstrings not updating
-description: 
+description:
 published: true
 date: 2024-01-30T10:32:23.741Z
-tags: confluence:1146946  
+tags: confluence:1146946
 editor: ckeditor
 dateCreated: 2024-01-30T10:32:22.494Z
 -->
 
 <p><br /></p>
-<div class="banner banner-info">
+<div class="banner banner-tip">
   <img
-    src="/attachments/icons/information-information-outline.png"
+    src="/attachments/icons/information-check-decagram.png"
     alt=""
     class="banner-icon" />
-  undefined
+
   <div class="banner-body">
     <p>
       <strong>NOTE</strong>
@@ -259,9 +259,9 @@ menuDef
 //|||| Author		: [UGX] treminaor
 //|||| Notes		: v1.3
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- 
+
 #include maps\_utility;
- 
+
 _setHintString(string) //#bestengine2014
 {
 	self thread setHintString_fixed_thread(string); //so that i don&#39;t have to write &quot;thread&quot; before all of my trig calls.
@@ -319,7 +319,7 @@ isLookingAtEnt(ent)
 	normalvec = vectorNormalize(ent.origin-self geteye());
 	veccomp = vectorNormalize((ent.origin-(0,0,256))-self geteye());
 	insidedot = vectordot(normalvec,veccomp);
- 
+
 	anglevec = anglestoforward(self getplayerangles());
 	vectordot = vectordot(anglevec,normalvec);
 	if(vectordot &gt; insidedot)
