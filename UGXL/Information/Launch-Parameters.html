@@ -3,12 +3,12 @@ title: Launch Parameters
 description: 
 published: true
 date: 2024-01-30T10:55:40.005Z
-tags: 
+tags: confluence:12845109  
 editor: ckeditor
 dateCreated: 2024-01-30T10:29:15.883Z
 -->
 
-<!-- conf id: 12845109 -->
+
 
 <p>
   The UGX Launcher can be started with launch parameters (command line
@@ -18,10 +18,10 @@ dateCreated: 2024-01-30T10:29:15.883Z
 <div class="table-wrap">
   <table class="wrapped confluenceTable">
     <colgroup>
-      <col />
-      <col />
-      <col />
-      <col />
+      <col>
+      <col>
+      <col>
+      <col>
     </colgroup>
     <tbody>
       <tr>
@@ -64,7 +64,7 @@ dateCreated: 2024-01-30T10:29:15.883Z
         <td colspan="1" class="confluenceTd">
           <p>
             For more information read the official Qt5 documentation:
-            <a
+            <a 
               class="external-link"
               href="http://doc.qt.io/qt-5/qloggingcategory.html#logging-rules"
               rel="nofollow">
@@ -179,10 +179,10 @@ dateCreated: 2024-01-30T10:29:15.883Z
   .
 </p>
 <h2 id="LaunchParameters-Logging">Logging</h2>
-<div
+<div 
   class="confluence-information-macro confluence-information-macro-information">
   <p class="title conf-macro-render">Logging is forced in Beta</p>
-  <span
+  <span 
     class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span>
   <div class="confluence-information-macro-body">
     <p>While in Beta, the logfile is forced to help development.</p>
@@ -229,9 +229,9 @@ dateCreated: 2024-01-30T10:29:15.883Z
         <th class="confluenceTh">Information</th>
       </tr>
       <tr>
-        <td class="confluenceTd"><pre>default</pre></td>
+        <td class="confluenceTd"><pre>default</pre>
         <td class="confluenceTd">Default log</td>
-      </tr>
+      
       <tr>
         <td class="confluenceTd"><pre>socket.io</pre></td>
         <td class="confluenceTd">Socket.io logging</td>
@@ -314,8 +314,8 @@ dateCreated: 2024-01-30T10:29:15.883Z
         <td colspan="1" class="confluenceTd"><pre>dloadman</pre></td>
         <td colspan="1" class="confluenceTd">Download Manager (UI)</td>
       </tr>
-    </tbody>
-  </table>
+    
+  
 </div>
 <p>To enable / disable certain categories, use the following format:</p>
 <p>
@@ -323,8 +323,8 @@ dateCreated: 2024-01-30T10:29:15.883Z
   seperated by \n (new line)
 </p>
 <div class="preformatted panel" style="border-width: 1px">
-  <div class="preformattedContent panelContent">
-    <pre>
+  </div>
+    
 -logcat &quot;default.debug=false&quot; | Hide all default debug massages
 -logcat &quot;default.*=false&quot; | Hide all default messages
 -logcat &quot;default.*=false\ndefault.critical=true&quot; | Hide all default messages and enable critical messages again
@@ -332,3 +332,4 @@ dateCreated: 2024-01-30T10:29:15.883Z
     >
   </div>
 </div>
+<</div>

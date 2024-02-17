@@ -3,12 +3,12 @@ title: Scripting Guide
 description: 
 published: true
 date: 2024-01-30T10:32:47.908Z
-tags: 
+tags: confluence:1146949  
 editor: ckeditor
 dateCreated: 2024-01-30T10:32:46.649Z
 -->
 
-<!-- conf id: 1146949 -->
+
 
 <p>
   This is a guide intended for the beginner who doesn't know any C syntax or CoD
@@ -71,7 +71,7 @@ dateCreated: 2024-01-30T10:32:46.649Z
 <p>
   <strong>Logic statements</strong>
   : if(), else if(), else(), while(), for(), function_declaration(), or similar.
-  <br />
+  <br>
   <strong>Strings</strong>
   : information that is not variable. Strings are surrounded by double quotes.
 </p>
@@ -179,7 +179,7 @@ if(1 == 1)
   You declare a variable with the = operator. You create a new value 'on the
   left' of the operator and assign an existing or new value 'on the right' of
   the operator.
-  <br />
+  <br>
   Example:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -200,7 +200,7 @@ height = intelligence; //Here I have REASSIGNED the value of &#39;height&#39; fr
   , and
   <strong>their value does not change until you reassign it</strong>
   .
-  <br />
+  <br>
   If you wish to access one variable from multiple functions, there are two
   approaches. You have to either pass that variable into the function, or you
   have to declare that variable as 'global'. The CoD syntax for a global
@@ -360,46 +360,46 @@ number_int = int(number); //Value of &#39;number&#39; is now 100. This is not th
 <p>
   <strong>Operators</strong>
   : + - * / &lt; &lt;= =&gt; &gt; ++ -- = == += -=
-  <br />
+  <br>
   <strong>+</strong>
   Addition
-  <br />
+  <br>
   <strong>-</strong>
   Subtraction
-  <br />
+  <br>
   <strong>*</strong>
   Multiplication
-  <br />
+  <br>
   <strong>/</strong>
   Division
-  <br />
+  <br>
   <strong>&lt;</strong>
   Less-than
-  <br />
+  <br>
   <strong>&lt;=</strong>
   Less-than or equal to
-  <br />
+  <br>
   <strong>=&gt;</strong>
   Greater-than or equal to
-  <br />
+  <br>
   <strong>&gt;</strong>
   Greater-than
-  <br />
+  <br>
   <strong>++</strong>
   Increment by +1
-  <br />
+  <br>
   <strong>--</strong>
   Decrement by -1
-  <br />
+  <br>
   <strong>=</strong>
   Equals or Assignment
-  <br />
+  <br>
   <strong>==</strong>
   Is-Equal-To
-  <br />
+  <br>
   <strong>+=</strong>
   Increment by
-  <br />
+  <br>
   <strong>-=</strong>
   Decrement by
 </p>
@@ -444,7 +444,7 @@ functionname(optional_arg1,optional_arg2, etc)
   </div>
 </div>
 <p>
-  <br />
+  <br>
   A function can either complete tasks (with no end statement) or complete logic
   (with an end statement).
 </p>
@@ -508,14 +508,14 @@ get_number()
   calling to other files.
 </p>
 <p>
-  <br />
+  <br>
   <strong>1)</strong>
   To thread, or not to thread? That seems to be the question on everyone's mind.
   To an experienced scripter its a pretty fundamental aspect of calling
   functions, but to the newbie it may seem like guessing on thread/not thread
   will fix their non-working functions. DON'T GUESS! I'm here to tell you when
   to use the all-important 'thread'.
-  <br />
+  <br>
   The easiest way to explain (at least for me) is through a visual aid. Imagine
   yourself weaving a rope together. You have 3+ strands of thin pieces of rope
   and you weave them together to make one thicker, stronger piece of rope. When
@@ -529,7 +529,7 @@ get_number()
   <strong>halt</strong>
   at the function call and wait for the called function to finish before
   executing any code after the call.
-  <br />
+  <br>
   For example, if you call a function in your mapname.gsc before
   maps_zombiemode::main() is called, it will prevent zombiemode from ever
   starting (i.e. your zombies will not spawn, etc). If you
@@ -565,14 +565,14 @@ mapsscriptname::functionname(optional_args);</code></pre>
   format.
 </p>
 <h2 id="ScriptingGuide-While()andFor()loops">
-  <br />
+  <br>
   While() and For() loops
 </h2>
 <p>
   Loops are your second best friend (right up there with arrays). They allow you
   to repeat logic until something changes (or indefinitely). Again, the best way
   to show their importance is with visual examples.
-  <br />
+  <br>
   Say I want to have a door that waits until the player walks up to it before it
   opens.
 </p>
@@ -592,7 +592,7 @@ door_trigger_wait()
   </div>
 </div>
 <p>
-  <br />
+  <br>
   You can also have while() loops that will end once a certain thing is true or
   false. For instance:
 </p>
@@ -612,7 +612,7 @@ door_trigger_wait()
   </div>
 </div>
 <p>
-  <br />
+  <br>
   For() loops can also be indefinite, but that is not their primary use. This
   for() loop provides the same functionality as it did above with while():
 </p>
@@ -632,12 +632,12 @@ door_trigger_wait()
   </div>
 </div>
 <p>
-  <br />
+  <br>
   The primary function of for() loops is to loop through an array using an
   'index'.
 </p>
 <p>
-  <br />
+  <br>
   <strong>Index:</strong>
   A string or numerical value that corresponds to a value inside an array. An
   index is the same as the 'key' in a keys-and-values dictionary (if you want to
@@ -647,7 +647,7 @@ door_trigger_wait()
   discuss right now.
 </p>
 <p>
-  <br />
+  <br>
   A great visual example of the power of for loops can be found way back up in
   the
   <span class="confluence-link">
@@ -715,7 +715,7 @@ for(variable=0;variable&lt;array.size;variable++)
   important that you understand that and that you don't forget it.
 </p>
 <p>
-  <br />
+  <br>
   <strong>To be continued.</strong>
   Have questions? Suggestions? Comments? Parts to point out where I screwed up?
   Email me at
