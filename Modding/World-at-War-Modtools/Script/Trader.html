@@ -8,13 +8,13 @@ editor: ckeditor
 dateCreated: 2024-01-30T10:32:55.107Z
 -->
 
-
-
-<div class="confluence-information-macro confluence-information-macro-warning">
-  <p class="title conf-macro-render">Warning!</p>
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  <p class="banner-title">Warning!</p>
+  <div class="banner-body">
     <p>
       <span>
         This is not directly compatible with ZCT Mod as it uses different
@@ -23,12 +23,13 @@ dateCreated: 2024-01-30T10:32:55.107Z
     </p>
   </div>
 </div>
-<div 
-  class="confluence-information-macro confluence-information-macro-information">
-  <p class="title conf-macro-render">Note</p>
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  <p class="banner-title">Note</p>
+  <div class="banner-body">
     <p>
        
       <span>
@@ -40,10 +41,13 @@ dateCreated: 2024-01-30T10:32:55.107Z
   </div>
 </div>
 <p></p>
-<div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
     <p>
       <strong>NOTE</strong>
       : Before reading this guide, determine where your World at War root
@@ -67,14 +71,14 @@ dateCreated: 2024-01-30T10:32:55.107Z
     </p>
   </div>
 </div>
-<br>
+<br />
 This tutorial will walk you through how to implement a 'trader' in your map
 (think of Killing Floor) that will offer players ammo, guns, and attachments. By
 default the provided script includes code for soundaliases to be played when
 items are purchased, although you are not required to add any sound for
 functionality. This tutorial will not provide sounds or cover how to add them to
 your mod. Since this script is from
-<a class="external-link" href="http://ugx-mods.com/" rel="nofollow">UGX</a>
+<a href="http://ugx-mods.com/" rel="nofollow">UGX</a>
 Cabin, it only supports the weapons available in that map. If you would like to
 add more weapons, you will have to create more weapons files and add them to the
 script and your csv's.
@@ -86,17 +90,11 @@ script and your csv's.
 <h1 id="Trader-Preparation">Preparation</h1>
 <p>
   Download
-  <a 
-    class="external-link"
-    href="http://ugx-mods.com/downloads/ugx_upgrader_ammo.gsc"
-    rel="nofollow">
+  <a href="http://ugx-mods.com/downloads/ugx_upgrader_ammo.gsc" rel="nofollow">
     ugx_upgrader_ammo.gsc
   </a>
   and place it in mods/mapname/maps/. Download
-  <a 
-    class="external-link"
-    href="http://ugx-mods.com/downloads/ugx_trader_files.rar"
-    rel="nofollow">
+  <a href="http://ugx-mods.com/downloads/ugx_trader_files.rar" rel="nofollow">
     ugx_trader_files.rar
   </a>
   and extract its contents to your root/mods/mapname/ directory, combining
@@ -754,7 +752,7 @@ material,mtl_weapon_mp_apature_crosshair
   Open Launcher and go to the Mods tab. Select your map from the list. Scroll
   down in the box on the left until you see ugx_upgrader_ammo.gsc. Check the box
   next to it.
-  <br>
+  <br />
   Add:
 </p>
 <div class="code panel pdl" style="border-width: 1px">

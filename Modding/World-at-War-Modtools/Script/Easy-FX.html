@@ -8,12 +8,14 @@ editor: ckeditor
 dateCreated: 2024-01-30T10:32:12.251Z
 -->
 
-
-
 <p></p>
-<div class="confluence-information-macro confluence-information-macro-tip">
-  <span     class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
     <p>
       <strong>NOTE</strong>
       : Before reading this guide, determine where your World at War root
@@ -37,9 +39,13 @@ dateCreated: 2024-01-30T10:32:12.251Z
     </p>
   </div>
 </div>
-<div class="confluence-information-macro confluence-information-macro-warning">
-  <span     class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
     <strong>Warning:</strong>
     This is not to be used for weather! Use root/maps/_weather.gsc. No tutorial
     is available yet.
@@ -61,7 +67,7 @@ dateCreated: 2024-01-30T10:32:12.251Z
 <p>
   1) Clientscripts play looping fx by frame, while serverscipt fx loop per unit
   of time.
-  <br>
+  <br />
   -This means that with CSC, your looping fx will play faster or slower based on
   the client's current FPS (in most cases, this is a terrible idea).
   Serverscript (Easy-FX way) will play at the same rate regardless of FPS,
@@ -80,9 +86,7 @@ dateCreated: 2024-01-30T10:32:12.251Z
 </p>
 <h1 id="EasyFX-Preparation">Preparation</h1>
 <p>
-  <a     class="external-link"
-    href="http://ugx-mods.com/downloads/ugx_easy_fx.gsc"
-    rel="nofollow">
+  <a href="http://ugx-mods.com/downloads/ugx_easy_fx.gsc" rel="nofollow">
     ugx_easy_fx.gsc
   </a>
 </p>
@@ -97,11 +101,12 @@ dateCreated: 2024-01-30T10:32:12.251Z
 </p>
 <p>
   <span class="confluence-embedded-file-wrapper">
-    <img       class="confluence-embedded-image confluence-external-resource"
+    <img
+      class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       alt="Script-Struct"
       src="http://i.imgur.com/yH4HtfA.png"
-      data-image-src="http://i.imgur.com/yH4HtfA.png" >
+      data-image-src="http://i.imgur.com/yH4HtfA.png" />
   </span>
 </p>
 <p>
@@ -134,12 +139,14 @@ dateCreated: 2024-01-30T10:32:12.251Z
   </table>
 </div>
 <p>
-  <span     class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
-    <img       class="confluence-embedded-image confluence-external-resource"
+  <span
+    class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+    <img
+      class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/0Zgssos.png"
-      data-image-src="http://i.imgur.com/0Zgssos.png" >
+      data-image-src="http://i.imgur.com/0Zgssos.png" />
   </span>
 </p>
 <p>
@@ -163,12 +170,14 @@ dateCreated: 2024-01-30T10:32:12.251Z
   an arrow pointing at the trigger (Figure 3)
 </p>
 <p>
-  <span     class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
-    <img       class="confluence-embedded-image confluence-external-resource"
+  <span
+    class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+    <img
+      class="confluence-embedded-image confluence-external-resource"
       draggable="false"
       height="400"
       src="http://i.imgur.com/e1vAi1L.png"
-      data-image-src="http://i.imgur.com/e1vAi1L.png" >
+      data-image-src="http://i.imgur.com/e1vAi1L.png" />
   </span>
 </p>
 <h2 id="EasyFX-CSV">CSV</h2>
@@ -209,7 +218,7 @@ fx,maps/zombie/fx_zombie_wire_spark
   if you receive an error upon loading your map that says &quot;Error: 400 fx
   assests limit reached&quot;, you must remove unused fx from the above list in
   your CSV.
-  <br>
+  <br />
   <strong>Note:</strong>
   You can put the csv lines into any FF. It does not have to be your mod.ff (ex
   you can use nazi_zombie_mapname.csv or mapaname_patch.csv)
@@ -276,7 +285,7 @@ level thread maps\ugx_easy_fx::fx_start();</code></pre>
   create your own copy from
   <a href="#EasyFX-Source">here</a>
   ) to root/mods/mapname/maps/.
-  <br>
+  <br />
   Open Launcher and go to the Mods tab. Select your map from the list. Scroll
   down in the box on the left until you see ugx_easy_fx.gsc. Check the box next
   to it.
@@ -368,7 +377,7 @@ stationary_loop
   add new fx for Easy-FX to use. All steps in this Customization section are
   <strong>NOT</strong>
   required.
-  <br>
+  <br />
   Open root/mods/mapname/maps/ugx_easy_fx.gsc with (preferably)
   <a href="Text-Editors_1146950.html">Text Editors</a>
   , although Windows Notepad will suffice.
@@ -828,7 +837,7 @@ triggered_use_fx(loop) //These are triggered FX. They are triggered when the pla
   Author:
   <span class="confluence-link">UGX</span>
   treminaor
-  <br>
+  <br />
   Testers: Cinnober (1.1) and --
   <span style="text-decoration: line-through">Church</span>
   -- (1.4)

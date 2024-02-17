@@ -1,543 +1,492 @@
-<!--
-title: Creating Zombie and Dog Spawners
-description: 
-published: true
-date: 2024-01-30T10:32:01.804Z
-tags: confluence:1146956  
-editor: ckeditor
-dateCreated: 2024-01-30T10:32:00.662Z
--->
-
-
-
-<div class="contentLayout2">
-  <div class="columnLayout single" data-layout="single">
-    <div class="cell normal" data-type="normal">
-      <div class="innerCell">
-        <p></p>
-        <div 
-          class="confluence-information-macro confluence-information-macro-tip">
-          <span 
-            class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
-          <div class="confluence-information-macro-body">
-            <p>
-              <strong>NOTE:</strong>
-              KVP is an abbreviation for &quot;Key-Value Pair&quot;. When
-              entering a KVP in the Radiant Entity Window,
-              <strong>ensure that you have the entity selected first</strong>
-              . If you do not have an entity selected, Radiant will
-              automatically add the KVP to the &quot;worldspawn&quot; entity.
-              This is BAD and will likely cause your map to crash while loading!
-              In these pages, KVP's are referred to in this format: Key | Value.
-              Note they are separated by a pipe ( | ) character. This character
-              should be ignored when entering the Key-Value Pair.
-              <br>
-              <strong>To properly add a KVP to an entity:</strong>
-            </p>
-            <ul>
-              <li>
-                Select the entity by holding the Shift key on your keyboard
-                followed by clicking the entity(ies) that you wish to add a KVP
-                to.
-              </li>
-              <li>
-                Enter the first value (this is the Key) into the text field
-                labeled &quot;Key&quot;
-              </li>
-              <li>
-                Enter the second value (this is the Value) into the text field
-                labaled &quot;Value&quot;.
-              </li>
-              <li>
-                Press the Enter key on your keyboard to save the KVP to the
-                entity. You should see the KVP appear in the entity's KVP table
-                (located above the Key text field).
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="columnLayout two-right-sidebar" data-layout="two-right-sidebar">
-    <div class="cell normal" data-type="normal">
-      <div class="innerCell">
-        <h1 id="CreatingZombieandDogSpawners-PlacingaSpawner">
-          Placing a Spawner
-        </h1>
-        <h2 id="CreatingZombieandDogSpawners-Zombie">Zombie</h2>
-        <p>
-          To place a German zombie AI spawner in Radiant, right-click the 2d
-          view, choose
-          <strong>
-            actor -&gt; axis -&gt; ger -&gt; zombie -&gt; ger -&gt; ger_sshonor
-          </strong>
-          . Do not choose engineer or quad, they are unimplemented AI types
-          which will not do anything.
-        </p>
-        <p>
-          If you would rather have Japanese zombie AI (Shi No Numa style),
-          simply chose
-          <strong>actor -&gt; axis -&gt; zombie -&gt; jp_swamp</strong>
-          instead.
-        </p>
-        <p>
-          Once you have placed your spawner, you need to give it some KVPs so
-          that the game knows to make it a zombie:
-          <br>
-          <code>KVP</code>
-        </p>
-        <div class="table-wrap">
-          <table class="confluenceTable">
-            <tbody>
-              <tr>
-                <th class="confluenceTh"><p>Key</p></th>
-                <th class="confluenceTh"><p>Value</p></th>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>targetname</p></td>
-                <td class="confluenceTd"><p>&lt;zone_name&gt;_spawners</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_noteworthy</p></td>
-                <td class="confluenceTd"><p>zombie_spawner</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>count</p></td>
-                <td class="confluenceTd"><p>9999</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_forcespawn</p></td>
-                <td class="confluenceTd"><p>1</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>spawnflags</p></td>
-                <td class="confluenceTd"><p>3</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <ul>
-          <li>
-            &lt;zone_name&gt;_spawners will determine which zone activates this
-            zombie. This must match the target KVP value of the zone. See 
-            <a href="Ultimate-Guide-to-Zones-in-v1.4-Maps_1146967.html">
-              Ultimate Guide to Zones in v1.4 Maps
-            </a>
-            for more info.
-          </li>
-          <li>
-            Changing the model KVP value of the spawner will not have any effect
-            on the in-game zombie model used. it is simply a model used to
-            represent the spawner entity in Radiant.
-          </li>
-        </ul>
-        <h2 id="CreatingZombieandDogSpawners-Dog">Dog</h2>
-        <p>
-          To place a dog spawner, right-click the 2d view in Radiant and select
-          actor, then choose
-          <strong>zombie_dog</strong>
-          .
-        </p>
-        <p>
-          Once you have placed your spawner, you need to give it some KVPs so
-          that the game knows to make it a dog:
-        </p>
-        <div class="table-wrap">
-          <table class="confluenceTable">
-            <tbody>
-              <tr>
-                <th class="confluenceTh"><p>Key</p></th>
-                <th class="confluenceTh"><p>Value</p></th>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>targetname</p></td>
-                <td class="confluenceTd"><p>zombie_spawner_dog_init</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_noteworthy</p></td>
-                <td class="confluenceTd"><p>zombie_dog_spawner</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_string</p></td>
-                <td class="confluenceTd"><p>zombie_chaser</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_forcespawn</p></td>
-                <td class="confluenceTd"><p>1</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>spawnflags</p></td>
-                <td class="confluenceTd"><p>3</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p> </p>
-        <p> </p>
-      </div>
-    </div>
-    <div class="cell aside" data-type="aside">
-      <div class="innerCell">
-        <p>
-          <span class="confluence-embedded-file-wrapper">
-            <img 
-              class="confluence-embedded-image confluence-external-resource"
-              draggable="false"
-              src="http://i.imgur.com/nKZDYEV.png"
-              data-image-src="http://i.imgur.com/nKZDYEV.png" >
-          </span>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="columnLayout single" data-layout="single">
-    <div class="cell normal" data-type="normal">
-      <div class="innerCell">
-        <h1 id="CreatingZombieandDogSpawners-SpawningMethods">
-          Spawning Methods
-        </h1>
-        <p>There are multiple ways to have a zombie spawn into the map.</p>
-        <h2 id="CreatingZombieandDogSpawners-Windowteardown(exterior_goal)">
-          Window teardown (exterior_goal)
-        </h2>
-        <p>
-          Zombies can spawn behind a window barrier and be forced to tear down
-          the window before entering the level. These zombies will not seek out
-          a player until they have passed through a window.
-        </p>
-        <p>Zombies will always walk to the nearest exterior goal.</p>
-        <h2 id="CreatingZombieandDogSpawners-Risers">Risers</h2>
-        <p>
-          Zombies can rise out of the ground as a more direct way of getting to
-          nearby players. To enable risers for a zone, the zone must have at
-          least one zombie_ai_spawner linked to it which has the following KVPs:
-        </p>
-        <div class="table-wrap">
-          <table class="confluenceTable">
-            <tbody>
-              <tr>
-                <th class="confluenceTh"><p>Key</p></th>
-                <th class="confluenceTh"><p>Value</p></th>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>targetname</p></td>
-                <td class="confluenceTd"><p>&lt;zone_name&gt;_spawners</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_noteworthy</p></td>
-                <td class="confluenceTd"><p>zombie_spawner</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_string</p></td>
-                <td class="confluenceTd"><p>riser</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>count</p></td>
-                <td class="confluenceTd"><p>9999</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_forcespawn</p></td>
-                <td class="confluenceTd"><p>1</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>spawnflags</p></td>
-                <td class="confluenceTd"><p>3</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <ul>
-          <li>
-            &lt;zone_name&gt;_spawners will determine which zone activates this
-            zombie riser spawner. This must match the target KVP value of the
-            zone. See 
-            <a 
-              href="https://confluence.ugx-mods.com/display/UGXMODS/Ultimate+Guide+to+Zones+in+v1.4+Maps"
-              rel="nofollow">
-              Ultimate Guide to Zones in v1.4 Maps
-            </a>
-            for more info.
-          </li>
-        </ul>
-        <p>
-          In order to define locations where zombies will rise out of the ground
-          in a particular zone, place a struct at each location which has the
-          following KVPs:
-        </p>
-        <div class="table-wrap">
-          <table class="confluenceTable">
-            <tbody>
-              <tr>
-                <th class="confluenceTh"><p>Key</p></th>
-                <th class="confluenceTh"><p>Value</p></th>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>targetname</p></td>
-                <td class="confluenceTd">
-                  <p>&lt;zone_name&gt;_spawners_rise</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_noteworthy</p></td>
-                <td class="confluenceTd"><p>find_flesh</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_string</p></td>
-                <td class="confluenceTd"><p>riser</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <ul>
-          <li>
-            &lt;zone_name&gt;_spawners_rise will determine which zone activates
-            this zombie riser spawner. This must match the target KVP value of
-            the zone. See 
-            <a 
-              href="https://confluence.ugx-mods.com/display/UGXMODS/Ultimate+Guide+to+Zones+in+v1.4+Maps"
-              rel="nofollow">
-              Ultimate Guide to Zones in v1.4 Maps
-            </a>
-            for more info.
-          </li>
-        </ul>
-        <p> </p>
-        <div 
-          class="confluence-information-macro confluence-information-macro-tip">
-          <span 
-            class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
-          <div class="confluence-information-macro-body">
-            Remember to use Radiant's &quot;Force drop height to zero&quot; and
-            &quot;Drop selected entities to the floor&quot; buttons to align the
-            riser structs with the terrain. If not done correctly the riser dirt
-            fx will appear incorrectly and the zombies will not rise from the
-            floor correctly.
-          </div>
-        </div>
-        <p> </p>
-        <p></p>
-        <div 
-          class="confluence-information-macro confluence-information-macro-warning">
-          <span 
-            class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
-          <div class="confluence-information-macro-body">
-            <p>
-              <strong>WARNING:</strong>
-              This tutorial can only be used if you have applied the UGX
-              Modtools Patch to your World at War installation. To install the
-              patch, refer to
-              <a 
-                href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles"
-                rel="nofollow">
-                &quot;Installing the Files&quot;
-              </a>
-              <span class="confluence-link"> </span>
-              in the
-              <span class="confluence-link"> </span>
-              <a 
-                href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide"
-                rel="nofollow">
-                <span class="confluence-link">Modtools Installation Guide</span>
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-        <p> </p>
-        <p></p>
-        <div 
-          class="confluence-information-macro confluence-information-macro-warning">
-          <span 
-            class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
-          <div class="confluence-information-macro-body">
-            <p>
-              <span>
-                <strong>WARNING:</strong>
-                If you have not yet installed the UGX Modtools Patch, you MUST
-                place MORE THAN ONE dog struct per zone. If you place
-              </span>
-              <strong>exactly 1 struct</strong>
-              <span>
-                in a zone, your game will freeze when you enter the zone. To
-                install the patch, refer to
-              </span>
-              <a 
-                href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles">
-                &quot;Installing the Files&quot;
-              </a>
-              <span class="confluence-link"> </span>
-              <span>in the</span>
-              <span class="confluence-link"> </span>
-              <a 
-                href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide">
-                <span class="confluence-link">Modtools Installation Guide</span>
-              </a>
-              <span>.</span>
-            </p>
-          </div>
-        </div>
-        <h2 id="CreatingZombieandDogSpawners-DogSpawnLocations">
-          Dog Spawn Locations
-        </h2>
-        <p>
-          In order for dogs to actually spawn, you need to place some structs in
-          your level.
-        </p>
-        <p>
-          To define locations where dogs will spawn in a particular zone, place
-          a struct at each location which has the following KVP:
-        </p>
-        <div class="table-wrap">
-          <table class="confluenceTable">
-            <tbody>
-              <tr>
-                <th class="confluenceTh"><p>Key</p></th>
-                <th class="confluenceTh"><p>Value</p></th>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>targetname</p></td>
-                <td class="confluenceTd">
-                  <p>&lt;zone_name&gt;_spawners*_dog*</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <ul>
-          <li>
-            &lt;zone_name&gt;_spawners_dog will determine which zone activates
-            this zombie dog spawner. This must match the target KVP value of the
-            zone. See 
-            <a 
-              href="https://confluence.ugx-mods.com/display/UGXMODS/Ultimate+Guide+to+Zones+in+v1.4+Maps"
-              rel="nofollow">
-              Ultimate Guide to Zones in v1.4 Maps
-            </a>
-            for more info.
-          </li>
-        </ul>
-        <p></p>
-        <div 
-          class="confluence-information-macro confluence-information-macro-warning">
-          <span 
-            class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
-          <div class="confluence-information-macro-body">
-            <p>
-              <span>
-                <strong>WARNING:</strong>
-                If you have not yet installed the UGX Modtools Patch, you MUST
-                place MORE THAN ONE dog struct per zone. If you place
-              </span>
-              <strong>exactly 1 struct</strong>
-              <span>
-                in a zone, your game will freeze when you enter the zone. To
-                install the patch, refer to
-              </span>
-              <a 
-                href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles">
-                &quot;Installing the Files&quot;
-              </a>
-              <span class="confluence-link"> </span>
-              <span>in the</span>
-              <span class="confluence-link"> </span>
-              <a 
-                href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide">
-                <span class="confluence-link">Modtools Installation Guide</span>
-              </a>
-              <span>.</span>
-            </p>
-          </div>
-        </div>
-        <h2 id="CreatingZombieandDogSpawners-LinkedtoTriggers">
-          Linked to Triggers
-        </h2>
-        <p>
-          You can trigger a group of zombies to spawn at a given location when a
-          player touches a trigger. This trick was used in UGX Cabin to trigger
-          zombies to spawn inside the Cabin upon entering it for the first time.
-          This is useful for cinematic effect or to scare players with an
-          unexpected horde of zombies upon entering an area. These triggers will
-          only work once.
-        </p>
-        <p>
-          First, create a trigger_multiple brush by right-clicking the 2d view
-          in Radiant and choosing
-          <strong>trigger -&gt; multiple</strong>
-          . Give the trigger the following KVPs:
-        </p>
-        <div class="table-wrap">
-          <table class="confluenceTable">
-            <tbody>
-              <tr>
-                <th class="confluenceTh"><p>Key</p></th>
-                <th class="confluenceTh"><p>Value</p></th>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>target</p></td>
-                <td class="confluenceTd"><p>&lt;zombie_group_name&gt;</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>spawnflags</p></td>
-                <td class="confluenceTd"><p>32</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <ul>
-          <li>
-            Replace &lt;zombie_group_name&gt; witch a unique identifier of your
-            choice which does not conflict with any existing targetnames used in
-            your map.
-          </li>
-        </ul>
-        <p>
-          Next, create one or more spawners which will be one-time-only
-          activated by this trigger. For every one spawner you place, one zombie
-          will spawn. Give them the following KVPs:
-        </p>
-        <div class="table-wrap">
-          <table class="confluenceTable">
-            <tbody>
-              <tr>
-                <th class="confluenceTh"><p>Key</p></th>
-                <th class="confluenceTh"><p>Value</p></th>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>targetname</p></td>
-                <td class="confluenceTd"><p>&lt;zombie_group_name&gt;</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_noteworthy</p></td>
-                <td class="confluenceTd"><p>zombie_spawner</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_string</p></td>
-                <td class="confluenceTd"><p>zombie_chaser</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>count</p></td>
-                <td class="confluenceTd"><p>9999</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>script_forcespawn</p></td>
-                <td class="confluenceTd"><p>1</p></td>
-              </tr>
-              <tr>
-                <td class="confluenceTd"><p>spawnflags</p></td>
-                <td class="confluenceTd"><p>3</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <ul>
-          <li>
-            Replace &lt;zombie_group_name&gt; with the the target KVP value of
-            the spawn trigger.
-          </li>
-        </ul>
-        <p>Credit: Treminaor</p>
-      </div>
-    </div>
+<p></p>
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
+    <p>
+      <strong>NOTE:</strong>
+      KVP is an abbreviation for &quot;Key-Value Pair&quot;. When entering a KVP
+      in the Radiant Entity Window,
+      <strong>ensure that you have the entity selected first</strong>
+      . If you do not have an entity selected, Radiant will automatically add
+      the KVP to the &quot;worldspawn&quot; entity. This is BAD and will likely
+      cause your map to crash while loading! In these pages, KVP's are referred
+      to in this format: Key | Value. Note they are separated by a pipe ( | )
+      character. This character should be ignored when entering the Key-Value
+      Pair.
+      <br />
+      <strong>To properly add a KVP to an entity:</strong>
+    </p>
+    <ul>
+      <li>
+        Select the entity by holding the Shift key on your keyboard followed by
+        clicking the entity(ies) that you wish to add a KVP to.
+      </li>
+      <li>
+        Enter the first value (this is the Key) into the text field labeled
+        &quot;Key&quot;
+      </li>
+      <li>
+        Enter the second value (this is the Value) into the text field labaled
+        &quot;Value&quot;.
+      </li>
+      <li>
+        Press the Enter key on your keyboard to save the KVP to the entity. You
+        should see the KVP appear in the entity's KVP table (located above the
+        Key text field).
+      </li>
+    </ul>
   </div>
 </div>
+
+<h1 id="CreatingZombieandDogSpawners-PlacingaSpawner">Placing a Spawner</h1>
+<h2 id="CreatingZombieandDogSpawners-Zombie">Zombie</h2>
+<p>
+  To place a German zombie AI spawner in Radiant, right-click the 2d view,
+  choose
+  <strong>
+    actor -&gt; axis -&gt; ger -&gt; zombie -&gt; ger -&gt; ger_sshonor
+  </strong>
+  . Do not choose engineer or quad, they are unimplemented AI types which will
+  not do anything.
+</p>
+<p>
+  If you would rather have Japanese zombie AI (Shi No Numa style), simply chose
+  <strong>actor -&gt; axis -&gt; zombie -&gt; jp_swamp</strong>
+  instead.
+</p>
+<p>
+  Once you have placed your spawner, you need to give it some KVPs so that the
+  game knows to make it a zombie:
+  <br />
+  <code>KVP</code>
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>targetname</p></td>
+        <td class="confluenceTd"><p>&lt;zone_name&gt;_spawners</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_noteworthy</p></td>
+        <td class="confluenceTd"><p>zombie_spawner</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>count</p></td>
+        <td class="confluenceTd"><p>9999</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_forcespawn</p></td>
+        <td class="confluenceTd"><p>1</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>spawnflags</p></td>
+        <td class="confluenceTd"><p>3</p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ul>
+  <li>
+    &lt;zone_name&gt;_spawners will determine which zone activates this zombie.
+    This must match the target KVP value of the zone. See 
+    <a href="Ultimate-Guide-to-Zones-in-v1.4-Maps_1146967.html">
+      Ultimate Guide to Zones in v1.4 Maps
+    </a>
+    for more info.
+  </li>
+  <li>
+    Changing the model KVP value of the spawner will not have any effect on the
+    in-game zombie model used. it is simply a model used to represent the
+    spawner entity in Radiant.
+  </li>
+</ul>
+<h2 id="CreatingZombieandDogSpawners-Dog">Dog</h2>
+<p>
+  To place a dog spawner, right-click the 2d view in Radiant and select actor,
+  then choose
+  <strong>zombie_dog</strong>
+  .
+</p>
+<p>
+  Once you have placed your spawner, you need to give it some KVPs so that the
+  game knows to make it a dog:
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>targetname</p></td>
+        <td class="confluenceTd"><p>zombie_spawner_dog_init</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_noteworthy</p></td>
+        <td class="confluenceTd"><p>zombie_dog_spawner</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_string</p></td>
+        <td class="confluenceTd"><p>zombie_chaser</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_forcespawn</p></td>
+        <td class="confluenceTd"><p>1</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>spawnflags</p></td>
+        <td class="confluenceTd"><p>3</p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p> </p>
+<p> </p>
+
+<h1 id="CreatingZombieandDogSpawners-SpawningMethods">Spawning Methods</h1>
+<p>There are multiple ways to have a zombie spawn into the map.</p>
+<h2 id="CreatingZombieandDogSpawners-Windowteardown(exterior_goal)">
+  Window teardown (exterior_goal)
+</h2>
+<p>
+  Zombies can spawn behind a window barrier and be forced to tear down the
+  window before entering the level. These zombies will not seek out a player
+  until they have passed through a window.
+</p>
+<p>Zombies will always walk to the nearest exterior goal.</p>
+<h2 id="CreatingZombieandDogSpawners-Risers">Risers</h2>
+<p>
+  Zombies can rise out of the ground as a more direct way of getting to nearby
+  players. To enable risers for a zone, the zone must have at least one
+  zombie_ai_spawner linked to it which has the following KVPs:
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>targetname</p></td>
+        <td class="confluenceTd"><p>&lt;zone_name&gt;_spawners</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_noteworthy</p></td>
+        <td class="confluenceTd"><p>zombie_spawner</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_string</p></td>
+        <td class="confluenceTd"><p>riser</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>count</p></td>
+        <td class="confluenceTd"><p>9999</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_forcespawn</p></td>
+        <td class="confluenceTd"><p>1</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>spawnflags</p></td>
+        <td class="confluenceTd"><p>3</p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ul>
+  <li>
+    &lt;zone_name&gt;_spawners will determine which zone activates this zombie
+    riser spawner. This must match the target KVP value of the zone. See 
+    <a
+      href="https://confluence.ugx-mods.com/display/UGXMODS/Ultimate+Guide+to+Zones+in+v1.4+Maps"
+      rel="nofollow">
+      Ultimate Guide to Zones in v1.4 Maps
+    </a>
+    for more info.
+  </li>
+</ul>
+<p>
+  In order to define locations where zombies will rise out of the ground in a
+  particular zone, place a struct at each location which has the following KVPs:
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>targetname</p></td>
+        <td class="confluenceTd">
+          <p>&lt;zone_name&gt;_spawners_rise</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_noteworthy</p></td>
+        <td class="confluenceTd"><p>find_flesh</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_string</p></td>
+        <td class="confluenceTd"><p>riser</p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ul>
+  <li>
+    &lt;zone_name&gt;_spawners_rise will determine which zone activates this
+    zombie riser spawner. This must match the target KVP value of the zone. See 
+    <a
+      href="https://confluence.ugx-mods.com/display/UGXMODS/Ultimate+Guide+to+Zones+in+v1.4+Maps"
+      rel="nofollow">
+      Ultimate Guide to Zones in v1.4 Maps
+    </a>
+    for more info.
+  </li>
+</ul>
+<p> </p>
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
+    Remember to use Radiant's &quot;Force drop height to zero&quot; and
+    &quot;Drop selected entities to the floor&quot; buttons to align the riser
+    structs with the terrain. If not done correctly the riser dirt fx will
+    appear incorrectly and the zombies will not rise from the floor correctly.
+  </div>
+</div>
+<p> </p>
+<p></p>
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
+    <p>
+      <strong>WARNING:</strong>
+      This tutorial can only be used if you have applied the UGX Modtools Patch
+      to your World at War installation. To install the patch, refer to
+      <a
+        href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles"
+        rel="nofollow">
+        &quot;Installing the Files&quot;
+      </a>
+      <span class="confluence-link"> </span>
+      in the
+      <span class="confluence-link"> </span>
+      <a
+        href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide"
+        rel="nofollow">
+        <span class="confluence-link">Modtools Installation Guide</span>
+      </a>
+      .
+    </p>
+  </div>
+</div>
+<p> </p>
+<p></p>
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
+    <p>
+      <span>
+        <strong>WARNING:</strong>
+        If you have not yet installed the UGX Modtools Patch, you MUST place
+        MORE THAN ONE dog struct per zone. If you place
+      </span>
+      <strong>exactly 1 struct</strong>
+      <span>
+        in a zone, your game will freeze when you enter the zone. To install the
+        patch, refer to
+      </span>
+      <a
+        href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles">
+        &quot;Installing the Files&quot;
+      </a>
+      <span class="confluence-link"> </span>
+      <span>in the</span>
+      <span class="confluence-link"> </span>
+      <a
+        href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide">
+        <span class="confluence-link">Modtools Installation Guide</span>
+      </a>
+      <span>.</span>
+    </p>
+  </div>
+</div>
+<h2 id="CreatingZombieandDogSpawners-DogSpawnLocations">Dog Spawn Locations</h2>
+<p>
+  In order for dogs to actually spawn, you need to place some structs in your
+  level.
+</p>
+<p>
+  To define locations where dogs will spawn in a particular zone, place a struct
+  at each location which has the following KVP:
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>targetname</p></td>
+        <td class="confluenceTd">
+          <p>&lt;zone_name&gt;_spawners*_dog*</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ul>
+  <li>
+    &lt;zone_name&gt;_spawners_dog will determine which zone activates this
+    zombie dog spawner. This must match the target KVP value of the zone. See 
+    <a
+      href="https://confluence.ugx-mods.com/display/UGXMODS/Ultimate+Guide+to+Zones+in+v1.4+Maps"
+      rel="nofollow">
+      Ultimate Guide to Zones in v1.4 Maps
+    </a>
+    for more info.
+  </li>
+</ul>
+<p></p>
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
+    <p>
+      <span>
+        <strong>WARNING:</strong>
+        If you have not yet installed the UGX Modtools Patch, you MUST place
+        MORE THAN ONE dog struct per zone. If you place
+      </span>
+      <strong>exactly 1 struct</strong>
+      <span>
+        in a zone, your game will freeze when you enter the zone. To install the
+        patch, refer to
+      </span>
+      <a
+        href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles">
+        &quot;Installing the Files&quot;
+      </a>
+      <span class="confluence-link"> </span>
+      <span>in the</span>
+      <span class="confluence-link"> </span>
+      <a
+        href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide">
+        <span class="confluence-link">Modtools Installation Guide</span>
+      </a>
+      <span>.</span>
+    </p>
+  </div>
+</div>
+<h2 id="CreatingZombieandDogSpawners-LinkedtoTriggers">Linked to Triggers</h2>
+<p>
+  You can trigger a group of zombies to spawn at a given location when a player
+  touches a trigger. This trick was used in UGX Cabin to trigger zombies to
+  spawn inside the Cabin upon entering it for the first time. This is useful for
+  cinematic effect or to scare players with an unexpected horde of zombies upon
+  entering an area. These triggers will only work once.
+</p>
+<p>
+  First, create a trigger_multiple brush by right-clicking the 2d view in
+  Radiant and choosing
+  <strong>trigger -&gt; multiple</strong>
+  . Give the trigger the following KVPs:
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>target</p></td>
+        <td class="confluenceTd"><p>&lt;zombie_group_name&gt;</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>spawnflags</p></td>
+        <td class="confluenceTd"><p>32</p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ul>
+  <li>
+    Replace &lt;zombie_group_name&gt; witch a unique identifier of your choice
+    which does not conflict with any existing targetnames used in your map.
+  </li>
+</ul>
+<p>
+  Next, create one or more spawners which will be one-time-only activated by
+  this trigger. For every one spawner you place, one zombie will spawn. Give
+  them the following KVPs:
+</p>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh"><p>Key</p></th>
+        <th class="confluenceTh"><p>Value</p></th>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>targetname</p></td>
+        <td class="confluenceTd"><p>&lt;zombie_group_name&gt;</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_noteworthy</p></td>
+        <td class="confluenceTd"><p>zombie_spawner</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_string</p></td>
+        <td class="confluenceTd"><p>zombie_chaser</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>count</p></td>
+        <td class="confluenceTd"><p>9999</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>script_forcespawn</p></td>
+        <td class="confluenceTd"><p>1</p></td>
+      </tr>
+      <tr>
+        <td class="confluenceTd"><p>spawnflags</p></td>
+        <td class="confluenceTd"><p>3</p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ul>
+  <li>
+    Replace &lt;zombie_group_name&gt; with the the target KVP value of the spawn
+    trigger.
+  </li>
+</ul>
+<p>Credit: Treminaor</p>

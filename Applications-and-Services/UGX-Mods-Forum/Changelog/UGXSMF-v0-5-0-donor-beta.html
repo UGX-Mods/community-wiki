@@ -8,14 +8,12 @@ editor: ckeditor
 dateCreated: 2024-01-30T10:33:26.529Z
 -->
 
-
-
 <div class="plugin-tabmeta-details">
   <div class="table-wrap">
     <table class="wrapped confluenceTable">
       <colgroup>
-        <col>
-        <col>
+        <col />
+        <col />
       </colgroup>
       <tbody>
         <tr>
@@ -28,9 +26,9 @@ dateCreated: 2024-01-30T10:33:26.529Z
             <div class="content-wrapper">
               <p>
                 <span class="static-jira-issues_count">
-                  <a 
+                  <a
                     class="issue-link"
-                    href="https://jira.ugx-mods.com/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.5.0-donor-beta+&amp;src=confmacro">
+                    href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.5.0-donor-beta">
                     72 issues
                   </a>
                 </span>
@@ -42,7 +40,7 @@ dateCreated: 2024-01-30T10:33:26.529Z
           <th colspan="1" class="confluenceTh">Status</th>
           <td colspan="1" class="confluenceTd">
             <div class="content-wrapper">
-              <span 
+              <span
                 class="status-macro aui-lozenge aui-lozenge-success aui-lozenge-subtle">
                 RELEASED
               </span>
@@ -93,15 +91,7 @@ dateCreated: 2024-01-30T10:33:26.529Z
           <li><p>Type in @username to create a link to an user</p></li>
           <li><p>Type in #UGX to create a link to our homepage</p></li>
           <li>
-            <p>
-              Type in :nyan: to see autocomplete of emotes in action 
-              <img 
-                class="emoticon emoticon-smile"
-                src="images/icons/emoticons/smile.svg"
-                data-emoticon-name="smile"
-                alt="(smile)"
-                data-emoji-short-name=":smile:" >
-            </p>
+            <p>Type in :nyan: to see autocomplete of emotes in action  🙂</p>
           </li>
         </ul>
       </li>
@@ -114,19 +104,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       <li>
         <p>
           Added auto linking, type in
-          <a 
-            class="external-link"
-            href="http://www.ugx-mods.com"
-            rel="nofollow">
-            www.ugx-mods.com
-          </a>
-          and it magically turns into a link
-          <img 
-            class="emoticon emoticon-thumbs-up"
-            src="images/icons/emoticons/thumbs_up.svg"
-            data-emoticon-name="thumbs-up"
-            alt="(thumbs up)"
-            data-emoji-short-name=":thumbs-up:" >
+          <a href="http://www.ugx-mods.com" rel="nofollow">www.ugx-mods.com</a>
+          and it magically turns into a link 👍
         </p>
       </li>
       <li><p>Added some new buttons which were missing</p></li>
@@ -155,14 +134,7 @@ dateCreated: 2024-01-30T10:33:26.529Z
       <li>
         <p>
           including improved Navigation &amp; Dropdowns (go check it out on your
-          smart device 
-          <img 
-            class="emoticon emoticon-smile"
-            src="images/icons/emoticons/smile.svg"
-            data-emoticon-name="smile"
-            alt="(smile)"
-            data-emoji-short-name=":smile:" >
-          )
+          smart device  🙂 )
         </p>
       </li>
     </ul>
@@ -170,21 +142,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
   <li>
     <p>
       timezone instead of timeoffset - the time is always your local time now,
-      even during DST (daylight saving time) 
-      <img 
-        class="emoticon emoticon-thumbs-up"
-        src="images/icons/emoticons/thumbs_up.svg"
-        data-emoticon-name="thumbs-up"
-        alt="(thumbs up)"
-        data-emoji-short-name=":thumbs-up:" >
+      even during DST (daylight saving time)  👍
     </p>
   </li>
   <li>
     <p>
       Added support for Gravatar (
-      <a class="external-link" href="https://gravatar.com" rel="nofollow">
-        https://gravatar.com
-      </a>
+      <a href="https://gravatar.com" rel="nofollow">https://gravatar.com</a>
       ) - just select it in your settings (be aware that it won't be shown in
       the non-beta version yet!)
     </p>
@@ -194,13 +158,7 @@ dateCreated: 2024-01-30T10:33:26.529Z
   </li>
   <li>
     <p>
-      Fix topic sorting 
-      <img 
-        class="emoticon emoticon-laugh"
-        src="images/icons/emoticons/biggrin.svg"
-        data-emoticon-name="laugh"
-        alt="(big grin)"
-        data-emoji-short-name=":laugh:" >
+      Fix topic sorting  😁
       <strong>yay</strong>
     </p>
   </li>
@@ -215,40 +173,19 @@ dateCreated: 2024-01-30T10:33:26.529Z
   </li>
 </ul>
 <h2 id="UGXSMFv0.5.0donorbeta-FullChangelog">Full Changelog</h2>
-<div id="expander-1728797474" class="expand-container">
-  <div 
-    role="heading"
-    aria-level="6"
-    id="expander-control-1728797474"
-    class="expand-control">
-    <button 
-      type="button"
-      id="expand-button-1728797474"
-      class="aui-button aui-button-link aui-button-link-icon-text"
-      aria-expanded="true"
-      aria-controls="expander-content-1728797474">
-      <span 
-        class="expand-icon aui-icon aui-icon-small aui-iconfont-chevron-down"
-        aria-hidden="true"></span>
-      <span class="expand-control-text conf-macro-render">
-        Click here to expand...
-      </span>
-    </button>
-  </div>
-  <div 
-    role="region"
-    id="expander-content-1728797474"
-    class="expand-content"
-    aria-labelledby="expand-button-1728797474">
+<div class="expandable-container">
+  <button class="expandable-button" type="button">
+    Click here to expand...
+  </button>
+  <div class="expandable-content">
     <h2 style="text-decoration: none" id="UGXSMFv0.5.0donorbeta-Change">
       Change
     </h2>
     <ul style="text-decoration: none">
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-207"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-207"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-207
@@ -257,9 +194,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-213"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-213"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-213
@@ -268,9 +204,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-222"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-222"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-222
@@ -282,9 +217,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
     <ul style="text-decoration: none">
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-136"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-136"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-136
@@ -293,9 +227,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-189"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-189"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-189
@@ -304,9 +237,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-190"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-190"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-190
@@ -315,9 +247,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-191"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-191"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-191
@@ -326,9 +257,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-192"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-192"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-192
@@ -337,9 +267,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-193"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-193"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-193
@@ -348,9 +277,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-197"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-197"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-197
@@ -359,9 +287,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-199"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-199"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-199
@@ -370,9 +297,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-200"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-200"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-200
@@ -381,9 +307,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-201"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-201"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-201
@@ -392,9 +317,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-202"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-202"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-202
@@ -403,9 +327,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-218"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-218"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-218
@@ -414,9 +337,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-232"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-232"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-232
@@ -425,9 +347,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-233"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-233"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-233
@@ -436,9 +357,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-234"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-234"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-234
@@ -447,9 +367,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-235"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-235"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-235
@@ -463,9 +382,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
     <ul style="text-decoration: none">
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-53"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-53"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-53
@@ -474,9 +392,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-127"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-127"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-127
@@ -485,9 +402,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-145"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-145"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-145
@@ -496,9 +412,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-182"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-182"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-182
@@ -507,9 +422,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-203"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-203"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-203
@@ -518,9 +432,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-206"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-206"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-206
@@ -530,9 +443,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       <li>
         <s>
           [
-          <a 
-            class="external-link"
-            href="https://jira.ugx-mods.com/browse/UGXSMF-215"
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-215"
             rel="nofollow">
             UGXSMF-215
           </a>
@@ -542,9 +454,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-217"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-217"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-217
@@ -553,9 +464,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-148"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-148"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-148
@@ -569,9 +479,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
     <ul style="text-decoration: none">
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-106"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-106"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-106
@@ -580,9 +489,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-109"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-109"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-109
@@ -591,9 +499,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-110"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-110"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-110
@@ -602,9 +509,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-111"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-111"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-111
@@ -613,9 +519,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-112"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-112"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-112
@@ -624,9 +529,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-72"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-72"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-72
@@ -638,9 +542,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
     <ul style="text-decoration: none">
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-42"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-42"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-42
@@ -649,9 +552,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-43"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-43"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-43
@@ -660,9 +562,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-55"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-55"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-55
@@ -671,9 +572,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-57"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-57"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-57
@@ -682,9 +582,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-58"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-58"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-58
@@ -693,9 +592,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-59"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-59"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-59
@@ -704,9 +602,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-76"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-76"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-76
@@ -715,9 +612,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-81"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-81"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-81
@@ -726,9 +622,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-98"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-98"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-98
@@ -737,9 +632,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-114"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-114"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-114
@@ -748,9 +642,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-128"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-128"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-128
@@ -759,9 +652,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-131"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-131"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-131
@@ -770,9 +662,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-187"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-187"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-187
@@ -781,9 +672,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-198"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-198"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-198
@@ -792,9 +682,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-204"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-204"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-204
@@ -803,9 +692,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-208"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-208"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-208
@@ -814,9 +702,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-216"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-216"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-216
@@ -825,9 +712,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-237"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-237"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-237
@@ -836,9 +722,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-77"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-77"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-77
@@ -852,9 +737,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
     <ul style="text-decoration: none">
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-20"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-20"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-20
@@ -863,9 +747,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-21"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-21"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-21
@@ -874,9 +757,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-86"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-86"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-86
@@ -885,9 +767,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-126"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-126"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-126
@@ -896,9 +777,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-149"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-149"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-149
@@ -907,9 +787,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-151"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-151"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-151
@@ -918,9 +797,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-155"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-155"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-155
@@ -929,9 +807,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-188"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-188"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-188
@@ -940,9 +817,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-221"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-221"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-221
@@ -951,9 +827,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-223"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-223"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-223
@@ -962,9 +837,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-229"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-229"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-229
@@ -973,9 +847,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-236"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-236"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-236
@@ -984,9 +857,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-238"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-238"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-238
@@ -995,9 +867,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-239"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-239"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-239
@@ -1006,9 +877,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-243"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-243"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-243
@@ -1017,9 +887,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-245"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-245"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-245
@@ -1028,9 +897,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-248"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-248"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-248
@@ -1039,9 +907,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
       </li>
       <li>
         [
-        <a 
-          class="external-link"
-          href="https://jira.ugx-mods.com/browse/UGXSMF-163"
+        <a
+          href="https://ugxmods.atlassian.net/browse/UGXSMF-163"
           rel="nofollow"
           style="text-decoration: none">
           UGXSMF-163
@@ -1054,35 +921,15 @@ dateCreated: 2024-01-30T10:33:26.529Z
 <h2 id="UGXSMFv0.5.0donorbeta-Allticketsforthisrelease">
   All tickets for this release
 </h2>
-<div id="expander-741503642" class="expand-container">
-  <div 
-    role="heading"
-    aria-level="6"
-    id="expander-control-741503642"
-    class="expand-control">
-    <button 
-      type="button"
-      id="expand-button-741503642"
-      class="aui-button aui-button-link aui-button-link-icon-text"
-      aria-expanded="true"
-      aria-controls="expander-content-741503642">
-      <span 
-        class="expand-icon aui-icon aui-icon-small aui-iconfont-chevron-down"
-        aria-hidden="true"></span>
-      <span class="expand-control-text conf-macro-render">
-        Click here to expand...
-      </span>
-    </button>
-  </div>
-  <div 
-    role="region"
-    id="expander-content-741503642"
-    class="expand-content"
-    aria-labelledby="expand-button-741503642">
+<div class="expandable-container">
+  <button class="expandable-button" type="button">
+    Click here to expand...
+  </button>
+  <div class="expandable-content">
     <p></p>
     <div id="refresh-module--73975913" class="refresh-module-id jira-table">
       <p></p>
-      <div 
+      <div
         id="jira-issues--73975913"
         style="width: 100%; overflow: auto"
         class="jira-issues">
@@ -1090,85 +937,85 @@ dateCreated: 2024-01-30T10:33:26.529Z
           <tbody>
             <tr></tr>
             <tr>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
                 <span class="jim-table-header-content" sort-column-key="key">
                   Key
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                <span 
+                <span
                   class="jim-table-header-content"
                   sort-column-key="summary">
                   Summary
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
                 <span class="jim-table-header-content" sort-column-key="type">
                   T
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                <span 
+                <span
                   class="jim-table-header-content"
                   sort-column-key="created">
                   Created
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                <span 
+                <span
                   class="jim-table-header-content"
                   sort-column-key="updated">
                   Updated
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                <span 
+                <span
                   class="jim-table-header-content"
                   sort-column-key="assignee">
                   Assignee
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                <span 
+                <span
                   class="jim-table-header-content"
                   sort-column-key="reporter">
                   Reporter
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                <span 
+                <span
                   class="jim-table-header-content"
                   sort-column-key="priority">
                   P
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
                 <span class="jim-table-header-content" sort-column-key="status">
                   Status
                 </span>
               </th>
-              <th 
+              <th
                 style="text-align: left"
                 class="jira-macro-table-underline-pdfexport jira-tablesorter-header">
-                <span 
+                <span
                   class="jim-table-header-content"
                   sort-column-key="resolution">
                   Resolution
@@ -1177,24 +1024,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-248?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-248">
                   UGXSMF-248
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-248?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-248">
                   Style: Reminder, Code Activation &amp; Password recover pages
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-248?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-248">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1210,13 +1054,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Alexander Diller
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1225,24 +1069,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-245?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-245">
                   UGXSMF-245
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-245?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-245">
                   Fix it: navigation code &amp; login
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-245?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-245">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1258,13 +1099,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Alexander Diller
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/critical.svg"
                   alt="Critical"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1273,24 +1114,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-243?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-243">
                   UGXSMF-243
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-243?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-243">
                   Better mobile sub menus
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-243?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-243">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1306,13 +1144,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Alexander Diller
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/major.svg"
                   alt="Major"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1321,24 +1159,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-239?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-239">
                   UGXSMF-239
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-239?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-239">
                   &quot;Welcome&quot; box on the homepage
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-239?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-239">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1352,13 +1187,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               </td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1367,24 +1202,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-238?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-238">
                   UGXSMF-238
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-238?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-238">
                   Improve usercard styling
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-238?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-238">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1398,13 +1230,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               </td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1413,24 +1245,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-237?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-237">
                   UGXSMF-237
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-237?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-237">
                   Resolve typed urls into links
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-237?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-237">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
                     alt="Task"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1446,13 +1275,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Alexander Diller
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/major.svg"
                   alt="Major"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1461,24 +1290,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-236?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-236">
                   UGXSMF-236
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-236?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-236">
                   [new] bubble hover style
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-236?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-236">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1492,13 +1318,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Alexander Diller
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1507,24 +1333,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-235?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-235">
                   UGXSMF-235
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-235?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-235">
                   Insert Quote has &lt;br/&gt; instead of newline
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-235?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-235">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype"
                     alt="Bug"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1540,13 +1363,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Alexander Diller
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/blocker.svg"
                   alt="Blocker"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1555,25 +1378,22 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-234?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-234">
                   UGXSMF-234
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-234?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-234">
                   Usercards with same ID don&#39;t show in correct location on
                   page
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-234?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-234">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype"
                     alt="Bug"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1585,13 +1405,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1600,24 +1420,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-233?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-233">
                   UGXSMF-233
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-233?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-233">
                   Footer zindex is higher than dropdown menus
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-233?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-233">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype"
                     alt="Bug"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1629,13 +1446,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1644,24 +1461,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-232?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-232">
                   UGXSMF-232
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-232?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-232">
                   White border shouldnt be on submenu hovers
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-232?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-232">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype"
                     alt="Bug"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1673,13 +1487,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1688,24 +1502,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-229?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-229">
                   UGXSMF-229
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-229?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-229">
                   Implement recent emotes in CKE
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-229?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-229">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1721,13 +1532,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Alexander Diller
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1736,24 +1547,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-223?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-223">
                   UGXSMF-223
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-223?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-223">
                   Notification popup styling
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-223?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-223">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1767,13 +1575,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               </td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1782,24 +1590,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-222?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-222">
                   UGXSMF-222
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-222?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-222">
                   Notification counter should match the other button counters
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-222?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-222">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10306&amp;avatarType=issuetype"
                     alt="Change"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1813,13 +1618,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               </td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1828,24 +1633,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-221?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-221">
                   UGXSMF-221
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-221?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-221">
                   PayPal Banner missing on PayPal page
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-221?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-221">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10310&amp;avatarType=issuetype"
                     alt="Improvement"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1859,13 +1661,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               </td>
               <td class="jira-macro-table-underline-pdfexport">Luke Houben</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/trivial.svg"
                   alt="Trivial"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1874,24 +1676,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-218?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-218">
                   UGXSMF-218
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-218?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-218">
                   num_results for search is always 0
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-218?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-218">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype"
                     alt="Bug"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1903,13 +1702,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1918,24 +1717,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-217?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-217">
                   UGXSMF-217
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-217?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-217">
                   Footer Redesign
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-217?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-217">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10311&amp;avatarType=issuetype"
                     alt="New Feature"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1951,13 +1747,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Michael Hillcox [X]
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -1966,24 +1762,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-216?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-216">
                   UGXSMF-216
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-216?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-216">
                   Search page design needs to be updated to design standard
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-216?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-216">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype"
                     alt="Task"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -1997,13 +1790,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
               </td>
               <td class="jira-macro-table-underline-pdfexport">Andy King</td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/major.svg"
                   alt="Major"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -2012,24 +1805,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowNormal">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-215?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-215">
                   UGXSMF-215
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-215?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-215">
                   Tool for quick scroll
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-215?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-215">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10311&amp;avatarType=issuetype"
                     alt="New Feature"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -2043,13 +1833,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Michael Hillcox [X]
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/trivial.svg"
                   alt="Trivial"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -2058,24 +1848,21 @@ dateCreated: 2024-01-30T10:33:26.529Z
             </tr>
             <tr class="rowAlternate">
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-213?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-213">
                   UGXSMF-213
                 </a>
               </td>
               <td class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-213?src=confmacro">
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-213">
                   Remove &quot;Simple Machines Latest News&quot; from Mod CP
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <a 
-                  href="https://jira.ugx-mods.com/browse/UGXSMF-213?src=confmacro">
-                  <img 
+                <a href="https://ugxmods.atlassian.net/browse/UGXSMF-213">
+                  <img
                     src="https://jira.ugx-mods.com/secure/viewavatar?size=xsmall&amp;avatarId=10306&amp;avatarType=issuetype"
                     alt="Change"
-                    class="icon" >
+                    class="icon" />
                 </a>
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
@@ -2091,13 +1878,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
                 Michael Hillcox [X]
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <img 
+                <img
                   src="https://jira.ugx-mods.com/images/icons/priorities/minor.svg"
                   alt="Minor"
-                  class="icon" >
+                  class="icon" />
               </td>
               <td nowrap="true" class="jira-macro-table-underline-pdfexport">
-                <span 
+                <span
                   class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
                   Done
                 </span>
@@ -2110,10 +1897,10 @@ dateCreated: 2024-01-30T10:33:26.529Z
       <div class="refresh-issues-bottom">
         <span id="total-issues-count" class="total-issues-count">
           <span>Showing 20 out of</span>
-          <a 
+          <a
             rel="nofollow"
             title="View all matching issues in Jira."
-            href="https://jira.ugx-mods.com/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.5.0-donor-beta+&amp;src=confmacro">
+            href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.5.0-donor-beta">
             72 issues
           </a>
         </span>
@@ -2122,13 +1909,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
   </div>
 </div>
 <h2 id="UGXSMFv0.5.0donorbeta-Knownissues">
-  <br>
+  <br />
   Known issues
 </h2>
 <ul>
   <li>
     Supported Browsers / Devices
-    <br>
+    <br />
     <ul>
       <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
       <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
@@ -2150,11 +1937,11 @@ dateCreated: 2024-01-30T10:33:26.529Z
   </li>
   <li>Navigation message and alerts &quot;bubbles&quot; are misplaced.</li>
 </ul>
-<p><br></p>
+<p><br /></p>
 <h2 id="UGXSMFv0.5.0donorbeta-SpecialThanks">Special Thanks</h2>
 <p>
   I (
-  <a 
+  <a
     class="confluence-userlink user-mention current-user-mention"
     data-username="Delta"
     href="https://confluence.ugx-mods.com/display/~Delta"
@@ -2168,7 +1955,7 @@ dateCreated: 2024-01-30T10:33:26.529Z
 </p>
 <ul>
   <li>
-    <a 
+    <a
       class="confluence-userlink user-mention"
       data-username="treminaor"
       href="https://confluence.ugx-mods.com/display/~treminaor"
@@ -2179,7 +1966,7 @@ dateCreated: 2024-01-30T10:33:26.529Z
       Andy 'treminaor' King
     </a>
     and
-    <a 
+    <a
       class="confluence-userlink user-mention"
       data-username="lukkie1998"
       href="https://confluence.ugx-mods.com/display/~lukkie1998"
@@ -2194,15 +1981,8 @@ dateCreated: 2024-01-30T10:33:26.529Z
   </li>
   <li>Mikey (who left Q1 2017) for some general improvements.</li>
   <li>
-    My girlfriend
-    <img 
-      class="emoticon emoticon-heart"
-      src="images/icons/emoticons/heart.svg"
-      data-emoticon-name="heart"
-      alt="(heart)"
-      data-emoji-short-name=":heart:" >
-    who was responsible for many icons (many self made by material design),
-    testing and helped me with design issues + feedback.
+    My girlfriend ❤️ who was responsible for many icons (many self made by
+    material design), testing and helped me with design issues + feedback.
   </li>
   <li>
     Everyone who is still excited about these great changes, it's been a long
@@ -2211,19 +1991,13 @@ dateCreated: 2024-01-30T10:33:26.529Z
 </ul>
 <h2 id="UGXSMFv0.5.0donorbeta-Whatsnext?">Whats next?</h2>
 <p>
-  We await (your) community feedback now
-  <img 
-    class="emoticon emoticon-heart"
-    src="images/icons/emoticons/heart.svg"
-    data-emoticon-name="heart"
-    alt="(heart)"
-    data-emoji-short-name=":heart:" >
-  While working on additional improvements and features, the feedback from the
-  community will be put together into more frequent updates.
+  We await (your) community feedback now ❤️ While working on additional
+  improvements and features, the feedback from the community will be put
+  together into more frequent updates.
 </p>
 <p>
   It has been a busy year and there will be soon progress on other
   <a href="2523194.html">Applications &amp; Services</a>
   again - stay tuned!
 </p>
-<p><br></p>
+<p><br /></p>

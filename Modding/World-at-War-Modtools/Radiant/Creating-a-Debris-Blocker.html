@@ -8,8 +8,6 @@ editor: ckeditor
 dateCreated: 2024-01-30T10:32:01.848Z
 -->
 
-
-
 <p>Blockers force players to spend money to unlock new areas in a map.</p>
 <h1 id="CreatingaDebrisBlocker-Preparation">Preparation</h1>
 <h2 id="CreatingaDebrisBlocker-Itemsneeded">Items needed</h2>
@@ -27,10 +25,13 @@ dateCreated: 2024-01-30T10:32:01.848Z
 </ul>
 <h2 id="CreatingaDebrisBlocker-SettingtheKVP&#39;s">Setting the KVP's</h2>
 <p></p>
-<div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
     <p>
       <strong>NOTE:</strong>
       KVP is an abbreviation for &quot;Key-Value Pair&quot;. When entering a KVP
@@ -42,7 +43,7 @@ dateCreated: 2024-01-30T10:32:01.848Z
       to in this format: Key | Value. Note they are separated by a pipe ( | )
       character. This character should be ignored when entering the Key-Value
       Pair.
-      <br>
+      <br />
       <strong>To properly add a KVP to an entity:</strong>
     </p>
     <ul>
@@ -66,7 +67,7 @@ dateCreated: 2024-01-30T10:32:01.848Z
     </ul>
   </div>
 </div>
-<code><br></code>
+<code><br /></code>
 <h3 id="CreatingaDebrisBlocker-Triggers">Triggers</h3>
 <p>Select the trigger_use brush(es) and give them the following KVP's:</p>
 <div class="table-wrap">
@@ -111,16 +112,18 @@ dateCreated: 2024-01-30T10:32:01.848Z
       <span style="color: rgb(51, 153, 102)"><code>zombie_cost</code></span>
       key and replace '&lt;any number&gt;' with a numerical value.
     </p>
-    <div 
-      class="confluence-information-macro confluence-information-macro-warning">
-      <span 
-        class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon"></span>
-      <div class="confluence-information-macro-body">
+    <div class="banner banner-info">
+      <img
+        src="/attachments/icons/information-information-outline.png"
+        alt=""
+        class="banner-icon" />
+      undefined
+      <div class="banner-body">
         <strong>Warning:</strong>
         The zombie_cost key can only be set to any value if you have applied the
         UGX Modtools Patch to your World at War installation. To install the
         patch, refer to
-        <a 
+        <a
           href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide#ModtoolsInstallationGuide-InstallingtheFiles"
           rel="nofollow">
           &quot;Installing the Files&quot;
@@ -128,7 +131,7 @@ dateCreated: 2024-01-30T10:32:01.848Z
         <span class="confluence-link"> </span>
         in the
         <span class="confluence-link"> </span>
-        <a 
+        <a
           href="https://confluence.ugx-mods.com/display/UGXMODS/Modtools+Installation+Guide"
           rel="nofollow">
           <span class="confluence-link">Modtools Installation Guide</span>
@@ -207,7 +210,7 @@ dateCreated: 2024-01-30T10:32:01.848Z
     key and replace '&lt;fx_name&gt;' with any included, loaded, and declared fx
     name. Treyarch maps use &quot;poltergeist&quot; (without quotes). You can
     use this fx as it is included, loaded, and declared already.
-    <br>
+    <br />
     <code>
       warning|The script_firefx fx will only play if you have defined a
       script_linkTo struct for the debris to fly to. If you have applied the UGX
@@ -276,12 +279,15 @@ dateCreated: 2024-01-30T10:32:01.848Z
 <p>
   Now that you have created all of the necessary items and given them the
   correct KVP's, it is time to link the items together using targeting.
-  <br>
+  <br />
 </p>
-<div class="confluence-information-macro confluence-information-macro-tip">
-  <span 
-    class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-information-outline.png"
+    alt=""
+    class="banner-icon" />
+  undefined
+  <div class="banner-body">
     <p>
       <strong>NOTE:</strong>
       &quot;targeting&quot; is a method for linking entities together in a
@@ -292,7 +298,7 @@ dateCreated: 2024-01-30T10:32:01.848Z
       the affected entities. When two items are properly linked together, a red
       or blue line is drawn from the main entity to each of its targets/links in
       Radiant.
-      <br>
+      <br />
       <strong>To properly target one item to another:</strong>
     </p>
     <ul>
@@ -326,11 +332,11 @@ dateCreated: 2024-01-30T10:32:01.848Z
     </ul>
   </div>
 </div>
-<br>
+<br />
 In this case, the root entity is the trigger_use. If you have more than one
 trigger_use, just pick one to link all entities to. Later we will include the
 remaining trigger_use's.
-<br>
+<br />
 The children of the trigger_use are the clip(s) and debris model(s). Link them
 to the root entity using the instructions above.
 <p>
