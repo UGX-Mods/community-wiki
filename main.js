@@ -491,7 +491,7 @@ function createHtmlBanner(title, content, type) {
   }
 
   return `<div class="banner banner-${type}">
-    <img  src="/attachments/icons/information-${icon}.png" alt="" class="banner-icon">
+    <img  src="/attachments/icons/${icon}.png" alt="" class="banner-icon">
     ${title}
     <div class="banner-body">${content}</div>
   </div>`;
