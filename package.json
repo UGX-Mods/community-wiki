@@ -3,12 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "dependencies": {
-    "node-html-parser": "^6.1.12"
-  },
   "author": "Alexander 'Delta' Diller",
   "license": "AGPL-3.0",
   "scripts": {
-    "lint": "prettier **/*.html -w"
+    "lint": "prettier **/*.html -w",
+    "sass": "sass --no-source-map wiki.scss wiki.css && postcss wiki.css -o wiki.min.css",
+    "js": "babel wiki.js --presets=@babel/preset-env | uglifyjs --compress --mangle --output wiki.min.js"
+  },
+  "dependencies": {
+    "node-html-parser": "^6.1.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "cssnano": "^6.0.3",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.2.5",
+    "sass": "^1.71.0",
+    "uglify-js": "^3.17.4"
   }
 }

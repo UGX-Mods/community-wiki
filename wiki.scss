@@ -286,32 +286,101 @@ pre[class*='language-'] > code[class*='language-'] {
  * Page Style
  ************************************/
 
-.v-main .contents p {
-  padding: 0.5rem 0 0;
+$color-info: #569cd6;
+$color-success: #5cb85c;
+$color-warning: #f0ad4e;
+$color-danger: #d9534f;
+
+$color-white: #fff;
+$color-black: #000;
+$color-banner-bg: #111;
+
+.v-main .contents {
+  p {
+    padding: 0.5rem 0 0;
+  }
+
+  .banner {
+    margin: 5px 0 10px;
+    border: 1px solid $color-white;
+    padding: 5px 5px 5px 35px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px $color-black;
+    background: $color-banner-bg;
+
+    &-info {
+      border-color: $color-info;
+    }
+
+    &-tip {
+      border-color: $color-success;
+    }
+
+    &-note {
+      border-color: $color-warning;
+    }
+
+    &-warning {
+      border-color: $color-danger;
+    }
+
+    &-title {
+      font-weight: bold;
+      margin: 0 0 3px;
+      padding: 0;
+    }
+
+    &-icon {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+  }
 }
 
-.v-main .contents .banner {
-  margin: 5px 0 10px;
-  border: 1px solid #fff;
-  padding: 5px 5px 5px 35px;
-  position: relative;
-}
+.expandable-container {
+  button.expandable-button {
+    // background: url('/attachments/icons/information-outline.png') no-repeat;
 
-.v-main .contents .banner-info {
-  border-color: #569cd6;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px #000;
-  background: #111;
-}
+    color: #90caf9;
+    padding: 0;
+    margin: 5px 0;
 
-.v-main .contents .banner-title {
-  font-weight: bold;
-  margin: 0 0 3px;
-  padding: 0;
-}
+    &:hover {
+      text-decoration: underline;
+    }
 
-.v-main .contents .banner-icon {
-  position: absolute;
-  top: 5px;
-  left: 5px;
+    &::before {
+      content: ' ';
+      display: inline-block;
+      background: url('/attachments/icons/chevron-right.png') no-repeat;
+      width: 24px;
+      height: 24px;
+      float: left;
+      transition: transform 0.4s;
+      margin-right: 2px;
+    }
+
+    &.expanded {
+      &::before {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .expandable-content {
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      visibility 0s,
+      opacity 0.5s linear;
+    height: 0;
+
+    &.expanded {
+      visibility: visible;
+      opacity: 1;
+      height: unset;
+    }
+  }
 }

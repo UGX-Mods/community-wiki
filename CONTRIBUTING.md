@@ -22,11 +22,23 @@ You can write new files in either HTML (file ending with .html) or Markdown (fil
 
 Then ensure it's properly formatted and create a Pull Request (see below).
 
-### Formatting
+### Formatting / Building
 
 VSCode in combination with prettier is used
 
 > ⚠️ Ensure the files follow the naming convention of Wiki.js (https://docs.requarks.io/guide/pages#naming-restrictions)
+
+### Stylesheet
+
+The `wiki.scss` is used to compile css which is used  to override and extend WikiJS theme.
+
+To build it, simply run `npm run sass` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
+
+### Javascript
+
+The `wiki.js` is used to extend the theme logic of WikiJS.
+
+To build it, simply run `npm run js` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
 
 ### Pull Request
 
