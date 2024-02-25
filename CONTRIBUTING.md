@@ -50,6 +50,12 @@ The `wiki.js` is used to extend the theme logic of WikiJS.
 
 To build it, simply run `npm run js` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
 
+### Tooling
+
+There is a tool script (`main.js`) which helps with fixing html files (confluence to wikijs migration). It also offer other tools.
+
+Install first the dependencies with `npm install` and then execute the script with `node main.js`.
+
 ### Pull Request
 
 Before opening any pull request, be sure that the changes are formatted, valid and follow all guidelines.

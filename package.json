@@ -11,6 +11,7 @@
     "js": "babel wiki.js --presets=@babel/preset-env | uglifyjs --compress --mangle --output wiki.min.js"
   },
   "dependencies": {
+    "@inquirer/prompts": "^4.1.0",
     "node-html-parser": "^6.1.12"
   },
   "devDependencies": {

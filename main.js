@@ -6,11 +6,41 @@ const path = require('node:path');
 const prettier = require('prettier');
 const HTMLParser = require('node-html-parser');
 const encoding = 'utf8';
+const select = require('@inquirer/prompts').select;
 
 /**
  * @type {'NONE'|'filenames'|'codeblocks'|'confluence-id'|'confluence-cleanup'}
  */
-const FIX_STEP = process.argv[2] || 'NONE'; // due to "circumstances", do each step by step
+const STEPS = [
+  { value: 'NONE', name: 'Nothing', description: 'Do nothing :D' },
+  {
+    value: 'create-hierarchy',
+    name: 'CREATE: Page Hierarchy',
+    description: 'Create a page hierarchy from parent to child pages',
+  },
+  {
+    value: 'filenames',
+    name: 'Fix filenames',
+    description: '[confluence migration] fix the filenames',
+  },
+  {
+    value: 'codeblocks',
+    name: 'Fix codeblocks',
+    description: '[confluence migration] fix codeblocks',
+  },
+  {
+    value: 'confluence-cleanup',
+    name: 'Cleanup files',
+    description:
+      '[confluence migration] cleanup files from confluence boilerplate',
+  },
+  {
+    value: 'confluence-id',
+    name: 'Confluence ID',
+    description:
+      '[confluence migration] will add the confluence id (if found) as a tag',
+  },
+]; // due to "circumstances", do each step by step
 
 const confIdInNameRegex = /_?(\d{4,})html\.html$/;
 const numOnlyFilename = /(\d{4,})\.html$/;
@@ -31,16 +61,22 @@ const EMOJI_MAP = {
 };
 
 const directoryPath = process.cwd();
-fs.readdir(directoryPath, { recursive: true }, (err, files) => {
-  if (err) {
-    return console.error(err);
-  }
 
-  files = files.filter(
-    (f) => !/node_modules[\\/]/.test(f) && f.endsWith('.html'),
-  );
+async function main() {
+  const answer = await select({
+    message: 'What do you want to do?',
+    choices: STEPS,
+  });
 
-  switch (FIX_STEP) {
+  const files = (
+    await fs.promises.readdir(directoryPath, { recursive: true })
+  ).filter((f) => !/node_modules[\\/]/.test(f) && f.endsWith('.html'));
+  console.log(`Found ${files.length}x HTML files`);
+
+  switch (answer) {
+    case 'create-hierarchy':
+      createPageHierarchy(files);
+      break;
     case 'filenames':
       fixFileNames(files);
       fixNumberFileNameOnly(files);
@@ -59,9 +95,80 @@ fs.readdir(directoryPath, { recursive: true }, (err, files) => {
       console.log('NOOP - nothing changed');
       return;
   }
+}
+main();
 
-  console.log(`Found ${files.length}x HTML files`);
-});
+async function createPageHierarchy(files) {
+  const choices = files
+    .filter((f) => {
+      try {
+        fs.accessSync(f.substring(0, f.length - 5));
+        return true;
+      } catch (_) {
+        return false;
+      }
+    })
+    .map((f) => ({ value: f }));
+
+  /**
+   * @type {string}
+   */
+  const filePath = await select({
+    message: 'Where do you want to add the Page Hierarchy?',
+    choices,
+  });
+  if (!filePath) throw new Error('No file path was set!');
+
+  const data = await fs.promises.readFile(filePath, encoding).catch((err) => {
+    console.error(err);
+    return null;
+  });
+  if (!data) throw new Error('Invalid file content!');
+
+  const parsedHtml = HTMLParser.parse(data, { comment: true });
+  const rootFolderPath = filePath.substring(0, filePath.length - 5);
+  const rootFolder = rootFolderPath.split(path.sep).slice(-1);
+
+  const childPages = (
+    await fs.promises.readdir(rootFolderPath, {
+      recursive: true,
+    })
+  ).filter((f) => f.endsWith('.html'));
+
+  if (childPages.length > 0) {
+    const lis = (
+      await Promise.all(
+        childPages.map(async (page) => {
+          const title = await fs.promises
+            .readFile(rootFolderPath + path.sep + page, encoding)
+            .then((pageData) => {
+              const parsedPageHtml = HTMLParser.parse(pageData, {
+                comment: true,
+              });
+              return /^title: (.*)$/m.exec(parsedPageHtml.innerHTML)?.[1];
+            })
+            .catch((err) => {
+              console.error(err);
+              return page.substring(0, page.length - 5);
+            });
+
+          if (!title) {
+            console.warn('Title not found for page:', page);
+          }
+
+          const href = `${rootFolder}/${page
+            .substring(0, page.length - 5)
+            .split(path.sep)
+            .join('/')}`;
+          return `<a href="${href}">${title}</a>`;
+        }),
+      )
+    ).join('</li><li>');
+    parsedHtml.innerHTML += `<ul><li>${lis}</li></ul>`;
+  }
+
+  await writeFileFormat(parsedHtml.innerHTML, filePath);
+}
 
 /**
  *
@@ -366,6 +473,23 @@ async function cleanupConfluenceHtml(files) {
 
     // remove search macro
     parsedHtml.querySelectorAll('div.search-macro').forEach((d) => d.remove());
+
+    // simplify images
+    parsedHtml
+      .querySelectorAll('span.confluence-embedded-file-wrapper')
+      .forEach((n) => {
+        const $img = n.querySelector('.confluence-embedded-image');
+
+        if (!$img.hasAttribute('alt')) {
+          $img.setAttribute('alt', '');
+        }
+
+        $img
+          .removeAttribute('draggable')
+          .removeAttribute('data-image-src')
+          .removeAttribute('class');
+        n.replaceWith(n.innerHTML);
+      });
 
     // convert confluence expander into custom one
     parsedHtml.querySelectorAll('div.expand-container').forEach((d) => {
