@@ -1,6 +1,6 @@
 <!--
 title: BO3 | Playing an animation on a script model
-description: 
+description:
 published: true
 date: 2024-02-25T10:43:17.950Z
 tags: confluence:15237667
@@ -17,7 +17,7 @@ dateCreated: 2024-02-04T15:32:47.225Z
   Preparing your animation
 </h2>
 <p>
-  First you need to import your custom animation by following the page 
+  First you need to import your custom animation by following the page
   <a href="15237659.html">BO3 | Adding custom animations</a>
   .
 </p>
@@ -31,8 +31,8 @@ dateCreated: 2024-02-04T15:32:47.225Z
 </h3>
 <p>
   Add your atr file and xanim to your map's zone csv located at
-  root/usermaps/yourmap/zone_source/yourmap.zone by opening it with a 
-  <a href="Text-Editors_1146950.html">Text Editor</a>
+  root/usermaps/yourmap/zone_source/yourmap.zone by opening it with a
+  <a href="/Modding/World-at-War-Modtools/Script/Text-Editors">Text Editor</a>
   and adding the line:
 </p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -59,7 +59,7 @@ xanim,yourAnimFileName</code></pre>
     <pre><code class="language-cpp">
 #precache( &quot;xanim&quot;, &quot;yourAnimFileName&quot;);
 #using_animtree(&quot;yourATRfile&quot;);
- 
+
 function test()
 {
 	model = getEnt(&quot;model&quot;, &quot;targetname&quot;);
