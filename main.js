@@ -19,6 +19,11 @@ const STEPS = [
     description: 'Create a page hierarchy from parent to child pages',
   },
   {
+    value: 'link-validation',
+    name: 'Link validation',
+    description: 'Checks all href if they point to a valid file/folder',
+  },
+  {
     value: 'filenames',
     name: 'Fix filenames',
     description: '[confluence migration] fix the filenames',
@@ -75,7 +80,7 @@ async function main() {
 
   switch (answer) {
     case 'create-hierarchy':
-      createPageHierarchy(files);
+      await createPageHierarchy(files);
       break;
     case 'filenames':
       fixFileNames(files);
@@ -84,11 +89,14 @@ async function main() {
     case 'codeblocks':
       fixCodeBlocks(files);
       break;
+    case 'link-validation':
+      await validateAllLinks(files);
+      break;
     case 'confluence-cleanup':
-      cleanupConfluenceHtml(files);
+      await cleanupConfluenceHtml(files);
       break;
     case 'confluence-id':
-      addConfluenceCommentAsTag(files);
+      await addConfluenceCommentAsTag(files);
       break;
     case 'NONE':
     default:
@@ -168,6 +176,52 @@ async function createPageHierarchy(files) {
   }
 
   await writeFileFormat(parsedHtml.innerHTML, filePath);
+}
+
+/**
+ *
+ * @param {string[]} files
+ */
+async function validateAllLinks(files) {
+  for (const filePath of files) {
+    const fileContent = await fs.promises
+      .readFile(filePath, encoding)
+      .catch((err) => {
+        console.error(err);
+        return null;
+      });
+    if (!fileContent) continue;
+
+    const parsedHtml = HTMLParser.parse(fileContent, {
+      comment: true,
+    });
+
+    const aTags = parsedHtml.querySelectorAll('a');
+
+    let invalid = [];
+    for (const a of aTags) {
+      const href = a.getAttribute('href');
+      if (!href) {
+        invalid.push({ href: '', error: 'Empty HREF!' });
+        continue;
+      }
+
+      if (href.startsWith('http') || href.startsWith('//')) continue; // absolute external should be okay
+
+      if (href.startsWith('/')) {
+        // absolute
+      } else {
+        // relative
+        const rootFolderPath = filePath.substring(0, filePath.length - 5);
+        const rootFolder = rootFolderPath.split(path.sep).slice(-1);
+      }
+    }
+
+    if (invalid.length > 0) {
+      console.error('## File', filePath, 'has', invalid.length, 'link errors!');
+      console.error(invalid);
+    }
+  }
 }
 
 /**
@@ -545,6 +599,45 @@ async function cleanupConfluenceHtml(files) {
           `https://ugxmods.atlassian.net/browse/${match[1]}`,
         );
       }
+    });
+
+    // remove boilerplate from td tags
+    parsedHtml.querySelectorAll('td').forEach((td) => {
+      td.removeAttribute('nowrap');
+    });
+
+    // remove some confluence / jira classes
+    parsedHtml.querySelectorAll('td,th,span').forEach((n) => {
+      for (const c of n.classList.value) {
+        if (c.startsWith('jira-') || c.startsWith('jim-')) {
+          n.classList.remove(c);
+        }
+      }
+
+      if (n.classList.length === 0) {
+        n.removeAttribute('class');
+      }
+    });
+    parsedHtml.querySelectorAll('span[sort-column-key]').forEach((n) => {
+      n.replaceWith(n.innerHTML);
+    });
+    parsedHtml.querySelectorAll('tr').forEach((n) => {
+      n.classList.remove('rowNormal');
+      n.classList.remove('rowAlternate');
+
+      if (n.classList.length === 0) {
+        n.removeAttribute('class');
+      }
+    });
+    parsedHtml.querySelectorAll('table').forEach((n) => {
+      n.classList.remove('aui');
+      if (n.classList.length === 0) {
+        n.removeAttribute('class');
+      }
+    });
+
+    parsedHtml.querySelectorAll('a.confluence-userlink').forEach((n) => {
+      n.replaceWith(`<em>${n.innerHTML}</em>`);
     });
 
     // warn about old invalid confluence links!
