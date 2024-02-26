@@ -428,17 +428,23 @@ $border-radius: 5px;
 
     &-content {
       overflow: auto;
+    }
 
-      .prismjs {
-        padding: 0.5rem 1rem 0.5rem 2.5rem;
-        margin: 0;
-      }
+    .prismjs {
+      padding: 0.5rem 1rem 0.5rem 2.5rem;
+      margin: 0;
     }
   }
 
   .pre-formatted {
     pre {
       margin: 0 4px;
+    }
+  }
+
+  div.code-toolbar {
+    & > .toolbar {
+      z-index: 5;
     }
   }
 }
