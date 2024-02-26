@@ -969,12 +969,26 @@ async function cleanupConfluenceHtml(files) {
         return;
       }
 
-      $panel.replaceWith(
-        `<div class="expandable-container widget-code-panel">
-          <button class="expandable-button" type="button">Expand source...</button>
-          <div class="expandable-content">${$codeContent.innerHTML}</div>
-        </div>`,
-      );
+      const isCollapsable = !!$codeHeader.querySelector('.collapse-source');
+      if (isCollapsable) {
+        const title = $panel.querySelector('.code-title')?.innerHTML || '';
+        $panel.replaceWith(`<div class="expandable-container widget-code-panel">
+            <div class="expandable-header widget-code-panel-header">
+              <div class="expandable-title widget-code-panel-title">${title}</div>
+              <button class="expandable-button" type="button">Expand source...</button>
+            </div>
+            <div class="expandable-content widget-code-panel-content">${$codeContent.innerHTML}</div>
+          </div>`);
+      } else {
+        const title =
+          $codeHeader.querySelector('b')?.innerHTML || $codeHeader.innerHTML;
+        $panel.replaceWith(`<div class="widget-code-panel">
+        <div class="widget-code-panel-header">
+          <div class="widget-code-panel-title">${title}</div>
+        </div>
+        <div class="widget-code-panel-content">${$codeContent.innerHTML}</div>
+      </div>`);
+      }
     });
 
     // try to fix invalid wiki links from confluence id to correct wikijs path
