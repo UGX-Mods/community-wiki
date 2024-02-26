@@ -1,6 +1,6 @@
 <!--
 title: BO3 | Purchase Loops
-description: 
+description:
 published: true
 date: 2024-02-25T10:43:20.150Z
 tags: confluence:15237678
@@ -46,7 +46,7 @@ dateCreated: 2024-02-04T15:32:48.950Z
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
     <pre><code class="language-cpp">
- #using scripts\zm\_zm_score; // Add this line at the top of your script</code></pre>
+#using scripts\zm\_zm_score; // Add this line at the top of your script</code></pre>
   </div>
 </div>
 <h2 id="BO3|PurchaseLoops-Trigger">Trigger</h2>
@@ -92,9 +92,9 @@ function testfunction(parameter)
 {
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
 	cost = 1000;
- 
+
 	trigger waittill(&quot;trigger&quot;, player);
-	
+
 	if(player.score &gt;= cost) // checking if the player&#39;s score is greater than or equal to the cost
 	{
 		// Code to perform if the player has enough points
@@ -128,20 +128,20 @@ function testfunction(parameter)
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
 	cost = 1000;
 	coolDownTime = 30; // time in seconds before the trigger can be activated again
- 
+
 	while(1)
 	{
 		while(1)
 		{
 			// Purchase Code
 			trigger waittill(&quot;trigger&quot;, player);
-				
+
 			if(player.score &gt;= cost)
 			{
 				// Code
 			}
 		}
- 
+
 		// Your Code
 		wait(coolDownTime);
 	}
@@ -168,21 +168,21 @@ function testfunction(parameter)
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
 	cost = 1000;
 	coolDownTime = 30;
- 
+
 	while(1)
 	{
 		while(1)
 		{
 			// Purchase Code
 			trigger waittill(&quot;trigger&quot;, player);
-				
+
 			if(player.score &gt;= cost)
 			{
 				player zm_score::minus_to_player_score(cost);
 					break;
 			}
 		}
- 
+
 		// Your Code
 		wait(coolDownTime);
 	}
@@ -211,14 +211,14 @@ function testfunction(parameter)
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
 	cost = 1000;
 	coolDownTime = 30;
- 
+
 	while(1)
 	{
 		while(1)
 		{
 			// Purchase Code
 			trigger waittill(&quot;trigger&quot;, player);
-				
+
 			if(player.score &gt;= cost)
 			{
 				player zm_score::minus_to_player_score(cost);
@@ -230,7 +230,7 @@ function testfunction(parameter)
 				trigger playsound(&quot;name_of_deny_sound&quot;);
 			}
 		}
- 
+
 		// Your Code
 		wait(coolDownTime);
 	}

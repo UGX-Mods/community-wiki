@@ -15,11 +15,11 @@ dateCreated: 2024-02-04T15:33:06.563Z
 </h2>
 <p>
   In World at War, functions could be written simply by writing the name of the
-  function followed by any parameters you wish the function to have. In Black
-  Ops 3, you simply need to add the &quot;function&quot; keyword before every
-  function declaration you make: 
+  function followed by any parameters you wish the function to have.In Black Ops
+  3, you simply need to add the &quot;function&quot; keyword before every
+  function declaration you make:
 </p>
-<p> </p>
+<p>&nbsp;</p>
 <div class="code panel pdl" style="border-width: 1px">
   <div class="codeContent panelContent pdl">
     <pre><code class="language-cpp">
@@ -27,8 +27,8 @@ dateCreated: 2024-02-04T15:33:06.563Z
 testfunction(parameter)
 {
 	some code()
-} 
- 
+}
+
 //BO3
 function testfunction(parameter)
 {
@@ -95,8 +95,8 @@ function testingFunction( )         // this indicates that its a public scope fu
 #namespace zm_file_one			// Define our name space
 function init() {				// Declare our function init()
 	iPrintLn(&quot;Testing&quot;);
-} 
- 
+}
+
 // zm_file_two.gsc
 #using zm_file_one;
 function init() {				// Declare init() again in a different file.
@@ -105,7 +105,7 @@ function init() {				// Declare init() again in a different file.
 }</code></pre>
   </div>
 </div>
-<p> </p>
+<p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-Namespaces">Namespaces</h2>
 <p>You can include an external script into your current script by doing:</p>
 <div class="code panel pdl" style="border-width: 1px">
@@ -114,7 +114,7 @@ function init() {				// Declare init() again in a different file.
 #using scripts\zm\zm_usermap;</code></pre>
   </div>
 </div>
-<p> </p>
+<p>&nbsp;</p>
 <p>
   You can then call any function from that script by using the filename as a
   prefix:
@@ -125,7 +125,7 @@ function init() {				// Declare init() again in a different file.
 zm_usermap::some_func();</code></pre>
   </div>
 </div>
-<p> </p>
+<p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-CallingExternalFunctions">
   Calling External Functions
 </h2>
@@ -141,14 +141,14 @@ function testfunction(parameter)
 {
 	myFunc = &amp;some_func;
 }
- 
+
 some_func()
 {
- 
+
 }</code></pre>
   </div>
 </div>
-<p> </p>
+<p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-Flags">Flags</h2>
 <p>
   flag_init(), flag_set, flag(), and flag_clear have been moved to flag_shared
@@ -157,24 +157,24 @@ some_func()
   <div class="codeContent panelContent pdl">
     <pre><code class="language-cpp">
 #using scripts\shared\flag_shared;
- 
+
 function testfunction(parameter)
 {
 	//WaW: flag_init(&quot;flag&quot;);
 	level flag::init(&quot;flag&quot;);
- 
+
 	//WaW: if(flag(&quot;flag&quot;))
 	if(level flag::get(&quot;flag&quot;))
- 
+
 	//WaW: flag_set(&quot;flag&quot;);
 	level flag::set(&quot;flag&quot;);
- 
+
 	//WaW: flag_clear(&quot;flag&quot;);
 	level flag::clear(&quot;flag&quot;);
 } </code></pre>
   </div>
 </div>
-<p> </p>
+<p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-GetStruct()andGetStructArray()">
   GetStruct() and GetStructArray()
 </h2>
@@ -193,7 +193,7 @@ function testfunction(parameter)
 } </code></pre>
   </div>
 </div>
-<p> </p>
+<p>&nbsp;</p>
 <h2
   id="BO3|What&#39;schangedfromWaWscripting?-WeaponSystem(Giving,Getting,Switching,etc)">
   Weapon System (Giving, Getting, Switching, etc)
