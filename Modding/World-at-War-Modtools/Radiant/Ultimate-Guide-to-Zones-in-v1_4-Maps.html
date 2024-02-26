@@ -8,7 +8,7 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:27:33.351Z
 -->
 
-<h1 id="UltimateGuidetoZonesinv1.4Maps-Whatarezones?WhydoIneedthem?">
+<h1 id="UltimateGuidetoZonesinv1-4Maps-Whatarezones?WhydoIneedthem?">
   What are zones? Why do I need them?
 </h1>
 <p>
@@ -18,7 +18,7 @@ dateCreated: 2024-02-04T15:27:33.351Z
   when no players are present. At least one zone is required in order for
   zombies to spawn on a map which runs the latest Mod Tools scripts (v1.4).
 </p>
-<h2 id='UltimateGuidetoZonesinv1.4Maps-Whatare"adjacent"zones?'>
+<h2 id="UltimateGuidetoZonesinv1-4Maps-Whatare-adjacent-zones">
   What are &quot;adjacent&quot; zones?
 </h2>
 <p>
@@ -30,8 +30,8 @@ dateCreated: 2024-02-04T15:27:33.351Z
   wave of zombies.
 </p>
 
-<h1 id="UltimateGuidetoZonesinv1.4Maps-HowtosetupZones">How to set up Zones</h1>
-<h2 id="UltimateGuidetoZonesinv1.4Maps-Volumes">Volumes</h2>
+<h1 id="UltimateGuidetoZonesinv1-4Maps-HowtosetupZones">How to set up Zones</h1>
+<h2 id="UltimateGuidetoZonesinv1-4Maps-Volumes">Volumes</h2>
 <p>
   To create a zone volume in Radiant, right-click the 2d view and from the Info
   menu, click Volume. This will create a brush with the &quot;Volume
@@ -62,7 +62,7 @@ dateCreated: 2024-02-04T15:27:33.351Z
   multiple brushes (see Fig. 1). This is OK as long as you give the additional
   zone pieces the same KVPs.
 </p>
-<h3 id="UltimateGuidetoZonesinv1.4Maps-SettingtheKVP&#39;s">
+<h3 id="UltimateGuidetoZonesinv1-4Maps-SettingtheKVP&#39;s">
   Setting the KVP's
 </h3>
 <p></p>
@@ -152,7 +152,7 @@ Select the zone volume(s) and give them the following KVP's:
     </div>
   </li>
 </ul>
-<h2 id="UltimateGuidetoZonesinv1.4Maps-Spawners">Spawners</h2>
+<h2 id="UltimateGuidetoZonesinv1-4Maps-Spawners">Spawners</h2>
 <p>
   Each zone's purpose is to activate/deactive the zombie spawners it is linked
   to. In order for this to work properly you must correctly link your zombie
@@ -205,7 +205,7 @@ Select the zone volume(s) and give them the following KVP's:
   </a>
    for more info.
 </p>
-<h2 id="UltimateGuidetoZonesinv1.4Maps-ScriptChanges">Script Changes</h2>
+<h2 id="UltimateGuidetoZonesinv1-4Maps-ScriptChanges">Script Changes</h2>
 <p>
   <code>
     <div class="banner banner-tip">
@@ -264,7 +264,7 @@ Select the zone volume(s) and give them the following KVP's:
     <br />
   </code>
 </p>
-<h3 id="UltimateGuidetoZonesinv1.4Maps-Declaringthestartzone">
+<h3 id="UltimateGuidetoZonesinv1-4Maps-Declaringthestartzone">
   Declaring the start zone
 </h3>
 <p>
@@ -285,12 +285,12 @@ zones[zones.size] = &quot;initial_zone&quot; </code></pre>
   Typically people use &quot;start_zone&quot; as their name, but if you want to
   save a step you could just use &quot;initial_zone&quot;.
 </p>
-<h3 id="UltimateGuidetoZonesinv1.4Maps-DeclaringAdjacentZones">
+<h3 id="UltimateGuidetoZonesinv1-4Maps-DeclaringAdjacentZones">
   Declaring Adjacent Zones
 </h3>
 <p>
   In order for the game to know which zones are
-  <a href='#UltimateGuidetoZonesinv1.4Maps-Whatare"adjacent"zones?'>
+  <a href="#UltimateGuidetoZonesinv1-4Maps-Whatare-adjacent-zones">
     <span class="confluence-link">&quot;adjacent&quot;</span>
   </a>
   , you must set the zones up in your mapname.gsc.
@@ -369,7 +369,7 @@ add_adjacent_zone( &quot;zone_name&quot;, &quot;adjacent_zone_name&quot;, &quot;
   least once. If there are multiple zones adjacent to your zone then you will
   have multiple add_adjacent_zone() calls for the same zone_name.
 </p>
-<h3 id="UltimateGuidetoZonesinv1.4Maps-Example">Example</h3>
+<h3 id="UltimateGuidetoZonesinv1-4Maps-Example">Example</h3>
 <p>
   The best way is to learn by example. Consider the following snippet from UGX
   Comosea's mapname.gsc:
@@ -402,7 +402,7 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
   </div>
 </div>
 <p>As you can see, one zone can have multiple adjacent ones.</p>
-<h2 id="UltimateGuidetoZonesinv1.4Maps-Barriers/Blockers/Debris/Doors">
+<h2 id="UltimateGuidetoZonesinv1-4Maps-Barriers/Blockers/Debris/Doors">
   Barriers/Blockers/Debris/Doors
 </h2>
 <p>
@@ -446,20 +446,20 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
   </li>
 </ul>
 <h1
-  id="UltimateGuidetoZonesinv1.4Maps-Help!Igetascript_runtimeerrorormygamelags...">
+  id="UltimateGuidetoZonesinv1-4Maps-Help!Igetascript_runtimeerrorormygamelags...">
   Help! I get a script_runtime error or my game lags...
 </h1>
-<h2 id="UltimateGuidetoZonesinv1.4Maps-...whenIspawnintomymap">
+<h2 id="UltimateGuidetoZonesinv1-4Maps-...whenIspawnintomymap">
   ...when I spawn into my map
 </h2>
 <p>
   You probably forgot to set up your start_zone in your mapname.gsc. See
-  <a href="#UltimateGuidetoZonesinv1.4Maps-Declaringthestartzone">
+  <a href="#UltimateGuidetoZonesinv1-4Maps-Declaringthestartzone">
     Declaring the start zone
   </a>
   .
 </p>
-<h2 id="UltimateGuidetoZonesinv1.4Maps-...whenIenteranewzone">
+<h2 id="UltimateGuidetoZonesinv1-4Maps-...whenIenteranewzone">
   ...when I enter a new zone
 </h2>
 <p>

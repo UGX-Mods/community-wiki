@@ -7,45 +7,54 @@ const prettier = require('prettier');
 const HTMLParser = require('node-html-parser');
 const encoding = 'utf8';
 const select = require('@inquirer/prompts').select;
+const Separator = require('@inquirer/prompts').Separator;
 
-/**
- * @type {'NONE'|'filenames'|'codeblocks'|'confluence-id'|'confluence-cleanup'}
- */
-const STEPS = [
-  { value: 'NONE', name: 'Nothing', description: 'Do nothing :D' },
+const STEPS = {
+  none: 'NONE',
+  createHierarchy: 'create-hierarchy',
+  refreshHierarchy: 'refresh-hierarchy',
+  linkValidation: 'link-validation',
+  confluenceFixFilenames: 'confluence-fix-filenames',
+  confluenceCleanup: 'confluence-cleanup',
+  confluenceId: 'confluence-id',
+};
+
+const STEP_CHOICES = [
+  { value: STEPS.none, name: 'Nothing', description: 'Do nothing :D' },
   {
-    value: 'create-hierarchy',
+    value: STEPS.createHierarchy,
     name: 'CREATE: Page Hierarchy',
     description: 'Create a page hierarchy from parent to child pages',
   },
   {
-    value: 'link-validation',
+    value: STEPS.refreshHierarchy,
+    name: 'REFRESH: Page Hierarchies',
+    description: 'Update all widgets with latest links',
+  },
+  {
+    value: STEPS.linkValidation,
     name: 'Link validation',
     description: 'Checks all href if they point to a valid file/folder',
   },
+  new Separator('--- Confluence Migration: ---'),
   {
-    value: 'filenames',
+    value: STEPS.confluenceCleanup,
+    name: 'Cleanup files',
+    description:
+      '[confluence migration] cleanup files from confluence boilerplate & fix code blocks',
+  },
+  {
+    value: STEPS.confluenceFixFilenames,
     name: 'Fix filenames',
     description: '[confluence migration] fix the filenames',
   },
   {
-    value: 'codeblocks',
-    name: 'Fix codeblocks',
-    description: '[confluence migration] fix codeblocks',
-  },
-  {
-    value: 'confluence-cleanup',
-    name: 'Cleanup files',
-    description:
-      '[confluence migration] cleanup files from confluence boilerplate',
-  },
-  {
-    value: 'confluence-id',
+    value: STEPS.confluenceId,
     name: 'Confluence ID',
     description:
       '[confluence migration] will add the confluence id (if found) as a tag',
   },
-]; // due to "circumstances", do each step by step
+];
 
 const REGEX = {
   tagsMatch: /^tags: ?(.*)$/im,
@@ -53,6 +62,7 @@ const REGEX = {
   numOnlyFilename: /(\d{4,})\.html$/,
   fixClosingTagIssue: /<(\/?\w+)(?:\s+)>/g,
   confluenceIdTagMatch: /confluence:(\d)/,
+  externalHref: /^(https?:|\/\/|mailto:)/,
 };
 
 /**
@@ -80,47 +90,48 @@ const EMOJI_MAP = {
   ':sad:': '😥',
 };
 
-const directoryPath = process.cwd();
+const PROCESS_CWD = process.cwd();
 
 async function main() {
   const answer = await select({
     message: 'What do you want to do?',
-    choices: STEPS,
+    choices: STEP_CHOICES,
   });
 
   const files = await getHtmlFiles();
-  console.log(`Found ${files.length}x HTML files`);
+  console.log('Found', files.length, 'HTML files 🔎');
 
   switch (answer) {
-    case 'create-hierarchy':
+    case STEPS.createHierarchy:
       await setupPageHierarchy(files);
       break;
-    case 'filenames':
+    case STEPS.refreshHierarchy:
+      await refreshPageHierarchy(files);
+      break;
+    case STEPS.linkValidation:
+      await validateAllLinks(files);
+      break;
+    case STEPS.confluenceFixFilenames:
       fixFileNames(files);
       fixNumberFileNameOnly(files);
       break;
-    case 'codeblocks':
+    case STEPS.cleanupConfluenceHtml:
+      await cleanupConfluenceHtml(files);
       fixCodeBlocks(files);
       break;
-    case 'link-validation':
-      await validateAllLinks(files);
-      break;
-    case 'confluence-cleanup':
-      await cleanupConfluenceHtml(files);
-      break;
-    case 'confluence-id':
+    case STEPS.confluenceId:
       await addConfluenceCommentAsTag(files);
       break;
-    case 'NONE':
+    case STEPS.none:
     default:
-      console.log('NOOP - nothing changed');
+      console.log('NOOP - nothing changed 😴');
       return;
   }
 }
 main();
 
 async function getHtmlFiles() {
-  return (await fs.promises.readdir(directoryPath, { recursive: true })).filter(
+  return (await fs.promises.readdir(PROCESS_CWD, { recursive: true })).filter(
     (f) => !/node_modules[\\/]/.test(f) && f.endsWith('.html'),
   );
 }
@@ -129,7 +140,7 @@ async function setupPageHierarchy(files) {
   const choices = files
     .filter((f) => {
       try {
-        fs.accessSync(f.substring(0, f.length - 5));
+        fs.accessSync(f.slice(0, -5));
         return true;
       } catch (_) {
         return false;
@@ -156,8 +167,60 @@ async function setupPageHierarchy(files) {
   if (!htmlHierarchy) return;
 
   const parsedHtml = parseHtmlContent(data);
-  parsedHtml.innerHTML += htmlHierarchy;
+
+  const $hierarchies = parsedHtml.querySelectorAll('ul.widget-page-hierarchy');
+
+  if ($hierarchies.length === 0) {
+    parsedHtml.innerHTML += htmlHierarchy;
+  } else {
+    $hierarchies.at(0).replaceWith(htmlHierarchy);
+    $hierarchies.slice(1).forEach((n) => n.remove());
+  }
+
   await writeFileFormat(parsedHtml.innerHTML, filePath);
+}
+
+/**
+ *
+ * @param {string} files
+ * @returns
+ */
+async function refreshPageHierarchy(files) {
+  files = files.filter((f) => {
+    try {
+      fs.accessSync(f.slice(0, -5));
+      return true;
+    } catch (_) {
+      return false;
+    }
+  });
+
+  let refreshed = 0;
+  for (const filePath of files) {
+    const data = await fs.promises.readFile(filePath, encoding).catch((err) => {
+      console.error(err);
+      return null;
+    });
+    if (!data) throw new Error('Invalid file content!');
+
+    const parsedHtml = parseHtmlContent(data);
+    const $hierarchies = parsedHtml.querySelectorAll(
+      'ul.widget-page-hierarchy',
+    );
+
+    if ($hierarchies.length === 0) continue;
+
+    const htmlHierarchy = await createPageHierarchy(filePath);
+    if (!htmlHierarchy) return;
+
+    $hierarchies.at(0).replaceWith(htmlHierarchy);
+    $hierarchies.slice(1).forEach((n) => n.remove());
+
+    refreshed++;
+    await writeFileFormat(parsedHtml.innerHTML, filePath);
+  }
+
+  console.log('Refreshed', refreshed, 'page hierarchy widgets 🚀');
 }
 
 /**
@@ -166,47 +229,61 @@ async function setupPageHierarchy(files) {
  * @returns
  */
 async function createPageHierarchy(filePath) {
-  const rootFolderPath = filePath.substring(0, filePath.length - 5);
-  const rootFolder = rootFolderPath.split(path.sep).slice(-1);
+  const rootFolderPath = filePath.slice(0, -5);
+  const lis = await createPageHierarchyLiElements(rootFolderPath);
+  if (!lis) return null;
 
+  return `<ul class="widget-page-hierarchy"><li>${lis}</li></ul>`;
+}
+
+/**
+ *
+ * @param {string} rootFolderPath
+ * @param {string[]} subPaths optional sub path with ending forward slash
+ * @returns {Promise<string|null>}
+ */
+async function createPageHierarchyLiElements(rootFolderPath, subPaths = '') {
   const childPages = (
-    await fs.promises.readdir(rootFolderPath, {
-      recursive: true,
-    })
+    await fs.promises.readdir(rootFolderPath).catch(() => [])
   ).filter((f) => f.endsWith('.html'));
 
   if (childPages.length === 0) {
     return null;
   }
 
-  const lis = (
+  return (
     await Promise.all(
       childPages.map(async (page) => {
+        const fullPath = rootFolderPath + path.sep + page;
         const title = await fs.promises
-          .readFile(rootFolderPath + path.sep + page, encoding)
+          .readFile(fullPath, encoding)
           .then((pageData) => {
             const parsedPageHtml = parseHtmlContent(pageData);
             return /^title: (.*)$/m.exec(parsedPageHtml.innerHTML)?.[1];
           })
           .catch((err) => {
             console.error(err);
-            return page.substring(0, page.length - 5);
+            return page.slice(0, -5);
           });
 
         if (!title) {
-          console.warn('Title not found for page:', page);
+          console.warn('⚠️ Title not found for page:', page);
         }
 
-        const href = `${rootFolder}/${page
-          .substring(0, page.length - 5)
-          .split(path.sep)
-          .join('/')}`;
-        return `<a href="${href}">${title}</a>`;
+        // check if there is a subfolder
+        const subLi = await createPageHierarchyLiElements(
+          fullPath.slice(0, -5),
+          `${subPaths}${fullPath.slice(0, -5).split(path.sep).at(-1)}/`,
+        );
+
+        const href = subPaths + page.slice(0, -5).split(path.sep).join('/');
+        return (
+          `<a href="${href}">${title}</a>` +
+          (subLi ? `<ul><li>${subLi}</li></ul>` : '')
+        );
       }),
     )
   ).join('</li><li>');
-
-  return `<ul class="widget-page-hierarchy"><li>${lis}</li></ul>`;
 }
 
 /**
@@ -214,6 +291,7 @@ async function createPageHierarchy(filePath) {
  * @param {string[]} files
  */
 async function validateAllLinks(files) {
+  let invalidCounter = 0;
   for (const filePath of files) {
     const fileContent = await fs.promises
       .readFile(filePath, encoding)
@@ -230,32 +308,128 @@ async function validateAllLinks(files) {
     for (const a of aTags) {
       const href = a.getAttribute('href');
       if (!href) {
-        invalid.push({ href: '', error: 'Empty HREF!' });
+        invalid.push({ href: '', error: 'Empty HREF!', text: a.outerHTML });
         continue;
       }
 
-      if (href.startsWith('http') || href.startsWith('//')) continue; // absolute external should be okay
+      if (REGEX.externalHref.test(href)) {
+        continue; // absolute external should be okay
+      }
 
+      // anchor link ?
+      if (href.startsWith('#')) {
+        try {
+          const $anchors = parsedHtml.querySelectorAll(href);
+          if ($anchors.length === 0) {
+            invalid.push({
+              href,
+              error:
+                'No anchor id found! (Eventually selector contains invalid characters?)',
+            });
+          } else if ($anchors.length > 1) {
+            invalid.push({
+              href,
+              error: 'Multiple anchors found!',
+              amount: $anchors.length,
+            });
+          }
+        } catch (e) {
+          invalid.push({
+            href,
+            error: 'Invalid CSS selector for anchor!',
+            queryError: e.toString(),
+          });
+        }
+        continue;
+      }
+
+      const possibleFiles = [];
+      const hrefAsPath = href.replace(/\//g, path.sep).split('#')[0];
+      const anchor = href.split('#').at(1);
       if (href.startsWith('/')) {
         // absolute
-        let filePath = href.replace(/\//g, path.sep);
-        if (fs.existsSync(filePath)) continue;
-
-        if (!filePath.endsWith('.html') && fs.existsSync(`${filePath}.html`)) {
-          continue;
-        }
-        console.error(filePath, 'invalid link:', href);
+        possibleFiles.push(PROCESS_CWD + path.sep + hrefAsPath);
       } else {
         // relative
-        const rootFolderPath = filePath.substring(0, filePath.length - 5);
-        const rootFolder = rootFolderPath.split(path.sep).slice(-1);
+        const rootFolderPath = filePath.endsWith('.html')
+          ? filePath.slice(0, -5)
+          : filePath;
+
+        possibleFiles.push(
+          PROCESS_CWD + path.sep + rootFolderPath + path.sep + hrefAsPath,
+        );
+
+        // relative links also resolve to same directory, when we omit the first part, so try this as well
+        const rootFolderPathOmitted = rootFolderPath
+          .split(path.sep)
+          .slice(0, -1)
+          .join(path.sep);
+
+        possibleFiles.push(
+          PROCESS_CWD +
+            path.sep +
+            rootFolderPathOmitted +
+            path.sep +
+            hrefAsPath,
+        );
       }
+
+      const foundFile = possibleFiles.find(
+        (path) =>
+          fs.existsSync(path) ||
+          (!path.endsWith('.html') && fs.existsSync(`${path}.html`)),
+      );
+      if (foundFile) {
+        if (anchor) {
+          // check if the anchor exists!
+          try {
+            const targetFileContent = await fs.promises
+              .readFile(foundFile, encoding)
+              .catch((err) => {
+                if (!foundFile.endsWith('.html')) {
+                  return fs.promises.readFile(`${foundFile}.html`, encoding);
+                }
+                throw err;
+              });
+
+            const $anchors = parseHtmlContent(
+              targetFileContent,
+            ).querySelectorAll(`#${anchor}`);
+            if ($anchors.length === 0) {
+              invalid.push({
+                href,
+                error:
+                  'No anchor id found! (Eventually selector contains invalid characters?)',
+              });
+            } else if ($anchors.length > 1) {
+              invalid.push({
+                href,
+                error: 'Multiple anchors found!',
+                amount: $anchors.length,
+              });
+            }
+          } catch (e) {
+            invalid.push({
+              href,
+              error: 'Invalid anchor',
+              queryError: e.toString(),
+            });
+          }
+        }
+        continue;
+      }
+      invalid.push({ href, error: 'Not Found!' });
     }
 
     if (invalid.length > 0) {
+      invalidCounter += invalid.length;
       console.error('## File', filePath, 'has', invalid.length, 'link errors!');
       console.error(invalid);
     }
+  }
+
+  if (invalidCounter > 0) {
+    console.error('🚨 There are', invalidCounter, 'invalid links - fix them!');
   }
 }
 
@@ -530,7 +704,7 @@ async function cleanupConfluenceHtml(files) {
         i.attributes['data-emoji-short-name'] ?? i.attributes['alt'] ?? '';
 
       if (!EMOJI_MAP[emoji]) {
-        console.warn('Missing emoji map entry for:', emoji);
+        console.warn('⚠️ Missing emoji map entry for:', emoji);
         return;
       }
 
@@ -640,32 +814,21 @@ async function cleanupConfluenceHtml(files) {
 
     // remove some confluence / jira classes
     parsedHtml.querySelectorAll('td,th,span').forEach((n) => {
-      for (const c of n.classList.value) {
-        if (c.startsWith('jira-') || c.startsWith('jim-')) {
-          n.classList.remove(c);
-        }
-      }
-
-      if (n.classList.length === 0) {
-        n.removeAttribute('class');
-      }
+      removeClassFromNode(
+        n,
+        n.classList.value.filter(
+          (c) => c.startsWith('jira-') || c.startsWith('jim-'),
+        ),
+      );
     });
     parsedHtml.querySelectorAll('span[sort-column-key]').forEach((n) => {
       n.replaceWith(n.innerHTML);
     });
     parsedHtml.querySelectorAll('tr').forEach((n) => {
-      n.classList.remove('rowNormal');
-      n.classList.remove('rowAlternate');
-
-      if (n.classList.length === 0) {
-        n.removeAttribute('class');
-      }
+      removeClassFromNode(n, ['rowNormal', 'rowAlternate']);
     });
     parsedHtml.querySelectorAll('table').forEach((n) => {
-      n.classList.remove('aui');
-      if (n.classList.length === 0) {
-        n.removeAttribute('class');
-      }
+      removeClassFromNode(n, 'aui');
     });
 
     // ensure external links use target _blank
@@ -724,6 +887,7 @@ async function cleanupConfluenceHtml(files) {
 
     if (invalidLinks.length > 0) {
       console.warn(
+        '⚠️',
         invalidLinks.length,
         'invalid links @',
         path.sep + filePath,
@@ -848,9 +1012,16 @@ function createHtmlBanner(title, content, type) {
 /**
  *
  * @param {HTMLParser.HTMLElement} node
+ * @param {string|string} className single or array of classnames to remove
  */
 function removeClassFromNode(node, className) {
-  node.classList.remove(className);
+  if (!Array.isArray(className)) {
+    className = [className];
+  }
+
+  for (const clName of className) {
+    node.classList.remove(clName);
+  }
 
   if (node.classList.length === 0) {
     node.removeAttribute('class');
