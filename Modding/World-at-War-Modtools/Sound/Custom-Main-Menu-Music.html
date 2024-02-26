@@ -112,25 +112,21 @@ named it to &quot;garbar_loop&quot;.
   &quot;root/raw/soundaliases&quot; and create a new text file called
   &quot;menu_music.csv&quot;. Inside the file paste this:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 name,file,platform,sequence,vol_min,vol_max,dist_min,dist_max,limit_count,limit_type,entity_limit_count,entity_limit_type,bus,volume_min_falloff_curve,volumefalloffcurve,reverb_send,dist_reverb_max,reverb_min_falloff_curve,reverb_falloff_curve,pitch_min,pitch_max,randomize_type,spatialized,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,chainaliasname,startdelay,speakermap,lfe percentage,center percentage,envelop_min,envelop_max,envelop percentage,occlusion_level,occlusion_wet_dry,real_delay,distance_lpf,move_type,move_time,min_priority,max_priority,min_priority_threshold,max_priority_threshold,,isbig
 music_mainmenu,music_mainmenu\garbar_loop.wav,,,0.6,0.6,,,,,,,music,,,0,,,,,,,2d,streamed,,looping,,all_sp,,,,,,music_all,,,,,,0,,,,,,100,100,0.25,1,,
 </code></pre>
-  </div>
 </div>
 <p>Once that is done you can save the file.</p>
 <p>
   Step 3) Now we must add the sound to our mod. Open launcher and navigate to
   your mod.csv on the mod builder tab. At the bottom of the text field add:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 sound,menu_music,,all_sp
 </code></pre>
-  </div>
 </div>
 <p>
   Now check &quot;Build mod.ff fastfile&quot; and &quot;Build sounds&quot;, then

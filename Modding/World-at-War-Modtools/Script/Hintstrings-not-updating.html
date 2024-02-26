@@ -86,11 +86,9 @@ they are supposed to.
 </p>
 <h1 id="Hintstringsnotupdating-PracticalUsage">Practical Usage</h1>
 <p>Instead of using setHintString on your triggers, you need to add</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 #include maps\trem_hintstrings;</code></pre>
-  </div>
 </div>
 <p>
   to the top of any file you want to use the custom _setHintString() function
@@ -102,42 +100,34 @@ they are supposed to.
   Once you have added the above line, you simply use _setHintString() exactly as
   you would use setHintString on a trigger:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 trig _setHintString(&quot;This is a hintstring&quot;);
 trig setCursorHint(&quot;HINT_NOICON&quot;);</code></pre>
-  </div>
 </div>
 <p>
   I also suggest implementing this to the following stock scripts for maximum
   effectiveness:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 _zombiemode_blockers_new.gsc
 _zombiemode_weapons.gsc
 </code></pre>
-  </div>
 </div>
 <p>
   Simply open each of those files, add the #include line to the top of the
   files, then do a Find and Replace for &quot;setHintString&quot; to
   &quot;_setHintString&quot;. Also do a find and replace for
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 &amp;&quot;ZOMBIE_FLAMES_UNAVAILABLE&quot;</code></pre>
-  </div>
 </div>
 <p>and replace it with</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 &quot;The power must be activated first!&quot;</code></pre>
-  </div>
 </div>
 <p>
   You can also apply it to _zombiemode_perks.gsc, but you will have to replace
@@ -175,9 +165,8 @@ _zombiemode_weapons.gsc
   file, simply open your hud.menu and scroll down a small amount until you find
   this:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 // Cursor hints
 menuDef
 {
@@ -196,12 +185,10 @@ menuDef
     	decoration
     }
 }</code></pre>
-  </div>
 </div>
 <p>Replace that section with this:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 // Cursor hints
 menuDef
 {
@@ -242,13 +229,11 @@ menuDef
         decoration
     }
 }</code></pre>
-  </div>
 </div>
 <p><br /></p>
 <h1 id="Hintstringsnotupdating-SourceCode">Source Code</h1>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name		: trem_hintstrings.gsc
 //|||| Info		: Fixes hintstrings that don&#39;t update.
@@ -323,6 +308,5 @@ isLookingAtEnt(ent)
 		return true;
 	return false;
 }</code></pre>
-  </div>
 </div>
 <p>Credit: Treminaor</p>

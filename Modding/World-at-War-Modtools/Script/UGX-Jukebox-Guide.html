@@ -158,18 +158,14 @@ dateCreated: 2024-02-04T15:27:12.827Z
   </div>
 </div>
 <h3 id="UGXJukeboxGuide-PrecacheLine">Precache Line</h3>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\ugx_jukebox::jukebox_precache();</code></pre>
-  </div>
 </div>
 <h3 id="UGXJukeboxGuide-ThreadLine">Thread Line</h3>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 thread maps\ugx_jukebox::jukebox_init();</code></pre>
-  </div>
 </div>
 <h2 id="UGXJukeboxGuide-Configuration">Configuration</h2>
 <p>
@@ -178,11 +174,9 @@ thread maps\ugx_jukebox::jukebox_init();</code></pre>
   Jukebox to work, and charge 10 points per song play.
 </p>
 <h3 id="UGXJukeboxGuide-PowerNeeded">Power Needed</h3>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level.jukebox[&quot;power_needed&quot;] = false;</code></pre>
-  </div>
 </div>
 <p>
   Changing this setting to true will display a &quot;Power must be on.&quot;
@@ -190,11 +184,9 @@ level.jukebox[&quot;power_needed&quot;] = false;</code></pre>
   players from using the Jukebox until the power is on.
 </p>
 <h3 id="UGXJukeboxGuide-Cost">Cost</h3>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level.jukebox[&quot;cost&quot;] = 10;</code></pre>
-  </div>
 </div>
 <p>
   Changing this setting will change the amount of points players are charged
@@ -271,9 +263,8 @@ Jukeboxes can be placed in a single map.
     box:
   </li>
 </ul>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 sound,ugx_jukebox_music,,all_sp
 xmodel,jukebox_on
 weapon,sp/jukebox_button_press
@@ -285,7 +276,6 @@ xanim,jukebox_start_anim
 xanim,jukebox_end_anim
 xanim,jukebox_loop_anim
 </code></pre>
-  </div>
 </div>
 <p>
   Check the box for
@@ -300,16 +290,14 @@ xanim,jukebox_loop_anim
   <strong>image files</strong>
   in the files list on the right side:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 jukebox_scroll.iwi
 ~jukebox_s_extra-rgbl-11.iwi
 jukebox.iwi
 jukebox_bg.iwi
 jukebox_n.iwi
 </code></pre>
-  </div>
 </div>
 <p>
   Check the box for
@@ -351,14 +339,12 @@ jukebox_n.iwi
   defined on line 19. There is a function called add_song() which adds songs to
   the Jukebox and its menu.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 add_song(display_name, soundalias_name)
 {
 	level.jukebox[&quot;songs&quot;][display_name][&quot;name&quot;] = soundalias_name;
 }</code></pre>
-  </div>
 </div>
 <p>
   The first argument is the song's display name which shows on the Jukebox menu.
@@ -399,10 +385,8 @@ add_song(display_name, soundalias_name)
   unlocks a new song in the Jukebox! It's up to you to code these events,
   obviously. Here is an example function call:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 thread maps\ugx_jukebox::add_song(&quot;Victory Song&quot;, &quot;victory&quot;);</code></pre>
-  </div>
 </div>
 <p>Credit: Treminaor</p>

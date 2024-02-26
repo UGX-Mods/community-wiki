@@ -68,34 +68,28 @@ dateCreated: 2024-02-04T15:25:13.858Z
   , although Windows Notepad will suffice.
 </p>
 <p>Find the line:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();</code></pre>
-  </div>
 </div>
 <p>Add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 plane = getEnt(&quot;plane&quot;,&quot;targetname&quot;);
 maps\_planeweapons::build_bomb_explosions( &quot;corsair&quot;, 1, 2, 1024, 768, 2000, 2000 );
 maps\_planeweapons::build_bombs( &quot;corsair&quot;, &quot;aircraft_bomb&quot;, &quot;explosions/fx_mortarExp_dirt&quot;, &quot;tank_impact_full&quot; );
 plane maps\_planeweapons::bomb_init( 25 );
 level._effect[&quot;corsair_prop_full&quot;] = loadFX(&quot;vehicle/props/fx_corsair_prop_spin&quot;);</code></pre>
-  </div>
 </div>
 <p>immediately above it. It should look like:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 plane = getEnt(&quot;plane&quot;,&quot;targetname&quot;);
 maps\_planeweapons::build_bomb_explosions( &quot;corsair&quot;, 1, 2, 1024, 768, 2000, 2000 );
 maps\_planeweapons::build_bombs( &quot;corsair&quot;, &quot;aircraft_bomb&quot;, &quot;explosions/fx_mortarExp_dirt&quot;, &quot;tank_impact_full&quot; );
 plane maps\_planeweapons::bomb_init( 25 );
 level._effect[&quot;corsair_prop_full&quot;] = loadFX(&quot;vehicle/props/fx_corsair_prop_spin&quot;);
 maps\_zombiemode::main();</code></pre>
-  </div>
 </div>
 <h3 id="Airstrike-Sound">Sound</h3>
 <p>
@@ -114,13 +108,11 @@ maps\_zombiemode::main();</code></pre>
   <br />
   Paste this code inside and save the file:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 name,file,platform,sequence,vol_min,vol_max,dist_min,dist_max,limit_count,limit_type,entity_limit_count,entity_limit_type,bus,volume_min_falloff_curve,volumefalloffcurve,reverb_send,dist_reverb_max,reverb_min_falloff_curve,reverb_falloff_curve,pitch_min,pitch_max,randomize_type,spatialized,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,chainaliasname,startdelay,speakermap,lfe percentage,center percentage,envelop_min,envelop_max,envelop percentage,occlusion_level,occlusion_wet_dry,real_delay,distance_lpf,move_type,move_time,min_priority,max_priority,min_priority_threshold,max_priority_threshold,,isbig
 ambient_corsair,amb_corsair_01.wav,,,1,1,,,,,,,music,,,0,,,,,,,2d,streamed,,,,,,,,,,music_all,,,,,,0,,,,,,100,100,0.25,1,,
 </code></pre>
-  </div>
 </div>
 <p>
   Next, you must place
@@ -133,12 +125,10 @@ ambient_corsair,amb_corsair_01.wav,,,1,1,,,,,,,music,,,0,,,,,,,2d,streamed,,,,,,
   Then, open Launcher and go to the Mods tab. Select your Mod in the list, then
   add:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 sound,plane_sound,,all_sp
 </code></pre>
-  </div>
 </div>
 <p>
   to the top of the mod.ff box. Check Build FF and Build Sounds, then click
@@ -160,16 +150,14 @@ sound,plane_sound,,all_sp
   Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.
 </p>
 <p>Add this anywhere in the file:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 fx,explosions/fx_mortarExp_dirt
 fx,vehicle/props/fx_corsair_prop_spin
 rawfile,maps/_planeweapons.gsc
 xmodel,aircraft_bomb
 material,mtl_aircraft_bomb
 </code></pre>
-  </div>
 </div>
 <h3 id="Airstrike-Function(updated)">Function (updated)</h3>
 <p>
@@ -179,9 +167,8 @@ material,mtl_aircraft_bomb
   root/raw/maps/mapname.gsc. Open it with the usual text editor.
 </p>
 <p>Here is an example function for a bombing run:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 bomb_run()
 {
     plane = getEnt(&quot;plane&quot;,&quot;targetname&quot;);
@@ -260,19 +247,16 @@ corsair_spin_prop()
 		wait(0.1);
 	}
 }</code></pre>
-  </div>
 </div>
 <p>
   <br />
   Note that there are 25 instances of 'plane notify(&quot;drop_bombs&quot;); -
   this must match what you set previously in your mapname.gsc, the line:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 plane maps\_planeweapons::bomb_init( 25 );
 </code></pre>
-  </div>
 </div>
 <p>
   You can also adjust the time in between bomb drops by increasing the wait time
@@ -283,9 +267,8 @@ plane maps\_planeweapons::bomb_init( 25 );
   occurrence. I will show you how to do the latter.
 </p>
 <p>Here is a simple function for a buyable trigger:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 bomb_run_trig()
 {
 	trigger = getEnt(&quot;bomb_run_trig&quot;,&quot;targetname&quot;);
@@ -308,7 +291,6 @@ bomb_run_trig()
 			player playsound(&quot;no_cha_ching&quot;);
 	}
 }</code></pre>
-  </div>
 </div>
 <p>
   Create a file in root/mods/mapname/maps/ called
@@ -319,32 +301,26 @@ bomb_run_trig()
   includes.
 </p>
 <p>Open root/raw/maps/mapname.gsc with the usual text editor and add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 thread maps\bomb_run::bomb_run_trig();
 </code></pre>
-  </div>
 </div>
 <p>
   immediately below:
   <br />
   Find the line:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();</code></pre>
-  </div>
 </div>
 <p>so that it looks like:</p>
 <p>Find the line:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();
 thread maps\bomb_run::bomb_run_trig();</code></pre>
-  </div>
 </div>
 <h1 id="Airstrike-Radiant">Radiant</h1>
 <p>Now you must do the necessary steps in Radiant.</p>
@@ -464,9 +440,8 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
 <p>Compile your map, patch (if you have one), and mod.</p>
 <h1 id="Airstrike-Source">Source</h1>
 <h2 id="Airstrike-bomb_run.gsc">bomb_run.gsc</h2>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name   : bomb_run.gsc
 //|||| Info     : script for bombing runs
@@ -580,7 +555,6 @@ corsair_spin_prop()
 		wait(0.1);
 	}
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>Credit: Treminaor</p>

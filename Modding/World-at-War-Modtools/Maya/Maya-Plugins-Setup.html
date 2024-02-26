@@ -16,18 +16,14 @@ dateCreated: 2024-02-04T15:26:27.984Z
 <h2 id="MayaPluginsSetup-Installation">Installation</h2>
 <hr />
 <p>To start off, you need to set up the</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 usersetup.mel</code></pre>
-  </div>
 </div>
 <p>and</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maya.env</code></pre>
-  </div>
 </div>
 <p>files so Maya can find our tools.</p>
 <p>
@@ -39,70 +35,56 @@ maya.env</code></pre>
   he maya.env file creates the environment variables to point to the locations
   of plugins and scripts located in the tree, and should be put in
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 My Documents\maya\*VERSION*</code></pre>
-  </div>
 </div>
 <p>
   (*VERSION* = 7.0, 8.0 or 8.5)
   <br />
   Example paths are:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 MAYA_SCRIPT_PATH = C:\Program Files (x86)\Activision\Call of Duty - World at War\bin\maya
 MAYA_PLUG_IN_PATH = C:\Program Files (x86)\Activision\Call of Duty - World at War\bin\maya\Maya8_Plugins</code></pre>
-  </div>
 </div>
 <p>If you use Steam, example paths would be:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 MAYA_SCRIPT_PATH = C:\Program Files (x86)\Steam\steamapps\cod waw\bin\maya
 MAYA_PLUG_IN_PATH = C:\Program Files (x86)\Steam\steamapps\cod waw\bin\maya\Maya8_Plugins</code></pre>
-  </div>
 </div>
 <p>
   These will tell Maya to look here for our plugins and scripts.
   <br />
   Don't forget to unzip the appropriate MLL scripts, either
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 Maya7_Plugins.zip</code></pre>
-  </div>
 </div>
 <p>or</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 Maya8_Plugins.zip</code></pre>
-  </div>
 </div>
 <p>
   The usersetup.mel file will tell Maya what to add on startup of Maya. This
   invokes the startup of our 'COD Tools' menu. Create a new plaintext document
   called &quot;usersetup.mel&quot; at the path specified below.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 My Documents\maya\&#39;&#39;VERSION&#39;&#39;\scripts\usersetup.mel</code></pre>
-  </div>
 </div>
 <p>Copy the following code into the file and save it.</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 source CODToolsMenu;
 CODStartup;
 CODToolsMenu;
 </code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>Credit: CustomCOD Wiki</p>

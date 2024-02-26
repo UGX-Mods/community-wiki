@@ -291,6 +291,8 @@ $color-success: #5cb85c;
 $color-warning: #f0ad4e;
 $color-danger: #d9534f;
 
+$color-main-dark: #1a4067;
+
 $color-white: #fff;
 $color-black: #000;
 $color-banner-bg: #111;
@@ -342,6 +344,13 @@ $color-banner-bg: #111;
         padding-top: 0;
       }
     }
+  }
+
+  .widget-panel {
+    padding: 5px;
+    border: 1px solid $color-main-dark;
+    border-radius: 5px;
+    margin-top: 10px;
   }
 }
 

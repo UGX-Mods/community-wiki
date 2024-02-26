@@ -71,20 +71,18 @@ dateCreated: 2024-02-04T15:27:07.788Z
   <br />
   Copy these files to the following locations:
 </p>
-<div class="panel" style="border-width: 1px">
-  <div class="panelContent">
-    <p>
-      trem_bank_2.gsc -&gt; root\mods\MAPNAME\maps
-      <br />
-      trem_bank_mouse.menu -&gt; root\raw\ui\scriptmenus
-      <br />
-      trem_bank_keyboard -&gt; root\raw\ui\scriptmenus
-      <br />
-      images/trem_bank_bg.iwi -&gt; root\mods\MAPNAME\images
-      <br />
-      materials/trem_bank_bg -&gt; root\raw\materials\
-    </p>
-  </div>
+<div class="widget-panel">
+  <p>
+    trem_bank_2.gsc -&gt; root\mods\MAPNAME\maps
+    <br />
+    trem_bank_mouse.menu -&gt; root\raw\ui\scriptmenus
+    <br />
+    trem_bank_keyboard -&gt; root\raw\ui\scriptmenus
+    <br />
+    images/trem_bank_bg.iwi -&gt; root\mods\MAPNAME\images
+    <br />
+    materials/trem_bank_bg -&gt; root\raw\materials\
+  </p>
 </div>
 <h1 id="Trembank-Setup">Setup</h1>
 <h2 id="Trembank-Radiant">Radiant</h2>
@@ -129,14 +127,12 @@ dateCreated: 2024-02-04T15:27:07.788Z
   In the textbox below the dropdown box, add this to the top or bottom of the
   list:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 menufile,ui/scriptmenus/trem_bank_mouse.menu
 menufile,ui/scriptmenus/trem_bank_keyboard.menu
 material,trem_bank_bg
 </code></pre>
-  </div>
 </div>
 <h2 id="Trembank-IWD">IWD</h2>
 <p>
@@ -153,50 +149,40 @@ material,trem_bank_bg
   , although Windows Notepad will suffice.
 </p>
 <p>Find:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();
 </code></pre>
-  </div>
 </div>
 <p>and add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 precacheMenu(&quot;trem_bank_mouse&quot;);
 precacheMenu(&quot;trem_bank_keyboard&quot;);
 </code></pre>
-  </div>
 </div>
 <p>immediately before 'maps_zombiemode::main();'. It should look like:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 precacheMenu(&quot;trem_bank_mouse&quot;);
 precacheMenu(&quot;trem_bank_keyboard&quot;);
 maps\_zombiemode::main();
 </code></pre>
-  </div>
 </div>
 <p>Then add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level thread maps\trem_bank_2::bank();
 </code></pre>
-  </div>
 </div>
 <p>immediately after 'maps_zombiemode::main();'. It should look like:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 precacheMenu(&quot;trem_bank_mouse&quot;);
 precacheMenu(&quot;trem_bank_keyboard&quot;);
 maps\_zombiemode::main();
 level thread maps\trem_bank_2::bank();
 </code></pre>
-  </div>
 </div>
 <h2 id="Trembank-Customization">Customization</h2>
 <p>There are numerous settings available for trem_bank_2. They are:</p>
@@ -242,9 +228,8 @@ level thread maps\trem_bank_2::bank();
 </p>
 <h1 id="Trembank-Source">Source</h1>
 <h2 id="Trembank-trem_bank_2.gsc">trem_bank_2.gsc</h2>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name    : trem_bank_2.gsc
 //|||| Info   	 : This is a bank system where players can deposit and withdraw points from one global total. I am aware this idea has been toyed with many times by many people, but I don&#39;t care as I wanted to make my own. This is completely and totally my code, and has not been ripped/taken from anyone else&#39;s code that I have seen or used.
@@ -389,6 +374,5 @@ watch_bank_dvar()
 		wait 0.5;
 	}
 }</code></pre>
-  </div>
 </div>
 <p>Credit: Treminaor</p>

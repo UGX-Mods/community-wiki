@@ -74,61 +74,58 @@ dateCreated: 2024-02-04T15:27:47.318Z
   </li>
 </ol>
 <h2 id="ZiplineIn1.4StyleMaps-CallingtheZipline">Calling the Zipline</h2>
-<p>
-  <div class="banner banner-tip">
-    <img
-      src="/attachments/icons/check-decagram.png"
-      alt=""
-      class="banner-icon" />
+<p></p>
+<div class="banner banner-tip">
+  <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
 
-    <div class="banner-body">
-      <p>
-        <strong>NOTE:</strong>
-        <strong>&quot;mapname.gsc&quot;</strong>
-        refers to your map's main gsc file, which is named the same name as
-        your map.
-      </p>
-      <p>
-        For example, a map called &quot;nazi_zombie_example&quot; would have a
-        mapname.gsc named &quot;nazi_zombie_example.gsc&quot;. This file is
-        commonly used to call custom scripts for a map.
-      </p>
-      <p>
-        Lines which precache items such as models need to be called BEFORE the
-        gamestate starts and should not be threaded. Lines which do not
-        precache any items should be called AFTER the gamestate starts and
-        should be threaded.
-      </p>
-      <p>
-        <strong>The gamestate is started by this line in mapname.gsc:</strong>
-      </p>
-      <div class="mw-geshi">
-        <div class="cpp source-cpp">
-          <pre
-            class="de1">maps\_zombiemode<span class="sy4">::</span><span class="me2">main</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></pre>
-        </div>
+  <div class="banner-body">
+    <p>
+      <strong>NOTE:</strong>
+      <strong>&quot;mapname.gsc&quot;</strong>
+      refers to your map's main gsc file, which is named the same name as your
+      map.
+    </p>
+    <p>
+      For example, a map called &quot;nazi_zombie_example&quot; would have a
+      mapname.gsc named &quot;nazi_zombie_example.gsc&quot;. This file is
+      commonly used to call custom scripts for a map.
+    </p>
+    <p>
+      Lines which precache items such as models need to be called BEFORE the
+      gamestate starts and should not be threaded. Lines which do not precache
+      any items should be called AFTER the gamestate starts and should be
+      threaded.
+    </p>
+    <p>
+      <strong>The gamestate is started by this line in mapname.gsc:</strong>
+    </p>
+    <div class="mw-geshi">
+      <div class="cpp source-cpp">
+        <pre
+          class="de1">maps\_zombiemode<span class="sy4">::</span><span class="me2">main</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></pre>
       </div>
-      <p><strong>To add lines to your mapname.gsc:</strong></p>
-      <ul>
-        <li>
-          Open your mapname.gsc file, which can be found in
-          <strong>root/mods/mapname/maps</strong>
-          .
-        </li>
-        <li>
-          For Precache Lines, add them
-          <strong>before</strong>
-          the gamestate line.
-        </li>
-        <li>
-          For Thread Lines, add them
-          <strong>after</strong>
-          the gamestate line.
-        </li>
-      </ul>
     </div>
+    <p><strong>To add lines to your mapname.gsc:</strong></p>
+    <ul>
+      <li>
+        Open your mapname.gsc file, which can be found in
+        <strong>root/mods/mapname/maps</strong>
+        .
+      </li>
+      <li>
+        For Precache Lines, add them
+        <strong>before</strong>
+        the gamestate line.
+      </li>
+      <li>
+        For Thread Lines, add them
+        <strong>after</strong>
+        the gamestate line.
+      </li>
+    </ul>
   </div>
-</p>
+</div>
+
 <ul>
   <li>
     <p>
@@ -136,11 +133,9 @@ dateCreated: 2024-02-04T15:27:47.318Z
       <code>Notepad</code>
       and add the following thread line:
     </p>
-    <div class="code panel pdl" style="border-width: 1px">
-      <div class="codeContent panelContent pdl">
-        <pre><code class="language-cpp">
+    <div class="widget-panel widget-code-panel">
+      <pre><code class="language-cpp">
 thread maps\nazi_zombie_sumpf_zipline::initZipline();</code></pre>
-      </div>
     </div>
   </li>
 </ul>

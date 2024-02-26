@@ -160,9 +160,8 @@ dateCreated: 2024-02-04T15:25:51.897Z
   Add the following code to the beginning or end of the text inside the mod.ff
   box. Then Build MOD with IWD and FF checked.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre>
+<div class="widget-panel widget-code-panel">
+  <pre>
       <code class="language-cs">
 fx,env/fire/fx_fire_brush_smolder_sm
 fx,env/fire/fx_fire_detail_fade_14
@@ -182,7 +181,6 @@ fx,explosions/fx_default_explosion
 fx,explosions/tank_impact_dirt
 fx,maps/zombie/fx_zombie_wire_spark
 </code></pre>
-  </div>
 </div>
 <p>
   <strong>Note:</strong>
@@ -202,53 +200,41 @@ fx,maps/zombie/fx_zombie_wire_spark
   , although Windows Notepad will suffice.
 </p>
 <p>Find the line:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();</code></pre>
-  </div>
 </div>
 <p>Add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre>
+<div class="widget-panel widget-code-panel">
+  <pre>
       <code class="language-cs">
 thread maps\ugx_easy_fx::fx_start();</code></pre>
-  </div>
 </div>
 <p>immediately below the 'maps\_zombiemode::main();' line.</p>
 <p>It should look like this:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();
 thread maps\ugx_easy_fx::fx_start();</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>Next, add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\ugx_easy_fx::fx_setup();</code></pre>
-  </div>
 </div>
 <p>right above the lines:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();
 thread maps\ugx_easy_fx::fx_start();</code></pre>
-  </div>
 </div>
 <p>It should look like:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\ugx_easy_fx::fx_setup();
 maps\_zombiemode::main();
 level thread maps\ugx_easy_fx::fx_start();</code></pre>
-  </div>
 </div>
 <h2 id="EasyFX-IWD">IWD</h2>
 <p>
@@ -263,9 +249,8 @@ level thread maps\ugx_easy_fx::fx_start();</code></pre>
 </p>
 <h1 id="EasyFX-FXandLooping">FX and Looping</h1>
 <p>Here is a list of available out-of-the-box fx:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 Looping:
 fire1
 fire2
@@ -287,12 +272,10 @@ One-Shot:
 explosion1
 explosion2
 </code></pre>
-  </div>
 </div>
 <p>List of usages:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 use
 use_loop
 touch
@@ -300,7 +283,6 @@ touch_loop
 stationary
 stationary_loop
 </code></pre>
-  </div>
 </div>
 <h2 id="EasyFX-LoopingOne-ShotFX">Looping One-Shot FX</h2>
 <p>
@@ -355,9 +337,8 @@ stationary_loop
 </p>
 <p>Find the function 'fx_setup()'. It looks like this:</p>
 <p>&nbsp;</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 fx_setup() //This is where the FX are precached. Any FX you want to use must be added to your mapname_patch.csv as well as listed below.
 {
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -415,15 +396,12 @@ fx_setup() //This is where the FX are precached. Any FX you want to use must be 
 	//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 	//Do not edit or add anything below this line.
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>The syntax for adding fx to the script is as follows:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level._effect[&quot;alias&quot;] 			= loadFX(&quot;path/to/fx/name&quot;);</code></pre>
-  </div>
 </div>
 <p>
   where 'alias' is a custom personal name to refer to the fx in script, and
@@ -445,12 +423,10 @@ level._effect[&quot;alias&quot;] 			= loadFX(&quot;path/to/fx/name&quot;);</code
   Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.
 </p>
 <p>The format for fx include lines is as follows:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 fx,filelocation
 </code></pre>
-  </div>
 </div>
 <p>
   where 'filelocation' is the location of the fx within raw/fx/. See
@@ -513,27 +489,22 @@ fx,filelocation
   errors when you forgot or mistyped a KvP on a script_struct or trigger. To
   turn off these prints, find:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level.fx_debug = 1;</code></pre>
-  </div>
 </div>
 <p>and change it to:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level.fx_debug = undefined;</code></pre>
-  </div>
 </div>
 <p>
   FX that have sounds need the sounds included in your mod in order for them to
   be played. This is not covered in this tutorial.
 </p>
 <h1 id="EasyFX-Source">Source</h1>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name   : ugx_fx.gsc
 //|||| Info     : Easiest way to implement FX in your map.
@@ -801,7 +772,6 @@ triggered_use_fx(loop) //These are triggered FX. They are triggered when the pla
 		PlayFxOnTag( level._effect[fx], self.fx, fxTag );
 }
  </code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>

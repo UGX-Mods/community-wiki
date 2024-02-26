@@ -114,11 +114,9 @@ dateCreated: 2024-02-04T15:25:03.376Z
   Open your _zombiemode.gsc and around line 60-70 you'll see similar line's, add
   this one:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_blst_achievements::init();</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <hr />
@@ -127,11 +125,9 @@ maps\_blst_achievements::init();</code></pre>
   to include the stringtable-csv in your mod, add this line to the mod.csv in
   your mod-builder-tab on launcher;
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 stringtable,mp/my_achievements.csv</code></pre>
-  </div>
 </div>
 <hr />
 <p>4.</p>
@@ -190,11 +186,9 @@ stringtable,mp/my_achievements.csv</code></pre>
   to add every achievement you want to use in your map here.
 </p>
 <p>this is an example of a line from that file:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 1,kills_all,kills_all_1,Kill 10 zombies,2105,10,250,specialty_juggernaut_zombies,</code></pre>
-  </div>
 </div>
 <p>
   In the following order ( the bold text between the braces refers to the
@@ -315,11 +309,9 @@ stringtable,mp/my_achievements.csv</code></pre>
   setup the achievements. If you want a sound to play when a player unlocks an
   achievement, change it in this line:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level.achievement_sound = &quot;none&quot;;</code></pre>
-  </div>
 </div>
 <p>
   Next to tell the script wich achievements to add, copy this line once for
@@ -327,11 +319,9 @@ level.achievement_sound = &quot;none&quot;;</code></pre>
   for every achievement you want to add ( &quot;kills_all_1&quot; in the example
   below )
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level.custom_achievements[level.custom_achievements.size] = &quot;kills_all_1&quot;;</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <hr />
@@ -343,11 +333,9 @@ level.custom_achievements[level.custom_achievements.size] = &quot;kills_all_1&qu
   box-script, and make the game count the stats.
 </p>
 <p>You can do that by adding the following line in a script:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 self maps\_blst_achievements::add_to_my_stat( &quot;use_box_5_times&quot;, 1 );</code></pre>
-  </div>
 </div>
 <p>
   In this line 'self' is the player! You need to fill in the correct achievement

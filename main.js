@@ -933,6 +933,50 @@ async function cleanupConfluenceHtml(files) {
       $pagetree.replaceWith(await createPageHierarchy(filePath));
     }
 
+    parsedHtml.querySelectorAll('div.preformatted.panel').forEach(($panel) => {
+      const $panelContent = $panel.querySelector('.panelContent');
+      if ($panelContent) {
+        $panel.replaceWith(
+          `<div class="widget-panel pre-formatted">${$panelContent.innerHTML}</div>`,
+        );
+      }
+    });
+
+    // replace code panel with spoiler or remove completely
+    parsedHtml.querySelectorAll('div.panel:not(.code)').forEach(($panel) => {
+      const $panelContent = $panel.querySelector('.panelContent');
+      if (!$panelContent) {
+        return;
+      }
+
+      $panel.replaceWith(
+        `<div class="widget-panel">${$panelContent.innerHTML}</div>`,
+      );
+    });
+
+    parsedHtml.querySelectorAll('div.code.panel').forEach(($panel) => {
+      const $codeContent = $panel.querySelector('.codeContent');
+      if (!$codeContent) {
+        return;
+      }
+
+      const $codeHeader = $panel.querySelector('.codeHeader');
+      if (!$codeHeader) {
+        // replace with simple widget
+        $panel.replaceWith(
+          `<div class="widget-panel widget-code-panel">${$codeContent.innerHTML}</div>`,
+        );
+        return;
+      }
+
+      $panel.replaceWith(
+        `<div class="expandable-container widget-code-panel">
+          <button class="expandable-button" type="button">Expand source...</button>
+          <div class="expandable-content">${$codeContent.innerHTML}</div>
+        </div>`,
+      );
+    });
+
     // try to fix invalid wiki links from confluence id to correct wikijs path
     let invalidLinks = parsedHtml
       .querySelectorAll('a')

@@ -103,9 +103,8 @@ dateCreated: 2024-02-04T15:26:51.898Z
   </strong>
 </p>
 <p>Example of comment and strings syntax:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 code; //this is a comment. Comments do not affect the flow of code and are there solely for either your benefit or to explain code to others that view it later.
 code;
 /*
@@ -118,32 +117,26 @@ string = &quot;spoons&quot;; //this is a string stored in a variable called &#39
 
 code;
 code;</code></pre>
-  </div>
 </div>
 <p>Example of array syntax:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 group = []; //declares a variable as an array.
 group[0] = &quot;spoon&quot;; //stores the string &quot;spoon&quot; as the first value of the array.</code></pre>
-  </div>
 </div>
 <p>Example of function syntax:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 self thread function();
 
 function()
 {
 	code;
 }</code></pre>
-  </div>
 </div>
 <p>Example of logic statement syntax:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 while(1)
 {
 	code;
@@ -153,7 +146,6 @@ if(1 == 1)
 {
 	code;
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h1 id="ScriptingGuide-Variables">Variables</h1>
@@ -180,9 +172,8 @@ if(1 == 1)
   <br />
   Example:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 intelligence = 27; //I have declared (created) a variable called &#39;intelligence&#39; and have stored the number 27 in it.
 
 IQ = intelligence; //Here I have declared another new variable &#39;IQ&#39; and assigned the value of &#39;intelligence&#39; to be stored in it (27).
@@ -190,7 +181,6 @@ IQ = intelligence; //Here I have declared another new variable &#39;IQ&#39; and 
 height = 6;
 
 height = intelligence; //Here I have REASSIGNED the value of &#39;height&#39; from 6 to 27. Note that my declaration was on the left, and my new value was on the right.</code></pre>
-  </div>
 </div>
 <p>
   Variables can be accessed an infinite amount of times
@@ -210,9 +200,8 @@ height = intelligence; //Here I have REASSIGNED the value of &#39;height&#39; fr
   : A variable within a variable (inception!).
 </p>
 <p>Example of passing a variable:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 get_intelligence()
 {
 	IQ = 27;
@@ -222,13 +211,11 @@ process_intelligence(number)
 {
 	iPrintLn(number); //Value of number is still 27
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>Example of globalizing a variable:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 get_intelligence()
 {
 	level.IQ = 27;
@@ -238,7 +225,6 @@ process_intelligence()
 {
 	iPrintLn(level.IQ); //Value is still 27
 }</code></pre>
-  </div>
 </div>
 <h2 id="ScriptingGuide-self">self</h2>
 <p>
@@ -246,16 +232,14 @@ process_intelligence()
   script you've read. What is self? What is its purpose? Well little Timmy, self
   refers to whatever object a function has been called on. For instance,
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 trigger = getEnt(&quot;trigger&quot;,&quot;targetname&quot;);
 trigger setup();
 setup()
 {
 	self setHintString(&quot;Guess what self is!&quot;); //Good job, little Timmy! Self refers to the ent stored in the trigger variable, which this function was called on!
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h2 id="ScriptingGuide-Arrays">Arrays</h2>
@@ -276,22 +260,19 @@ setup()
   the same block of code without using an array. I will throw a lot of code in
   there but just focus on the point, which is line count and syntax.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 boxes = getEntArray(&quot;money_box&quot;,&quot;targetname&quot;); //There are 15 boxes on the level, and this finds them all and puts them into an array (boxes[]).
 //Notice I didn&#39;t have to declare boxes as an array first. This is because getEntArray() does this for me.
 for(i=0;i&lt;boxes.size;i++)
 {
 	boxes[i] thread box_setup();
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>Without arrays:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 boxes = getEntArray(&quot;money_box&quot;,&quot;targetname&quot;); //There are 15 boxes on the level, and this finds them all and puts them into an array (boxes[]).
 boxes[0] thread box_setup();
 boxes[1] thread box_setup();
@@ -308,7 +289,6 @@ boxes[11] thread box_setup();
 boxes[12] thread box_setup();
 boxes[13] thread box_setup();
 boxes[14] thread box_setup(); //wow that was long and annoying. And it looks like crap D:</code></pre>
-  </div>
 </div>
 <h2 id="ScriptingGuide-WorkingwithStrings">Working with Strings</h2>
 <p>There are a few key points to go over with strings.</p>
@@ -317,15 +297,13 @@ boxes[14] thread box_setup(); //wow that was long and annoying. And it looks lik
   : Joining two strings together to form one line of text.
 </p>
 <p>Example:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 first = &quot;John&quot;;
 last = &quot;Doe&quot;;
 name = first+last; //Value of name is &quot;JohnDoe&quot;
 
 iPrintLn(&quot;Hello, my name is &quot;+name+&quot;. Again, my last name is &quot;+last+&quot;.); //Would print &quot;Hello, my name is JohnDoe. Again, my last name is Doe.&quot;</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>
@@ -339,15 +317,13 @@ iPrintLn(&quot;Hello, my name is &quot;+name+&quot;. Again, my last name is &quo
   value for math purposes. There is no str().
 </p>
 <p>Example:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 weapon = &quot;zombie_kar98k_2&quot;;
 weapon_name = getSubStr(weapon, 6, 12); //Value of &#39;weapon_name&#39; is &quot;kar98k&quot;
 weapon_name = getSubStr(weapon, 6); //Value of &#39;weapon_name&#39; is &quot;kar98k_2&quot;
 number = &quot;100&quot;;
 number_int = int(number); //Value of &#39;number&#39; is now 100. This is not the same as &quot;100&quot;.</code></pre>
-  </div>
 </div>
 <h2 id="ScriptingGuide-Math">Math</h2>
 <p>
@@ -403,9 +379,8 @@ number_int = int(number); //Value of &#39;number&#39; is now 100. This is not th
 </p>
 <p>&nbsp;</p>
 <p>Examples:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 number = 2+2; //4
 number = 2-2; //0
 number = 2*2; //4
@@ -423,7 +398,6 @@ number--; //number = 0
 number -= 10; //number = -10
 
 if(1 == 1) //true</code></pre>
-  </div>
 </div>
 <h1 id="ScriptingGuide-Functions">Functions</h1>
 <p>
@@ -432,14 +406,12 @@ if(1 == 1) //true</code></pre>
 </p>
 <h2 id="ScriptingGuide-MakingaFunction">Making a Function</h2>
 <p>Functions have the following syntax:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 functionname(optional_arg1,optional_arg2, etc)
 {
     code_or_logic;
 }</code></pre>
-  </div>
 </div>
 <p>
   <br />
@@ -475,9 +447,8 @@ functionname(optional_arg1,optional_arg2, etc)
   out and make your own conclusions.
 </p>
 <p>Example of a return statement with a passing variable:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 number = get_number();
 iPrintLn(number); //Would print 2
 get_number()
@@ -486,7 +457,6 @@ get_number()
     x = 2;
     return x;
 }</code></pre>
-  </div>
 </div>
 <p>
   <strong>
@@ -551,11 +521,9 @@ get_number()
   <strong>without</strong>
   #including them at the top of your script. The way you do this is as follows:*
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 mapsscriptname::functionname(optional_args);</code></pre>
-  </div>
 </div>
 <p>
   They work just like normal functions (for example, you can still assign a
@@ -574,9 +542,8 @@ mapsscriptname::functionname(optional_args);</code></pre>
   Say I want to have a door that waits until the player walks up to it before it
   opens.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 door_trigger_wait()
 {
 	door = getEnt(&quot;door&quot;,&quot;targetname&quot;);
@@ -587,16 +554,14 @@ door_trigger_wait()
 		door_open(door, player); //passes the door and player to a different function to continue the logic.
 	}
 }</code></pre>
-  </div>
 </div>
 <p>
   <br />
   You can also have while() loops that will end once a certain thing is true or
   false. For instance:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 door_trigger_wait()
 {
 	door = getEnt(&quot;door&quot;,&quot;targetname&quot;);
@@ -607,16 +572,14 @@ door_trigger_wait()
 		door_open(door, player);
 	}
 }</code></pre>
-  </div>
 </div>
 <p>
   <br />
   For() loops can also be indefinite, but that is not their primary use. This
   for() loop provides the same functionality as it did above with while():
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 door_trigger_wait()
 {
     door = getEnt(&quot;door&quot;,&quot;targetname&quot;);
@@ -627,7 +590,6 @@ door_trigger_wait()
         door_open(door, player);
     }
 }</code></pre>
-  </div>
 </div>
 <p>
   <br />
@@ -655,14 +617,12 @@ door_trigger_wait()
   contains a numerical value from 0 to the size of the array:
 </p>
 <p>&nbsp;</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 for(variable=0;variable&lt;array.size;variable++)
 {
 	arrayvariable code;
 }</code></pre>
-  </div>
 </div>
 <p>
   This loop will run the same code over and over for each item stored in the

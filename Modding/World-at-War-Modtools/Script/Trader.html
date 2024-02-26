@@ -126,44 +126,34 @@ script and your csv's.
   you prefer, although Windows Notepad will suffice.
 </p>
 <p>Find the line:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();</code></pre>
-  </div>
 </div>
 <p>Add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level thread maps\ugx_upgrader_ammo::init();</code></pre>
-  </div>
 </div>
 <p>immediately below the 'maps_zombiemode::main();' line</p>
 <p>and add:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 precacheMenu(&quot;ugx_upgrader&quot;);
 precacheShader(&quot;trader_bg&quot;);</code></pre>
-  </div>
 </div>
 <p>right before</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();</code></pre>
-  </div>
 </div>
 <p>It should look like this:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 precacheMenu(&quot;ugx_upgrader&quot;);
 precacheShader(&quot;trader_bg&quot;);
 maps\_zombiemode::main();
 level thread maps\ugx_upgrader_ammo::init();</code></pre>
-  </div>
 </div>
 <p>
   Copy dlc3_code.gsc and _zombiemode_weapons.gsc from your root/raw/maps folder
@@ -180,9 +170,8 @@ level thread maps\ugx_upgrader_ammo::init();</code></pre>
   entire include_weapons() function, and replace it with this:
 </p>
 <p>&nbsp;</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 include_weapons()
 {
 include_weapon( &quot;zombie_colt&quot; );
@@ -360,7 +349,6 @@ include_weapon( &quot;panzerschrek_zombie&quot; );
 include_weapon( &quot;ray_gun&quot;);
 
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>
@@ -369,9 +357,8 @@ include_weapon( &quot;ray_gun&quot;);
   replace it with this:
 </p>
 <p>&nbsp;</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 init_weapons()
 {
 // Zombify
@@ -524,7 +511,6 @@ Precachemodel(&quot;zombie_teddybear&quot;);
 //add_limited_weapon( &quot;m2_flamethrower_zombie&quot;, 1 );
 add_limited_weapon( &quot;tesla_gun&quot;, 1);
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>
@@ -532,9 +518,8 @@ add_limited_weapon( &quot;tesla_gun&quot;, 1);
   Replace the init_weapons() function in _zombiemode_weapons.gsc with this:
 </p>
 <p>&nbsp;</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 init_weapons()
 {
 // Zombify
@@ -676,7 +661,6 @@ if(level.script != &quot;nazi_zombie_prototype&quot;)
 Precachemodel(&quot;zombie_teddybear&quot;);
 }
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h2 id="Trader-CSV">CSV</h2>
@@ -691,9 +675,8 @@ Precachemodel(&quot;zombie_teddybear&quot;);
   Navigate to root/zone_source/nazi_zombie_mapname.csv and open it with Notepad.
 </p>
 <p>Add these lines:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 menufile,ui/scriptmenus/ugx_upgrader.menu
 xanim,viewmodel_trenchgun_grip_idle
 xanim,viewmodel_trenchgun_grip_ads_down
@@ -740,7 +723,6 @@ material,mtl_weapon_aperture_and_acog
 material,mtl_weapon_mp_apature_glass
 material,mtl_weapon_mp_apature_crosshair
 </code></pre>
-  </div>
 </div>
 <h2 id="Trader-IWD">IWD</h2>
 <p>
@@ -750,12 +732,10 @@ material,mtl_weapon_mp_apature_crosshair
   <br />
   Add:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 material,trader_bg
 </code></pre>
-  </div>
 </div>
 <p>to the Mod FF box.</p>
 <h1 id="Trader-FinishingUp">Finishing Up</h1>
@@ -764,9 +744,8 @@ material,trader_bg
   and mod.
 </p>
 <h1 id="Trader-Source">Source</h1>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||| Name   : ugx_upgrader_ammo.gsc
 //|||| Info     : handles weapon upgrades and ammo handouts in armoury for UGX Cabin
@@ -1582,7 +1561,6 @@ decide_ammo(weapon) // Usage: trigger decide_ammo(); - returns ammo amount based
 		}
 	return ammo;
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>Credit: Treminaor</p>

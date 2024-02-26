@@ -41,11 +41,9 @@ dateCreated: 2024-02-04T15:32:48.950Z
   Since this script is not a part of your specific script, your must include the
   using line for this file so the script as access to minus_to_player_score.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 #using scripts\zm\_zm_score; // Add this line at the top of your script</code></pre>
-  </div>
 </div>
 <h2 id="BO3|PurchaseLoops-Trigger">Trigger</h2>
 <p>
@@ -63,15 +61,13 @@ dateCreated: 2024-02-04T15:32:48.950Z
   trigger. This is important, since it can be used to minus the score from the
   player later.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
 	trigger waittill(&quot;trigger&quot;, player);
 }</code></pre>
-  </div>
 </div>
 <h2 id="BO3|PurchaseLoops-IfStatement">If Statement</h2>
 <p>
@@ -83,9 +79,8 @@ function testfunction(parameter)
   This cost has to be set before hand as its own variable. As for the player's
   score, it is defined as a variable on the player - player.score
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
@@ -98,7 +93,6 @@ function testfunction(parameter)
 		// Code to perform if the player has enough points
 	}
 }</code></pre>
-  </div>
 </div>
 <h2 id="BO3|PurchaseLoops-WhileLoops">While Loops</h2>
 <p>
@@ -118,9 +112,8 @@ function testfunction(parameter)
     or wait function.
   </span>
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
@@ -144,7 +137,6 @@ function testfunction(parameter)
 		wait(coolDownTime);
 	}
 }</code></pre>
-  </div>
 </div>
 <h2 id="BO3|PurchaseLoops-PurchaseCode">Purchase Code</h2>
 <p>
@@ -158,9 +150,8 @@ function testfunction(parameter)
   statement will allow for the code to break out of the most immediate loop and
   continue the code below.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
@@ -185,7 +176,6 @@ function testfunction(parameter)
 		wait(coolDownTime);
 	}
 }</code></pre>
-  </div>
 </div>
 <h2 id="BO3|PurchaseLoops-Sounds">Sounds</h2>
 <p>
@@ -201,9 +191,8 @@ function testfunction(parameter)
   include your own sounds or know some in game aliases then you can include
   those.
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	trigger = GetEnt(&quot;test_trigger&quot;, &quot;targetname&quot;);
@@ -233,5 +222,4 @@ function testfunction(parameter)
 		wait(coolDownTime);
 	}
 }</code></pre>
-  </div>
 </div>

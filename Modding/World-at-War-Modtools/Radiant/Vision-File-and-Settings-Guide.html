@@ -62,11 +62,9 @@ dateCreated: 2024-02-04T15:27:43.573Z
   <strong>delete</strong>
   this line:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 level thread maps\_utility::set_all_players_visionset( &quot;zombie_factory&quot;, 0.1 );</code></pre>
-  </div>
 </div>
 <p>Guide starts here:</p>
 <h1 id="VisionFile&amp;SettingsGuide-Createa.visionfile">
@@ -77,9 +75,8 @@ level thread maps\_utility::set_all_players_visionset( &quot;zombie_factory&quot
   <a href="/Modding/World-at-War-Modtools/Script/Text-Editors">Text Editor</a>
   you prefer most. Create a new text file containing this code:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 r_glow                    &quot;1&quot;
 r_glowRadius0             &quot;5&quot;
 r_glowRadius1             &quot;0&quot;
@@ -112,7 +109,6 @@ r_reviveFX_desaturationCenter	&quot;0&quot;
 r_reviveFX_darkTintCenter	&quot;1 1 1&quot;
 r_reviveFX_lightTintCenter	&quot;1 1 1&quot;
 </code></pre>
-  </div>
 </div>
 <p>
   Those are the default vision settings for mp_airfield. Save the file as
@@ -139,12 +135,10 @@ r_reviveFX_lightTintCenter	&quot;1 1 1&quot;
   Open Root/zone_source/&lt;mapname&gt;.csv
 </p>
 <p>Add this line to the top of the file:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 rawfile,vision/&lt;visionfilename&gt;.vision
 </code></pre>
-  </div>
 </div>
 <p>Save and close the file.</p>
 <h2 id="VisionFile&amp;SettingsGuide-Enablingthe.visioninyourmap">
@@ -153,29 +147,23 @@ rawfile,vision/&lt;visionfilename&gt;.vision
 <p>Now it is time to actually set the .vision file to be used in your map.</p>
 <p>Open Root/raw/maps/&lt;mapname&gt;.gsc in a text editor.</p>
 <p>Add</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
 </code></pre>
-  </div>
 </div>
 <p>immediately after:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();
 </code></pre>
-  </div>
 </div>
 <p>so that it looks like:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 maps\_zombiemode::main();
 set_all_players_visionset( &quot;&lt;visionfilename&gt;&quot;, 0.1 );
 </code></pre>
-  </div>
 </div>
 <p>
   Where &lt;visionfilename&gt; is the file name of the vision file you created,

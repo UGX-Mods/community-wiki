@@ -273,12 +273,10 @@ Select the zone volume(s) and give them the following KVP's:
   differently than normal zones.
 </p>
 <p>Find this line in your mapname.gsc</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 zones = [];
 zones[zones.size] = &quot;initial_zone&quot; </code></pre>
-  </div>
 </div>
 <p>
   Change &quot;initial_zone&quot; to match the name of your start zone.
@@ -296,9 +294,8 @@ zones[zones.size] = &quot;initial_zone&quot; </code></pre>
   , you must set the zones up in your mapname.gsc.
 </p>
 <p>Find this block of code in your mapname.gsc:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 dlc3_zone_init()
 {
 /*
@@ -318,7 +315,6 @@ h2. ///ScriptDocBegin
 // Outside East Door
 //add_adjacent_zone( &quot;receiver_zone&quot;, &quot;outside_east_zone&quot;, &quot;enter_outside_east&quot; );
 }</code></pre>
-  </div>
 </div>
 <p>
   <br />
@@ -332,11 +328,9 @@ h2. ///ScriptDocBegin
   your own adjacent zone definitions. To begin, copy this code below the example
   add_adjacent_zone line (which has been commented out):
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 add_adjacent_zone( &quot;zone_name&quot;, &quot;adjacent_zone_name&quot;, &quot;flag_to_activate_zone_name&quot; );</code></pre>
-  </div>
 </div>
 <ul>
   <li>
@@ -374,9 +368,8 @@ add_adjacent_zone( &quot;zone_name&quot;, &quot;adjacent_zone_name&quot;, &quot;
   The best way is to learn by example. Consider the following snippet from UGX
   Comosea's mapname.gsc:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 dlc3_zone_init()
 {
 add_adjacent_zone( &quot;start_zone&quot;, &quot;leftside_spawn_house&quot;, &quot;enter_leftside_spawn_house&quot; );
@@ -399,7 +392,6 @@ add_adjacent_zone( &quot;far_left_area&quot;, &quot;far_left_room&quot;, &quot;e
 add_adjacent_zone( &quot;back_right_area&quot;, &quot;center_breezeway&quot;, &quot;enter_leftside_spawn_house&quot; );
 add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quot;enter_leftside_spawn_house&quot; );
 }</code></pre>
-  </div>
 </div>
 <p>As you can see, one zone can have multiple adjacent ones.</p>
 <h2 id="UltimateGuidetoZonesinv1-4Maps-Barriers/Blockers/Debris/Doors">

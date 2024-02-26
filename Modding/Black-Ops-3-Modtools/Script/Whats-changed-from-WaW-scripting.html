@@ -20,9 +20,8 @@ dateCreated: 2024-02-04T15:33:06.563Z
   function declaration you make:
 </p>
 <p>&nbsp;</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 //WaW
 testfunction(parameter)
 {
@@ -35,7 +34,6 @@ function testfunction(parameter)
 	some code()
 }
 </code></pre>
-  </div>
 </div>
 <h3 id="BO3|What&#39;schangedfromWaWscripting?-FunctionParameters">
   Function Parameters
@@ -45,13 +43,11 @@ function testfunction(parameter)
   change to function parameters is that you are now able to set a parameter
   default. That looks like this:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-c#">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-c#">
 function testingFunction( myPram = false )
 {
 }</code></pre>
-  </div>
 </div>
 <p>
   The above code shows that if you where to call upon the variable
@@ -70,12 +66,10 @@ function testingFunction( myPram = false )
   If you have a global scope function the you would be able to call it
   externally ( from another .gsc file ).
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-c#">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-c#">
 function private testingFunction( ) // this indicates that it is a private scope function
 function testingFunction( )         // this indicates that its a public scope function</code></pre>
-  </div>
 </div>
 <h3 id="BO3|What&#39;schangedfromWaWscripting?-FunctionDuplication">
   Function Duplication
@@ -88,9 +82,8 @@ function testingFunction( )         // this indicates that its a public scope fu
   namespaces these functions will not confict. Here's an example to better show
   the system off:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-c#">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-c#">
 // zm_file_one.gsc
 #namespace zm_file_one			// Define our name space
 function init() {				// Declare our function init()
@@ -103,27 +96,22 @@ function init() {				// Declare init() again in a different file.
 	iPrintLn(&quot;Testing two&quot;);
 	zm_file_one::init(); 		// See how I am able to use the same function name because its attached to a different name space
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-Namespaces">Namespaces</h2>
 <p>You can include an external script into your current script by doing:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 #using scripts\zm\zm_usermap;</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <p>
   You can then call any function from that script by using the filename as a
   prefix:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 zm_usermap::some_func();</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-CallingExternalFunctions">
@@ -134,9 +122,8 @@ zm_usermap::some_func();</code></pre>
   id="BO3|What&#39;schangedfromWaWscripting?-StoringFunctionsinaVariable(pointers)">
   Storing Functions in a Variable (pointers)
 </h2>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	myFunc = &amp;some_func;
@@ -146,16 +133,14 @@ some_func()
 {
 
 }</code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-Flags">Flags</h2>
 <p>
   flag_init(), flag_set, flag(), and flag_clear have been moved to flag_shared
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 #using scripts\shared\flag_shared;
 
 function testfunction(parameter)
@@ -172,15 +157,13 @@ function testfunction(parameter)
 	//WaW: flag_clear(&quot;flag&quot;);
 	level flag::clear(&quot;flag&quot;);
 } </code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-GetStruct()andGetStructArray()">
   GetStruct() and GetStructArray()
 </h2>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 #using scripts\codescripts\struct;
 
 function testfunction(parameter)
@@ -191,7 +174,6 @@ function testfunction(parameter)
 	//WaW:  structs = getStructArray(&quot;something&quot;, &quot;targetname&quot;);
 	structs = struct::get_array(&quot;something&quot;, &quot;targetname&quot;);
 } </code></pre>
-  </div>
 </div>
 <p>&nbsp;</p>
 <h2
@@ -203,9 +185,8 @@ function testfunction(parameter)
   weapon operations, you must first initialize a weapon variable from the string
   name:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
@@ -214,16 +195,14 @@ function testfunction(parameter)
 	self GiveMaxAmmo(weapon);
 	self SwitchToWeapon(weapon);
 }</code></pre>
-  </div>
 </div>
 <p>
   <br />
   Weapon Stats are now stored as fields of the weapon entitiy instead of
   obtained from engine functions:
 </p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
@@ -231,21 +210,18 @@ function testfunction(parameter)
 	displayName = weapon.displayName;
 	ammo = weapon.ammo;
 }</code></pre>
-  </div>
 </div>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-GetWorldModel()">
   GetWorldModel()
 </h2>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 function testfunction(parameter)
 {
 	string = &quot;smg_standard&quot;;
 	//WaW: model = GetWorldModel(string);
 	model = GetWeaponWorldModel(getWeapon(string)); //Must pass an initialized weapon entity and also note the function for getting the model has been renamed.
 }</code></pre>
-  </div>
 </div>
 <h2 id="BO3|What&#39;schangedfromWaWscripting?-TheCallbacksSystem">
   The Callbacks System
@@ -259,10 +235,8 @@ function testfunction(parameter)
   enable_trigger() &amp; disable_trigger()
 </h2>
 <p>These functions have been replaced with:</p>
-<div class="code panel pdl" style="border-width: 1px">
-  <div class="codeContent panelContent pdl">
-    <pre><code class="language-cpp">
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">
 trigger TriggerEnable(&lt;bool&gt;);</code></pre>
-  </div>
 </div>
 <p>where passing true will enable the trigger and false will disable it.</p>
