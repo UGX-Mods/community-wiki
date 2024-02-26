@@ -358,6 +358,7 @@ $border-radius: 5px;
 
   .expandable-container {
     overflow: hidden;
+    margin-top: 10px;
 
     button.expandable-button {
       padding: 0;
@@ -429,8 +430,15 @@ $border-radius: 5px;
       overflow: auto;
 
       .prismjs {
+        padding: 0.5rem 1rem 0.5rem 2.5rem;
         margin: 0;
       }
+    }
+  }
+
+  .pre-formatted {
+    pre {
+      margin: 0 4px;
     }
   }
 }
