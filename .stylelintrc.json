@@ -1,0 +1,43 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order",
+    "@stylistic/stylelint-config",
+    "stylelint-prettier/recommended"
+  ],
+  "ignoreFiles": "**/*.css",
+  "rules": {
+    "max-nesting-depth": [
+      5,
+      {
+        "ignore": [
+          "pseudo-classes"
+        ]
+      }
+    ],
+    "selector-id-pattern": null,
+    "selector-class-pattern": null,
+    "@stylistic/string-quotes": null,
+    "@stylistic/value-list-comma-newline-after": null,
+    "@stylistic/declaration-colon-newline-after": null,
+    "no-descending-specificity": null
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.scss"
+      ],
+      "extends": [
+        "stylelint-config-standard-scss",
+        "stylelint-config-idiomatic-order",
+        "@stylistic/stylelint-config",
+        "stylelint-prettier/recommended"
+      ],
+      "customSyntax": "postcss-scss",
+      "plugins": [
+        "stylelint-scss"
+      ]
+    }
+  ]
+}

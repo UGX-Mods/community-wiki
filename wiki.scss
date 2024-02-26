@@ -5,31 +5,26 @@
 pre[class*='language-'],
 code[class*='language-'] {
   color: #d4d4d4;
-  font-size: 13px;
-  text-shadow: none;
+  direction: ltr;
   font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono',
     'Courier New', monospace;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
+  font-size: 13px;
   hyphens: none;
+  line-height: 1.5;
+  tab-size: 4;
+  text-align: left;
+  text-shadow: none;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
 }
 
 pre[class*='language-']::selection,
 code[class*='language-']::selection,
 pre[class*='language-'] *::selection,
 code[class*='language-'] *::selection {
-  text-shadow: none;
   background: #264f78;
+  text-shadow: none;
 }
 
 @media print {
@@ -40,17 +35,17 @@ code[class*='language-'] *::selection {
 }
 
 pre[class*='language-'] {
+  overflow: auto;
   padding: 1em;
   margin: 0.5em 0;
-  overflow: auto;
   background: #1e1e1e;
 }
 
 :not(pre) > code[class*='language-'] {
   padding: 0.1em 0.3em;
   border-radius: 0.3em;
-  color: #db4c69;
   background: #1e1e1e;
+  color: #db4c69;
 }
 
 /*********************************************************
@@ -277,25 +272,32 @@ pre[class*='language-'] > code[class*='language-'] {
 }
 
 .line-highlight.line-highlight {
+  z-index: 0;
   background: #f7ebc6;
   box-shadow: inset 5px 0 0 #f7d87c;
-  z-index: 0;
 }
 
 /************************************
  * Page Style
  ************************************/
 
+// state colors:
 $color-info: #569cd6;
 $color-success: #5cb85c;
 $color-warning: #f0ad4e;
 $color-danger: #d9534f;
 
+// ugx colors:
 $color-main-dark: #1a4067;
+$color-contrast-lightest: #666;
 
+// generic colors:
 $color-white: #fff;
 $color-black: #000;
+
+// elements:
 $color-banner-bg: #111;
+$border-radius: 5px;
 
 .v-main .contents {
   p {
@@ -303,13 +305,13 @@ $color-banner-bg: #111;
   }
 
   .banner {
-    margin: 5px 0 10px;
-    border: 1px solid $color-white;
-    padding: 5px 5px 5px 35px;
     position: relative;
-    border-radius: 5px;
-    box-shadow: 1px 1px 5px $color-black;
+    padding: 5px 5px 5px 35px;
+    border: 1px solid $color-white;
+    border-radius: $border-radius;
+    margin: 5px 0 10px;
     background: $color-banner-bg;
+    box-shadow: 1px 1px 5px $color-black;
 
     &-info {
       border-color: $color-info;
@@ -328,9 +330,9 @@ $color-banner-bg: #111;
     }
 
     &-title {
-      font-weight: bold;
-      margin: 0 0 3px;
       padding: 0;
+      margin: 0 0 3px;
+      font-weight: bold;
     }
 
     &-icon {
@@ -349,51 +351,86 @@ $color-banner-bg: #111;
   .widget-panel {
     padding: 5px;
     border: 1px solid $color-main-dark;
-    border-radius: 5px;
+    border-radius: $border-radius;
     margin-top: 10px;
+    background: $color-banner-bg;
   }
-}
 
-.expandable-container {
-  button.expandable-button {
-    color: #90caf9;
-    padding: 0;
-    margin: 5px 0;
+  .expandable-container {
+    overflow: hidden;
 
-    &:hover {
-      text-decoration: underline;
-    }
+    button.expandable-button {
+      padding: 0;
+      margin: 5px 0;
+      color: #90caf9;
 
-    &::before {
-      content: ' ';
-      display: inline-block;
-      background: url('/attachments/icons/chevron-right.png') no-repeat;
-      width: 24px;
-      height: 24px;
-      float: left;
-      transition: transform 0.4s;
-      margin-right: 2px;
-    }
+      &:hover {
+        text-decoration: underline;
+      }
 
-    &.expanded {
       &::before {
-        transform: rotate(90deg);
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 2px;
+        background: url('/attachments/icons/chevron-right.png') no-repeat;
+        content: ' ';
+        float: left;
+        transition: transform 0.4s;
+      }
+
+      &.expanded {
+        &::before {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    .expandable-content {
+      height: 0;
+      opacity: 0;
+      transition:
+        visibility 0s,
+        opacity 0.5s linear;
+      visibility: hidden;
+
+      &.expanded {
+        overflow: auto;
+        height: unset;
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
 
-  .expandable-content {
-    visibility: hidden;
-    opacity: 0;
-    transition:
-      visibility 0s,
-      opacity 0.5s linear;
-    height: 0;
+  .widget-code-panel {
+    overflow: hidden;
+    border: 1px solid $color-contrast-lightest;
+    border-radius: $border-radius;
+    margin: 6px 0;
+    background: $color-banner-bg;
 
-    &.expanded {
-      visibility: visible;
-      opacity: 1;
-      height: unset;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 3px 8px;
+      background: $color-main-dark;
+
+      button.expandable-button {
+        margin: 0;
+      }
+    }
+
+    &-title {
+      font-weight: bold;
+    }
+
+    &-content {
+      overflow: auto;
+
+      .prismjs {
+        margin: 0;
+      }
     }
   }
 }

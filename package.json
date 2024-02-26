@@ -6,9 +6,12 @@
   "author": "Alexander 'Delta' Diller",
   "license": "AGPL-3.0",
   "scripts": {
-    "lint": "prettier **/*.html -w",
-    "sass": "sass --no-source-map wiki.scss wiki.css && postcss wiki.css -o wiki.min.css",
-    "js": "babel wiki.js --presets=@babel/preset-env | uglifyjs --compress --mangle --output wiki.min.js"
+    "lint": "npm run lint:sass && npm run lint:html",
+    "lint:sass": "stylelint **/*.scss --fix --max-warnings 0",
+    "lint:html": "prettier  **/*.html -c -w",
+    "build": "npm run build:sass && npm run build:js",
+    "build:sass": "sass --no-source-map wiki.scss wiki.css && postcss wiki.css -o wiki.min.css",
+    "build:js": "babel wiki.js --presets=@babel/preset-env | uglifyjs --compress --mangle --output wiki.min.js"
   },
   "dependencies": {
     "@inquirer/prompts": "^4.1.0",
@@ -18,10 +21,16 @@
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
+    "@stylistic/stylelint-config": "^1.0.1",
     "cssnano": "^6.0.5",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.2.5",
     "sass": "^1.71.1",
+    "stylelint": "^16.2.1",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-prettier": "^5.0.0",
+    "stylelint-scss": "^6.1.0",
     "uglify-js": "^3.17.4"
   }
 }

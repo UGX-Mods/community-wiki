@@ -30,7 +30,11 @@ Simply clone the project and do some changes. :wink:
 
 You can write new files in either HTML (file ending with .html) or Markdown (file ending with .md) format.
 
-Then ensure it's properly formatted and create a Pull Request (see below).
+Then run `npm run lint` to check if the files are properly formatted.
+
+You must run `npm run build` if you modified the frontend files (`wiki.scss` or `wiki.js`).
+
+Now create the Pull Request (see below).
 
 ### Formatting / Building
 
@@ -38,17 +42,19 @@ VSCode in combination with prettier is used
 
 > ⚠️ Ensure the files follow the naming convention of Wiki.js (https://docs.requarks.io/guide/pages#naming-restrictions)
 
+You can check and fix issues (if possible) via `npm run lint`.
+
 ### Stylesheet
 
 The `wiki.scss` is used to compile css which is used  to override and extend WikiJS theme.
 
-To build it, simply run `npm run sass` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
+To build it, simply run `npm run build:sass` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
 
 ### Javascript
 
 The `wiki.js` is used to extend the theme logic of WikiJS.
 
-To build it, simply run `npm run js` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
+To build it, simply run `npm run build:js` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
 
 ### Tooling
 
