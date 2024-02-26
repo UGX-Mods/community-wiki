@@ -336,13 +336,17 @@ $color-banner-bg: #111;
       top: 5px;
       left: 5px;
     }
+
+    &-body {
+      :first-child {
+        padding-top: 0;
+      }
+    }
   }
 }
 
 .expandable-container {
   button.expandable-button {
-    // background: url('/attachments/icons/outline.png') no-repeat;
-
     color: #90caf9;
     padding: 0;
     margin: 5px 0;
