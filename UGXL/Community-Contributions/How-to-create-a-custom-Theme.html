@@ -1,0 +1,324 @@
+<!--
+title: How to create a custom Theme?
+description:
+published: true
+date:
+tags: confluence:4391011
+editor: ckeditor
+dateCreated:
+-->
+
+<div class="banner banner-note">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <p class="banner-title">Attention</p>
+  <div class="banner-body">
+    <p>
+      Everything described here is subject to change. It could be possible that
+      a new version will introduce new features or major changes to the
+      stylesheet!
+    </p>
+  </div>
+</div>
+<p> </p>
+<p>
+  The
+  <a href="/UGXL" target="_blank">UGX Launcher</a>
+  is built on top of the GUI framework Qt (
+  <a href="http://www.qt.io" rel="nofollow" target="_blank">www.qt.io</a>
+  )
+</p>
+<p>
+  Therefore 
+  <strong>UGXL</strong>
+  is using the Qt Stylesheets (
+  <a
+    href="http://doc.qt.io/qt-5/stylesheet.html"
+    rel="nofollow"
+    target="_blank">
+    http://doc.qt.io/qt-5/stylesheet.html
+  </a>
+  )  for themeing.
+</p>
+<p> </p>
+<hr />
+<p> </p>
+<h2 id="HowtocreateacustomTheme-Themefolder">Theme folder</h2>
+<p>All themes are stored at</p>
+<div class="preformatted panel" style="border-width: 1px">
+  <div class="preformattedContent panelContent">
+    <pre>&lt;ugxl_root&gt;/Resources/themes/</pre>
+  </div>
+</div>
+<p> </p>
+<p>The applications needs to be restarted to recognize newly added themes.</p>
+<h2 id="HowtocreateacustomTheme-Creatingacustomtheme">
+  Creating a custom theme
+</h2>
+<h2 id="HowtocreateacustomTheme-Createanewfolderwithinthethemefolder.">
+  <span style="font-size: 14px; line-height: 1.42857">
+    Create a new folder within the theme folder.
+  </span>
+</h2>
+<p>
+  <span style="line-height: 20px">
+    Be sure that your theme folder name is unique!
+  </span>
+</p>
+<h2
+  id="HowtocreateacustomTheme-Create(orcopyfromthedefaulttheme)thetheme.ugxlfile">
+  <span style="font-size: 14px; line-height: 1.42857">
+    Create (or copy from the default theme) the
+  </span>
+  <strong style="font-size: 14px; line-height: 1.42857">theme.ugxl</strong>
+  <span style="font-size: 14px; line-height: 1.42857">file</span>
+</h2>
+<p>
+  <span style="font-size: 14px; line-height: 1.42857"><br /></span>
+</p>
+<h3 id="HowtocreateacustomTheme-theme.ugxl">theme.ugxl</h3>
+<p>
+  This file stores a couple of inormation like creator, version info and special
+  settings.
+</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div
+    class="codeHeader panelHeader pdl hide-border-bottom"
+    style="border-bottom-width: 1px">
+    <b class="code-title">theme.ugxl</b>
+    <span class="collapse-source expand-control" style="display: none">
+      <span class="expand-control-icon icon">&nbsp;</span>
+      <span class="expand-control-text">Expand source</span>
+    </span>
+    <span class="collapse-spinner-wrapper"></span>
+  </div>
+  <div class="codeContent panelContent pdl hide-toolbar">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: js; gutter: false; theme: RDark; collapse: true"
+      data-theme="RDark">
+{
+  "Author": {
+  "Name": "UGX Mods Team",
+  "URL": "www.ugx-mods.com"
+  },
+  "Theme": {
+  "Name": "Default",
+  "Release": "8 Jun 2014",
+  "Version": "v0.8.0-closed-beta",
+  "Launcher": "0.8.x.x",
+  "Description": "The default theme for the UGX Launcher.&lt;br/&gt;&lt;br/&gt;Created by Alexander 'Delta' Diller and Andy 'treminaor' King.&lt;br/&gt;&lt;br/&gt;Fonts used: Bebaus Neue, Roboto-Light (license file is in themes/default/fonts)&lt;br/&gt;We use the awesome Material icons by Google &lt;3"
+  },
+  "Options": {
+  "custom": "defined",
+  "not": "supported yet"
+  }
+  }</pre
+    >
+  </div>
+</div>
+<p>(theme.ugxl of the default theme)</p>
+<p>
+  The format of that file is JSON (
+  <a href="http://json.org/" rel="nofollow" target="_blank">www.json.org</a>
+  )
+</p>
+<p> </p>
+<h3 id="HowtocreateacustomTheme-preview.png">preview.png</h3>
+<p>
+  The preview.png (optional) will be displayed in the 
+  <a href="/UGXL/Features/Settings.html">Settings</a>
+  .
+  <br />
+  The dimensions of that image are 210x127 (Width x Height).
+</p>
+<p> </p>
+<p>You can create subfolders to keep your theme folder clear.</p>
+<p> </p>
+<h3 id="HowtocreateacustomTheme-main.qss">main.qss</h3>
+<p> Currently UGL is using one Qt Stylesheet, located at</p>
+<div class="preformatted panel" style="border-width: 1px">
+  <div class="preformattedContent panelContent">
+    <pre>
+&lt;ugxl_root&gt;/Resources/themes/&lt;theme_name&gt;/style/main.qss</pre
+    >
+  </div>
+</div>
+<p> </p>
+<h3 id="HowtocreateacustomTheme-QSSEditor">QSS Editor</h3>
+<p>
+  <a
+    href="http://sourceforge.net/projects/qsseditor/?source=navbar"
+    rel="nofollow"
+    target="_blank">
+    http://sourceforge.net/projects/qsseditor/
+  </a>
+  the QSS Editor can help you to create most of the controls in realtime
+  already.
+</p>
+<p>
+  But this won't work for special UGX Launcher features.
+  <strong>Theme variables</strong>
+  won't work either!
+</p>
+<h3 id="HowtocreateacustomTheme-QtStylesheetDocumentation">
+  Qt Stylesheet Documentation
+</h3>
+<ul>
+  <li>
+    Syntax 
+    <a
+      href="http://doc.qt.io/qt-5/stylesheet-syntax.html"
+      rel="nofollow"
+      target="_blank">
+      http://doc.qt.io/qt-5/stylesheet-syntax.html
+    </a>
+  </li>
+  <li>
+    Reference 
+    <a
+      href="http://doc.qt.io/qt-5/stylesheet-reference.html"
+      rel="nofollow"
+      target="_blank">
+      http://doc.qt.io/qt-5/stylesheet-reference.html
+    </a>
+  </li>
+  <li>
+    Examples 
+    <a
+      href="http://doc.qt.io/qt-5/stylesheet-examples.html"
+      rel="nofollow"
+      target="_blank">
+      http://doc.qt.io/qt-5/stylesheet-examples.html
+    </a>
+  </li>
+</ul>
+<h3 id="HowtocreateacustomTheme-Themevariables">Theme variables</h3>
+<div class="table-wrap">
+  <table class="confluenceTable">
+    <tbody>
+      <tr>
+        <th class="confluenceTh">Variable</th>
+        <th class="confluenceTh">Description</th>
+      </tr>
+      <tr>
+        <td class="confluenceTd">%UGXL%</td>
+        <td class="confluenceTd">Path to the root directory of UGXL</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="HowtocreateacustomTheme-DesignerMode">Designer Mode</h3>
+<p>
+  UGXL has a special designer mode, which helps during the implementation
+  process.
+</p>
+<p>
+  To enable the
+  <strong>Designer Mode</strong>
+  , simply create a shortcut to the
+  <em>UGX Launcher.exe</em>
+  and use the -des command argument.
+</p>
+<ul class="inline-task-list" data-inline-tasks-content-id="4391011">
+  <li data-inline-task-id="1">
+    <span>
+      <em>Alexander Diller</em>
+      add screenshots + more information how it works
+    </span>
+  </li>
+</ul>
+
+<h3 id="HowtocreateacustomTheme-CustomFonts">Custom Fonts</h3>
+<p>You can load custom fonts into UGXL.</p>
+<p>
+  Simply drop the .ttf or .otf font into &lt;theme_root&gt;/fonts and it can be
+  used like any other font for styling.
+</p>
+<h3 id="HowtocreateacustomTheme-CustomControlsDocumentation">
+  Custom Controls Documentation
+</h3>
+<p>
+  UGX Launcher has a couple of custom controls which can be customized within 
+  <strong>main.qss</strong>
+</p>
+<h4 id="HowtocreateacustomTheme-Windows">Windows</h4>
+<p>Windows are using a method called 9-Grid.</p>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeHeader panelHeader pdl hide-border-bottom">
+    <b class="code-title"></b>
+    <span class="collapse-source expand-control" style="display: none">
+      <span class="expand-control-icon icon">&nbsp;</span>
+      <span class="expand-control-text">Expand source</span>
+    </span>
+    <span class="collapse-spinner-wrapper"></span>
+  </div>
+  <div class="codeContent panelContent pdl hide-toolbar">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: css; gutter: false; theme: RDark; collapse: true"
+      data-theme="RDark">
+FMain
+  {
+  /* Background Images */
+  qproperty-bgTL: url("%UGXL%/Resources/themes/default/toplevel/bg_top_bar_lft.png");
+  qproperty-bgTC: url("%UGXL%/Resources/themes/default/toplevel/bg_top_bar_cnt.png");
+  qproperty-bgTR: url("%UGXL%/Resources/themes/default/toplevel/bg_top_bar_rgt.png");
+  qproperty-bgML: url("%UGXL%/Resources/themes/default/toplevel/bg_mid_con_lft.png");
+  qproperty-bgMC: url("%UGXL%/Resources/themes/default/toplevel/bg_mid_con_cnt.png");
+  qproperty-bgMR: url("%UGXL%/Resources/themes/default/toplevel/bg_mid_con_rgt.png");
+  qproperty-bgBL: url("%UGXL%/Resources/themes/default/toplevel/bg_bot_bar_lft.png");
+  qproperty-bgBC: url("%UGXL%/Resources/themes/default/toplevel/bg_bot_bar_cnt.png");
+  qproperty-bgBR: url("%UGXL%/Resources/themes/default/toplevel/bg_bot_bar_rgt.png");
+  }</pre
+    >
+  </div>
+</div>
+<p> </p>
+<h4 id="HowtocreateacustomTheme-WMapFilterWidget">WMapFilterWidget</h4>
+<div class="code panel pdl" style="border-width: 1px">
+  <div class="codeHeader panelHeader pdl hide-border-bottom">
+    <b class="code-title"></b>
+    <span class="collapse-source expand-control" style="display: none">
+      <span class="expand-control-icon icon">&nbsp;</span>
+      <span class="expand-control-text">Expand source</span>
+    </span>
+    <span class="collapse-spinner-wrapper"></span>
+  </div>
+  <div class="codeContent panelContent pdl hide-toolbar">
+    <pre
+      class="syntaxhighlighter-pre"
+      data-syntaxhighlighter-params="brush: css; gutter: false; theme: RDark; collapse: true"
+      data-theme="RDark">
+WMapFilterWidget
+  {
+  qproperty-bgColor: #111; /* Background color */
+  qproperty-borderColor: #FF0000; /* Bordor color */
+  /* TAB */
+  qproperty-tabW: 80; /* Tab width */
+  qproperty-tabH: 30; /* Tab height */
+  qproperty-paddingBorder: 10; /* Padding to the window border (top/right) */
+  qproperty-paddingElement: 8; /* Padding between each state */
+  qproperty-paddingVertical: 5; /* Padding between line and label */
+  /* Tri-Radio State (top right info) */
+  qproperty-lineW: 65; /* Line Width */
+  qproperty-lineH: 2; /* Line Height */
+  /* Tri-Radio State Colors */
+  qproperty-triColorLeft: darkred;
+  qproperty-triColorMiddle: orange;
+  qproperty-triColorRight: limegreen;
+  qproperty-fontStateInfo: bold italic large "Times New Roman";
+  }</pre
+    >
+  </div>
+</div>
+<p> </p>
+<p><strong>More will follow</strong></p>
+<p>
+  <strong><br /></strong>
+</p>
+
+<h2 id="HowtocreateacustomTheme-Shareandsubmityourtheme">
+  Share and submit your theme
+</h2>
+<p>TBA</p>

@@ -47,9 +47,24 @@ const STEPS = [
   },
 ]; // due to "circumstances", do each step by step
 
-const confIdInNameRegex = /_?(\d{4,})html\.html$/;
-const numOnlyFilename = /(\d{4,})\.html$/;
-const fixClosingTagIssue = /<(\/?\w+)(?:\s+)>/g;
+const REGEX = {
+  tagsMatch: /^tags: ?(.*)$/im,
+  confIdInNameRegex: /_?(\d{4,})html\.html$/,
+  numOnlyFilename: /(\d{4,})\.html$/,
+  fixClosingTagIssue: /<(\/?\w+)(?:\s+)>/g,
+  confluenceIdTagMatch: /confluence:(\d)/,
+};
+
+/**
+ * @type {Partial<HTMLParser.Options>}
+ */
+const HTML_PARSER_OPTIONS = {
+  comment: true,
+  lowerCaseTagName: true,
+  fixNestedATags: false,
+  parseNoneClosedTags: true,
+  voidTag: { closingSlash: true },
+};
 
 const EMOJI_MAP = {
   ':heart:': '❤️',
@@ -73,9 +88,7 @@ async function main() {
     choices: STEPS,
   });
 
-  const files = (
-    await fs.promises.readdir(directoryPath, { recursive: true })
-  ).filter((f) => !/node_modules[\\/]/.test(f) && f.endsWith('.html'));
+  const files = await getHtmlFiles();
   console.log(`Found ${files.length}x HTML files`);
 
   switch (answer) {
@@ -105,6 +118,12 @@ async function main() {
   }
 }
 main();
+
+async function getHtmlFiles() {
+  return (await fs.promises.readdir(directoryPath, { recursive: true })).filter(
+    (f) => !/node_modules[\\/]/.test(f) && f.endsWith('.html'),
+  );
+}
 
 async function setupPageHierarchy(files) {
   const choices = files
@@ -136,7 +155,7 @@ async function setupPageHierarchy(files) {
   const htmlHierarchy = await createPageHierarchy(filePath);
   if (!htmlHierarchy) return;
 
-  const parsedHtml = HTMLParser.parse(data, { comment: true });
+  const parsedHtml = parseHtmlContent(data);
   parsedHtml.innerHTML += htmlHierarchy;
   await writeFileFormat(parsedHtml.innerHTML, filePath);
 }
@@ -166,9 +185,7 @@ async function createPageHierarchy(filePath) {
         const title = await fs.promises
           .readFile(rootFolderPath + path.sep + page, encoding)
           .then((pageData) => {
-            const parsedPageHtml = HTMLParser.parse(pageData, {
-              comment: true,
-            });
+            const parsedPageHtml = parseHtmlContent(pageData);
             return /^title: (.*)$/m.exec(parsedPageHtml.innerHTML)?.[1];
           })
           .catch((err) => {
@@ -206,10 +223,7 @@ async function validateAllLinks(files) {
       });
     if (!fileContent) continue;
 
-    const parsedHtml = HTMLParser.parse(fileContent, {
-      comment: true,
-    });
-
+    const parsedHtml = parseHtmlContent(fileContent);
     const aTags = parsedHtml.querySelectorAll('a');
 
     let invalid = [];
@@ -224,6 +238,13 @@ async function validateAllLinks(files) {
 
       if (href.startsWith('/')) {
         // absolute
+        let filePath = href.replace(/\//g, path.sep);
+        if (fs.existsSync(filePath)) continue;
+
+        if (!filePath.endsWith('.html') && fs.existsSync(`${filePath}.html`)) {
+          continue;
+        }
+        console.error(filePath, 'invalid link:', href);
       } else {
         // relative
         const rootFolderPath = filePath.substring(0, filePath.length - 5);
@@ -258,17 +279,7 @@ function fixCodeBlocks(files) {
           return console.error(err);
         }
 
-        const parsedHtml = HTMLParser.parse(
-          data.replace(fixClosingTagIssue, '<$1>'),
-          {
-            comment: true,
-            lowerCaseTagName: true,
-            fixNestedATags: true,
-            parseNoneClosedTags: true,
-            voidTag: { closingSlash: false },
-          },
-        );
-
+        const parsedHtml = parseHtmlContent(data);
         const preConfluence = parsedHtml.querySelectorAll(
           'pre.syntaxhighlighter-pre',
         );
@@ -307,8 +318,8 @@ function fixFileNames(files) {
        */
       filePath,
     ) => {
-      if (!confIdInNameRegex.test(filePath)) return;
-      const match = confIdInNameRegex.exec(filePath);
+      if (!REGEX.confIdInNameRegex.test(filePath)) return;
+      const match = REGEX.confIdInNameRegex.exec(filePath);
       const id = match[1];
 
       fs.readFile(filePath, encoding, (err, data) => {
@@ -316,7 +327,7 @@ function fixFileNames(files) {
           return console.error(err);
         }
 
-        const parsedHtml = HTMLParser.parse(data, { comment: true });
+        const parsedHtml = parseHtmlContent(data);
 
         const comment = `\n\n<!-- conf id: ${id} -->\n`;
 
@@ -331,7 +342,7 @@ function fixFileNames(files) {
           HTMLParser.parse(comment, { comment: true }),
         );
 
-        let newFile = filePath.replace(confIdInNameRegex, '.html');
+        let newFile = filePath.replace(REGEX.confIdInNameRegex, '.html');
         if (newFile.endsWith('\\.html')) {
           newFile = newFile.replace('\\.html', `\\${id}.html`);
         }
@@ -357,13 +368,13 @@ function fixNumberFileNameOnly(files) {
        */
       filePath,
     ) => {
-      if (!numOnlyFilename.test(filePath)) return;
+      if (!REGEX.numOnlyFilename.test(filePath)) return;
       fs.readFile(filePath, encoding, (err, data) => {
         if (err) {
           return console.error(err);
         }
 
-        const parsedHtml = HTMLParser.parse(data, { comment: true });
+        const parsedHtml = parseHtmlContent(data);
 
         //
 
@@ -380,7 +391,10 @@ function fixNumberFileNameOnly(files) {
           .replace(/^BO3-/, '')
           .replace(/-$/, '');
 
-        const newFile = filePath.replace(numOnlyFilename, `${newTitle}.html`);
+        const newFile = filePath.replace(
+          REGEX.numOnlyFilename,
+          `${newTitle}.html`,
+        );
         console.log(`Title change from: ${title} -> ${newTitle}`);
 
         fs.renameSync(filePath, newFile);
@@ -397,8 +411,6 @@ function fixNumberFileNameOnly(files) {
  * @param {string[]} files
  */
 async function addConfluenceCommentAsTag(files) {
-  const tagsMatch = /^tags: ?(.*)$/im;
-
   for (const filePath of files) {
     const data = await fs.promises.readFile(filePath, encoding).catch((err) => {
       console.error(err);
@@ -406,24 +418,22 @@ async function addConfluenceCommentAsTag(files) {
     });
     if (!data) continue;
 
-    const parsedHtml = HTMLParser.parse(data, { comment: true });
-    const wikiJsCommentNode = parsedHtml.childNodes
-      .filter((n) => n.nodeType === HTMLParser.NodeType.COMMENT_NODE)
-      .find((n) => n.text.includes('dateCreated:') && n.text.includes('tags:'));
+    const parsedHtml = parseHtmlContent(data);
+    const wikiJsCommentNode = getWikiJsCommentNode(parsedHtml);
     if (!wikiJsCommentNode) {
       console.error(`No wikiJs comment found: ${filePath}`);
       continue;
     }
 
     let wikiJsComment = wikiJsCommentNode.innerText;
-    const tagMatch = tagsMatch.exec(wikiJsComment);
+    const tagMatch = REGEX.tagsMatch.exec(wikiJsComment);
     if (tagMatch?.length !== 2) {
       console.error(`No tag regex match: ${filePath}`);
       continue;
     }
 
     const tags = tagMatch[1].split(' ');
-    if (tags.find((t) => /confluence:\d+/.test(t))) {
+    if (tags.find((t) => REGEX.confluenceIdTagMatch.test(t))) {
       continue; // already added
     }
 
@@ -449,12 +459,14 @@ async function addConfluenceCommentAsTag(files) {
       continue;
     }
 
-    wikiJsComment = wikiJsComment.replace(tagsMatch, `tags: ${tags.join(' ')}`);
-
-    await writeFileFormat(
-      parsedHtml.innerHTML.replace(wikiJsCommentNode.innerText, wikiJsComment),
-      filePath,
+    wikiJsComment = wikiJsComment.replace(
+      REGEX.tagsMatch,
+      `tags: ${tags.join(' ')}`,
     );
+
+    wikiJsCommentNode.innerText = wikiJsComment;
+
+    await writeFileFormat(parsedHtml.innerHTML, filePath);
   }
 }
 
@@ -473,12 +485,15 @@ async function cleanupConfluenceHtml(files) {
       console.error(err);
       return null;
     });
-    if (!data) continue;
+    if (data === null) {
+      continue;
+    } else if (data.length === 0) {
+      console.error('EMPTY FILE @', filePath);
+      continue;
+    }
 
-    const parsedHtml = HTMLParser.parse(data, { comment: true });
-    const wikiJsCommentNode = parsedHtml.childNodes
-      .filter((n) => n.nodeType === HTMLParser.NodeType.COMMENT_NODE)
-      .find((n) => n.text.includes('dateCreated:') && n.text.includes('tags:'));
+    const parsedHtml = parseHtmlContent(data);
+    const wikiJsCommentNode = getWikiJsCommentNode(parsedHtml);
     if (!wikiJsCommentNode) {
       console.error(`No wikiJs comment found: ${filePath}`);
       continue;
@@ -494,7 +509,10 @@ async function cleanupConfluenceHtml(files) {
           .map((c) => c.innerHTML)
           .join('\n');
       });
-      parsedHtml.innerHTML = layouts.map((l) => l.innerHTML).join('\n');
+
+      parsedHtml.innerHTML =
+        `<!--${wikiJsCommentNode.textContent}-->\n` +
+        layouts.map((l) => l.innerHTML).join('\n');
     }
 
     // replace confluence classes
@@ -670,17 +688,40 @@ async function cleanupConfluenceHtml(files) {
       $pagetree.replaceWith(await createPageHierarchy(filePath));
     }
 
-    // warn about old invalid confluence links!
-    const invalidLinks = parsedHtml
+    // try to fix invalid wiki links from confluence id to correct wikijs path
+    let invalidLinks = parsedHtml
       .querySelectorAll('a')
       .filter(
         (a) =>
           a.hasAttribute('href') &&
-          /(^\/display\/|(?:^|_)\d+.html$|jira\.ugx-mods\.com|confluence\.ugx-mods\.com)/.test(
+          /(?:^|_)(\d{3,}).html$/.test(a.getAttribute('href')) &&
+          !a.getAttribute('href').includes('/forum/'),
+      );
+
+    for (const a of invalidLinks) {
+      const href = a.getAttribute('href');
+      const match = /(?:^|_)(\d{3,}).html$/.exec(href);
+      if (!match) return;
+
+      const wikiJsPath = await getPathForConfluenceId(match[1]);
+      if (wikiJsPath) {
+        a.setAttribute('href', `/${wikiJsPath.replace(/\\/g, '/')}`);
+        console.log('Fix url from', href, '->', a.getAttribute('href'));
+      }
+    }
+
+    // warn about old invalid confluence links!
+    invalidLinks = parsedHtml
+      .querySelectorAll('a')
+      .filter(
+        (a) =>
+          a.hasAttribute('href') &&
+          /(^\/display\/|(?:^|_)\d{3,}.html$|jira\.ugx-mods\.com|confluence\.ugx-mods\.com)/.test(
             a.getAttribute('href'),
           ) &&
           !a.getAttribute('href').includes('/forum/'),
       );
+
     if (invalidLinks.length > 0) {
       console.warn(
         invalidLinks.length,
@@ -694,6 +735,64 @@ async function cleanupConfluenceHtml(files) {
   }
 }
 
+/**
+ *
+ * @param {string} confluenceId
+ * @returns {Promise<string|null>}
+ */
+async function getPathForConfluenceId(confluenceId) {
+  if (!global.confIdToPathMap) global.confIdToPathMap = {};
+  if (global.confIdToPathMap[confluenceId]) {
+    return global.confIdToPathMap[confluenceId];
+  }
+
+  const files = await getHtmlFiles();
+  for (const filePath of files) {
+    const data = await fs.promises.readFile(filePath, encoding).catch((err) => {
+      console.error(err);
+      return null;
+    });
+    if (!data) continue;
+
+    const parsedHtml = parseHtmlContent(data);
+    const wikiJsComment = getWikiJsCommentNode(parsedHtml)?.innerText;
+    if (!wikiJsComment) {
+      console.error(`No wikiJs comment found: ${filePath}`);
+      continue;
+    }
+
+    const tagMatch = REGEX.tagsMatch.exec(wikiJsComment);
+    if (tagMatch?.length !== 2) {
+      console.error(`No tag regex match: ${filePath}`);
+      continue;
+    }
+
+    const confluenceIdTag = tagMatch[1]
+      .split(' ')
+      .find((t) => REGEX.confluenceIdTagMatch.test(t));
+    if (!confluenceIdTag) continue;
+    const id = confluenceIdTag.split(':')[1];
+
+    global.confIdToPathMap[id] = filePath;
+
+    if (confluenceId === id) return filePath;
+  }
+
+  return null;
+}
+
+/**
+ *
+ * @param {string} content
+ * @returns
+ */
+function parseHtmlContent(content) {
+  return HTMLParser.parse(
+    content.replace(REGEX.fixClosingTagIssue, '<$1>'),
+    HTML_PARSER_OPTIONS,
+  );
+}
+
 async function writeFileFormat(source, filePath) {
   try {
     const config = await prettier.resolveConfig(path.resolve(filePath), {
@@ -701,12 +800,14 @@ async function writeFileFormat(source, filePath) {
     });
     config.filepath = filePath;
 
+    // fix odd </pre> closing
+
     return fs.promises.writeFile(
       filePath,
       await prettier.format(source, config),
     );
   } catch (err) {
-    console.error('Formatting error:', filePath); //, err);
+    console.error('Formatting error @', filePath, err.toString());
   }
 }
 
@@ -754,4 +855,14 @@ function removeClassFromNode(node, className) {
   if (node.classList.length === 0) {
     node.removeAttribute('class');
   }
+}
+
+/**
+ * @param {HTMLParser.Node} rootNode
+ * @returns
+ */
+function getWikiJsCommentNode(rootNode) {
+  return rootNode.childNodes
+    .filter((n) => n.nodeType === HTMLParser.NodeType.COMMENT_NODE)
+    .find((n) => n.text.includes('title:'));
 }

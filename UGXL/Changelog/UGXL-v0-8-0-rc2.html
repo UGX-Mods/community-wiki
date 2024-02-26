@@ -1,24 +1,20 @@
 <!--
-title: UGXL v0.8-rc1.4
+title: UGXL v0.8.0-rc.2
 description:
 published: true
-date: 2024-02-25T10:39:37.099Z
+date: 2024-02-25T10:39:42.486Z
 tags:
 editor: ckeditor
-dateCreated: 2024-02-04T15:28:00.699Z
+dateCreated: 2024-02-04T15:28:07.007Z
 -->
 
 <div class="plugin-tabmeta-details">
   <div class="table-wrap">
     <table class="wrapped confluenceTable">
-      <colgroup>
-        <col />
-        <col />
-      </colgroup>
       <tbody>
         <tr>
           <th class="confluenceTh">Date</th>
-          <td class="confluenceTd">May 31, 2016</td>
+          <td class="confluenceTd">14 Jun 2016</td>
         </tr>
         <tr>
           <th class="confluenceTh">Issues</th>
@@ -50,55 +46,45 @@ dateCreated: 2024-02-04T15:28:00.699Z
           <th colspan="1" class="confluenceTh">
             <span>Revision</span>
           </th>
-          <td colspan="1" class="confluenceTd"><span>27</span></td>
+          <td colspan="1" class="confluenceTd"><span>33</span></td>
         </tr>
         <tr>
           <th colspan="1" class="confluenceTh">Version</th>
           <td colspan="1" class="confluenceTd">
-            v0.8-rc1.4 (rev 27, build 436)
+            v0.8.0-rc.2 (rev 33, build 454)
           </td>
         </tr>
         <tr>
           <th colspan="1" class="confluenceTh">Version Mode</th>
-          <td colspan="1" class="confluenceTd">Developer</td>
+          <td colspan="1" class="confluenceTd">Beta</td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-<h2 id="UGXLv0.8rc1.4-Summary">Summary</h2>
-<p>This change log combines RC 1.1 to RC 1.4.</p>
+<h2 id="UGXLv0.8.0rc.2-Summary">Summary</h2>
+<p>Release Candidate 2 before Closed Beta</p>
 
-<h2 id="UGXLv0.8rc1.4-Importanthighlightsfromthisrelease">
+<h2 id="UGXLv0.8.0rc.2-Importanthighlightsfromthisrelease">
   Important highlights from this release
 </h2>
 <ol>
-  <li>99% final design</li>
-  <li>Layout changes and improvements</li>
-  <li>Review tickets for changes / additions and Improvements</li>
-  <li>Licensing &amp; Legal has been resolved 👍 👍 ❤️</li>
-  <li>Much better proxy support</li>
-  <li>Non Donor mode (parameter: -nodonor)</li>
-  <li>
-    <em>Andy King</em>
-    added some new maps 👍
-  </li>
-  <li>
-    Unmentioned changes:
-    <ol>
-      <li>Removed Stats</li>
-      <li>MapView Breadcrumps have a max length now</li>
-    </ol>
-  </li>
+  <li>Final Design</li>
+  <li>T4M Download / Update improvements</li>
+  <li>Better Version Check</li>
+  <li>Better Logging</li>
+  <li>7z Extraction Progress (Install progress for maps) fixed</li>
+  <li>Better *.bik handling</li>
+  <li>Easy Cache fixed</li>
 </ol>
-<h2 id="UGXLv0.8rc1.4-Allupdatesforthisrelease">
+<h2 id="UGXLv0.8.0rc.2-Allupdatesforthisrelease">
   All updates for this release
 </h2>
 <p></p>
-<div id="refresh-module--1562976599" class="refresh-module-id jira-table">
+<div id="refresh-module-1364880144" class="refresh-module-id jira-table">
   <p></p>
   <div
-    id="jira-issues--1562976599"
+    id="jira-issues-1364880144"
     style="width: 100%; overflow: auto"
     class="jira-issues">
     <table>
@@ -998,119 +984,31 @@ dateCreated: 2024-02-04T15:28:00.699Z
 </div>
 <p> </p>
 
-<h2 id="UGXLv0.8rc1.4-Testing">Testing</h2>
+<h2 id="UGXLv0.8.0rc.2-Testing">Testing</h2>
 <p>
   This release introduced a couple of new features / additions, which need to be
   well tested to ensure it works with the rest of the application.
 </p>
 <ul>
-  <li><strong>Please test Custom Mods and Download Folder</strong></li>
+  <li>
+    <strong>
+      Please test Custom Mods and Download Folder
+      <br />
+    </strong>
+  </li>
   <li>Please test all links / urls if they point to the correct page!</li>
   <li>
-    On my laptop I get the following critical issues (W10)
-    <br />
-    <ul>
-      <li>Login doesn't get remembered</li>
-      <li>
-        No Authenticate Data can be retrieved, therefore Settings &gt; Account
-        and ProfileTab are not working
-      </li>
-    </ul>
-    Please test and verfiy this, is this only W10? Any way to fix this / how is
-    this caused???
+    Verify that all maps are Installed (green) except of the test map which
+    should always be Outdated!
   </li>
 </ul>
-<h2 id="UGXLv0.8rc1.4-Knownissues">Known issues</h2>
-<ul>
-  <li>Tags filtering doesn't work because mods don't have tags yet</li>
-  <li>
-    The downloads count in the middle bottom of the MainView doesn't remove /
-    update itself if downloads are removed.
-    <br />
-    (This will be fixed with
-    <span data-jira-key="UGXL-1023">
-      <a
-        href="https://ugxmods.atlassian.net/browse/UGXL-1023"
-        class="jira-issue-key"
-        target="_blank">
-        <img
-          class="icon"
-          src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />
-        UGXL-1023
-      </a>
-      -
-      <span class="summary">Replace curl with Qt Network</span>
-      <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default">
-        Open
-      </span>
-    </span>
-
-    <span data-jira-key="UGXL-1023">
-      <a
-        href="https://ugxmods.atlassian.net/browse/UGXL-1023"
-        class="jira-issue-key"
-        target="_blank">
-        <img
-          class="icon"
-          src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />
-        UGXL-1023
-      </a>
-      -
-      <span class="summary">Replace curl with Qt Network</span>
-      <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default">
-        Open
-      </span>
-    </span>
-    )
-  </li>
-  <li>
-    Welcome and Changelog is not visible for some reason
-    <span class="resolved" data-jira-key="UGXL-1091">
-      <a
-        href="https://ugxmods.atlassian.net/browse/UGXL-1091"
-        class="jira-issue-key"
-        target="_blank">
-        <img
-          class="icon"
-          src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium" />
-        UGXL-1091
-      </a>
-      -
-      <span class="summary">Welcome Screen not displaying anything</span>
-      <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-        Closed
-      </span>
-    </span>
-
-    <span class="resolved" data-jira-key="UGXL-1092">
-      <a
-        href="https://ugxmods.atlassian.net/browse/UGXL-1092"
-        class="jira-issue-key"
-        target="_blank">
-        <img
-          class="icon"
-          src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium" />
-        UGXL-1092
-      </a>
-      -
-      <span class="summary">Change Log doesn&#39;t display anything</span>
-      <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-        Closed
-      </span>
-    </span>
-    <ul>
-      <li>
-        I can hover the links and I get a line - seems somehow broken in W10 (on
-        W7 it works?)
-      </li>
-    </ul>
-  </li>
-</ul>
-<h2 id="UGXLv0.8rc1.4-Whatsnext?">Whats next?</h2>
+<h2 id="UGXLv0.8.0rc.2-Knownissues">Known issues</h2>
+<p>none so far</p>
+<h2 id="UGXLv0.8.0rc.2-Whatsnext?">Whats next?</h2>
 <p>
   Focus is now on final
-  <a href="UGX-Launcher_1146890.html">UGX Launcher</a>
-  (RC2) and
+  <a href="/UGXL.html">UGX Launcher</a>
+  (for closed beta) and
   <a href="/UGXLIN">UGXL Installer</a>
   .
 </p>

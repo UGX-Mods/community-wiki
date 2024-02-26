@@ -15,12 +15,6 @@ dateCreated: 2024-02-04T15:29:35.234Z
 <p> </p>
 <div class="table-wrap">
   <table class="wrapped confluenceTable">
-    <colgroup>
-      <col>
-      <col>
-      <col>
-      <col>
-    </colgroup>
     <tbody>
       <tr>
         <th class="confluenceTh"> Short</th>
@@ -34,7 +28,9 @@ dateCreated: 2024-02-04T15:29:35.234Z
         <td class="confluenceTd">
           <p>
             Enable Debug Mode (
-            <a href="12845119.html">Logger &amp; Debugger</a>
+            <a href="/UGXL/Features/Logger-and-Debugger.html">
+              Logger &amp; Debugger
+            </a>
             )
           </p>
         </td>
@@ -63,9 +59,8 @@ dateCreated: 2024-02-04T15:29:35.234Z
           <p>
             For more information read the official Qt5 documentation:
             <a
-              class="external-link"
               href="https://doc.qt.io/qt-5/qloggingcategory.html#logging-rules"
-             >
+              target="_blank">
               https://doc.qt.io/qt-5/qloggingcategory.html#logging-rules
             </a>
           </p>
@@ -173,16 +168,17 @@ dateCreated: 2024-02-04T15:29:35.234Z
 <h2 id="LaunchParameters-Debugging">Debugging</h2>
 <p>
   After enabling the Debug Mode (-d | -debug) you will get access to the
-  <a href="12845119.html">Logger &amp; Debugger</a>
+  <a href="/UGXL/Features/Logger-and-Debugger.html">Logger &amp; Debugger</a>
   .
 </p>
 <h2 id="LaunchParameters-Logging">Logging</h2>
-<div
-  class="confluence-information-macro confluence-information-macro-information">
-  <p class="title conf-macro-render">Logging is forced in Beta</p>
-  <span
-    class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span>
-  <div class="confluence-information-macro-body">
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-outline.png"
+    alt=""
+    class="banner-icon" />
+  <p class="banner-title">Logging is forced in Beta</p>
+  <div class="banner-body">
     <p>While in Beta, the logfile is forced to help development.</p>
   </div>
 </div>
@@ -217,18 +213,15 @@ dateCreated: 2024-02-04T15:29:35.234Z
 </p>
 <div class="table-wrap">
   <table class="wrapped confluenceTable">
-    <colgroup>
-      <col />
-      <col />
-    </colgroup>
     <tbody>
       <tr>
         <th class="confluenceTh">Category</th>
         <th class="confluenceTh">Information</th>
       </tr>
       <tr>
-        <td class="confluenceTd"><pre>default</pre>
+        <td class="confluenceTd"><pre>default</pre></td>
         <td class="confluenceTd">Default log</td>
+      </tr>
 
       <tr>
         <td class="confluenceTd"><pre>socket.io</pre></td>
@@ -312,8 +305,8 @@ dateCreated: 2024-02-04T15:29:35.234Z
         <td colspan="1" class="confluenceTd"><pre>dloadman</pre></td>
         <td colspan="1" class="confluenceTd">Download Manager (UI)</td>
       </tr>
-
-
+    </tbody>
+  </table>
 </div>
 <p>To enable / disable certain categories, use the following format:</p>
 <p>
@@ -321,13 +314,11 @@ dateCreated: 2024-02-04T15:29:35.234Z
   seperated by \n (new line)
 </p>
 <div class="preformatted panel" style="border-width: 1px">
-  </div>
-
+  <pre>
 -logcat &quot;default.debug=false&quot; | Hide all default debug massages
 -logcat &quot;default.*=false&quot; | Hide all default messages
 -logcat &quot;default.*=false\ndefault.critical=true&quot; | Hide all default messages and enable critical messages again
--logcat &quot;*.*=false\nsettings.debug=true&quot; | Disable all messages and enable debug settings messages agai</pre
-    >
-  </div>
+-logcat &quot;*.*=false\nsettings.debug=true&quot; | Disable all messages and enable debug settings messages agai
+</pre
+  >
 </div>
-<</div>
