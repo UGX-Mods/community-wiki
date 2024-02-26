@@ -14,6 +14,7 @@ const STEPS = {
   createHierarchy: 'create-hierarchy',
   refreshHierarchy: 'refresh-hierarchy',
   linkValidation: 'link-validation',
+  securityValidation: 'security-validation',
   confluenceFixFilenames: 'confluence-fix-filenames',
   confluenceCleanup: 'confluence-cleanup',
   confluenceId: 'confluence-id',
@@ -31,10 +32,16 @@ const STEP_CHOICES = [
     name: 'REFRESH: Page Hierarchies',
     description: 'Update all widgets with latest links',
   },
+  new Separator('--- VALIDATION ---'),
   {
     value: STEPS.linkValidation,
     name: 'Link validation',
     description: 'Checks all href if they point to a valid file/folder',
+  },
+  {
+    value: STEPS.securityValidation,
+    name: 'Security validation',
+    description: 'Does some security checks to ensure content is safe',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -63,6 +70,7 @@ const REGEX = {
   fixClosingTagIssue: /<(\/?\w+)(?:\s+)>/g,
   confluenceIdTagMatch: /confluence:(\d)/,
   externalHref: /^(https?:|\/\/|mailto:)/,
+  allowListIframeHosts: /^https:\/\/(www.youtube-nocookie.com)/i,
 };
 
 /**
@@ -111,11 +119,14 @@ async function main() {
     case STEPS.linkValidation:
       await validateAllLinks(files);
       break;
+    case STEPS.securityValidation:
+      await securityValidation(files);
+      break;
     case STEPS.confluenceFixFilenames:
       fixFileNames(files);
       fixNumberFileNameOnly(files);
       break;
-    case STEPS.cleanupConfluenceHtml:
+    case STEPS.confluenceCleanup:
       await cleanupConfluenceHtml(files);
       fixCodeBlocks(files);
       break;
@@ -284,6 +295,63 @@ async function createPageHierarchyLiElements(rootFolderPath, subPaths = '') {
       }),
     )
   ).join('</li><li>');
+}
+
+/**
+ *
+ * @param {string[]} files
+ */
+async function securityValidation(files) {
+  let securityIssues = 0;
+  for (const filePath of files) {
+    const fileContent = await fs.promises
+      .readFile(filePath, encoding)
+      .catch((err) => {
+        console.error(err);
+        return null;
+      });
+    if (!fileContent) continue;
+
+    const issues = [];
+
+    const parsedHtml = parseHtmlContent(fileContent);
+    const iFrames = parsedHtml.querySelectorAll('iframe');
+
+    for (const iframe of iFrames) {
+      const src = iframe.getAttribute('src');
+
+      if (!src) {
+        issues.push({
+          issue: 'Invalid src attribute!',
+          reason: 'Missing src or empty!',
+        });
+      } else if (!src.startsWith('https://')) {
+        issues.push({ issue: 'Insecure URL', reason: 'Missing https://', src });
+      } else if (!REGEX.allowListIframeHosts.test(src)) {
+        issues.push({
+          issue: 'Secure hostname check failed!',
+          reason: 'URL not in allowed lists of hosts!',
+          src,
+        });
+      }
+    }
+
+    if (issues.length > 0) {
+      securityIssues += issues.length;
+      console.error(
+        '## File',
+        filePath,
+        'has',
+        issues.length,
+        'security issues!',
+      );
+      console.error(issues);
+    }
+  }
+
+  if (securityIssues > 0) {
+    console.error('🚨🚨🚨🚨 Found', securityIssues, 'security issues!');
+  }
 }
 
 /**
@@ -717,6 +785,20 @@ async function cleanupConfluenceHtml(files) {
     // remove style tags
     parsedHtml.querySelectorAll('style').forEach((s) => s.remove());
 
+    // replace youtube iframes with correct embed (+ privacy option!)
+    parsedHtml.querySelectorAll('iframe.youtube-player').forEach((s) => {
+      s.replaceWith(createPrivacyYoutubeEmbed(s.getAttribute('src')));
+    });
+
+    // fix iframe invalid attributes
+    parsedHtml.querySelectorAll('iframe').forEach((s) => {
+      s.removeAttribute('frameborder')
+        .removeAttribute('webkitallowfullscreen')
+        .removeAttribute('mozallowfullscreen');
+
+      //
+    });
+
     // remove black color
     parsedHtml.querySelectorAll('span').forEach((s) => {
       if (!s.hasAttribute('style')) return;
@@ -1036,4 +1118,24 @@ function getWikiJsCommentNode(rootNode) {
   return rootNode.childNodes
     .filter((n) => n.nodeType === HTMLParser.NodeType.COMMENT_NODE)
     .find((n) => n.text.includes('title:'));
+}
+
+function createPrivacyYoutubeEmbed(url) {
+  // https://www.youtube-nocookie.com/embed/6eUsg4VI2zk?si=jX_wopnqkNk64IDX
+
+  if (!url) {
+    return '';
+  }
+
+  url = url.replace(
+    /(\/\/|https?:\/\/)?(www.)?youtube\.com/,
+    'https://www.youtube-nocookie.com',
+  );
+
+  return `<iframe
+    width="560" height="315"
+    src="${url}"
+    title="YouTube video player"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>`;
 }
