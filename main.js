@@ -889,9 +889,26 @@ async function cleanupConfluenceHtml(files) {
       }
     });
 
+    // remove boilerplate from th tags
+    parsedHtml.querySelectorAll('th').forEach((th) => {
+      if (th.getAttribute('colspan') === '1') {
+        th.removeAttribute('colspan');
+      }
+      removeClassFromNode(th, 'confluenceTh');
+    });
+
     // remove boilerplate from td tags
     parsedHtml.querySelectorAll('td').forEach((td) => {
       td.removeAttribute('nowrap');
+      if (td.getAttribute('colspan') === '1') {
+        td.removeAttribute('colspan');
+      }
+      removeClassFromNode(td, 'confluenceTd');
+    });
+
+    // remove content wrapper boilerplate
+    parsedHtml.querySelectorAll('div.content-wrapper').forEach((div) => {
+      div.replaceWith(div.innerHTML);
     });
 
     // remove some confluence / jira classes

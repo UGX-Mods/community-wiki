@@ -65,92 +65,92 @@ dateCreated: 2024-02-04T15:25:26.075Z
   <table class="confluenceTable">
     <tbody>
       <tr>
-        <th class="confluenceTh"><p>Function</p></th>
-        <th class="confluenceTh"><p>Description</p></th>
-        <th class="confluenceTh"><p>MandatoryArg</p></th>
-        <th class="confluenceTh"><p>Example</p></th>
+        <th><p>Function</p></th>
+        <th><p>Description</p></th>
+        <th><p>MandatoryArg</p></th>
+        <th><p>Example</p></th>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>flag(flagname)</p></td>
-        <td class="confluenceTd"><p>boolean flag check.</p></td>
-        <td class="confluenceTd"><p>flagname</p></td>
-        <td class="confluenceTd">
+        <td><p>flag(flagname)</p></td>
+        <td><p>boolean flag check.</p></td>
+        <td><p>flagname</p></td>
+        <td>
           <p>if(flag(&quot;electricity_on&quot;))</p>
         </td>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>flag_init(flagname)</p></td>
-        <td class="confluenceTd">
+        <td><p>flag_init(flagname)</p></td>
+        <td>
           <p>
             initializes a flag so it can be set. Flags MUST be initialized
             before they can be used for the first time.
           </p>
         </td>
-        <td class="confluenceTd"><p>flagname</p></td>
-        <td class="confluenceTd">
+        <td><p>flagname</p></td>
+        <td>
           <p>flag_init(&quot;electricity_on&quot;)</p>
         </td>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>flag_set(flagname)</p></td>
-        <td class="confluenceTd">
+        <td><p>flag_set(flagname)</p></td>
+        <td>
           <p>
             sets a 'flag' which alerts all flag_wait()'s and changes are
             reflected in flag() checks thereafter
           </p>
         </td>
-        <td class="confluenceTd"><p>flagname</p></td>
-        <td class="confluenceTd">
+        <td><p>flagname</p></td>
+        <td>
           <p>flag_wait(&quot;electricity_on&quot;)</p>
         </td>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>flag_wait(flagname)</p></td>
-        <td class="confluenceTd">
+        <td><p>flag_wait(flagname)</p></td>
+        <td>
           <p>Pauses execution flow until a flag has been set.</p>
         </td>
-        <td class="confluenceTd"><p>flagname</p></td>
-        <td class="confluenceTd">
+        <td><p>flagname</p></td>
+        <td>
           <p>flag_wait(&quot;electricity_on&quot;)</p>
         </td>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>int(string)</p></td>
-        <td class="confluenceTd">
+        <td><p>int(string)</p></td>
+        <td>
           <p>
             Converts string-formatted numbers to integers. This is helpful when
             you are doing math with strings and it doesn't perform as expected.
             (Example, 10+10 returns 01010)
           </p>
         </td>
-        <td class="confluenceTd"><p>string</p></td>
-        <td class="confluenceTd"><p>int(&quot;100&quot;)</p></td>
+        <td><p>string</p></td>
+        <td><p>int(&quot;100&quot;)</p></td>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>notify(event)</p></td>
-        <td class="confluenceTd">
+        <td><p>notify(event)</p></td>
+        <td>
           <p>
             Sends a 'notify' on the entity called on. waittill()'s respond to
             this.
           </p>
         </td>
-        <td class="confluenceTd"><p>event</p></td>
-        <td class="confluenceTd"><p>self notify(&quot;trigger&quot;)</p></td>
+        <td><p>event</p></td>
+        <td><p>self notify(&quot;trigger&quot;)</p></td>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>wait(time)</p></td>
-        <td class="confluenceTd">
+        <td><p>wait(time)</p></td>
+        <td>
           <p>
             Pauses execution flow for a defined amount of time. Time cannot be
             smaller than 0.05.
           </p>
         </td>
-        <td class="confluenceTd"><p>time</p></td>
-        <td class="confluenceTd"><p>wait(.05)</p></td>
+        <td><p>time</p></td>
+        <td><p>wait(.05)</p></td>
       </tr>
       <tr>
-        <td class="confluenceTd"><p>waittill(event, user)</p></td>
-        <td class="confluenceTd">
+        <td><p>waittill(event, user)</p></td>
+        <td>
           <p>
             Usually called on triggers, it pauses execution flow until a notify
             is cast on whatever entity the waittill has been called on.
@@ -160,8 +160,8 @@ dateCreated: 2024-02-04T15:25:26.075Z
             'level' entity for cross-script notifies.
           </p>
         </td>
-        <td class="confluenceTd"><p>event</p></td>
-        <td class="confluenceTd">
+        <td><p>event</p></td>
+        <td>
           <p>trigger waittill(&quot;trigger&quot;, player)</p>
         </td>
       </tr>
