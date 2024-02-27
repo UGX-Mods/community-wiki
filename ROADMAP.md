@@ -6,8 +6,7 @@
   - formatting, validation, etc.
 - Prevent direct push to master (once wiki is stable)
 - Some more style / widget elements and fixes
-  - Jira elements
-  - convert confluence sections properly
+  - Jira elements (status-macro)
   - remove more obsolete confluence boilerplate / cleaner html files
 - Fully support markdown (.md) files with tooling
   - atm only .html files are fully supported

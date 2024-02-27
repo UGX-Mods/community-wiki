@@ -17,16 +17,56 @@ dateCreated: 2024-02-04T15:34:56.186Z
   downloaded.
 </p>
 <p>&nbsp;</p>
-<p>
-  <b>MultiExcerpt named UGX_Only was not found</b>
-  &nbsp;--&nbsp;Please check the page name and MultiExcerpt name used in the
-  MultiExcerpt-Include macro
-</p>
-<p>
-  <b>MultiExcerpt named rootpath was not found</b>
-  &nbsp;--&nbsp;Please check the page name and MultiExcerpt name used in the
-  MultiExcerpt-Include macro
-</p>
+<div class="banner banner-warning">
+  <img src="/attachments/icons/alert-octagon.png" alt="" class="banner-icon" />
+
+  <div class="banner-body">
+    <p>
+      <strong>WARNING:</strong>
+      This tutorial can only be used if you have applied the UGX Modtools Patch
+      to your World at War installation. To install the patch, refer to
+      <a
+        href="/Modding/World-at-War-Modtools/Resources-and-Links/Modtools-Installation-Guide#ModtoolsInstallationGuide-InstallingtheFiles">
+        &quot;Installing the Files&quot;
+      </a>
+      <span class="confluence-link"> </span>
+      in the
+      <span class="confluence-link"> </span>
+      <a
+        href="/Modding/World-at-War-Modtools/Resources-and-Links/Modtools-Installation-Guide">
+        <span class="confluence-link">Modtools Installation Guide</span>
+      </a>
+      .
+    </p>
+  </div>
+</div>
+<div class="banner banner-tip">
+  <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
+
+  <div class="banner-body">
+    <p>
+      <strong>NOTE</strong>
+      : Before reading this guide, determine where your World at War root
+      directory is located.
+    </p>
+    <p>
+      <strong>Non-Steam Install</strong>
+      : C:\Program Files (x86)\Activision\Call of Duty World at War\
+    </p>
+    <p>
+      <strong>Steam Install</strong>
+      : C:\Program Files (x86)\Steam\steamapps\common\Call of Duty World at War\
+    </p>
+    <p>
+      For the rest of this guide, it will be assumed that the word
+      &quot;root&quot; refers to the appropriate installation path shown above.
+    </p>
+    <p>
+      Say 'Yes to all' if Windows asks you about replacing files when dragging
+      files into your root directory.
+    </p>
+  </div>
+</div>
 <p>&nbsp;</p>
 <div class="expandable-container">
   <button class="expandable-button" type="button">
@@ -586,11 +626,44 @@ dateCreated: 2024-02-04T15:34:56.186Z
   id="UGXModStandalonev1-0-3ManualInstallation-AddingRequiredUGXPrefabsinRadiant">
   Adding Required UGX Prefabs in Radiant
 </h1>
-<p>
-  <b>MultiExcerpt named prefab was not found</b>
-  &nbsp;--&nbsp;Please check the page name and MultiExcerpt name used in the
-  MultiExcerpt-Include macro
-</p>
+<div class="banner banner-tip">
+  <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
+
+  <div class="banner-body">
+    <p>
+      <strong>NOTE:</strong>
+      <strong>&quot;Prefab&quot;</strong>
+      is shorthand for &quot;prefabrication&quot;. A prefab is a pre-assembled
+      group of brushes, models, or terrain patches which can be placed and moved
+      as a group in Radiant.
+      <br />
+      <strong>To Place a Prefab:</strong>
+    </p>
+    <ul>
+      <li>Right-click the 2D Window in Radiant.</li>
+      <li>Navigate to misc -&gt; prefab</li>
+      <li>
+        Use the file browser to navigate to the desired prefab, which should
+        always be located in root/map_source/_prefabs.
+      </li>
+      <li>
+        Now you have a prefabricated group of objects which can be moved around
+        as if it were one object.
+      </li>
+    </ul>
+    <p>
+      To stamp a prefab, select the prefab and press the
+      <a href="https://i.imgur.com/5mfwdPu.png" target="_blank">
+        <img
+          alt="stamp"
+          height="24"
+          width="24"
+          src="https://ugx-mods.com/wiki/images/2/29/Stamp_button.png.pagespeed.ce.HNleJljfPv.png" />
+      </a>
+      button from the toolbar.
+    </p>
+  </div>
+</div>
 <p>
   In order to use random boxes with UGX Mod, you will need to use the provided
   prefabs. There is a prefab for the start box, and then a copy/paste prefab for
@@ -624,11 +697,45 @@ dateCreated: 2024-02-04T15:34:56.186Z
     the map and change one of it's KVPs (See below).
   </li>
 </ul>
-<p>
-  <b>MultiExcerpt named kvp was not found</b>
-  &nbsp;--&nbsp;Please check the page name and MultiExcerpt name used in the
-  MultiExcerpt-Include macro
-</p>
+<div class="banner banner-tip">
+  <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
+
+  <div class="banner-body">
+    <p>
+      <strong>NOTE:</strong>
+      KVP is an abbreviation for &quot;Key-Value Pair&quot;. When entering a KVP
+      in the Radiant Entity Window,
+      <strong>ensure that you have the entity selected first</strong>
+      . If you do not have an entity selected, Radiant will automatically add
+      the KVP to the &quot;worldspawn&quot; entity. This is BAD and will likely
+      cause your map to crash while loading! In these pages, KVP's are referred
+      to in this format: Key | Value. Note they are separated by a pipe ( | )
+      character. This character should be ignored when entering the Key-Value
+      Pair.
+      <br />
+      <strong>To properly add a KVP to an entity:</strong>
+    </p>
+    <ul>
+      <li>
+        Select the entity by holding the Shift key on your keyboard followed by
+        clicking the entity(ies) that you wish to add a KVP to.
+      </li>
+      <li>
+        Enter the first value (this is the Key) into the text field labeled
+        &quot;Key&quot;
+      </li>
+      <li>
+        Enter the second value (this is the Value) into the text field labaled
+        &quot;Value&quot;.
+      </li>
+      <li>
+        Press the Enter key on your keyboard to save the KVP to the entity. You
+        should see the KVP appear in the entity's KVP table (located above the
+        Key text field).
+      </li>
+    </ul>
+  </div>
+</div>
 <p>
   After stamping the prefab, select it's trigger which has the targetname
   <strong>'zombie_vending_upgrade</strong>
