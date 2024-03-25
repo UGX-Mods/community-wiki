@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.23.9",
     "@stylistic/stylelint-config": "^1.0.1",
     "breakpoint-sass": "^3.0.0",
-    "cssnano": "^6.0.5",
+    "cssnano": "^6.1.1",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.2.5",
     "sass": "^1.71.1",
