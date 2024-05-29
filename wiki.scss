@@ -301,6 +301,11 @@ $color-black: #000;
 $color-banner-bg: #111;
 $border-radius: 5px;
 
+body,
+html {
+  background: #424242;
+}
+
 .v-main .contents {
   p {
     padding: 0.5rem 0 0;

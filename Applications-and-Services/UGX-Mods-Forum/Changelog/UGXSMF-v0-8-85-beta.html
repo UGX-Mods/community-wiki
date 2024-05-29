@@ -1,0 +1,635 @@
+<!--
+title: UGXSMF v0.8.85-beta
+description:
+published: true
+editor: ckeditor
+-->
+
+<div class="plugin-tabmeta-details">
+  <div class="table-wrap">
+    <table class="wrapped confluenceTable">
+      <colgroup>
+        <col style="width: 113px" />
+        <col style="width: 132px" />
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>Date</th>
+          <td>29 May 2024</td>
+        </tr>
+        <tr>
+          <th>Issues</th>
+          <td>
+            <p>
+              <span class="static-jira-issues_count">
+                <a
+                  class="issue-link"
+                  href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.85-beta"
+                  target="_blank">
+                  11 issues
+                </a>
+              </span>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td>
+            <span
+              class="status-macro aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+              RELEASED
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <th>Version</th>
+          <td>v0.8.85-beta</td>
+        </tr>
+        <tr>
+          <th>Version Mode</th>
+          <td>production ⭐</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h2 id="changelog-summary">Summary</h2>
+<p>
+  Big update with performance improvements 🚀 and new additions, combined with a
+  few fixes and refinements.
+</p>
+
+<h2 id="important-highlights">Important highlights from this release</h2>
+<ul>
+  <li>
+    New Features
+    <ul>
+      <li>
+        Added NSFW (18+ & shocking) spoilers
+        <ul>
+          <li>
+            You can automatically reveal the content by changing the NSFW
+            setting at
+            <a
+              href="https://www.ugx-mods.com/forum/profile/area=theme"
+              target="_blank">
+              Look and Layout settings
+            </a>
+            .
+          </li>
+          <li>
+            <video width="480" controls poster="" autoplay loop>
+              <source
+                src="/attachments/changelog/UGXSMF-v0-8-85-beta/nsfw-spoilers.webm"
+                type="video/webm" />
+              Your browser doesn't support HTML5 video tag.
+            </video>
+          </li>
+          <li>
+            <video width="480" controls poster="" autoplay loop>
+              <source
+                src="/attachments/changelog/UGXSMF-v0-8-85-beta/nsfw-spoiler-cke.webm"
+                type="video/webm" />
+              Your browser doesn't support HTML5 video tag.
+            </video>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Improvements
+    <ul>
+      <li>Backend improvements for better performance and stability</li>
+      <li>Cleaner code & added some failsafe checks for UGX Feedback</li>
+      <li>Improvements to privacy handling and some UI/UX improvements</li>
+      <li>
+        Continue fight against spam bots 🤖, some more checks and additional
+        protection added
+      </li>
+      <li>
+        Added back twitter emojis (but still no 15.1 support 😢) and set as
+        default provider
+      </li>
+      <li>
+        Added Word Wrap option to code blocks
+        <br />
+        <img
+          src="/attachments/changelog/UGXSMF-v0-8-85-beta/code-editor-word-wrap.png"
+          width="420"
+          alt="" />
+      </li>
+      <li>Tweak reply / quote / report buttons</li>
+      <li>
+        Better Announcement banners + option to collapse / expand them + new UGX
+        News announcement banner
+        <br />
+        <video width="480" controls poster="" autoplay loop>
+          <source
+            src="/attachments/changelog/UGXSMF-v0-8-85-beta/announcements.webm"
+            type="video/webm" />
+          Your browser doesn't support HTML5 video tag.
+        </video>
+      </li>
+      <li>
+        Better text editor crash handling + proper fallback for worst case
+      </li>
+    </ul>
+  </li>
+  <li>
+    Fixes
+    <ul>
+      <li>Fixed a couple of reported issues from Sentry</li>
+      <li>
+        Login is remembered for a year now instead of one hour for all third
+        party providers (like Discord)
+      </li>
+      <li>
+        Fixed rare case of opt out of GoogleAnalytics not correctly working
+      </li>
+      <li>Fixed TextEditor (CKEditor) styling and missing download button</li>
+      <li>Fix mobile menu close button not working</li>
+      <li>
+        Uploaded avatar won't be cleared if there is an error during
+        registration / form submit
+      </li>
+      <li>Fixed issues with discord role sync (works properly again)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="all-tickets">All tickets for this release</h2>
+<!-- Tickets -->
+<div
+  id="jira-issues-1542875994"
+  style="width: 100%; overflow: auto"
+  class="jira-issues">
+  <table>
+    <tbody>
+      <tr></tr>
+      <tr>
+        <th style="text-align: left; text-transform: capitalize">
+          <span>Key</span>
+        </th>
+
+        <th style="text-align: left; text-transform: capitalize">
+          <span>Summary</span>
+        </th>
+
+        <th style="text-align: left; text-transform: capitalize">
+          <span>T</span>
+        </th>
+
+        <th style="text-align: left; text-transform: capitalize">
+          <span>P</span>
+        </th>
+
+        <th style="text-align: left; text-transform: capitalize">
+          <span>Status</span>
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-578"
+            target="_blank">
+            UGXSMF-578
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-578"
+            target="_blank">
+            Fix CKE issues from last release
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-578"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium"
+              alt="Bug"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/critical.svg"
+            alt="Critical"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-577"
+            target="_blank">
+            UGXSMF-577
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-577"
+            target="_blank">
+            Avatar upload is cleared during registration error
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-577"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium"
+              alt="Bug"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/major.svg"
+            alt="Major"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-576"
+            target="_blank">
+            UGXSMF-576
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-576"
+            target="_blank">
+            Discord sync does sometimes fail (and no error)
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-576"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium"
+              alt="Bug"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/major.svg"
+            alt="Major"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-562"
+            target="_blank">
+            UGXSMF-562
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-562"
+            target="_blank">
+            Privacy (Writing, Refactoring, Changes)
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-562"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium"
+              alt="Task"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/critical.svg"
+            alt="Critical"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
+            target="_blank">
+            UGXSMF-511
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
+            target="_blank">
+            Moderation Improvements
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium"
+              alt="Improvement"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/minor.svg"
+            alt="Minor"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
+            target="_blank">
+            UGXSMF-443
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
+            target="_blank">
+            Bulk b8 processing
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium"
+              alt="Improvement"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/minor.svg"
+            alt="Minor"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-442"
+            target="_blank">
+            UGXSMF-442
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-442"
+            target="_blank">
+            Warn if processor or crons have errors / do not finish
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-442"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium"
+              alt="Improvement"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/major.svg"
+            alt="Major"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
+            target="_blank">
+            UGXSMF-392
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
+            target="_blank">
+            Improve forum reply / quote to prevent false usage
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium"
+              alt="Improvement"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/minor.svg"
+            alt="Minor"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
+            target="_blank">
+            UGXSMF-389
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
+            target="_blank">
+            shocking / nsfw - spoiler tags to hide explicit content
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium"
+              alt="Improvement"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/minor.svg"
+            alt="Minor"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
+            target="_blank">
+            UGXSMF-387
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
+            target="_blank">
+            Moderation: GDPR bulk delete for emails
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium"
+              alt="Improvement"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/minor.svg"
+            alt="Minor"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-320"
+            target="_blank">
+            UGXSMF-320
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-320"
+            target="_blank">
+            Backend Performance
+          </a>
+        </td>
+        <td>
+          <a
+            href="https://ugxmods.atlassian.net/browse/UGXSMF-320"
+            target="_blank">
+            <img
+              src="https://ugxmods.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium"
+              alt="Improvement"
+              class="icon" />
+          </a>
+        </td>
+        <td>
+          <img
+            src="https://ugxmods.atlassian.net/images/icons/priorities/major.svg"
+            alt="Major"
+            class="icon" />
+        </td>
+        <td>
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+            Done
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ~Tickets -->
+
+(Not all changes are listed here, always check the highlights above)
+
+<h2 id="known-issues">Known issues</h2>
+<ul>
+  <li>
+    Supported Browsers / Devices
+    <br />
+    <ul>
+      <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
+      <li>Edge has been partially tested</li>
+      <li>There was no extensive testing on mobile devices yet</li>
+      <li>
+        <strong>
+          We need your feedback if something isn't working on your device
+        </strong>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h2 id="special-thanks">Special Thanks</h2>
+<p>To your issue reports through Discord ❤️</p>
+
+<h2 id="whats-next">Whats next?</h2>
+<p>
+  To get a complete overview of our development plans, visit
+  <a href="https://www.ugx-mods.com/roadmap" target="_blank">
+    <span class="nolink">https://www.ugx-mods.com/</span>
+    roadmap
+  </a>
+</p>
