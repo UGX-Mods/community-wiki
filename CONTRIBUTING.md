@@ -1,9 +1,9 @@
 ---
 title: CONTRIBUTING
-description: 
+description:
 published: true
 date: 2024-02-25T10:37:56.992Z
-tags: 
+tags:
 editor: markdown
 dateCreated: 2024-02-04T15:24:16.655Z
 ---
@@ -46,7 +46,7 @@ You can check and fix issues (if possible) via `npm run lint`.
 
 ### Stylesheet
 
-The `wiki.scss` is used to compile css which is used  to override and extend WikiJS theme.
+The `wiki.scss` is used to compile css which is used to override and extend WikiJS theme.
 
 To build it, simply run `npm run build:sass` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
 
@@ -79,11 +79,12 @@ services:
       DB_TYPE: sqlite
       DB_FILEPATH: /home/db.sqlite
     ports:
-      - "3634:3000"
+      - '3634:3000'
     volumes:
       - ./home:/home
     restart: unless-stopped
 ```
+
 (based on https://docs.requarks.io/install/docker)
 
 Then up the container `docker compose up -d` and navigate to `http://localhost:3634` and finish installation.
@@ -93,12 +94,12 @@ Then login, go to `administration > storage`
 - Select `Local File System`, enable it and set Path to `/home/local-files`
 - Now either copy or checkout your files into the folder ({location of docker-compose.yml}/home/local-files)
 - Click on `Import Everything` to start importing the files (if you import all files it may take a while).
-- ⚠️ Any modifications within wikijs will be applied on the files (you might loose local changes!), also run `Dump all content to disk` will prune outside made changes - so be careful 
+- ⚠️ Any modifications within wikijs will be applied on the files (you might loose local changes!), also run `Dump all content to disk` will prune outside made changes - so be careful
 - ⚠️ If you do modifications outside of wikijs, be sure to run `Import Everything` again to apply them to your instance (but this will wipe out any unsaved changes in your wikijs instance!)
 - 💡 To create pages within wikijs, simply create your page and make your modifications, then use the `Dump all content to disk` to generate the html file, which you then must push to your fork 🙃
 
 You can also copy & pase the wiki.css in `administration > theme > CSS Override` to apply custom changes and see all custom widgets.<br>
-Switch to dark theme and set `Table of Contents Position` to `right`. 
+Switch to dark theme and set `Table of Contents Position` to `right`.
 
 💡 You can easily reset the instance and start all over again by deleting the `{location of docker-compose.yml}/home/db.sql`
 
