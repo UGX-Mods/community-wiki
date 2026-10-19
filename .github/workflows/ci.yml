@@ -17,26 +17,33 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      # actions are pinned to commit SHAs, dependabot keeps them (and the comments) up to date
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
           # binaries (images, videos) are not needed for checks, pointers are enough
           lfs: false
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
           cache: npm
 
+      # install scripts are governed by "allowScripts" in package.json (strict, see .npmrc)
       - run: npm ci
+
+      - name: Verify registry signatures
+        run: npm audit signatures
 
       # wiki.js commits page edits directly to main without prettier formatting,
       # so only the files touched by the pull request are format-checked
       - name: Collect changed files
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
-          if [ -n "${{ github.event.pull_request.base.sha }}" ]; then
-            git diff --name-only --diff-filter=ACMR \
-              "${{ github.event.pull_request.base.sha }}...HEAD" > "$RUNNER_TEMP/changed.txt"
+          if [ -n "$BASE_SHA" ]; then
+            git diff --name-only --diff-filter=ACMR "$BASE_SHA...HEAD" > "$RUNNER_TEMP/changed.txt"
           else
             git ls-files > "$RUNNER_TEMP/changed.txt"
           fi
@@ -44,7 +51,7 @@ jobs:
 
       - name: Prettier (changed files)
         run: |
-          xargs -r -d '\n' npx prettier --check --ignore-unknown \
+          xargs -r -d '\n' npx --no-install prettier --check --ignore-unknown \
             --no-error-on-unmatched-pattern < "$RUNNER_TEMP/changed.txt"
 
       - name: Stylelint
