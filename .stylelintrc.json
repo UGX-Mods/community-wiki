@@ -2,7 +2,7 @@
   "defaultSeverity": "warning",
   "extends": [
     "stylelint-config-standard-scss",
-    "stylelint-config-idiomatic-order",
+    "stylelint-config-recess-order",
     "@stylistic/stylelint-config",
     "stylelint-prettier/recommended"
   ],
