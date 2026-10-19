@@ -1,17 +1,27 @@
 {
   "name": "ugx-community-wiki",
   "version": "1.0.0",
+  "private": true,
   "description": "Official UGX-Mods Wiki for Call of Duty Modding and for UGX Products & Services.",
-  "main": "main.js",
   "author": "Alexander 'Delta' Diller",
   "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UGX-Mods/community-wiki.git"
+  },
+  "homepage": "https://wiki.ugx-mods.com",
+  "engines": {
+    "node": ">=22.13"
+  },
   "scripts": {
-    "lint": "npm run lint:sass && npm run lint:html",
-    "lint:sass": "stylelint **/*.scss --fix --max-warnings 0",
-    "lint:html": "prettier  **/*.html -c -w",
     "build": "npm run build:css && npm run build:js",
+    "build:css": "sass --no-source-map wiki.scss wiki.css && esbuild wiki.css --minify --log-level=warning --outfile=wiki.min.css",
     "build:js": "esbuild wiki.js --minify --target=es2019 --log-level=warning --outfile=wiki.min.js",
-    "build:css": "sass --no-source-map wiki.scss wiki.css && esbuild wiki.css --minify --log-level=warning --outfile=wiki.min.css"
+    "format": "prettier --write . && stylelint \"**/*.scss\" --fix",
+    "lint": "npm run lint:format && npm run lint:style",
+    "lint:format": "prettier --check .",
+    "lint:style": "stylelint \"**/*.scss\" --max-warnings 0",
+    "tools": "node main.js"
   },
   "dependencies": {
     "@inquirer/prompts": "^8.7.3",
