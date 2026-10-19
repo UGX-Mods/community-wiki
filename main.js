@@ -13,8 +13,10 @@ const STEPS = {
   none: 'NONE',
   createHierarchy: 'create-hierarchy',
   refreshHierarchy: 'refresh-hierarchy',
+  validate: 'validate',
   linkValidation: 'link-validation',
   securityValidation: 'security-validation',
+  metadataValidation: 'metadata-validation',
   confluenceFixFilenames: 'confluence-fix-filenames',
   confluenceCleanup: 'confluence-cleanup',
   confluenceId: 'confluence-id',
@@ -34,6 +36,11 @@ const STEP_CHOICES = [
   },
   new Separator('--- VALIDATION ---'),
   {
+    value: STEPS.validate,
+    name: 'Validate everything',
+    description: 'Runs link, security and metadata validation (used by CI)',
+  },
+  {
     value: STEPS.linkValidation,
     name: 'Link validation',
     description: 'Checks all href if they point to a valid file/folder',
@@ -42,6 +49,12 @@ const STEP_CHOICES = [
     value: STEPS.securityValidation,
     name: 'Security validation',
     description: 'Does some security checks to ensure content is safe',
+  },
+  {
+    value: STEPS.metadataValidation,
+    name: 'Metadata validation',
+    description:
+      'Checks the wiki.js page header (title, description, ...) and the file name',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -71,7 +84,23 @@ const REGEX = {
   confluenceIdTagMatch: /confluence:(\d)/,
   externalHref: /^(https?:|\/\/|mailto:)/,
   allowListIframeHosts: /^https:\/\/(www.youtube-nocookie.com)/i,
+  // https://docs.requarks.io/guide/pages#naming-restrictions
+  validPagePathSegment: /^[A-Za-z0-9_-]+$/,
 };
+
+// fields wiki.js writes into the page header comment
+const PAGE_HEADER_FIELDS = [
+  'title',
+  'description',
+  'published',
+  'date',
+  'tags',
+  'editor',
+  'dateCreated',
+];
+
+// folders which never contain wiki pages
+const IGNORED_DIRS = /(^|[\\/])(node_modules|\.git|github)([\\/]|$)/;
 
 /**
  * @type {Partial<HTMLParser.Options>}
@@ -100,15 +129,55 @@ const EMOJI_MAP = {
 
 const PROCESS_CWD = process.cwd();
 
-async function main() {
-  const answer = await select({
-    message: 'What do you want to do?',
-    choices: STEP_CHOICES,
-  });
+function printUsage() {
+  console.log('Usage: node main.js [step] [file.html ...]\n');
+  console.log('Without a step an interactive menu is shown. Steps:');
+  for (const choice of STEP_CHOICES) {
+    if (choice instanceof Separator || choice.value === STEPS.none) continue;
+    console.log(`  ${choice.value.padEnd(26)} ${choice.description}`);
+  }
+  console.log(
+    '\nValidation steps accept an optional list of HTML files (default: all pages)' +
+      '\nand exit with code 1 if errors were found.',
+  );
+}
 
-  const files = await getHtmlFiles();
+async function main() {
+  const [stepArg, ...fileArgs] = process.argv.slice(2);
+
+  if (stepArg === '--help' || stepArg === '-h') {
+    printUsage();
+    return;
+  }
+
+  if (stepArg && !Object.values(STEPS).includes(stepArg)) {
+    console.error(`Unknown step: ${stepArg}\n`);
+    printUsage();
+    process.exitCode = 1;
+    return;
+  }
+
+  if (!stepArg && !process.stdin.isTTY) {
+    printUsage();
+    process.exitCode = 1;
+    return;
+  }
+
+  const answer =
+    stepArg ??
+    (await select({
+      message: 'What do you want to do?',
+      choices: STEP_CHOICES,
+    }));
+
+  const files = fileArgs.length
+    ? fileArgs
+        .map((f) => path.normalize(f))
+        .filter((f) => f.endsWith('.html') && fs.existsSync(f))
+    : await getHtmlFiles();
   console.log('Found', files.length, 'HTML files 🔎');
 
+  let errors = 0;
   switch (answer) {
     case STEPS.createHierarchy:
       await setupPageHierarchy(files);
@@ -116,11 +185,19 @@ async function main() {
     case STEPS.refreshHierarchy:
       await refreshPageHierarchy(files);
       break;
+    case STEPS.validate:
+      errors += await validateAllLinks(files);
+      errors += await securityValidation(files);
+      errors += await metadataValidation(files);
+      break;
     case STEPS.linkValidation:
-      await validateAllLinks(files);
+      errors += await validateAllLinks(files);
       break;
     case STEPS.securityValidation:
-      await securityValidation(files);
+      errors += await securityValidation(files);
+      break;
+    case STEPS.metadataValidation:
+      errors += await metadataValidation(files);
       break;
     case STEPS.confluenceFixFilenames:
       fixFileNames(files);
@@ -138,12 +215,20 @@ async function main() {
       console.log('NOOP - nothing changed 😴');
       return;
   }
+
+  if (errors > 0) {
+    console.error(`❌ Validation failed with ${errors} error(s)`);
+    process.exitCode = 1;
+  }
 }
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exitCode = 1;
+});
 
 async function getHtmlFiles() {
   return (await fs.promises.readdir(PROCESS_CWD, { recursive: true })).filter(
-    (f) => !/node_modules[\\/]/.test(f) && f.endsWith('.html'),
+    (f) => !IGNORED_DIRS.test(f) && f.endsWith('.html'),
   );
 }
 
@@ -352,6 +437,87 @@ async function securityValidation(files) {
   if (securityIssues > 0) {
     console.error('🚨🚨🚨🚨 Found', securityIssues, 'security issues!');
   }
+
+  return securityIssues;
+}
+
+/**
+ * Validates the wiki.js page header comment and the file name.
+ * Missing header / title are errors, everything else is reported as warning.
+ *
+ * @param {string[]} files
+ * @returns {Promise<number>} amount of errors
+ */
+async function metadataValidation(files) {
+  let errors = 0;
+  let warnings = 0;
+  for (const filePath of files) {
+    const fileContent = await fs.promises
+      .readFile(filePath, encoding)
+      .catch((err) => {
+        console.error(err);
+        return null;
+      });
+    if (fileContent === null) continue;
+
+    const fileErrors = [];
+    const fileWarnings = [];
+
+    // wiki.js only picks up the header if it is the very first node
+    const header = /^<!--\r?\n([\s\S]*?)\r?\n-->/.exec(fileContent)?.[1];
+    if (!header) {
+      fileErrors.push('Missing wiki.js page header comment at top of file');
+    } else {
+      const meta = Object.fromEntries(
+        header
+          .split(/\r?\n/)
+          .map((line) => /^(\w+):(.*)$/.exec(line))
+          .filter(Boolean)
+          .map((m) => [m[1], m[2].trim()]),
+      );
+
+      if (!meta.title) fileErrors.push('Missing or empty "title"');
+      const missing = PAGE_HEADER_FIELDS.filter((k) => !(k in meta));
+      if (missing.length) fileWarnings.push(`Missing fields: ${missing}`);
+      if ('published' in meta && !['true', 'false'].includes(meta.published)) {
+        fileErrors.push(`Invalid "published" value: ${meta.published}`);
+      }
+      if ('description' in meta && !meta.description) {
+        fileWarnings.push('Empty "description"');
+      }
+    }
+
+    const invalidSegments = filePath
+      .slice(0, -5)
+      .split(/[\\/]/)
+      .filter((s) => !REGEX.validPagePathSegment.test(s));
+    if (invalidSegments.length) {
+      fileWarnings.push(
+        `Path segment(s) violate wiki.js naming restrictions: ${invalidSegments}`,
+      );
+    }
+
+    if (fileErrors.length) {
+      errors += fileErrors.length;
+      console.error('## File', filePath, 'has metadata errors!', fileErrors);
+    }
+    if (fileWarnings.length && process.env.VERBOSE) {
+      console.warn('## File', filePath, 'has metadata warnings', fileWarnings);
+    }
+    warnings += fileWarnings.length;
+  }
+
+  if (warnings > 0) {
+    console.warn(
+      `⚠️ ${warnings} metadata warning(s)` +
+        (process.env.VERBOSE ? '' : ' (set VERBOSE=1 to list them)'),
+    );
+  }
+  if (errors > 0) {
+    console.error('🚨 Found', errors, 'metadata errors!');
+  }
+
+  return errors;
 }
 
 /**
@@ -499,6 +665,8 @@ async function validateAllLinks(files) {
   if (invalidCounter > 0) {
     console.error('🚨 There are', invalidCounter, 'invalid links - fix them!');
   }
+
+  return invalidCounter;
 }
 
 /**
@@ -1021,7 +1189,7 @@ async function cleanupConfluenceHtml(files) {
     for (const a of invalidLinks) {
       const href = a.getAttribute('href');
       const match = /(?:^|_)(\d{3,}).html$/.exec(href);
-      if (!match) return;
+      if (!match) continue;
 
       const wikiJsPath = await getPathForConfluenceId(match[1]);
       if (wikiJsPath) {

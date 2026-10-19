@@ -21,7 +21,9 @@
     "lint": "npm run lint:format && npm run lint:style",
     "lint:format": "prettier --check .",
     "lint:style": "stylelint \"**/*.scss\" --max-warnings 0",
-    "tools": "node main.js"
+    "validate": "node main.js validate",
+    "tools": "node main.js",
+    "check": "npm run lint && npm run validate && npm run build"
   },
   "dependencies": {
     "@inquirer/prompts": "^8.7.3",
