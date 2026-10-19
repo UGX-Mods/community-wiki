@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, validate & build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          # binaries (images, videos) are not needed for checks, pointers are enough
+          lfs: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # wiki.js commits page edits directly to main without prettier formatting,
+      # so only the files touched by the pull request are format-checked
+      - name: Collect changed files
+        run: |
+          if [ -n "${{ github.event.pull_request.base.sha }}" ]; then
+            git diff --name-only --diff-filter=ACMR \
+              "${{ github.event.pull_request.base.sha }}...HEAD" > "$RUNNER_TEMP/changed.txt"
+          else
+            git ls-files > "$RUNNER_TEMP/changed.txt"
+          fi
+          cat "$RUNNER_TEMP/changed.txt"
+
+      - name: Prettier (changed files)
+        run: |
+          xargs -r -d '\n' npx prettier --check --ignore-unknown \
+            --no-error-on-unmatched-pattern < "$RUNNER_TEMP/changed.txt"
+
+      - name: Stylelint
+        run: npm run lint:style
+
+      # all pages, so removed/renamed pages are caught in links of unchanged pages
+      - name: Validate pages (links, security, metadata)
+        run: npm run validate
+
+      - name: Build theme assets
+        run: npm run build
