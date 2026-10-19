@@ -28,27 +28,35 @@ Feel free to [suggest a change](/issues/new), like feature / improvement or a bu
 
 Simply clone the project and do some changes. :wink:
 
+> 💡 Install [Git LFS](https://git-lfs.com/) (`git lfs install`) before cloning, otherwise images and videos are only pointer files.
+> You need Node.js 22.13 or newer (see `.nvmrc`), then install the dependencies with `npm ci`.
+
 You can write new files in either HTML (file ending with .html) or Markdown (file ending with .md) format.
+See [AGENTS.md](/AGENTS.md) for the page format, conventions and available widgets.
 
-Then run `npm run lint` to check if the files are properly formatted.
-
-You must run `npm run build` if you modified the frontend files (`wiki.scss` or `wiki.js`).
+Then run `npm run check` to verify formatting, links and the build (`npm run format` fixes formatting issues).
 
 Now create the Pull Request (see below).
 
-### Formatting / Building
+### Formatting / Validation
 
-VSCode in combination with prettier is used
+VSCode in combination with prettier is used (see the recommended extensions in `.vscode/extensions.json`).
 
 > ⚠️ Ensure the files follow the naming convention of Wiki.js (https://docs.requarks.io/guide/pages#naming-restrictions)
 
-You can check and fix issues (if possible) via `npm run lint`.
+| Command            | Description                                                                 |
+| ------------------ | --------------------------------------------------------------------------- |
+| `npm run lint`     | Check formatting (prettier) and the stylesheet (stylelint), changes nothing |
+| `npm run format`   | Fix formatting issues (if possible)                                         |
+| `npm run validate` | Check links, iframe security and the Wiki.js page headers of all pages      |
+| `npm run build`    | Build the theme files (see below)                                           |
+| `npm run check`    | All of the above (same as the CI checks of a pull request)                  |
 
 ### Stylesheet
 
 The `wiki.scss` is used to compile css which is used to override and extend WikiJS theme.
 
-To build it, simply run `npm run build:sass` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
+To build it, simply run `npm run build:css` and the `wiki.min.css` is generated (and must be applied in `Administration > Theme > Code Injection > CSS Override`)
 
 ### Javascript
 
@@ -58,9 +66,9 @@ To build it, simply run `npm run build:js` and the `wiki.min.js` is generated (a
 
 ### Tooling
 
-There is a tool script (`main.js`) which helps with fixing html files (confluence to wikijs migration). It also offer other tools.
+There is a tool script (`main.js`) which helps with fixing html files (confluence to wikijs migration). It also offer other tools, e.g. to validate pages or to refresh the page hierarchy widgets.
 
-Install first the dependencies with `npm install` and then execute the script with `node main.js`.
+Run `npm run tools` for an interactive menu, or pass a step directly, e.g. `node main.js refresh-hierarchy` (see `node main.js --help`).
 
 ### Local WikiJS instance for testing
 
@@ -110,11 +118,12 @@ Your Branch should start with `feature/`, e.g.: `feature/FeatureOrBugFix`
 
 - [Fork](/fork) the Project
 - Create your Feature Branch (`git checkout -b feature/FeatureOrBugFix`)
-- Commit your Changes (`git commit -m 'Add some FeatureOrBugFix'`)
+- Commit your Changes using [Conventional Commits](https://www.conventionalcommits.org/) (`git commit -m 'docs(content): add guide for xyz'`)
 - Push to the Branch (`git push origin feature/FeatureOrBugFix`)
-- Open a [Pull Request](/compare)
+- Open a [Pull Request](/compare), the CI checks (`npm run check`) must pass
 
 ### Release
 
 - Releases aren't created through GitHub.
 - The wiki instances fetches the latest main branch in intervals and will update on change
+- Changes made in the wiki editor are committed back to `main` by the wiki (user `Administrator`), so always pull before you start working
