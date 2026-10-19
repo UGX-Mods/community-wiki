@@ -9,28 +9,23 @@
     "lint": "npm run lint:sass && npm run lint:html",
     "lint:sass": "stylelint **/*.scss --fix --max-warnings 0",
     "lint:html": "prettier  **/*.html -c -w",
-    "build": "npm run build:sass && npm run build:js",
-    "build:sass": "sass --no-source-map wiki.scss wiki.css && postcss wiki.css -o wiki.min.css",
-    "build:js": "babel wiki.js --presets=@babel/preset-env | uglifyjs --compress --mangle --output wiki.min.js"
+    "build": "npm run build:css && npm run build:js",
+    "build:js": "esbuild wiki.js --minify --target=es2019 --log-level=warning --outfile=wiki.min.js",
+    "build:css": "sass --no-source-map wiki.scss wiki.css && esbuild wiki.css --minify --log-level=warning --outfile=wiki.min.css"
   },
   "dependencies": {
-    "@inquirer/prompts": "^8.3.0",
-    "node-html-parser": "^7.1.0"
+    "@inquirer/prompts": "^8.7.3",
+    "node-html-parser": "^9.0.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.6",
-    "@babel/core": "^7.29.0",
-    "@babel/preset-env": "^7.29.0",
-    "@stylistic/stylelint-config": "^4.0.0",
-    "cssnano": "^7.1.3",
-    "postcss-cli": "^11.0.1",
-    "prettier": "^3.8.1",
-    "sass": "^1.97.3",
-    "stylelint": "^17.4.0",
+    "@stylistic/stylelint-config": "^5.0.0",
+    "esbuild": "^0.28.2",
+    "prettier": "^3.9.10",
+    "sass": "^1.105.1",
+    "stylelint": "^17.16.0",
     "stylelint-config-idiomatic-order": "^10.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "stylelint-prettier": "^5.0.3",
-    "stylelint-scss": "^7.0.0",
-    "uglify-js": "^3.19.3"
+    "stylelint-scss": "^7.3.0"
   }
 }
