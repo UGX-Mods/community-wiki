@@ -29,8 +29,7 @@ Feel free to [suggest a change](/issues/new), like feature / improvement or a bu
 Simply clone the project and do some changes. :wink:
 
 > 💡 Install [Git LFS](https://git-lfs.com/) (`git lfs install`) before cloning, otherwise images and videos are only pointer files.
-> You need Node.js 24 with npm 11.17 or newer (see `.nvmrc`), then install the dependencies with `npm ci`.
-> `.npmrc` enforces a 7 day release age for new versions, exact versions and reviewed install scripts (`allowScripts` in `package.json`).
+> Use the Node.js version from `.nvmrc`, then install the dependencies with `npm ci`.
 
 You can write new files in either HTML (file ending with .html) or Markdown (file ending with .md) format.
 See [AGENTS.md](/AGENTS.md) for the page format, conventions and available widgets.
@@ -122,6 +121,7 @@ Your Branch should start with `feature/`, e.g.: `feature/FeatureOrBugFix`
 - Commit your Changes using [Conventional Commits](https://www.conventionalcommits.org/) (`git commit -m 'docs(content): add guide for xyz'`)
 - Push to the Branch (`git push origin feature/FeatureOrBugFix`)
 - Open a [Pull Request](/compare), the CI checks (`npm run check`) must pass
+- Pull Requests are squash merged, so the PR title becomes the commit message and must be a conventional commit too
 
 ### Release
 

@@ -1,29 +1,12 @@
 # Roadmap of UGX-Mods Wiki
 
-## Done ✅
-
-### October 2026 upgrade (`feature/upgrade-2026-oct`)
-
-- GitHub Actions to pre-check pull requests (prettier on changed files, stylelint, link / security / metadata validation, build)
-- Dependencies updated, build chain simplified (esbuild replaces Babel, UglifyJS, PostCSS and cssnano)
-- `npm run lint` is check-only, new `format`, `validate`, `tools` and `check` scripts
-- `main.js` usable non-interactively (`node main.js validate [files...]`) with exit codes and a new metadata validation
-- Dependabot: grouped minor/patch updates, 7 day cooldown, GitHub Actions updates
-- LF line endings enforced via `.gitattributes`
-- Supply chain hardening: Node 24 / npm 11.17 (`devEngines`), exact dependency versions, 7 day `min-release-age`, reviewed install scripts (`allowScripts`), SHA-pinned GitHub Actions, `npm audit signatures` in CI
-- `AGENTS.md` for AI agents and contributors, `CONTRIBUTING.md` updated
-
 ## Planned 📈
 
-### Phase 1: Repository & tooling (next)
+### Phase 1: Repository & tooling
 
-- [ ] Merge the upgrade branch and close the superseded Dependabot PRs (#50 - #57)
-- [ ] Prevent direct push to `main` (once wiki is stable)
-  - require the CI check for pull requests
-  - the Wiki.js git storage pushes to `main` as `Administrator`, so its credentials need a bypass rule
 - [ ] Remove the `github/` folder (Wiki.js re-export of `.github/*.md`) and the matching wiki pages
   - any change to `.github/*.md` is imported again as a page, so either add a Wiki.js page rule that hides `github/*` or convert the issue templates to [issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms) (`.yml`, not imported as pages)
-  - update the PR template checklist afterwards (`npm run check`, conventional commits)
+  - update the PR template checklist afterwards (`npm run check`, conventional PR title)
 - [ ] Fully support markdown (`.md`) files with tooling
   - validators only check `.html` files at the moment (front matter, links)
 - [ ] Split `main.js` into modules (e.g. `tools/validate`, `tools/hierarchy`, `tools/confluence`) and add tests (`node:test`) for the validators

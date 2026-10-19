@@ -46,7 +46,7 @@ A page at `Foo/Bar.html` is served at `/Foo/Bar`. A folder `Foo/` holds the chil
 
 ## Commands
 
-Requires Node.js **24** with npm `>=11.17` (see `.nvmrc`, enforced by `devEngines`) and **Git LFS** (`git lfs install` before cloning, otherwise images are pointer files).
+Requires the Node.js version from `.nvmrc` (enforced by `devEngines` in `package.json`) and **Git LFS** (`git lfs install` before cloning, otherwise images are pointer files).
 
 ```sh
 npm ci                 # install
@@ -67,7 +67,7 @@ Run `npm run check` (or at least `npm run lint` + `npm run validate`) before com
 
 - `min-release-age=7`: new versions must be public for 7 days (Dependabot uses the same cooldown).
 - `save-exact=true`: `package.json` holds exact versions, `package-lock.json` pins the rest. Commit both.
-- `strict-allow-scripts=true`: install fails if a dependency has install scripts that are not listed in `allowScripts` (`package.json`). Review the script, then run `npm approve-scripts <pkg>` or `npm deny-scripts <pkg>`. `@parcel/watcher` (optional sass dependency, only for `--watch`) is denied. `esbuild` is allowed: npm 11.17 also skips the bin links of denied packages, and its postinstall only verifies the prebuilt binary.
+- `strict-allow-scripts=true`: install fails if a dependency has install scripts that are not listed in `allowScripts` (`package.json`). Review the script, then run `npm approve-scripts <pkg>` or `npm deny-scripts <pkg>`. `@parcel/watcher` (optional sass dependency, only for `--watch`) is denied. `esbuild` is allowed: npm currently also skips the bin links of denied packages, and its postinstall only verifies the prebuilt binary.
 - GitHub Actions are pinned to commit SHAs with a `# vX.Y.Z` comment.
 
 Build output (`wiki.css`, `wiki.min.*`) is gitignored and **not deployed automatically**. A maintainer pastes it into _Administration → Theme → Code Injection_. If you change `wiki.scss`/`wiki.js`, say so in the PR.
@@ -155,6 +155,7 @@ Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. 
 ## Git workflow
 
 - Work on a `feature/…` branch and open a PR against `main`. CI (`.github/workflows/ci.yml`) runs prettier on changed files, stylelint, `validate` and `build`.
+- PRs are **squash merged**: the PR title becomes the commit on `main` and must be a conventional commit (checked by `.github/workflows/pr-title.yml`).
 - Use [Conventional Commits](https://www.conventionalcommits.org/): `docs(content): …` / `fix(content): …` for pages, `feat(tools): …` for `main.js`, `build: …`, `ci: …`, `chore: …`.
 - Binary files go through Git LFS (`.gitattributes`). Line endings are LF.
 - Keep content and tooling changes in separate commits. Avoid repo-wide reformatting of pages.
