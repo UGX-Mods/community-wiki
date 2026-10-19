@@ -10,6 +10,8 @@ updates:
     # give the ecosystem a week to spot compromised / broken releases
     cooldown:
       default-days: 7
+    # keep the exact pins in package.json (see save-exact in .npmrc)
+    versioning-strategy: increase
     groups:
       # one PR for all minor & patch updates instead of one per package
       npm-minor-patch:

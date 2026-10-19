@@ -11,7 +11,19 @@
   },
   "homepage": "https://wiki.ugx-mods.com",
   "engines": {
-    "node": ">=22.13"
+    "node": "^24"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^24",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11.17.0",
+      "onFail": "error"
+    }
   },
   "scripts": {
     "build": "npm run build:css && npm run build:js",
@@ -26,18 +38,22 @@
     "check": "npm run lint && npm run validate && npm run build"
   },
   "dependencies": {
-    "@inquirer/prompts": "^8.7.4",
-    "node-html-parser": "^9.0.5"
+    "@inquirer/prompts": "8.7.4",
+    "node-html-parser": "9.0.5"
   },
   "devDependencies": {
-    "@stylistic/stylelint-config": "^5.0.0",
-    "esbuild": "^0.28.2",
-    "prettier": "^3.9.10",
-    "sass": "^1.105.2",
-    "stylelint": "^17.16.0",
-    "stylelint-config-idiomatic-order": "^10.0.0",
-    "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-prettier": "^5.0.3",
-    "stylelint-scss": "^7.3.0"
+    "@stylistic/stylelint-config": "5.0.0",
+    "esbuild": "0.28.2",
+    "prettier": "3.9.10",
+    "sass": "1.105.2",
+    "stylelint": "17.16.0",
+    "stylelint-config-idiomatic-order": "10.0.0",
+    "stylelint-config-standard-scss": "17.0.0",
+    "stylelint-prettier": "5.0.3",
+    "stylelint-scss": "7.3.0"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "@parcel/watcher": false
   }
 }
