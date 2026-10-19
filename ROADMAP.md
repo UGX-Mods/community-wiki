@@ -10,6 +10,7 @@
 - `main.js` usable non-interactively (`node main.js validate [files...]`) with exit codes and a new metadata validation
 - Dependabot: grouped minor/patch updates, 7 day cooldown, GitHub Actions updates
 - LF line endings enforced via `.gitattributes`
+- Supply chain hardening: Node 24 / npm 11.17 (`devEngines`), exact dependency versions, 7 day `min-release-age`, reviewed install scripts (`allowScripts`), SHA-pinned GitHub Actions, `npm audit signatures` in CI
 - `AGENTS.md` for AI agents and contributors, `CONTRIBUTING.md` updated
 
 ## Planned 📈

@@ -29,7 +29,8 @@ Feel free to [suggest a change](/issues/new), like feature / improvement or a bu
 Simply clone the project and do some changes. :wink:
 
 > 💡 Install [Git LFS](https://git-lfs.com/) (`git lfs install`) before cloning, otherwise images and videos are only pointer files.
-> You need Node.js 22.13 or newer (see `.nvmrc`), then install the dependencies with `npm ci`.
+> You need Node.js 24 with npm 11.17 or newer (see `.nvmrc`), then install the dependencies with `npm ci`.
+> `.npmrc` enforces a 7 day release age for new versions, exact versions and reviewed install scripts (`allowScripts` in `package.json`).
 
 You can write new files in either HTML (file ending with .html) or Markdown (file ending with .md) format.
 See [AGENTS.md](/AGENTS.md) for the page format, conventions and available widgets.
