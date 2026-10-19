@@ -4,28 +4,28 @@
 
 pre[class*='language-'],
 code[class*='language-'] {
-  color: #d4d4d4;
-  direction: ltr;
   font-family:
     Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New',
     monospace;
   font-size: 13px;
-  hyphens: none;
   line-height: 1.5;
-  tab-size: 4;
+  color: #d4d4d4;
   text-align: left;
-  text-shadow: none;
-  white-space: pre;
-  word-break: normal;
   word-spacing: normal;
+  hyphens: none;
+  word-break: normal;
+  tab-size: 4;
+  white-space: pre;
+  text-shadow: none;
+  direction: ltr;
 }
 
 pre[class*='language-']::selection,
 code[class*='language-']::selection,
 pre[class*='language-'] *::selection,
 code[class*='language-'] *::selection {
-  background: #264f78;
   text-shadow: none;
+  background: #264f78;
 }
 
 @media print {
@@ -36,17 +36,17 @@ code[class*='language-'] *::selection {
 }
 
 pre[class*='language-'] {
-  overflow: auto;
   padding: 1em;
   margin: 0.5em 0;
+  overflow: auto;
   background: #1e1e1e;
 }
 
 :not(pre) > code[class*='language-'] {
   padding: 0.1em 0.3em;
-  border-radius: 0.3em;
-  background: #1e1e1e;
   color: #db4c69;
+  background: #1e1e1e;
+  border-radius: 0.3em;
 }
 
 /*********************************************************
@@ -313,10 +313,10 @@ html {
   .banner {
     position: relative;
     padding: 5px 5px 5px 35px;
-    border: 1px solid $color-white;
-    border-radius: $border-radius;
     margin: 5px 0 10px;
     background: $color-banner-bg;
+    border: 1px solid $color-white;
+    border-radius: $border-radius;
     box-shadow: 1px 1px 5px $color-black;
 
     &-info {
@@ -356,15 +356,15 @@ html {
 
   .widget-panel {
     padding: 5px;
-    border: 1px solid $color-main-dark;
-    border-radius: $border-radius;
     margin-top: 10px;
     background: $color-banner-bg;
+    border: 1px solid $color-main-dark;
+    border-radius: $border-radius;
   }
 
   .expandable-container {
-    overflow: hidden;
     margin-top: 10px;
+    overflow: hidden;
 
     button.expandable-button {
       padding: 0;
@@ -376,13 +376,13 @@ html {
       }
 
       &::before {
+        float: left;
         display: inline-block;
         width: 24px;
         height: 24px;
         margin-right: 2px;
-        background: url('/attachments/icons/chevron-right.png') no-repeat;
         content: ' ';
-        float: left;
+        background: url('/attachments/icons/chevron-right.png') no-repeat;
         transition: transform 0.4s;
       }
 
@@ -394,28 +394,28 @@ html {
     }
 
     .expandable-content {
+      visibility: hidden;
       height: 0;
       opacity: 0;
       transition:
         visibility 0s,
         opacity 0.5s linear;
-      visibility: hidden;
 
       &.expanded {
-        overflow: auto;
-        height: unset;
-        opacity: 1;
         visibility: visible;
+        height: unset;
+        overflow: auto;
+        opacity: 1;
       }
     }
   }
 
   .widget-code-panel {
+    margin: 6px 0;
     overflow: hidden;
+    background: $color-banner-bg;
     border: 1px solid $color-contrast-lightest;
     border-radius: $border-radius;
-    margin: 6px 0;
-    background: $color-banner-bg;
 
     &-header {
       display: flex;
