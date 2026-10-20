@@ -1,0 +1,91 @@
+/**
+ * HTML parsing and writing helpers
+ */
+const fs = require('node:fs');
+const path = require('node:path');
+const prettier = require('prettier');
+const HTMLParser = require('node-html-parser');
+
+const REGEX_FIX_CLOSING_TAG_ISSUE = /<(\/?\w+)(?:\s+)>/g;
+
+/**
+ * @type {Partial<HTMLParser.Options>}
+ */
+const HTML_PARSER_OPTIONS = {
+  comment: true,
+  lowerCaseTagName: true,
+  fixNestedATags: false,
+  parseNoneClosedTags: true,
+  voidTag: { closingSlash: true },
+};
+
+/**
+ *
+ * @param {string} content
+ * @returns
+ */
+function parseHtmlContent(content) {
+  return HTMLParser.parse(
+    content.replace(REGEX_FIX_CLOSING_TAG_ISSUE, '<$1>'),
+    HTML_PARSER_OPTIONS,
+  );
+}
+
+/**
+ * Writes the html formatted with the prettier config of the repository
+ *
+ * @param {string} source
+ * @param {string} filePath
+ */
+async function writeFileFormat(source, filePath) {
+  try {
+    const config = await prettier.resolveConfig(path.resolve(filePath), {
+      editorconfig: true,
+    });
+    config.filepath = filePath;
+
+    return fs.promises.writeFile(
+      filePath,
+      await prettier.format(source, config),
+    );
+  } catch (err) {
+    console.error('Formatting error @', filePath, err.toString());
+  }
+}
+
+/**
+ * @param {HTMLParser.Node} rootNode
+ * @returns
+ */
+function getWikiJsCommentNode(rootNode) {
+  return rootNode.childNodes
+    .filter((n) => n.nodeType === HTMLParser.NodeType.COMMENT_NODE)
+    .find((n) => n.text.includes('title:'));
+}
+
+/**
+ *
+ * @param {HTMLParser.HTMLElement} node
+ * @param {string|string[]} className single or array of classnames to remove
+ */
+function removeClassFromNode(node, className) {
+  if (!Array.isArray(className)) {
+    className = [className];
+  }
+
+  for (const clName of className) {
+    node.classList.remove(clName);
+  }
+
+  if (node.classList.length === 0) {
+    node.removeAttribute('class');
+  }
+}
+
+module.exports = {
+  HTMLParser,
+  parseHtmlContent,
+  writeFileFormat,
+  getWikiJsCommentNode,
+  removeClassFromNode,
+};
