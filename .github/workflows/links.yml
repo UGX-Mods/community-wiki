@@ -1,0 +1,65 @@
+name: External links
+
+# report-only: dead external links are collected in one issue, which is closed again once all links work
+on:
+  schedule:
+    - cron: '0 5 * * 1' # mondays 05:00 UTC
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: external-links
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check external links
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          lfs: false
+
+      - name: Check links (lychee.toml)
+        id: lychee
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --config lychee.toml './**/*.html' './**/*.md'
+          fail: false
+          output: lychee/out.md
+
+      # exit code 2 = dead links, anything else (e.g. 1 = config error) fails the job
+      - name: Update report issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXIT_CODE: ${{ steps.lychee.outputs.exit_code }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Dead external links"
+          number=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+
+          if [ "$EXIT_CODE" = "0" ]; then
+            if [ -n "$number" ]; then
+              gh issue close "$number" --repo "$GITHUB_REPOSITORY" --comment "All external links work again ($RUN_URL)."
+            fi
+            exit 0
+          fi
+          if [ "$EXIT_CODE" != "2" ]; then
+            echo "::error::lychee failed with exit code $EXIT_CODE"
+            exit 1
+          fi
+
+          # issue bodies are limited to 65536 characters
+          { head -c 60000 lychee/out.md; printf '\n\n---\nFull report: %s\n' "$RUN_URL"; } > "$RUNNER_TEMP/body.md"
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file "$RUNNER_TEMP/body.md"
+          fi
