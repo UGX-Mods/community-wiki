@@ -1,12 +1,12 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const {
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {
   parsePageHeader,
   getPageTitle,
   PAGE_HEADER_FIELDS,
-} = require('../src/tools/lib/header');
-const { checkPageMetadata } = require('../src/tools/validate/metadata');
-const { htmlPage } = require('./helpers');
+} from '../src/tools/lib/header.js';
+import { checkPageMetadata } from '../src/tools/validate/metadata.js';
+import { htmlPage } from './helpers.js';
 
 test('parsePageHeader reads all fields', () => {
   const meta = parsePageHeader(htmlPage('BO3 | Adding Zones', '<p>x</p>'));

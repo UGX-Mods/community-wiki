@@ -1,10 +1,10 @@
 /**
  * HTML parsing and writing helpers
  */
-const fs = require('node:fs');
-const path = require('node:path');
-const prettier = require('prettier');
-const HTMLParser = require('node-html-parser');
+import fs from 'node:fs';
+import path from 'node:path';
+import * as prettier from 'prettier';
+import * as HTMLParser from 'node-html-parser';
 
 const REGEX_FIX_CLOSING_TAG_ISSUE = /<(\/?\w+)(?:\s+)>/g;
 
@@ -82,7 +82,7 @@ function removeClassFromNode(node, className) {
   }
 }
 
-module.exports = {
+export {
   HTMLParser,
   parseHtmlContent,
   writeFileFormat,

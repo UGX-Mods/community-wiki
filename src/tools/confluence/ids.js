@@ -1,13 +1,13 @@
 /**
  * Confluence page ids, stored as `confluence:<id>` tag in the wiki.js page header
  */
-const { getHtmlFiles, readPage } = require('../lib/pages');
-const {
+import { getHtmlFiles, readPage } from '../lib/pages.js';
+import {
   HTMLParser,
   parseHtmlContent,
   writeFileFormat,
   getWikiJsCommentNode,
-} = require('../lib/html');
+} from '../lib/html.js';
 
 const REGEX_TAGS_MATCH = /^tags: ?(.*)$/im;
 const REGEX_CONFLUENCE_ID_TAG = /confluence:(\d)/;
@@ -120,4 +120,4 @@ async function getPathForConfluenceId(confluenceId) {
   return null;
 }
 
-module.exports = { addConfluenceCommentAsTag, getPathForConfluenceId };
+export { addConfluenceCommentAsTag, getPathForConfluenceId };

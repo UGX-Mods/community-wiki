@@ -1,9 +1,9 @@
 /**
  * Security validation: only allow-listed iframes
  */
-const { readPage } = require('../lib/pages');
-const { parseHtmlContent } = require('../lib/html');
-const { pageToHtml } = require('../lib/markdown');
+import { readPage } from '../lib/pages.js';
+import { parseHtmlContent } from '../lib/html.js';
+import { pageToHtml } from '../lib/markdown.js';
 
 const REGEX_ALLOWED_IFRAME_HOSTS = /^https:\/\/(www.youtube-nocookie.com)/i;
 
@@ -69,4 +69,4 @@ async function securityValidation(files) {
   return securityIssues;
 }
 
-module.exports = { checkPageSecurity, securityValidation };
+export { checkPageSecurity, securityValidation };

@@ -1,10 +1,10 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const { titleToFileName } = require('../src/tools/confluence/filenames');
-const {
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { titleToFileName } from '../src/tools/confluence/filenames.js';
+import {
   createHtmlBanner,
   createPrivacyYoutubeEmbed,
-} = require('../src/tools/confluence/cleanup');
+} from '../src/tools/confluence/cleanup.js';
 
 test('titleToFileName follows the wiki.js naming restrictions', () => {
   assert.equal(titleToFileName('WaW | Radiant (Tips)'), 'Radiant-Tips');

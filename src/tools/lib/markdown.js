@@ -1,9 +1,9 @@
 /**
  * Markdown pages are rendered to html, so the html validators can check them as well
  */
-const MarkdownIt = require('markdown-it');
-const { MARKDOWN_EXTENSION } = require('./pages');
-const { stripFrontMatter } = require('./header');
+import MarkdownIt from 'markdown-it';
+import { MARKDOWN_EXTENSION } from './pages.js';
+import { stripFrontMatter } from './header.js';
 
 // wiki.js renders markdown with markdown-it and allows inline html
 const markdown = new MarkdownIt({ html: true });
@@ -26,4 +26,4 @@ function pageToHtml(filePath, content) {
     : content;
 }
 
-module.exports = { isMarkdownPage, pageToHtml };
+export { isMarkdownPage, pageToHtml };

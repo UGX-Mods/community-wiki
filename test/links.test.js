@@ -1,8 +1,8 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const path = require('node:path');
-const { checkPageLinks } = require('../src/tools/validate/links');
-const { htmlPage, createFixture, removeFixture } = require('./helpers');
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { checkPageLinks } from '../src/tools/validate/links.js';
+import { htmlPage, createFixture, removeFixture } from './helpers.js';
 
 const page = (body) => htmlPage('Test', body);
 

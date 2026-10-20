@@ -54,9 +54,4 @@ function stripFrontMatter(content) {
   return content.replace(REGEX_FRONT_MATTER, '');
 }
 
-module.exports = {
-  PAGE_HEADER_FIELDS,
-  parsePageHeader,
-  getPageTitle,
-  stripFrontMatter,
-};
+export { PAGE_HEADER_FIELDS, parsePageHeader, getPageTitle, stripFrontMatter };

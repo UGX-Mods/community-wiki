@@ -1,16 +1,16 @@
 /**
  * Link validation: internal links must point to an existing page / file / anchor
  */
-const fs = require('node:fs');
-const path = require('node:path');
-const {
+import fs from 'node:fs';
+import path from 'node:path';
+import {
   encoding,
   PAGE_EXTENSIONS,
   readPage,
   stripPageExtension,
-} = require('../lib/pages');
-const { parseHtmlContent } = require('../lib/html');
-const { pageToHtml } = require('../lib/markdown');
+} from '../lib/pages.js';
+import { parseHtmlContent } from '../lib/html.js';
+import { pageToHtml } from '../lib/markdown.js';
 
 const REGEX_EXTERNAL_HREF = /^(https?:|\/\/|mailto:)/;
 
@@ -183,9 +183,4 @@ async function validateAllLinks(files, root = process.cwd()) {
   return invalidCounter;
 }
 
-module.exports = {
-  getLinkCandidates,
-  findLinkTarget,
-  checkPageLinks,
-  validateAllLinks,
-};
+export { getLinkCandidates, findLinkTarget, checkPageLinks, validateAllLinks };

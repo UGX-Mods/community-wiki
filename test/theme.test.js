@@ -1,11 +1,11 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const {
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {
   MARKER_START,
   MARKER_END,
   replaceScriptBlock,
   createThemeConfig,
-} = require('../src/tools/theme');
+} from '../src/tools/theme.js';
 
 const block = (js) => `${MARKER_START}\n<script>${js}</script>\n${MARKER_END}`;
 const ads = '<script>/* ads */</script>';

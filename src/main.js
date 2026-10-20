@@ -2,27 +2,24 @@
  * Tooling CLI for the wiki: validation, page hierarchy widgets and the confluence migration helpers.
  * The steps are implemented in ./tools, the theme sources are in ./theme
  */
-const fs = require('node:fs');
-const path = require('node:path');
-const { select, Separator } = require('@inquirer/prompts');
-const { getPageFiles, isPage, HTML_EXTENSION } = require('./tools/lib/pages');
-const {
-  setupPageHierarchy,
-  refreshPageHierarchy,
-} = require('./tools/hierarchy');
-const { validateAllLinks } = require('./tools/validate/links');
-const { securityValidation } = require('./tools/validate/security');
-const { metadataValidation } = require('./tools/validate/metadata');
-const {
+import fs from 'node:fs';
+import path from 'node:path';
+import { select, Separator } from '@inquirer/prompts';
+import { getPageFiles, isPage, HTML_EXTENSION } from './tools/lib/pages.js';
+import { setupPageHierarchy, refreshPageHierarchy } from './tools/hierarchy.js';
+import { validateAllLinks } from './tools/validate/links.js';
+import { securityValidation } from './tools/validate/security.js';
+import { metadataValidation } from './tools/validate/metadata.js';
+import {
   fixFileNames,
   fixNumberFileNameOnly,
-} = require('./tools/confluence/filenames');
-const {
+} from './tools/confluence/filenames.js';
+import {
   cleanupConfluenceHtml,
   fixCodeBlocks,
-} = require('./tools/confluence/cleanup');
-const { addConfluenceCommentAsTag } = require('./tools/confluence/ids');
-const { deployTheme } = require('./tools/theme');
+} from './tools/confluence/cleanup.js';
+import { addConfluenceCommentAsTag } from './tools/confluence/ids.js';
+import { deployTheme } from './tools/theme.js';
 
 const STEPS = {
   none: 'NONE',

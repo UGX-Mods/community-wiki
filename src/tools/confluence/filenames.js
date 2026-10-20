@@ -1,10 +1,10 @@
 /**
  * Rename confluence exported files (`Page-Name_12345html.html`, `12345.html`) to wiki.js page names
  */
-const fs = require('node:fs');
-const { encoding } = require('../lib/pages');
-const { HTMLParser, parseHtmlContent } = require('../lib/html');
-const { getPageTitle } = require('../lib/header');
+import fs from 'node:fs';
+import { encoding } from '../lib/pages.js';
+import { HTMLParser, parseHtmlContent } from '../lib/html.js';
+import { getPageTitle } from '../lib/header.js';
 
 const REGEX_CONF_ID_IN_NAME = /_?(\d{4,})html\.html$/;
 const REGEX_NUM_ONLY_FILENAME = /(\d{4,})\.html$/;
@@ -109,4 +109,4 @@ function fixNumberFileNameOnly(files) {
   );
 }
 
-module.exports = { titleToFileName, fixFileNames, fixNumberFileNameOnly };
+export { titleToFileName, fixFileNames, fixNumberFileNameOnly };

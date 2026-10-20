@@ -1,8 +1,8 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const path = require('node:path');
-const { createPageHierarchy } = require('../src/tools/hierarchy');
-const { htmlPage, createFixture, removeFixture } = require('./helpers');
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { createPageHierarchy } from '../src/tools/hierarchy.js';
+import { htmlPage, createFixture, removeFixture } from './helpers.js';
 
 test('createPageHierarchy lists child pages recursively', async (t) => {
   const root = createFixture({

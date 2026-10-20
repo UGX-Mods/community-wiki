@@ -1,17 +1,17 @@
 /**
  * Cleanup of confluence exported html: remove boilerplate, convert macros into wiki widgets
  */
-const fs = require('node:fs');
-const path = require('node:path');
-const { encoding } = require('../lib/pages');
-const {
+import fs from 'node:fs';
+import path from 'node:path';
+import { encoding } from '../lib/pages.js';
+import {
   parseHtmlContent,
   writeFileFormat,
   getWikiJsCommentNode,
   removeClassFromNode,
-} = require('../lib/html');
-const { createPageHierarchy } = require('../hierarchy');
-const { getPathForConfluenceId } = require('./ids');
+} from '../lib/html.js';
+import { createPageHierarchy } from '../hierarchy.js';
+import { getPathForConfluenceId } from './ids.js';
 
 const EMOJI_MAP = {
   ':heart:': '❤️',
@@ -472,7 +472,7 @@ function createPrivacyYoutubeEmbed(url) {
     allowfullscreen></iframe>`;
 }
 
-module.exports = {
+export {
   cleanupConfluenceHtml,
   fixCodeBlocks,
   createHtmlBanner,

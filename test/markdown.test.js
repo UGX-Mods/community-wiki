@@ -1,15 +1,15 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const path = require('node:path');
-const { execFileSync } = require('node:child_process');
-const { parsePageHeader, getPageTitle } = require('../src/tools/lib/header');
-const { pageToHtml } = require('../src/tools/lib/markdown');
-const { getPageFiles } = require('../src/tools/lib/pages');
-const { checkPageMetadata } = require('../src/tools/validate/metadata');
-const { checkPageSecurity } = require('../src/tools/validate/security');
-const { checkPageLinks } = require('../src/tools/validate/links');
-const { createPageHierarchy } = require('../src/tools/hierarchy');
-const { htmlPage, createFixture, removeFixture } = require('./helpers');
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { parsePageHeader, getPageTitle } from '../src/tools/lib/header.js';
+import { pageToHtml } from '../src/tools/lib/markdown.js';
+import { getPageFiles } from '../src/tools/lib/pages.js';
+import { checkPageMetadata } from '../src/tools/validate/metadata.js';
+import { checkPageSecurity } from '../src/tools/validate/security.js';
+import { checkPageLinks } from '../src/tools/validate/links.js';
+import { createPageHierarchy } from '../src/tools/hierarchy.js';
+import { htmlPage, createFixture, removeFixture } from './helpers.js';
 
 /**
  * @param {string} title

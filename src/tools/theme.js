@@ -8,9 +8,9 @@
  *
  * Environment: WIKI_API_KEY (API key with manage:theme), WIKI_URL, DRY_RUN=1
  */
-const fs = require('node:fs');
-const path = require('node:path');
-const { encoding } = require('./lib/pages');
+import fs from 'node:fs';
+import path from 'node:path';
+import { encoding } from './lib/pages.js';
 
 const DEFAULT_WIKI_URL = 'https://wiki.ugx-mods.com';
 const MARKER_START = '<!-- ugx-wiki-js:start -->';
@@ -142,7 +142,7 @@ async function deployTheme(root = process.cwd()) {
   return 0;
 }
 
-module.exports = {
+export {
   MARKER_START,
   MARKER_END,
   replaceScriptBlock,

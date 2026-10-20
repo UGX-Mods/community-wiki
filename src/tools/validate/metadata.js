@@ -2,9 +2,9 @@
  * Metadata validation: wiki.js page header and file name.
  * Missing header / title are errors, everything else is reported as warning.
  */
-const { readPage, stripPageExtension } = require('../lib/pages');
-const { PAGE_HEADER_FIELDS, parsePageHeader } = require('../lib/header');
-const { isMarkdownPage } = require('../lib/markdown');
+import { readPage, stripPageExtension } from '../lib/pages.js';
+import { PAGE_HEADER_FIELDS, parsePageHeader } from '../lib/header.js';
+import { isMarkdownPage } from '../lib/markdown.js';
 
 // https://docs.requarks.io/guide/pages#naming-restrictions
 const REGEX_VALID_PAGE_PATH_SEGMENT = /^[A-Za-z0-9_-]+$/;
@@ -96,4 +96,4 @@ async function metadataValidation(files) {
   return errors;
 }
 
-module.exports = { checkPageMetadata, metadataValidation };
+export { checkPageMetadata, metadataValidation };

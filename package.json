@@ -2,6 +2,7 @@
   "name": "ugx-community-wiki",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Official UGX-Mods Wiki for Call of Duty Modding and for UGX Products & Services.",
   "author": "Alexander 'Delta' Diller",
   "license": "AGPL-3.0",

@@ -2,9 +2,9 @@
  * Test helpers. Fixtures are created in a temp folder at runtime, never commit
  * .html / .md fixtures: every such file in the repository becomes a wiki page.
  */
-const fs = require('node:fs');
-const os = require('node:os');
-const path = require('node:path');
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 
 /**
  * @param {string} title
@@ -45,4 +45,4 @@ function removeFixture(root) {
   fs.rmSync(root, { recursive: true, force: true });
 }
 
-module.exports = { htmlPage, createFixture, removeFixture };
+export { htmlPage, createFixture, removeFixture };

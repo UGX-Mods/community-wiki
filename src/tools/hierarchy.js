@@ -1,18 +1,18 @@
 /**
  * Page hierarchy widget (<ul class="widget-page-hierarchy">), a generated list of all child pages
  */
-const fs = require('node:fs');
-const path = require('node:path');
-const { select } = require('@inquirer/prompts');
-const {
+import fs from 'node:fs';
+import path from 'node:path';
+import { select } from '@inquirer/prompts';
+import {
   encoding,
   isPage,
   stripPageExtension,
   filterPagesWithChildren,
   readPage,
-} = require('./lib/pages');
-const { parseHtmlContent, writeFileFormat } = require('./lib/html');
-const { getPageTitle } = require('./lib/header');
+} from './lib/pages.js';
+import { parseHtmlContent, writeFileFormat } from './lib/html.js';
+import { getPageTitle } from './lib/header.js';
 
 const WIDGET_SELECTOR = 'ul.widget-page-hierarchy';
 
@@ -155,8 +155,4 @@ async function createPageHierarchyLiElements(rootFolderPath, subPaths = '') {
   ).join('</li><li>');
 }
 
-module.exports = {
-  setupPageHierarchy,
-  refreshPageHierarchy,
-  createPageHierarchy,
-};
+export { setupPageHierarchy, refreshPageHierarchy, createPageHierarchy };
