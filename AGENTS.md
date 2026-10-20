@@ -29,20 +29,21 @@ Consequences:
 
 ## Repository layout
 
-| Path                                            | Purpose                                                                         |
-| ----------------------------------------------- | ------------------------------------------------------------------------------- |
-| `home.html`                                     | Wiki start page (`/`)                                                           |
-| `Modding/`                                      | Call of Duty modding guides (`World-at-War-Modtools/`, `Black-Ops-3-Modtools/`) |
-| `Applications-and-Services/`                    | UGX services: forum, Discord, newsletter, MapPacker, …                          |
-| `UGXL/`, `UGXLIN/`                              | UGX Launcher and UGX Launcher Installer docs (incl. changelogs, legacy docs)    |
-| `Careers.html`, `UGX-Help-Center.html`          | Standalone pages                                                                |
-| `attachments/`                                  | Images, videos, downloads (Git LFS), grouped by area                            |
-| `wiki.scss`, `wiki.js`                          | Theme overrides (widgets, banners, code panels) for Wiki.js                     |
-| `main.js`, `tools/`                             | Tooling CLI (`main.js`) and its steps: validation, hierarchy, theme, Confluence |
-| `test/`                                         | `node:test` unit tests for `tools/` (fixtures are created in a temp folder)     |
-| `lychee.toml`                                   | External link check config (weekly workflow `links.yml`)                        |
-| `github/`                                       | Wiki.js re-export of `.github/PULL_REQUEST_TEMPLATE.md`. Do not edit            |
-| `README.md`, `CONTRIBUTING.md`, `CREDITS.md`, … | Repo docs, also imported as (non-public) wiki pages                             |
+| Path                                            | Purpose                                                                             |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `home.html`                                     | Wiki start page (`/`)                                                               |
+| `Modding/`                                      | Call of Duty modding guides (`World-at-War-Modtools/`, `Black-Ops-3-Modtools/`)     |
+| `Applications-and-Services/`                    | UGX services: forum, Discord, newsletter, MapPacker, …                              |
+| `UGXL/`, `UGXLIN/`                              | UGX Launcher and UGX Launcher Installer docs (incl. changelogs, legacy docs)        |
+| `Careers.html`, `UGX-Help-Center.html`          | Standalone pages                                                                    |
+| `attachments/`                                  | Images, videos, downloads (Git LFS), grouped by area                                |
+| `src/theme/`                                    | Theme overrides for Wiki.js: `wiki.scss` (widgets, banners, code panels), `wiki.js` |
+| `src/main.js`, `src/tools/`                     | Tooling CLI and its steps: validation, hierarchy, theme deployment, Confluence      |
+| `test/`                                         | `node:test` unit tests for `src/tools/` (fixtures are created in a temp folder)     |
+| `dist/`                                         | Build output of the theme (gitignored)                                              |
+| `lychee.toml`                                   | External link check config (weekly workflow `links.yml`)                            |
+| `github/`                                       | Wiki.js re-export of `.github/PULL_REQUEST_TEMPLATE.md`. Do not edit                |
+| `README.md`, `CONTRIBUTING.md`, `CREDITS.md`, … | Repo docs, also imported as (non-public) wiki pages                                 |
 
 A page at `Foo/Bar.html` is served at `/Foo/Bar`. A folder `Foo/` holds the child pages of `Foo.html`.
 
@@ -52,14 +53,15 @@ Requires the Node.js version from `.nvmrc` (enforced by `devEngines` in `package
 
 ```sh
 npm ci                 # install
-npm run check          # everything CI runs: lint + test + validate + build
+npm run check          # everything CI runs: lint + typecheck + test + validate + build
 npm run lint           # prettier --check . && stylelint (read-only)
 npm run format         # apply prettier + stylelint fixes
+npm run typecheck      # tsc type check of src/ and test/ (JSDoc types)
 npm test               # unit tests of the tooling
 npm run validate       # links, iframe security, page headers (all .html/.md pages)
-node main.js validate path/to/Page.html   # validate specific pages
-npm run build          # wiki.scss/wiki.js -> wiki.css, wiki.min.css, wiki.min.js
-npm run tools          # interactive tooling menu (node main.js --help for steps)
+node src/main.js validate path/to/Page.html   # validate specific pages
+npm run build          # src/theme -> dist/wiki.min.css, dist/wiki.min.js
+npm run tools          # interactive tooling menu (node src/main.js --help for steps)
 ```
 
 Run `npm run check` (or at least `npm run lint` + `npm run validate`) before committing. `validate` must report **0 errors**. Warnings (empty descriptions etc.) are known backlog.
@@ -74,7 +76,7 @@ Run `npm run check` (or at least `npm run lint` + `npm run validate`) before com
 - `strict-allow-scripts=true`: install fails if a dependency has install scripts that are not listed in `allowScripts` (`package.json`). Review the script, then run `npm approve-scripts <pkg>` or `npm deny-scripts <pkg>`. `@parcel/watcher` (optional sass dependency, only for `--watch`) is denied. `esbuild` is allowed: npm currently also skips the bin links of denied packages, and its postinstall only verifies the prebuilt binary.
 - GitHub Actions are pinned to commit SHAs with a `# vX.Y.Z` comment.
 
-Build output (`wiki.css`, `wiki.min.*`) is gitignored. After a merge to `main`, changes to `wiki.scss`/`wiki.js` are deployed by `.github/workflows/theme.yml` (`node main.js deploy-theme`, wiki.js GraphQL API). Mention theme changes in the PR, they go live with the merge.
+Build output (`dist/`) is gitignored. After a merge to `main`, changes in `src/theme/` are deployed by `.github/workflows/theme.yml` (`node src/main.js deploy-theme`, wiki.js GraphQL API). Mention theme changes in the PR, they go live with the merge.
 
 ## Page format
 
@@ -99,7 +101,7 @@ Markdown pages (`editor: markdown`) use the same fields as YAML front matter bet
 - `title` is required and rendered as the page `<h1>`. Many modding pages are prefixed with `WaW |` or `BO3 |` (e.g. `WaW | Radiant`, `BO3 | Adding Zones`).
 - `description` is shown in search and link previews. Write one sentence for new pages (most existing pages are still empty).
 - `editor: ckeditor` for HTML pages, `markdown` for `.md`.
-- Keep existing `confluence:<id>` tags: `main.js` uses them to map old Confluence links.
+- Keep existing `confluence:<id>` tags: the tooling uses them to map old Confluence links.
 - Leave `date`/`dateCreated` as they are on existing pages; Wiki.js manages them. For new pages use the current UTC timestamp for both.
 
 ### File names / paths
@@ -117,7 +119,7 @@ Follow the [Wiki.js naming restrictions](https://docs.requarks.io/guide/pages#na
 - Videos: `.webm` in `attachments/`, embedded with `<video controls>`.
 - Iframes: **only** `https://www.youtube-nocookie.com/embed/...` is allowed (enforced by `validate`).
 
-### Custom widgets (styled by `wiki.scss`)
+### Custom widgets (styled by `src/theme/wiki.scss`)
 
 Banner / callout (`banner-info`, `banner-tip`, `banner-note`, `banner-warning`, icons in `/attachments/icons/`):
 
@@ -154,20 +156,21 @@ Collapsible code panel (behaviour in `wiki.js`):
 </div>
 ```
 
-Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. After adding/removing child pages run `node main.js refresh-hierarchy` instead of editing it by hand.
+Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. After adding/removing child pages run `node src/main.js refresh-hierarchy` instead of editing it by hand.
 
 ## Git workflow
 
 - Work on a `feature/…` branch and open a PR against `main`. CI (`.github/workflows/ci.yml`) runs prettier on changed files, stylelint, `validate` and `build`.
 - PRs are **squash merged**: the PR title becomes the commit on `main` and must be a conventional commit (checked by `.github/workflows/pr-title.yml`).
-- Use [Conventional Commits](https://www.conventionalcommits.org/): `docs(content): …` / `fix(content): …` for pages, `feat(tools): …` for `main.js` / `tools/`, `test(tools): …`, `build: …`, `ci: …`, `chore: …`.
+- Use [Conventional Commits](https://www.conventionalcommits.org/): `docs(content): …` / `fix(content): …` for pages, `feat(tools): …` for `src/main.js` / `src/tools/`, `feat(theme): …` for `src/theme/`, `test(tools): …`, `build: …`, `ci: …`, `chore: …`.
 - Binary files go through Git LFS (`.gitattributes`). Line endings are LF.
 - Keep content and tooling changes in separate commits. Avoid repo-wide reformatting of pages.
 
 ## Things to avoid
 
 - Editing `github/` or adding Markdown/HTML files that are not meant as wiki pages (they become wiki pages).
-- Changing `node_modules`, build output, or committing `wiki.css`/`wiki.min.*`.
+- Changing `node_modules` or committing build output (`dist/`).
+- CommonJS (`require`) in `src/` or `test/`: the code is ES modules (`"type": "module"`), local imports need the `.js` extension.
 - Removing `confluence:<id>` tags or the header comment.
 - Inventing facts about UGX products, mods or game versions. Mark uncertain content for maintainer review instead.
 - Upgrading dependencies to versions published less than 7 days ago, using version ranges (`^`, `~`), or `--ignore-scripts` / `--dangerously-allow-all-scripts` to get around the script policy.

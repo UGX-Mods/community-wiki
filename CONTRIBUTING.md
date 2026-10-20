@@ -44,34 +44,35 @@ VSCode in combination with prettier is used (see the recommended extensions in `
 
 > ⚠️ Ensure the files follow the naming convention of Wiki.js (https://docs.requarks.io/guide/pages#naming-restrictions)
 
-| Command            | Description                                                                 |
-| ------------------ | --------------------------------------------------------------------------- |
-| `npm run lint`     | Check formatting (prettier) and the stylesheet (stylelint), changes nothing |
-| `npm run format`   | Fix formatting issues (if possible)                                         |
-| `npm test`         | Unit tests of the tooling (`tools/`)                                        |
-| `npm run validate` | Check links, iframe security and the Wiki.js page headers of all pages      |
-| `npm run build`    | Build the theme files (see below)                                           |
-| `npm run check`    | All of the above (same as the CI checks of a pull request)                  |
+| Command             | Description                                                                 |
+| ------------------- | --------------------------------------------------------------------------- |
+| `npm run lint`      | Check formatting (prettier) and the stylesheet (stylelint), changes nothing |
+| `npm run format`    | Fix formatting issues (if possible)                                         |
+| `npm run typecheck` | Type check of the tooling (tsc with the JSDoc types)                        |
+| `npm test`          | Unit tests of the tooling (`src/tools/`)                                    |
+| `npm run validate`  | Check links, iframe security and the Wiki.js page headers of all pages      |
+| `npm run build`     | Build the theme files (see below)                                           |
+| `npm run check`     | All of the above (same as the CI checks of a pull request)                  |
 
 ### Stylesheet
 
-The `wiki.scss` is used to compile css which is used to override and extend WikiJS theme.
+The `src/theme/wiki.scss` is used to compile css which is used to override and extend WikiJS theme.
 
-To build it, simply run `npm run build:css` and the `wiki.min.css` is generated (used as `Administration > Theme > Code Injection > CSS Override`).
+To build it, simply run `npm run build:css` and the `dist/wiki.min.css` is generated (used as `Administration > Theme > Code Injection > CSS Override`).
 
 ### Javascript
 
-The `wiki.js` is used to extend the theme logic of WikiJS.
+The `src/theme/wiki.js` is used to extend the theme logic of WikiJS.
 
-To build it, simply run `npm run build:js` and the `wiki.min.js` is generated (used in `Administration > Theme > Code Injection`).
+To build it, simply run `npm run build:js` and the `dist/wiki.min.js` is generated (used in `Administration > Theme > Code Injection`).
 
-Both are deployed automatically once a change to `wiki.scss` / `wiki.js` is merged into `main` (workflow `Deploy theme`, `node main.js deploy-theme`).
+Both are deployed automatically once a change in `src/theme/` is merged into `main` (workflow `Deploy theme`, `node src/main.js deploy-theme`).
 
 ### Tooling
 
-There is a tool script (`main.js`, the steps live in `tools/`, tests in `test/`) which helps with fixing html files (confluence to wikijs migration). It also offer other tools, e.g. to validate pages or to refresh the page hierarchy widgets.
+There is a tool script (`src/main.js`, the steps live in `src/tools/`, tests in `test/`) which helps with fixing html files (confluence to wikijs migration). It also offer other tools, e.g. to validate pages or to refresh the page hierarchy widgets.
 
-Run `npm run tools` for an interactive menu, or pass a step directly, e.g. `node main.js refresh-hierarchy` (see `node main.js --help`).
+Run `npm run tools` for an interactive menu, or pass a step directly, e.g. `node src/main.js refresh-hierarchy` (see `node src/main.js --help`).
 
 ### Local WikiJS instance for testing
 
@@ -109,7 +110,7 @@ Then login, go to `administration > storage`
 - ⚠️ If you do modifications outside of wikijs, be sure to run `Import Everything` again to apply them to your instance (but this will wipe out any unsaved changes in your wikijs instance!)
 - 💡 To create pages within wikijs, simply create your page and make your modifications, then use the `Dump all content to disk` to generate the html file, which you then must push to your fork 🙃
 
-You can also copy & pase the wiki.css in `administration > theme > CSS Override` to apply custom changes and see all custom widgets.<br>
+You can also copy & paste the `dist/wiki.min.css` (`npm run build`) in `administration > theme > CSS Override` to apply custom changes and see all custom widgets.<br>
 Switch to dark theme and set `Table of Contents Position` to `right`.
 
 💡 You can easily reset the instance and start all over again by deleting the `{location of docker-compose.yml}/home/db.sql`

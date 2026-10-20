@@ -4,7 +4,7 @@
 
 no_progress = true
 
-# only external links, internal ones are validated by main.js
+# only external links, internal ones are validated by npm run validate
 scheme = ["https", "http"]
 include_verbatim = false
 

@@ -19,7 +19,7 @@ dateCreated: 2026-10-20T00:15:12.629Z
 
 ### Phase 2: Content quality
 
-Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node main.js metadata-validation` lists the metadata issues.
+Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node src/main.js metadata-validation` lists the metadata issues.
 
 - [ ] Page metadata
   - [ ] write a `description` for the 285 pages without one (used by search and link previews; good AI-assisted task, review per section)
