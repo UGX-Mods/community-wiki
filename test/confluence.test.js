@@ -1,10 +1,30 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { titleToFileName } from '../src/tools/confluence/filenames.js';
 import {
   createHtmlBanner,
   createPrivacyYoutubeEmbed,
 } from '../src/tools/confluence/cleanup.js';
+import { addConfluenceCommentAsTag } from '../src/tools/confluence/ids.js';
+import { htmlPage, createFixture, removeFixture } from './helpers.js';
+
+test('addConfluenceCommentAsTag moves the conf id comment into the tags', async (t) => {
+  const root = createFixture({
+    'Page.html': htmlPage('Page', '<!-- conf id: 12345 -->\n<p>x</p>', {
+      tags: 'bo3',
+    }),
+  });
+  t.after(() => removeFixture(root));
+  const file = path.join(root, 'Page.html');
+
+  await addConfluenceCommentAsTag([file]);
+
+  const result = fs.readFileSync(file, 'utf8');
+  assert.match(result, /^tags: confluence:12345 bo3$/m);
+  assert.doesNotMatch(result, /conf id/);
+});
 
 test('titleToFileName follows the wiki.js naming restrictions', () => {
   assert.equal(titleToFileName('WaW | Radiant (Tips)'), 'Radiant-Tips');
@@ -14,8 +34,8 @@ test('titleToFileName follows the wiki.js naming restrictions', () => {
 });
 
 test('createHtmlBanner maps confluence macro types to banner icons', () => {
-  const icon = (type) =>
-    /icons\/([\w-]+)\.png/.exec(createHtmlBanner('', 'x', type))[1];
+  const icon = (/** @type {string} */ type) =>
+    /icons\/([\w-]+)\.png/.exec(createHtmlBanner('', 'x', type))?.[1];
   assert.equal(icon('tip'), 'check-decagram');
   assert.equal(icon('warning'), 'alert-octagon');
   assert.equal(icon('note'), 'alert');

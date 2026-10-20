@@ -49,7 +49,7 @@ async function addConfluenceCommentAsTag(files) {
       .find((n) => regexConfIdMatch.test(n.text));
 
     if (confIdCommentNode) {
-      const confId = regexConfIdMatch.exec(confIdCommentNode.text)[1];
+      const confId = regexConfIdMatch.exec(confIdCommentNode.text)?.[1];
       if (confId) {
         tags.splice(0, 0, `confluence:${confId}`);
       } else {
@@ -70,12 +70,14 @@ async function addConfluenceCommentAsTag(files) {
       `tags: ${tags.join(' ')}`,
     );
 
-    wikiJsCommentNode.innerText = wikiJsComment;
+    // innerText is read-only (the assignment was silently ignored before ESM)
+    wikiJsCommentNode.textContent = wikiJsComment;
 
     await writeFileFormat(parsedHtml.innerHTML, filePath);
   }
 }
 
+/** @type {Record<string, string>} confluence id -> page path */
 const confIdToPathMap = {};
 
 /**
