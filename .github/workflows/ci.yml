@@ -57,6 +57,9 @@ jobs:
       - name: Stylelint
         run: npm run lint:style
 
+      - name: Unit tests (tooling)
+        run: npm test
+
       # all pages, so removed/renamed pages are caught in links of unchanged pages
       - name: Validate pages (links, security, metadata)
         run: npm run validate
