@@ -22,11 +22,13 @@ const {
   fixCodeBlocks,
 } = require('./tools/confluence/cleanup');
 const { addConfluenceCommentAsTag } = require('./tools/confluence/ids');
+const { deployTheme } = require('./tools/theme');
 
 const STEPS = {
   none: 'NONE',
   createHierarchy: 'create-hierarchy',
   refreshHierarchy: 'refresh-hierarchy',
+  deployTheme: 'deploy-theme',
   validate: 'validate',
   linkValidation: 'link-validation',
   securityValidation: 'security-validation',
@@ -47,6 +49,12 @@ const STEP_CHOICES = [
     value: STEPS.refreshHierarchy,
     name: 'REFRESH: Page Hierarchies',
     description: 'Update all widgets with latest links',
+  },
+  {
+    value: STEPS.deployTheme,
+    name: 'DEPLOY: Theme',
+    description:
+      'Deploy wiki.min.css / wiki.min.js via the wiki.js API (WIKI_API_KEY, DRY_RUN=1)',
   },
   new Separator('--- VALIDATION ---'),
   {
@@ -148,6 +156,9 @@ async function main() {
     case STEPS.refreshHierarchy:
       await refreshPageHierarchy(files);
       break;
+    case STEPS.deployTheme:
+      errors += await deployTheme();
+      break;
     case STEPS.validate:
       errors += await validateAllLinks(files);
       errors += await securityValidation(files);
@@ -180,7 +191,7 @@ async function main() {
   }
 
   if (errors > 0) {
-    console.error(`❌ Validation failed with ${errors} error(s)`);
+    console.error(`❌ Failed with ${errors} error(s)`);
     process.exitCode = 1;
   }
 }
