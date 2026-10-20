@@ -27,14 +27,14 @@
   },
   "scripts": {
     "build": "npm run build:css && npm run build:js",
-    "build:css": "sass --no-source-map wiki.scss wiki.css && esbuild wiki.css --minify --log-level=warning --outfile=wiki.min.css",
-    "build:js": "esbuild wiki.js --minify --target=es2019 --log-level=warning --outfile=wiki.min.js",
+    "build:css": "sass --style=compressed --no-source-map src/theme/wiki.scss dist/wiki.min.css",
+    "build:js": "esbuild src/theme/wiki.js --minify --target=es2019 --log-level=warning --outfile=dist/wiki.min.js",
     "format": "prettier --write . && stylelint \"**/*.scss\" --fix",
     "lint": "npm run lint:format && npm run lint:style",
     "lint:format": "prettier --check .",
     "lint:style": "stylelint \"**/*.scss\" --max-warnings 0",
-    "validate": "node main.js validate",
-    "tools": "node main.js",
+    "validate": "node src/main.js validate",
+    "tools": "node src/main.js",
     "test": "node --test \"test/**/*.test.js\"",
     "check": "npm run lint && npm test && npm run validate && npm run build"
   },

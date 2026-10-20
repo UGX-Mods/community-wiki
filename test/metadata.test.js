@@ -4,8 +4,8 @@ const {
   parsePageHeader,
   getPageTitle,
   PAGE_HEADER_FIELDS,
-} = require('../tools/lib/header');
-const { checkPageMetadata } = require('../tools/validate/metadata');
+} = require('../src/tools/lib/header');
+const { checkPageMetadata } = require('../src/tools/validate/metadata');
 const { htmlPage } = require('./helpers');
 
 test('parsePageHeader reads all fields', () => {

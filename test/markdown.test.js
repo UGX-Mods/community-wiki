@@ -2,13 +2,13 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
-const { parsePageHeader, getPageTitle } = require('../tools/lib/header');
-const { pageToHtml } = require('../tools/lib/markdown');
-const { getPageFiles } = require('../tools/lib/pages');
-const { checkPageMetadata } = require('../tools/validate/metadata');
-const { checkPageSecurity } = require('../tools/validate/security');
-const { checkPageLinks } = require('../tools/validate/links');
-const { createPageHierarchy } = require('../tools/hierarchy');
+const { parsePageHeader, getPageTitle } = require('../src/tools/lib/header');
+const { pageToHtml } = require('../src/tools/lib/markdown');
+const { getPageFiles } = require('../src/tools/lib/pages');
+const { checkPageMetadata } = require('../src/tools/validate/metadata');
+const { checkPageSecurity } = require('../src/tools/validate/security');
+const { checkPageLinks } = require('../src/tools/validate/links');
+const { createPageHierarchy } = require('../src/tools/hierarchy');
 const { htmlPage, createFixture, removeFixture } = require('./helpers');
 
 /**

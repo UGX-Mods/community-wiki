@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('node:path');
-const { checkPageLinks } = require('../tools/validate/links');
+const { checkPageLinks } = require('../src/tools/validate/links');
 const { htmlPage, createFixture, removeFixture } = require('./helpers');
 
 const page = (body) => htmlPage('Test', body);

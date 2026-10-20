@@ -1,5 +1,5 @@
 /**
- * Deploy the theme (wiki.min.css / wiki.min.js) via the wiki.js GraphQL API
+ * Deploy the theme (dist/wiki.min.css / dist/wiki.min.js) via the wiki.js GraphQL API
  * (Administration > Theme > Code Injection). Run `npm run build` first.
  *
  * - CSS Override is replaced completely (owned by this repository)
@@ -107,8 +107,8 @@ async function deployTheme(root = process.cwd()) {
 
   const theme = {};
   for (const [key, file] of [
-    ['css', 'wiki.min.css'],
-    ['js', 'wiki.min.js'],
+    ['css', 'dist/wiki.min.css'],
+    ['js', 'dist/wiki.min.js'],
   ]) {
     try {
       theme[key] = await fs.promises.readFile(path.join(root, file), encoding);

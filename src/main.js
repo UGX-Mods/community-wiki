@@ -1,6 +1,6 @@
 /**
  * Tooling CLI for the wiki: validation, page hierarchy widgets and the confluence migration helpers.
- * The steps are implemented in ./tools
+ * The steps are implemented in ./tools, the theme sources are in ./theme
  */
 const fs = require('node:fs');
 const path = require('node:path');
@@ -99,7 +99,7 @@ const STEP_CHOICES = [
 ];
 
 function printUsage() {
-  console.log('Usage: node main.js [step] [page.html|page.md ...]\n');
+  console.log('Usage: node src/main.js [step] [page.html|page.md ...]\n');
   console.log('Without a step an interactive menu is shown. Steps:');
   for (const choice of STEP_CHOICES) {
     if (choice instanceof Separator || choice.value === STEPS.none) continue;

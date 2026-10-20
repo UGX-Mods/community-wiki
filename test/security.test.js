@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { checkPageSecurity } = require('../tools/validate/security');
+const { checkPageSecurity } = require('../src/tools/validate/security');
 
 const iframe = (src) =>
   src === null ? '<iframe></iframe>' : `<iframe src="${src}"></iframe>`;

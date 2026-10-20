@@ -1,10 +1,10 @@
 name: Deploy theme
 
-# builds wiki.min.css / wiki.min.js and applies them via the wiki.js GraphQL API (node main.js deploy-theme)
+# builds wiki.min.css / wiki.min.js and applies them via the wiki.js GraphQL API (node src/main.js deploy-theme)
 on:
   push:
     branches: [main]
-    paths: [wiki.scss, wiki.js, tools/theme.js]
+    paths: [src/theme/**, src/tools/theme.js]
   workflow_dispatch:
 
 permissions:
@@ -46,4 +46,4 @@ jobs:
             echo "::notice::WIKI_API_KEY is not configured, skipping the deployment"
             exit 0
           fi
-          node main.js deploy-theme
+          node src/main.js deploy-theme

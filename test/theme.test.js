@@ -5,7 +5,7 @@ const {
   MARKER_END,
   replaceScriptBlock,
   createThemeConfig,
-} = require('../tools/theme');
+} = require('../src/tools/theme');
 
 const block = (js) => `${MARKER_START}\n<script>${js}</script>\n${MARKER_END}`;
 const ads = '<script>/* ads */</script>';
