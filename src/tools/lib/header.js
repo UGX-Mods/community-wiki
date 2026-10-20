@@ -30,11 +30,10 @@ function parsePageHeader(content, markdown = false) {
   if (!header) return null;
 
   return Object.fromEntries(
-    header
-      .split(/\r?\n/)
-      .map((line) => /^(\w+):(.*)$/.exec(line))
-      .filter(Boolean)
-      .map((m) => [m[1], m[2].trim()]),
+    header.split(/\r?\n/).flatMap((line) => {
+      const m = /^(\w+):(.*)$/.exec(line);
+      return m ? [[m[1], m[2].trim()]] : [];
+    }),
   );
 }
 

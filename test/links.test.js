@@ -4,8 +4,9 @@ import path from 'node:path';
 import { checkPageLinks } from '../src/tools/validate/links.js';
 import { htmlPage, createFixture, removeFixture } from './helpers.js';
 
-const page = (body) => htmlPage('Test', body);
+const page = (/** @type {string} */ body) => htmlPage('Test', body);
 
+/** @type {string} */
 let root;
 test.before(() => {
   root = createFixture({

@@ -39,17 +39,19 @@ function parseHtmlContent(content) {
  */
 async function writeFileFormat(source, filePath) {
   try {
-    const config = await prettier.resolveConfig(path.resolve(filePath), {
-      editorconfig: true,
-    });
-    config.filepath = filePath;
+    const config = {
+      ...(await prettier.resolveConfig(path.resolve(filePath), {
+        editorconfig: true,
+      })),
+      filepath: filePath,
+    };
 
     return fs.promises.writeFile(
       filePath,
       await prettier.format(source, config),
     );
   } catch (err) {
-    console.error('Formatting error @', filePath, err.toString());
+    console.error('Formatting error @', filePath, String(err));
   }
 }
 

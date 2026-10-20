@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { checkPageSecurity } from '../src/tools/validate/security.js';
 
-const iframe = (src) =>
+const iframe = (/** @type {string|null} */ src) =>
   src === null ? '<iframe></iframe>' : `<iframe src="${src}"></iframe>`;
 
 test('allows youtube-nocookie embeds', () => {

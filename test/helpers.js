@@ -41,6 +41,9 @@ function createFixture(files) {
   return root;
 }
 
+/**
+ * @param {string} root result of createFixture
+ */
 function removeFixture(root) {
   fs.rmSync(root, { recursive: true, force: true });
 }

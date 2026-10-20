@@ -7,7 +7,8 @@ import {
   createThemeConfig,
 } from '../src/tools/theme.js';
 
-const block = (js) => `${MARKER_START}\n<script>${js}</script>\n${MARKER_END}`;
+const block = (/** @type {string} */ js) =>
+  `${MARKER_START}\n<script>${js}</script>\n${MARKER_END}`;
 const ads = '<script>/* ads */</script>';
 
 test('replaceScriptBlock only replaces the marked block', () => {
@@ -49,7 +50,13 @@ test('createThemeConfig requires the markers', () => {
   assert.throws(
     () =>
       createThemeConfig(
-        { injectHead: '', injectBody: ads },
+        {
+          theme: 'default',
+          iconset: 'mdi',
+          darkMode: true,
+          injectHead: '',
+          injectBody: ads,
+        },
         { css: '', js: 'x()' },
       ),
     /Markers not found/,

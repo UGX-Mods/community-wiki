@@ -33,8 +33,8 @@ function mdPage(title, body = '', fields = {}) {
 
 test('front matter is the header of markdown pages', () => {
   const content = mdPage('README', '# Readme');
-  assert.equal(parsePageHeader(content, true).title, 'README');
-  assert.equal(parsePageHeader(content, true).tags, '');
+  assert.equal(parsePageHeader(content, true)?.title, 'README');
+  assert.equal(parsePageHeader(content, true)?.tags, '');
   assert.equal(parsePageHeader(content), null);
   assert.equal(getPageTitle(content), 'README');
 });
@@ -78,7 +78,7 @@ test('links from and to markdown pages', async (t) => {
   });
   t.after(() => removeFixture(root));
 
-  const errorsOf = async (body) =>
+  const errorsOf = async (/** @type {string} */ body) =>
     (await checkPageLinks('README.md', mdPage('README', body), root)).map(
       (i) => `${i.href} ${i.error}`,
     );

@@ -34,10 +34,11 @@
     "lint": "npm run lint:format && npm run lint:style",
     "lint:format": "prettier --check .",
     "lint:style": "stylelint \"**/*.scss\" --max-warnings 0",
+    "typecheck": "tsc -p .",
     "validate": "node src/main.js validate",
     "tools": "node src/main.js",
     "test": "node --test \"test/**/*.test.js\"",
-    "check": "npm run lint && npm test && npm run validate && npm run build"
+    "check": "npm run lint && npm run typecheck && npm test && npm run validate && npm run build"
   },
   "dependencies": {
     "@inquirer/prompts": "8.7.4",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@stylistic/stylelint-config": "5.0.0",
+    "@types/node": "24.19.2",
     "esbuild": "0.28.2",
     "prettier": "3.9.10",
     "sass": "1.105.2",
@@ -53,7 +55,8 @@
     "stylelint-config-recess-order": "7.8.0",
     "stylelint-config-standard-scss": "17.0.0",
     "stylelint-prettier": "5.0.3",
-    "stylelint-scss": "7.3.0"
+    "stylelint-scss": "7.3.0",
+    "typescript": "7.0.2"
   },
   "allowScripts": {
     "esbuild": true,

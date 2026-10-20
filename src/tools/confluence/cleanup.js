@@ -13,6 +13,7 @@ import {
 import { createPageHierarchy } from '../hierarchy.js';
 import { getPathForConfluenceId } from './ids.js';
 
+/** @type {Record<string, string>} */
 const EMOJI_MAP = {
   ':heart:': '❤️',
   ':wink:': '😉',
@@ -32,6 +33,7 @@ const EMOJI_MAP = {
  * @param {string[]} files
  */
 function fixCodeBlocks(files) {
+  /** @type {(code: string, language?: string) => string} */
   const fncCodeBlock = (code, language = 'none') =>
     `<pre><code class="language-${language}">${code}</code></pre>`;
 
@@ -167,7 +169,10 @@ async function cleanupConfluenceHtml(files) {
 
       s.setAttribute(
         'style',
-        s.getAttribute('style').replace(/color: *?rgb\(0, *?0, *?0\);?/gi, ''),
+        (s.getAttribute('style') ?? '').replace(
+          /color: *?rgb\(0, *?0, *?0\);?/gi,
+          '',
+        ),
       );
 
       if (!s.attributes['style']) {
@@ -183,6 +188,7 @@ async function cleanupConfluenceHtml(files) {
       .querySelectorAll('span.confluence-embedded-file-wrapper')
       .forEach((n) => {
         const $img = n.querySelector('.confluence-embedded-image');
+        if (!$img) return;
 
         if (!$img.hasAttribute('alt')) {
           $img.setAttribute('alt', '');
@@ -217,9 +223,9 @@ async function cleanupConfluenceHtml(files) {
       .querySelectorAll('.confluence-information-macro')
       .forEach((m) => {
         const title = m.querySelector('p.title')?.text;
-        const content = m.querySelector(
-          'div.confluence-information-macro-body',
-        ).innerHTML;
+        const content =
+          m.querySelector('div.confluence-information-macro-body')?.innerHTML ??
+          '';
         const typeMatch = /confluence-information-macro-(\w+)/.exec(
           m.classNames,
         );
@@ -234,7 +240,8 @@ async function cleanupConfluenceHtml(files) {
 
     // convert some links
     parsedHtml.querySelectorAll('a').forEach((a) => {
-      let match = REGEX_JIRA_JQL.exec(a.getAttribute('href'));
+      const href = a.getAttribute('href') ?? '';
+      let match = REGEX_JIRA_JQL.exec(href);
       if (match?.length === 2) {
         return a.setAttribute(
           'href',
@@ -242,7 +249,7 @@ async function cleanupConfluenceHtml(files) {
         );
       }
 
-      match = REGEX_JIRA_ISSUE.exec(a.getAttribute('href'));
+      match = REGEX_JIRA_ISSUE.exec(href);
       if (match?.length === 2) {
         return a.setAttribute(
           'href',
@@ -309,7 +316,8 @@ async function cleanupConfluenceHtml(files) {
 
     const $pagetree = parsedHtml.querySelector('div.plugin_pagetree');
     if ($pagetree) {
-      $pagetree.replaceWith(await createPageHierarchy(filePath));
+      // no child pages: remove the empty page tree
+      $pagetree.replaceWith((await createPageHierarchy(filePath)) ?? '');
     }
 
     parsedHtml.querySelectorAll('div.preformatted.panel').forEach(($panel) => {
@@ -370,18 +378,21 @@ async function cleanupConfluenceHtml(files) {
       }
     });
 
+    /** @param {import('node-html-parser').HTMLElement} a */
+    const hrefOf = (a) => a.getAttribute('href') ?? '';
+
     // try to fix invalid wiki links from confluence id to correct wikijs path
     let invalidLinks = parsedHtml
       .querySelectorAll('a')
       .filter(
         (a) =>
           a.hasAttribute('href') &&
-          /(?:^|_)(\d{3,}).html$/.test(a.getAttribute('href')) &&
-          !a.getAttribute('href').includes('/forum/'),
+          /(?:^|_)(\d{3,}).html$/.test(hrefOf(a)) &&
+          !hrefOf(a).includes('/forum/'),
       );
 
     for (const a of invalidLinks) {
-      const href = a.getAttribute('href');
+      const href = hrefOf(a);
       const match = /(?:^|_)(\d{3,}).html$/.exec(href);
       if (!match) continue;
 
@@ -399,9 +410,9 @@ async function cleanupConfluenceHtml(files) {
         (a) =>
           a.hasAttribute('href') &&
           /(^\/display\/|(?:^|_)\d{3,}.html$|jira\.ugx-mods\.com|confluence\.ugx-mods\.com)/.test(
-            a.getAttribute('href'),
+            hrefOf(a),
           ) &&
-          !a.getAttribute('href').includes('/forum/'),
+          !hrefOf(a).includes('/forum/'),
       );
 
     if (invalidLinks.length > 0) {
@@ -418,6 +429,12 @@ async function cleanupConfluenceHtml(files) {
   }
 }
 
+/**
+ * @param {string|undefined} title
+ * @param {string} content html
+ * @param {string} type confluence macro type (info, information, tip, note, warning)
+ * @returns {string}
+ */
 function createHtmlBanner(title, content, type) {
   if (type === 'information') {
     type = 'info';
@@ -452,6 +469,10 @@ function createHtmlBanner(title, content, type) {
   </div>`;
 }
 
+/**
+ * @param {string|undefined} url youtube embed url
+ * @returns {string} iframe html
+ */
 function createPrivacyYoutubeEmbed(url) {
   // https://www.youtube-nocookie.com/embed/6eUsg4VI2zk?si=jX_wopnqkNk64IDX
 

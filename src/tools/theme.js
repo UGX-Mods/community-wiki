@@ -50,13 +50,26 @@ function replaceScriptBlock(html, js) {
 }
 
 /**
- * @param {object} config current theming config
+ * wiki.js 2 ThemingConfig (server/graph/schemas/theming.graphql)
+ *
+ * @typedef {object} ThemingConfig
+ * @property {string} theme
+ * @property {string} iconset
+ * @property {boolean} darkMode
+ * @property {string} [tocPosition]
+ * @property {string} [injectCSS]
+ * @property {string} [injectHead]
+ * @property {string} [injectBody]
+ */
+
+/**
+ * @param {ThemingConfig} config current theming config
  * @param {{css: string, js: string}} theme
- * @returns {object} new theming config
+ * @returns {ThemingConfig} new theming config
  */
 function createThemeConfig(config, { css, js }) {
   const result = { ...config, injectCSS: css.trim() };
-  for (const field of ['injectHead', 'injectBody']) {
+  for (const field of /** @type {const} */ (['injectHead', 'injectBody'])) {
     const html = replaceScriptBlock(config[field] ?? '', js);
     if (html !== null) {
       result[field] = html;
@@ -74,6 +87,7 @@ function createThemeConfig(config, { css, js }) {
  * @param {string} apiKey
  * @param {string} query
  * @param {object} variables
+ * @returns {Promise<any>} data of the response
  */
 async function graphql(url, apiKey, query, variables = {}) {
   const res = await fetch(`${url.replace(/\/$/, '')}/graphql`, {
@@ -86,7 +100,9 @@ async function graphql(url, apiKey, query, variables = {}) {
   });
   const body = await res.json().catch(() => null);
   if (!res.ok || !body || body.errors?.length) {
-    const errors = body?.errors?.map((e) => e.message).join(', ');
+    const errors = body?.errors
+      ?.map((/** @type {{message: string}} */ e) => e.message)
+      .join(', ');
     throw new Error(`GraphQL request failed (${res.status}): ${errors ?? ''}`);
   }
   return body.data;
@@ -105,17 +121,16 @@ async function deployTheme(root = process.cwd()) {
     return 1;
   }
 
-  const theme = {};
-  for (const [key, file] of [
-    ['css', 'dist/wiki.min.css'],
-    ['js', 'dist/wiki.min.js'],
-  ]) {
-    try {
-      theme[key] = await fs.promises.readFile(path.join(root, file), encoding);
-    } catch (_) {
-      console.error(`🚨 ${file} not found, run npm run build first`);
-      return 1;
-    }
+  let theme;
+  try {
+    const read = (/** @type {string} */ file) =>
+      fs.promises.readFile(path.join(root, 'dist', file), encoding);
+    theme = { css: await read('wiki.min.css'), js: await read('wiki.min.js') };
+  } catch (_) {
+    console.error(
+      '🚨 dist/wiki.min.css or dist/wiki.min.js not found, run npm run build first',
+    );
+    return 1;
   }
 
   const config = (await graphql(url, apiKey, QUERY_CONFIG)).theming?.config;

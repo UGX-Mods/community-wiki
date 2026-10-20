@@ -14,6 +14,15 @@ import { pageToHtml } from '../lib/markdown.js';
 
 const REGEX_EXTERNAL_HREF = /^(https?:|\/\/|mailto:)/;
 
+/**
+ * @typedef {object} LinkIssue
+ * @property {string} href
+ * @property {string} error
+ * @property {string} [text] html of the link (empty href)
+ * @property {number} [amount] number of matching anchors
+ * @property {string} [queryError]
+ */
+
 const ERROR_NO_ANCHOR =
   'No anchor id found! (Eventually selector contains invalid characters?)';
 
@@ -21,7 +30,7 @@ const ERROR_NO_ANCHOR =
  * @param {import('node-html-parser').HTMLElement} parsedHtml
  * @param {string} selector
  * @param {string} href
- * @returns {object|null} issue
+ * @returns {LinkIssue|null}
  */
 function checkAnchor(parsedHtml, selector, href) {
   const $anchors = parsedHtml.querySelectorAll(selector);
@@ -100,7 +109,7 @@ async function readLinkTarget(target) {
  * @param {string} filePath page path relative to root
  * @param {string} fileContent
  * @param {string} root
- * @returns {Promise<object[]>} issues
+ * @returns {Promise<LinkIssue[]>}
  */
 async function checkPageLinks(filePath, fileContent, root) {
   const parsedHtml = parseHtmlContent(pageToHtml(filePath, fileContent));
@@ -126,7 +135,7 @@ async function checkPageLinks(filePath, fileContent, root) {
         invalid.push({
           href,
           error: 'Invalid CSS selector for anchor!',
-          queryError: e.toString(),
+          queryError: String(e),
         });
       }
       continue;
@@ -150,7 +159,7 @@ async function checkPageLinks(filePath, fileContent, root) {
       );
       if (issue) invalid.push(issue);
     } catch (e) {
-      invalid.push({ href, error: 'Invalid anchor', queryError: e.toString() });
+      invalid.push({ href, error: 'Invalid anchor', queryError: String(e) });
     }
   }
 

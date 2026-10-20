@@ -8,8 +8,15 @@ import { pageToHtml } from '../lib/markdown.js';
 const REGEX_ALLOWED_IFRAME_HOSTS = /^https:\/\/(www.youtube-nocookie.com)/i;
 
 /**
+ * @typedef {object} SecurityIssue
+ * @property {string} issue
+ * @property {string} reason
+ * @property {string} [src]
+ */
+
+/**
  * @param {string} fileContent html
- * @returns {object[]} issues
+ * @returns {SecurityIssue[]}
  */
 function checkPageSecurity(fileContent) {
   const issues = [];

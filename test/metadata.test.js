@@ -10,6 +10,7 @@ import { htmlPage } from './helpers.js';
 
 test('parsePageHeader reads all fields', () => {
   const meta = parsePageHeader(htmlPage('BO3 | Adding Zones', '<p>x</p>'));
+  assert.ok(meta);
   assert.deepEqual(Object.keys(meta), PAGE_HEADER_FIELDS);
   assert.equal(meta.title, 'BO3 | Adding Zones');
   assert.equal(meta.published, 'true');

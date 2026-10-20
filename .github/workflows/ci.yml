@@ -57,6 +57,9 @@ jobs:
       - name: Stylelint
         run: npm run lint:style
 
+      - name: Type check (tsc, JSDoc)
+        run: npm run typecheck
+
       - name: Unit tests (tooling)
         run: npm test
 

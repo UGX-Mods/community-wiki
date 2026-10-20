@@ -45,7 +45,7 @@ async function setupPageHierarchy(files) {
   if ($hierarchies.length === 0) {
     parsedHtml.innerHTML += htmlHierarchy;
   } else {
-    $hierarchies.at(0).replaceWith(htmlHierarchy);
+    $hierarchies[0].replaceWith(htmlHierarchy);
     $hierarchies.slice(1).forEach((n) => n.remove());
   }
 
@@ -71,7 +71,7 @@ async function refreshPageHierarchy(files) {
     const htmlHierarchy = await createPageHierarchy(filePath);
     if (!htmlHierarchy) return;
 
-    $hierarchies.at(0).replaceWith(htmlHierarchy);
+    $hierarchies[0].replaceWith(htmlHierarchy);
     $hierarchies.slice(1).forEach((n) => n.remove());
 
     refreshed++;

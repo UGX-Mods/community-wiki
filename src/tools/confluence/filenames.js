@@ -39,9 +39,8 @@ function fixFileNames(files) {
        */
       filePath,
     ) => {
-      if (!REGEX_CONF_ID_IN_NAME.test(filePath)) return;
-      const match = REGEX_CONF_ID_IN_NAME.exec(filePath);
-      const id = match[1];
+      const id = REGEX_CONF_ID_IN_NAME.exec(filePath)?.[1];
+      if (!id) return;
 
       fs.readFile(filePath, encoding, (err, data) => {
         if (err) {
