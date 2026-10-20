@@ -22,7 +22,7 @@ Sync is **bidirectional**:
 Consequences:
 
 - **Always `git pull` before starting work**. `main` receives commits that never went through a PR.
-- **Every `.html` and `.md` file is a wiki page**, including files in dot-folders (e.g. `.github/*.md` was imported and re-exported as `github/…`). Do not add stray Markdown/HTML files (notes, plans, reports). Put scratch output outside the repo.
+- **Every `.html` and `.md` file is a wiki page**, including files in dot-folders (e.g. `.github/PULL_REQUEST_TEMPLATE.md` was imported and re-exported as `github/…`). Do not add stray Markdown/HTML files (notes, plans, reports, test fixtures). Put scratch output outside the repo.
 - **Every other file is a wiki asset** (served at its path, e.g. `/attachments/icons/alert.png`).
 - Wiki-authored pages are not prettier-formatted. CI only format-checks files changed in a PR, do not reformat unrelated pages.
 - Pages were imported from Confluence in 2024. Expect leftover markup (`table-wrap`, `confluenceTable`, inline styles) and many hotlinks to Jira Cloud (`ugxmods.atlassian.net`).
@@ -38,8 +38,10 @@ Consequences:
 | `Careers.html`, `UGX-Help-Center.html`          | Standalone pages                                                                |
 | `attachments/`                                  | Images, videos, downloads (Git LFS), grouped by area                            |
 | `wiki.scss`, `wiki.js`                          | Theme overrides (widgets, banners, code panels) for Wiki.js                     |
-| `main.js`                                       | Tooling CLI: validation, page hierarchy widgets, Confluence migration           |
-| `github/`                                       | Wiki.js re-export of `.github/*.md`. Do not edit, slated for removal            |
+| `main.js`, `tools/`                             | Tooling CLI (`main.js`) and its steps: validation, hierarchy, theme, Confluence |
+| `test/`                                         | `node:test` unit tests for `tools/` (fixtures are created in a temp folder)     |
+| `lychee.toml`                                   | External link check config (weekly workflow `links.yml`)                        |
+| `github/`                                       | Wiki.js re-export of `.github/PULL_REQUEST_TEMPLATE.md`. Do not edit            |
 | `README.md`, `CONTRIBUTING.md`, `CREDITS.md`, … | Repo docs, also imported as (non-public) wiki pages                             |
 
 A page at `Foo/Bar.html` is served at `/Foo/Bar`. A folder `Foo/` holds the child pages of `Foo.html`.
@@ -50,10 +52,11 @@ Requires the Node.js version from `.nvmrc` (enforced by `devEngines` in `package
 
 ```sh
 npm ci                 # install
-npm run check          # everything CI runs: lint + validate + build
+npm run check          # everything CI runs: lint + test + validate + build
 npm run lint           # prettier --check . && stylelint (read-only)
 npm run format         # apply prettier + stylelint fixes
-npm run validate       # links, iframe security, page headers (all pages)
+npm test               # unit tests of the tooling
+npm run validate       # links, iframe security, page headers (all .html/.md pages)
 node main.js validate path/to/Page.html   # validate specific pages
 npm run build          # wiki.scss/wiki.js -> wiki.css, wiki.min.css, wiki.min.js
 npm run tools          # interactive tooling menu (node main.js --help for steps)
@@ -71,7 +74,7 @@ Run `npm run check` (or at least `npm run lint` + `npm run validate`) before com
 - `strict-allow-scripts=true`: install fails if a dependency has install scripts that are not listed in `allowScripts` (`package.json`). Review the script, then run `npm approve-scripts <pkg>` or `npm deny-scripts <pkg>`. `@parcel/watcher` (optional sass dependency, only for `--watch`) is denied. `esbuild` is allowed: npm currently also skips the bin links of denied packages, and its postinstall only verifies the prebuilt binary.
 - GitHub Actions are pinned to commit SHAs with a `# vX.Y.Z` comment.
 
-Build output (`wiki.css`, `wiki.min.*`) is gitignored and **not deployed automatically**. A maintainer pastes it into _Administration → Theme → Code Injection_. If you change `wiki.scss`/`wiki.js`, say so in the PR.
+Build output (`wiki.css`, `wiki.min.*`) is gitignored. After a merge to `main`, changes to `wiki.scss`/`wiki.js` are deployed by `.github/workflows/theme.yml` (`node main.js deploy-theme`, wiki.js GraphQL API). Mention theme changes in the PR, they go live with the merge.
 
 ## Page format
 
@@ -157,13 +160,13 @@ Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. 
 
 - Work on a `feature/…` branch and open a PR against `main`. CI (`.github/workflows/ci.yml`) runs prettier on changed files, stylelint, `validate` and `build`.
 - PRs are **squash merged**: the PR title becomes the commit on `main` and must be a conventional commit (checked by `.github/workflows/pr-title.yml`).
-- Use [Conventional Commits](https://www.conventionalcommits.org/): `docs(content): …` / `fix(content): …` for pages, `feat(tools): …` for `main.js`, `build: …`, `ci: …`, `chore: …`.
+- Use [Conventional Commits](https://www.conventionalcommits.org/): `docs(content): …` / `fix(content): …` for pages, `feat(tools): …` for `main.js` / `tools/`, `test(tools): …`, `build: …`, `ci: …`, `chore: …`.
 - Binary files go through Git LFS (`.gitattributes`). Line endings are LF.
 - Keep content and tooling changes in separate commits. Avoid repo-wide reformatting of pages.
 
 ## Things to avoid
 
-- Editing `github/` or adding Markdown files anywhere (they become wiki pages).
+- Editing `github/` or adding Markdown/HTML files that are not meant as wiki pages (they become wiki pages).
 - Changing `node_modules`, build output, or committing `wiki.css`/`wiki.min.*`.
 - Removing `confluence:<id>` tags or the header comment.
 - Inventing facts about UGX products, mods or game versions. Mark uncertain content for maintainer review instead.

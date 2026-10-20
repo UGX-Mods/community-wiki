@@ -48,6 +48,7 @@ VSCode in combination with prettier is used (see the recommended extensions in `
 | ------------------ | --------------------------------------------------------------------------- |
 | `npm run lint`     | Check formatting (prettier) and the stylesheet (stylelint), changes nothing |
 | `npm run format`   | Fix formatting issues (if possible)                                         |
+| `npm test`         | Unit tests of the tooling (`tools/`)                                        |
 | `npm run validate` | Check links, iframe security and the Wiki.js page headers of all pages      |
 | `npm run build`    | Build the theme files (see below)                                           |
 | `npm run check`    | All of the above (same as the CI checks of a pull request)                  |
@@ -56,17 +57,19 @@ VSCode in combination with prettier is used (see the recommended extensions in `
 
 The `wiki.scss` is used to compile css which is used to override and extend WikiJS theme.
 
-To build it, simply run `npm run build:css` and the `wiki.min.css` is generated (and must be applied in `Administration > Theme > Code Injection > CSS Override`)
+To build it, simply run `npm run build:css` and the `wiki.min.css` is generated (used as `Administration > Theme > Code Injection > CSS Override`).
 
 ### Javascript
 
 The `wiki.js` is used to extend the theme logic of WikiJS.
 
-To build it, simply run `npm run build:js` and the `wiki.min.js` is generated (and must be applied in `Administration > Theme > Code Injection`)
+To build it, simply run `npm run build:js` and the `wiki.min.js` is generated (used in `Administration > Theme > Code Injection`).
+
+Both are deployed automatically once a change to `wiki.scss` / `wiki.js` is merged into `main` (workflow `Deploy theme`, `node main.js deploy-theme`).
 
 ### Tooling
 
-There is a tool script (`main.js`) which helps with fixing html files (confluence to wikijs migration). It also offer other tools, e.g. to validate pages or to refresh the page hierarchy widgets.
+There is a tool script (`main.js`, the steps live in `tools/`, tests in `test/`) which helps with fixing html files (confluence to wikijs migration). It also offer other tools, e.g. to validate pages or to refresh the page hierarchy widgets.
 
 Run `npm run tools` for an interactive menu, or pass a step directly, e.g. `node main.js refresh-hierarchy` (see `node main.js --help`).
 

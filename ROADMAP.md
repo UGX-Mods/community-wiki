@@ -1,19 +1,21 @@
+---
+title: ROADMAP
+description: Planned work for the UGX-Mods Community Wiki
+published: true
+date: 2026-10-20T00:15:12.629Z
+tags:
+editor: markdown
+dateCreated: 2026-10-20T00:15:12.629Z
+---
+
 # Roadmap of UGX-Mods Wiki
 
 ## Planned 📈
 
 ### Phase 1: Repository & tooling
 
-- [ ] Remove the `github/` folder (Wiki.js re-export of `.github/*.md`) and the matching wiki pages
-  - any change to `.github/*.md` is imported again as a page, so either add a Wiki.js page rule that hides `github/*` or convert the issue templates to [issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms) (`.yml`, not imported as pages)
-  - update the PR template checklist afterwards (`npm run check`, conventional PR title)
-- [ ] Fully support markdown (`.md`) files with tooling
-  - validators only check `.html` files at the moment (front matter, links)
-- [ ] Split `main.js` into modules (e.g. `tools/validate`, `tools/hierarchy`, `tools/confluence`) and add tests (`node:test`) for the validators
-- [ ] Scheduled (weekly, report-only) external link check, e.g. with [lychee](https://github.com/lycheeverse/lychee), which opens an issue with dead links
-- [ ] Deploy the theme (`wiki.min.css` / `wiki.min.js`) automatically instead of copy & paste into the admin area
-  - evaluate the Wiki.js GraphQL API (theming config) from a workflow on changes to `wiki.scss` / `wiki.js`
-- [ ] Optional: scheduled workflow that formats pages committed by the wiki editor and opens a PR
+- [ ] Remove the `github/` folder: only the PR template is left (`.github/PULL_REQUEST_TEMPLATE.md` has no `.yml` alternative and is still imported as page)
+  - hide `github/*` with a Wiki.js page rule, then delete `github/PULL_REQUEST_TEMPLATE.md` and the page
 
 ### Phase 2: Content quality
 
