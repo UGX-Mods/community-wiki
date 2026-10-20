@@ -1,0 +1,33 @@
+name: Report a problem
+description: Something on the wiki is broken, wrong or outdated (dead link, missing image, display error, …)
+labels: [bug]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Link to the affected wiki page
+      placeholder: https://wiki.ugx-mods.com/...
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: A clear and concise description of the problem, including steps to reproduce if needed.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots. ⚠️ Blur / remove sensitive and personal information.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Browser, device or anything else that helps.

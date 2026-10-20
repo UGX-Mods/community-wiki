@@ -1,0 +1,33 @@
+name: Suggest content
+description: Propose a new guide or an improvement of existing content
+labels: [documentation]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Even better than a suggestion: write it yourself, see [CONTRIBUTING](https://github.com/UGX-Mods/community-wiki/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: page
+    attributes:
+      label: Page or topic
+      description: Link to an existing page or the topic of a new one
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggestion
+      description: What should be added or changed, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Links to forum threads, videos, documentation, … that back up the content
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to write this content myself
