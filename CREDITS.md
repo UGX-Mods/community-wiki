@@ -1,6 +1,6 @@
 ---
 title: CREDITS
-description:
+description: Credits for the UGX-Mods Community Wiki
 published: true
 date: 2024-02-25T10:37:58.736Z
 tags:

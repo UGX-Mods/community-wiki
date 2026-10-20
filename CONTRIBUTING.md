@@ -1,6 +1,6 @@
 ---
 title: CONTRIBUTING
-description:
+description: How to contribute to the UGX-Mods Community Wiki
 published: true
 date: 2024-02-25T10:37:56.992Z
 tags:
@@ -20,7 +20,7 @@ Feel free to join our Discord (https://www.ugx-mods.com/discord/) and join the `
 
 ## Feature / Bugfix / Improvement request
 
-Feel free to [suggest a change](/issues/new), like feature / improvement or a bug fix.
+Feel free to [suggest a change](https://github.com/UGX-Mods/community-wiki/issues/new/choose), like feature / improvement or a bug fix.
 
 > 👍 Or even better, contribute it yourself. See below for more details on how to contribute.
 
@@ -116,11 +116,11 @@ Switch to dark theme and set `Table of Contents Position` to `right`.
 Before opening any pull request, be sure that the changes are formatted, valid and follow all guidelines.
 Your Branch should start with `feature/`, e.g.: `feature/FeatureOrBugFix`
 
-- [Fork](/fork) the Project
+- [Fork](https://github.com/UGX-Mods/community-wiki/fork) the Project
 - Create your Feature Branch (`git checkout -b feature/FeatureOrBugFix`)
 - Commit your Changes using [Conventional Commits](https://www.conventionalcommits.org/) (`git commit -m 'docs(content): add guide for xyz'`)
 - Push to the Branch (`git push origin feature/FeatureOrBugFix`)
-- Open a [Pull Request](/compare), the CI checks (`npm run check`) must pass
+- Open a [Pull Request](https://github.com/UGX-Mods/community-wiki/compare), the CI checks (`npm run check`) must pass
 - Pull Requests are squash merged, so the PR title becomes the commit message and must be a conventional commit too
 
 ### Release

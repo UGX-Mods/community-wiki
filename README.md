@@ -1,6 +1,6 @@
 ---
 title: README
-description:
+description: About the UGX-Mods Community Wiki repository
 published: true
 date: 2024-02-25T10:38:03.233Z
 tags:
