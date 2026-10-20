@@ -3,11 +3,12 @@
  */
 const { readPage } = require('../lib/pages');
 const { parseHtmlContent } = require('../lib/html');
+const { pageToHtml } = require('../lib/markdown');
 
 const REGEX_ALLOWED_IFRAME_HOSTS = /^https:\/\/(www.youtube-nocookie.com)/i;
 
 /**
- * @param {string} fileContent
+ * @param {string} fileContent html
  * @returns {object[]} issues
  */
 function checkPageSecurity(fileContent) {
@@ -47,7 +48,7 @@ async function securityValidation(files) {
     const fileContent = await readPage(filePath);
     if (!fileContent) continue;
 
-    const issues = checkPageSecurity(fileContent);
+    const issues = checkPageSecurity(pageToHtml(filePath, fileContent));
     if (issues.length > 0) {
       securityIssues += issues.length;
       console.error(

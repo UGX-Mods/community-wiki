@@ -1,23 +1,70 @@
 /**
- * Finding and reading wiki pages (every .html file is a wiki.js page)
+ * Finding and reading wiki pages (every .html and .md file is a wiki.js page)
  */
 const fs = require('node:fs');
+const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 
 const encoding = 'utf8';
 
-// folders which never contain wiki pages
-const IGNORED_DIRS = /(^|[\\/])(node_modules|\.git|github)([\\/]|$)/;
+// folders which never contain wiki pages (.github: GitHub templates, github: their wiki.js re-export)
+const IGNORED_DIRS = /(^|[\\/])(node_modules|\.git|\.github|github)([\\/]|$)/;
 
-const PAGE_EXTENSION = '.html';
+const HTML_EXTENSION = '.html';
+const MARKDOWN_EXTENSION = '.md';
+const PAGE_EXTENSIONS = [HTML_EXTENSION, MARKDOWN_EXTENSION];
+
+/**
+ * @param {string} filePath
+ * @param {string[]} extensions
+ */
+function isPage(filePath, extensions = PAGE_EXTENSIONS) {
+  return (
+    extensions.some((ext) => filePath.endsWith(ext)) &&
+    !IGNORED_DIRS.test(filePath)
+  );
+}
+
+/**
+ * Files of the repository: tracked and untracked, without git ignored files
+ * (e.g. local notes). Falls back to all files if git is not available.
+ *
+ * @param {string} root
+ * @returns {Promise<string[]>} paths relative to root (OS separator)
+ */
+async function listFiles(root) {
+  try {
+    return execFileSync(
+      'git',
+      ['ls-files', '--cached', '--others', '--exclude-standard', '-z'],
+      { cwd: root, encoding, stdio: ['ignore', 'pipe', 'ignore'] },
+    )
+      .split('\0')
+      .filter((f) => f && fs.existsSync(path.join(root, f)))
+      .map((f) => f.split('/').join(path.sep));
+  } catch (_) {
+    return fs.promises.readdir(root, { recursive: true });
+  }
+}
 
 /**
  * @param {string} root directory to search in
+ * @param {string[]} extensions
  * @returns {Promise<string[]>} page paths relative to root
  */
-async function getHtmlFiles(root = process.cwd()) {
-  return (await fs.promises.readdir(root, { recursive: true })).filter(
-    (f) => !IGNORED_DIRS.test(f) && f.endsWith(PAGE_EXTENSION),
-  );
+async function getPageFiles(
+  root = process.cwd(),
+  extensions = PAGE_EXTENSIONS,
+) {
+  return (await listFiles(root)).filter((f) => isPage(f, extensions));
+}
+
+/**
+ * @param {string} root directory to search in
+ * @returns {Promise<string[]>} html page paths relative to root
+ */
+function getHtmlFiles(root = process.cwd()) {
+  return getPageFiles(root, [HTML_EXTENSION]);
 }
 
 /**
@@ -27,9 +74,8 @@ async function getHtmlFiles(root = process.cwd()) {
  * @returns {string}
  */
 function stripPageExtension(filePath) {
-  return filePath.endsWith(PAGE_EXTENSION)
-    ? filePath.slice(0, -PAGE_EXTENSION.length)
-    : filePath;
+  const ext = PAGE_EXTENSIONS.find((e) => filePath.endsWith(e));
+  return ext ? filePath.slice(0, -ext.length) : filePath;
 }
 
 /**
@@ -63,7 +109,11 @@ function readPage(filePath) {
 module.exports = {
   encoding,
   IGNORED_DIRS,
-  PAGE_EXTENSION,
+  HTML_EXTENSION,
+  MARKDOWN_EXTENSION,
+  PAGE_EXTENSIONS,
+  isPage,
+  getPageFiles,
   getHtmlFiles,
   stripPageExtension,
   filterPagesWithChildren,

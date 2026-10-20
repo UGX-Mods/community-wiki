@@ -6,7 +6,7 @@ const path = require('node:path');
 const { select } = require('@inquirer/prompts');
 const {
   encoding,
-  PAGE_EXTENSION,
+  isPage,
   stripPageExtension,
   filterPagesWithChildren,
   readPage,
@@ -115,7 +115,7 @@ function compareFileNames(a, b) {
  */
 async function createPageHierarchyLiElements(rootFolderPath, subPaths = '') {
   const childPages = (await fs.promises.readdir(rootFolderPath).catch(() => []))
-    .filter((f) => f.endsWith(PAGE_EXTENSION))
+    .filter((f) => isPage(f))
     .sort(compareFileNames);
 
   if (childPages.length === 0) {

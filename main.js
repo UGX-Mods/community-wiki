@@ -5,7 +5,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { select, Separator } = require('@inquirer/prompts');
-const { getHtmlFiles } = require('./tools/lib/pages');
+const { getPageFiles, isPage, HTML_EXTENSION } = require('./tools/lib/pages');
 const {
   setupPageHierarchy,
   refreshPageHierarchy,
@@ -91,14 +91,14 @@ const STEP_CHOICES = [
 ];
 
 function printUsage() {
-  console.log('Usage: node main.js [step] [file.html ...]\n');
+  console.log('Usage: node main.js [step] [page.html|page.md ...]\n');
   console.log('Without a step an interactive menu is shown. Steps:');
   for (const choice of STEP_CHOICES) {
     if (choice instanceof Separator || choice.value === STEPS.none) continue;
     console.log(`  ${choice.value.padEnd(26)} ${choice.description}`);
   }
   console.log(
-    '\nValidation steps accept an optional list of HTML files (default: all pages)' +
+    '\nValidation steps accept an optional list of pages (default: all pages)' +
       '\nand exit with code 1 if errors were found.',
   );
 }
@@ -134,9 +134,11 @@ async function main() {
   const files = fileArgs.length
     ? fileArgs
         .map((f) => path.normalize(f))
-        .filter((f) => f.endsWith('.html') && fs.existsSync(f))
-    : await getHtmlFiles();
-  console.log('Found', files.length, 'HTML files 🔎');
+        .filter((f) => isPage(f) && fs.existsSync(f))
+    : await getPageFiles();
+  console.log('Found', files.length, 'pages 🔎');
+  // the confluence migration only deals with exported html pages
+  const htmlFiles = files.filter((f) => f.endsWith(HTML_EXTENSION));
 
   let errors = 0;
   switch (answer) {
@@ -161,15 +163,15 @@ async function main() {
       errors += await metadataValidation(files);
       break;
     case STEPS.confluenceFixFilenames:
-      fixFileNames(files);
-      fixNumberFileNameOnly(files);
+      fixFileNames(htmlFiles);
+      fixNumberFileNameOnly(htmlFiles);
       break;
     case STEPS.confluenceCleanup:
-      await cleanupConfluenceHtml(files);
-      fixCodeBlocks(files);
+      await cleanupConfluenceHtml(htmlFiles);
+      fixCodeBlocks(htmlFiles);
       break;
     case STEPS.confluenceId:
-      await addConfluenceCommentAsTag(files);
+      await addConfluenceCommentAsTag(htmlFiles);
       break;
     case STEPS.none:
     default:

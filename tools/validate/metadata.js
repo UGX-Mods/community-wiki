@@ -4,6 +4,7 @@
  */
 const { readPage, stripPageExtension } = require('../lib/pages');
 const { PAGE_HEADER_FIELDS, parsePageHeader } = require('../lib/header');
+const { isMarkdownPage } = require('../lib/markdown');
 
 // https://docs.requarks.io/guide/pages#naming-restrictions
 const REGEX_VALID_PAGE_PATH_SEGMENT = /^[A-Za-z0-9_-]+$/;
@@ -17,9 +18,14 @@ function checkPageMetadata(filePath, fileContent) {
   const errors = [];
   const warnings = [];
 
-  const meta = parsePageHeader(fileContent);
+  const markdown = isMarkdownPage(filePath);
+  const meta = parsePageHeader(fileContent, markdown);
   if (!meta) {
-    errors.push('Missing wiki.js page header comment at top of file');
+    errors.push(
+      markdown
+        ? 'Missing wiki.js front matter at top of file'
+        : 'Missing wiki.js page header comment at top of file',
+    );
   } else {
     if (!meta.title) errors.push('Missing or empty "title"');
     const missing = PAGE_HEADER_FIELDS.filter((k) => !(k in meta));
@@ -29,6 +35,10 @@ function checkPageMetadata(filePath, fileContent) {
     }
     if ('description' in meta && !meta.description) {
       warnings.push('Empty "description"');
+    }
+    const editor = markdown ? 'markdown' : 'ckeditor';
+    if (meta.editor && meta.editor !== editor) {
+      warnings.push(`"editor" should be ${editor}, not ${meta.editor}`);
     }
   }
 

@@ -3,8 +3,14 @@
  */
 const fs = require('node:fs');
 const path = require('node:path');
-const { encoding, PAGE_EXTENSION, readPage } = require('../lib/pages');
+const {
+  encoding,
+  PAGE_EXTENSIONS,
+  readPage,
+  stripPageExtension,
+} = require('../lib/pages');
 const { parseHtmlContent } = require('../lib/html');
+const { pageToHtml } = require('../lib/markdown');
 
 const REGEX_EXTERNAL_HREF = /^(https?:|\/\/|mailto:)/;
 
@@ -45,9 +51,7 @@ function getLinkCandidates(href, filePath, root) {
     return [root + path.sep + hrefAsPath];
   }
 
-  const rootFolderPath = filePath.endsWith(PAGE_EXTENSION)
-    ? filePath.slice(0, -PAGE_EXTENSION.length)
-    : filePath;
+  const rootFolderPath = stripPageExtension(filePath);
   const rootFolderPathOmitted = rootFolderPath
     .split(path.sep)
     .slice(0, -1)
@@ -61,15 +65,35 @@ function getLinkCandidates(href, filePath, root) {
 }
 
 /**
+ * @param {string} p
+ * @returns {string[]} the path itself and the page files it can stand for
+ */
+function withPageExtensions(p) {
+  return PAGE_EXTENSIONS.some((ext) => p.endsWith(ext))
+    ? [p]
+    : [p, ...PAGE_EXTENSIONS.map((ext) => `${p}${ext}`)];
+}
+
+/**
  * @param {string[]} candidates
  * @returns {string|undefined} first candidate which exists (as file/folder or as page)
  */
 function findLinkTarget(candidates) {
-  return candidates.find(
-    (p) =>
-      fs.existsSync(p) ||
-      (!p.endsWith(PAGE_EXTENSION) && fs.existsSync(`${p}${PAGE_EXTENSION}`)),
-  );
+  return candidates.find((p) => withPageExtensions(p).some(fs.existsSync));
+}
+
+/**
+ * @param {string} target result of findLinkTarget
+ * @returns {Promise<string>} html of the linked page (or file)
+ */
+async function readLinkTarget(target) {
+  for (const file of withPageExtensions(target)) {
+    const content = await fs.promises
+      .readFile(file, encoding)
+      .catch(() => null);
+    if (content !== null) return pageToHtml(file, content);
+  }
+  throw new Error(`Can't read link target ${target}`);
 }
 
 /**
@@ -79,7 +103,7 @@ function findLinkTarget(candidates) {
  * @returns {Promise<object[]>} issues
  */
 async function checkPageLinks(filePath, fileContent, root) {
-  const parsedHtml = parseHtmlContent(fileContent);
+  const parsedHtml = parseHtmlContent(pageToHtml(filePath, fileContent));
   const invalid = [];
 
   for (const a of parsedHtml.querySelectorAll('a')) {
@@ -119,20 +143,8 @@ async function checkPageLinks(filePath, fileContent, root) {
 
     // check if the anchor exists!
     try {
-      const targetFileContent = await fs.promises
-        .readFile(foundFile, encoding)
-        .catch((err) => {
-          if (!foundFile.endsWith(PAGE_EXTENSION)) {
-            return fs.promises.readFile(
-              `${foundFile}${PAGE_EXTENSION}`,
-              encoding,
-            );
-          }
-          throw err;
-        });
-
       const issue = checkAnchor(
-        parseHtmlContent(targetFileContent),
+        parseHtmlContent(await readLinkTarget(foundFile)),
         `#${anchor}`,
         href,
       );

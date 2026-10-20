@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@inquirer/prompts": "8.7.4",
+    "markdown-it": "15.0.2",
     "node-html-parser": "9.0.5"
   },
   "devDependencies": {
