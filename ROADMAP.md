@@ -19,7 +19,9 @@ Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node src/main.js meta
 - [ ] Remove more obsolete Confluence boilerplate / cleaner HTML files
   - [ ] `table-wrap`, `wrapped`, `confluenceTable` classes (235 occurrences in 84 pages)
   - [ ] inline `style` attributes (432 in 71 pages), mostly in old forum changelogs
-- [ ] Hotlinked media: mirror the 271 images from imgur / gyazo (81 pages) into `attachments/` (where we are allowed to), and check the 20 mega.nz / mediafire downloads (4 pages)
+- [ ] Hotlinked media leftovers
+  - 16 gyazo images could not be mirrored (gyazo answers "temporarily unavailable"), check them in a browser and mirror manually or replace (`node src/main.js mirror-images` lists them)
+  - check the 12 MEGA links by hand (Modtools Installation Guide, Achievements, Rip sounds from IW6), MEGA can't be checked automatically
 - [ ] Rename `UGX-WeaponsEditor++` (violates the naming restrictions; changes the URL, update links)
 - [ ] Stub / TODO pages: write or merge them
   - Notifications, Radiant Black, Scripting custom traps, Creating a Zombie Window Entrance, Troubleshooting for UGXMP, UGXL FAQ, Video pages that only embed a video
