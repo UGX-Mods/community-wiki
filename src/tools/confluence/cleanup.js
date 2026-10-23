@@ -481,7 +481,7 @@ function createPrivacyYoutubeEmbed(url) {
   }
 
   url = url.replace(
-    /(\/\/|https?:\/\/)?(www.)?youtube\.com/,
+    /^(\/\/|https?:\/\/)?(www\.)?youtube\.com(?=\/)/,
     'https://www.youtube-nocookie.com',
   );
 
