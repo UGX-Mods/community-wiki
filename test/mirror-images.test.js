@@ -22,6 +22,10 @@ test('getAttachmentFolder follows the attachments naming', () => {
     getAttachmentFolder('Modding/Black-Ops-3-Modtools/Mapping.html'),
     'attachments/modding/bo3/mapping',
   );
+  assert.equal(
+    getAttachmentFolder('UGX-Applications/UGX-WeaponsEditor++.html'),
+    'attachments/ugx-applications/ugx-weaponseditor',
+  );
 });
 
 test('findHotlinkedImages finds unique imgur / gyazo image urls', () => {

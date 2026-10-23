@@ -28,7 +28,14 @@ function getAttachmentFolder(pagePath) {
   const segments = stripPageExtension(pagePath)
     .split(/[\\/]/)
     .map((s) => s.toLowerCase())
-    .map((s) => FOLDER_NAMES[s] ?? s);
+    .map((s) => FOLDER_NAMES[s] ?? s)
+    // asset paths: same characters as page names (e.g. "UGX-WeaponsEditor++")
+    .map((s) =>
+      s
+        .split(/[^a-z0-9_-]+/)
+        .filter(Boolean)
+        .join('-'),
+    );
   return ['attachments', ...segments].join('/');
 }
 
