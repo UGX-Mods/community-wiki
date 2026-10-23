@@ -163,6 +163,38 @@ async function checkPageLinks(filePath, fileContent, root) {
     }
   }
 
+  invalid.push(...checkImages(parsedHtml, filePath, root));
+  return invalid;
+}
+
+/**
+ * Local images (attachments) must exist
+ *
+ * @param {import('node-html-parser').HTMLElement} parsedHtml
+ * @param {string} filePath page path relative to root
+ * @param {string} root
+ * @returns {LinkIssue[]}
+ */
+function checkImages(parsedHtml, filePath, root) {
+  /** @type {LinkIssue[]} */
+  const invalid = [];
+  for (const img of parsedHtml.querySelectorAll('img')) {
+    const src = img.getAttribute('src');
+    if (!src) {
+      invalid.push({
+        href: '',
+        error: 'Empty image src!',
+        text: img.outerHTML,
+      });
+      continue;
+    }
+    if (REGEX_EXTERNAL_HREF.test(src) || src.startsWith('data:')) continue;
+
+    const candidates = getLinkCandidates(decodeURI(src), filePath, root);
+    if (!candidates.some((p) => fs.existsSync(p))) {
+      invalid.push({ href: src, error: 'Image not found!' });
+    }
+  }
   return invalid;
 }
 
