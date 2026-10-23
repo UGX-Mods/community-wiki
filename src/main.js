@@ -23,6 +23,7 @@ import { deployTheme } from './tools/theme.js';
 import { localizeJiraIcons } from './tools/content/jira-icons.js';
 import { demotePageHeadings } from './tools/content/headings.js';
 import { mirrorImages } from './tools/content/mirror-images.js';
+import { renameImages } from './tools/content/rename-images.js';
 
 const STEPS = {
   none: 'NONE',
@@ -39,6 +40,7 @@ const STEPS = {
   jiraIcons: 'jira-icons',
   demoteHeadings: 'demote-headings',
   mirrorImages: 'mirror-images',
+  renameImages: 'rename-images',
 };
 
 const STEP_CHOICES = [
@@ -99,6 +101,12 @@ const STEP_CHOICES = [
     name: 'Mirror images',
     description:
       'Download imgur / gyazo images into attachments/ and link the copies (DRY_RUN=1)',
+  },
+  {
+    value: STEPS.renameImages,
+    name: 'Rename images',
+    description:
+      'Give images with meaningless names (imgur ids, hashes) names from alt text / heading (DRY_RUN=1)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -211,6 +219,9 @@ async function main() {
       break;
     case STEPS.mirrorImages:
       errors += await mirrorImages(files);
+      break;
+    case STEPS.renameImages:
+      errors += await renameImages(files);
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);

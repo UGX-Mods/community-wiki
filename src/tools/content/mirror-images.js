@@ -1,7 +1,8 @@
 /**
  * Images hotlinked from image hosts (imgur, gyazo) can vanish any time.
  * This step downloads them into attachments/ (stored with Git LFS) and points
- * the pages to the local copies. Dead images are reported and left as they are.
+ * the pages to the local copies. Images the host does not serve anymore are
+ * restored from the Wayback Machine if possible, the rest is reported and left as is.
  *
  * Environment: DRY_RUN=1 only reports what would be downloaded
  */
@@ -70,11 +71,28 @@ async function download(url) {
 }
 
 /**
+ * Downloads the image, falls back to the earliest Wayback Machine snapshot
+ * ("id_" returns the original file) if the image host does not serve it anymore
+ *
+ * @param {string} url
+ * @returns {Promise<{data: Buffer, archived: boolean} | {error: string}>}
+ */
+async function downloadWithArchive(url) {
+  const res = await download(url);
+  if ('data' in res) return { ...res, archived: false };
+
+  const archive = await download(`https://web.archive.org/web/2id_/${url}`);
+  if ('data' in archive) return { ...archive, archived: true };
+  return { error: `${res.error}, no Wayback Machine snapshot` };
+}
+
+/**
  * @typedef {object} MirrorState
  * @property {string} root repository root
  * @property {boolean} dryRun
  * @property {Map<string, string>} mirrored url -> local path (/attachments/...)
  * @property {Map<string, string>} dead url -> error
+ * @property {Set<string>} archived urls restored from the Wayback Machine
  */
 
 /**
@@ -93,11 +111,12 @@ async function mirrorImage(url, filePath, state) {
   const name = path.posix.basename(new URL(url).pathname);
   const local = `${getAttachmentFolder(filePath)}/${name}`;
   if (!state.dryRun) {
-    const res = await download(url);
+    const res = await downloadWithArchive(url);
     if ('error' in res) {
       state.dead.set(url, res.error);
       return undefined;
     }
+    if (res.archived) state.archived.add(url);
     const target = path.join(state.root, ...local.split('/'));
     await fs.promises.mkdir(path.dirname(target), { recursive: true });
     await fs.promises.writeFile(target, res.data);
@@ -114,8 +133,13 @@ async function mirrorImage(url, filePath, state) {
 async function mirrorImages(files, root = process.cwd()) {
   const dryRun = !!process.env.DRY_RUN;
   /** @type {MirrorState} */
-  const state = { root, dryRun, mirrored: new Map(), dead: new Map() };
-  const { mirrored, dead } = state;
+  const state = {
+    root,
+    dryRun,
+    mirrored: new Map(),
+    dead: new Map(),
+    archived: new Set(),
+  };
   let pages = 0;
 
   for (const filePath of files) {
@@ -134,14 +158,26 @@ async function mirrorImages(files, root = process.cwd()) {
     }
   }
 
-  console.log(
-    `${dryRun ? 'DRY_RUN: would mirror' : 'Mirrored'} ${mirrored.size} images in ${pages} pages 🖼️`,
-  );
+  printReport(state, pages);
+  return 0;
+}
+
+/**
+ * @param {MirrorState} state
+ * @param {number} pages amount of changed pages
+ */
+function printReport({ dryRun, mirrored, archived, dead }, pages) {
+  const action = dryRun ? 'DRY_RUN: would mirror' : 'Mirrored';
+  console.log(`${action} ${mirrored.size} images in ${pages} pages 🖼️`);
+  if (archived.size) {
+    console.log(
+      `📼 ${archived.size} of them restored from the Wayback Machine`,
+    );
+  }
   if (dead.size) {
     console.warn(`⚠️ ${dead.size} dead images (left unchanged):`);
     for (const [url, error] of dead) console.warn(`  ${url} - ${error}`);
   }
-  return 0;
 }
 
 export { getAttachmentFolder, findHotlinkedImages, mirrorImages };
