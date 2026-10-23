@@ -8,16 +8,7 @@ editor: markdown
 dateCreated: 2026-10-20T00:15:12.629Z
 ---
 
-# Roadmap of UGX-Mods Wiki
-
-## Planned 📈
-
-### Phase 1: Repository & tooling
-
-- [ ] Remove the `github/` folder: only the PR template is left (`.github/PULL_REQUEST_TEMPLATE.md` has no `.yml` alternative and is still imported as page)
-  - hide `github/*` with a Wiki.js page rule, then delete `github/PULL_REQUEST_TEMPLATE.md` and the page
-
-### Phase 2: Content quality
+## Phase 1: Content quality
 
 Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node src/main.js metadata-validation` lists the metadata issues.
 
@@ -43,14 +34,9 @@ Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node src/main.js meta
 - [ ] Review product pages for currency (UGXL, UGXLIN, Legacy launcher, Web Chat / Discord)
 - [ ] Remove the "imported from Confluence" warnings (README, home page) once the cleanup is done
 
-### Phase 3: Platform
+## Phase 2: Tools / Element
 
 - [ ] Some more style / widget elements and fixes (e.g. tabs, status badges, image gallery)
-- [ ] Evaluate Wiki.js v3 once it is released as stable (navigation, git storage changes, migration path)
-
-## Wishlist ✨
-
-- Better navigation, similar to Confluence 💖
-  - might need to wait for wiki.js v3 release
-- Better Jira Cloud integration / embed
+- [ ] Better Jira Cloud integration / embed
   - atm there is no real sync and it must be exported + imported and fixed 😢
+  - fetch the changelog / export it and generate it (UGXSMF, etc.)
