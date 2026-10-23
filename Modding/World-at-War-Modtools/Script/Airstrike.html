@@ -46,20 +46,20 @@ dateCreated: 2024-02-04T15:25:13.858Z
   creating a vehicle path for it, customizing the bomb drop, configuring
   explosion fx, giving the plane a propeller, and giving the plane engine sound.
 </p>
-<h1 id="Airstrike-Changelog">Changelog</h1>
+<h2 id="Airstrike-Changelog">Changelog</h2>
 <p>Fixed zombie_cost on the bomb run trigger - 01:32, 22 January 2014 (UTC)</p>
 <p>
   Removed end_game call from script - this got left over from the original UGX
   Cabin version. - 03:10, 13 April 2012 (UTC)
 </p>
 <p>Edited wording of Vehicle Paths section - 03:18, 13 April 2012 (UTC)</p>
-<h1 id="Airstrike-Preparation">Preparation</h1>
+<h2 id="Airstrike-Preparation">Preparation</h2>
 <p>
   To begin, you will need to copy root/raw/maps/_planeweapons.gsc to
   mods/mapname/maps.
 </p>
-<h2 id="Airstrike-Script">Script</h2>
-<h3 id="Airstrike-Precaching">Precaching</h3>
+<h3 id="Airstrike-Script">Script</h3>
+<h4 id="Airstrike-Precaching">Precaching</h4>
 <p>
   In order for the plane to function, it must be initialized. This is similar to
   precaching as it must be done before _zombiemode::main() is started. To do
@@ -91,7 +91,7 @@ plane maps\_planeweapons::bomb_init( 25 );
 level._effect[&quot;corsair_prop_full&quot;] = loadFX(&quot;vehicle/props/fx_corsair_prop_spin&quot;);
 maps\_zombiemode::main();</code></pre>
 </div>
-<h3 id="Airstrike-Sound">Sound</h3>
+<h4 id="Airstrike-Sound">Sound</h4>
 <p>
   I have already converted
   <a href="https://ugx-mods.com/downloads/amb_corsair_01.wav" target="_blank">
@@ -136,7 +136,7 @@ sound,plane_sound,,all_sp
   and check the box next to amb_corsair_01.wav. Then check Build FF and Build
   IWD, then click Build MOD.
 </p>
-<h3 id="Airstrike-CSV">CSV</h3>
+<h4 id="Airstrike-CSV">CSV</h4>
 <p>
   If you want the FX to work and the bomb model to show, you must do this step.
 </p>
@@ -159,7 +159,7 @@ xmodel,aircraft_bomb
 material,mtl_aircraft_bomb
 </code></pre>
 </div>
-<h3 id="Airstrike-Function(updated)">Function (updated)</h3>
+<h4 id="Airstrike-Function(updated)">Function (updated)</h4>
 <p>
   Finally, you must add a function to a script that is running in your level.
   Depending on how you want to use this, that file may be an endgame script, or
@@ -322,9 +322,9 @@ maps\_zombiemode::main();</code></pre>
 maps\_zombiemode::main();
 thread maps\bomb_run::bomb_run_trig();</code></pre>
 </div>
-<h1 id="Airstrike-Radiant">Radiant</h1>
+<h2 id="Airstrike-Radiant">Radiant</h2>
 <p>Now you must do the necessary steps in Radiant.</p>
-<h2 id="Airstrike-SetupthePlane">Setup the Plane</h2>
+<h3 id="Airstrike-SetupthePlane">Setup the Plane</h3>
 <p>
   For this tutorial, we have made preparations to use the corsair plane. Right
   click the 2D view of your map and choose script -&gt;
@@ -354,7 +354,7 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
     </tbody>
   </table>
 </div>
-<h2 id="Airstrike-VehiclePath">Vehicle Path</h2>
+<h3 id="Airstrike-VehiclePath">Vehicle Path</h3>
 <p>
   Now that you have your corsair model, it's time to create a path for it to
   follow. There are two nodes we will use. One (info_vehicle_node) is for linear
@@ -417,7 +417,7 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
 <p>
   <img height="400" src="https://i.imgur.com/JxmiD8c.png" alt />
 </p>
-<h2 id="Airstrike-BombRunTrigger">Bomb Run Trigger</h2>
+<h3 id="Airstrike-BombRunTrigger">Bomb Run Trigger</h3>
 <p>
   If you are using bomb_run.gsc, simply create a trigger brush and give it the
   KvP:
@@ -436,10 +436,10 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
     </tbody>
   </table>
 </div>
-<h1 id="Airstrike-Finishingup">Finishing up</h1>
+<h2 id="Airstrike-Finishingup">Finishing up</h2>
 <p>Compile your map, patch (if you have one), and mod.</p>
-<h1 id="Airstrike-Source">Source</h1>
-<h2 id="Airstrike-bomb_run.gsc">bomb_run.gsc</h2>
+<h2 id="Airstrike-Source">Source</h2>
+<h3 id="Airstrike-bomb_run.gsc">bomb_run.gsc</h3>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

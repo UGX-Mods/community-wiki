@@ -62,8 +62,8 @@ dateCreated: 2024-02-04T15:27:12.827Z
     </p>
   </div>
 </div>
-<h1 id="UGXJukeboxGuide-Preparation">Preparation</h1>
-<h2 id="UGXJukeboxGuide-Download">Download</h2>
+<h2 id="UGXJukeboxGuide-Preparation">Preparation</h2>
+<h3 id="UGXJukeboxGuide-Download">Download</h3>
 <p>
   Download the UGX Jukebox installation files here:
   <a
@@ -79,7 +79,7 @@ dateCreated: 2024-02-04T15:27:12.827Z
   <strong>rename the MAPNAME folder to the name of your map's folder</strong>
   in your root directory (example: nazi_zombie_testmap)
 </p>
-<h3 id="UGXJukeboxGuide-Changelog">Changelog</h3>
+<h4 id="UGXJukeboxGuide-Changelog">Changelog</h4>
 <ul>
   <li>
     v1.0.4: Moved all songs to the &quot;music&quot; channel in the soundalias
@@ -102,7 +102,7 @@ dateCreated: 2024-02-04T15:27:12.827Z
   </li>
   <li>v1.0.0: Release.</li>
 </ul>
-<h1 id="UGXJukeboxGuide-Installation">Installation</h1>
+<h2 id="UGXJukeboxGuide-Installation">Installation</h2>
 <p>
   The first step to installing the Jukebox is adding the files to your root
   directory. highlight the &quot;map_source&quot;, &quot;mods&quot;,
@@ -110,7 +110,7 @@ dateCreated: 2024-02-04T15:27:12.827Z
   drag them into your root directory. It should merge with your existing
   folders. If not, you did it wrong!
 </p>
-<h2 id="UGXJukeboxGuide-CallingtheFunctions">Calling the Functions</h2>
+<h3 id="UGXJukeboxGuide-CallingtheFunctions">Calling the Functions</h3>
 <p>
   You need to add two lines to your mapname.gsc before the Jukebox will run.
   <br />
@@ -165,23 +165,23 @@ dateCreated: 2024-02-04T15:27:12.827Z
     </ul>
   </div>
 </div>
-<h3 id="UGXJukeboxGuide-PrecacheLine">Precache Line</h3>
+<h4 id="UGXJukeboxGuide-PrecacheLine">Precache Line</h4>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
 maps\ugx_jukebox::jukebox_precache();</code></pre>
 </div>
-<h3 id="UGXJukeboxGuide-ThreadLine">Thread Line</h3>
+<h4 id="UGXJukeboxGuide-ThreadLine">Thread Line</h4>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
 thread maps\ugx_jukebox::jukebox_init();</code></pre>
 </div>
-<h2 id="UGXJukeboxGuide-Configuration">Configuration</h2>
+<h3 id="UGXJukeboxGuide-Configuration">Configuration</h3>
 <p>
   The Jukebox has some basic configuration settings that can be changed if you
   wish. The default settings do not require the power switch to be on for the
   Jukebox to work, and charge 10 points per song play.
 </p>
-<h3 id="UGXJukeboxGuide-PowerNeeded">Power Needed</h3>
+<h4 id="UGXJukeboxGuide-PowerNeeded">Power Needed</h4>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
 level.jukebox[&quot;power_needed&quot;] = false;</code></pre>
@@ -191,7 +191,7 @@ level.jukebox[&quot;power_needed&quot;] = false;</code></pre>
   message to players until the power switch is flipped in the map, preventing
   players from using the Jukebox until the power is on.
 </p>
-<h3 id="UGXJukeboxGuide-Cost">Cost</h3>
+<h4 id="UGXJukeboxGuide-Cost">Cost</h4>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
 level.jukebox[&quot;cost&quot;] = 10;</code></pre>
@@ -200,7 +200,7 @@ level.jukebox[&quot;cost&quot;] = 10;</code></pre>
   Changing this setting will change the amount of points players are charged
   each time they play a song from the Jukebox.
 </p>
-<h2 id="UGXJukeboxGuide-RadiantPlacement">Radiant Placement</h2>
+<h3 id="UGXJukeboxGuide-RadiantPlacement">Radiant Placement</h3>
 <p>
   To place one or more Jukeboxes in your map, use the prefab
   <strong>root/map_source/_prefabs/ugx_mod/ugx_jukebox.map</strong>
@@ -248,7 +248,7 @@ level.jukebox[&quot;cost&quot;] = 10;</code></pre>
 <br />
 The prefab does not need to be stamped to work. There is no limit to how many
 Jukeboxes can be placed in a single map.
-<h2 id="UGXJukeboxGuide-Compiling">Compiling</h2>
+<h3 id="UGXJukeboxGuide-Compiling">Compiling</h3>
 <p>
   Once you have done the above steps, you are ready to finalize the
   installation. If you would like to add custom songs to your Jukebox, read
@@ -327,8 +327,8 @@ jukebox_n.iwi
   <strong>You are finished!</strong>
   You can now boot your map and enjoy the UGX Jukebox.
 </p>
-<h1 id="UGXJukeboxGuide-AddingCustomSongs">Adding Custom Songs</h1>
-<h2 id="UGXJukeboxGuide-SongFiles">Song Files</h2>
+<h2 id="UGXJukeboxGuide-AddingCustomSongs">Adding Custom Songs</h2>
+<h3 id="UGXJukeboxGuide-SongFiles">Song Files</h3>
 <p>
   If you plan to use your own songs in the Jukebox instead of the default
   non-copyright songs, you will need to convert them. Later we will have a page
@@ -337,7 +337,7 @@ jukebox_n.iwi
   any other music box. If you have already converted some songs for use with a
   different music box script, you may reuse them without changing anything.
 </p>
-<h2 id="UGXJukeboxGuide-ScriptConfiguration">Script Configuration</h2>
+<h3 id="UGXJukeboxGuide-ScriptConfiguration">Script Configuration</h3>
 <p>
   To add your custom songs to the Jukebox, you first need to open
   <strong>root/mods/MAPNAME/maps/ugx_jukebox.gsc.</strong>
@@ -382,9 +382,9 @@ add_song(display_name, soundalias_name)
   It is not necessary to modify the menu file at all, it will load the song
   names dynamically. You are done after modifying the script file.
 </p>
-<h1 id="UGXJukeboxGuide-DynamicallyAddSongsIn-Game">
+<h2 id="UGXJukeboxGuide-DynamicallyAddSongsIn-Game">
   Dynamically Add Songs In-Game
-</h1>
+</h2>
 <p>
   It is also possible to have the Jukebox start with a limited amount of songs,
   and then by calling the add_song() function at any time during gameplay you

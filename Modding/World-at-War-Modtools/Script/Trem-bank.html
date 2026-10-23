@@ -59,13 +59,13 @@ dateCreated: 2024-02-04T15:27:07.788Z
     trem_bank_2.1.rar
   </a>
 </p>
-<h1 id="Trembank-Changelog">Changelog</h1>
+<h2 id="Trembank-Changelog">Changelog</h2>
 <p>
   2.1 update fixed the default notify waittill name... it was set to a flag name
   instead of a notify name, which means it would never work. Fixed the Withdrawl
   limit reached iPrintLn which was not working. - 10:45, 20 July 2014 (PDT)
 </p>
-<h1 id="Trembank-Preparation">Preparation</h1>
+<h2 id="Trembank-Preparation">Preparation</h2>
 <p>
   Download the files above.
   <br />
@@ -84,8 +84,8 @@ dateCreated: 2024-02-04T15:27:07.788Z
     materials/trem_bank_bg -&gt; root\raw\materials\
   </p>
 </div>
-<h1 id="Trembank-Setup">Setup</h1>
-<h2 id="Trembank-Radiant">Radiant</h2>
+<h2 id="Trembank-Setup">Setup</h2>
+<h3 id="Trembank-Radiant">Radiant</h3>
 <p>
   You can place as many bank locations as you want with version 2.1. You can
   place some snazzy brushes and xmodels to make an area look like a bank, but
@@ -113,7 +113,7 @@ dateCreated: 2024-02-04T15:27:07.788Z
     </tbody>
   </table>
 </div>
-<h2 id="Trembank-CSV">CSV</h2>
+<h3 id="Trembank-CSV">CSV</h3>
 <p>
   You must include the trem_bank.menu in your mod.ff in order for it to show
   on-screen in-game. To do this, first open Launcher and go to the Mods tab.
@@ -134,14 +134,14 @@ menufile,ui/scriptmenus/trem_bank_keyboard.menu
 material,trem_bank_bg
 </code></pre>
 </div>
-<h2 id="Trembank-IWD">IWD</h2>
+<h3 id="Trembank-IWD">IWD</h3>
 <p>
   You should have already added trem_bank_2.gsc to root/mods/mapname/maps. If
   not, do so now. Then, in the Mod tab of Launcher with your mod selected,
   scroll down in the right-hand listbox and find trem_bank_2.gsc. Check the box
   beside it.
 </p>
-<h2 id="Trembank-Script">Script</h2>
+<h3 id="Trembank-Script">Script</h3>
 <p>
   In order for trem_bank_2 to run in your map, it must be 'called' in your
   root/raw/maps/mapname.gsc. Open this file with (preferably)
@@ -184,7 +184,7 @@ maps\_zombiemode::main();
 level thread maps\trem_bank_2::bank();
 </code></pre>
 </div>
-<h2 id="Trembank-Customization">Customization</h2>
+<h3 id="Trembank-Customization">Customization</h3>
 <p>There are numerous settings available for trem_bank_2. They are:</p>
 <p>Enable/Disable withdraw limit</p>
 <p>Withdraw Limit Number</p>
@@ -198,13 +198,13 @@ level thread maps\trem_bank_2::bank();
   View root/mods/mapname/maps/trem_bank_2.gsc to edit the settings and read
   descriptions of them.
 </p>
-<h3 id="Trembank-MenuExample">Menu Example</h3>
+<h4 id="Trembank-MenuExample">Menu Example</h4>
 <p>For reference, This is what the menu looks like:</p>
 <p>Keyboard:</p>
 <p>
   <img src="/attachments/modding/waw/trem_bank.png" alt />
 </p>
-<h1 id="Trembank-Finishingup">Finishing up</h1>
+<h2 id="Trembank-Finishingup">Finishing up</h2>
 <p>
   After completing
   <span class="confluence-link">
@@ -215,8 +215,8 @@ level thread maps\trem_bank_2::bank();
   <a href="#Trembank-Setup"><span class="confluence-link">Setup</span></a>
   , you must compile your map and mod.
 </p>
-<h1 id="Trembank-Source">Source</h1>
-<h2 id="Trembank-trem_bank_2.gsc">trem_bank_2.gsc</h2>
+<h2 id="Trembank-Source">Source</h2>
+<h3 id="Trembank-trem_bank_2.gsc">trem_bank_2.gsc</h3>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

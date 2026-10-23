@@ -42,15 +42,15 @@ time. If you have a lot of perk machines, doors with different prices, or custom
 triggers you may run into an issue where your perk hintstrings don't update when
 the power turns on or other weird issues with hintstrings that don't change when
 they are supposed to.
-<h1 id="Hintstringsnotupdating-TheIdea">The Idea</h1>
+<h2 id="Hintstringsnotupdating-TheIdea">The Idea</h2>
 <p>
   Since the engine will not update any more hintstrings once the count exceeds
   48, the idea is to use hud.menu to display the hintstrings instead of
   setHintString().
 </p>
-<h1 id="Hintstringsnotupdating-ImplementingtheScript">
+<h2 id="Hintstringsnotupdating-ImplementingtheScript">
   Implementing the Script
-</h1>
+</h2>
 <p>
   Download
   <a
@@ -84,7 +84,7 @@ they are supposed to.
   an include line for hud.menu already. If you have moved your hud.menu to a
   different FF then compile that one instead obviously.
 </p>
-<h1 id="Hintstringsnotupdating-PracticalUsage">Practical Usage</h1>
+<h2 id="Hintstringsnotupdating-PracticalUsage">Practical Usage</h2>
 <p>Instead of using setHintString on your triggers, you need to add</p>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
@@ -137,7 +137,7 @@ _zombiemode_weapons.gsc
   <br />
   <strong>&lt;Link Coming Soon&gt;</strong>
 </p>
-<h1 id="Hintstringsnotupdating-Notes">Notes</h1>
+<h2 id="Hintstringsnotupdating-Notes">Notes</h2>
 <ul>
   <li>
     <p>
@@ -157,9 +157,9 @@ _zombiemode_weapons.gsc
     cursor hint properly next to the hintstring.
   </li>
 </ul>
-<h1 id="Hintstringsnotupdating-Merginghudchangeswithexistinghud-menu">
+<h2 id="Hintstringsnotupdating-Merginghudchangeswithexistinghud-menu">
   Merging hud changes with existing hud.menu
-</h1>
+</h2>
 <p>
   If you already made changes to your hud.menu and do not want to overwrite the
   file, simply open your hud.menu and scroll down a small amount until you find
@@ -231,7 +231,7 @@ menuDef
 }</code></pre>
 </div>
 <p><br /></p>
-<h1 id="Hintstringsnotupdating-SourceCode">Source Code</h1>
+<h2 id="Hintstringsnotupdating-SourceCode">Source Code</h2>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

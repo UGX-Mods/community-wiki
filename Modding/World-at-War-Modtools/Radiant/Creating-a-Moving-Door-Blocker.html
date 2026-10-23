@@ -45,8 +45,8 @@ dateCreated: 2024-02-04T15:25:39.228Z
     </div>
   </code>
 </p>
-<h1 id="CreatingaMovingDoorBlocker-Preparation">Preparation</h1>
-<h2 id="CreatingaMovingDoorBlocker-Itemsneeded">Items needed</h2>
+<h2 id="CreatingaMovingDoorBlocker-Preparation">Preparation</h2>
+<h3 id="CreatingaMovingDoorBlocker-Itemsneeded">Items needed</h3>
 <p>
   First you must create the door in Radiant. A swinging door blocker consists of
   these items:
@@ -70,7 +70,7 @@ dateCreated: 2024-02-04T15:25:39.228Z
   page.
 </p>
 
-<h1 id="CreatingaMovingDoorBlocker-SettingtheKVP&#39;s">Setting the KVP's</h1>
+<h2 id="CreatingaMovingDoorBlocker-SettingtheKVP&#39;s">Setting the KVP's</h2>
 <p>
   <code>
     <div class="banner banner-tip">
@@ -118,7 +118,7 @@ dateCreated: 2024-02-04T15:25:39.228Z
     <br />
   </code>
 </p>
-<h3 id="CreatingaMovingDoorBlocker-Triggers">Triggers</h3>
+<h4 id="CreatingaMovingDoorBlocker-Triggers">Triggers</h4>
 <p>Select the trigger_use brush(es) and give them the following KVP's:</p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -221,7 +221,7 @@ dateCreated: 2024-02-04T15:25:39.228Z
     &quot;none&quot; (without quotes) for the soundalias name.
   </li>
 </ul>
-<h3 id="CreatingaMovingDoorBlocker-Door">Door</h3>
+<h4 id="CreatingaMovingDoorBlocker-Door">Door</h4>
 <p>
   Select the door script_brushmodel(s) or script_model(s) and give them the
   following KVP's:
@@ -296,9 +296,9 @@ dateCreated: 2024-02-04T15:25:39.228Z
     seconds).
   </li>
 </ul>
-<h4 id="CreatingaMovingDoorBlocker-DeterminingRotationValues">
+<h5 id="CreatingaMovingDoorBlocker-DeterminingRotationValues">
   Determining Rotation Values
-</h4>
+</h5>
 <p>
   Determining the correct value for the script_angles key requires a bit of
   thinking or trial and error depending on your understanding of angles and
@@ -361,9 +361,9 @@ dateCreated: 2024-02-04T15:25:39.228Z
     0.
   </code>
 </p>
-<h4 id="CreatingaMovingDoorBlocker-DeterminingVectorValues">
+<h5 id="CreatingaMovingDoorBlocker-DeterminingVectorValues">
   Determining Vector Values
-</h4>
+</h5>
 <p>
   Determining the correct value for the script_vector key is relatively
   straightforward. Select your door entity and move it to the position you would
@@ -379,7 +379,7 @@ dateCreated: 2024-02-04T15:25:39.228Z
   original and moved positions, respectively. These 3 numbers are your
   script_vector value.
 </p>
-<h3 id="CreatingaMovingDoorBlocker-Clips">Clips</h3>
+<h4 id="CreatingaMovingDoorBlocker-Clips">Clips</h4>
 <p>Select the clip script_brushmodel(s) and give them the following KVP:</p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -399,7 +399,7 @@ dateCreated: 2024-02-04T15:25:39.228Z
     </tbody>
   </table>
 </div>
-<h2 id="CreatingaMovingDoorBlocker-TargetinginRadiant">Targeting in Radiant</h2>
+<h3 id="CreatingaMovingDoorBlocker-TargetinginRadiant">Targeting in Radiant</h3>
 <p></p>
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
@@ -465,10 +465,10 @@ dateCreated: 2024-02-04T15:25:39.228Z
   KVP from the root trigger_use to each of the remaining trigger_use's. The
   lines should now be going from all trigger_use's.
 </p>
-<h1 id="CreatingaMovingDoorBlocker-FinishingUp">Finishing Up</h1>
-<h3 id="CreatingaMovingDoorBlocker-CreatingcopiesoftheDoor">
+<h2 id="CreatingaMovingDoorBlocker-FinishingUp">Finishing Up</h2>
+<h4 id="CreatingaMovingDoorBlocker-CreatingcopiesoftheDoor">
   Creating copies of the Door
-</h3>
+</h4>
 <p>
   Now that you have created one working zombie_door blocker, you can copy/paste
   it as many times as you want. Since we used targeting, the targetnames of the

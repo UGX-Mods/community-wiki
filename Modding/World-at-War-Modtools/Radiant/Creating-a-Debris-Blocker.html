@@ -9,8 +9,8 @@ dateCreated: 2024-02-04T15:25:35.389Z
 -->
 
 <p>Blockers force players to spend money to unlock new areas in a map.</p>
-<h1 id="CreatingaDebrisBlocker-Preparation">Preparation</h1>
-<h2 id="CreatingaDebrisBlocker-Itemsneeded">Items needed</h2>
+<h2 id="CreatingaDebrisBlocker-Preparation">Preparation</h2>
+<h3 id="CreatingaDebrisBlocker-Itemsneeded">Items needed</h3>
 <p>
   First you must create the blocker in Radiant. A standard blocker consists of
   these items:
@@ -23,7 +23,7 @@ dateCreated: 2024-02-04T15:25:35.389Z
     through the blocker before it is purchased.
   </li>
 </ul>
-<h2 id="CreatingaDebrisBlocker-SettingtheKVP&#39;s">Setting the KVP's</h2>
+<h3 id="CreatingaDebrisBlocker-SettingtheKVP&#39;s">Setting the KVP's</h3>
 <p></p>
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
@@ -65,7 +65,7 @@ dateCreated: 2024-02-04T15:25:35.389Z
   </div>
 </div>
 <code><br /></code>
-<h3 id="CreatingaDebrisBlocker-Triggers">Triggers</h3>
+<h4 id="CreatingaDebrisBlocker-Triggers">Triggers</h4>
 <p>Select the trigger_use brush(es) and give them the following KVP's:</p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -138,7 +138,7 @@ dateCreated: 2024-02-04T15:25:35.389Z
     </div>
   </li>
 </ul>
-<h3 id="CreatingaDebrisBlocker-Debris">Debris</h3>
+<h4 id="CreatingaDebrisBlocker-Debris">Debris</h4>
 <p>
   Select the debris script_brushmodel(s) or script_model(s) and give them the
   following KVP's:
@@ -250,7 +250,7 @@ dateCreated: 2024-02-04T15:25:35.389Z
     irrelevant and the fx will never play because nothing will move.
   </li>
 </ul>
-<h3 id="CreatingaDebrisBlocker-Clips">Clips</h3>
+<h4 id="CreatingaDebrisBlocker-Clips">Clips</h4>
 <p>Select the clip script_brushmodel(s) and give them the following KVP:</p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -270,8 +270,8 @@ dateCreated: 2024-02-04T15:25:35.389Z
     </tbody>
   </table>
 </div>
-<h2 id="CreatingaDebrisBlocker-TargetinginRadiant">Targeting in Radiant</h2>
-<h3 id="CreatingaDebrisBlocker-LinkingtheEntities">Linking the Entities</h3>
+<h3 id="CreatingaDebrisBlocker-TargetinginRadiant">Targeting in Radiant</h3>
+<h4 id="CreatingaDebrisBlocker-LinkingtheEntities">Linking the Entities</h4>
 <p>
   Now that you have created all of the necessary items and given them the
   correct KVP's, it is time to link the items together using targeting.
@@ -337,9 +337,9 @@ to the root entity using the instructions above.
   KVP from the root trigger_use to each of the remaining trigger_use's. The
   lines should now be going from all trigger_use's.
 </p>
-<h3 id="CreatingaDebrisBlocker-Definingascript_linkTo">
+<h4 id="CreatingaDebrisBlocker-Definingascript_linkTo">
   Defining a script_linkTo
-</h3>
+</h4>
 <p>
   Optionally you can specify a point for debris to fly away towards when
   purchased. For example, you could specify that the debris fly away at a 45
@@ -403,12 +403,12 @@ to the root entity using the instructions above.
   </li>
 </ul>
 <p>&nbsp;</p>
-<h1 class="_mce_tagged_br" id="CreatingaDebrisBlocker-FinishingUp">
+<h2 class="_mce_tagged_br" id="CreatingaDebrisBlocker-FinishingUp">
   Finishing Up
-</h1>
-<h3 id="CreatingaDebrisBlocker-CreatingcopiesoftheDebris">
+</h2>
+<h4 id="CreatingaDebrisBlocker-CreatingcopiesoftheDebris">
   Creating copies of the Debris
-</h3>
+</h4>
 <p>
   Now that you have created one working zombie_debris blocker, you can
   copy/paste it as many times as you want. Since we used targeting, the
