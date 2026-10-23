@@ -20,6 +20,7 @@ import {
 } from './tools/confluence/cleanup.js';
 import { addConfluenceCommentAsTag } from './tools/confluence/ids.js';
 import { deployTheme } from './tools/theme.js';
+import { localizeJiraIcons } from './tools/content/jira-icons.js';
 
 const STEPS = {
   none: 'NONE',
@@ -33,6 +34,7 @@ const STEPS = {
   confluenceFixFilenames: 'confluence-fix-filenames',
   confluenceCleanup: 'confluence-cleanup',
   confluenceId: 'confluence-id',
+  jiraIcons: 'jira-icons',
 };
 
 const STEP_CHOICES = [
@@ -74,6 +76,13 @@ const STEP_CHOICES = [
     name: 'Metadata validation',
     description:
       'Checks the wiki.js page header (title, description, ...) and the file name',
+  },
+  new Separator('--- CONTENT ---'),
+  {
+    value: STEPS.jiraIcons,
+    name: 'Jira icons',
+    description:
+      'Point hotlinked Jira priority / issue type icons to attachments/icons/jira',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -177,6 +186,9 @@ async function main() {
     case STEPS.confluenceCleanup:
       await cleanupConfluenceHtml(htmlFiles);
       fixCodeBlocks(htmlFiles);
+      break;
+    case STEPS.jiraIcons:
+      errors += await localizeJiraIcons(htmlFiles);
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);
