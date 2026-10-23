@@ -100,7 +100,7 @@ const STEP_CHOICES = [
     value: STEPS.mirrorImages,
     name: 'Mirror images',
     description:
-      'Download imgur / gyazo images into attachments/ and link the copies (DRY_RUN=1)',
+      'Download external Imgur images into attachments/ and link the copies (DRY_RUN=1)',
   },
   {
     value: STEPS.renameImages,
