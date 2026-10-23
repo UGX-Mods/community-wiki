@@ -24,6 +24,7 @@ import { localizeJiraIcons } from './tools/content/jira-icons.js';
 import { demotePageHeadings } from './tools/content/headings.js';
 import { mirrorImages } from './tools/content/mirror-images.js';
 import { renameImages } from './tools/content/rename-images.js';
+import { setAltTexts } from './tools/content/alt-texts.js';
 
 const STEPS = {
   none: 'NONE',
@@ -41,6 +42,7 @@ const STEPS = {
   demoteHeadings: 'demote-headings',
   mirrorImages: 'mirror-images',
   renameImages: 'rename-images',
+  altTexts: 'alt-texts',
 };
 
 const STEP_CHOICES = [
@@ -107,6 +109,12 @@ const STEP_CHOICES = [
     name: 'Rename images',
     description:
       'Give images with meaningless names (imgur ids, hashes) names from alt text / heading (DRY_RUN=1)',
+  },
+  {
+    value: STEPS.altTexts,
+    name: 'Alt texts',
+    description:
+      'Set missing image alt texts from a JSON file (ALT_TEXTS=path, src -> alt)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -222,6 +230,9 @@ async function main() {
       break;
     case STEPS.renameImages:
       errors += await renameImages(files);
+      break;
+    case STEPS.altTexts:
+      errors += await setAltTexts(files);
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);
