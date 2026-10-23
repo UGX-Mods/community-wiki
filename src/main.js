@@ -21,6 +21,7 @@ import {
 import { addConfluenceCommentAsTag } from './tools/confluence/ids.js';
 import { deployTheme } from './tools/theme.js';
 import { localizeJiraIcons } from './tools/content/jira-icons.js';
+import { demotePageHeadings } from './tools/content/headings.js';
 
 const STEPS = {
   none: 'NONE',
@@ -35,6 +36,7 @@ const STEPS = {
   confluenceCleanup: 'confluence-cleanup',
   confluenceId: 'confluence-id',
   jiraIcons: 'jira-icons',
+  demoteHeadings: 'demote-headings',
 };
 
 const STEP_CHOICES = [
@@ -83,6 +85,12 @@ const STEP_CHOICES = [
     name: 'Jira icons',
     description:
       'Point hotlinked Jira priority / issue type icons to attachments/icons/jira',
+  },
+  {
+    value: STEPS.demoteHeadings,
+    name: 'Demote headings',
+    description:
+      'Pages with <h1> in the body: shift all headings down one level (title is the h1)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -189,6 +197,9 @@ async function main() {
       break;
     case STEPS.jiraIcons:
       errors += await localizeJiraIcons(htmlFiles);
+      break;
+    case STEPS.demoteHeadings:
+      errors += await demotePageHeadings(htmlFiles);
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);
