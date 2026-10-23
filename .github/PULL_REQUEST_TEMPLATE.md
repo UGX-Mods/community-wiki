@@ -14,7 +14,8 @@
 <!-- Please check the needed checkboxes ([ ] -> [x]). -->
 
 - [ ] read and understood the [CONTRIBUTING](/CONTRIBUTING.md) guideline & [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md)
-- [ ] formatted the changes with prettier (automatically done when you save the file with VSCode)
+- [ ] `npm run check` passes (formatting, tests, links, build)
+- [ ] the PR title is a [conventional commit](https://www.conventionalcommits.org/), e.g. `docs(content): add guide for xyz` (PRs are squash merged)
 - [ ] checked for typos and ensured the information is valid
 
 **Description of change**

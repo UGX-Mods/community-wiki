@@ -1,9 +1,9 @@
 ---
 title: CODE_OF_CONDUCT
-description: 
+description: Code of conduct for the UGX-Mods Community Wiki
 published: true
 date: 2024-02-25T10:37:55.495Z
-tags: 
+tags:
 editor: markdown
 dateCreated: 2024-02-04T15:24:13.923Z
 ---

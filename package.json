@@ -1,36 +1,65 @@
 {
   "name": "ugx-community-wiki",
   "version": "1.0.0",
+  "private": true,
+  "type": "module",
   "description": "Official UGX-Mods Wiki for Call of Duty Modding and for UGX Products & Services.",
-  "main": "main.js",
   "author": "Alexander 'Delta' Diller",
   "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UGX-Mods/community-wiki.git"
+  },
+  "homepage": "https://wiki.ugx-mods.com",
+  "engines": {
+    "node": "^24"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^24",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11.17.0",
+      "onFail": "error"
+    }
+  },
   "scripts": {
-    "lint": "npm run lint:sass && npm run lint:html",
-    "lint:sass": "stylelint **/*.scss --fix --max-warnings 0",
-    "lint:html": "prettier  **/*.html -c -w",
-    "build": "npm run build:sass && npm run build:js",
-    "build:sass": "sass --no-source-map wiki.scss wiki.css && postcss wiki.css -o wiki.min.css",
-    "build:js": "babel wiki.js --presets=@babel/preset-env | uglifyjs --compress --mangle --output wiki.min.js"
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "sass --style=compressed --no-source-map src/theme/wiki.scss dist/wiki.min.css",
+    "build:js": "esbuild src/theme/wiki.js --minify --target=es2019 --log-level=warning --outfile=dist/wiki.min.js",
+    "format": "prettier --write . && stylelint \"**/*.scss\" --fix",
+    "lint": "npm run lint:format && npm run lint:style",
+    "lint:format": "prettier --check .",
+    "lint:style": "stylelint \"**/*.scss\" --max-warnings 0",
+    "typecheck": "tsc -p .",
+    "validate": "node src/main.js validate",
+    "tools": "node src/main.js",
+    "test": "node --test \"test/**/*.test.js\"",
+    "check": "npm run lint && npm run typecheck && npm test && npm run validate && npm run build"
   },
   "dependencies": {
-    "@inquirer/prompts": "^8.3.0",
-    "node-html-parser": "^7.1.0"
+    "@inquirer/prompts": "8.7.4",
+    "markdown-it": "15.0.2",
+    "node-html-parser": "9.0.5"
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.6",
-    "@babel/core": "^7.29.0",
-    "@babel/preset-env": "^7.29.0",
-    "@stylistic/stylelint-config": "^4.0.0",
-    "cssnano": "^7.1.3",
-    "postcss-cli": "^11.0.1",
-    "prettier": "^3.8.1",
-    "sass": "^1.97.3",
-    "stylelint": "^17.4.0",
-    "stylelint-config-idiomatic-order": "^10.0.0",
-    "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-prettier": "^5.0.3",
-    "stylelint-scss": "^7.0.0",
-    "uglify-js": "^3.19.3"
+    "@stylistic/stylelint-config": "5.0.0",
+    "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
+    "prettier": "3.9.10",
+    "sass": "1.105.2",
+    "stylelint": "17.16.0",
+    "stylelint-config-recess-order": "7.8.0",
+    "stylelint-config-standard-scss": "17.0.0",
+    "stylelint-prettier": "5.0.3",
+    "stylelint-scss": "7.3.0",
+    "typescript": "7.0.2"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "@parcel/watcher": false
   }
 }

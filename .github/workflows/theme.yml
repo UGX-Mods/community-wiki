@@ -1,0 +1,49 @@
+name: Deploy theme
+
+# builds wiki.min.css / wiki.min.js and applies them via the wiki.js GraphQL API (node src/main.js deploy-theme)
+on:
+  push:
+    branches: [main]
+    paths: [src/theme/**, src/tools/theme.js]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-theme
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy theme
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # WIKI_API_KEY is an environment secret, protection rules (e.g. required reviewers) can be set on the environment
+    environment:
+      name: wiki
+      url: https://wiki.ugx-mods.com
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          lfs: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Deploy
+        env:
+          WIKI_API_KEY: ${{ secrets.WIKI_API_KEY }}
+        run: |
+          if [ -z "$WIKI_API_KEY" ]; then
+            echo "::notice::WIKI_API_KEY is not configured, skipping the deployment"
+            exit 0
+          fi
+          node src/main.js deploy-theme

@@ -1,0 +1,26 @@
+# External link check with lychee (https://lychee.cli.rs), run weekly by .github/workflows/links.yml
+# Internal links (pages, assets, anchors) are checked by `npm run validate`.
+# Local run: lychee --config lychee.toml './**/*.html' './**/*.md'
+
+no_progress = true
+
+# only external links, internal ones are validated by npm run validate
+scheme = ["https", "http"]
+include_verbatim = false
+
+max_concurrency = 8
+max_retries = 2
+retry_wait_time = 5
+timeout = 20
+
+# 403: many hosts block bots (Cloudflare etc.), 429: rate limited (imgur), not dead
+accept = ["200..=299", "403", "429"]
+
+exclude = [
+  # Jira Cloud needs a login, the Jira links are a separate roadmap item
+  '^https?://ugxmods\.atlassian\.net',
+  '^https?://(localhost|127\.0\.0\.1)',
+]
+
+# wiki.js re-export of the GitHub templates (git ignored files and .github are skipped by default)
+exclude_path = ['(^|/)github/']

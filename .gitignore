@@ -1,3 +1,6 @@
 node_modules/
-wiki.min.*
-wiki.css
+# build output (theme), never committed
+dist/
+
+# maintainer notes, never commit (every .md file becomes a wiki page)
+PERSONAL.md
