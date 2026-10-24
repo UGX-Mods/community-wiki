@@ -49,7 +49,7 @@ A page at `Foo/Bar.html` is served at `/Foo/Bar`. A folder `Foo/` holds the chil
 
 ## Commands
 
-Requires the Node.js version from `.nvmrc` (enforced by `devEngines` in `package.json`) and **Git LFS** (`git lfs install` before cloning, otherwise images are pointer files).
+Requires the Node.js version from `devEngines` in `package.json` (enforced by npm) and **Git LFS** (`git lfs install` before cloning, otherwise images are pointer files).
 
 ```sh
 npm ci                 # install
@@ -75,6 +75,8 @@ Run `npm run check` (or at least `npm run lint` + `npm run validate`) before com
 - `save-exact=true`: `package.json` holds exact versions, `package-lock.json` pins the rest. Commit both.
 - `strict-allow-scripts=true`: install fails if a dependency has install scripts that are not listed in `allowScripts` (`package.json`). Review the script, then run `npm approve-scripts <pkg>` or `npm deny-scripts <pkg>`. `@parcel/watcher` (optional sass dependency, only for `--watch`) is denied. `esbuild` is allowed: npm currently also skips the bin links of denied packages, and its postinstall only verifies the prebuilt binary.
 - GitHub Actions are pinned to commit SHAs with a `# vX.Y.Z` comment.
+- Node.js: `engines` / `devEngines` in `package.json` set the minimum version within the major (`^24.x.y`), there is no `.nvmrc`. CI (`setup-node` with `node-version-file: package.json`) uses the newest release that satisfies it, so patches arrive without a bump. Raise the minimum in both fields when a Node.js security release (<https://nodejs.org/en/blog/vulnerability>) should be required. `@types/node` follows the Node.js major.
+- Workflows that use secrets (`theme.yml`) do not restore dependency caches (cache poisoning).
 
 Build output (`dist/`) is gitignored. After a merge to `main`, changes in `src/theme/` are deployed by `.github/workflows/theme.yml` (`node src/main.js deploy-theme`, wiki.js GraphQL API). Mention theme changes in the PR, they go live with the merge.
 

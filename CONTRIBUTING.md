@@ -29,7 +29,7 @@ Feel free to [suggest a change](https://github.com/UGX-Mods/community-wiki/issue
 Simply clone the project and do some changes. :wink:
 
 > 💡 Install [Git LFS](https://git-lfs.com/) (`git lfs install`) before cloning, otherwise images and videos are only pointer files.
-> Use the Node.js version from `.nvmrc`, then install the dependencies with `npm ci`.
+> Use the Node.js version from `devEngines` in `package.json` (Node.js 24), then install the dependencies with `npm ci`.
 
 You can write new files in either HTML (file ending with .html) or Markdown (file ending with .md) format.
 See [AGENTS.md](/AGENTS.md) for the page format, conventions and available widgets.
