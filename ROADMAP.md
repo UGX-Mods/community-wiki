@@ -14,7 +14,6 @@ Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node src/main.js meta
 
 - [ ] Stub / TODO pages: write or merge them
   - Notifications, Radiant Black, Scripting custom traps, Creating a Zombie Window Entrance, Troubleshooting for UGXMP, UGXL FAQ, Video pages that only embed a video
-- [ ] Review product pages for currency (UGXL, UGXLIN, Legacy launcher, Web Chat / Discord)
 
 ## Phase 2: Tools / Element
 
