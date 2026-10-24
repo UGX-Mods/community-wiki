@@ -26,6 +26,7 @@ import { mirrorImages } from './tools/content/mirror-images.js';
 import { renameImages } from './tools/content/rename-images.js';
 import { setAltTexts } from './tools/content/alt-texts.js';
 import { tagPages } from './tools/content/tag-pages.js';
+import { setDescriptions } from './tools/content/descriptions.js';
 
 const STEPS = {
   none: 'NONE',
@@ -45,6 +46,7 @@ const STEPS = {
   renameImages: 'rename-images',
   altTexts: 'alt-texts',
   tagPages: 'tag-pages',
+  descriptions: 'descriptions',
 };
 
 const STEP_CHOICES = [
@@ -123,6 +125,12 @@ const STEP_CHOICES = [
     name: 'Tag pages',
     description:
       'Add product / type / topic tags of the tag set (DRY_RUN=1, TAG_OVERRIDES=path)',
+  },
+  {
+    value: STEPS.descriptions,
+    name: 'Descriptions',
+    description:
+      'Set empty page descriptions from a JSON file (DESCRIPTIONS=path, page -> text)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -244,6 +252,9 @@ async function main() {
       break;
     case STEPS.tagPages:
       errors += await tagPages(files);
+      break;
+    case STEPS.descriptions:
+      errors += await setDescriptions(files);
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);
