@@ -4,7 +4,44 @@ import path from 'node:path';
 import {
   getAttachmentFolder,
   findHotlinkedImages,
+  replaceImageUrl,
 } from '../src/tools/content/mirror-images.js';
+
+test('findHotlinkedImages ignores image urls that are only linked or mentioned', () => {
+  assert.deepEqual(
+    findHotlinkedImages(
+      [
+        '<a href="https://i.imgur.com/linked1.png">https://i.imgur.com/linked1.png</a>',
+        '<p>like https://i.imgur.com/mention.png</p>',
+        '![md](https://i.imgur.com/markdown.png)',
+      ].join('\n'),
+    ),
+    ['https://i.imgur.com/markdown.png'],
+  );
+});
+
+test('replaceImageUrl changes src / href / markdown links, not visible text', () => {
+  const url = 'https://i.imgur.com/CVQUGIb.png';
+  const local = '/attachments/x/example.png';
+  assert.equal(
+    replaceImageUrl(
+      [
+        `<img src="${url}" alt="" />`,
+        `<a href="${url}">${url}</a>`,
+        `![example](${url})`,
+        `<p>The direct url looks like ${url}</p>`,
+      ].join('\n'),
+      url,
+      local,
+    ),
+    [
+      `<img src="${local}" alt="" />`,
+      `<a href="${local}">${url}</a>`,
+      `![example](${local})`,
+      `<p>The direct url looks like ${url}</p>`,
+    ].join('\n'),
+  );
+});
 
 test('getAttachmentFolder follows the attachments naming', () => {
   assert.equal(

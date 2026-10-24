@@ -41,11 +41,41 @@ function getAttachmentFolder(pagePath) {
 }
 
 /**
+ * Images shown on the page (img src, markdown images), links or text mentioning
+ * an image url don't count
+ *
  * @param {string} content page source
  * @returns {string[]} unique hotlinked image urls of the mirrored hosts
  */
 function findHotlinkedImages(content) {
-  return [...new Set(content.match(REGEX_IMAGE_URL) ?? [])];
+  const urls = new Set();
+  for (const [, url] of content.matchAll(/\ssrc="([^"]+)"/gi)) urls.add(url);
+  for (const [, url] of content.matchAll(/!\[[^\]]*\]\(([^)\s]+)\)/g))
+    urls.add(url);
+  return [...urls].filter((url) => {
+    REGEX_IMAGE_URL.lastIndex = 0;
+    const match = REGEX_IMAGE_URL.exec(url);
+    return match?.index === 0 && match[0].length === url.length;
+  });
+}
+
+/**
+ * Points src / href attributes and markdown links / images to the local copy.
+ * The url in visible text stays (e.g. a guide explaining imgur urls).
+ *
+ * @param {string} content page source
+ * @param {string} url hotlinked url
+ * @param {string} local local path (/attachments/...)
+ * @returns {string}
+ */
+function replaceImageUrl(content, url, local) {
+  return content
+    .split(`src="${url}"`)
+    .join(`src="${local}"`)
+    .split(`href="${url}"`)
+    .join(`href="${local}"`)
+    .split(`](${url})`)
+    .join(`](${local})`);
 }
 
 /**
@@ -149,7 +179,7 @@ async function mirrorImages(files, root = process.cwd()) {
     let result = content;
     for (const url of findHotlinkedImages(content)) {
       const local = await mirrorImage(url, filePath, state);
-      if (local) result = result.split(url).join(local);
+      if (local) result = replaceImageUrl(result, url, local);
     }
 
     if (result !== content) {
@@ -180,4 +210,9 @@ function printReport({ dryRun, mirrored, archived, dead }, pages) {
   }
 }
 
-export { getAttachmentFolder, findHotlinkedImages, mirrorImages };
+export {
+  getAttachmentFolder,
+  findHotlinkedImages,
+  replaceImageUrl,
+  mirrorImages,
+};
