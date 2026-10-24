@@ -25,7 +25,7 @@ Consequences:
 - **Every `.html` and `.md` file is a wiki page**, including files in dot-folders (e.g. `.github/PULL_REQUEST_TEMPLATE.md` was imported and re-exported as `github/…`). Do not add stray Markdown/HTML files (notes, plans, reports, test fixtures). Put scratch output outside the repo.
 - **Every other file is a wiki asset** (served at its path, e.g. `/attachments/icons/alert.png`).
 - Wiki-authored pages are not prettier-formatted. CI only format-checks files changed in a PR, do not reformat unrelated pages.
-- Pages were imported from Confluence in 2024. Expect leftover markup (`table-wrap`, `confluenceTable`, inline styles) and many hotlinks to Jira Cloud (`ugxmods.atlassian.net`).
+- Pages were imported from Confluence in 2024. `node src/main.js confluence-markup` removed most leftover markup; the changelogs still link to Jira Cloud (`ugxmods.atlassian.net`). Inline color styles are intended.
 
 ## Repository layout
 

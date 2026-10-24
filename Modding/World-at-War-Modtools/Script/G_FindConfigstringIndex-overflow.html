@@ -9,34 +9,27 @@ dateCreated: 2024-02-04T15:26:04.970Z
 -->
 
 <h2
-  id="G_FindConfigstringIndex():overflow-/*&lt;![CDATA[*/div.rbtoc1706609479540{padding:0px;}div.rbtoc1706609479540ul{margin-left:0px;}div.rbtoc1706609479540li{margin-left:0px;padding-left:0px;}/*]]&gt;*/#G_FindConfigstringIndex():overflow-HowtoviewcurrentConfigstrin">
-  <span class="mw-headline"></span>
-</h2>
+  id="G_FindConfigstringIndex():overflow-/*&lt;![CDATA[*/div.rbtoc1706609479540{padding:0px;}div.rbtoc1706609479540ul{margin-left:0px;}div.rbtoc1706609479540li{margin-left:0px;padding-left:0px;}/*]]&gt;*/#G_FindConfigstringIndex():overflow-HowtoviewcurrentConfigstrin"></h2>
 <p>
-  <span class="mw-headline">
-    This page is list of notes I took for myself while trying to debug the
-    G_FindConfigstringIndex(): overflow error for UGX Mod v1.1. I tried to
-    figure out what things cause the error and also wrote myself a proposed
-    solution (which worked). Read through the page to develop an understanding
-    of the ConfigString system, which is an indexed engine array of string
-    assets. Then try to apply as many of the solutions as you can to both your
-    own scripts and Treyarch's default scripts to minimize the chance of the
-    error. ~treminaor
-    <br />
-  </span>
+  This page is list of notes I took for myself while trying to debug the
+  G_FindConfigstringIndex(): overflow error for UGX Mod v1.1. I tried to figure
+  out what things cause the error and also wrote myself a proposed solution
+  (which worked). Read through the page to develop an understanding of the
+  ConfigString system, which is an indexed engine array of string assets. Then
+  try to apply as many of the solutions as you can to both your own scripts and
+  Treyarch's default scripts to minimize the chance of the error. ~treminaor
+  <br />
 </p>
 <h2 id="G_FindConfigstringIndex():overflow-HowtoviewcurrentConfigstringarray">
-  <span class="mw-headline">How to view current Configstring array</span>
+  How to view current Configstring array
 </h2>
 <p>Console command: &quot;configstrings&quot;</p>
 <p>&gt; Check Console for output.</p>
 <h2
   id="G_FindConfigstringIndex():overflow-AllegedCausesof/ContributorstotheError">
-  <span class="mw-headline">Alleged Causes of/Contributors to the Error</span>
+  Alleged Causes of/Contributors to the Error
 </h2>
-<h3 id="G_FindConfigstringIndex():overflow-playsound()">
-  <span class="mw-headline">playsound()</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-playsound()">playsound()</h3>
 <p>
   Creates 1 configString if sound name is unique - if sound is not unique then
   the same configString is reused.
@@ -48,9 +41,7 @@ dateCreated: 2024-02-04T15:26:04.970Z
     onward.
   </li>
 </ul>
-<h3 id="G_FindConfigstringIndex():overflow-playloopsound()">
-  <span class="mw-headline">playloopsound()</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-playloopsound()">playloopsound()</h3>
 <p>
   Creates 1 configString if sound name is unique - if sound is not unique then
   the same configString is reused.
@@ -59,7 +50,7 @@ dateCreated: 2024-02-04T15:26:04.970Z
   <li>Configstrings: shared with playsound()</li>
 </ul>
 <h3 id="G_FindConfigstringIndex():overflow-playsoundatposition()">
-  <span class="mw-headline">playsoundatposition()</span>
+  playsoundatposition()
 </h3>
 <p>
   Creates 1 configString if sound name is unique - if sound is not unique then
@@ -95,7 +86,7 @@ dateCreated: 2024-02-04T15:26:04.970Z
   )
 </p>
 <h3 id="G_FindConfigstringIndex():overflow-registerClientSys()">
-  <span class="mw-headline">registerClientSys()</span>
+  registerClientSys()
 </h3>
 <ul>
   <li>
@@ -103,17 +94,13 @@ dateCreated: 2024-02-04T15:26:04.970Z
     an engine limit of 10 clientsys channels.
   </li>
 </ul>
-<h3 id="G_FindConfigstringIndex():overflow-setText()">
-  <span class="mw-headline">setText()</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-setText()">setText()</h3>
 <ul>
   <li>
     Configstrings: counts as a localized string, shared with PrecacheString()
   </li>
 </ul>
-<h3 id="G_FindConfigstringIndex():overflow-LoadFX()">
-  <span class="mw-headline">LoadFX()</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-LoadFX()">LoadFX()</h3>
 <p>
   Creates 1 configString index for the path of the FX. If FX path is already in
   the configString array then no new index will be created. Reusing the same FX
@@ -123,9 +110,7 @@ dateCreated: 2024-02-04T15:26:04.970Z
 <ul>
   <li>FX configstrings: 2191 to 2386</li>
 </ul>
-<h3 id="G_FindConfigstringIndex():overflow-PlayFXOnTag()">
-  <span class="mw-headline">PlayFXOnTag()</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-PlayFXOnTag()">PlayFXOnTag()</h3>
 <p>
   Creates 1 configString index for a unique tag used - if tag has already been
   used for any other tag-related function, it will be reused and no new
@@ -156,9 +141,7 @@ dateCreated: 2024-02-04T15:26:04.970Z
   playing 125 unique (real) fxIDs on the same tag (&quot;tag_origin&quot;) on
   the same ent 3000 times in a loop with a 0.1 delay did not cause this error.
 </p>
-<h3 id="G_FindConfigstringIndex():overflow-getTagOrigin()?">
-  <span class="mw-headline">getTagOrigin()?</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-getTagOrigin()?">getTagOrigin()?</h3>
 <p>
   Creates 1 configString index for a unique tag used - if tag has already been
   used for any other tag-related function, it will be reused and no new
@@ -167,9 +150,7 @@ dateCreated: 2024-02-04T15:26:04.970Z
 <ul>
   <li>Configstrings: shared with PlayFXOnTag()</li>
 </ul>
-<h3 id="G_FindConfigstringIndex():overflow-getTagAngles()?">
-  <span class="mw-headline">getTagAngles()?</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-getTagAngles()?">getTagAngles()?</h3>
 <p>
   Creates 1 configString index for a unique tag used - if tag has already been
   used for any other tag-related function, it will be reused and no new
@@ -179,11 +160,9 @@ dateCreated: 2024-02-04T15:26:04.970Z
   <li>Configstrings: shared with PlayFXOnTag()</li>
 </ul>
 <h3 id="G_FindConfigstringIndex():overflow-LinkTo(ent,tag_name)?">
-  <span class="mw-headline">
-    LinkTo(ent,
-    <strong>tag_name</strong>
-    )?
-  </span>
+  LinkTo(ent,
+  <strong>tag_name</strong>
+  )?
 </h3>
 <p>
   Creates 1 configString index for a unique tag used - if tag has already been
@@ -195,10 +174,8 @@ dateCreated: 2024-02-04T15:26:04.970Z
 </ul>
 <h3
   id="G_FindConfigstringIndex():overflow-PrecacheString(),PrecacheModel(),PrecacheItem(),PrecacheShellshock(),PrecacheMenu(),PrecacheShader(),PrecacheHeadIcon,PrecacheVehicle()">
-  <span class="mw-headline">
-    PrecacheString(), PrecacheModel(), PrecacheItem(), PrecacheShellshock(),
-    PrecacheMenu(), PrecacheShader(), PrecacheHeadIcon, PrecacheVehicle()
-  </span>
+  PrecacheString(), PrecacheModel(), PrecacheItem(), PrecacheShellshock(),
+  PrecacheMenu(), PrecacheShader(), PrecacheHeadIcon, PrecacheVehicle()
 </h3>
 <p>
   Creates 1 configString index for the name of the precached item, even if it
@@ -216,20 +193,18 @@ dateCreated: 2024-02-04T15:26:04.970Z
   <li>Vehicle configstrings: 2882 to 2978</li>
 </ul>
 <h3 id="G_FindConfigstringIndex():overflow-#using_animtree()">
-  <span class="mw-headline">#using_animtree()</span>
+  #using_animtree()
 </h3>
 <p>Solution - merge all animations into a single animtree.</p>
 <p>animtree configstrings: 2979 to 2990</p>
 <h2 id="G_FindConfigstringIndex():overflow-ProposedSolution">
-  <span class="mw-headline">Proposed Solution</span>
+  Proposed Solution
 </h2>
 <p>
   Change use of playsoundatposition(&lt;alias&gt;, &lt;ent.origin&gt;) to
   &lt;ent&gt; playsound(&lt;alias&gt;) wherever possible.
 </p>
-<h3 id="G_FindConfigstringIndex():overflow-Additional">
-  <span class="mw-headline">Additional</span>
-</h3>
+<h3 id="G_FindConfigstringIndex():overflow-Additional">Additional</h3>
 <ul>
   <li>
     Convert all uses of add_zombie_hint() to use hardcoded script strings

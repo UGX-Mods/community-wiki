@@ -12,7 +12,7 @@ dateCreated: 2024-02-04T15:25:44.527Z
   flagwait() Blockers will open when a flag is set in script. They have no cost,
   hintstring, or trigger_use.
 </p>
-<p></p>
+
 <div class="banner banner-warning">
   <img src="/attachments/icons/alert-octagon.png" alt="" class="banner-icon" />
 
@@ -25,12 +25,10 @@ dateCreated: 2024-02-04T15:25:44.527Z
         href="/Modding/World-at-War-Modtools/Resources-and-Links/Modtools-Installation-Guide#ModtoolsInstallationGuide-InstallingtheFiles">
         &quot;Installing the Files&quot;
       </a>
-      <span class="confluence-link">&nbsp;</span>
-      in the
-      <span class="confluence-link">&nbsp;</span>
+      &nbsp; in the &nbsp;
       <a
         href="/Modding/World-at-War-Modtools/Resources-and-Links/Modtools-Installation-Guide">
-        <span class="confluence-link">Modtools Installation Guide</span>
+        Modtools Installation Guide
       </a>
       .
     </p>
@@ -50,7 +48,7 @@ dateCreated: 2024-02-04T15:25:44.527Z
   </li>
 </ul>
 <h3 id="Creatingaflagwait()Blocker-SettingtheKVP&#39;s">Setting the KVP's</h3>
-<p></p>
+
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
 
@@ -96,24 +94,24 @@ dateCreated: 2024-02-04T15:25:44.527Z
   <strong>one</strong>
   debris script_brushmodel or script_model and give it the following KVP's:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>spawnflags</p></td>
-        <td><p>1</p></td>
-      </tr>
-      <tr>
-        <td><p>script_flag_wait</p></td>
-        <td><p>1</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>spawnflags</p></td>
+      <td><p>1</p></td>
+    </tr>
+    <tr>
+      <td><p>script_flag_wait</p></td>
+      <td><p>1</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <ul>
   <li>
     script_flag_wait's value should be set to the flag which will trigger this
@@ -124,36 +122,36 @@ dateCreated: 2024-02-04T15:25:44.527Z
   If you have more than one debris script_brushmodel or script_model, select the
   remaining debris and give them this KVP:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>spawnflags</p></td>
-        <td><p>1</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>spawnflags</p></td>
+      <td><p>1</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <h4 id="Creatingaflagwait()Blocker-Clips">Clips</h4>
 <p>Select the clip script_brushmodel(s) and give them the following KVP:</p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>spawnflags</p></td>
-        <td><p>1</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>spawnflags</p></td>
+      <td><p>1</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="Creatingaflagwait()Blocker-TargetinginRadiant">Targeting in Radiant</h3>
 <h4 id="Creatingaflagwait()Blocker-LinkingtheEntities">Linking the Entities</h4>
 <p>
@@ -231,20 +229,19 @@ Link them to the root entity using the instructions above.
   </li>
   <li>
     <p>Give the script_struct the following KVP:</p>
-    <div class="table-wrap">
-      <table class="confluenceTable">
-        <tbody>
-          <tr>
-            <th><p>Key</p></th>
-            <th><p>Value</p></th>
-          </tr>
-          <tr>
-            <td><p>script_linkName</p></td>
-            <td><p>&lt;linkName&gt;</p></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <th><p>Key</p></th>
+          <th><p>Value</p></th>
+        </tr>
+        <tr>
+          <td><p>script_linkName</p></td>
+          <td><p>&lt;linkName&gt;</p></td>
+        </tr>
+      </tbody>
+    </table>
   </li>
 </ul>
 <p>
@@ -256,20 +253,19 @@ Link them to the root entity using the instructions above.
 <ul>
   <li>
     <p>Select your root entity debris and give it the following KVP:</p>
-    <div class="table-wrap">
-      <table class="confluenceTable">
-        <tbody>
-          <tr>
-            <th><p>Key</p></th>
-            <th><p>Value</p></th>
-          </tr>
-          <tr>
-            <td><p>script_linkTo</p></td>
-            <td><p>&lt;linkName&gt;</p></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <th><p>Key</p></th>
+          <th><p>Value</p></th>
+        </tr>
+        <tr>
+          <td><p>script_linkTo</p></td>
+          <td><p>&lt;linkName&gt;</p></td>
+        </tr>
+      </tbody>
+    </table>
   </li>
   <li>
     Replace &lt;linkName&gt; with the unique name you gave the script_struct.

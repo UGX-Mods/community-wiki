@@ -65,7 +65,7 @@ dateCreated: 2024-02-04T15:27:33.351Z
 <h4 id="UltimateGuidetoZonesinv1-4Maps-SettingtheKVP&#39;s">
   Setting the KVP's
 </h4>
-<p></p>
+
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
 
@@ -107,24 +107,24 @@ dateCreated: 2024-02-04T15:27:33.351Z
 </div>
 <br />
 Select the zone volume(s) and give them the following KVP's:
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>targetname</p></td>
-        <td><p>&lt;zone_name&gt;</p></td>
-      </tr>
-      <tr>
-        <td><p>target</p></td>
-        <td><p>&lt;zone_name&gt;_spawners</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>targetname</p></td>
+      <td><p>&lt;zone_name&gt;</p></td>
+    </tr>
+    <tr>
+      <td><p>target</p></td>
+      <td><p>&lt;zone_name&gt;_spawners</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <ul>
   <li>
     Replace &lt;zone_name&gt; with a name for the zone. Remember the names you
@@ -160,12 +160,11 @@ Select the zone volume(s) and give them the following KVP's:
 </p>
 <p>
   For more info on how to create a zombie or dog spawner, see
-  <span class="confluence-link">
-    <a
-      href="/Modding/World-at-War-Modtools/Radiant/Creating-Zombie-and-Dog-Spawners.html">
-      Creating Zombie and Dog Spawners
-    </a>
-  </span>
+
+  <a
+    href="/Modding/World-at-War-Modtools/Radiant/Creating-Zombie-and-Dog-Spawners.html">
+    Creating Zombie and Dog Spawners
+  </a>
 </p>
 <p>
   Select the spawners which you want to link to a zone. Give them the following
@@ -173,20 +172,20 @@ Select the zone volume(s) and give them the following KVP's:
   <br />
   Select the zone volume(s) and give them the following KVP's:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>targetname</p></td>
-        <td><p>&lt;zone_name&gt;_spawners</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>targetname</p></td>
+      <td><p>&lt;zone_name&gt;_spawners</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <ul>
   <li>
     Replace &lt;zone_name&gt; with the zone name which this spawner should be
@@ -289,7 +288,7 @@ zones[zones.size] = &quot;initial_zone&quot; </code></pre>
 <p>
   In order for the game to know which zones are
   <a href="#UltimateGuidetoZonesinv1-4Maps-Whatare-adjacent-zones">
-    <span class="confluence-link">&quot;adjacent&quot;</span>
+    &quot;adjacent&quot;
   </a>
   , you must set the zones up in your mapname.gsc.
 </p>
@@ -405,36 +404,28 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
 <p>See:</p>
 <ul>
   <li>
-    <span class="confluence-link">
-      <a
-        href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Debris-Blocker.html">
-        Creating a Debris Blocker
-      </a>
-    </span>
+    <a
+      href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Debris-Blocker.html">
+      Creating a Debris Blocker
+    </a>
   </li>
   <li>
-    <span class="confluence-link">
-      <a
-        href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Moving-Door-Blocker.html">
-        Creating a Moving Door Blocker
-      </a>
-    </span>
+    <a
+      href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Moving-Door-Blocker.html">
+      Creating a Moving Door Blocker
+    </a>
   </li>
   <li>
-    <span class="confluence-link">
-      <a
-        href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Swinging-Door-Blocker.html">
-        Creating a Swinging Door Blocker
-      </a>
-    </span>
+    <a
+      href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Swinging-Door-Blocker.html">
+      Creating a Swinging Door Blocker
+    </a>
   </li>
   <li>
-    <span class="confluence-link">
-      <a
-        href="/Modding/World-at-War-Modtools/Radiant/Creating-a-flagwait-Blocker.html">
-        Creating a flagwait() Blocker
-      </a>
-    </span>
+    <a
+      href="/Modding/World-at-War-Modtools/Radiant/Creating-a-flagwait-Blocker.html">
+      Creating a flagwait() Blocker
+    </a>
   </li>
 </ul>
 <h2
@@ -470,11 +461,8 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
 </p>
 <p>
   Scroll all the way to the bottom of the console window and look for any yellow
-  <span class="confluence-link">[ Warning</span>
-  ] lines or red
-  <span class="confluence-link">[ Error</span>
-  lines ]. You need to resolve all of these yellow/red issues to solve this
-  script_runtime error.
+  [ Warning ] lines or red [ Error lines ]. You need to resolve all of these
+  yellow/red issues to solve this script_runtime error.
 </p>
 <p>
   <img
@@ -482,16 +470,10 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
     alt="Console output: zones start_zone, zone1 and zone2 initialized with their volumes and linked spawners" />
 </p>
 <p>
-  If you don't see any yellow [
-  <span class="confluence-link">Warning ]</span>
-  's or red [
-  <span class="confluence-link">Errors ]</span>
-  , then proceed by buying your way to the zone which causes the error/freeze.
-  Now check the console again for any yellow
-  <span class="confluence-link">[ Warning ]</span>
-  's or red
-  <span class="confluence-link">[ Errors ]</span>
-  . Follow the directions that the lines give you.
+  If you don't see any yellow [ Warning ] 's or red [ Errors ] , then proceed by
+  buying your way to the zone which causes the error/freeze. Now check the
+  console again for any yellow [ Warning ] 's or red [ Errors ] . Follow the
+  directions that the lines give you.
 </p>
 <p>
   <strong>
@@ -499,7 +481,4 @@ add_adjacent_zone( &quot;rear_lakeside&quot;, &quot;center_breezeway&quot;, &quo
     releasing your map.
   </strong>
 </p>
-<p>
-  <span class="confluence-link">Credit:</span>
-  Treminaor
-</p>
+<p>Credit: Treminaor</p>
