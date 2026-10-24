@@ -101,6 +101,12 @@ Markdown pages (`editor: markdown`) use the same fields as YAML front matter bet
 - `title` is required and rendered as the page `<h1>`. Many modding pages are prefixed with `WaW |` or `BO3 |` (e.g. `WaW | Radiant`, `BO3 | Adding Zones`).
 - `description` is shown in search and link previews. Write one sentence for new pages (most existing pages are still empty).
 - `editor: ckeditor` for HTML pages, `markdown` for `.md`.
+- `tags` (comma separated) come from the tag set in `src/tools/lib/tags.js`, `validate` warns about others. Give every page:
+  - one product: `waw`, `bo3`, `ugxl`, `ugxlin`, `forum`, `ugxmp` (MapPacker), `services` (other UGX services)
+  - one content type: `guide` (step by step), `reference` (lists, explanations), `changelog`, `troubleshooting` (known issues, FAQ, fixes), `overview` (section start pages)
+  - modding pages also a topic: `mapping`, `scripting`, `sound`, `menu`, `models`, `tools`
+  - optional `legacy` (outdated product versions), `meta` for the repository docs
+  - `node src/main.js tag-pages` suggests them from the path (`DRY_RUN=1` to preview)
 - Keep existing `confluence:<id>` tags: the tooling uses them to map old Confluence links.
 - Leave `date`/`dateCreated` as they are on existing pages; Wiki.js manages them. For new pages use the current UTC timestamp for both.
 
