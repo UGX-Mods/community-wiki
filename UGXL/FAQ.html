@@ -3,18 +3,202 @@ title: FAQ
 description: Frequently asked questions about the UGX Launcher
 published: true
 date: 2024-02-25T10:38:31.695Z
-tags: confluence:12255262, ugxl, troubleshooting
+tags: confluence:12255262, ugxl, troubleshooting, ai-generated
 editor: ckeditor
 dateCreated: 2024-02-04T15:24:29.896Z
 -->
 
-<div class="banner banner-info">
-  <img
-    src="/attachments/icons/information-outline.png"
-    alt=""
-    class="banner-icon" />
-  <p class="banner-title">Work in Progress</p>
+<div class="banner banner-note banner-ai">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <p class="banner-title">AI-generated content</p>
   <div class="banner-body">
-    <p>This page is incomplete</p>
+    <p>
+      This page was written with AI from the existing UGX Launcher and UGXL
+      Installer pages of this wiki and has not been reviewed by the UGX team
+      yet. It may contain mistakes. Found one?
+      <a href="https://github.com/UGX-Mods/community-wiki" target="_blank">
+        Help us improve it
+      </a>
+      .
+    </p>
   </div>
 </div>
+<p>
+  Answers to common questions about the UGX Launcher. Your question is not
+  listed? Check
+  <a href="/UGXL/Troubleshooting">Troubleshooting</a>
+  ,
+  <a href="/UGXL/Known-Issues-and-limitations">Known Issues and limitations</a>
+  or
+  <a href="/UGXL/Need-Help">Need Help?</a>
+</p>
+<h2 id="FAQ-Installation">Installation</h2>
+<h3 id="FAQ-Requirements">What do I need to run the UGX Launcher?</h3>
+<p>
+  Windows Vista or later and Call of Duty: World at War. The UGX Launcher also
+  needs the Visual C++ 2013 runtime, which the UGXL Installer checks and
+  installs for you (see
+  <a href="/UGXL/Information/Application-Dependencies">
+    Application Dependencies
+  </a>
+  ).
+</p>
+<h3 id="FAQ-Install">How do I install the UGX Launcher?</h3>
+<p>
+  Download and run the UGXL Installer, then follow the steps of the install
+  wizard. See
+  <a href="/UGXL/Getting-started">Getting started</a>
+  for the download link and
+  <a href="/UGXLIN/Getting-started/Install">Install</a>
+  for the steps.
+</p>
+<h3 id="FAQ-Antivirus">My antivirus or firewall blocks the UGX Launcher</h3>
+<p>
+  The UGXL Installer checks for security applications that are known to cause
+  problems and can whitelist the UGX Launcher in the Windows Firewall. See
+  <a href="/UGXLIN/Features/Security-Applications-check">
+    Security Applications check
+  </a>
+  ,
+  <a href="/UGXLIN/Features/Firewall-Whitelisting">Firewall Whitelisting</a>
+  and
+  <a href="/UGXL/Features/Better-Anti-Virus-handling">
+    Better Anti-Virus handling
+  </a>
+  .
+</p>
+<h3 id="FAQ-Admin">Why does the UGX Launcher need admin rights?</h3>
+<p>
+  The Windows User Account Control blocked the old UGX Map Manager from
+  installing files into the World at War mods folder. The UGX Launcher therefore
+  requires admin rights and tells you if your UAC settings need to be changed
+  (see
+  <a href="/UGXL/Features/UAC-Check">UAC Check</a>
+  ).
+</p>
+<h3 id="FAQ-Uninstall">How do I uninstall the UGX Launcher?</h3>
+<p>
+  Use the UGXL Installer or the Windows Programs and Features list, see
+  <a href="/UGXLIN/Getting-started/Uninstall">Uninstall</a>
+  .
+</p>
+<h2 id="FAQ-Account">Account</h2>
+<h3 id="FAQ-Login">I can't log in</h3>
+<ul>
+  <li>
+    Log in with your UGX-Mods account credentials. Use your
+    <strong>account name</strong>
+    , not your display name (see
+    <a
+      href="/Applications-and-Services/UGX-Mods-Forum/UGX-Mods-Profile/Rename-user-and-account">
+      Rename user and account
+    </a>
+    ).
+  </li>
+  <li>The login is case sensitive, check that Caps Lock is off.</li>
+  <li>
+    Try to log in on
+    <a href="https://ugx-mods.com/" target="_blank">ugx-mods.com</a>
+    to check your credentials.
+  </li>
+</ul>
+<p>
+  More in
+  <a href="/UGXL/Getting-Started/How-to-Login-into-UGX-Launcher">
+    How to Login into UGX Launcher
+  </a>
+  and
+  <a href="/UGXL/Troubleshooting">Troubleshooting</a>
+  .
+</p>
+<h3 id="FAQ-Offline">Can I use the UGX Launcher offline?</h3>
+<p>
+  No, there is no offline mode yet. It is planned for the future (see
+  <a href="/UGXL/Known-Issues-and-limitations">Known Issues and limitations</a>
+  ).
+</p>
+<h2 id="FAQ-Maps">Maps and mods</h2>
+<h3 id="FAQ-InstallMap">How do I install and play a map?</h3>
+<p>
+  Click
+  <strong>Install</strong>
+  on the map in the map view, wait for the download and installation, then start
+  it from the UGX Launcher. See
+  <a href="/UGXL/Getting-Started/How-to-Install-a-Map-or-Mod">
+    How to Install a Map or Mod
+  </a>
+  and
+  <a href="/UGXL/Getting-Started/How-to-Play-a-Map-or-Mod">
+    How to Play a Map or Mod
+  </a>
+  .
+</p>
+<h3 id="FAQ-DisallowedFiles">
+  The UGX Launcher says a map has disallowed files
+</h3>
+<p>
+  The UGX Launcher checks that each map folder only contains the files of the
+  mapper. Additional or modified
+  <code>.iwd</code>
+  and
+  <code>.ff</code>
+  files and subfolders are not allowed. It offers to delete them; if you want to
+  keep them, choose
+  <strong>No</strong>
+  /
+  <strong>Skip</strong>
+  and move them out of the map folder. See
+  <a href="/UGXL/Information/Disallowed-files">Disallowed files</a>
+  .
+</p>
+<h3 id="FAQ-T4M">A map needs T4M. What is that?</h3>
+<p>
+  T4M extends World at War with higher asset limits and other features some maps
+  need. The UGX Launcher installs it when a map requires it and checks if your
+  game version supports it. See
+  <a href="/UGXL/Information/T4M">T4M</a>
+  and
+  <a href="/UGXL/Features/Support-for-T4M">Support for T4M</a>
+  .
+</p>
+<h3 id="FAQ-ModsFolder">Can I install maps on another drive?</h3>
+<p>
+  Yes, with a custom mods folder in
+  <strong>Settings</strong>
+  &gt;
+  <strong>CoD WaW</strong>
+  . This feature is experimental, and World at War only finds the maps when you
+  start it from the UGX Launcher (see
+  <a href="/UGXL/Features/Custom-WaW-Mods-Folder">Custom WaW Mods Folder</a>
+  ).
+</p>
+<h3 id="FAQ-MapStates">What do the states of a map mean?</h3>
+<p>
+  See
+  <a href="/UGXL/Information/Mod-States">Mod States</a>
+  for all states, from "Not installed" to "Installed".
+</p>
+<h2 id="FAQ-Updates">Updates</h2>
+<h3 id="FAQ-Update">How do I update the UGX Launcher?</h3>
+<p>
+  The UGX Launcher updates itself: when a new version is out, it downloads and
+  installs the update and restarts (see
+  <a href="/UGXL/Information/Self-Updater">Self Updater</a>
+  ). The update mode in
+  <strong>Settings</strong>
+  &gt;
+  <strong>Account</strong>
+  decides which versions you get; stable is recommended for most users (see
+  <a href="/UGXL/Information/Update-Mode">Update Mode</a>
+  ).
+</p>
+<h2 id="FAQ-Help">Help</h2>
+<h3 id="FAQ-ReportBug">How do I report a bug or give feedback?</h3>
+<p>
+  Use the built-in tool of the UGX Launcher, see
+  <a href="/UGXL/Community-Contributions/How-to-report-a-Bug-or-Feedback">
+    How to report a Bug or Feedback
+  </a>
+  . For personal support, see
+  <a href="/UGXL/Need-Help">Need Help?</a>
+</p>
