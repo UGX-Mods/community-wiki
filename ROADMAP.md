@@ -15,7 +15,6 @@ Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node src/main.js meta
 - [ ] Page metadata
   - [ ] write a `description` for the 285 pages without one (used by search and link previews; good AI-assisted task, review per section)
   - [ ] define a small tag set (e.g. `waw`, `bo3`, `ugxl`, `ugxlin`, `forum`, `changelog`) and tag the 29 untagged pages and the rest of the wiki
-- [ ] Accessibility: add `alt` texts to the 315 content images without one (99 pages, banner icons are decorative and keep `alt=""`)
 - [ ] Remove more obsolete Confluence boilerplate / cleaner HTML files
   - [ ] `table-wrap`, `wrapped`, `confluenceTable` classes (235 occurrences in 84 pages)
   - [ ] inline `style` attributes (432 in 71 pages), mostly in old forum changelogs
