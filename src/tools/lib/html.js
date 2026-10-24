@@ -32,6 +32,23 @@ function parseHtmlContent(content) {
 }
 
 /**
+ * Formats the html with the prettier config of the repository
+ *
+ * @param {string} source
+ * @param {string} filePath
+ * @returns {Promise<string>}
+ */
+async function formatHtml(source, filePath) {
+  const config = {
+    ...(await prettier.resolveConfig(path.resolve(filePath), {
+      editorconfig: true,
+    })),
+    filepath: filePath,
+  };
+  return prettier.format(source, config);
+}
+
+/**
  * Writes the html formatted with the prettier config of the repository
  *
  * @param {string} source
@@ -39,17 +56,7 @@ function parseHtmlContent(content) {
  */
 async function writeFileFormat(source, filePath) {
   try {
-    const config = {
-      ...(await prettier.resolveConfig(path.resolve(filePath), {
-        editorconfig: true,
-      })),
-      filepath: filePath,
-    };
-
-    return fs.promises.writeFile(
-      filePath,
-      await prettier.format(source, config),
-    );
+    return fs.promises.writeFile(filePath, await formatHtml(source, filePath));
   } catch (err) {
     console.error('Formatting error @', filePath, String(err));
   }
@@ -87,6 +94,7 @@ function removeClassFromNode(node, className) {
 export {
   HTMLParser,
   parseHtmlContent,
+  formatHtml,
   writeFileFormat,
   getWikiJsCommentNode,
   removeClassFromNode,

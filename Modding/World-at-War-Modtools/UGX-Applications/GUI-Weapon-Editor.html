@@ -13,18 +13,15 @@ dateCreated: 2024-02-04T15:26:03.247Z
   <p class="banner-title">Warning</p>
   <div class="banner-body">
     <p>
-      <span>
-        This program is outdated and has been replaced by a more advanced
-        program,
-      </span>
+      This program is outdated and has been replaced by a more advanced program,
+
       <a
-        href="/Modding/World-at-War-Modtools/UGX-Applications/UGX-WeaponsEditor++.html">
+        href="/Modding/World-at-War-Modtools/UGX-Applications/UGX-WeaponsEditor-Plus-Plus">
         UGX WeaponsEditor++
       </a>
-      <span>
-        . Please use it instead, this page is preserved only for existing
-        external links.
-      </span>
+
+      . Please use it instead, this page is preserved only for existing external
+      links.
     </p>
   </div>
 </div>
@@ -61,111 +58,110 @@ dateCreated: 2024-02-04T15:26:03.247Z
 </p>
 <h2 id="GUIWeaponEditor-HowtoUse"><strong>How to Use</strong></h2>
 <h3 id="GUIWeaponEditor-FileMenu">File Menu</h3>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th>Options</th>
-        <th>Definitions</th>
-      </tr>
-      <tr>
-        <td>Open</td>
-        <td>
-          <p>Opens a file. Valid files are extentionless CoD weapon files.</p>
-          <p>
-            Generally these are located in 'CoD Root/raw/weapons/sp' or '/mp',
-            or 'CoD Root/mods/modname/weapons/sp' or' /mp'
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>Save</td>
-        <td>
-          <p>Saves the current table data. You cannot save blank files.</p>
-          <p>
-            This also creates a backup of the currently opened file before
-            overwriting the original (originalfilename_backup).
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>Exit</td>
-        <td>
-          Cleanly exits all windows open for the editor without saving the
-          currently opened file.
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Options</th>
+      <th>Definitions</th>
+    </tr>
+    <tr>
+      <td>Open</td>
+      <td>
+        <p>Opens a file. Valid files are extentionless CoD weapon files.</p>
+        <p>
+          Generally these are located in 'CoD Root/raw/weapons/sp' or '/mp', or
+          'CoD Root/mods/modname/weapons/sp' or' /mp'
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>Save</td>
+      <td>
+        <p>Saves the current table data. You cannot save blank files.</p>
+        <p>
+          This also creates a backup of the currently opened file before
+          overwriting the original (originalfilename_backup).
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>Exit</td>
+      <td>
+        Cleanly exits all windows open for the editor without saving the
+        currently opened file.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="GUIWeaponEditor-ToolsMenu">Tools Menu</h3>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th>Options</th>
-        <th>Definitions</th>
-      </tr>
-      <tr>
-        <td><p>Find</p></td>
-        <td>
-          <p>
-            After entering all or part of a KEY name (this means the LEFT column
-            of the grid; you currently cannot search for values; this feature
-            would be somewhat useless as most values are numbers), it will
-            attempt to find an exact match for what you entered.
-          </p>
-          <p>
-            If an exact match is not found, it will begin cycling though
-            potetial matches for a partial key entry.
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td><span>Auto-PaP</span></td>
-        <td>
-          <p>
-            This option will automatically generate 'PaP'd' weapon statistics
-            for the currently opened weapon file based on user preference.
-            Clicking this option will bring up a small window with many dropdown
-            boxes.
-          </p>
-          <p>
-            Each dropdown box corresponds to a specific statistic of the
-            currently opened weapon file, such as Fire Rate or Clip Size. Using
-            the dropdown menus, you can specify degrees of intensity for the
-            randomly generated values.
-          </p>
-          <p>
-            After generation is complete, you can refer to the console to see
-            (most of) the changed values. Any values you cannot see in the
-            console are checkable by referring to the now changed table grid in
-            the main window.
-          </p>
-          <p>
-            If you are not happy with the values, you may click the 'Auto-PaP'
-            button in the Auto-PaP window to generate new stats, or manually
-            edit them using the grid.
-          </p>
-          <div class="banner banner-warning">
-            <img
-              src="/attachments/icons/alert-octagon.png"
-              alt=""
-              class="banner-icon" />
-            <p class="banner-title">Warning</p>
-            <div class="banner-body">
-              <p>
-                This must not be used on 'Projectile' weapon files such as the
-                Panzershreck or the Grenade Launcher. To edit the stats of these
-                weapons, perform a manual edit via The Grid.
-              </p>
-            </div>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Options</th>
+      <th>Definitions</th>
+    </tr>
+    <tr>
+      <td><p>Find</p></td>
+      <td>
+        <p>
+          After entering all or part of a KEY name (this means the LEFT column
+          of the grid; you currently cannot search for values; this feature
+          would be somewhat useless as most values are numbers), it will attempt
+          to find an exact match for what you entered.
+        </p>
+        <p>
+          If an exact match is not found, it will begin cycling though potetial
+          matches for a partial key entry.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>Auto-PaP</td>
+      <td>
+        <p>
+          This option will automatically generate 'PaP'd' weapon statistics for
+          the currently opened weapon file based on user preference. Clicking
+          this option will bring up a small window with many dropdown boxes.
+        </p>
+        <p>
+          Each dropdown box corresponds to a specific statistic of the currently
+          opened weapon file, such as Fire Rate or Clip Size. Using the dropdown
+          menus, you can specify degrees of intensity for the randomly generated
+          values.
+        </p>
+        <p>
+          After generation is complete, you can refer to the console to see
+          (most of) the changed values. Any values you cannot see in the console
+          are checkable by referring to the now changed table grid in the main
+          window.
+        </p>
+        <p>
+          If you are not happy with the values, you may click the 'Auto-PaP'
+          button in the Auto-PaP window to generate new stats, or manually edit
+          them using the grid.
+        </p>
+        <div class="banner banner-warning">
+          <img
+            src="/attachments/icons/alert-octagon.png"
+            alt=""
+            class="banner-icon" />
+          <p class="banner-title">Warning</p>
+          <div class="banner-body">
+            <p>
+              This must not be used on 'Projectile' weapon files such as the
+              Panzershreck or the Grenade Launcher. To edit the stats of these
+              weapons, perform a manual edit via The Grid.
+            </p>
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <p>&nbsp;</p>
 <h2 id="GUIWeaponEditor-TheGrid">The Grid</h2>
 <p>
@@ -196,36 +192,36 @@ dateCreated: 2024-02-04T15:26:03.247Z
   : This can only contain letters, no spaces
 </p>
 <p>&nbsp;</p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th>Key</th>
-        <th>Valid Value</th>
-        <th>Definition</th>
-      </tr>
-      <tr>
-        <td>displayName</td>
-        <td>alphanumeric</td>
-        <td>
-          This is the text string displayed on-screen when the weapon is
-          equipped, and when you find the weapon laying the ground and the game
-          prompts you to pick up the weapon using 'F'
-        </td>
-      </tr>
-      <tr>
-        <td>fireType</td>
-        <td>
-          Full Auto, Single Shot, 2-Round Burst, 3-Round Burst, 4-Round Burst
-        </td>
-        <td>
-          Fire mode for the specified weapon. Changing this can convert a
-          single-shot weapon into a fully automatic machine gun, etc.
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Key</th>
+      <th>Valid Value</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td>displayName</td>
+      <td>alphanumeric</td>
+      <td>
+        This is the text string displayed on-screen when the weapon is equipped,
+        and when you find the weapon laying the ground and the game prompts you
+        to pick up the weapon using 'F'
+      </td>
+    </tr>
+    <tr>
+      <td>fireType</td>
+      <td>
+        Full Auto, Single Shot, 2-Round Burst, 3-Round Burst, 4-Round Burst
+      </td>
+      <td>
+        Fire mode for the specified weapon. Changing this can convert a
+        single-shot weapon into a fully automatic machine gun, etc.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
   to be continued... use some common sense and you can figure this all out by
   yourself.

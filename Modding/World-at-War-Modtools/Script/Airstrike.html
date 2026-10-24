@@ -39,12 +39,11 @@ dateCreated: 2024-02-04T15:25:13.858Z
 <p>
   Treyarch has lots of SP scripts for vehicles (mostly left over from COD4) that
   can be used in zombiemode with just a little bit of scripting and some time
-  spent in Radiant.
-  <span class="confluence-link">UGX</span>
-  Cabin features an airstrike that was made with this method, and that is what
-  this tutorial will focus on. This will cover placing a plane model in Radiant,
-  creating a vehicle path for it, customizing the bomb drop, configuring
-  explosion fx, giving the plane a propeller, and giving the plane engine sound.
+  spent in Radiant. UGX Cabin features an airstrike that was made with this
+  method, and that is what this tutorial will focus on. This will cover placing
+  a plane model in Radiant, creating a vehicle path for it, customizing the bomb
+  drop, configuring explosion fx, giving the plane a propeller, and giving the
+  plane engine sound.
 </p>
 <h2 id="Airstrike-Changelog">Changelog</h2>
 <p>Fixed zombie_cost on the bomb run trigger - 01:32, 22 January 2014 (UTC)</p>
@@ -332,28 +331,28 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
   . Select root/raw/xmodel/vehicle_usa_aircraft_f4ucorsair. Select the model and
   press N to open the Entity window. Add these KvPs:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>targetname</p></td>
-        <td><p>plane</p></td>
-      </tr>
-      <tr>
-        <td><p>target</p></td>
-        <td><p>plane_path_start</p></td>
-      </tr>
-      <tr>
-        <td><p>vehicletype</p></td>
-        <td><p>corsair</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>targetname</p></td>
+      <td><p>plane</p></td>
+    </tr>
+    <tr>
+      <td><p>target</p></td>
+      <td><p>plane_path_start</p></td>
+    </tr>
+    <tr>
+      <td><p>vehicletype</p></td>
+      <td><p>corsair</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="Airstrike-VehiclePath">Vehicle Path</h3>
 <p>
   Now that you have your corsair model, it's time to create a path for it to
@@ -370,28 +369,28 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
   node by right clicking the 2D view, then going to info -&gt; vehicle -&gt;
   node. Give the node these KvPs:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>targetname</p></td>
-        <td><p>plane_path_start</p></td>
-      </tr>
-      <tr>
-        <td><p>lookahead</p></td>
-        <td><p>1</p></td>
-      </tr>
-      <tr>
-        <td><p>speed</p></td>
-        <td><p>85</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>targetname</p></td>
+      <td><p>plane_path_start</p></td>
+    </tr>
+    <tr>
+      <td><p>lookahead</p></td>
+      <td><p>1</p></td>
+    </tr>
+    <tr>
+      <td><p>speed</p></td>
+      <td><p>85</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
   Note: Anywhere from 85 to 100 is a good speed for bombing runs.
   <br />
@@ -425,20 +424,20 @@ thread maps\bomb_run::bomb_run_trig();</code></pre>
   If you are using bomb_run.gsc, simply create a trigger brush and give it the
   KvP:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>targetname</p></td>
-        <td><p>bomb_run_trig</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>targetname</p></td>
+      <td><p>bomb_run_trig</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="Airstrike-Finishingup">Finishing up</h2>
 <p>Compile your map, patch (if you have one), and mod.</p>
 <h2 id="Airstrike-Source">Source</h2>

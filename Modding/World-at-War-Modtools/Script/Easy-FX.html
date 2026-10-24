@@ -8,7 +8,6 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:25:51.897Z
 -->
 
-<p></p>
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
 
@@ -46,10 +45,8 @@ dateCreated: 2024-02-04T15:25:51.897Z
   </div>
 </div>
 <p>
-  Easy-FX is a script by
-  <span class="confluence-link">UGX</span>
-  treminaor that allows easy FX placement using only Radiant (no annoying origin
-  copy/pasting across multiple files).
+  Easy-FX is a script by UGX treminaor that allows easy FX placement using only
+  Radiant (no annoying origin copy/pasting across multiple files).
 </p>
 <p>
   <strong>
@@ -105,28 +102,28 @@ dateCreated: 2024-02-04T15:25:51.897Z
   <a href="#EasyFX-FXandLooping">FX and Looping</a>
   for a list). Enter the following KvP's, and refer to Figure 2.
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>targetname</p></td>
-        <td><p>fx</p></td>
-      </tr>
-      <tr>
-        <td><p>script_string</p></td>
-        <td><p>usage</p></td>
-      </tr>
-      <tr>
-        <td><p>script_noteworthy</p></td>
-        <td><p>alias</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>targetname</p></td>
+      <td><p>fx</p></td>
+    </tr>
+    <tr>
+      <td><p>script_string</p></td>
+      <td><p>usage</p></td>
+    </tr>
+    <tr>
+      <td><p>script_noteworthy</p></td>
+      <td><p>alias</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
   <img
     height="400"
@@ -300,32 +297,32 @@ stationary_loop
   follows:
 </p>
 <p>script_sruct KvP's:</p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>targetname</p></td>
-        <td><p>fx</p></td>
-      </tr>
-      <tr>
-        <td><p>script_string</p></td>
-        <td><p>usage_loop</p></td>
-      </tr>
-      <tr>
-        <td><p>script_noteworthy</p></td>
-        <td><p>alias</p></td>
-      </tr>
-      <tr>
-        <td><p>speed</p></td>
-        <td><p>seconds</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>targetname</p></td>
+      <td><p>fx</p></td>
+    </tr>
+    <tr>
+      <td><p>script_string</p></td>
+      <td><p>usage_loop</p></td>
+    </tr>
+    <tr>
+      <td><p>script_noteworthy</p></td>
+      <td><p>alias</p></td>
+    </tr>
+    <tr>
+      <td><p>speed</p></td>
+      <td><p>seconds</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
   where 'usage' in 'usage_loop' must be replaced with either 'stationary',
   'use', or 'touch' - and 'seconds' is a numerical value above 0.05.
@@ -452,25 +449,24 @@ fx,filelocation
   for the player to see in-game. This can easily be done by adding this KvP to
   the trigger:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th><p>Key</p></th>
-        <th><p>Value</p></th>
-      </tr>
-      <tr>
-        <td><p>script_string</p></td>
-        <td><p>hintstring</p></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th><p>Key</p></th>
+      <th><p>Value</p></th>
+    </tr>
+    <tr>
+      <td><p>script_string</p></td>
+      <td><p>hintstring</p></td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
   where 'hintstring' is the hintstring you want (enter without any quotes). For
   reference, '&amp;&amp;1' is a special character that represents the player's '
-  <span class="confluence-link">Use</span>
-  ' key. In most cases this will show as 'F'.
+  Use ' key. In most cases this will show as 'F'.
 </p>
 <h2 id="EasyFX-Finishingup">Finishing up</h2>
 <p>
@@ -783,9 +779,7 @@ triggered_use_fx(loop) //These are triggered FX. They are triggered when the pla
 </div>
 <p>&nbsp;</p>
 <p>
-  Author:
-  <span class="confluence-link">UGX</span>
-  treminaor
+  Author: UGX treminaor
   <br />
   Testers: Cinnober (1.1) and --
   <span style="text-decoration: line-through">Church</span>
