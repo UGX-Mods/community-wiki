@@ -116,14 +116,14 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/decompiling-the-ff-1.gif"
-    alt />
+    alt="Animation: dragging nml_load.ff from the Call of Duty Ghosts folder into FF Viewer" />
 </p>
 <p>If it says success, great, leave it open until we're done.</p>
 <p>You should now have this file in the same folder as the FF:</p>
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/decompiling-the-ff-2.png"
-    alt />
+    alt="Extracted file nml-extract.dat (about 650 MB) in Explorer" />
 </p>
 <p>Now we can move onto getting the sounds.</p>
 <h2 id="RipsoundsfromIW6-RippingtheSounds">Ripping the Sounds</h2>
@@ -136,7 +136,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/ripping-the-sounds-1.png"
-    alt />
+    alt="nml-extract.dat opened in the hex editor HxD" />
 </p>
 <p>
   Try not the get confused, k? So let's search for the sound, remember I told
@@ -147,7 +147,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/ripping-the-sounds-2.png"
-    alt />
+    alt="List of weapon tag names in the hex dump, the search term maul is highlighted" />
 </p>
 <p>
   Ignore them and press F3 to skip to another entry, they are joint names
@@ -163,7 +163,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/ripping-the-sounds-3.png"
-    alt />
+    alt="Hex dump text with weap_maul_fire_npc highlighted" />
 </p>
 <p>
   Now keep skipping these, as we don't need them, but they give us an idea of
@@ -172,7 +172,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/ripping-the-sounds-4.png"
-    alt />
+    alt="Hex dump with the sound name foley/wpfoly_maul_reload_clipin_v1" />
 </p>
 <p>
   This is probably a sound, put the cursor after the dot at the end and take
@@ -187,7 +187,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/ripping-the-sounds-5.png"
-    alt />
+    alt="HxD with arrows marking the start offset before weap_maul_clipout_plr" />
 </p>
 <p>
   Now with the 2 offsets you've taken note off, press CTRL+E or Edit&gt;Select
@@ -201,7 +201,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/ripping-the-sounds-6.gif"
-    alt />
+    alt="Animation: HxD Select block dialog with start and end offset of the sound" />
 </p>
 <p>
   Now copy this, if you copy too much don't worry, we can always chop it off in
@@ -215,7 +215,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/ripping-the-sounds-7.png"
-    alt />
+    alt="Copied block in a new HxD file, Save As dialog with the file name maul_clip_in" />
 </p>
 <p>
   Now you can keep repeating this step for different sounds, like this is clip
@@ -233,13 +233,13 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/just-another-demonstration-with-a-bit-less-detail-1.png"
-    alt />
+    alt="Hex dump with the sound name foley/wpfoly_maul_reload_clipout_v1, the start of the sound data is selected" />
 </p>
 <p>Take note of the first offset, the dot after the name:</p>
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/just-another-demonstration-with-a-bit-less-detail-2.png"
-    alt />
+    alt="HxD with arrows from the sound name to the start offset 15B4FC91 in the status bar" />
 </p>
 <p>
   Then search again, and take note of the offset of the dot before this alias
@@ -248,13 +248,13 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/just-another-demonstration-with-a-bit-less-detail-3.png"
-    alt />
+    alt="HxD with arrows to the next sound weap_maul_reload_end_plr, its offset 15B670DC is the end of the block" />
 </p>
 <p>Then select the block like we done before:</p>
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/just-another-demonstration-with-a-bit-less-detail-4.png"
-    alt />
+    alt="HxD Select block dialog with start offset 15B4FC91 and end offset 15B670DC" />
 </p>
 <p>And paste into a new file and save.</p>
 <p>Do that for whatever sounds you want.</p>
@@ -270,7 +270,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
 <p>
   <img
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/importing-the-sounds-1.gif"
-    alt />
+    alt="Animation: importing the ripped file into Audacity as raw data" />
 </p>
 <p>
   Once that's done assuming you done it right, it should work. :) After that
@@ -281,7 +281,7 @@ dateCreated: 2024-02-04T15:26:50.004Z
   <img
     height="400"
     src="/attachments/modding/waw/sound/rip-sounds-from-iw6/importing-the-sounds-2.png"
-    alt />
+    alt="The imported sound in Audacity as mono 44100 Hz waveform" />
 </p>
 <p>
   Happy modding, enjoy your sounds if you are successful with it, make sure to
