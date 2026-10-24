@@ -20,7 +20,9 @@ const TYPE_TAGS = [
   'overview',
 ];
 const TOPIC_TAGS = ['mapping', 'scripting', 'sound', 'menu', 'models', 'tools'];
-const EXTRA_TAGS = ['legacy', 'meta'];
+// pages written entirely by AI, together with the AI banner (class banner-ai)
+const AI_TAG = 'ai-generated';
+const EXTRA_TAGS = ['legacy', 'meta', AI_TAG];
 
 const TAGS = [...PRODUCT_TAGS, ...TYPE_TAGS, ...TOPIC_TAGS, ...EXTRA_TAGS];
 
@@ -51,4 +53,5 @@ export {
   TAGS,
   parseTags,
   isKnownTag,
+  AI_TAG,
 };

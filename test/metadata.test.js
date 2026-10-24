@@ -73,3 +73,37 @@ test('checkPageMetadata warns about tags outside the tag set', () => {
     ['Tags outside the tag set: mod tools'],
   );
 });
+
+test('checkPageMetadata requires the AI banner and tag together', () => {
+  const banner = '<div class="banner banner-note banner-ai"><p>AI</p></div>';
+  const errorsOf = (/** @type {string} */ body, /** @type {string} */ tags) =>
+    checkPageMetadata('Foo.html', htmlPage('Foo', body, { tags })).errors;
+  assert.deepEqual(errorsOf(banner, 'waw, guide, ai-generated'), []);
+  assert.deepEqual(errorsOf('<p>x</p>', 'waw, guide'), []);
+  assert.deepEqual(errorsOf('<p>x</p>', 'waw, guide, ai-generated'), [
+    'Tag "ai-generated" without the AI banner (class banner-ai)',
+  ]);
+  assert.deepEqual(errorsOf(banner, 'waw, guide'), [
+    'AI banner (class banner-ai) without the tag "ai-generated"',
+  ]);
+});
+
+test('checkPageMetadata ignores AI banner examples in markdown code', () => {
+  const page = [
+    '---',
+    'title: Docs',
+    'description: x',
+    'published: true',
+    'date: x',
+    'tags: meta',
+    'editor: markdown',
+    'dateCreated: x',
+    '---',
+    '',
+    '```html',
+    '<div class="banner banner-ai"></div>',
+    '```',
+    '',
+  ].join('\n');
+  assert.deepEqual(checkPageMetadata('Docs.md', page).errors, []);
+});
