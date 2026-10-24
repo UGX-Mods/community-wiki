@@ -45,8 +45,8 @@ dateCreated: 2024-02-04T15:25:41.052Z
     <br />
   </code>
 </p>
-<h1 id="CreatingaSwingingDoorBlocker-Preparation">Preparation</h1>
-<h2 id="CreatingaSwingingDoorBlocker-Itemsneeded">Items needed</h2>
+<h2 id="CreatingaSwingingDoorBlocker-Preparation">Preparation</h2>
+<h3 id="CreatingaSwingingDoorBlocker-Itemsneeded">Items needed</h3>
 <p>
   First you must create the door in Radiant. A swinging door blocker consists of
   these items:
@@ -69,7 +69,7 @@ dateCreated: 2024-02-04T15:25:41.052Z
   page.
 </p>
 
-<h2 id="CreatingaSwingingDoorBlocker-SettingtheKVP&#39;s">Setting the KVP's</h2>
+<h3 id="CreatingaSwingingDoorBlocker-SettingtheKVP&#39;s">Setting the KVP's</h3>
 <p>
   <code>
     <div class="banner banner-tip">
@@ -117,7 +117,7 @@ dateCreated: 2024-02-04T15:25:41.052Z
     <br />
   </code>
 </p>
-<h3 id="CreatingaSwingingDoorBlocker-Triggers">Triggers</h3>
+<h4 id="CreatingaSwingingDoorBlocker-Triggers">Triggers</h4>
 <p>Select the trigger_use brush(es) and give them the following KVP's:</p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -184,7 +184,7 @@ dateCreated: 2024-02-04T15:25:41.052Z
     key and replace '&lt;any number&gt;' with a numerical value.
   </li>
 </ul>
-<h3 id="CreatingaSwingingDoorBlocker-Door">Door</h3>
+<h4 id="CreatingaSwingingDoorBlocker-Door">Door</h4>
 <p>
   Select the door script_brushmodel(s) or script_model(s) and give them the
   following KVP's:
@@ -270,7 +270,7 @@ dateCreated: 2024-02-04T15:25:41.052Z
     seconds).
   </li>
 </ul>
-<h3 id="CreatingaSwingingDoorBlocker-Clips">Clips</h3>
+<h4 id="CreatingaSwingingDoorBlocker-Clips">Clips</h4>
 <p>Select the clip script_brushmodel(s) and give them the following KVP:</p>
 <div class="table-wrap">
   <table class="confluenceTable">
@@ -286,9 +286,9 @@ dateCreated: 2024-02-04T15:25:41.052Z
     </tbody>
   </table>
 </div>
-<h2 id="CreatingaSwingingDoorBlocker-TargetinginRadiant">
+<h3 id="CreatingaSwingingDoorBlocker-TargetinginRadiant">
   Targeting in Radiant
-</h2>
+</h3>
 <p>
   Now that you have created all of the necessary items and given them the
   correct KVP's, it is time to link the items together using targeting.
@@ -354,10 +354,10 @@ the root entity using the instructions above.
   KVP from the root trigger_use to each of the remaining trigger_use's. The
   lines should now be going from all trigger_use's.
 </p>
-<h2 id="CreatingaSwingingDoorBlocker-FinishingUp">Finishing Up</h2>
-<h3 id="CreatingaSwingingDoorBlocker-CreatingcopiesoftheDoor">
+<h3 id="CreatingaSwingingDoorBlocker-FinishingUp">Finishing Up</h3>
+<h4 id="CreatingaSwingingDoorBlocker-CreatingcopiesoftheDoor">
   Creating copies of the Door
-</h3>
+</h4>
 <p>
   Now that you have created one working zombie_door blocker, you can copy/paste
   it as many times as you want. Since we used targeting, the targetnames of the
@@ -366,7 +366,7 @@ the root entity using the instructions above.
   every copy, just as you did in section 1.3. Be sure to update the script_flag
   value if you copy the doors for a new zone volume.
 </p>
-<h3 id="CreatingaSwingingDoorBlocker-Troubleshooting">Troubleshooting</h3>
+<h4 id="CreatingaSwingingDoorBlocker-Troubleshooting">Troubleshooting</h4>
 <p>
   The UGX Modtools Patch has a developer HUD which will help you identify script
   errors that may be preventing the doors from working. If after following this

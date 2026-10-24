@@ -16,7 +16,7 @@ dateCreated: 2024-02-04T15:26:51.898Z
   of it that it takes a while to think of it all and think of a way to explain
   it logically.
 </p>
-<h1 id="ScriptingGuide-Beginning">Beginning</h1>
+<h2 id="ScriptingGuide-Beginning">Beginning</h2>
 <p>
   Scripts are saved as .gsc and .csc. The major difference between the two is
   that GSC is run 'server-side' (on the host pc) and CSC is run on the
@@ -54,7 +54,7 @@ dateCreated: 2024-02-04T15:26:51.898Z
   fix an error, make sure to turn developer 1 back to developer 0 before
   attempting to boot your map again.
 </p>
-<h1 id="ScriptingGuide-BasicSyntax">Basic Syntax</h1>
+<h2 id="ScriptingGuide-BasicSyntax">Basic Syntax</h2>
 <p>
   CoD GSC has a basic syntax that must be followed to have working scripts. If
   you get an error such as &quot;Bad Syntax: blah&quot; it means you made a
@@ -148,7 +148,7 @@ if(1 == 1)
 }</code></pre>
 </div>
 <p>&nbsp;</p>
-<h1 id="ScriptingGuide-Variables">Variables</h1>
+<h2 id="ScriptingGuide-Variables">Variables</h2>
 <p>
   <strong>Variables</strong>
   store info. Yes, it's really that simple. Variables can store strings,
@@ -162,9 +162,9 @@ if(1 == 1)
   variables (variables that have never been declared or have a value of
   &quot;undefined&quot;) will cause errors if not handled correctly.
 </p>
-<h2 id="ScriptingGuide-Declaring&amp;UsingVariables">
+<h3 id="ScriptingGuide-Declaring&amp;UsingVariables">
   Declaring &amp; Using Variables
-</h2>
+</h3>
 <p>
   You declare a variable with the = operator. You create a new value 'on the
   left' of the operator and assign an existing or new value 'on the right' of
@@ -226,7 +226,7 @@ process_intelligence()
 	iPrintLn(level.IQ); //Value is still 27
 }</code></pre>
 </div>
-<h2 id="ScriptingGuide-self">self</h2>
+<h3 id="ScriptingGuide-self">self</h3>
 <p>
   I'm sure at this point you've seen 'self' used as a variable in almost every
   script you've read. What is self? What is its purpose? Well little Timmy, self
@@ -242,7 +242,7 @@ setup()
 }</code></pre>
 </div>
 <p>&nbsp;</p>
-<h2 id="ScriptingGuide-Arrays">Arrays</h2>
+<h3 id="ScriptingGuide-Arrays">Arrays</h3>
 <p>
   <strong>Arrays</strong>
   are a very useful form of variable. Like a variable, they store information.
@@ -290,7 +290,7 @@ boxes[12] thread box_setup();
 boxes[13] thread box_setup();
 boxes[14] thread box_setup(); //wow that was long and annoying. And it looks like crap D:</code></pre>
 </div>
-<h2 id="ScriptingGuide-WorkingwithStrings">Working with Strings</h2>
+<h3 id="ScriptingGuide-WorkingwithStrings">Working with Strings</h3>
 <p>There are a few key points to go over with strings.</p>
 <p>
   <strong>Concatenation</strong>
@@ -325,7 +325,7 @@ weapon_name = getSubStr(weapon, 6); //Value of &#39;weapon_name&#39; is &quot;ka
 number = &quot;100&quot;;
 number_int = int(number); //Value of &#39;number&#39; is now 100. This is not the same as &quot;100&quot;.</code></pre>
 </div>
-<h2 id="ScriptingGuide-Math">Math</h2>
+<h3 id="ScriptingGuide-Math">Math</h3>
 <p>
   Math is very straightforward in GSC. If you know any other programming
   languages, or if you passed basic math, this should be very easy to
@@ -399,12 +399,12 @@ number -= 10; //number = -10
 
 if(1 == 1) //true</code></pre>
 </div>
-<h1 id="ScriptingGuide-Functions">Functions</h1>
+<h2 id="ScriptingGuide-Functions">Functions</h2>
 <p>
   <strong>Function</strong>
   : A codeblock of logic and/or tasks.
 </p>
-<h2 id="ScriptingGuide-MakingaFunction">Making a Function</h2>
+<h3 id="ScriptingGuide-MakingaFunction">Making a Function</h3>
 <p>Functions have the following syntax:</p>
 <div class="widget-panel widget-code-panel">
   <pre><code class="language-cpp">
@@ -468,9 +468,9 @@ get_number()
     line function that could be written in 34 lines.
   </strong>
 </p>
-<h2 id="ScriptingGuide-CallingaFunction(tothreadornottothread)">
+<h3 id="ScriptingGuide-CallingaFunction(tothreadornottothread)">
   Calling a Function (to thread or not to thread)
-</h2>
+</h3>
 <p>
   The key points of calling functions are 1)thread or no? 2) arguments? 3)
   calling to other files.
@@ -530,10 +530,10 @@ mapsscriptname::functionname(optional_args);</code></pre>
   variable's value to a function outside of the current script using that same
   format.
 </p>
-<h2 id="ScriptingGuide-While()andFor()loops">
+<h3 id="ScriptingGuide-While()andFor()loops">
   <br />
   While() and For() loops
-</h2>
+</h3>
 <p>
   Loops are your second best friend (right up there with arrays). They allow you
   to repeat logic until something changes (or indefinitely). Again, the best way
@@ -631,7 +631,7 @@ for(variable=0;variable&lt;array.size;variable++)
   <span class="confluence-link">0</span>
   and goes to the highest index in the array.
 </p>
-<h2 id="ScriptingGuide-CoDUtilityFunctions">CoD Utility Functions</h2>
+<h3 id="ScriptingGuide-CoDUtilityFunctions">CoD Utility Functions</h3>
 <p>
   There are a number of CoD-specific utility functions that you will find
   useful. They can ALL be found here
@@ -647,9 +647,9 @@ for(variable=0;variable&lt;array.size;variable++)
   The most used utility function is probably the getEnt() function, which is
   explained below:
 </p>
-<h1 id="ScriptingGuide-AcquiringEntsandworkingwiththeminscript">
+<h2 id="ScriptingGuide-AcquiringEntsandworkingwiththeminscript">
   Acquiring Ents and working with them in script
-</h1>
+</h2>
 <p>
   So you want to move that purple box 10ft in the air and then make it
   disappear? Wow, that's really stupid, man. Why would you want to do that? Did

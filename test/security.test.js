@@ -32,6 +32,17 @@ test('rejects iframes without src, without https or from other hosts', () => {
   );
 });
 
+test('rejects hosts that only look like youtube-nocookie', () => {
+  const issues = checkPageSecurity(
+    [
+      iframe('https://www.youtube-nocookie.com.evil.example/embed/abc'),
+      iframe('https://wwwXyoutube-nocookie.com/embed/abc'),
+      iframe('https://www.youtube-nocookieXcom/embed/abc'),
+    ].join('\n'),
+  );
+  assert.equal(issues.length, 3);
+});
+
 test('ignores pages without iframes', () => {
   assert.deepEqual(checkPageSecurity('<p><a href="x">x</a></p>'), []);
 });

@@ -33,23 +33,31 @@ dateCreated: 2024-02-04T15:25:46.488Z
     <br />
   </code>
 </p>
-<h1 id="CustomMainMenuMusic-RequiredPrograms:">Required Programs:</h1>
+<h2 id="CustomMainMenuMusic-RequiredPrograms:">Required Programs:</h2>
 <p>-Audacity(Or another audio editing program)</p>
 <p>
-  <a
-    href="https://audacity.googlecode.com/files/audacity-win-2.0.3.exe"
-    target="_blank">
-    Download
-  </a>
+  <a href="https://www.audacityteam.org/download/" target="_blank">Download</a>
 </p>
-<h1 id="CustomMainMenuMusic-ExportingAudio:">Exporting Audio:</h1>
+<div class="banner banner-note">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <div class="banner-body">
+    <p>
+      The screenshots below show an older Audacity version, the menus of the
+      current version may look different.
+    </p>
+  </div>
+</div>
+<h2 id="CustomMainMenuMusic-ExportingAudio:">Exporting Audio:</h2>
 <p>
   Step 1) First open your sound file in audacity by opening the program and
   going to file&gt;open, then navigating and opening your sound file. Once you
   have done that you should see something like this:
 </p>
 <p>
-  <img height="400" src="https://i.imgur.com/OKZOY2t.png" alt />
+  <img
+    height="400"
+    src="/attachments/modding/waw/sound/custom-main-menu-music/exporting-audio-1.png"
+    alt />
 </p>
 <p>
   Step 2) As you can see here there are two tracks, which means this audio is
@@ -57,27 +65,34 @@ dateCreated: 2024-02-04T15:25:46.488Z
   the audio track selected to go Tracks&gt;Stereo Track to Mono.
 </p>
 <p>
-  <img height="400" src="https://i.imgur.com/Fu40Adu.png" alt />
+  <img
+    height="400"
+    src="/attachments/modding/waw/sound/custom-main-menu-music/exporting-audio-2.png"
+    alt />
 </p>
 <p>
   Step 3) Now that we have done that we want to export our sound. To do this we
-  want to go to File&gt;Export, then as the save as type we want to set
-  &quot;Other uncompressed files&quot;. Once that is set hit &quot;Options&quot;
-  on the save file dialog and change &quot;Header&quot; to
-  &quot;WAV(Microsoft)&quot; and &quot;Encoding&quot; to &quot;Unsigned 8-Bit
-  PCM&quot;. Once you have done that you can hit &quot;OK&quot; and save the
-  file somewhere on your computer. This next step is really important, when you
-  have a dialog will pop up asking you to edit tags, you want to hit
-  &quot;Clear&quot; to clear the tags otherwise we will run into issues with
-  converting the sound through launcher later.
+  want to go to File&gt;Export Audio and set the format to &quot;WAV
+  (Microsoft)&quot;, the sample rate to &quot;44100 Hz&quot; and the encoding to
+  &quot;Signed 16-bit PCM&quot;, then save the file somewhere on your computer.
+  This next step is really important, when you have a dialog will pop up asking
+  you to edit tags, you want to hit &quot;Clear&quot; to clear the tags
+  otherwise we will run into issues with converting the sound through launcher
+  later.
   <br />
 
-  <img height="400" src="https://i.imgur.com/Z8MB6nm.png" alt />
+  <img
+    height="400"
+    src="/attachments/modding/waw/sound/custom-main-menu-music/exporting-audio-3.png"
+    alt />
 </p>
 <p>
-  <img height="400" src="https://i.imgur.com/788tkeD.png" alt />
+  <img
+    height="400"
+    src="/attachments/modding/waw/sound/custom-main-menu-music/exporting-audio-4.png"
+    alt />
 </p>
-<h1 id="CustomMainMenuMusic-ImplementingtoCOD">Implementing to COD</h1>
+<h2 id="CustomMainMenuMusic-ImplementingtoCOD">Implementing to COD</h2>
 <p></p>
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
@@ -113,7 +128,9 @@ directory does not exist, create it). Next rename the sound from whatever you
 named it to &quot;garbar_loop&quot;.
 <br />
 
-<img src="https://i.imgur.com/fiCf8Wq.png" alt />
+<img
+  src="/attachments/modding/waw/sound/custom-main-menu-music/implementing-to-cod.png"
+  alt />
 
 <p>
   Step 2) Now we have to create a sound alias for our sound. Go to the directory

@@ -20,6 +20,11 @@ import {
 } from './tools/confluence/cleanup.js';
 import { addConfluenceCommentAsTag } from './tools/confluence/ids.js';
 import { deployTheme } from './tools/theme.js';
+import { localizeJiraIcons } from './tools/content/jira-icons.js';
+import { demotePageHeadings } from './tools/content/headings.js';
+import { mirrorImages } from './tools/content/mirror-images.js';
+import { renameImages } from './tools/content/rename-images.js';
+import { setAltTexts } from './tools/content/alt-texts.js';
 
 const STEPS = {
   none: 'NONE',
@@ -33,6 +38,11 @@ const STEPS = {
   confluenceFixFilenames: 'confluence-fix-filenames',
   confluenceCleanup: 'confluence-cleanup',
   confluenceId: 'confluence-id',
+  jiraIcons: 'jira-icons',
+  demoteHeadings: 'demote-headings',
+  mirrorImages: 'mirror-images',
+  renameImages: 'rename-images',
+  altTexts: 'alt-texts',
 };
 
 const STEP_CHOICES = [
@@ -74,6 +84,37 @@ const STEP_CHOICES = [
     name: 'Metadata validation',
     description:
       'Checks the wiki.js page header (title, description, ...) and the file name',
+  },
+  new Separator('--- CONTENT ---'),
+  {
+    value: STEPS.jiraIcons,
+    name: 'Jira icons',
+    description:
+      'Point hotlinked Jira priority / issue type icons to attachments/icons/jira',
+  },
+  {
+    value: STEPS.demoteHeadings,
+    name: 'Demote headings',
+    description:
+      'Pages with <h1> in the body: shift all headings down one level (title is the h1)',
+  },
+  {
+    value: STEPS.mirrorImages,
+    name: 'Mirror images',
+    description:
+      'Download external Imgur images into attachments/ and link the copies (DRY_RUN=1)',
+  },
+  {
+    value: STEPS.renameImages,
+    name: 'Rename images',
+    description:
+      'Give images with meaningless names (imgur ids, hashes) names from alt text / heading (DRY_RUN=1)',
+  },
+  {
+    value: STEPS.altTexts,
+    name: 'Alt texts',
+    description:
+      'Set missing image alt texts from a JSON file (ALT_TEXTS=path, src -> alt)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -177,6 +218,21 @@ async function main() {
     case STEPS.confluenceCleanup:
       await cleanupConfluenceHtml(htmlFiles);
       fixCodeBlocks(htmlFiles);
+      break;
+    case STEPS.jiraIcons:
+      errors += await localizeJiraIcons(htmlFiles);
+      break;
+    case STEPS.demoteHeadings:
+      errors += await demotePageHeadings(htmlFiles);
+      break;
+    case STEPS.mirrorImages:
+      errors += await mirrorImages(files);
+      break;
+    case STEPS.renameImages:
+      errors += await renameImages(files);
+      break;
+    case STEPS.altTexts:
+      errors += await setAltTexts(files);
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);

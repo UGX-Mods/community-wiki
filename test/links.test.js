@@ -51,6 +51,22 @@ test('relative links resolve to child and sibling pages', async () => {
   );
 });
 
+test('local images must exist', async () => {
+  assert.deepEqual(
+    await errorsOf(
+      'Foo.html',
+      [
+        '<img src="/attachments/img.png" alt="" />',
+        '<img src="/attachments/nope.png" alt="" />',
+        '<img src="https://i.imgur.com/abc.png" alt="" />',
+        '<img src="data:image/png;base64,AAAA" alt="" />',
+        '<img alt="" />',
+      ].join(''),
+    ),
+    ['/attachments/nope.png Image not found!', ' Empty image src!'],
+  );
+});
+
 test('missing targets and empty hrefs', async () => {
   assert.deepEqual(
     await errorsOf(

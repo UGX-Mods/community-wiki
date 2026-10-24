@@ -18,8 +18,8 @@ dateCreated: 2024-02-04T15:25:48.480Z
   </a>
   as well as an already completed weapon mesh to work with.
 </p>
-<h1 id="CustomWeapon-SettingupyourVMGun">Setting up your VMGun</h1>
-<h3 id="CustomWeapon-Importing">Importing</h3>
+<h2 id="CustomWeapon-SettingupyourVMGun">Setting up your VMGun</h2>
+<h4 id="CustomWeapon-Importing">Importing</h4>
 <ul>
   <li>
     First, open your completed weapon mesh into maya. To ensure that your weapon
@@ -57,7 +57,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
     to appear within game, otherwise they would appear pitch black.
   </li>
 </ul>
-<h3 id="CustomWeapon-Materials">Materials</h3>
+<h4 id="CustomWeapon-Materials">Materials</h4>
 <ul>
   <li>
     Open the hypershade by going to &quot;Window&gt;Rendering
@@ -81,7 +81,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
     WEAPONNAME_scope&quot;.
   </li>
 </ul>
-<h3 id="CustomWeapon-Rigging">Rigging</h3>
+<h4 id="CustomWeapon-Rigging">Rigging</h4>
 <ul>
   <li>
     (OPTIONAL) Switch to the side orthographic viewport for easier joint
@@ -152,9 +152,9 @@ dateCreated: 2024-02-04T15:25:48.480Z
     weapon's joints. Rename the set to &quot;GunExport&quot;.
   </li>
 </ul>
-<h3 id="CustomWeapon-Exporting">Exporting</h3>
-<h1 id="CustomWeapon-Animation">Animation</h1>
-<h3 id="CustomWeapon-Preparation">Preparation</h3>
+<h4 id="CustomWeapon-Exporting">Exporting</h4>
+<h2 id="CustomWeapon-Animation">Animation</h2>
+<h4 id="CustomWeapon-Preparation">Preparation</h4>
 <p>
   Open /bin/maya/model_src/modern_weapons/m16/weapon_m16.mb with Maya.
   <br />
@@ -165,18 +165,18 @@ dateCreated: 2024-02-04T15:25:48.480Z
   Animation. Now select Skin -&gt; Detach. Now select and delete all 3 m16 poly
   groups.
 </p>
-<h3 id="CustomWeapon-Importing.1">Importing</h3>
+<h4 id="CustomWeapon-Importing.1">Importing</h4>
 <p>
   Go to File -&gt; Import and find your gun. It will be imported into the scene.
   Now you must bind the joints to the skin.
 </p>
-<h3 id="CustomWeapon-Binding">Binding</h3>
+<h4 id="CustomWeapon-Binding">Binding</h4>
 <p>
   In order for the viewhands to know what to grab, and for the game to know what
   part of the mesh to move, you must bind joins to their corresponding meshes.
 </p>
 <p>To this you must first</p>
-<h3 id="CustomWeapon-Save+Export">Save + Export</h3>
+<h4 id="CustomWeapon-Save+Export">Save + Export</h4>
 <p>
   You have now finished the rig for this weapon. Save the scene in /Call of Duty
   World at War/model_export/ as weapon_gunname.mb. Go to the CoDWaW Plugin Menu
@@ -193,8 +193,8 @@ dateCreated: 2024-02-04T15:25:48.480Z
   'Export Selected Entities' and wait for the progress window to disappear. You
   can find the exported file in the same directory as the .mb.
 </p>
-<h2 id="CustomWeapon-Animating">Animating</h2>
-<h3 id="CustomWeapon-Viewmodel">Viewmodel</h3>
+<h3 id="CustomWeapon-Animating">Animating</h3>
+<h4 id="CustomWeapon-Viewmodel">Viewmodel</h4>
 <p>
   Next you must create the viewmodel for your gun. This is the model that the
   user of the gun will see.
@@ -215,7 +215,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
   Export Selected Entities. You will find the exported file in the same
   directory as the .mb scene.
 </p>
-<h3 id="CustomWeapon-gunsleeve">gunsleeve</h3>
+<h4 id="CustomWeapon-gunsleeve">gunsleeve</h4>
 <p>
   Now that you have your weapon rig (weapon_gunname.mb), it's time to do what
   will probably be the most simple step of this tutorial: making a gunsleeve. It
@@ -237,7 +237,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
   Set Exports in the Exporter window. Then Export Selected Entities. You can
   find the exported file in the same location as the .mb scene.
 </p>
-<h3 id="CustomWeapon-AnimatingtheModel">Animating the Model</h3>
+<h4 id="CustomWeapon-AnimatingtheModel">Animating the Model</h4>
 <p>Animation process to be added here.</p>
 <p>
   Save your animation scene as gunname_animation.mb. To export your anims, open
@@ -251,12 +251,12 @@ dateCreated: 2024-02-04T15:25:48.480Z
   World at War/xanim_export/ (create this directory as it most likely does not
   exist yet). All .XMODEL_EXPORTS must be in /model_export/.
 </p>
-<h1 id="CustomWeapon-AssetManager">Asset Manager</h1>
+<h2 id="CustomWeapon-AssetManager">Asset Manager</h2>
 <p>
   Now that you have all of your exported files, it's time to make them available
   to the game. Open Launcher, and from there click the Asset Manager button.
 </p>
-<h2 id="CustomWeapon-AddingMaterials">Adding Materials</h2>
+<h3 id="CustomWeapon-AddingMaterials">Adding Materials</h3>
 <p>
   The first step in importing to AssMan is to set up your model's materials.
   Open your model in Maya and open Window -&gt; Rendering -&gt; Hypershade. Here
@@ -264,7 +264,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
   them in Asset Manager. The material name must match the shader name.
   <strong>GO THOUGH PROCESS OF MATERIAL ADDING HERE.</strong>
 </p>
-<h2 id="CustomWeapon-Addingthexmodel">Adding the xmodel</h2>
+<h3 id="CustomWeapon-Addingthexmodel">Adding the xmodel</h3>
 <p>
   After adding materials, you can safely add your weapon model. Scroll down to
   'xmodel' and press New Entry. Give the model a name such as viewmodel_gunname
@@ -275,7 +275,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
   <br />
   Now go to PC Convert -&gt; Current Asset Only. It should convert successfully.
 </p>
-<h2 id="CustomWeapon-Addingtheanims">Adding the anims</h2>
+<h3 id="CustomWeapon-Addingtheanims">Adding the anims</h3>
 <p>
   Now scroll to 'xanim' and press New Entry. Give it a name representative to
   what it is an animation of, for example, viewmodel_gunname_reload_empty.
@@ -294,7 +294,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
   <strong>relative</strong>
   . Now select PC Convert -&gt; Current Asset Only.
 </p>
-<h1 id="CustomWeapon-WeaponFile">Weapon File</h1>
+<h2 id="CustomWeapon-WeaponFile">Weapon File</h2>
 <p>
   Now you must create a weapon file for your gun. You can use
   <a
@@ -306,7 +306,7 @@ dateCreated: 2024-02-04T15:25:48.480Z
   xmodel, and the value for the key of your desired anim to your anim name. Add
   the weapon file to mods/mapname/weapons/sp.
 </p>
-<h1 id="CustomWeapon-CSVs&amp;IWD">CSVs &amp; IWD</h1>
+<h2 id="CustomWeapon-CSVs&amp;IWD">CSVs &amp; IWD</h2>
 <p>
   In order for your xmodel and xanim to show in-game, you must include them in
   fastfiles. Open Launcher and go to the Mod tab. Select your mod from the list

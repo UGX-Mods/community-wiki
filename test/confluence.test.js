@@ -63,4 +63,13 @@ test('createPrivacyYoutubeEmbed uses youtube-nocookie', () => {
     );
   }
   assert.equal(createPrivacyYoutubeEmbed(''), '');
+  // other hosts are not rewritten
+  assert.match(
+    createPrivacyYoutubeEmbed('https://wwwXyoutube.com/embed/abc'),
+    /src="https:\/\/wwwXyoutube\.com\/embed\/abc"/,
+  );
+  assert.match(
+    createPrivacyYoutubeEmbed('https://notyoutube.com.evil.example/embed/abc'),
+    /src="https:\/\/notyoutube\.com\.evil\.example\/embed\/abc"/,
+  );
 });

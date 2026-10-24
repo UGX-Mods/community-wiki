@@ -8,22 +8,63 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:26:07.062Z
 -->
 
-<p>dbPowerAmp</p>
-<p>Change the Hz to 16</p>
-<p>streamed sounds (from iwd) do not count towards 1600 limit</p>
-<p>aliases do not count towards 1600 limit, only sound files themselves.</p>
-<h1 id="GuidetoSoundsandSoundaliases-Definitions">Definitions</h1>
-<h2 id="GuidetoSoundsandSoundaliases-Soundalias">Soundalias</h2>
+<div class="banner banner-info">
+  <img
+    src="/attachments/icons/information-outline.png"
+    alt=""
+    class="banner-icon" />
+  <p class="banner-title">Sound limit</p>
+  <div class="banner-body">
+    <p>
+      Only sound files count towards the limit of 1600 sounds. Soundaliases and
+      streamed sounds (from an iwd) do not count.
+    </p>
+  </div>
+</div>
+<h2 id="GuidetoSoundsandSoundaliases-Definitions">Definitions</h2>
+<h3 id="GuidetoSoundsandSoundaliases-Soundalias">Soundalias</h3>
 <p>
   A soundalias is an alias which points to a sound file. You can have multiple
   soundaliases that point to the same sound file. Soundaliases allow you to
   apply manipulations to the soundfile such as volume/pitch change.
 </p>
-<h2 id="GuidetoSoundsandSoundaliases-Compression">Compression</h2>
-<h2 id="GuidetoSoundsandSoundaliases-Conversion">Conversion</h2>
-<h1 id="GuidetoSoundsandSoundaliases-CommonMisconceptions">
+<h3 id="GuidetoSoundsandSoundaliases-Compression">Compression</h3>
+<h3 id="GuidetoSoundsandSoundaliases-Conversion">Conversion</h3>
+<p>
+  Convert your sounds to
+  <strong>WAV, 16-bit PCM, 44100 Hz</strong>
+  before you add them to your mod. The free audio editor
+  <a href="https://www.audacityteam.org/" target="_blank">Audacity</a>
+  is the easiest way to do this:
+</p>
+<ol>
+  <li>
+    Open the sound file with
+    <em>File &gt; Open</em>
+    .
+  </li>
+  <li>
+    Choose
+    <em>File &gt; Export Audio</em>
+    .
+  </li>
+  <li>
+    Set the format to
+    <em>WAV (Microsoft)</em>
+    , the sample rate to
+    <em>44100 Hz</em>
+    and the encoding to
+    <em>Signed 16-bit PCM</em>
+    .
+  </li>
+  <li>
+    Clear the metadata (tags) before saving, they can cause issues when the
+    sound is converted by the mod tools.
+  </li>
+</ol>
+<h2 id="GuidetoSoundsandSoundaliases-CommonMisconceptions">
   Common Misconceptions
-</h1>
+</h2>
 <ul>
   <li>
     &quot;I can just copy/paste soundalias lines from one file to another and
@@ -38,11 +79,11 @@ dateCreated: 2024-02-04T15:26:07.062Z
     time to determine the correct settings for your sound!
   </li>
 </ul>
-<h1 id="GuidetoSoundsandSoundaliases-Soundaliases">Soundaliases</h1>
-<h2 id="GuidetoSoundsandSoundaliases-Fileformat">File format</h2>
-<h3 id="GuidetoSoundsandSoundaliases-HeaderLine">Header Line</h3>
-<h3 id="GuidetoSoundsandSoundaliases-AliasLine">Alias Line</h3>
-<h3 id="GuidetoSoundsandSoundaliases-CommentingLines">Commenting Lines</h3>
+<h2 id="GuidetoSoundsandSoundaliases-Soundaliases">Soundaliases</h2>
+<h3 id="GuidetoSoundsandSoundaliases-Fileformat">File format</h3>
+<h4 id="GuidetoSoundsandSoundaliases-HeaderLine">Header Line</h4>
+<h4 id="GuidetoSoundsandSoundaliases-AliasLine">Alias Line</h4>
+<h4 id="GuidetoSoundsandSoundaliases-CommentingLines">Commenting Lines</h4>
 <p>
   &quot;# If the text in the first column of a row starts with a # character,
   the row is ignored&quot;,,&quot;If the first column for a row is blank, then
@@ -63,57 +104,57 @@ dateCreated: 2024-02-04T15:26:07.062Z
     <br />
     &quot;# You can leave out keys, but the &quot;&quot;name&quot;&quot; and
     &quot;&quot;file&quot;&quot; keys must always be present.&quot;,,
-    <h2 id="GuidetoSoundsandSoundaliases-AliasOptions">Alias Options</h2>
-    <h3 id="GuidetoSoundsandSoundaliases-Name">Name</h3>
+    <h3 id="GuidetoSoundsandSoundaliases-AliasOptions">Alias Options</h3>
+    <h4 id="GuidetoSoundsandSoundaliases-Name">Name</h4>
     ,name,name of the alias that is used to play this sound (required)
   </li>
 </ol>
-<h3 id="GuidetoSoundsandSoundaliases-Sequence">Sequence</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Sequence">Sequence</h4>
 <p>
   ,sequence,&quot;used to uniquely identify alias entries when more than one
   sound goes to an alias, used only to catch unwanted duplicates (default =
   0)&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-File">File</h3>
+<h4 id="GuidetoSoundsandSoundaliases-File">File</h4>
 <p>,file,the name of the file that contains the sound data (required)</p>
-<h3 id="GuidetoSoundsandSoundaliases-Volume">Volume</h3>
-<h4 id="GuidetoSoundsandSoundaliases-Min">Min</h4>
+<h4 id="GuidetoSoundsandSoundaliases-Volume">Volume</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Min">Min</h5>
 <p>,vol_min,&quot;0 is silent, 1 is full volume (default = 1)&quot;</p>
-<h4 id="GuidetoSoundsandSoundaliases-Max">Max</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Max">Max</h5>
 <p>
   ,vol_max,&quot;0 is silent, 1 is full volume (default = same as vol_min)&quot;
 </p>
-<h4 id="GuidetoSoundsandSoundaliases-Modulation">Modulation</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Modulation">Modulation</h5>
 <p>
   ,vol_mod,&quot;blank causes no effect on vol_min and vol_max, otherwise the
   string must match a string in the volumemodgroups.def file and the value in
   that file corresponding to that string will be used to adjust vol_min and
   vol_max, clamped to the valid range&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Pitch">Pitch</h3>
-<h4 id="GuidetoSoundsandSoundaliases-Min.1">Min</h4>
+<h4 id="GuidetoSoundsandSoundaliases-Pitch">Pitch</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Min.1">Min</h5>
 <p>
   ,pitch_min,&quot;1 is normal playback, 2 is twice as fast, 0.5 is half as fast
   (default = 1)&quot;
 </p>
-<h4 id="GuidetoSoundsandSoundaliases-Max.1">Max</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Max.1">Max</h5>
 <p>
   ,pitch_max,&quot;1 is normal playback, 2 is twice as fast, 0.5 is half as fast
   (default = same as pitch_min)&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Distance">Distance</h3>
-<h4 id="GuidetoSoundsandSoundaliases-Min.2">Min</h4>
+<h4 id="GuidetoSoundsandSoundaliases-Distance">Distance</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Min.2">Min</h5>
 <p>
   ,dist_min,&quot;within this distance in inches, the sound is always full
   volume (default = 120)&quot;
 </p>
-<h4 id="GuidetoSoundsandSoundaliases-Max.2">Max</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Max.2">Max</h5>
 <p>
   ,dist_max,&quot;outside this distance in inches, the sound is not started. If
   left blank or set to 0, the sound will play from any distance. This does not
   affect sound volume falloff.&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-BusTypes">Bus Types</h3>
+<h4 id="GuidetoSoundsandSoundaliases-BusTypes">Bus Types</h4>
 <p>
   ,bus,&quot;auto, menu, weapon, voice, item, body, local, music, announcer
   (default = auto)&quot;
@@ -167,62 +208,62 @@ dateCreated: 2024-02-04T15:26:07.062Z
   <br />
   reload,0.94,unrestricted,pause,,,,,sfx
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-SoundTypes">Sound Types</h3>
+<h4 id="GuidetoSoundsandSoundaliases-SoundTypes">Sound Types</h4>
 <p>
   ,type,primed (a streamed sound which gets primed on some platforms) / streamed
   / loaded (default = loaded)
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Probability">Probability</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Probability">Probability</h4>
 <p>
   ,probability,weight to use for the weighted probability of playing this sound
   instead of another sound (default = 1)
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Spatialization">Spatialization</h3>
-<h3 id="GuidetoSoundsandSoundaliases-Looping">Looping</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Spatialization">Spatialization</h4>
+<h4 id="GuidetoSoundsandSoundaliases-Looping">Looping</h4>
 <p>
   ,loop,&quot;whether this sound is &quot;&quot;looping&quot;&quot; or
   &quot;&quot;nonlooping&quot;&quot; (default =
   &quot;&quot;nonlooping&quot;&quot;)&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Master/Slave">Master/Slave</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Master/Slave">Master/Slave</h4>
 <p>
   ,masterslave,&quot;if &quot;&quot;master&quot;&quot;, this is a master sound.
   If a number, then this sound's volume will be multiplied by that number (a
   percentage between 0 and 1) any master sound is playing. If blank, then
   neither master nor slave.&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Loadspec(Groups)">Loadspec (Groups)</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Loadspec(Groups)">Loadspec (Groups)</h4>
 <p>
   ,loadspec,&quot;space-separated list of which maps should use this alias; eg,
   &quot;&quot;burnville dawnville&quot;&quot;. If blank, the alias is used on
   all maps.&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Compression.1">Compression</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Compression.1">Compression</h4>
 <p>
   ,compression,&quot;a string corresponding to an entry in
   &quot;&quot;XMAUpdate.tbl&quot;&quot; which is used to determine compression
   by XMAUpdate.exe&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-SecondaryAliasName">
+<h4 id="GuidetoSoundsandSoundaliases-SecondaryAliasName">
   Secondary Alias Name
-</h3>
+</h4>
 <p>
   ,secondaryaliasname,&quot;defined the name of an additional sound alias to
   play in addition to the current alias being played. Note that it is an error
   for the secondaryalias to also define a secondaryaliasname (eg, if B is a
   secondaryalias of A, B is not allowed to have its own secondaryalias).&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-VolumeFall-offCurve">
+<h4 id="GuidetoSoundsandSoundaliases-VolumeFall-offCurve">
   Volume Fall-off Curve
-</h3>
+</h4>
 <p>
   ,volumefalloffcurve,if blank uses the linear curve which can not be changed. A
   string 'XXXX' corresponds to the curve defined by the file
   'soundaliases/XXXX.vfcurve'
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-ReverbFall-offCurve">
+<h4 id="GuidetoSoundsandSoundaliases-ReverbFall-offCurve">
   Reverb Fall-off Curve
-</h3>
+</h4>
 <p>
   default
   ,0,1,0.142857,0.979592,0.285714,0.918367,0.428571,0.816327,0.571429,0.673469,0.714286,0.489796,0.857143,0.265306,1,0
@@ -291,13 +332,13 @@ dateCreated: 2024-02-04T15:26:07.062Z
   ,0.231445,0.571429 ,0.350464,0.428571 ,0.518066,0.285714 ,0.804688,0.142857
   ,1.000000,0.000000
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-StartDelay">Start Delay</h3>
+<h4 id="GuidetoSoundsandSoundaliases-StartDelay">Start Delay</h4>
 <p>
   ,volumefalloffcurve,if blank uses the linear curve which can not be changed. A
   string 'XXXX' corresponds to the curve defined by the file
   'soundaliases/XXXX.vfcurve'
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-SpeakerMap">Speaker Map</h3>
+<h4 id="GuidetoSoundsandSoundaliases-SpeakerMap">Speaker Map</h4>
 <p>
   ,speakermap,if blank uses the default speakermappings which cannot be changed.
   A string 'XXXX' corresponds to the speakermap defined by the file
@@ -511,7 +552,7 @@ dateCreated: 2024-02-04T15:26:07.062Z
   <br />
   music_rear,2,6,1,0,0,0,0,0,0.9
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Reverb">Reverb</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Reverb">Reverb</h4>
 <p>
   ,reverb,&quot;blank means the alias is affected normally by wet and dry
   levels, &quot;&quot;fulldrylevel&quot;&quot; forces the alias to use a full
@@ -631,18 +672,18 @@ dateCreated: 2024-02-04T15:26:07.062Z
   <br />
   SEWERPIPE_subway,-1000,-600,0,2.6,0.14,-300,0.014,400,0.021,80,60,5000
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-LFEPercentage">LFE Percentage</h3>
+<h4 id="GuidetoSoundsandSoundaliases-LFEPercentage">LFE Percentage</h4>
 <p>
   ,lfe percentage,this determines what percentage of the highest calculated
   spatialized speaker volume should be passed to the LFE. blank means no LFE for
   the sound
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-CenterPercentage">Center Percentage</h3>
+<h4 id="GuidetoSoundsandSoundaliases-CenterPercentage">Center Percentage</h4>
 <p>
   ,center percentage,this determines what percentage of the volume should be
   redirected to the center channel (equal percentage taken from all speakers).
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Platform">Platform</h3>
+<h4 id="GuidetoSoundsandSoundaliases-Platform">Platform</h4>
 <p>
   ,platform,&quot;used by XMAUpdate to determine whether the alias should be
   processed for a particular platform. If blank, process for all platforms.
@@ -650,26 +691,26 @@ dateCreated: 2024-02-04T15:26:07.062Z
   !PC will exclude alias from PC but include in all other platforms. PC will
   only include alias for PC. !PC XB is invalid.&quot;
 </p>
-<h3 id="GuidetoSoundsandSoundaliases-Envelope">Envelope</h3>
-<h4 id="GuidetoSoundsandSoundaliases-Min.3">Min</h4>
+<h4 id="GuidetoSoundsandSoundaliases-Envelope">Envelope</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Min.3">Min</h5>
 <p>
   ,envelop_min,any sounds within this distance of the listener will use the full
   envelop percentage,,,,,,,,,,,,,,,,,,,,,,,,,
 </p>
-<h4 id="GuidetoSoundsandSoundaliases-Max.3">Max</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Max.3">Max</h5>
 <p>
   ,envelop_max,sounds between enevlop_min and envelop_max use a fraction of the
   envelop percentage,,,,,,,,,,,,,,,,,,,,,,,,,
 </p>
-<h4 id="GuidetoSoundsandSoundaliases-Percentage">Percentage</h4>
+<h5 id="GuidetoSoundsandSoundaliases-Percentage">Percentage</h5>
 <p>
   ,envelop percentage,amount of omnidirectionality to
   apply,,,,,,,,,,,,,,,,,,,,,,,,,
 </p>
-<h1 id="GuidetoSoundsandSoundaliases-Sounds">Sounds</h1>
-<h2 id="GuidetoSoundsandSoundaliases-CompressionMethods">
+<h2 id="GuidetoSoundsandSoundaliases-Sounds">Sounds</h2>
+<h3 id="GuidetoSoundsandSoundaliases-CompressionMethods">
   Compression Methods
-</h2>
+</h3>
 <p>By default, MODSound is going to produce only uncompressed sound.</p>
 <p>If you want to enable compressed sound, here is what you need to do:</p>
 <p>

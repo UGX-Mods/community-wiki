@@ -41,19 +41,22 @@ dateCreated: 2024-02-04T15:26:11.024Z
   This is a guide to using the hideTags option with CoD4 Viewhands in CoD weapon
   files.
 </p>
-<h1 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Overview">Overview</h1>
+<h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Overview">Overview</h2>
 <p>
   The hideTags option is for hiding meshes which are bound to tags (joints) on
   your gun. For instance, typically IW and Treyarch export their MP viewmodel
   with every single attachment placed on it at once (see Fig 1).
   <br />
 
-  <img height="250" src="https://i.imgur.com/MTh1ptR.png" alt />
+  <img
+    height="250"
+    src="/attachments/modding/waw/maya/guide-to-hidetags-with-cod4-viewhands-in-cod5/overview.png"
+    alt />
 </p>
 <p>
   <em><strong>Figure 1</strong></em>
 </p>
-<h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Background">Background</h2>
+<h3 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Background">Background</h3>
 <p>
   If you wanted a Thompson with only the Aperture Sight, one might accomplish
   this by
@@ -71,12 +74,12 @@ dateCreated: 2024-02-04T15:26:11.024Z
     hideTags on the original mp model!
   </strong>
 </p>
-<h1 id="GuidetohideTagswithCoD4ViewhandsinCoD5-UsinghideTags">
+<h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-UsinghideTags">
   Using hideTags
-</h1>
-<h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Findingthexmodelpartsfile">
-  Finding the xmodelparts file
 </h2>
+<h3 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Findingthexmodelpartsfile">
+  Finding the xmodelparts file
+</h3>
 <p>
   First, you will need to know what tags the weapon viewmodel rig contains.
   There are a couple programs that will generate a list for you, but in this
@@ -102,7 +105,9 @@ dateCreated: 2024-02-04T15:26:11.024Z
   or memorize it. See Fig. 2.
 </p>
 <p>
-  <img alt="Figure 2" src="https://i.imgur.com/oKuEjFU.png" />
+  <img
+    alt="Figure 2"
+    src="/attachments/modding/waw/maya/guide-to-hidetags-with-cod4-viewhands-in-cod5/finding-the-xmodelparts-file.png" />
 </p>
 <p>
   <strong><em>Figure 2</em></strong>
@@ -119,9 +124,9 @@ dateCreated: 2024-02-04T15:26:11.024Z
     .
   </li>
 </ul>
-<h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Findingthetagslist">
+<h3 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Findingthetagslist">
   Finding the tags list
-</h2>
+</h3>
 <p>
   After you open the xmodelparts file with
   <code>Notepad</code>
@@ -130,14 +135,16 @@ dateCreated: 2024-02-04T15:26:11.024Z
   highlighted in yellow for emphasis.
   <br />
 
-  <img alt="Figure 3" src="https://i.imgur.com/tI518Fg.png" />
+  <img
+    alt="Figure 3"
+    src="/attachments/modding/waw/maya/guide-to-hidetags-with-cod4-viewhands-in-cod5/finding-the-tags-list.png" />
 </p>
 <p>
   <em><strong>Figure 3</strong></em>
 </p>
-<h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Organizingthetagslist">
+<h3 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Organizingthetagslist">
   Organizing the tags list
-</h2>
+</h3>
 <p>Now that you have the list of joint tags from the xmodelparts file,</p>
 <ul>
   <li>
@@ -172,9 +179,9 @@ tag_flash
 tag_silencer
 </code></pre>
 </div>
-<h2 id="GuidetohideTagswithCoD4ViewhandsinCoD5-UsinghideTags.1">
+<h3 id="GuidetohideTagswithCoD4ViewhandsinCoD5-UsinghideTags.1">
   Using hideTags
-</h2>
+</h3>
 <p>
   Here's the part where it gets tricky. Follow exactly what I say here and it
   will work for you. The hideTags weaponfile setting works by hiding the tag
@@ -202,9 +209,9 @@ tag_silencer
   handle hideTags properly. This is the best explanation I have at this time and
   I have not had time to prove it.
 </p>
-<h3 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Hidingthelasttaginthelist">
+<h4 id="GuidetohideTagswithCoD4ViewhandsinCoD5-Hidingthelasttaginthelist">
   Hiding the last tag in the list
-</h3>
+</h4>
 <p>
   Now if you're following my logic so far, you may ask &quot;How do I hide the
   last tag in the list? There is no tag which comes after it alphabetically in
@@ -217,10 +224,10 @@ tag_silencer
   not need to be bound to anything; it just needs to be part of the joint
   hierarchy.
 </p>
-<h3
+<h4
   id="GuidetohideTagswithCoD4ViewhandsinCoD5-Inputtingtagnamesintoweaponfiles">
   Inputting tag names into weaponfiles
-</h3>
+</h4>
 <ul>
   <li>
     Open your weaponfile using

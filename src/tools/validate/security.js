@@ -5,7 +5,8 @@ import { readPage } from '../lib/pages.js';
 import { parseHtmlContent } from '../lib/html.js';
 import { pageToHtml } from '../lib/markdown.js';
 
-const REGEX_ALLOWED_IFRAME_HOSTS = /^https:\/\/(www.youtube-nocookie.com)/i;
+// the host must end with a "/" so e.g. www.youtube-nocookie.com.evil.example does not match
+const REGEX_ALLOWED_IFRAME_HOSTS = /^https:\/\/www\.youtube-nocookie\.com\//i;
 
 /**
  * @typedef {object} SecurityIssue
