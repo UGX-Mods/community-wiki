@@ -27,6 +27,7 @@ import { renameImages } from './tools/content/rename-images.js';
 import { setAltTexts } from './tools/content/alt-texts.js';
 import { tagPages } from './tools/content/tag-pages.js';
 import { setDescriptions } from './tools/content/descriptions.js';
+import { cleanupConfluenceMarkup } from './tools/content/confluence-markup.js';
 
 const STEPS = {
   none: 'NONE',
@@ -47,6 +48,7 @@ const STEPS = {
   altTexts: 'alt-texts',
   tagPages: 'tag-pages',
   descriptions: 'descriptions',
+  confluenceMarkup: 'confluence-markup',
 };
 
 const STEP_CHOICES = [
@@ -131,6 +133,12 @@ const STEP_CHOICES = [
     name: 'Descriptions',
     description:
       'Set empty page descriptions from a JSON file (DESCRIPTIONS=path, page -> text)',
+  },
+  {
+    value: STEPS.confluenceMarkup,
+    name: 'Confluence markup',
+    description:
+      'Remove leftover Confluence wrappers, classes, macro attributes and no-op inline styles',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -255,6 +263,9 @@ async function main() {
       break;
     case STEPS.descriptions:
       errors += await setDescriptions(files);
+      break;
+    case STEPS.confluenceMarkup:
+      errors += await cleanupConfluenceMarkup(htmlFiles);
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);
