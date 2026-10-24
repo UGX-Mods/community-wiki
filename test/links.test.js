@@ -107,5 +107,14 @@ test('anchors on other pages', async () => {
   );
 });
 
-const missingAnchor =
-  'No anchor id found! (Eventually selector contains invalid characters?)';
+test('anchors with characters that are invalid in css selectors', async () => {
+  assert.deepEqual(
+    await errorsOf(
+      'Foo.html',
+      '<h2 id="Page-Windowteardown(exterior_goal)">A</h2><h2 id="Page-Whatarezones?">B</h2><a href="#Page-Windowteardown(exterior_goal)">ok</a><a href="#Page-Whatarezones?">ok</a><a href="#Page-Whatarezones%3F">ok</a>',
+    ),
+    [],
+  );
+});
+
+const missingAnchor = 'No anchor id found!';

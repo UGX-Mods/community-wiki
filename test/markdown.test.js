@@ -92,7 +92,7 @@ test('links from and to markdown pages', async (t) => {
   );
   assert.deepEqual(await errorsOf('[a](/Nope) [b](/Guide#nope)'), [
     '/Nope Not Found!',
-    '/Guide#nope No anchor id found! (Eventually selector contains invalid characters?)',
+    '/Guide#nope No anchor id found!',
   ]);
   // links in code are not links
   assert.deepEqual(
