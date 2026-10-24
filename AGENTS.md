@@ -130,7 +130,7 @@ Follow the [Wiki.js naming restrictions](https://docs.requarks.io/guide/pages#na
 
 ### AI-generated content
 
-When the main content of a page is written by AI (a new page or a rewrite), mark it for readers: add the tag `ai-generated` and this banner at the top of the body. Name the sources the text is based on. `validate` fails if only one of the two is present. Smaller AI edits (fixes, an intro sentence, a "Related pages" list) need no marking. Remove both once a maintainer has reviewed the page.
+When the main content of a page is written by AI (a new page or a rewrite), mark it for readers: add the tag `ai-generated` and this banner at the top of the body. Name the sources the text is based on. `validate` fails if only one of the two is present. Smaller AI edits (fixes, an intro sentence, a "Related pages" list) need no marking. The marking stays on the page for some time, also after a review, and is phased out later.
 
 ```html
 <div class="banner banner-note banner-ai">
