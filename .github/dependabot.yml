@@ -12,6 +12,10 @@ updates:
       default-days: 7
     # keep the exact pins in package.json (see save-exact in .npmrc)
     versioning-strategy: increase
+    ignore:
+      # the types follow the Node.js major of devEngines in package.json, bump them together
+      - dependency-name: '@types/node'
+        update-types: [version-update:semver-major]
     groups:
       # one PR for all minor & patch updates instead of one per package
       npm-minor-patch:

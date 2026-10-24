@@ -172,12 +172,10 @@ function cleanupElements(root) {
     .forEach((el) => el.remove());
   root
     .querySelectorAll('pre')
+    // the parser keeps the content of a pre as raw text, parse it to get the text
     .filter(
       (el) =>
-        !el.innerHTML
-          .replace(/<[^>]*>/g, '')
-          .replace(/&nbsp;/g, '')
-          .trim(),
+        !HTMLParser.parse(el.innerHTML).textContent.replaceAll(' ', '').trim(),
     )
     .forEach((el) => el.remove());
 }
