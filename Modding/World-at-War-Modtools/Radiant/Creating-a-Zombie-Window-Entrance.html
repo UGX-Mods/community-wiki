@@ -1,11 +1,117 @@
 <!--
 title: Creating a Zombie Window Entrance
-description: Creating a zombie window entrance in Radiant (coming soon)
+description: How to add a window barricade that zombies tear down and players rebuild
 published: true
 date: 2024-02-25T10:43:53.406Z
-tags: confluence:1146943, waw, guide, mapping
+tags: confluence:1146943, waw, guide, mapping, ai-generated
 editor: ckeditor
 dateCreated: 2024-02-04T15:25:42.884Z
 -->
 
-<p>Coming soon.</p>
+<div class="banner banner-note banner-ai">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <p class="banner-title">AI-generated content</p>
+  <div class="banner-body">
+    <p>
+      This page was written with AI from community sources and the other World
+      at War pages of this wiki and has not been reviewed by the UGX team yet.
+      It may contain mistakes. Found one?
+      <a href="https://github.com/UGX-Mods/community-wiki" target="_blank">
+        Help us improve it
+      </a>
+      .
+    </p>
+  </div>
+</div>
+<p>
+  Window entrances (barricades) are the boarded-up windows zombies tear down to
+  get into the playable area. Players can rebuild the boards for points. Zombies
+  that spawn outside always walk to the nearest window first and only look for
+  players after they have climbed through it (see
+  <a
+    href="/Modding/World-at-War-Modtools/Radiant/Creating-Zombie-and-Dog-Spawners#CreatingZombieandDogSpawners-Windowteardown(exterior_goal)">
+    Window teardown (exterior_goal)
+  </a>
+  ).
+</p>
+<h2 id="CreatingaZombieWindowEntrance-Preparation">Preparation</h2>
+<p>
+  Plan where the window goes: it connects an outside area, where the zombies
+  spawn, with a room of the playable area. Make sure the room belongs to a zone,
+  so the spawners outside are active when players are in it (see
+  <a
+    href="/Modding/World-at-War-Modtools/Radiant/Ultimate-Guide-to-Zones-in-v1_4-Maps">
+    Ultimate Guide to Zones in v1.4 Maps
+  </a>
+  ).
+</p>
+<h2 id="CreatingaZombieWindowEntrance-Cuttheopening">Cut the opening</h2>
+<p>
+  Cut a gap into the wall where the window should be, like the gap for a door.
+  The bottom of the gap is the window sill the zombies climb over.
+</p>
+<h2 id="CreatingaZombieWindowEntrance-Placethebarricadeprefab">
+  Place the barricade prefab
+</h2>
+<p>
+  The stock barricade comes as a prefab with everything a window needs (boards,
+  the goal for the zombies and the traversal for the climbing animation):
+</p>
+<ol>
+  <li>
+    Right-click in the 2D view and choose
+    <strong>misc</strong>
+    &gt;
+    <strong>prefab</strong>
+    . The prefab dialog opens in the
+    <code>_prefabs</code>
+    folder.
+  </li>
+  <li>
+    Select
+    <code>factory_barricade.map</code>
+    .
+  </li>
+  <li>
+    Move and rotate the prefab into the opening so the boards face the outside.
+  </li>
+  <li>
+    Align the top of the traverse brush of the prefab with the bottom of the
+    opening. Otherwise the hands of the zombies do not touch the sill during the
+    climbing animation.
+  </li>
+</ol>
+<p>
+  Line the opening with a few brushes as a wooden window frame, so the gap in
+  the wall looks finished.
+</p>
+<h2 id="CreatingaZombieWindowEntrance-Pathing">Pathing and spawners</h2>
+<ul>
+  <li>
+    Add path nodes outside the building, so zombies can walk from their spawners
+    to each window and away again.
+  </li>
+  <li>
+    Place the zombie spawners outside, so the zombies have to come through the
+    windows. The spawners of a zone use the targetname
+    <code>&lt;zone_name&gt;_spawners</code>
+    (see
+    <a
+      href="/Modding/World-at-War-Modtools/Radiant/Creating-Zombie-and-Dog-Spawners">
+      Creating Zombie and Dog Spawners
+    </a>
+    ).
+  </li>
+</ul>
+<p>
+  Compile the map and check in game that zombies reach the window, tear down the
+  boards and climb through, and that you can rebuild the boards.
+</p>
+<p>
+  Building for Black Ops 3? See
+  <a
+    href="/Modding/Black-Ops-3-Modtools/Mapping/Adding-Zombie-Spawners-Risers-and-Window-Barriers">
+    BO3 | Adding Zombie Spawners, Risers, and Window Barriers
+  </a>
+  .
+</p>
