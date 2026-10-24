@@ -13,7 +13,7 @@ updates:
     # keep the exact pins in package.json (see save-exact in .npmrc)
     versioning-strategy: increase
     ignore:
-      # the types follow the Node.js major of devEngines in package.json, bump them together
+      # the types follow the oldest Node.js major allowed by devEngines in package.json
       - dependency-name: '@types/node'
         update-types: [version-update:semver-major]
     groups:
