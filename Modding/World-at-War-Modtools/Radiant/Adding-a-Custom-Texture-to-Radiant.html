@@ -13,7 +13,7 @@ dateCreated: 2024-02-04T15:25:05.775Z
   work in-game.
 </p>
 <p>&nbsp;</p>
-<p></p>
+
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
 
@@ -82,124 +82,103 @@ dateCreated: 2024-02-04T15:25:05.775Z
   The ones which are not surrounded by a box will be explained later.
 </p>
 <h4 id="AddingaCustomTexturetoRadiant-GeneralSettings">General Settings</h4>
-<h4 id="AddingaCustomTexturetoRadiant-materialType">
-  <span style="font-size: 14px; line-height: 1.4285715">materialType</span>
-</h4>
+<h4 id="AddingaCustomTexturetoRadiant-materialType">materialType</h4>
 <p>
   The materialType option has to be set to match your texture. A few will be
   explained here:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <th>materialType</th>
-        <th>Explaination</th>
-      </tr>
-      <tr>
-        <td><p>2d</p></td>
-        <td>
-          <p>
-            <em>2d</em>
-            is used for flat imageswhich are commonly used as either HUD
-            overlay, Menu Background, Mission Screen, ...
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>model phong</td>
-        <td>
-          <p>
-            <em>model phong</em>
-            is used for textures on models/guns. They can't be used in Radiant
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>model unlit</td>
-        <td>
-          <em>model unlit</em>
-          <span>
-            is used for textures on models/guns. They can't be used in Radiant
-            and will not respond to lighting, meaning that the textures are
-            always bright.
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>world phong</td>
-        <td>
-          <p>
-            <em>world phong</em>
-            is used for textures used in Radiant and on Geometry. This kind of
-            textures will respond to the lighting in your map.
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>world unlit</td>
-        <td>
-          <p>
-            <span>
-              <em>world unlit</em>
-              is used for textures used in Radiant and on Geometry. This kind of
-              textures will
-              <strong>not</strong>
-              respond to lighting, meaning that the textures are always bright.
-            </span>
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th>materialType</th>
+      <th>Explaination</th>
+    </tr>
+    <tr>
+      <td><p>2d</p></td>
+      <td>
+        <p>
+          <em>2d</em>
+          is used for flat imageswhich are commonly used as either HUD overlay,
+          Menu Background, Mission Screen, ...
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>model phong</td>
+      <td>
+        <p>
+          <em>model phong</em>
+          is used for textures on models/guns. They can't be used in Radiant
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>model unlit</td>
+      <td>
+        <em>model unlit</em>
+
+        is used for textures on models/guns. They can't be used in Radiant and
+        will not respond to lighting, meaning that the textures are always
+        bright.
+      </td>
+    </tr>
+    <tr>
+      <td>world phong</td>
+      <td>
+        <p>
+          <em>world phong</em>
+          is used for textures used in Radiant and on Geometry. This kind of
+          textures will respond to the lighting in your map.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>world unlit</td>
+      <td>
+        <p>
+          <em>world unlit</em>
+          is used for textures used in Radiant and on Geometry. This kind of
+          textures will
+          <strong>not</strong>
+          respond to lighting, meaning that the textures are always bright.
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
-  <span style="line-height: 1.4285715">
-    These are the most common ones used. The other ones are barely needed, and
-    won't be explained in this tutorial. In my case I will be using &quot;world
-    phong&quot;.
-  </span>
+  These are the most common ones used. The other ones are barely needed, and
+  won't be explained in this tutorial. In my case I will be using &quot;world
+  phong&quot;.
 </p>
-<h4 id="AddingaCustomTexturetoRadiant-surfaceType">
-  <span style="line-height: 1.4285715">surfaceType</span>
-</h4>
+<h4 id="AddingaCustomTexturetoRadiant-surfaceType">surfaceType</h4>
 <p>
-  <span style="line-height: 1.4285715">
-    The surfaceType option allows you to choose the sort of impact FX played on
-    bullet impact, and also determines the sound played when you walk on it.
-    Select the one who comes closest to the material you want to create.
-  </span>
+  The surfaceType option allows you to choose the sort of impact FX played on
+  bullet impact, and also determines the sound played when you walk on it.
+  Select the one who comes closest to the material you want to create.
 </p>
-<p>
-  <span style="line-height: 1.4285715">
-    In my case I will be using the &quot;brick&quot; surfaceType.
-  </span>
-</p>
-<h4 id="AddingaCustomTexturetoRadiant-usage">
-  <span style="line-height: 1.4285715">usage</span>
-</h4>
+<p>In my case I will be using the &quot;brick&quot; surfaceType.</p>
+<h4 id="AddingaCustomTexturetoRadiant-usage">usage</h4>
 <p style="text-align: left; margin-left: 30px">
-  <span style="line-height: 1.4285715">
-    The usage category tells radiant in what group of textures this one has to
-    be placed in. This setting does not affect the texture itself, so it doesn't
-    matter which usage you set here. Make sure to remember the usage you chose
-    so you can use it in radiant!
-  </span>
+  The usage category tells radiant in what group of textures this one has to be
+  placed in. This setting does not affect the texture itself, so it doesn't
+  matter which usage you set here. Make sure to remember the usage you chose so
+  you can use it in radiant!
 </p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>
-  <span style="line-height: 1.4285715"><br /></span>
+  <br />
 </p>
 <p>
-  <span style="line-height: 1.4285715"><br /></span>
+  <br />
 </p>
 <p>
-  <span style="line-height: 1.4285715"><br /></span>
+  <br />
 </p>
-<h2 id="AddingaCustomTexturetoRadiant-Tobecontinued...">
-  <span style="line-height: 1.4285715">To be continued...</span>
-</h2>
+<h2 id="AddingaCustomTexturetoRadiant-Tobecontinued...">To be continued...</h2>
 <p>
   Credits:
   <a

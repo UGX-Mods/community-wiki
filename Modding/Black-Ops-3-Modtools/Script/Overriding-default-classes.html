@@ -58,71 +58,46 @@ dateCreated: 2024-02-04T15:32:45.284Z
     Open console and enter the command:
     <span style="color: rgb(255, 0, 0)">\gamesettings_generateconfig</span>
   </li>
+  <li>The game will hitch for a moment but now we can exit out of the game.</li>
   <li>
-    <span>
-      The game will hitch for a moment but now we can exit out of the game.
+    Go to your Black Ops III root directory and open the folder
+    <span style="color: rgb(255, 0, 0)">local_storage .</span>
+  </li>
+  <li>
+    <span style="color: rgb(255, 0, 0)">
+      Find the most recent created
+      <span style="color: rgb(255, 0, 0)">.cfg</span>
+      file (usually it's the one ending in _v55 but that can be changed) and
+      open it.
     </span>
   </li>
   <li>
-    <span>
-      Go to your Black Ops III root directory and open the folder
-      <span style="color: rgb(255, 0, 0)">
-        local_storage
-        <span>.</span>
-      </span>
+    <span style="color: rgb(255, 0, 0)">
+      Inside you'll see what makes the game set all the classes for you and
+      various other modified settings from the Custom Games screen.
     </span>
   </li>
   <li>
-    <span>
-      <span style="color: rgb(255, 0, 0)">
-        <span>
-          Find the most recent created
-          <span style="color: rgb(255, 0, 0)">.cfg</span>
-          file (usually it's the one ending in _v55 but that can be changed) and
-          open it.
-        </span>
-      </span>
-    </span>
+    What we need to do right now is cut out the second column:
+    <strong>
+      <span style="color: rgb(255, 0, 0)">gametypesettings</span>
+    </strong>
+    <span style="color: rgb(255, 0, 0)">&nbsp;</span>
+    use Notepad++ to remove it all for you or use Search &amp; Replace in your
+    text editor.
   </li>
   <li>
-    <span>
-      <span style="color: rgb(255, 0, 0)">
-        <span>
-          Inside you'll see what makes the game set all the classes for you and
-          various other modified settings from the Custom Games screen.
-        </span>
-      </span>
-    </span>
+    Now our lines should be similar to this:gametype_setting cacloadouts 0
+    customclass 0 primaryattachment1 0
   </li>
   <li>
-    <span>
-      What we need to do right now is cut out the second column:
-      <strong>
-        <span style="color: rgb(255, 0, 0)">gametypesettings</span>
-      </strong>
-      <span style="color: rgb(255, 0, 0)">&nbsp;</span>
-      use Notepad++ to remove it all for you or use Search &amp; Replace in your
-      text editor.
-    </span>
+    Copy the entirety of the config to your own
+    <span style="color: rgb(255, 0, 0)">mp_mod.cfg</span>
+    (if you don't have this file create it in the root of your mod).
   </li>
   <li>
-    <span>
-      Now our lines should be similar to this:gametype_setting cacloadouts 0
-      customclass 0 primaryattachment1 0
-    </span>
-  </li>
-  <li>
-    <span>
-      Copy the entirety of the config to your own
-      <span style="color: rgb(255, 0, 0)">mp_mod.cfg</span>
-      (if you don't have this file create it in the root of your mod).
-    </span>
-  </li>
-  <li>
-    <span>
-      Now launch the game and make sure to load the mod from the Main Menu as of
-      now the config isn't executed from command line/Launcher (this has been
-      fixed by Treyarch and will be included in a later update).
-    </span>
+    Now launch the game and make sure to load the mod from the Main Menu as of
+    now the config isn't executed from command line/Launcher (this has been
+    fixed by Treyarch and will be included in a later update).
   </li>
 </ol>
