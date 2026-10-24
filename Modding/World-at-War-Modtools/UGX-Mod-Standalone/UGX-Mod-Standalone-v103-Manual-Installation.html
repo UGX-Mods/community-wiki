@@ -29,12 +29,10 @@ dateCreated: 2024-02-04T15:34:56.186Z
         href="/Modding/World-at-War-Modtools/Resources-and-Links/Modtools-Installation-Guide#ModtoolsInstallationGuide-InstallingtheFiles">
         &quot;Installing the Files&quot;
       </a>
-      <span class="confluence-link"> </span>
-      in the
-      <span class="confluence-link"> </span>
+        in the  
       <a
         href="/Modding/World-at-War-Modtools/Resources-and-Links/Modtools-Installation-Guide">
-        <span class="confluence-link">Modtools Installation Guide</span>
+        Modtools Installation Guide
       </a>
       .
     </p>
@@ -72,9 +70,7 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <button class="expandable-button" type="button">
     Click here to expand the Table of Contents
   </button>
-  <div class="expandable-content">
-    <p></p>
-  </div>
+  <div class="expandable-content"></div>
 </div>
 <p>&nbsp;</p>
 <h2 id="UGXModStandalonev1-0-3ManualInstallation-Preparation">Preparation</h2>
@@ -197,9 +193,7 @@ dateCreated: 2024-02-04T15:34:56.186Z
   </code>
 </p>
 <p>
-  <em>
-    <span>Fig. 1 UGX Mod Standalone extracted to a folder somewhere.</span>
-  </em>
+  <em>Fig. 1 UGX Mod Standalone extracted to a folder somewhere.</em>
 </p>
 <p>
   You will notice that there are 5 folders and a zip file contained within the
@@ -239,7 +233,7 @@ dateCreated: 2024-02-04T15:34:56.186Z
           file called mapname_ignore.csv. This file, like your mapname folder,
           needs to be renamed to your map. For this guide's example, I will need
           to name this file ugx_mod_install_ignore.csv.
-          <strong style="line-height: 1.42857">
+          <strong>
             This step is very important, please ensure you have done it
             correctly as I just have.
           </strong>
@@ -265,12 +259,10 @@ dateCreated: 2024-02-04T15:34:56.186Z
 
   <div class="banner-body">
     <p>
-      <span>
-        Do not prefix your mapname with &quot;ugx_&quot;. UGX uses this prefix
-        for official maps and if a non-ugx map uses this prefix then it becomes
-        confusing to users. If you want to prefix your map with a ugx-related
-        word, use &quot;ugxm_&quot;.
-      </span>
+      Do not prefix your mapname with &quot;ugx_&quot;. UGX uses this prefix for
+      official maps and if a non-ugx map uses this prefix then it becomes
+      confusing to users. If you want to prefix your map with a ugx-related
+      word, use &quot;ugxm_&quot;.
     </p>
   </div>
 </div>
@@ -286,17 +278,15 @@ dateCreated: 2024-02-04T15:34:56.186Z
 
   <div class="banner-body">
     <p>
-      <span>
-        <strong>Warning:</strong>
-        You are responsible for backing up any custom work you have done that
-        may be overwritten by the installation of UGX Mod. UGX Mod will not
-        overwrite anything important for a relatively stock map, but mappers and
-        modders should exercise caution by checking for file conflicts before
-        attempting this installation. You have been warned - UGX Mods is not
-        responsible for any damage done to your installation due to user error
-        or negligence. If you have a problem installing UGX Mod, please post a
-        topic or reply on our forum for help.
-      </span>
+      <strong>Warning:</strong>
+      You are responsible for backing up any custom work you have done that may
+      be overwritten by the installation of UGX Mod. UGX Mod will not overwrite
+      anything important for a relatively stock map, but mappers and modders
+      should exercise caution by checking for file conflicts before attempting
+      this installation. You have been warned - UGX Mods is not responsible for
+      any damage done to your installation due to user error or negligence. If
+      you have a problem installing UGX Mod, please post a topic or reply on our
+      forum for help.
     </p>
   </div>
 </div>
@@ -318,13 +308,12 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <div class="banner-body">
     <p>
       <strong>Warning:</strong>
-      <span>
-        If you were not warned about replacing or merging any files or folders,
-        you did not paste your files into the correct directory! Pressing Ctrl+Z
-        will un-do the latest file action, so hopefully you can use this to
-        clean up your mistake. Otherwise you need to delete all the pasted files
-        and try again.
-      </span>
+
+      If you were not warned about replacing or merging any files or folders,
+      you did not paste your files into the correct directory! Pressing Ctrl+Z
+      will un-do the latest file action, so hopefully you can use this to clean
+      up your mistake. Otherwise you need to delete all the pasted files and try
+      again.
     </p>
   </div>
 </div>
@@ -344,51 +333,47 @@ dateCreated: 2024-02-04T15:34:56.186Z
   you prefer. At the top of the main.menu file, you will see 3 configurable user
   settings for your map:
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <td>
-          <strong>UGX_USER_MAPNAME</strong>
-        </td>
-        <td>
-          This should be set to the same name you named the mapname folder in
-          <a href="#UGXModStandalonev1-0-3ManualInstallation-Installation">
-            section 2
-          </a>
-          of this guide. It is also the name you use to boot the map from the
-          in-game console. If your mod folder name is different from the name
-          you use to boot the map (which is unlikely but still works fine), use
-          the name of the map , not the of the folder. For this example I will
-          need to use &quot;ugx_mod_install&quot;.
-        </td>
-      </tr>
-      <tr>
-        <td><strong>UGX_USER_MAPNAME_STRING</strong></td>
-        <td>
-          <span>
-            This should be set to the &quot;official&quot; name of your map. For
-            this example I will be using &quot;UGX Mod Test Installation&quot;,
-            but you may set it to whatever you like.
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td><strong>UGX_ENABLE_CONSOLE</strong></td>
-        <td>
-          <span>
-            Setting this to 1 will enable use of the in-game console. Setting it
-            to 0 will effectively disable the in-game console. This should be
-            set to 1 while developing your map. Once map development is
-            finished, I would suggest setting this back to 0 before release -
-            otherwise cheating will be very easy on your map, which will make
-            player ranks less valuable and meaningful.
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <strong>UGX_USER_MAPNAME</strong>
+      </td>
+      <td>
+        This should be set to the same name you named the mapname folder in
+        <a href="#UGXModStandalonev1-0-3ManualInstallation-Installation">
+          section 2
+        </a>
+        of this guide. It is also the name you use to boot the map from the
+        in-game console. If your mod folder name is different from the name you
+        use to boot the map (which is unlikely but still works fine), use the
+        name of the map , not the of the folder. For this example I will need to
+        use &quot;ugx_mod_install&quot;.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>UGX_USER_MAPNAME_STRING</strong></td>
+      <td>
+        This should be set to the &quot;official&quot; name of your map. For
+        this example I will be using &quot;UGX Mod Test Installation&quot;, but
+        you may set it to whatever you like.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>UGX_ENABLE_CONSOLE</strong></td>
+      <td>
+        Setting this to 1 will enable use of the in-game console. Setting it to
+        0 will effectively disable the in-game console. This should be set to 1
+        while developing your map. Once map development is finished, I would
+        suggest setting this back to 0 before release - otherwise cheating will
+        be very easy on your map, which will make player ranks less valuable and
+        meaningful.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="UGXModStandalonev1-0-3ManualInstallation-MenuandLoadscreenImages">
   Menu and Loadscreen Images
 </h3>
@@ -401,19 +386,18 @@ dateCreated: 2024-02-04T15:34:56.186Z
 <p>
   Navigate to
   <strong>root/texture_assets/ugx_mod</strong>
-  <span>
-    and
-    <strong>&nbsp;</strong>
-  </span>
+
+  and
+  <strong>&nbsp;</strong>
+
   Open
   <strong>ugx_mod_main_menu_template.psd</strong>
-  <span>, If you are not using Photoshop, open</span>
+  , If you are not using Photoshop, open
   <strong>non-photoshop_main_menu.png</strong>
-  <span>
-    . The PNG will allow you to add a background to the text. I will not cover
-    this in the guide, as it is very basic. Instead I will show Photoshop
-    editing since I would hope that is what most people choose to do.
-  </span>
+
+  . The PNG will allow you to add a background to the text. I will not cover
+  this in the guide, as it is very basic. Instead I will show Photoshop editing
+  since I would hope that is what most people choose to do.
 </p>
 <div class="banner banner-note">
   <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
@@ -439,7 +423,7 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <li>
     File&gt; Save as a JPG image.
     <strong>Overwrite the existing JPG template file</strong>
-    <span>. Close the file.</span>
+    . Close the file.
   </li>
   <li>Open the JPG you just saved.</li>
   <li>Resize the image to 2048x2048. Stretching will occur, ignore that.</li>
@@ -460,7 +444,7 @@ dateCreated: 2024-02-04T15:34:56.186Z
     <p>
       Save it the same way you saved the first template,
       <strong>overwriting the loadscreen JPG this time</strong>
-      <span>.</span>
+      .
     </p>
   </li>
 </ul>
@@ -506,24 +490,21 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <li>
     Naviagate to
     <strong>root/raw/images</strong>
-    <span>
-      and sort by Date Modified. At the top of the list you should see two
-      files,
-    </span>
+
+    and sort by Date Modified. At the top of the list you should see two files,
+
     <strong>ugx_mod_loadscreen_template.iwi</strong>
-    <span>and</span>
+    and
     <strong>ugx_mod_menu_template.iwi</strong>
-    <span>.</span>
+    .
   </li>
   <li><p>Select those two files and copy them to your clipboard.</p></li>
   <li>
     <p>
       Navigate to
       <strong>root/mods/mapname/images</strong>
-      <span>
-        . and paste the files. Press Copy and Replace to overwrite the old
-        files.
-      </span>
+
+      . and paste the files. Press Copy and Replace to overwrite the old files.
     </p>
   </li>
 </ul>
@@ -537,9 +518,9 @@ dateCreated: 2024-02-04T15:34:56.186Z
     <p>
       Select your map from the dropdown list.
       <strong>Ensure that only &quot;Build IWD&quot; is checked</strong>
-      <span>, and in the right-side box</span>
+      , and in the right-side box
       <strong>verify that the new &quot;images&quot; folder is selected</strong>
-      <span>.</span>
+      .
     </p>
   </li>
   <li><p>Press Build MOD and wait for the process to complete.</p></li>
@@ -547,7 +528,7 @@ dateCreated: 2024-02-04T15:34:56.186Z
     <p>
       Select ugx_mod from the dropdown list.
       <strong>Ensure that only Build FF is checked</strong>
-      <span>.</span>
+      .
     </p>
   </li>
   <li>Press Build MOD.</li>
@@ -567,29 +548,25 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <li>
     Open
     <strong>root/mods/mapname</strong>
-    <span>(which in my case is ugx_mod_install).</span>
+    (which in my case is ugx_mod_install).
   </li>
   <li>
-    <span>&nbsp;</span>
-    Double-click
+    &nbsp; Double-click
     <strong>ugx_mod.iwd</strong>
-    <span>
-      to open it with WinRAR. If this is not the default behavor, take the
-      necessary action to open the file with WinRAR.
-    </span>
+
+    to open it with WinRAR. If this is not the default behavor, take the
+    necessary action to open the file with WinRAR.
   </li>
   <li>
     Once the iwd is open, navigate to the
     <strong>maps folder</strong>
-    <span>and double-click the</span>
+    and double-click the
     <strong>ugx_mod_user_settings.gsc</strong>
-    <span>
-      file to open it in a
-      <a href="/Modding/World-at-War-Modtools/Script/Text-Editors">
-        Text Editor
-      </a>
-    </span>
-    <span>.</span>
+
+    file to open it in a
+    <a href="/Modding/World-at-War-Modtools/Script/Text-Editors">Text Editor</a>
+
+    .
   </li>
 </ul>
 <p>
@@ -685,14 +662,13 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <li>
     You must set the game_setting 'multiple_paps' to true in
     <strong>ugxm_user_settings.gsc</strong>
-    <span>.</span>
+    .
   </li>
   <li>
     Place multiple copies of
-    <span>
-      <strong>_prefabs/ugx_mod/ugx_moving_pap.map</strong>
-      around your map.
-    </span>
+
+    <strong>_prefabs/ugx_mod/ugx_moving_pap.map</strong>
+    around your map.
   </li>
   <li>
     For every copy of the prefab you place, you will need to stamp the prefab in
@@ -754,23 +730,20 @@ dateCreated: 2024-02-04T15:34:56.186Z
 <p>In order for the Sentry Turret powerup to work, you must:</p>
 <p>
   Place
-  <span>
-    <strong>_prefabs/ugx_mod/ugx_sentry_turret_load.map</strong>
-    in your map somewhere. I usually stick it underground somewhere, but it
-    doesn't matter where you place it.
-  </span>
+
+  <strong>_prefabs/ugx_mod/ugx_sentry_turret_load.map</strong>
+  in your map somewhere. I usually stick it underground somewhere, but it
+  doesn't matter where you place it.
 </p>
 <div class="banner banner-warning">
   <img src="/attachments/icons/alert-octagon.png" alt="" class="banner-icon" />
 
   <div class="banner-body">
     <p>
-      <span>
-        <strong>Warning:</strong>
-        If you do not place the ugx_sentry_turret_load.map prefab, the game will
-        crash as soon as the Sentry Turret powerup is grabbed! Make sure you
-        place one in your map.
-      </span>
+      <strong>Warning:</strong>
+      If you do not place the ugx_sentry_turret_load.map prefab, the game will
+      crash as soon as the Sentry Turret powerup is grabbed! Make sure you place
+      one in your map.
     </p>
   </div>
 </div>
@@ -831,30 +804,23 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <li>
     <p>
       Rename the
-      <strong style="line-height: 1.42857">ugx_project_example.cpm</strong>
-      <span style="line-height: 1.42857">
-        file to whatever your mapname is. This is just for organization's sake,
-        it does not matter what the name of the file is.
-      </span>
+      <strong>ugx_project_example.cpm</strong>
+
+      file to whatever your mapname is. This is just for organization's sake, it
+      does not matter what the name of the file is.
     </p>
   </li>
 </ul>
 <div>
-  <span style="line-height: 20px"><br /></span>
+  <br />
 </div>
 <div>
-  <span style="line-height: 20px">
-    <img
-      src="https://ugx-mods.com/wiki/images/0/07/Project_mover.png.pagespeed.ce.nHh3gC2LzD.png"
-      alt />
-  </span>
+  <img
+    src="https://ugx-mods.com/wiki/images/0/07/Project_mover.png.pagespeed.ce.nHh3gC2LzD.png"
+    alt />
 </div>
 <div>
-  <span style="line-height: 20px">
-    <em>
-      <span>Fig. 2 Example CPM File with key settings highlighted</span>
-    </em>
-  </span>
+  <em>Fig. 2 Example CPM File with key settings highlighted</em>
 </div>
 <p>
   Lastly you need to compile your UGX Mod mod.ff for the first time, since your
@@ -866,15 +832,14 @@ dateCreated: 2024-02-04T15:34:56.186Z
   <li>
     Select
     <strong>ugx_mod</strong>
-    <span>from the dropdown list.</span>
+    from the dropdown list.
   </li>
   <li>
-    <span>&nbsp;</span>
-    Check the box
+    &nbsp; Check the box
     <strong>Build mod.ff</strong>
-    <span>and</span>
+    and
     <strong>uncheck all other boxes</strong>
-    <span>.</span>
+    .
   </li>
   <li>Press the Build MOD button.</li>
 </ul>

@@ -9,7 +9,7 @@ dateCreated: 2024-02-04T15:25:03.376Z
 -->
 
 <p>&nbsp;</p>
-<p></p>
+
 <div class="banner banner-tip">
   <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
 
@@ -56,7 +56,7 @@ dateCreated: 2024-02-04T15:25:03.376Z
 </div>
 <p>&nbsp;</p>
 <p>
-  <u style="line-height: 1.42857">
+  <u>
     <strong>
       Thanks to
       <a
@@ -145,10 +145,8 @@ stringtable,mp/my_achievements.csv</code></pre>
   <div class="banner-body">
     <p>
       <strong>
-        <span style="white-space: normal">
-          I left two examples in the files so its easier to understand. You can
-          just remove / change those as you wish.
-        </span>
+        I left two examples in the files so its easier to understand. You can
+        just remove / change those as you wish.
       </strong>
     </p>
   </div>
@@ -194,113 +192,93 @@ stringtable,mp/my_achievements.csv</code></pre>
   In the following order ( the bold text between the braces refers to the
   example line above )
 </p>
-<div class="table-wrap">
-  <table class="confluenceTable">
-    <tbody>
-      <tr>
-        <td style="text-align: center">0</td>
-        <td>
-          Index
-          <em><strong>(1)</strong></em>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>
-          <span style="white-space: normal">
-            Achievement NAME ( see explanation in the previous step )
-            <em><strong>(kills_all)</strong></em>
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>
-          <span style="white-space: normal">
-            Achievement REF ( see explanation in the previous step )
-            <em><strong>(kills_all_1)</strong></em>
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>
-          <span style="white-space: normal">
-            Achievement description: The line that will show up on screen once
-            the player unlocks the achievement, if you dont want a this fill in:
-            none
-            <em><strong>(Kill 10 Zombies)</strong></em>
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>
-          <p style="margin-top: 10px; white-space: normal">
-            Stat number:
-            <em><strong>(2105)</strong></em>
-            THIS ONE IS IMPORTANT: there's a few rules to follow with these
-          </p>
-          <p style="white-space: normal">
-            You make up the numbers yourself, but keep these rules:
-          </p>
-          <p style="white-space: normal">
-            <span class="Apple-tab-span" style="white-space: pre">&nbsp;</span>
-            - start counting from 2100
-          </p>
-          <p style="white-space: normal">
-            <span class="Apple-tab-span" style="white-space: pre">&nbsp;</span>
-            - increase by 5, so go from 2100 to 2105 to 2110 etc
-          </p>
-          <p style="white-space: normal">
-            <span class="Apple-tab-span" style="white-space: pre">&nbsp;</span>
-            - each achievement that has the same achievement NAME should have
-            the same stat number ( ...they are related to the same stat! )
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>
-          <span style="white-space: normal">
-            The amount needed to complete this achievement, so in the example:
-            Kill 10 zombies. The amount will be 10.
-            <em><strong>(10)</strong></em>
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>
-          <span style="white-space: normal">
-            If you want the players to recieve points for unlocking this
-            achievement, add the amount of points here. Otherwise fill in: none
-            <em><strong>(250)</strong></em>
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>
-          <span style="white-space: normal">
-            If you want a shader to appear on screen for this achievement add it
-            here ( the material name ). Otherwise fill in: none
-          </span>
-          <em>
-            <strong>
-              <span style="white-space: normal">
-                ( specialty_juggernaut_zombies )
-              </span>
-            </strong>
-          </em>
-          <span
-            class="Apple-tab-span"
-            style="line-height: 1.42857; white-space: pre"></span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td>
+        Index
+        <em><strong>(1)</strong></em>
+      </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>
+        Achievement NAME ( see explanation in the previous step )
+        <em><strong>(kills_all)</strong></em>
+      </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>
+        Achievement REF ( see explanation in the previous step )
+        <em><strong>(kills_all_1)</strong></em>
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>
+        Achievement description: The line that will show up on screen once the
+        player unlocks the achievement, if you dont want a this fill in: none
+        <em><strong>(Kill 10 Zombies)</strong></em>
+      </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>
+        <p style="margin-top: 10px">
+          Stat number:
+          <em><strong>(2105)</strong></em>
+          THIS ONE IS IMPORTANT: there's a few rules to follow with these
+        </p>
+        <p>You make up the numbers yourself, but keep these rules:</p>
+        <p>
+          <span class="Apple-tab-span" style="white-space: pre">&nbsp;</span>
+          - start counting from 2100
+        </p>
+        <p>
+          <span class="Apple-tab-span" style="white-space: pre">&nbsp;</span>
+          - increase by 5, so go from 2100 to 2105 to 2110 etc
+        </p>
+        <p>
+          <span class="Apple-tab-span" style="white-space: pre">&nbsp;</span>
+          - each achievement that has the same achievement NAME should have the
+          same stat number ( ...they are related to the same stat! )
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>
+        The amount needed to complete this achievement, so in the example: Kill
+        10 zombies. The amount will be 10.
+        <em><strong>(10)</strong></em>
+      </td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>
+        If you want the players to recieve points for unlocking this
+        achievement, add the amount of points here. Otherwise fill in: none
+        <em><strong>(250)</strong></em>
+      </td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>
+        If you want a shader to appear on screen for this achievement add it
+        here ( the material name ). Otherwise fill in: none
+
+        <em>
+          <strong>( specialty_juggernaut_zombies )</strong>
+        </em>
+        <span class="Apple-tab-span" style="white-space: pre"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <p>&nbsp;</p>
 <hr />
 <p>7.</p>
