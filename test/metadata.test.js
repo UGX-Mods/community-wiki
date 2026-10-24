@@ -63,3 +63,13 @@ test('checkPageMetadata warnings', () => {
     'Path segment(s) violate wiki.js naming restrictions: UGX-WeaponsEditor++',
   ]);
 });
+
+test('checkPageMetadata warns about tags outside the tag set', () => {
+  assert.deepEqual(
+    checkPageMetadata(
+      'Foo.html',
+      htmlPage('Foo', '', { tags: 'confluence:12, ugxl, guide, mod tools' }),
+    ).warnings,
+    ['Tags outside the tag set: mod tools'],
+  );
+});

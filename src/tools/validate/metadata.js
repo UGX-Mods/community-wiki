@@ -5,6 +5,7 @@
 import { readPage, stripPageExtension } from '../lib/pages.js';
 import { PAGE_HEADER_FIELDS, parsePageHeader } from '../lib/header.js';
 import { isMarkdownPage } from '../lib/markdown.js';
+import { parseTags, isKnownTag } from '../lib/tags.js';
 
 // https://docs.requarks.io/guide/pages#naming-restrictions
 const REGEX_VALID_PAGE_PATH_SEGMENT = /^[A-Za-z0-9_-]+$/;
@@ -39,6 +40,10 @@ function checkPageMetadata(filePath, fileContent) {
     const editor = markdown ? 'markdown' : 'ckeditor';
     if (meta.editor && meta.editor !== editor) {
       warnings.push(`"editor" should be ${editor}, not ${meta.editor}`);
+    }
+    const unknownTags = parseTags(meta.tags).filter((t) => !isKnownTag(t));
+    if (unknownTags.length) {
+      warnings.push(`Tags outside the tag set: ${unknownTags.join(', ')}`);
     }
   }
 

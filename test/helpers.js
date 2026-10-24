@@ -18,7 +18,7 @@ function htmlPage(title, body = '', fields = {}) {
     description: `About ${title}`,
     published: 'true',
     date: '2026-10-20T00:00:00.000Z',
-    tags: 'test',
+    tags: 'guide',
     editor: 'ckeditor',
     dateCreated: '2026-10-20T00:00:00.000Z',
     ...fields,
