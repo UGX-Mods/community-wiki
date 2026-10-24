@@ -3,20 +3,104 @@ title: Creating Your Own Custom KVP
 description: How to create your own key-value pairs (KVP) for Radiant
 published: true
 date: 2024-02-25T10:43:43.765Z
-tags: confluence:1146966, waw, guide, mapping
+tags: confluence:1146966, waw, guide, mapping, ai-generated
 editor: ckeditor
 dateCreated: 2024-02-04T15:25:31.800Z
 -->
 
+<div class="banner banner-note banner-ai">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <p class="banner-title">AI-generated content</p>
+  <div class="banner-body">
+    <p>
+      This page was written with AI from community sources and the notes of the
+      original page and has not been reviewed by the UGX team yet. It may
+      contain mistakes. Found one?
+      <a
+        href="https://github.com/UGX-Mods/community-wiki/blob/main/CONTRIBUTING.md"
+        target="_blank">
+        Help us improve it
+      </a>
+      .
+    </p>
+  </div>
+</div>
 <p>
-  string zc_door_part
-  <br />
-  string zc_cold_type
+  Entities in Radiant get their settings through key-value pairs (KVPs), like
+  <code>targetname</code>
+  or
+  <code>script_noteworthy</code>
+  . Only keys that the game knows are available in script. If none of the
+  existing keys fits your needs, you can declare your own.
 </p>
+<div class="banner banner-tip">
+  <img src="/attachments/icons/check-decagram.png" alt="" class="banner-icon" />
+  <div class="banner-body">
+    <p>
+      Look through the existing keys first: often there is already a key you can
+      use (for example
+      <code>script_noteworthy</code>
+      or
+      <code>script_string</code>
+      ).
+    </p>
+  </div>
+</div>
+<h2 id="CreatingYourOwnCustomKVP-Declarethekey">Declare the key</h2>
 <p>
-  rawfile,radiant/keys.txt
-  <br />
-  rawfile,radiant/clientkeys.txt
-  <br />
-  rawfile,radiant/zombiecitykeys.txt
+  All keys that are accessible in script are listed in
+  <code>raw\radiant\keys.txt</code>
+  . Each line starts with the type of the value, followed by the key name. Add
+  your keys at the end of the file, for example:
+</p>
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-text">string zc_door_part
+string zc_cold_type</code></pre>
+</div>
+<p>
+  Keys that client scripts (CSC) need are declared the same way in
+  <code>raw\radiant\clientkeys.txt</code>
+  .
+</p>
+<h2 id="CreatingYourOwnCustomKVP-Addthekeysfiletoyourzonefile">
+  Add the keys files to your zone file
+</h2>
+<p>
+  The game reads the keys from the fastfile of your map, so add the files as
+  rawfiles to the zone file of your map (
+  <code>zone_source\&lt;mapname&gt;.csv</code>
+  ):
+</p>
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-text">rawfile,radiant/keys.txt
+rawfile,radiant/clientkeys.txt</code></pre>
+</div>
+<p>Then compile your map and build the fastfile again.</p>
+<h2 id="CreatingYourOwnCustomKVP-UsethekeyinRadiantandscript">
+  Use the key in Radiant and script
+</h2>
+<p>
+  Select the entity in Radiant and add the KVP like any other, for example
+  <code>zc_door_part</code>
+  |
+  <code>handle</code>
+  . In script, the value is available as a field of the entity:
+</p>
+<div class="widget-panel widget-code-panel">
+  <pre><code class="language-cpp">parts = getEntArray( "door_parts", "targetname" );
+for ( i = 0; i &lt; parts.size; i++ )
+{
+	if ( isDefined( parts[i].zc_door_part ) &amp;&amp; parts[i].zc_door_part == "handle" )
+	{
+		// ...
+	}
+}</code></pre>
+</div>
+<p>
+  If the field is undefined in game although the KVP is set in Radiant, check
+  that the key is spelled the same in
+  <code>keys.txt</code>
+  and on the entity, and that the zone file contains the
+  <code>rawfile</code>
+  lines.
 </p>

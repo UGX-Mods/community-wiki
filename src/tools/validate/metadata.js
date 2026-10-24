@@ -5,10 +5,35 @@
 import { readPage, stripPageExtension } from '../lib/pages.js';
 import { PAGE_HEADER_FIELDS, parsePageHeader } from '../lib/header.js';
 import { isMarkdownPage } from '../lib/markdown.js';
-import { parseTags, isKnownTag } from '../lib/tags.js';
+import { AI_TAG, parseTags, isKnownTag } from '../lib/tags.js';
+
+const REGEX_AI_BANNER = /class="[^"]*\bbanner-ai\b/;
 
 // https://docs.requarks.io/guide/pages#naming-restrictions
 const REGEX_VALID_PAGE_PATH_SEGMENT = /^[A-Za-z0-9_-]+$/;
+
+/**
+ * AI-generated pages must be marked for readers (banner) and for search (tag).
+ *
+ * @param {string|undefined} tags tags field of the page header
+ * @param {string} fileContent
+ * @param {boolean} markdown
+ * @returns {string|null} error
+ */
+function checkAiMarking(tags, fileContent, markdown) {
+  const aiTag = parseTags(tags).includes(AI_TAG);
+  // code examples (e.g. the banner in AGENTS.md) don't count
+  const aiBanner = REGEX_AI_BANNER.test(
+    markdown ? fileContent.replace(/```[\s\S]*?```/g, '') : fileContent,
+  );
+  if (aiTag && !aiBanner) {
+    return `Tag "${AI_TAG}" without the AI banner (class banner-ai)`;
+  }
+  if (aiBanner && !aiTag) {
+    return `AI banner (class banner-ai) without the tag "${AI_TAG}"`;
+  }
+  return null;
+}
 
 /**
  * @param {string} filePath page path relative to the repository root
@@ -45,6 +70,8 @@ function checkPageMetadata(filePath, fileContent) {
     if (unknownTags.length) {
       warnings.push(`Tags outside the tag set: ${unknownTags.join(', ')}`);
     }
+    const aiError = checkAiMarking(meta.tags, fileContent, markdown);
+    if (aiError) errors.push(aiError);
   }
 
   const invalidSegments = stripPageExtension(filePath)

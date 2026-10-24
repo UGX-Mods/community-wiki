@@ -3,14 +3,162 @@ title: Creating Brushes in Radiant
 description: Creating brushes in Radiant (structural, detail, triggers, clips and more)
 published: true
 date: 2024-02-25T10:43:42.602Z
-tags: confluence:1146973, waw, guide, mapping
+tags: confluence:1146973, waw, guide, mapping, ai-generated
 editor: ckeditor
 dateCreated: 2024-02-04T15:25:29.895Z
 -->
 
-<p>Coming soon.</p>
+<div class="banner banner-note banner-ai">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <p class="banner-title">AI-generated content</p>
+  <div class="banner-body">
+    <p>
+      This page was written with AI from community sources (Call of Duty modding
+      wikis) and has not been reviewed by the UGX team yet. It may contain
+      mistakes. Found one?
+      <a
+        href="https://github.com/UGX-Mods/community-wiki/blob/main/CONTRIBUTING.md"
+        target="_blank">
+        Help us improve it
+      </a>
+      .
+    </p>
+  </div>
+</div>
+<p>
+  Brushes are the basic building blocks of a map in Radiant: convex shapes with
+  a texture on each face. Walls, floors and ceilings are brushes, and so are
+  invisible helpers like triggers and clips. This page explains the brush types
+  the other World at War guides refer to.
+</p>
+<h2 id="CreatingBrushesinRadiant-Creatingabrush">Creating a brush</h2>
+<ol>
+  <li>Deselect everything (Escape).</li>
+  <li>
+    Select a texture in the texture window. New brushes get the selected
+    texture.
+  </li>
+  <li>
+    Click and drag in the 2D view to draw the brush, then switch the 2D view to
+    a side view to adjust its height.
+  </li>
+</ol>
+<p>
+  Use the
+  <code>caulk</code>
+  texture on every face the player can never see (for example the back of a wall
+  or the bottom of a floor). Caulk faces are not drawn, which saves performance.
+  Many mappers build all brushes from caulk first and texture only the visible
+  faces afterwards.
+</p>
 <h2 id="CreatingBrushesinRadiant-Structural">Structural</h2>
+<p>
+  Structural brushes form the main shell of the level: the large walls, floors
+  and ceilings. The compiler uses them to split the map into cells, together
+  with portals (brushes with the
+  <code>portal</code>
+  texture on one face and
+  <code>portal_nodraw</code>
+  on the other faces). Only structural brushes can form the walls of a cell, so
+  keep them simple and closed.
+</p>
 <h2 id="CreatingBrushesinRadiant-Detail">Detail</h2>
+<p>
+  Detail brushes are everything else: trims, beams, furniture, rubble and other
+  small shapes. They do not split the map into cells, which keeps the compile
+  fast and the cell structure clean. Make small or complex brushes detail
+  brushes. You can hide detail brushes with the filter options to check what is
+  left of the structural shell.
+</p>
 <h2 id="CreatingBrushesinRadiant-Triggers">Triggers</h2>
+<p>
+  Triggers are invisible brushes that start something when a player touches or
+  uses them. To create one, draw a brush, right-click in the 2D view and choose
+  a trigger type from the
+  <strong>trigger</strong>
+  menu, for example:
+</p>
+<ul>
+  <li>
+    <code>trigger_use</code>
+    : the player presses the use key, for example to buy a door (
+    <a
+      href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Moving-Door-Blocker">
+      Creating a Moving Door Blocker
+    </a>
+    )
+  </li>
+  <li>
+    <code>trigger_multiple</code>
+    : fires every time a player enters it
+  </li>
+</ul>
+<p>
+  Radiant gives the brush the
+  <code>trigger</code>
+  texture automatically. Set the KVPs the script expects on the trigger entity.
+</p>
 <h2 id="CreatingBrushesinRadiant-Clips">Clips</h2>
+<p>
+  Clips are invisible brushes that block movement without being drawn. Use them
+  to smooth out stairs and rough geometry or to keep players out of areas. The
+  clip textures block different things:
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Texture</th>
+      <th>Blocks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>clip</code></td>
+      <td>players and AI (not bullets)</td>
+    </tr>
+    <tr>
+      <td><code>clip_player</code></td>
+      <td>only players</td>
+    </tr>
+    <tr>
+      <td><code>clip_monster</code></td>
+      <td>only AI</td>
+    </tr>
+    <tr>
+      <td><code>clipweap</code></td>
+      <td>bullets and grenades, not players or AI</td>
+    </tr>
+    <tr>
+      <td><code>clip_nosight</code></td>
+      <td>players and AI, and AI cannot see through it</td>
+    </tr>
+  </tbody>
+</table>
 <h2 id="CreatingBrushesinRadiant-ScriptBrushmodels">Script Brushmodels</h2>
+<p>
+  A script brushmodel is a brush (or a group of brushes) that scripts can move,
+  rotate, hide or delete, for example a door or debris that disappears when it
+  is bought. To create one, select the brushes, right-click in the 2D view and
+  choose
+  <strong>script</strong>
+  &gt;
+  <strong>brushmodel</strong>
+  . The brushes become one
+  <code>script_brushmodel</code>
+  entity that you can give KVPs like
+  <code>targetname</code>
+  .
+</p>
+<p>
+  The door guides use script brushmodels for the door itself and for its clip:
+  <a
+    href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Moving-Door-Blocker">
+    Creating a Moving Door Blocker
+  </a>
+  and
+  <a
+    href="/Modding/World-at-War-Modtools/Radiant/Creating-a-Swinging-Door-Blocker">
+    Creating a Swinging Door Blocker
+  </a>
+  .
+</p>

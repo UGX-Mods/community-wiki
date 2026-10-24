@@ -3,15 +3,107 @@ title: BO3 | Asset Property Editor
 description: The Asset Property Editor (APE) of the Black Ops 3 modtools
 published: true
 date: 2024-02-25T10:42:29.604Z
-tags: bo3, reference, tools
+tags: bo3, reference, tools, ai-generated
 editor: ckeditor
 dateCreated: 2024-02-04T15:32:29.039Z
 -->
 
-<div class="banner banner-warning">
-  <img src="/attachments/icons/alert-octagon.png" alt="" class="banner-icon" />
-
+<div class="banner banner-note banner-ai">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <p class="banner-title">AI-generated content</p>
   <div class="banner-body">
-    <p>This page is a work in progress.</p>
+    <p>
+      This page was written with AI from community sources and the other Black
+      Ops 3 pages of this wiki and has not been reviewed by the UGX team yet. It
+      may contain mistakes. Found one?
+      <a
+        href="https://github.com/UGX-Mods/community-wiki/blob/main/CONTRIBUTING.md"
+        target="_blank">
+        Help us improve it
+      </a>
+      .
+    </p>
   </div>
 </div>
+<p>
+  The Asset Property Editor (APE) is the asset editor of the Call of Duty: Black
+  Ops 3 modtools. Every asset the game uses, like models, materials, images,
+  animations, weapons or sounds, is set up in APE before it can be used in
+  <a href="/Modding/Black-Ops-3-Modtools/Applications-and-Tools/Radiant-Black">
+    Radiant Black
+  </a>
+  or in scripts.
+</p>
+<h2 id="AssetPropertyEditor-GDTs">GDT files and assets</h2>
+<p>
+  APE stores assets in GDT files (game data tables). A GDT can hold many assets
+  of different types. Keep the assets of your map or mod in your own GDT instead
+  of editing the stock ones.
+</p>
+<p>To add an asset:</p>
+<ol>
+  <li>Open APE from the modtools launcher.</li>
+  <li>Create a new asset in your GDT.</li>
+  <li>
+    Enter the asset name and choose the asset type, for example
+    <code>xmodel</code>
+    ,
+    <code>xanim</code>
+    ,
+    <code>material</code>
+    or
+    <code>image</code>
+    .
+  </li>
+  <li>
+    Fill in the properties of the asset, like the source file (for example an
+    exported
+    <code>.XMODEL_BIN</code>
+    or
+    <code>.XANIM_BIN</code>
+    file) and its settings. Most properties can keep their default values.
+  </li>
+  <li>
+    Save the GDT and link your map or mod from the launcher, so the asset is
+    built into it.
+  </li>
+</ol>
+<h2 id="AssetPropertyEditor-Guides">Guides using APE</h2>
+<ul>
+  <li>
+    <a
+      href="/Modding/Black-Ops-3-Modtools/Asset-Conversion/Adding-custom-models">
+      BO3 | Adding custom models
+    </a>
+    (
+    <code>xmodel</code>
+    assets)
+  </li>
+  <li>
+    <a
+      href="/Modding/Black-Ops-3-Modtools/Asset-Conversion/Adding-custom-animations">
+      BO3 | Adding custom animations
+    </a>
+    (
+    <code>xanim</code>
+    assets)
+  </li>
+  <li>
+    <a
+      href="/Modding/Black-Ops-3-Modtools/Asset-Conversion/Adding-custom-materials-and-textures">
+      BO3 | Adding custom materials and textures
+    </a>
+    (
+    <code>material</code>
+    and
+    <code>image</code>
+    assets)
+  </li>
+  <li>
+    <a
+      href="/Modding/Black-Ops-3-Modtools/Script/Weapon-System/Weapon-entity-field-list">
+      BO3 | Weapon entity field list
+    </a>
+    (weapon settings)
+  </li>
+</ul>

@@ -108,6 +108,7 @@ Markdown pages (`editor: markdown`) use the same fields as YAML front matter bet
   - one content type: `guide` (step by step), `reference` (lists, explanations), `changelog`, `troubleshooting` (known issues, FAQ, fixes), `overview` (section start pages)
   - modding pages also a topic: `mapping`, `scripting`, `sound`, `menu`, `models`, `tools`
   - optional `legacy` (outdated product versions), `meta` for the repository docs
+  - `ai-generated` when the main content of the page was written by AI (see below)
   - `node src/main.js tag-pages` suggests them from the path (`DRY_RUN=1` to preview)
 - Keep existing `confluence:<id>` tags: the tooling uses them to map old Confluence links.
 - Leave `date`/`dateCreated` as they are on existing pages; Wiki.js manages them. For new pages use the current UTC timestamp for both.
@@ -126,6 +127,27 @@ Follow the [Wiki.js naming restrictions](https://docs.requarks.io/guide/pages#na
 - Images: store files under `attachments/<area>/<topic>/` and reference them absolutely (`/attachments/...`). Always set `alt`. Do not hotlink new images from imgur/gyazo/Jira.
 - Videos: `.webm` in `attachments/`, embedded with `<video controls>`.
 - Iframes: **only** `https://www.youtube-nocookie.com/embed/...` is allowed (enforced by `validate`).
+
+### AI-generated content
+
+When the main content of a page is written by AI (a new page or a rewrite), mark it for readers: add the tag `ai-generated` and this banner at the top of the body. Name the sources the text is based on. `validate` fails if only one of the two is present. Smaller AI edits (fixes, an intro sentence, a "Related pages" list) need no marking. Remove both once a maintainer has reviewed the page.
+
+```html
+<div class="banner banner-note banner-ai">
+  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+  <p class="banner-title">AI-generated content</p>
+  <div class="banner-body">
+    <p>
+      This page was written with AI from <sources> and has not been reviewed by
+      the UGX team yet. It may contain mistakes. Found one?
+      <a href="https://github.com/UGX-Mods/community-wiki/blob/main/CONTRIBUTING.md" target="_blank">
+        Help us improve it
+      </a>
+      .
+    </p>
+  </div>
+</div>
+```
 
 ### Custom widgets (styled by `src/theme/wiki.scss`)
 

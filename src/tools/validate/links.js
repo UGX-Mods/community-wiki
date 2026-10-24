@@ -20,20 +20,29 @@ const REGEX_EXTERNAL_HREF = /^(https?:|\/\/|mailto:)/;
  * @property {string} error
  * @property {string} [text] html of the link (empty href)
  * @property {number} [amount] number of matching anchors
- * @property {string} [queryError]
  */
 
-const ERROR_NO_ANCHOR =
-  'No anchor id found! (Eventually selector contains invalid characters?)';
+const ERROR_NO_ANCHOR = 'No anchor id found!';
 
 /**
+ * Compares ids instead of using an `#id` selector: confluence ids contain
+ * characters like `(` or `?` which are invalid in css selectors.
+ *
  * @param {import('node-html-parser').HTMLElement} parsedHtml
- * @param {string} selector
+ * @param {string} anchor id from the href (without `#`)
  * @param {string} href
  * @returns {LinkIssue|null}
  */
-function checkAnchor(parsedHtml, selector, href) {
-  const $anchors = parsedHtml.querySelectorAll(selector);
+function checkAnchor(parsedHtml, anchor, href) {
+  let id = anchor;
+  try {
+    id = decodeURIComponent(anchor);
+  } catch (_) {
+    // not percent encoded
+  }
+  const $anchors = parsedHtml
+    .querySelectorAll('[id]')
+    .filter((el) => el.getAttribute('id') === id);
   if ($anchors.length === 0) {
     return { href, error: ERROR_NO_ANCHOR };
   }
@@ -128,16 +137,8 @@ async function checkPageLinks(filePath, fileContent, root) {
 
     // anchor link ?
     if (href.startsWith('#')) {
-      try {
-        const issue = checkAnchor(parsedHtml, href, href);
-        if (issue) invalid.push(issue);
-      } catch (e) {
-        invalid.push({
-          href,
-          error: 'Invalid CSS selector for anchor!',
-          queryError: String(e),
-        });
-      }
+      const issue = checkAnchor(parsedHtml, href.slice(1), href);
+      if (issue) invalid.push(issue);
       continue;
     }
 
@@ -151,16 +152,12 @@ async function checkPageLinks(filePath, fileContent, root) {
     if (!anchor) continue;
 
     // check if the anchor exists!
-    try {
-      const issue = checkAnchor(
-        parseHtmlContent(await readLinkTarget(foundFile)),
-        `#${anchor}`,
-        href,
-      );
-      if (issue) invalid.push(issue);
-    } catch (e) {
-      invalid.push({ href, error: 'Invalid anchor', queryError: String(e) });
-    }
+    const issue = checkAnchor(
+      parseHtmlContent(await readLinkTarget(foundFile)),
+      anchor,
+      href,
+    );
+    if (issue) invalid.push(issue);
   }
 
   invalid.push(...checkImages(parsedHtml, filePath, root));
