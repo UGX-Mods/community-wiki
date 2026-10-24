@@ -3,7 +3,7 @@ title: README
 description: About the UGX-Mods Community Wiki repository
 published: true
 date: 2024-02-25T10:38:03.233Z
-tags:
+tags: meta
 editor: markdown
 dateCreated: 2024-02-04T15:24:20.670Z
 ---

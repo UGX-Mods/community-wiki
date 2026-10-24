@@ -3,7 +3,7 @@ title: CONTRIBUTING
 description: How to contribute to the UGX-Mods Community Wiki
 published: true
 date: 2024-02-25T10:37:56.992Z
-tags:
+tags: meta
 editor: markdown
 dateCreated: 2024-02-04T15:24:16.655Z
 ---
