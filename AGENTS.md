@@ -140,7 +140,7 @@ When the main content of a page is written by AI (a new page or a rewrite), mark
     <p>
       This page was written with AI from <sources> and has not been reviewed by
       the UGX team yet. It may contain mistakes. Found one?
-      <a href="https://github.com/UGX-Mods/community-wiki" target="_blank">
+      <a href="https://github.com/UGX-Mods/community-wiki/blob/main/CONTRIBUTING.md" target="_blank">
         Help us improve it
       </a>
       .
