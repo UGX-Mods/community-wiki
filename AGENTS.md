@@ -64,7 +64,7 @@ npm run build          # src/theme -> dist/wiki.min.css, dist/wiki.min.js
 npm run tools          # interactive tooling menu (node src/main.js --help for steps)
 ```
 
-Changelog pages of new releases come from Jira Cloud: run the workflow **Jira changelog** (`.github/workflows/jira-changelog.yml`, project + fix version). It creates the page with all tickets, adds the release to the changelog overview and pushes a branch; open the pull request from the run summary and add a summary of the release to the page. Locally: `JIRA_PROJECT=UGXSMF JIRA_VERSION=v0.8.86-beta JIRA_EMAIL=… JIRA_API_TOKEN=… node src/main.js jira-changelog` (`DRY_RUN=1` prints the page). The Jira projects are not public, the token belongs to a read-only account (environment `jira`).
+Changelog pages of new releases come from Jira Cloud: run the workflow **Jira changelog** (`.github/workflows/jira-changelog.yml`, project + fix version). It creates the page with all tickets, adds the release to the changelog overview and pushes a branch; open the pull request from the run summary and add a summary of the release to the page. Locally: `JIRA_PROJECT=UGXSMF JIRA_VERSION=v0.8.86-beta JIRA_EMAIL=… JIRA_API_TOKEN=… node src/main.js jira-changelog` (`DRY_RUN=1` prints the page). The Jira projects are not public: the scoped API token (scope `read:jira-work`, expires after one year) belongs to a read-only account and is stored in the environment `jira`; scoped tokens need `JIRA_CLOUD_ID=3d1decac-7f7f-42ca-a83e-c2d66fad9065` (api.atlassian.com gateway). An expired token fails with "Jira denied the request (401)".
 
 Run `npm run check` (or at least `npm run lint` + `npm run validate`) before committing. `validate` must report **0 errors**. Warnings (empty descriptions etc.) are known backlog.
 

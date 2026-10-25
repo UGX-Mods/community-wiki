@@ -3,7 +3,8 @@
  * its tickets and adds the release to the changelog overview of the product.
  *
  * Environment: JIRA_PROJECT, JIRA_VERSION, JIRA_EMAIL, JIRA_API_TOKEN (read-only
- * account), JIRA_URL (default https://ugxmods.atlassian.net), DRY_RUN=1 prints the page.
+ * account, scope read:jira-work), JIRA_CLOUD_ID (needed for scoped tokens),
+ * JIRA_URL (default https://ugxmods.atlassian.net), DRY_RUN=1 prints the page.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -288,7 +289,8 @@ function addOverviewRow(html, { project, version, issueCount, jiraUrl }) {
 
 /**
  * @typedef {object} JiraClient
- * @property {string} url
+ * @property {string} url site url, used for the links on the page
+ * @property {string} [apiUrl] REST api base, the api.atlassian.com gateway for scoped tokens
  * @property {string} email
  * @property {string} token
  * @property {typeof fetch} [fetch]
@@ -303,9 +305,17 @@ async function jiraGet(client, apiPath) {
   const auth = Buffer.from(`${client.email}:${client.token}`).toString(
     'base64',
   );
-  const res = await (client.fetch ?? fetch)(`${client.url}${apiPath}`, {
-    headers: { accept: 'application/json', authorization: `Basic ${auth}` },
-  });
+  const res = await (client.fetch ?? fetch)(
+    `${client.apiUrl ?? client.url}${apiPath}`,
+    {
+      headers: { accept: 'application/json', authorization: `Basic ${auth}` },
+    },
+  );
+  if (res.status === 401 || res.status === 403) {
+    throw new Error(
+      `Jira denied the request (${res.status}): the API token is expired, revoked or misses the scope read:jira-work (scoped tokens also need JIRA_CLOUD_ID)`,
+    );
+  }
   if (!res.ok) {
     throw new Error(`Jira request failed (${res.status}): ${apiPath}`);
   }
@@ -357,11 +367,20 @@ async function getIssues(client, project, versionName) {
 async function jiraChangelog(root = process.cwd()) {
   const project = process.env.JIRA_PROJECT ?? '';
   const versionName = process.env.JIRA_VERSION ?? '';
+  const url = (process.env.JIRA_URL || DEFAULT_JIRA_URL).replace(/\/$/, '');
+  const cloudId = process.env.JIRA_CLOUD_ID ?? '';
+  /** @type {JiraClient} */
   const client = {
-    url: (process.env.JIRA_URL || DEFAULT_JIRA_URL).replace(/\/$/, ''),
+    url,
+    // scoped API tokens only work through the api.atlassian.com gateway
+    apiUrl: cloudId ? `https://api.atlassian.com/ex/jira/${cloudId}` : url,
     email: process.env.JIRA_EMAIL ?? '',
     token: process.env.JIRA_API_TOKEN ?? '',
   };
+  if (cloudId && !/^[0-9a-f-]{36}$/.test(cloudId)) {
+    console.error('🚨 JIRA_CLOUD_ID is not a valid cloud id');
+    return 1;
+  }
   if (!PROJECTS[project]) {
     console.error(
       `🚨 JIRA_PROJECT must be one of ${Object.keys(PROJECTS).join(', ')}`,

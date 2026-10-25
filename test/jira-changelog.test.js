@@ -167,3 +167,33 @@ test('getVersion finds the release and reports http errors', async () => {
     /401/,
   );
 });
+
+test('requests use the api gateway for scoped tokens, links the site', async () => {
+  /** @type {string[]} */
+  const urls = [];
+  /** @type {typeof fetch} */
+  const fakeFetch = async (url) => {
+    urls.push(String(url));
+    return Response.json([version]);
+  };
+  const gateway =
+    'https://api.atlassian.com/ex/jira/00000000-0000-0000-0000-000000000000';
+  const client = {
+    url: JIRA,
+    apiUrl: gateway,
+    email: 'a@b.c',
+    token: 't',
+    fetch: fakeFetch,
+  };
+  await getVersion(client, 'UGXSMF', 'v0.8.86-beta');
+  assert.ok(
+    urls[0].startsWith(`${gateway}/rest/api/3/project/UGXSMF/versions`),
+  );
+
+  /** @type {typeof fetch} */
+  const expired = async () => new Response('', { status: 401 });
+  await assert.rejects(
+    getVersion({ ...client, fetch: expired }, 'UGXSMF', 'v1'),
+    /expired, revoked or misses the scope read:jira-work/,
+  );
+});
