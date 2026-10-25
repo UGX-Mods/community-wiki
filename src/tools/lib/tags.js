@@ -1,6 +1,7 @@
 /**
  * The tag set of the wiki (see AGENTS.md). Most pages get one product tag, one content type
- * and, for modding pages, a topic. `confluence:<id>` tags are kept for the tooling.
+ * and, for modding pages, a topic. The confluence page ids of the imported pages are no
+ * tags, they are in src/theme/confluence-ids.json.
  */
 
 const PRODUCT_TAGS = [
@@ -39,10 +40,10 @@ function parseTags(value) {
 
 /**
  * @param {string} tag
- * @returns {boolean} tag of the tag set or a confluence id
+ * @returns {boolean} tag of the tag set
  */
 function isKnownTag(tag) {
-  return TAGS.includes(tag) || /^confluence:\d+$/.test(tag);
+  return TAGS.includes(tag);
 }
 
 export {

@@ -12,6 +12,7 @@ import { setupPageHierarchy, refreshPageHierarchy } from './tools/hierarchy.js';
 import { validateAllLinks } from './tools/validate/links.js';
 import { securityValidation } from './tools/validate/security.js';
 import { metadataValidation } from './tools/validate/metadata.js';
+import { confluenceIdsValidation } from './tools/validate/confluence.js';
 import { deployTheme } from './tools/theme.js';
 import { demotePageHeadings } from './tools/content/headings.js';
 import { mirrorImages } from './tools/content/mirror-images.js';
@@ -201,6 +202,7 @@ async function main() {
       errors += await validateAllLinks(files);
       errors += await securityValidation(files);
       errors += await metadataValidation(files);
+      errors += await confluenceIdsValidation();
       break;
     case STEPS.linkValidation:
       errors += await validateAllLinks(files);

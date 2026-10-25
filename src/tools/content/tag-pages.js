@@ -108,7 +108,7 @@ function suggestTags(info, override = {}) {
 
 /**
  * @param {string} content page source
- * @param {string[]} tags tags to add (existing tags stay, confluence ids first)
+ * @param {string[]} tags tags to add (existing tags stay)
  * @param {boolean} markdown
  * @returns {string|null} new content, null if the page has no header
  */
@@ -116,11 +116,8 @@ function setTags(content, tags, markdown) {
   const header = parsePageHeader(content, markdown);
   if (!header) return null;
   const existing = parseTags(header.tags);
-  const confluence = existing.filter((t) => t.startsWith('confluence:'));
-  const others = existing.filter(
-    (t) => !t.startsWith('confluence:') && !tags.includes(t),
-  );
-  const value = [...confluence, ...tags, ...others].join(', ');
+  const others = existing.filter((t) => !tags.includes(t));
+  const value = [...tags, ...others].join(', ');
 
   const end = content.indexOf(markdown ? '\n---' : '\n-->', 4);
   const head = content.slice(0, end);

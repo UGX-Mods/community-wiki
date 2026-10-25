@@ -71,7 +71,7 @@ test('checkPageMetadata warns about tags outside the tag set', () => {
       'Foo.html',
       htmlPage('Foo', '', { tags: 'confluence:12, ugxl, guide, mod tools' }),
     ).warnings,
-    ['Tags outside the tag set: mod tools'],
+    ['Tags outside the tag set: confluence:12, mod tools'],
   );
 });
 
