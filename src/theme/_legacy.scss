@@ -1,0 +1,70 @@
+// markup of the imported confluence pages
+
+#app .v-main .contents {
+  // inline colors of imported pages: replaced by variants with enough contrast
+  // (!important is the only way to override an inline style attribute)
+  [style*='color: rgb(51, 153, 102)'] {
+    color: var(--ugx-color-green) !important;
+  }
+
+  [style*='color: rgb(255, 0, 0)'],
+  [style*='color: rgb(202, 0, 0)'],
+  [style*='color: rgb(186, 33, 33)'] {
+    color: var(--ugx-color-red) !important;
+  }
+
+  [style*='color: rgb(0, 51, 102)'] {
+    color: var(--ugx-color-navy) !important;
+  }
+
+  [style*='color: rgb(0, 128, 0)'],
+  [style*='color: rgb(0, 255, 0)'] {
+    color: var(--ugx-color-dark-green) !important;
+  }
+
+  [style*='color: rgb(255, 204, 0)'] {
+    color: var(--ugx-color-yellow) !important;
+  }
+
+  [style*='color: rgb(128, 0, 0)'] {
+    color: var(--ugx-color-maroon) !important;
+  }
+}
+
+// TODO grid is probably better in the future
+$w-col-4-two: 600px;
+$w-col-4-four: 800px;
+
+.block-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &.block-row-4-col {
+    .block-col {
+      flex: 1 1 100%;
+      margin-right: 0;
+
+      @media (min-width: $w-col-4-two) {
+        flex: 1 1 calc(50% - 10px);
+        margin-right: 10px;
+
+        &:nth-child(even) {
+          margin-right: 0;
+        }
+      }
+
+      @media (min-width: $w-col-4-four) {
+        flex: 1 1 calc(25% - 15px);
+
+        &:nth-child(even) {
+          margin-right: 10px;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

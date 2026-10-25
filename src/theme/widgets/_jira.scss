@@ -1,0 +1,44 @@
+@use '../settings' as *;
+
+// changelog pages generated from Jira (src/tools/jira/page.js)
+#app .v-main .contents {
+  // info table at the top of a changelog: labels in the first column
+  table.widget-jira-info th {
+    width: 9rem;
+    color: var(--ugx-text-muted);
+  }
+
+  // ticket table: short columns stay on one line, only the summary wraps
+  .widget-jira-issues :is(th, td) {
+    white-space: nowrap;
+
+    &:nth-child(2) {
+      min-width: 16rem;
+      white-space: normal;
+    }
+  }
+
+  // status badges of the imported jira tables (RELEASED, Done, Open, ...)
+  .aui-lozenge {
+    --ugx-badge: var(--ugx-badge-default);
+
+    display: inline-block;
+    padding: 0 8px;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1.7;
+    color: var(--ugx-badge);
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1px solid currentcolor;
+    border-radius: $border-radius-small;
+
+    &-success {
+      --ugx-badge: var(--ugx-badge-success);
+    }
+
+    &-current {
+      --ugx-badge: var(--ugx-badge-current);
+    }
+  }
+}

@@ -37,7 +37,7 @@ Consequences:
 | `UGXL/`, `UGXLIN/`                              | UGX Launcher and UGX Launcher Installer docs (incl. changelogs, legacy docs)        |
 | `Careers.html`, `UGX-Help-Center.html`          | Standalone pages                                                                    |
 | `attachments/`                                  | Images, videos, downloads (Git LFS), grouped by area                                |
-| `src/theme/`                                    | Theme overrides for Wiki.js: `wiki.scss` (widgets, banners, code panels), `wiki.js` |
+| `src/theme/`                                    | Theme for Wiki.js: `wiki.scss` and its partials (`_tokens`, `widgets/*`), `wiki.js` |
 | `src/main.js`, `src/tools/`                     | Tooling CLI and its steps: validation, hierarchy, theme, content helpers, Jira      |
 | `test/`                                         | `node:test` unit tests for `src/tools/` (fixtures are created in a temp folder)     |
 | `dist/`                                         | Build output of the theme (gitignored)                                              |
@@ -127,7 +127,7 @@ title: BO3 | Adding Zones
 description: How to set up zones in Black Ops 3 zombies maps
 published: true
 date: 2024-02-25T10:43:02.232Z
-tags: confluence:17301656, bo3, mapping
+tags: bo3, guide, mapping
 editor: ckeditor
 dateCreated: 2024-02-04T15:32:14.270Z
 -->
@@ -145,7 +145,7 @@ Markdown pages (`editor: markdown`) use the same fields as YAML front matter bet
   - optional `legacy` (outdated product versions), `meta` for the repository docs
   - `ai-generated` when the main content of the page was written by AI (see below)
   - `node src/main.js tag-pages` suggests them from the path (`DRY_RUN=1` to preview)
-- Keep existing `confluence:<id>` tags: the tooling uses them to map old Confluence links.
+- The Confluence page ids of the imported pages are in `src/theme/confluence-ids.json` (page path without extension → id), not in the tags. Admins (`manage:system`) see a "Confluence" button next to the edit buttons that opens the original page. When you rename or move a page, update its key there too (`validate` reports entries without a page).
 - Leave `date`/`dateCreated` as they are on existing pages; Wiki.js manages them. For new pages use the current UTC timestamp for both.
 
 ### File names / paths
@@ -184,7 +184,7 @@ When the main content of a page is written by AI (a new page or a rewrite), mark
 </div>
 ```
 
-### Custom widgets (styled by `src/theme/wiki.scss`)
+### Custom widgets (styled by `src/theme/widgets/`)
 
 Banner / callout (`banner-info`, `banner-tip`, `banner-note`, `banner-warning`, icons in `/attachments/icons/`):
 
@@ -247,7 +247,7 @@ Image gallery: a grid of thumbnails, a click opens the image large (dialog with 
 </div>
 ```
 
-All widget colors are CSS custom properties with a light and a dark variant (`--ugx-*` in `wiki.scss`). Use them for new styles and keep text at 4.5:1 contrast in both modes.
+All widget colors are CSS custom properties with a light and a dark variant (`--ugx-*` in `src/theme/_tokens.scss`). Use them for new styles and keep text at 4.5:1 contrast in both modes.
 
 Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. After adding/removing child pages run `node src/main.js refresh-hierarchy` instead of editing it by hand.
 
@@ -264,6 +264,6 @@ Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. 
 - Editing `github/` or adding Markdown/HTML files that are not meant as wiki pages (they become wiki pages).
 - Changing `node_modules` or committing build output (`dist/`).
 - CommonJS (`require`) in `src/` or `test/`: the code is ES modules (`"type": "module"`), local imports need the `.js` extension.
-- Removing `confluence:<id>` tags or the header comment.
+- Removing the header comment or entries of `src/theme/confluence-ids.json` (only together with the page).
 - Inventing facts about UGX products, mods or game versions. Mark uncertain content for maintainer review instead.
 - Upgrading dependencies to versions published less than 7 days ago, using version ranges (`^`, `~`), or `--ignore-scripts` / `--dangerously-allow-all-scripts` to get around the script policy.

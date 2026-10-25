@@ -29,3 +29,18 @@ test('createPageHierarchy returns null without child pages', async (t) => {
 
   assert.equal(await createPageHierarchy(path.join(root, 'Lonely.html')), null);
 });
+
+test('createPageHierarchy escapes page titles', async (t) => {
+  const root = createFixture({
+    'Tools.html': htmlPage('Tools'),
+    'Tools/Logger.html': htmlPage('Logger & <Debugger>'),
+  });
+  t.after(() => removeFixture(root));
+
+  assert.equal(
+    await createPageHierarchy(path.join(root, 'Tools.html')),
+    '<ul class="widget-page-hierarchy"><li>' +
+      '<a href="Logger">Logger &amp; &lt;Debugger&gt;</a>' +
+      '</li></ul>',
+  );
+});

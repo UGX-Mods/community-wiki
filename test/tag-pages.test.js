@@ -82,12 +82,10 @@ test('suggestTags picks the content type', () => {
   );
 });
 
-test('setTags keeps confluence ids first and existing tags', () => {
-  const page = htmlPage('Foo', '<p>x</p>', {
-    tags: 'confluence:123, mod tools',
-  });
+test('setTags keeps existing tags', () => {
+  const page = htmlPage('Foo', '<p>x</p>', { tags: 'mod tools, guide' });
   const result = setTags(page, ['waw', 'guide'], false);
-  assert.match(result ?? '', /^tags: confluence:123, waw, guide, mod tools$/m);
+  assert.match(result ?? '', /^tags: waw, guide, mod tools$/m);
   // body untouched
   assert.ok(result?.endsWith('<p>x</p>\n'));
 });
