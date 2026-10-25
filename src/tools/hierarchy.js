@@ -11,7 +11,11 @@ import {
   filterPagesWithChildren,
   readPage,
 } from './lib/pages.js';
-import { parseHtmlContent, writeFileFormat } from './lib/html.js';
+import {
+  escapeHtmlText,
+  parseHtmlContent,
+  writeFileFormat,
+} from './lib/html.js';
 import { getPageTitle } from './lib/header.js';
 
 const WIDGET_SELECTOR = 'ul.widget-page-hierarchy';
@@ -147,7 +151,7 @@ async function createPageHierarchyLiElements(rootFolderPath, subPaths = '') {
 
         const href = subPaths + stripPageExtension(page);
         return (
-          `<a href="${href}">${title}</a>` +
+          `<a href="${href}">${escapeHtmlText(title)}</a>` +
           (subLi ? `<ul><li>${subLi}</li></ul>` : '')
         );
       }),

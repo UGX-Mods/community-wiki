@@ -18,7 +18,7 @@
  * (e.g. "Did you know...?") stay in the section they follow. Nothing outside the
  * wrapper is touched.
  */
-import { HTMLParser, parseHtmlContent } from '../lib/html.js';
+import { HTMLParser, escapeHtml, parseHtmlContent } from '../lib/html.js';
 
 const ICONS = '/attachments/icons/jira';
 
@@ -140,19 +140,6 @@ const MONTHS = [
  * @property {string} released YYYY-MM-DD, empty while unreleased
  * @property {string} refreshed YYYY-MM-DD of the last refresh, empty if never
  */
-
-/**
- * @param {unknown} value
- * @returns {string}
- */
-function escapeHtml(value) {
-  return String(value ?? '')
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;');
-}
 
 /**
  * @param {string|undefined} iso

@@ -62,4 +62,36 @@ async function writeFileFormat(source, filePath) {
   }
 }
 
-export { HTMLParser, parseHtmlContent, formatHtml, writeFileFormat };
+/**
+ * Escape for text content (quotes are fine there)
+ *
+ * @param {unknown} value
+ * @returns {string}
+ */
+function escapeHtmlText(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
+/**
+ * Escape for text content and attribute values
+ *
+ * @param {unknown} value
+ * @returns {string}
+ */
+function escapeHtml(value) {
+  return escapeHtmlText(value)
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+export {
+  HTMLParser,
+  escapeHtml,
+  escapeHtmlText,
+  parseHtmlContent,
+  formatHtml,
+  writeFileFormat,
+};
