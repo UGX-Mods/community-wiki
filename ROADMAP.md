@@ -16,7 +16,6 @@ Numbers are from October 2026 (289 HTML pages). `VERBOSE=1 node src/main.js meta
 
 ## Phase 2: Tools / Element
 
-- [ ] More widget elements (e.g. tabs, image gallery)
 - [ ] Better Jira Cloud integration / embed
   - atm there is no real sync and it must be exported + imported and fixed 😢
   - fetch the changelog / export it and generate it (UGXSMF, etc.)

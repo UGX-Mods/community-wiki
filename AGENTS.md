@@ -186,6 +186,34 @@ Collapsible code panel (behaviour in `wiki.js`):
 </div>
 ```
 
+Tabs (behaviour in `wiki.js`, keyboard support included). Use them for alternatives the reader picks one of (e.g. two editors, two ways to do something). Without JavaScript the tabs are shown one below the other, so every tab needs a title:
+
+```html
+<div class="widget-tabs">
+  <div class="widget-tab">
+    <p class="widget-tab-title">Notepad++</p>
+    <div class="widget-tab-content"><p>...</p></div>
+  </div>
+  <div class="widget-tab">
+    <p class="widget-tab-title">Sublime Text 3</p>
+    <div class="widget-tab-content"><p>...</p></div>
+  </div>
+</div>
+```
+
+Image gallery: a grid of thumbnails, a click opens the image large (dialog with previous / next). For screenshot overviews, not for step-by-step guides where each image belongs to its step. Every image needs `alt`, the caption is optional:
+
+```html
+<div class="widget-gallery">
+  <figure class="image">
+    <img src="/attachments/ugxl/features/settings/interface.png" alt="..." />
+    <figcaption>Settings</figcaption>
+  </figure>
+</div>
+```
+
+All widget colors are CSS custom properties with a light and a dark variant (`--ugx-*` in `wiki.scss`). Use them for new styles and keep text at 4.5:1 contrast in both modes.
+
 Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. After adding/removing child pages run `node src/main.js refresh-hierarchy` instead of editing it by hand.
 
 ## Git workflow
