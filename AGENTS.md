@@ -64,7 +64,22 @@ npm run build          # src/theme -> dist/wiki.min.css, dist/wiki.min.js
 npm run tools          # interactive tooling menu (node src/main.js --help for steps)
 ```
 
-Changelog pages of new releases come from Jira Cloud: run the workflow **Jira changelog** (`.github/workflows/jira-changelog.yml`, project + fix version). It creates the page with all tickets, adds the release to the changelog overview and pushes a branch; open the pull request from the run summary and add a summary of the release to the page. Locally, put `JIRA_EMAIL`, `JIRA_API_TOKEN` and `JIRA_CLOUD_ID` into a `.env` file in the repository root (gitignored, loaded by `src/main.js`, shell variables win) and run `JIRA_PROJECT=UGXSMF JIRA_VERSION=v0.8.86-beta node src/main.js jira-changelog` (`DRY_RUN=1` prints the page). Existing pages are never overwritten; an unknown version lists the newest versions of the project, a release without tickets prints a warning. The Jira projects are not public: the scoped API token (scope `read:jira-work`, expires after one year) belongs to a read-only account and is stored in the environment `jira`; with `JIRA_EMAIL` and the cloud id of the site (`JIRA_CLOUD_ID`, needed for the api.atlassian.com gateway of scoped tokens). An expired token fails with "Jira denied the request (401)".
+### Changelog pages from Jira
+
+Release pages (UGXSMF, UGXL, UGXLIN, UGXMAPP) are generated from Jira Cloud by the workflow **Jira changelog** (`.github/workflows/jira-changelog.yml`):
+
+- Run it with project + fix version to create the page of a new release. It also adds the release to the changelog overview. A weekly run (and every manual run) refreshes the release widgets that are due.
+- The result is pushed to a branch. Open the pull request from the run summary, check the tickets and add a summary to new pages.
+- The release widget `<div class="widget-jira-issues" data-project data-version data-released data-refreshed>` and the info table (`widget-jira-info`) are **generated**, do not edit them by hand. They are refreshed while the release is unreleased and until 30 days after its release date, then they stay as they are. The summary of a page is never touched.
+
+Security:
+
+- **Token isolation:** the Jira token is only used by `src/jira-fetch.js`, a standalone script with Node.js built-ins only. The rest of the tooling loads third-party packages, which could read the token from the environment if one of them were compromised. In CI the fetch runs in its own job without `npm ci` (plan and render run in jobs without secrets), locally `node src/main.js jira-changelog` starts it as a separate process and never loads the token itself.
+- **Allowed projects:** only the keys in `JIRA_PROJECTS` are fetched. It is a variable of the GitHub environment `jira`, not part of the repository. For a new Jira project, add the key there **and** its page folder to `PROJECTS` in `src/tools/jira/changelog.js`. A page may only request its own project (folder), versions are validated before they reach JQL.
+- **Private tickets:** tickets with a Jira security level are left out (JQL `level IS EMPTY` plus a second check in the script). Only the fields of the table are kept, no email addresses.
+- **Token:** read-only account with browse permission for these projects only, scoped API token with `read:jira-work` (expires after one year, renew it and run `gh secret set JIRA_API_TOKEN --env jira`). Scoped tokens need the cloud id of the site (`JIRA_CLOUD_ID`, api.atlassian.com gateway). An expired token fails with "Jira denied the request (401)".
+
+Locally, put `JIRA_EMAIL`, `JIRA_API_TOKEN`, `JIRA_CLOUD_ID` and `JIRA_PROJECTS` into `.env` in the repository root (gitignored, shell variables win) and run `JIRA_PROJECT=UGXSMF JIRA_VERSION=v0.8.86-beta node src/main.js jira-changelog`. Without project and version it only refreshes. Existing pages are never overwritten, an unknown version lists the newest versions of the project.
 
 Run `npm run check` (or at least `npm run lint` + `npm run validate`) before committing. `validate` must report **0 errors**. Warnings (empty descriptions etc.) are known backlog.
 
