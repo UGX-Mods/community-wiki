@@ -55,9 +55,8 @@ jobs:
           JIRA_VERSION: ${{ inputs.version }}
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-          # scoped API tokens go through the api.atlassian.com gateway; the cloud id
-          # is public (https://ugxmods.atlassian.net/_edge/tenant_info)
-          JIRA_CLOUD_ID: 3d1decac-7f7f-42ca-a83e-c2d66fad9065
+          # scoped API tokens go through the api.atlassian.com gateway
+          JIRA_CLOUD_ID: ${{ secrets.JIRA_CLOUD_ID }}
         run: node src/main.js jira-changelog
 
       - name: Push a branch
