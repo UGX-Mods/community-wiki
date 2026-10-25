@@ -9,7 +9,7 @@ dateCreated: 2026-10-19T00:00:00.000Z
 ---
 
 Guidance for AI coding agents (and humans) working in this repository.
-Read this before changing anything. For contributor docs see [CONTRIBUTING.md](CONTRIBUTING.md), for planned work see [ROADMAP.md](ROADMAP.md).
+Read this before changing anything. For contributor docs see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## What this repository is
 
