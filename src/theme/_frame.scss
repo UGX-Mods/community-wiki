@@ -94,7 +94,7 @@
     }
   }
 
-  .v-main__wrap > header.v-toolbar {
+  .v-main__wrap > header.v-toolbar:has(.breadcrumbs-nav) {
     background-color: var(--ugx-bg) !important;
   }
 
@@ -252,6 +252,33 @@
     &:focus-visible {
       outline: 2px solid var(--ugx-focus);
       outline-offset: 2px;
+    }
+
+    // the link to the pages with all of these tags has only an icon: a button
+    // that shows its accessible name (aria-label) as text
+    &[aria-label] {
+      display: flex !important;
+      gap: 6px;
+      justify-content: center;
+      width: 100%;
+      height: 34px;
+      margin: 8px 0 0 !important;
+      font-weight: 500;
+      color: var(--ugx-link);
+      border-color: var(--ugx-link) !important;
+      border-radius: $border-radius-small !important;
+
+      &::after {
+        content: attr(aria-label);
+      }
+
+      .v-icon {
+        color: var(--ugx-link) !important;
+      }
+
+      &:hover {
+        background-color: var(--ugx-hover) !important;
+      }
     }
   }
 
