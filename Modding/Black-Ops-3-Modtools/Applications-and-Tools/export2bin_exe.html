@@ -59,25 +59,60 @@ dateCreated: 2024-02-04T15:33:08.622Z
   export2bin.exe is a command line application, which means it is run from the
   windows command prompt (cmd).
 </p>
-<h3 id="BO3|export2bin.exe-Option1">Option 1</h3>
+<p>There are two ways to open the command prompt in the right folder:</p>
+<div class="widget-tabs">
+  <div class="widget-tab">
+    <p class="widget-tab-title">Option 1: Explorer address bar</p>
+    <div class="widget-tab-content">
+      <p>
+        Simply navigate to your folder and type into the address bar
+        &quot;cmd&quot;.
+      </p>
+      <p>
+        That will open the CMD console with the current path as working
+        directory.
+      </p>
+      <p>
+        <img
+          src="/attachments/modding/bo3/applications-and-tools/export2bin_exe/option-1.gif"
+          alt="Animation of Windows Explorer in the model_export folder of Black Ops 3, running export2bin on the model folders" />
+      </p>
+    </div>
+  </div>
+  <div class="widget-tab">
+    <p class="widget-tab-title">Option 2: Start Menu</p>
+    <div class="widget-tab-content">
+      <p>
+        Click your Start Menu and search for &quot;cmd&quot; in the searchbox,
+        then open cmd.exe from the results list.
+      </p>
+      <p>
+        Now, change the working directory to the location of your XANIM /
+        MODEL_EXPORT files you wish to convert using the &quot;cd&quot; command.
+        Example:
+      </p>
+      <p>
+        <img
+          height="250"
+          src="/attachments/modding/bo3/export2bin/explorer.png"
+          alt="Command prompt changing into the xanim_export folder, above it the folder with the XANIM_EXPORT and converted XANIM_BIN files" />
+      </p>
+      <div class="banner banner-note">
+        <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
+        <div class="banner-body">
+          <p>
+            Remember to change to the drive letter which contains your modtools
+            first! Do this by just typing the drive letter followed by a colon.
+            Example: &quot;E:&quot;. Then you can cd to the desired subdirectory
+            on the drive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <p>
-  Simply navigate to your folder and type into the address bar &quot;cmd&quot;.
-</p>
-<p>
-  That will open the CMD console with the current path as working directory.
-</p>
-<p>
-  <img
-    src="/attachments/modding/bo3/applications-and-tools/export2bin_exe/option-1.gif"
-    alt="Animation of Windows Explorer in the model_export folder of Black Ops 3, running export2bin on the model folders" />
-</p>
-<h3 id="BO3|export2bin.exe-Option2">Option 2</h3>
-<p>
-  Click your Start Menu and search for &quot;cmd&quot; in the searchbox, then
-  open cmd.exe from the results list.
-</p>
-<p>
-  If you type export2.bin into the prompt and press Enter, you should see this
+  If you type export2bin into the prompt and press Enter, you should see this
   output:
 </p>
 <p>
@@ -86,33 +121,10 @@ dateCreated: 2024-02-04T15:33:08.622Z
     src="/attachments/modding/bo3/export2bin/cmd.png"
     alt="Command prompt showing the export2bin usage help after running export2bin without arguments" />
 </p>
-<p>&nbsp;</p>
 <p>
   If you do not see that output, you did not set your environment variable
   correctly. Please follow the steps under Initial Setup carefully.
 </p>
-<p>
-  Now, change the working directory to the location of your XANIM / MODEL_EXPORT
-  files you wish to convert using the &quot;cd&quot; command. Example:
-</p>
-<p>
-  <img
-    height="250"
-    src="/attachments/modding/bo3/export2bin/explorer.png"
-    alt="Command prompt changing into the xanim_export folder, above it the folder with the XANIM_EXPORT and converted XANIM_BIN files" />
-</p>
-<div class="banner banner-note">
-  <img src="/attachments/icons/alert.png" alt="" class="banner-icon" />
-
-  <div class="banner-body">
-    <p>
-      Remember to change to the drive letter which contains your modtools first!
-      Do this by just typing the drive letter followed by a colon. Example:
-      &quot;E:&quot;. Then you can cd to the desired subdirectory on the drive.
-    </p>
-  </div>
-</div>
-<p>&nbsp;</p>
 <p>You are now ready to type the export commands.</p>
 <h2 id="BO3|export2bin.exe-ExportCommands">Export Commands</h2>
 <p>

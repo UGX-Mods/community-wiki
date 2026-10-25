@@ -1,0 +1,191 @@
+name: Jira changelog
+
+# changelog pages from Jira: creates the page of a new release (project + version)
+# and refreshes the release widgets that are due (unreleased or released less than
+# 30 days ago). The result is pushed to a branch, the pull request is opened by
+# hand from the run summary (workflows may not create pull requests here).
+#
+# Three jobs, so the Jira token never meets third-party code: only the fetch job
+# gets the secrets, and it runs src/jira-fetch.js (Node.js built-ins only)
+# without installing any npm package.
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Jira project of a new release (empty = only refresh)
+        type: string
+        required: false
+      version:
+        description: Jira fix version of the new release, e.g. v0.8.86-beta
+        type: string
+        required: false
+      force:
+        description: Refresh all changelogs, also the frozen ones (ticket tables and info rows only)
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0 6 * * 1' # mondays 06:00 UTC, refresh only
+
+permissions: {}
+
+concurrency:
+  group: jira-changelog
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    name: Plan
+    # never in forks
+    if: github.repository == 'UGX-Mods/community-wiki'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    outputs:
+      count: ${{ steps.plan.outputs.count }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          lfs: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: package.json
+          package-manager-cache: false
+
+      - run: npm ci
+
+      - name: Verify registry signatures
+        run: npm audit signatures
+
+      # inputs only reach the shell as environment variables (no script injection)
+      - name: Plan the releases
+        id: plan
+        env:
+          JIRA_PROJECT: ${{ inputs.project }}
+          JIRA_VERSION: ${{ inputs.version }}
+          JIRA_FORCE: ${{ inputs.force && '1' || '' }}
+          JIRA_PROJECTS: ${{ vars.JIRA_PROJECTS }}
+          JIRA_PLAN: ${{ runner.temp }}/jira-plan.json
+        run: |
+          node src/main.js jira-plan
+          echo "count=$(jq '.requests | length' "$JIRA_PLAN")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: jira-plan
+          path: ${{ runner.temp }}/jira-plan.json
+          retention-days: 1
+
+  fetch:
+    name: Fetch from Jira
+    needs: plan
+    if: needs.plan.outputs.count != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    # JIRA_EMAIL, JIRA_API_TOKEN, JIRA_CLOUD_ID (secrets) and JIRA_PROJECTS (variable,
+    # allowed project keys); the environment only allows protected branches
+    environment: jira
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          lfs: false
+          sparse-checkout: src/jira-fetch.js
+          sparse-checkout-cone-mode: false
+
+      # no npm install in this job: the script imports Node.js built-ins only
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: jira-plan
+          path: ${{ runner.temp }}
+
+      - name: Fetch the releases
+        env:
+          JIRA_PROJECTS: ${{ vars.JIRA_PROJECTS }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_CLOUD_ID: ${{ secrets.JIRA_CLOUD_ID }}
+        run: node src/jira-fetch.js "$RUNNER_TEMP/jira-plan.json" "$RUNNER_TEMP/jira-data.json"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: jira-data
+          path: ${{ runner.temp }}/jira-data.json
+          retention-days: 1
+
+  render:
+    name: Write the pages
+    needs: [plan, fetch]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          lfs: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: package.json
+          package-manager-cache: false
+
+      - run: npm ci
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: jira-*
+          merge-multiple: true
+          path: ${{ runner.temp }}
+
+      - name: Write the pages
+        env:
+          JIRA_PLAN: ${{ runner.temp }}/jira-plan.json
+          JIRA_DATA: ${{ runner.temp }}/jira-data.json
+        run: node src/main.js jira-render
+
+      - name: Push a branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JIRA_PROJECT: ${{ inputs.project }}
+          JIRA_VERSION: ${{ inputs.version }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing changed" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [ -n "$JIRA_VERSION" ]; then
+            slug=$(printf '%s-%s' "$JIRA_PROJECT" "$JIRA_VERSION" | tr 'A-Z' 'a-z' | tr -c 'a-z0-9.-' '-')
+            title="docs(content): changelog of $JIRA_PROJECT $JIRA_VERSION"
+          else
+            slug="refresh-$(date -u +%Y%m%d)"
+            title="docs(content): refresh the changelog tickets"
+          fi
+          branch="docs/changelog-$slug"
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$branch"
+          git add --all
+          git commit -m "$title"
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+            push origin "$branch"
+
+          title_url=$(printf '%s' "$title" | jq -sRr @uri)
+          {
+            echo "### $title"
+            echo
+            echo "Branch \`$branch\` is ready. Check the pages (add a summary to new releases), then"
+            echo "[create the pull request]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1&title=$title_url)."
+          } >> "$GITHUB_STEP_SUMMARY"

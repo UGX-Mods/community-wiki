@@ -44,7 +44,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'] {
   padding: 0.1em 0.3em;
-  color: #db4c69;
+  color: #f07178; // 5.8:1 on #1e1e1e (was #db4c69, 4.2:1)
   background: #1e1e1e;
   border-radius: 0.3em;
 }
@@ -280,29 +280,90 @@ pre[class*='language-'] > code[class*='language-'] {
 
 /************************************
  * Page Style
+ *
+ * Colors are custom properties with a light and a dark variant: wiki.js sets
+ * .theme--light / .theme--dark on .v-application. All text colors meet
+ * WCAG 2.2 AA (4.5:1) against their background, borders 3:1.
+ * Code panels stay dark in both modes (the prism theme is a dark theme).
  ************************************/
 
-// state colors:
-$color-info: #569cd6;
-$color-success: #5cb85c;
-$color-warning: #f0ad4e;
-$color-danger: #d9534f;
-
-// ugx colors:
-$color-main-dark: #1a4067;
-$color-contrast-lightest: #666;
-
-// generic colors:
-$color-white: #fff;
-$color-black: #000;
-
-// elements:
-$color-banner-bg: #111;
 $border-radius: 5px;
+$color-ugx-blue: #1a4067;
+$color-code-bg: #1e1e1e;
 
-body,
-html {
+.v-application {
+  --ugx-text: #212121;
+  --ugx-link: #1565c0;
+  --ugx-focus: #1565c0;
+  --ugx-surface: #f5f5f5;
+  --ugx-border: #8a8a8a;
+  --ugx-dialog-bg: #fff;
+  --ugx-shadow: rgb(0 0 0 / 20%);
+  --ugx-info: #1565c0;
+  --ugx-info-bg: #e3f2fd;
+  --ugx-tip: #2e7d32;
+  --ugx-tip-bg: #e8f5e9;
+  --ugx-note: #b26a00;
+  --ugx-note-bg: #fff8e1;
+  --ugx-warning: #c62828;
+  --ugx-warning-bg: #ffebee;
+  --ugx-badge-success: #1b5e20;
+  --ugx-badge-default: #424242;
+  --ugx-badge-current: #0d47a1;
+
+  // inline text colors of imported pages, readable on light backgrounds
+  --ugx-color-green: #1e7b4f;
+  --ugx-color-red: #c62828;
+  --ugx-color-navy: #036;
+  --ugx-color-dark-green: #008000;
+  --ugx-color-yellow: #8a6d00;
+  --ugx-color-maroon: #800000;
+
+  // the banner icons are white, darken them on light backgrounds
+  --ugx-icon-filter: brightness(0) opacity(0.75);
+}
+
+.v-application.theme--dark {
+  --ugx-text: #eee;
+  --ugx-link: #90caf9;
+  --ugx-focus: #90caf9;
+  --ugx-surface: #111;
+  --ugx-border: #757575;
+  --ugx-dialog-bg: #212121;
+  --ugx-shadow: #000;
+  --ugx-info: #569cd6;
+  --ugx-info-bg: #111;
+  --ugx-tip: #5cb85c;
+  --ugx-tip-bg: #111;
+  --ugx-note: #f0ad4e;
+  --ugx-note-bg: #111;
+  --ugx-warning: #d9534f;
+  --ugx-warning-bg: #111;
+  --ugx-badge-success: #81c995;
+  --ugx-badge-default: #e0e0e0;
+  --ugx-badge-current: #90caf9;
+  --ugx-color-green: #81c995;
+  --ugx-color-red: #ff9e94;
+  --ugx-color-navy: #90caf9;
+  --ugx-color-dark-green: #81c995;
+  --ugx-color-yellow: #fc0;
+  --ugx-color-maroon: #ef9a9a;
+  --ugx-icon-filter: none;
+}
+
+html:has(.v-application.theme--dark),
+html:has(.v-application.theme--dark) body {
   background: #424242;
+}
+
+// wiki.js renders sub headings #757575 on #212121 in dark mode (3.5:1)
+.v-application.theme--dark .v-main .contents {
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #bdbdbd;
+  }
 }
 
 .v-main .contents {
@@ -311,28 +372,43 @@ html {
   }
 
   .banner {
+    --ugx-accent: var(--ugx-info);
+
     position: relative;
     padding: 5px 5px 5px 35px;
     margin: 5px 0 10px;
-    background: $color-banner-bg;
-    border: 1px solid $color-white;
+    color: var(--ugx-text);
+    background: var(--ugx-surface);
+    border: 1px solid var(--ugx-accent);
     border-radius: $border-radius;
-    box-shadow: 1px 1px 5px $color-black;
+    box-shadow: 1px 1px 5px var(--ugx-shadow);
+
+    a {
+      color: var(--ugx-link);
+    }
 
     &-info {
-      border-color: $color-info;
+      --ugx-accent: var(--ugx-info);
+
+      background: var(--ugx-info-bg);
     }
 
     &-tip {
-      border-color: $color-success;
+      --ugx-accent: var(--ugx-tip);
+
+      background: var(--ugx-tip-bg);
     }
 
     &-note {
-      border-color: $color-warning;
+      --ugx-accent: var(--ugx-note);
+
+      background: var(--ugx-note-bg);
     }
 
     &-warning {
-      border-color: $color-danger;
+      --ugx-accent: var(--ugx-warning);
+
+      background: var(--ugx-warning-bg);
     }
 
     &-title {
@@ -345,6 +421,7 @@ html {
       position: absolute;
       top: 5px;
       left: 5px;
+      filter: var(--ugx-icon-filter);
     }
 
     &-body {
@@ -357,8 +434,9 @@ html {
   .widget-panel {
     padding: 5px;
     margin-top: 10px;
-    background: $color-banner-bg;
-    border: 1px solid $color-main-dark;
+    color: var(--ugx-text);
+    background: var(--ugx-surface);
+    border: 1px solid $color-ugx-blue;
     border-radius: $border-radius;
   }
 
@@ -367,29 +445,37 @@ html {
     overflow: hidden;
 
     button.expandable-button {
-      padding: 0;
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      padding: 0 2px;
       margin: 5px 0;
-      color: #90caf9;
+      color: var(--ugx-link);
 
       &:hover {
         text-decoration: underline;
       }
 
+      &:focus-visible {
+        outline: 2px solid var(--ugx-focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      // chevron in the text color, works in both modes
       &::before {
-        float: left;
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        margin-right: 2px;
-        content: ' ';
-        background: url('/attachments/icons/chevron-right.png') no-repeat;
+        flex: none;
+        width: 7px;
+        height: 7px;
+        content: '';
+        border-top: 2px solid currentcolor;
+        border-right: 2px solid currentcolor;
+        transform: rotate(45deg);
         transition: transform 0.4s;
       }
 
-      &.expanded {
-        &::before {
-          transform: rotate(90deg);
-        }
+      &.expanded::before {
+        transform: rotate(135deg);
       }
     }
 
@@ -413,18 +499,26 @@ html {
   .widget-code-panel {
     margin: 6px 0;
     overflow: hidden;
-    background: $color-banner-bg;
-    border: 1px solid $color-contrast-lightest;
+    color: #d4d4d4;
+    background: $color-code-bg;
+    border: 1px solid #666;
     border-radius: $border-radius;
 
     &-header {
       display: flex;
       justify-content: space-between;
       padding: 3px 8px;
-      background: $color-main-dark;
+      color: #fff;
+      background: $color-ugx-blue;
 
+      // the header is dark in both modes
       button.expandable-button {
         margin: 0;
+        color: #90caf9;
+
+        &:focus-visible {
+          outline-color: #90caf9;
+        }
       }
     }
 
@@ -451,6 +545,222 @@ html {
   div.code-toolbar {
     & > .toolbar {
       z-index: 5;
+    }
+  }
+
+  // tabs: without JavaScript the tabs are shown one below the other
+  .widget-tabs {
+    margin: 10px 0;
+
+    .widget-tab-title {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    &.is-ready .widget-tab-title {
+      display: none;
+    }
+
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      border-bottom: 1px solid var(--ugx-border);
+    }
+
+    &-button {
+      padding: 6px 14px;
+      margin-bottom: -1px;
+      color: var(--ugx-text);
+      border-bottom: 3px solid transparent;
+
+      &:hover {
+        color: var(--ugx-link);
+      }
+
+      &[aria-selected='true'] {
+        font-weight: bold;
+        color: var(--ugx-link);
+        border-bottom-color: var(--ugx-link);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--ugx-focus);
+        outline-offset: -2px;
+      }
+    }
+
+    .widget-tab-content {
+      padding: 5px 0;
+    }
+  }
+
+  // image gallery: thumbnails in a grid, a click opens the image large
+  .widget-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 10px 0;
+
+    figure {
+      margin: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      object-position: top;
+      border: 1px solid var(--ugx-border);
+      border-radius: $border-radius;
+    }
+
+    figcaption {
+      padding-top: 4px;
+      font-size: 0.875em;
+      color: var(--ugx-text);
+    }
+
+    .widget-gallery-open {
+      display: block;
+      width: 100%;
+      padding: 0;
+      cursor: zoom-in;
+      border-radius: $border-radius;
+
+      &:hover img {
+        border-color: var(--ugx-link);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--ugx-focus);
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  // status badges of the imported jira tables (RELEASED, Done, Open, ...)
+  .aui-lozenge {
+    --ugx-badge: var(--ugx-badge-default);
+
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 0.75em;
+    font-weight: bold;
+    line-height: 1.6;
+    color: var(--ugx-badge);
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1px solid currentcolor;
+    border-radius: 3px;
+
+    &-success {
+      --ugx-badge: var(--ugx-badge-success);
+    }
+
+    &-current {
+      --ugx-badge: var(--ugx-badge-current);
+    }
+  }
+
+  // inline colors of imported pages: replaced by variants with enough contrast
+  // (!important is the only way to override an inline style attribute)
+  [style*='color: rgb(51, 153, 102)'] {
+    color: var(--ugx-color-green) !important;
+  }
+
+  [style*='color: rgb(255, 0, 0)'],
+  [style*='color: rgb(202, 0, 0)'],
+  [style*='color: rgb(186, 33, 33)'] {
+    color: var(--ugx-color-red) !important;
+  }
+
+  [style*='color: rgb(0, 51, 102)'] {
+    color: var(--ugx-color-navy) !important;
+  }
+
+  [style*='color: rgb(0, 128, 0)'],
+  [style*='color: rgb(0, 255, 0)'] {
+    color: var(--ugx-color-dark-green) !important;
+  }
+
+  [style*='color: rgb(255, 204, 0)'] {
+    color: var(--ugx-color-yellow) !important;
+  }
+
+  [style*='color: rgb(128, 0, 0)'] {
+    color: var(--ugx-color-maroon) !important;
+  }
+}
+
+// lightbox of the image gallery (appended to .v-application by wiki.js)
+.widget-gallery-dialog {
+  // the css reset of wiki.js removes the centering of the browser (margin: auto)
+  position: fixed;
+  inset: 0;
+  max-width: min(95vw, 1400px);
+  max-height: 95vh;
+  padding: 10px;
+  margin: auto;
+  color: var(--ugx-text);
+  background: var(--ugx-dialog-bg);
+  border: 1px solid var(--ugx-border);
+  border-radius: $border-radius;
+
+  &::backdrop {
+    background: rgb(0 0 0 / 80%);
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(95vh - 110px);
+    margin: 0 auto;
+  }
+
+  figcaption {
+    padding-top: 6px;
+    text-align: center;
+  }
+
+  &-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8px;
+
+    button {
+      min-width: 36px;
+      min-height: 36px;
+      font-size: 1.2em;
+      color: var(--ugx-text);
+      border: 1px solid var(--ugx-border);
+      border-radius: $border-radius;
+
+      &:hover {
+        color: var(--ugx-link);
+        border-color: var(--ugx-link);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--ugx-focus);
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v-main .contents .expandable-container {
+    button.expandable-button::before,
+    .expandable-content {
+      transition: none;
     }
   }
 }

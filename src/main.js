@@ -4,6 +4,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseEnv } from 'node:util';
 import { select, Separator } from '@inquirer/prompts';
 import { getPageFiles, isPage, HTML_EXTENSION } from './tools/lib/pages.js';
 import { setupPageHierarchy, refreshPageHierarchy } from './tools/hierarchy.js';
@@ -28,6 +29,12 @@ import { setAltTexts } from './tools/content/alt-texts.js';
 import { tagPages } from './tools/content/tag-pages.js';
 import { setDescriptions } from './tools/content/descriptions.js';
 import { cleanupConfluenceMarkup } from './tools/content/confluence-markup.js';
+import {
+  jiraChangelog,
+  jiraPlan,
+  jiraRender,
+  jiraAdopt,
+} from './tools/jira/changelog.js';
 
 const STEPS = {
   none: 'NONE',
@@ -49,6 +56,10 @@ const STEPS = {
   tagPages: 'tag-pages',
   descriptions: 'descriptions',
   confluenceMarkup: 'confluence-markup',
+  jiraChangelog: 'jira-changelog',
+  jiraPlan: 'jira-plan',
+  jiraRender: 'jira-render',
+  jiraAdopt: 'jira-adopt',
 };
 
 const STEP_CHOICES = [
@@ -140,6 +151,29 @@ const STEP_CHOICES = [
     description:
       'Remove leftover Confluence wrappers, classes, macro attributes and no-op inline styles',
   },
+  {
+    value: STEPS.jiraChangelog,
+    name: 'Jira changelog',
+    description:
+      'Create the page of a new release (JIRA_PROJECT, JIRA_VERSION) and refresh the release widgets that are due (token in .env)',
+  },
+  {
+    value: STEPS.jiraPlan,
+    name: 'Jira changelog: plan',
+    description: '[CI] List the releases to fetch (JIRA_PLAN)',
+  },
+  {
+    value: STEPS.jiraRender,
+    name: 'Jira changelog: render',
+    description:
+      '[CI] Write the pages from the fetched data (JIRA_PLAN, JIRA_DATA)',
+  },
+  {
+    value: STEPS.jiraAdopt,
+    name: 'Jira changelog: adopt',
+    description:
+      'Convert the old changelog pages of JIRA_PROJECT into the changelog format (no Jira access)',
+  },
   new Separator('--- Confluence Migration: ---'),
   {
     value: STEPS.confluenceCleanup,
@@ -175,6 +209,17 @@ function printUsage() {
 
 async function main() {
   const [stepArg, ...fileArgs] = process.argv.slice(2);
+
+  // local settings (.env, gitignored), variables of the shell win. The Jira
+  // credentials are skipped: only src/jira-fetch.js reads them, this process
+  // loads third-party packages
+  if (fs.existsSync('.env')) {
+    const local = parseEnv(fs.readFileSync('.env', 'utf8'));
+    for (const [key, value] of Object.entries(local)) {
+      if (['JIRA_EMAIL', 'JIRA_API_TOKEN'].includes(key)) continue;
+      process.env[key] ??= value;
+    }
+  }
 
   if (stepArg === '--help' || stepArg === '-h') {
     printUsage();
@@ -266,6 +311,18 @@ async function main() {
       break;
     case STEPS.confluenceMarkup:
       errors += await cleanupConfluenceMarkup(htmlFiles);
+      break;
+    case STEPS.jiraChangelog:
+      errors += await jiraChangelog();
+      break;
+    case STEPS.jiraPlan:
+      errors += await jiraPlan();
+      break;
+    case STEPS.jiraRender:
+      errors += await jiraRender();
+      break;
+    case STEPS.jiraAdopt:
+      errors += await jiraAdopt();
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);

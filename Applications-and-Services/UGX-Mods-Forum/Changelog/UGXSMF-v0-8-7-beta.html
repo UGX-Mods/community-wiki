@@ -8,603 +8,630 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:34:39.632Z
 -->
 
-<table>
-  <tbody>
-    <tr>
-      <th>Date</th>
-      <td>08 Feb 2020</td>
-    </tr>
-    <tr>
-      <th>Issues</th>
-      <td>
-        <p>
-          <a
-            href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.7-beta"
-            target="_blank">
-            10 issues
-          </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>
-        <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
-          RELEASED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th>Version</th>
-      <td>v0.8.7-beta</td>
-    </tr>
-    <tr>
-      <th>Version Mode</th>
-      <td>production ⭐</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="UGXSMFv0.8.7beta-Summary">Summary</h2>
-<p>
-  Update to improve various parts of the forum, including text editor fixes.
-</p>
-<p>First release in 2020, long overdue but better late then never 😉</p>
-<h2 id="UGXSMFv0.8.7beta-Importanthighlightsfromthisrelease">
-  Important highlights from this release
-</h2>
-<ul>
-  <li>
-    Fixes
-    <ul>
-      <li>
-        Removed twitter and facebook share count (was not working anymore and
-        quite frankly unimportant)
-      </li>
-      <li>Various issues with CKEditor have been fixed</li>
-      <li>Fix lightslider and lightgallery style</li>
-      <li>Added missing froum group images (contest winners, etc.)</li>
-      <li>Fixed a couple of PHP errors found through Sentry</li>
-    </ul>
-  </li>
-  <li>
-    Improvements
-    <ul>
-      <li>CKEditor crash notice is less annoying now (hopefully)</li>
-      <li>
-        Emoji's performance improved, instead of many tiny files one big chunk
-        is loaded which will improve site load speed
-      </li>
-      <li>
-        Autocomplete finds parts of a phrase now and not just at the beginning +
-        is case insensitive (before: #play → no result | now: #play → #UGXPLAY)
-      </li>
-      <li>
-        Small profile enhancements:
-        <ul>
-          <li>
-            Info about username rename process (good news: we plan to allow
-            username rename soon or later 😉 )
-          </li>
-          <li>Link to edit account (on profile edit page)</li>
-          <li>
-            Direct link to change avatar on public profile page when user hovers
-            on his avatar 😉
-          </li>
-        </ul>
-      </li>
-      <li>COPPA form can be retrieved for users who need it</li>
-      <li>Better +1 Karma visualization</li>
-      <li>
-        Make dropdown and menus look nicer with an image instead of a character
-      </li>
-    </ul>
-  </li>
-  <li>
-    Development Improvements
-    <ul>
-      <li>Improved service worker, one single bundle from now on</li>
-      <li>Upgraded dependencies</li>
-      <li>Reduced dependencies and improved dependency management</li>
-      <li>Upgraded hybridauth to v3 (SDK for social / 3rd party login)</li>
-      <li>Upgraded to latest SMF version</li>
-    </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.7beta-Allticketsforthisrelease">
-  All tickets for this release
-</h2>
-
-<div style="width: 100%; overflow: auto">
-  <table>
+<div
+  class="widget-jira-changelog"
+  data-project="UGXSMF"
+  data-version="v0.8.7-beta"
+  data-released="2020-02-08"
+  data-refreshed="">
+  <table class="widget-jira-info">
     <tbody>
       <tr>
-        <th>Key</th>
-        <th>Summary</th>
-        <th>T</th>
-        <th>Created</th>
-        <th>Updated</th>
-        <th>Assignee</th>
-        <th>Reporter</th>
-        <th>P</th>
+        <th>Date</th>
+        <td>08 Feb 2020</td>
+      </tr>
+      <tr>
+        <th>Issues</th>
+        <td>
+          <p>
+            <a
+              href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.7-beta"
+              target="_blank">
+              10 issues
+            </a>
+          </p>
+        </td>
+      </tr>
+      <tr>
         <th>Status</th>
-        <th>Resolution</th>
-      </tr>
-      <tr>
         <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-355"
-            target="_blank">
-            UGXSMF-355
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-355"
-            target="_blank">
-            Upgrade to latest SMF
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-355"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-task.svg"
-              alt="Task"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jan 19, 2020</td>
-        <td>Feb 09, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-critical.svg"
-            alt="Critical"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
+          <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+            RELEASED
           </span>
         </td>
-        <td>Done</td>
       </tr>
       <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-353"
-            target="_blank">
-            UGXSMF-353
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-353"
-            target="_blank">
-            Fix forum gallery &amp; slider previews glitch
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-353"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-bug.svg"
-              alt="Bug"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jan 12, 2020</td>
-        <td>Jan 25, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Fixed</td>
+        <th>Version</th>
+        <td>v0.8.7-beta</td>
       </tr>
       <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-352"
-            target="_blank">
-            UGXSMF-352
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-352"
-            target="_blank">
-            Improve CKEditor copy &amp; paste + quotes
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-352"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jan 11, 2020</td>
-        <td>Feb 09, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-351"
-            target="_blank">
-            UGXSMF-351
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-351"
-            target="_blank">
-            Improve performance by using emoji spritesheet
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-351"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jan 11, 2020</td>
-        <td>Feb 09, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-critical.svg"
-            alt="Critical"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-347"
-            target="_blank">
-            UGXSMF-347
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-347"
-            target="_blank">
-            Fix share count and improve provider situation
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-347"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-task.svg"
-              alt="Task"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jul 22, 2019</td>
-        <td>Jan 26, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-345"
-            target="_blank">
-            UGXSMF-345
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-345"
-            target="_blank">
-            Upgrade to hybridauth v3
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-345"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-task.svg"
-              alt="Task"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jul 22, 2019</td>
-        <td>Feb 09, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-344"
-            target="_blank">
-            UGXSMF-344
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-344"
-            target="_blank">
-            CKEditor error handler should be more restrictive
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-344"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jul 14, 2019</td>
-        <td>Feb 09, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-343"
-            target="_blank">
-            UGXSMF-343
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-343"
-            target="_blank">
-            Code editor with mixed tab / space causes issues + Chrome vs FF
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-343"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-task.svg"
-              alt="Task"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jul 06, 2019</td>
-        <td>Jan 19, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Fixed</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-230"
-            target="_blank">
-            UGXSMF-230
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-230"
-            target="_blank">
-            CKE: Color button should show current selected color
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-230"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Mar 30, 2017</td>
-        <td>Jan 26, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-trivial.svg"
-            alt="Trivial"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-92"
-            target="_blank">
-            UGXSMF-92
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-92"
-            target="_blank">
-            CKEditor should stay focused with tab
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-92"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jul 21, 2016</td>
-        <td>Jan 19, 2020</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-trivial.svg"
-            alt="Trivial"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Fixed</td>
+        <th>Version Mode</th>
+        <td>production ⭐</td>
       </tr>
     </tbody>
   </table>
-</div>
-<div>
-  <a
-    title="View all matching issues in Jira."
-    href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.7-beta"
-    target="_blank">
-    10 issues
-  </a>
-</div>
-
-(Not all changes are listed here, always check the highlights above)
-
-<h2 id="UGXSMFv0.8.7beta-Knownissues">Known issues</h2>
-<ul>
-  <li>
-    Supported Browsers / Devices
-    <br />
+  <div class="changelog-summary">
+    <h2 id="UGXSMFv0.8.7beta-Summary">Summary</h2>
+    <p>
+      Update to improve various parts of the forum, including text editor fixes.
+    </p>
+    <p>First release in 2020, long overdue but better late then never 😉</p>
+  </div>
+  <div class="changelog-highlights">
+    <h2 id="UGXSMFv0.8.7beta-Importanthighlightsfromthisrelease">
+      Important highlights from this release
+    </h2>
     <ul>
-      <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
-      <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
-      <li>There was no extensive testing on mobile devices yet</li>
       <li>
-        <strong>
-          We need your feedback if something isn't working on your device
-        </strong>
+        Fixes
+        <ul>
+          <li>
+            Removed twitter and facebook share count (was not working anymore
+            and quite frankly unimportant)
+          </li>
+          <li>Various issues with CKEditor have been fixed</li>
+          <li>Fix lightslider and lightgallery style</li>
+          <li>Added missing froum group images (contest winners, etc.)</li>
+          <li>Fixed a couple of PHP errors found through Sentry</li>
+        </ul>
+      </li>
+      <li>
+        Improvements
+        <ul>
+          <li>CKEditor crash notice is less annoying now (hopefully)</li>
+          <li>
+            Emoji's performance improved, instead of many tiny files one big
+            chunk is loaded which will improve site load speed
+          </li>
+          <li>
+            Autocomplete finds parts of a phrase now and not just at the
+            beginning + is case insensitive (before: #play → no result | now:
+            #play → #UGXPLAY)
+          </li>
+          <li>
+            Small profile enhancements:
+            <ul>
+              <li>
+                Info about username rename process (good news: we plan to allow
+                username rename soon or later 😉 )
+              </li>
+              <li>Link to edit account (on profile edit page)</li>
+              <li>
+                Direct link to change avatar on public profile page when user
+                hovers on his avatar 😉
+              </li>
+            </ul>
+          </li>
+          <li>COPPA form can be retrieved for users who need it</li>
+          <li>Better +1 Karma visualization</li>
+          <li>
+            Make dropdown and menus look nicer with an image instead of a
+            character
+          </li>
+        </ul>
+      </li>
+      <li>
+        Development Improvements
+        <ul>
+          <li>Improved service worker, one single bundle from now on</li>
+          <li>Upgraded dependencies</li>
+          <li>Reduced dependencies and improved dependency management</li>
+          <li>Upgraded hybridauth to v3 (SDK for social / 3rd party login)</li>
+          <li>Upgraded to latest SMF version</li>
+        </ul>
       </li>
     </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.7beta-Whatsnext?">Whats next?</h2>
-<p>
-  We will listen to community feedback as usual ❤️ . The focus is now on
-  stability and maintenance for a while.
-</p>
-<p>
-  The next major release 9.x is all about new features and long overdue
-  performance improvements. We do them 50/50 and once we hit 1.0, everything
-  should be resolved 🙂
-</p>
-<p>
-  More time ion the
-  <a href="/UGXL">UGX Launcher</a>
-  and UGX Play will be spent and hopefully some new announcement about it will
-  be made soon.
-</p>
-<p>
-  To get a complete overview of our development plans, visit
-  <a href="https://www.ugx-mods.com/roadmap" target="_blank">
-    https://www.ugx-mods.com/roadmap
-  </a>
-</p>
-<p>
-  There are still some major features missing on our forum. We plan to add them
-  this year 🙂
-</p>
-<p><br /></p>
+  </div>
+  <div class="changelog-tickets">
+    <h2 id="UGXSMFv0.8.7beta-Allticketsforthisrelease">
+      All tickets for this release
+    </h2>
+
+    <div style="width: 100%; overflow: auto">
+      <table>
+        <tbody>
+          <tr>
+            <th>Key</th>
+            <th>Summary</th>
+            <th>T</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Assignee</th>
+            <th>Reporter</th>
+            <th>P</th>
+            <th>Status</th>
+            <th>Resolution</th>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-355"
+                target="_blank">
+                UGXSMF-355
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-355"
+                target="_blank">
+                Upgrade to latest SMF
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-355"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-task.svg"
+                  alt="Task"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jan 19, 2020</td>
+            <td>Feb 09, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-critical.svg"
+                alt="Critical"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-353"
+                target="_blank">
+                UGXSMF-353
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-353"
+                target="_blank">
+                Fix forum gallery &amp; slider previews glitch
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-353"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-bug.svg"
+                  alt="Bug"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jan 12, 2020</td>
+            <td>Jan 25, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Fixed</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-352"
+                target="_blank">
+                UGXSMF-352
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-352"
+                target="_blank">
+                Improve CKEditor copy &amp; paste + quotes
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-352"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jan 11, 2020</td>
+            <td>Feb 09, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-351"
+                target="_blank">
+                UGXSMF-351
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-351"
+                target="_blank">
+                Improve performance by using emoji spritesheet
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-351"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jan 11, 2020</td>
+            <td>Feb 09, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-critical.svg"
+                alt="Critical"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-347"
+                target="_blank">
+                UGXSMF-347
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-347"
+                target="_blank">
+                Fix share count and improve provider situation
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-347"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-task.svg"
+                  alt="Task"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jul 22, 2019</td>
+            <td>Jan 26, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-345"
+                target="_blank">
+                UGXSMF-345
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-345"
+                target="_blank">
+                Upgrade to hybridauth v3
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-345"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-task.svg"
+                  alt="Task"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jul 22, 2019</td>
+            <td>Feb 09, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-344"
+                target="_blank">
+                UGXSMF-344
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-344"
+                target="_blank">
+                CKEditor error handler should be more restrictive
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-344"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jul 14, 2019</td>
+            <td>Feb 09, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-343"
+                target="_blank">
+                UGXSMF-343
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-343"
+                target="_blank">
+                Code editor with mixed tab / space causes issues + Chrome vs FF
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-343"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-task.svg"
+                  alt="Task"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jul 06, 2019</td>
+            <td>Jan 19, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Fixed</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-230"
+                target="_blank">
+                UGXSMF-230
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-230"
+                target="_blank">
+                CKE: Color button should show current selected color
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-230"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Mar 30, 2017</td>
+            <td>Jan 26, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-trivial.svg"
+                alt="Trivial"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-92"
+                target="_blank">
+                UGXSMF-92
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-92"
+                target="_blank">
+                CKEditor should stay focused with tab
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-92"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jul 21, 2016</td>
+            <td>Jan 19, 2020</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-trivial.svg"
+                alt="Trivial"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Fixed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <a
+        title="View all matching issues in Jira."
+        href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.7-beta"
+        target="_blank">
+        10 issues
+      </a>
+    </div>
+
+    (Not all changes are listed here, always check the highlights above)
+  </div>
+  <div class="changelog-known-issues">
+    <h2 id="UGXSMFv0.8.7beta-Knownissues">Known issues</h2>
+    <ul>
+      <li>
+        Supported Browsers / Devices
+        <br />
+        <ul>
+          <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
+          <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
+          <li>There was no extensive testing on mobile devices yet</li>
+          <li>
+            <strong>
+              We need your feedback if something isn't working on your device
+            </strong>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-special-thanks">
+    <h2 id="special-thanks">Special Thanks</h2>
+    <p>
+      For your support and issue reports ❤️
+      <br />
+      Report issues / features via
+      <a href="/Applications-and-Services/UGX-Mods-Discord-Server">Discord</a>
+      or other report options.
+    </p>
+  </div>
+  <div class="changelog-whats-next">
+    <h2 id="UGXSMFv0.8.7beta-Whatsnext?">Whats next?</h2>
+    <p>
+      We will listen to community feedback as usual ❤️ . The focus is now on
+      stability and maintenance for a while.
+    </p>
+    <p>
+      The next major release 9.x is all about new features and long overdue
+      performance improvements. We do them 50/50 and once we hit 1.0, everything
+      should be resolved 🙂
+    </p>
+    <p>
+      More time ion the
+      <a href="/UGXL">UGX Launcher</a>
+      and UGX Play will be spent and hopefully some new announcement about it
+      will be made soon.
+    </p>
+    <p>
+      To get a complete overview of our development plans, visit
+      <a href="https://www.ugx-mods.com/roadmap" target="_blank">
+        https://www.ugx-mods.com/roadmap
+      </a>
+    </p>
+    <p>
+      There are still some major features missing on our forum. We plan to add
+      them this year 🙂
+    </p>
+    <p><br /></p>
+  </div>
+</div>

@@ -8,344 +8,369 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:34:08.124Z
 -->
 
-<table>
-  <tbody>
-    <tr>
-      <th>Date</th>
-      <td>23 Mar 2018</td>
-    </tr>
-    <tr>
-      <th>Issues</th>
-      <td>
-        <p>
-          <a
-            href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.6.2-donor-beta"
-            target="_blank">
-            3 issues
-          </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>
-        <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
-          RELEASED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th>Version</th>
-      <td>v0.6.2-donor-beta</td>
-    </tr>
-    <tr>
-      <th>Version Mode</th>
-      <td>Donor Beta</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="UGXSMFv0.6.2donorbeta-Summary">Summary</h2>
-<p>
-  This release contains external application connections (Social Integrations)
-  for major providers. These allow to create a new account faster on UGX-Mods
-  and also to login with it.
-  <br />
-  Everyone can link their accounts with UGX-Mods in order to login with them in
-  the future.
-</p>
-<p>
-  Users who link their Discord Account and are on our UGX-Mods Discord Server
-  will receive automatically their correct Discord Groups.
-</p>
-<h2 id="UGXSMFv0.6.2donorbeta-Importanthighlightsfromthisrelease">
-  Important highlights from this release
-</h2>
-<ul>
-  <li>
-    Connections Profile Page:
-    <br />
-    manage your connections, link and unlink your accounts.
-    <br />
-    <br />
-
-    <img
-      width="450"
-      src="/attachments/applications-and-services/ugx-mods-forum/changelog/ugxsmf-v0-6-2-donor-beta/important-highlights-from-this-release.png"
-      alt="Connections (Social Integrations) page with Facebook, Twitter, Discord, Steam, Twitch and LinkedIn" />
-  </li>
-  <li>
-    Faster registration with social connections:
-    <br />
-    Register with Steam, Discord, Twitch, Google, Yahoo, Twitter, Facebook,
-    LinkedIn
-  </li>
-  <li>
-    Password-less login with social connections:
-    <br />
-    After registration with an social application or after connecting one
-    application with your existing UGX-Mods account it is possible to login with
-    it.
-  </li>
-  <li>
-    Connection with Discord will sync your Discord Groups automatically:
-    <br />
-    After connection all supported Discord roles will be assigned based on your
-    Forum Groups. Automatically and whenever they change 👍
-    <br />
-    (it is changed usually instant - but sometimes it might take a bit depending
-    how many users will be synced)
-  </li>
-  <li>Many signup / registration fixes and improvements</li>
-  <li>Some style tweaks 🙂</li>
-  <li>
-    <strong>Hotfix</strong>
-    : added proper IPv6 support to the forum.
-  </li>
-</ul>
-<p>
-  <strong>
-    <br />
-    Notes about social connections and what UGX-Mods does store
-  </strong>
-  :
-</p>
-<p>
-  At the moment we only ready your data to prefill the registration form. If you
-  already have an account and you connect one provider with your UGX-Mods
-  account, only the provider unique identifier is saved in order to identify you
-  in the future (so that you can login for example with your Twitter account) [
-  we don't store any application sessions or tokens! ].
-  <br />
-  We
-  <strong>don't write</strong>
-  to your account or do anything on behalf of you (like writing a tweet on
-  Twitter and such). -
-  <strong>IF</strong>
-  we are going to do this in the future, you have to re authenticate and agree
-  to this!
-  <br />
-  Certain providers also have the option that you can manually define what we
-  can read (and therefore use). For the registration we fetch usually the
-  following information: email (required to sent you the confirm email),
-  username, personal name, location, personal text (for signature). - During the
-  registration it's possible to change or clear the pre filled data.
-  <br />
-  <br />
-</p>
-<p>
-  <strong>TL;DR</strong>
-  We can't do anything critical with your data and use it only to prefill the
-  registration form and identify so that you can login.
-</p>
-<h2 id="UGXSMFv0.6.2donorbeta-Allticketsforthisrelease">
-  All tickets for this release
-</h2>
-
-<div style="width: 100%; overflow: auto">
-  <table>
+<div
+  class="widget-jira-changelog"
+  data-project="UGXSMF"
+  data-version="v0.6.2-donor-beta"
+  data-released="2018-03-23"
+  data-refreshed="">
+  <table class="widget-jira-info">
     <tbody>
       <tr>
-        <th>Key</th>
-        <th>Summary</th>
-        <th>T</th>
-        <th>Created</th>
-        <th>Updated</th>
-        <th>Assignee</th>
-        <th>Reporter</th>
-        <th>P</th>
+        <th>Date</th>
+        <td>23 Mar 2018</td>
+      </tr>
+      <tr>
+        <th>Issues</th>
+        <td>
+          <p>
+            <a
+              href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.6.2-donor-beta"
+              target="_blank">
+              3 issues
+            </a>
+          </p>
+        </td>
+      </tr>
+      <tr>
         <th>Status</th>
-        <th>Resolution</th>
-      </tr>
-      <tr>
         <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-275"
-            target="_blank">
-            UGXSMF-275
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-275"
-            target="_blank">
-            Memory failed when looking up IP Address
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-275"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-bug.svg"
-              alt="Bug"
-              class="icon" />
-          </a>
-        </td>
-        <td>Nov 03, 2017</td>
-        <td>Mar 23, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Luke Houben</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
+          <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+            RELEASED
           </span>
         </td>
-        <td>Fixed</td>
       </tr>
       <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-250"
-            target="_blank">
-            UGXSMF-250
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-250"
-            target="_blank">
-            Integrate social login &amp; sign up
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-250"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-new-feature.svg"
-              alt="New Feature"
-              class="icon" />
-          </a>
-        </td>
-        <td>Jun 14, 2017</td>
-        <td>Mar 23, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-major.svg"
-            alt="Major"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
+        <th>Version</th>
+        <td>v0.6.2-donor-beta</td>
       </tr>
       <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-244"
-            target="_blank">
-            UGXSMF-244
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-244"
-            target="_blank">
-            Discord Identity connection to SMF
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-244"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-task.svg"
-              alt="Task"
-              class="icon" />
-          </a>
-        </td>
-        <td>May 17, 2017</td>
-        <td>Mar 23, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-major.svg"
-            alt="Major"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
+        <th>Version Mode</th>
+        <td>Donor Beta</td>
       </tr>
     </tbody>
   </table>
-</div>
-<div>
-  <a
-    title="View all matching issues in Jira."
-    href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.6.2-donor-beta"
-    target="_blank">
-    3 issues
-  </a>
-</div>
-
-(Not all changes are listed here, always check the highlights above)
-
-<h2 id="UGXSMFv0.6.2donorbeta-Knownissues">Known issues</h2>
-<ul>
-  <li>
-    Supported Browsers / Devices
-    <br />
+  <div class="changelog-summary">
+    <h2 id="UGXSMFv0.6.2donorbeta-Summary">Summary</h2>
+    <p>
+      This release contains external application connections (Social
+      Integrations) for major providers. These allow to create a new account
+      faster on UGX-Mods and also to login with it.
+      <br />
+      Everyone can link their accounts with UGX-Mods in order to login with them
+      in the future.
+    </p>
+    <p>
+      Users who link their Discord Account and are on our UGX-Mods Discord
+      Server will receive automatically their correct Discord Groups.
+    </p>
+  </div>
+  <div class="changelog-highlights">
+    <h2 id="UGXSMFv0.6.2donorbeta-Importanthighlightsfromthisrelease">
+      Important highlights from this release
+    </h2>
     <ul>
-      <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
-      <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
-      <li>There was no extensive testing on mobile devices yet</li>
       <li>
-        <strong>
-          We need your feedback if something isn't working on your device
-        </strong>
+        Connections Profile Page:
+        <br />
+        manage your connections, link and unlink your accounts.
+        <br />
+        <br />
+
+        <img
+          width="450"
+          src="/attachments/applications-and-services/ugx-mods-forum/changelog/ugxsmf-v0-6-2-donor-beta/important-highlights-from-this-release.png"
+          alt="Connections (Social Integrations) page with Facebook, Twitter, Discord, Steam, Twitch and LinkedIn" />
+      </li>
+      <li>
+        Faster registration with social connections:
+        <br />
+        Register with Steam, Discord, Twitch, Google, Yahoo, Twitter, Facebook,
+        LinkedIn
+      </li>
+      <li>
+        Password-less login with social connections:
+        <br />
+        After registration with an social application or after connecting one
+        application with your existing UGX-Mods account it is possible to login
+        with it.
+      </li>
+      <li>
+        Connection with Discord will sync your Discord Groups automatically:
+        <br />
+        After connection all supported Discord roles will be assigned based on
+        your Forum Groups. Automatically and whenever they change 👍
+        <br />
+        (it is changed usually instant - but sometimes it might take a bit
+        depending how many users will be synced)
+      </li>
+      <li>Many signup / registration fixes and improvements</li>
+      <li>Some style tweaks 🙂</li>
+      <li>
+        <strong>Hotfix</strong>
+        : added proper IPv6 support to the forum.
       </li>
     </ul>
-  </li>
-  <li>
-    HTML Emails:
+    <p>
+      <strong>
+        <br />
+        Notes about social connections and what UGX-Mods does store
+      </strong>
+      :
+    </p>
+    <p>
+      At the moment we only ready your data to prefill the registration form. If
+      you already have an account and you connect one provider with your
+      UGX-Mods account, only the provider unique identifier is saved in order to
+      identify you in the future (so that you can login for example with your
+      Twitter account) [ we don't store any application sessions or tokens! ].
+      <br />
+      We
+      <strong>don't write</strong>
+      to your account or do anything on behalf of you (like writing a tweet on
+      Twitter and such). -
+      <strong>IF</strong>
+      we are going to do this in the future, you have to re authenticate and
+      agree to this!
+      <br />
+      Certain providers also have the option that you can manually define what
+      we can read (and therefore use). For the registration we fetch usually the
+      following information: email (required to sent you the confirm email),
+      username, personal name, location, personal text (for signature). - During
+      the registration it's possible to change or clear the pre filled data.
+      <br />
+      <br />
+    </p>
+    <p>
+      <strong>TL;DR</strong>
+      We can't do anything critical with your data and use it only to prefill
+      the registration form and identify so that you can login.
+    </p>
+  </div>
+  <div class="changelog-tickets">
+    <h2 id="UGXSMFv0.6.2donorbeta-Allticketsforthisrelease">
+      All tickets for this release
+    </h2>
+
+    <div style="width: 100%; overflow: auto">
+      <table>
+        <tbody>
+          <tr>
+            <th>Key</th>
+            <th>Summary</th>
+            <th>T</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Assignee</th>
+            <th>Reporter</th>
+            <th>P</th>
+            <th>Status</th>
+            <th>Resolution</th>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-275"
+                target="_blank">
+                UGXSMF-275
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-275"
+                target="_blank">
+                Memory failed when looking up IP Address
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-275"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-bug.svg"
+                  alt="Bug"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Nov 03, 2017</td>
+            <td>Mar 23, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Luke Houben</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Fixed</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-250"
+                target="_blank">
+                UGXSMF-250
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-250"
+                target="_blank">
+                Integrate social login &amp; sign up
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-250"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-new-feature.svg"
+                  alt="New Feature"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Jun 14, 2017</td>
+            <td>Mar 23, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-major.svg"
+                alt="Major"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-244"
+                target="_blank">
+                UGXSMF-244
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-244"
+                target="_blank">
+                Discord Identity connection to SMF
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-244"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-task.svg"
+                  alt="Task"
+                  class="icon" />
+              </a>
+            </td>
+            <td>May 17, 2017</td>
+            <td>Mar 23, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-major.svg"
+                alt="Major"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <a
+        title="View all matching issues in Jira."
+        href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.6.2-donor-beta"
+        target="_blank">
+        3 issues
+      </a>
+    </div>
+
+    (Not all changes are listed here, always check the highlights above)
+  </div>
+  <div class="changelog-known-issues">
+    <h2 id="UGXSMFv0.6.2donorbeta-Knownissues">Known issues</h2>
     <ul>
       <li>
-        <strong>
-          WE NEED YOUR FEEDBACK IF SOMETHING IS COMPLETELY MESSED UP!
-        </strong>
+        Supported Browsers / Devices
+        <br />
         <ul>
+          <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
+          <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
+          <li>There was no extensive testing on mobile devices yet</li>
           <li>
-            there were many tests to ensure it works well for the majority of
-            users
+            <strong>
+              We need your feedback if something isn't working on your device
+            </strong>
           </li>
         </ul>
       </li>
       <li>
-        Outlook has some quirks (odd spacing around the email) - Blame the
-        developers of it for using the Word HTML rendering engine
+        HTML Emails:
+        <ul>
+          <li>
+            <strong>
+              WE NEED YOUR FEEDBACK IF SOMETHING IS COMPLETELY MESSED UP!
+            </strong>
+            <ul>
+              <li>
+                there were many tests to ensure it works well for the majority
+                of users
+              </li>
+            </ul>
+          </li>
+          <li>
+            Outlook has some quirks (odd spacing around the email) - Blame the
+            developers of it for using the Word HTML rendering engine
+          </li>
+        </ul>
       </li>
     </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.6.2donorbeta-Whatsnext?">Whats next?</h2>
-<p>
-  We await (your) community feedback now ❤️ While working on additional
-  improvements and features, the feedback from the community will be put
-  together into more frequent updates.
-</p>
-<p>
-  The next update (v0.6.3-donor-beta) will improve some existing code basis and
-  also the new frontpage will be finalized.
-</p>
-<p>
-  Open Beta sooon; v0.6.3-donor.beta will be the last (planned) release before
-  the Open Beta release will be prepared (v0.7.0-open-beta) 👍
-</p>
-<p><br /></p>
+  </div>
+  <div class="changelog-special-thanks">
+    <h2 id="special-thanks">Special Thanks</h2>
+    <p>
+      For your support and issue reports ❤️
+      <br />
+      Report issues / features via
+      <a href="/Applications-and-Services/UGX-Mods-Discord-Server">Discord</a>
+      or other report options.
+    </p>
+  </div>
+  <div class="changelog-whats-next">
+    <h2 id="UGXSMFv0.6.2donorbeta-Whatsnext?">Whats next?</h2>
+    <p>
+      We await (your) community feedback now ❤️ While working on additional
+      improvements and features, the feedback from the community will be put
+      together into more frequent updates.
+    </p>
+    <p>
+      The next update (v0.6.3-donor-beta) will improve some existing code basis
+      and also the new frontpage will be finalized.
+    </p>
+    <p>
+      Open Beta sooon; v0.6.3-donor.beta will be the last (planned) release
+      before the Open Beta release will be prepared (v0.7.0-open-beta) 👍
+    </p>
+    <p><br /></p>
+  </div>
+</div>
