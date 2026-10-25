@@ -8,6 +8,10 @@ no_progress = true
 scheme = ["https", "http"]
 include_verbatim = false
 
+# internal links (/UGXL, /attachments/...) resolve to the wiki and are excluded
+# below; without a base lychee reports every root-relative link as an error
+base_url = "https://wiki.ugx-mods.com/"
+
 max_concurrency = 8
 max_retries = 2
 retry_wait_time = 5
@@ -17,10 +21,16 @@ timeout = 20
 accept = ["200..=299", "403", "429"]
 
 exclude = [
-  # Jira Cloud needs a login, the Jira links are a separate roadmap item
+  # the wiki itself: internal links are checked by npm run validate
+  '^https?://wiki\.ugx-mods\.com',
+  # Jira Cloud needs a login
   '^https?://ugxmods\.atlassian\.net',
+  # need a login: forum profile areas, launcher download (closed beta)
+  '^https?://(www\.)?ugx-mods\.com/forum/profile/',
+  '^https?://(www\.)?ugx-mods\.com/(play/ugx_launcher|ugxl)/',
   '^https?://(localhost|127\.0\.0\.1)',
 ]
 
-# wiki.js re-export of the GitHub templates (git ignored files and .github are skipped by default)
-exclude_path = ['(^|/)github/']
+# wiki.js re-export of the GitHub templates (.github is skipped by default), packages
+# and build output of local runs; both separators, so local runs on Windows work too
+exclude_path = ['(^|[/\\])(github|node_modules|dist)[/\\]']
