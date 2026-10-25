@@ -25,7 +25,7 @@ Consequences:
 - **Every `.html` and `.md` file is a wiki page**, including files in dot-folders (e.g. `.github/PULL_REQUEST_TEMPLATE.md` was imported and re-exported as `github/…`). Do not add stray Markdown/HTML files (notes, plans, reports, test fixtures). Put scratch output outside the repo.
 - **Every other file is a wiki asset** (served at its path, e.g. `/attachments/icons/alert.png`).
 - Wiki-authored pages are not prettier-formatted. CI only format-checks files changed in a PR, do not reformat unrelated pages.
-- Pages were imported from Confluence in 2024. `node src/main.js confluence-markup` removed most leftover markup; the changelogs still link to Jira Cloud (`ugxmods.atlassian.net`). Inline color styles are intended.
+- Pages were imported from Confluence in 2024. The leftover Confluence markup was cleaned up in 2026; the changelogs still link to Jira Cloud (`ugxmods.atlassian.net`). Inline color styles are intended.
 
 ## Repository layout
 
@@ -38,7 +38,7 @@ Consequences:
 | `Careers.html`, `UGX-Help-Center.html`          | Standalone pages                                                                    |
 | `attachments/`                                  | Images, videos, downloads (Git LFS), grouped by area                                |
 | `src/theme/`                                    | Theme overrides for Wiki.js: `wiki.scss` (widgets, banners, code panels), `wiki.js` |
-| `src/main.js`, `src/tools/`                     | Tooling CLI and its steps: validation, hierarchy, theme deployment, Confluence      |
+| `src/main.js`, `src/tools/`                     | Tooling CLI and its steps: validation, hierarchy, theme, content helpers, Jira      |
 | `test/`                                         | `node:test` unit tests for `src/tools/` (fixtures are created in a temp folder)     |
 | `dist/`                                         | Build output of the theme (gitignored)                                              |
 | `lychee.toml`                                   | External link check config (weekly workflow `links.yml`)                            |
@@ -99,7 +99,7 @@ Own sections (e.g. "Did you know...?") can be added anywhere inside the changelo
 3. Repository: add the project to `PROJECTS` in `src/tools/jira/changelog.js` (`dir` of the changelog folder, file name `prefix`, page `title`, product `tag` from `src/tools/lib/tags.js`), and create the changelog overview page `<dir>.html` (with a table like `Applications-and-Services/UGX-Mods-Forum/Changelog.html`, or the child page list `widget-page-hierarchy`). Open a pull request with both.
 4. After the merge, create the first changelog as above.
 
-Run `npm run check` (or at least `npm run lint` + `npm run validate`) before committing. `validate` must report **0 errors**. Warnings (empty descriptions etc.) are known backlog.
+Run `npm run check` (or at least `npm run lint` + `npm run validate`) before committing. `validate` must report **0 errors**. New pages must not add warnings; the remaining ones are 4 pages without the wiki-managed `date` fields (Wiki.js adds them on the next save) and the forum Notifications page (its tags follow with the next forum update).
 
 ### Dependencies
 
@@ -136,7 +136,7 @@ dateCreated: 2024-02-04T15:32:14.270Z
 Markdown pages (`editor: markdown`) use the same fields as YAML front matter between `---` lines.
 
 - `title` is required and rendered as the page `<h1>`. Many modding pages are prefixed with `WaW |` or `BO3 |` (e.g. `WaW | Radiant`, `BO3 | Adding Zones`).
-- `description` is shown in search and link previews. Write one sentence for new pages (most existing pages are still empty).
+- `description` is shown in search and link previews. Write one sentence for every new page, all existing pages have one.
 - `editor: ckeditor` for HTML pages, `markdown` for `.md`.
 - `tags` (comma separated) come from the tag set in `src/tools/lib/tags.js`, `validate` warns about others. Give every page:
   - one product: `waw`, `bo3`, `ugxl`, `ugxlin`, `forum`, `ugxmp` (MapPacker), `services` (other UGX services)
