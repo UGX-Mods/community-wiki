@@ -68,9 +68,11 @@ npm run tools          # interactive tooling menu (node src/main.js --help for s
 
 Release pages (UGXSMF, UGXL, UGXLIN, UGXMAPP) are generated from Jira Cloud by the workflow **Jira changelog** (`.github/workflows/jira-changelog.yml`):
 
-- Run it with project + fix version to create the page of a new release. It also adds the release to the changelog overview. A weekly run (and every manual run) refreshes the release widgets that are due.
+- Run it with project + fix version to create the page of a new release. It also adds the release to the changelog overview. A weekly run (and every manual run) refreshes the changelogs that are due.
 - The result is pushed to a branch. Open the pull request from the run summary, check the tickets and add a summary to new pages.
-- The release widget `<div class="widget-jira-issues" data-project data-version data-released data-refreshed>` and the info table (`widget-jira-info`) are **generated**, do not edit them by hand. They are refreshed while the release is unreleased and until 30 days after its release date, then they stay as they are. The summary of a page is never touched.
+- Changelog format (`src/tools/jira/page.js`, reference: the UGXSMF changelogs): one wrapper `<div class="widget-jira-changelog" data-project data-version data-released data-refreshed>` with, in this order, the info table (`widget-jira-info`), and the sections `changelog-summary`, `changelog-highlights`, `changelog-tickets`, `changelog-known-issues`, `changelog-special-thanks` and `changelog-whats-next` (each a `div` with its `h2`). **Generated** are only the rows Date, Issues, Status and Version of the info table and the ticket table (`widget-jira-issues`). Everything else is written by hand and kept as it is: further info rows (Version Mode: production, beta, ...), the sections, extra sections like "Did you know...?" (they stay in the section they follow). Missing sections are added with a default text. A refresh never touches anything outside the wrapper.
+- A changelog is refreshed while the release is unreleased and until 30 days after its release date, then it stays as it is. The workflow input `force` (locally `JIRA_FORCE=1`) refreshes all of them, e.g. after a format change. Versions that are missing in Jira are a warning, those pages keep their tables.
+- `JIRA_PROJECT=UGXSMF node src/main.js jira-adopt` converts old changelog pages into the format without asking Jira (the tables stay until a refresh). The version comes from the Jira query of the Issues link, a release date that can not be read is stored as `unknown` (frozen until a forced refresh). The UGXSMF changelogs are converted; the UGXL, UGXLIN and UGXMAPP ones use sprints or ticket lists instead of fix versions and stay as they are.
 
 Security:
 
