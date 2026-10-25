@@ -283,33 +283,71 @@ pre[class*='language-'] > code[class*='language-'] {
  *
  * Colors are custom properties with a light and a dark variant: wiki.js sets
  * .theme--light / .theme--dark on .v-application. All text colors meet
- * WCAG 2.2 AA (4.5:1) against their background, borders 3:1.
+ * WCAG 2.2 AA (4.5:1) against their background, borders of controls 3:1.
  * Code panels stay dark in both modes (the prism theme is a dark theme).
+ *
+ * Specificity: this stylesheet is loaded after the wiki.js styles but before
+ * the vuetify component styles. Content rules start with #app (the root
+ * .v-application) so they win over the wiki.js defaults without !important.
+ * !important is only used against vuetify color / typography helper classes
+ * (.grey, .teal--text, .headline, ...), which are !important themselves.
  ************************************/
 
-$border-radius: 5px;
+$border-radius: 8px;
+$border-radius-small: 4px;
 $color-ugx-blue: #1a4067;
 $color-code-bg: #1e1e1e;
+$color-bg-dark: #15171b;
+$color-header: #0e141b;
+$color-header-border: #2b3440;
+
+// tags with an own color (--ugx-tag-<tag>), the products and ai-generated
+$colored-tags: waw, bo3, ugxl, ugxlin, forum, ugxmp, services, ai-generated;
+
+// vertical space around widgets, so they are easy to spot and to use
+$space-block: 1.5rem;
 
 .v-application {
-  --ugx-text: #212121;
-  --ugx-link: #1565c0;
-  --ugx-focus: #1565c0;
-  --ugx-surface: #f5f5f5;
-  --ugx-border: #8a8a8a;
+  --ugx-bg: #fff;
+  --ugx-bg-raised: #f6f8fa;
+  --ugx-text: #1f2328;
+  --ugx-text-muted: #59636e;
+  --ugx-heading: #0f1419;
+  --ugx-heading-sub: #0a4a8c;
+  --ugx-link: #0b5cad;
+  --ugx-link-hover: #083f78;
+  --ugx-accent: #0b5cad;
+  --ugx-focus: #0b5cad;
+  --ugx-hover: rgb(11 92 173 / 8%);
+  --ugx-surface: #f6f8fa;
+  --ugx-border: #d1d9e0;
+  --ugx-border-strong: #818b98;
+  --ugx-table-head: #eef2f6;
+  --ugx-table-stripe: #f8fafc;
+  --ugx-code-inline-bg: #eff2f5;
   --ugx-dialog-bg: #fff;
   --ugx-shadow: rgb(0 0 0 / 20%);
-  --ugx-info: #1565c0;
-  --ugx-info-bg: #e3f2fd;
-  --ugx-tip: #2e7d32;
-  --ugx-tip-bg: #e8f5e9;
-  --ugx-note: #b26a00;
-  --ugx-note-bg: #fff8e1;
+  --ugx-info: #0b5cad;
+  --ugx-info-bg: #eaf3fd;
+  --ugx-tip: #1a7f37;
+  --ugx-tip-bg: #e9f6ec;
+  --ugx-note: #9a6700;
+  --ugx-note-bg: #fff8e5;
   --ugx-warning: #c62828;
-  --ugx-warning-bg: #ffebee;
+  --ugx-warning-bg: #fdecec;
   --ugx-badge-success: #1b5e20;
   --ugx-badge-default: #424242;
   --ugx-badge-current: #0d47a1;
+
+  // product tags (src/tools/lib/tags.js), 4.5:1 on their tinted chip
+  --ugx-tag-waw: #3f6212;
+  --ugx-tag-bo3: #c2410c;
+  --ugx-tag-ugxl: #0b5cad;
+  --ugx-tag-ugxlin: #0b6177;
+  --ugx-tag-forum: #7c3aed;
+  --ugx-tag-ugxmp: #be185d;
+  --ugx-tag-services: #475569;
+  --ugx-tag-ai-generated: #9a6700;
 
   // inline text colors of imported pages, readable on light backgrounds
   --ugx-color-green: #1e7b4f;
@@ -324,24 +362,44 @@ $color-code-bg: #1e1e1e;
 }
 
 .v-application.theme--dark {
-  --ugx-text: #eee;
-  --ugx-link: #90caf9;
-  --ugx-focus: #90caf9;
-  --ugx-surface: #111;
-  --ugx-border: #757575;
-  --ugx-dialog-bg: #212121;
+  --ugx-bg: #{$color-bg-dark};
+  --ugx-bg-raised: #1d2026;
+  --ugx-text: #e6e8eb;
+  --ugx-text-muted: #a7afba;
+  --ugx-heading: #fff;
+  --ugx-heading-sub: #8cc4ff;
+  --ugx-link: #6db3ff;
+  --ugx-link-hover: #a6d1ff;
+  --ugx-accent: #4c9bf0;
+  --ugx-focus: #8cc4ff;
+  --ugx-hover: rgb(109 179 255 / 10%);
+  --ugx-surface: #1d2026;
+  --ugx-border: #343a43;
+  --ugx-border-strong: #6e7781;
+  --ugx-table-head: #22262d;
+  --ugx-table-stripe: #1a1d22;
+  --ugx-code-inline-bg: #252a31;
+  --ugx-dialog-bg: #1d2026;
   --ugx-shadow: #000;
-  --ugx-info: #569cd6;
-  --ugx-info-bg: #111;
-  --ugx-tip: #5cb85c;
-  --ugx-tip-bg: #111;
-  --ugx-note: #f0ad4e;
-  --ugx-note-bg: #111;
-  --ugx-warning: #d9534f;
-  --ugx-warning-bg: #111;
+  --ugx-info: #4c9bf0;
+  --ugx-info-bg: #14253a;
+  --ugx-tip: #3fb950;
+  --ugx-tip-bg: #11281a;
+  --ugx-note: #d29922;
+  --ugx-note-bg: #2e2410;
+  --ugx-warning: #f85149;
+  --ugx-warning-bg: #3a1618;
   --ugx-badge-success: #81c995;
   --ugx-badge-default: #e0e0e0;
   --ugx-badge-current: #90caf9;
+  --ugx-tag-waw: #9bd255;
+  --ugx-tag-bo3: #ff9a5c;
+  --ugx-tag-ugxl: #6db3ff;
+  --ugx-tag-ugxlin: #5cc8e0;
+  --ugx-tag-forum: #b69cff;
+  --ugx-tag-ugxmp: #f584b8;
+  --ugx-tag-services: #a7b4c6;
+  --ugx-tag-ai-generated: #d29922;
   --ugx-color-green: #81c995;
   --ugx-color-red: #ff9e94;
   --ugx-color-navy: #90caf9;
@@ -353,113 +411,592 @@ $color-code-bg: #1e1e1e;
 
 html:has(.v-application.theme--dark),
 html:has(.v-application.theme--dark) body {
-  background: #424242;
+  background: $color-bg-dark;
 }
 
-// wiki.js renders sub headings #757575 on #212121 in dark mode (3.5:1)
-.v-application.theme--dark .v-main .contents {
+/************************************
+ * Page frame: top bar, navigation, breadcrumbs, page header, side column, footer
+ ************************************/
+
+#app {
+  &,
+  .v-application--wrap {
+    background: var(--ugx-bg);
+  }
+
+  // top bar: dark in both modes, so the logo (white) keeps working
+  header.nav-header {
+    border-bottom: 1px solid $color-header-border;
+
+    &,
+    .nav-header-inner {
+      background-color: $color-header !important;
+    }
+
+    .v-input__slot {
+      background: rgb(255 255 255 / 8%) !important;
+      border: 1px solid rgb(255 255 255 / 20%);
+    }
+
+    .v-input--is-focused .v-input__slot {
+      border-color: #8cc4ff;
+    }
+  }
+
+  // navigation: the same quiet surface as the side cards (wiki.js colors it
+  // with grey / primary helper classes and white text)
+  nav.v-navigation-drawer {
+    background-color: var(--ugx-bg-raised) !important;
+    border-right: 1px solid var(--ugx-border);
+
+    .v-navigation-drawer__border {
+      display: none;
+    }
+
+    .pa-3.d-flex,
+    .v-list {
+      background-color: transparent !important;
+    }
+
+    hr.v-divider {
+      border-color: var(--ugx-border) !important;
+    }
+
+    .pa-3 .v-btn {
+      color: var(--ugx-text) !important;
+      background-color: var(--ugx-bg) !important;
+      border: 1px solid var(--ugx-border) !important;
+
+      &:hover {
+        border-color: var(--ugx-link) !important;
+      }
+
+      .v-icon {
+        color: inherit !important;
+      }
+    }
+
+    .v-list-item {
+      min-height: 40px;
+      margin: 0 8px;
+      color: var(--ugx-text) !important;
+      border-radius: $border-radius-small;
+
+      .v-icon {
+        color: var(--ugx-text-muted) !important;
+      }
+
+      &:hover .v-icon,
+      &--active,
+      &--active .v-icon {
+        color: var(--ugx-link) !important;
+      }
+    }
+
+    .v-list-item__title {
+      font-size: 0.875rem !important;
+      font-weight: 500 !important;
+      line-height: 1.35;
+      white-space: normal;
+    }
+
+    .v-subheader {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ugx-text-muted) !important;
+      text-transform: uppercase;
+    }
+  }
+
+  .v-main__wrap > header.v-toolbar {
+    background-color: var(--ugx-bg) !important;
+  }
+
+  // title and description of the page
+  // (wiki.js sets an inline height of 90px, too small for longer titles)
+  .page-header-section {
+    height: auto !important;
+    min-height: 90px;
+    padding: 1.25rem 0 0;
+    background: var(--ugx-bg-raised);
+
+    // room for the edit buttons, which are positioned in this column
+    > .is-page-header {
+      padding-bottom: 3.25rem;
+    }
+
+    .headline {
+      font-size: 2rem !important;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ugx-heading) !important;
+
+      @media (width <= 600px) {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    // edit buttons inside the band instead of over the first paragraph
+    .page-edit-shortcuts {
+      bottom: 0.625rem;
+    }
+
+    .caption {
+      margin-top: 0.375rem;
+      font-size: 1rem !important;
+      line-height: 1.5;
+      color: var(--ugx-text-muted) !important;
+    }
+
+    .page-edit-shortcuts .v-btn {
+      color: var(--ugx-text-muted);
+      background-color: var(--ugx-bg) !important;
+      border: 1px solid var(--ugx-border) !important;
+
+      &:hover {
+        color: var(--ugx-link);
+      }
+    }
+  }
+
+  // cards next to the content: page contents, tags, last edited by, share
+  .page-col-sd {
+    .v-card {
+      color: var(--ugx-text);
+      background-color: var(--ugx-bg-raised) !important;
+      border: 1px solid var(--ugx-border);
+      border-radius: $border-radius !important;
+      box-shadow: none !important;
+    }
+
+    .overline {
+      font-size: 0.75rem !important;
+      font-weight: 700;
+      color: var(--ugx-text-muted) !important;
+    }
+
+    .v-toolbar,
+    .v-list {
+      background-color: transparent !important;
+    }
+
+    .v-icon {
+      color: var(--ugx-text-muted) !important;
+    }
+  }
+
+  .page-toc-card {
+    .v-list-item {
+      min-height: 34px;
+      border-radius: $border-radius-small;
+
+      &:hover {
+        background: var(--ugx-hover);
+      }
+    }
+
+    .v-list-item__title {
+      font-size: 0.875rem !important;
+      font-weight: 500 !important;
+      line-height: 1.35;
+      color: var(--ugx-text);
+      white-space: normal;
+    }
+  }
+
+  // tags: outlined chips, product tags in their own color (matched by the
+  // tag link /t/<tag>, unknown tags stay neutral). confluence:<id> tags are
+  // only for the tooling and hidden here.
+  .page-tags-card .v-chip {
+    --ugx-tag: var(--ugx-text);
+
+    height: 30px;
+    padding: 0 12px;
+    background-color: transparent !important;
+    border: 1px solid var(--ugx-border-strong) !important;
+    border-radius: 999px !important;
+
+    @each $tag in $colored-tags {
+      &[href$='/t/#{$tag}'] {
+        --ugx-tag: var(--ugx-tag-#{$tag});
+
+        background-color: color-mix(
+          in srgb,
+          var(--ugx-tag) 12%,
+          transparent
+        ) !important;
+        border-color: var(--ugx-tag) !important;
+
+        span[class*='--text'] {
+          font-weight: 700;
+        }
+
+        .v-icon {
+          color: var(--ugx-tag) !important;
+        }
+      }
+    }
+
+    &[href$='/t/legacy'] {
+      border-style: dashed !important;
+    }
+
+    &[href*='/t/confluence:'] {
+      display: none;
+    }
+
+    span[class*='--text'] {
+      font-weight: 500;
+      color: var(--ugx-tag) !important;
+    }
+
+    .v-icon {
+      font-size: 16px !important;
+    }
+
+    &:hover {
+      border-color: var(--ugx-link) !important;
+
+      span[class*='--text'],
+      .v-icon {
+        color: var(--ugx-link) !important;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ugx-focus);
+      outline-offset: 2px;
+    }
+  }
+
+  .page-author-card {
+    &-name {
+      color: var(--ugx-text) !important;
+    }
+
+    &-date {
+      color: var(--ugx-text-muted) !important;
+    }
+  }
+
+  footer.v-footer {
+    background-color: var(--ugx-bg-raised) !important;
+    border-top: 1px solid var(--ugx-border);
+
+    .caption {
+      color: var(--ugx-text-muted) !important;
+    }
+
+    a {
+      color: var(--ugx-link);
+    }
+  }
+}
+
+/************************************
+ * Content
+ ************************************/
+
+#app .v-main .contents {
+  max-width: 60rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ugx-text);
+
+  > div > :first-child {
+    margin-top: 0;
+  }
+
+  // headings: clearly separated sections, h2 > h3 > h4 by size and color
+  h1,
+  h2,
   h3,
   h4,
   h5,
   h6 {
-    color: #bdbdbd;
-  }
-}
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ugx-heading);
 
-.v-main .contents {
+    &::after {
+      display: none;
+    }
+  }
+
+  h1,
+  h2 {
+    padding: 0 0 0.5rem;
+    margin: 2.75rem 0 0;
+
+    // accent at the start of a full width line
+    &::after {
+      display: block;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        var(--ugx-accent) 0 3rem,
+        var(--ugx-border) 3rem
+      );
+      border-radius: 0;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.625rem;
+  }
+
+  h3 {
+    margin: 2rem 0 0;
+    font-size: 1.25rem;
+    color: var(--ugx-heading-sub);
+  }
+
+  h4,
+  h5,
+  h6 {
+    margin: 1.5rem 0 0;
+    font-size: 1.0625rem;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) + :is(h2, h3, h4, h5, h6) {
+    margin-top: 1rem;
+  }
+
   p {
-    padding: 0.5rem 0 0;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) + :is(p, ul, ol) {
+    margin-top: 0.75rem;
+  }
+
+  a {
+    color: var(--ugx-link);
+    text-underline-offset: 0.15em;
+
+    &:hover {
+      color: var(--ugx-link-hover);
+      text-decoration-thickness: 2px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ugx-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    &.is-external-link::after {
+      color: var(--ugx-text-muted);
+    }
+  }
+
+  ol,
+  ul {
+    padding-top: 0;
+    margin-top: 1rem;
+
+    li + li {
+      margin-top: 0.375rem;
+    }
+
+    li > ol,
+    li > ul {
+      padding-top: 0;
+      margin-top: 0.375rem;
+    }
+  }
+
+  ul > li::before {
+    color: var(--ugx-accent);
+  }
+
+  hr {
+    margin: 2.5rem 0;
+    background-color: var(--ugx-border);
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    border-radius: $border-radius-small;
+  }
+
+  // inline code (code blocks have their own panel)
+  :not(pre) > code:not([class*='language-']) {
+    padding: 0.1em 0.35em;
+    font-size: 0.875em;
+    color: var(--ugx-text);
+    background-color: var(--ugx-code-inline-bg);
+    border: 1px solid var(--ugx-border);
+    border-radius: $border-radius-small;
+  }
+
+  // tables: one header color, striped rows, room in the cells.
+  // display: block lets wide tables (jira tickets) scroll instead of squeezing
+  table {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: $space-block 0 0;
+    overflow-x: auto;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 1px solid var(--ugx-border);
+    border-radius: $border-radius;
+
+    th,
+    td {
+      padding: 0.625rem 0.875rem;
+      vertical-align: top;
+      text-align: left;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--ugx-border);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    th {
+      font-weight: 700;
+      color: var(--ugx-heading);
+      background-color: var(--ugx-table-head);
+    }
+
+    tr:nth-child(even) td {
+      background-color: var(--ugx-table-stripe);
+    }
+
+    tr:last-child > * {
+      border-bottom: 0;
+    }
+
+    tr:first-child > :first-child {
+      border-top-left-radius: $border-radius - 1px;
+    }
+
+    tr:first-child > :last-child {
+      border-top-right-radius: $border-radius - 1px;
+    }
+
+    tr:last-child > :first-child {
+      border-bottom-left-radius: $border-radius - 1px;
+    }
+
+    tr:last-child > :last-child {
+      border-bottom-right-radius: $border-radius - 1px;
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+  }
+
+  figure.table > table {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  // the first elements in a box need no space above them
+  :is(.banner-body, .widget-tab-content, td, th, li) > :first-child {
+    margin-top: 0;
   }
 
   .banner {
-    --ugx-accent: var(--ugx-info);
+    --ugx-accent-banner: var(--ugx-info);
 
     position: relative;
-    padding: 5px 5px 5px 35px;
-    margin: 5px 0 10px;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    margin: $space-block 0 0;
     color: var(--ugx-text);
     background: var(--ugx-surface);
-    border: 1px solid var(--ugx-accent);
+    border: 1px solid var(--ugx-border);
+    border-left: 4px solid var(--ugx-accent-banner);
     border-radius: $border-radius;
-    box-shadow: 1px 1px 5px var(--ugx-shadow);
 
     a {
       color: var(--ugx-link);
     }
 
     &-info {
-      --ugx-accent: var(--ugx-info);
+      --ugx-accent-banner: var(--ugx-info);
 
       background: var(--ugx-info-bg);
     }
 
     &-tip {
-      --ugx-accent: var(--ugx-tip);
+      --ugx-accent-banner: var(--ugx-tip);
 
       background: var(--ugx-tip-bg);
     }
 
     &-note {
-      --ugx-accent: var(--ugx-note);
+      --ugx-accent-banner: var(--ugx-note);
 
       background: var(--ugx-note-bg);
     }
 
     &-warning {
-      --ugx-accent: var(--ugx-warning);
+      --ugx-accent-banner: var(--ugx-warning);
 
       background: var(--ugx-warning-bg);
     }
 
     &-title {
       padding: 0;
-      margin: 0 0 3px;
-      font-weight: bold;
+      margin: 0 0 0.25rem;
+      font-weight: 700;
+      color: var(--ugx-heading);
     }
 
     &-icon {
       position: absolute;
-      top: 5px;
-      left: 5px;
+      top: 0.9rem;
+      left: 0.875rem;
+      width: 22px;
+      height: 22px;
+      border-radius: 0;
       filter: var(--ugx-icon-filter);
-    }
-
-    &-body {
-      :first-child {
-        padding-top: 0;
-      }
     }
   }
 
   .widget-panel {
-    padding: 5px;
-    margin-top: 10px;
+    padding: 0.75rem;
+    margin: $space-block 0 0;
     color: var(--ugx-text);
     background: var(--ugx-surface);
-    border: 1px solid $color-ugx-blue;
+    border: 1px solid var(--ugx-border);
     border-radius: $border-radius;
   }
 
   .expandable-container {
-    margin-top: 10px;
+    margin-top: $space-block;
     overflow: hidden;
 
     button.expandable-button {
       display: inline-flex;
-      gap: 6px;
+      gap: 8px;
       align-items: center;
-      padding: 0 2px;
-      margin: 5px 0;
+      min-height: 32px;
+      padding: 0 10px;
+      margin: 0.5rem 0;
+      font-weight: 500;
       color: var(--ugx-link);
+      border: 1px solid var(--ugx-border-strong);
+      border-radius: $border-radius-small;
 
       &:hover {
-        text-decoration: underline;
+        background: var(--ugx-hover);
+        border-color: var(--ugx-link);
       }
 
       &:focus-visible {
         outline: 2px solid var(--ugx-focus);
         outline-offset: 2px;
-        border-radius: 2px;
       }
 
       // chevron in the text color, works in both modes
@@ -482,6 +1019,7 @@ html:has(.v-application.theme--dark) body {
     .expandable-content {
       visibility: hidden;
       height: 0;
+      overflow: hidden;
       opacity: 0;
       transition:
         visibility 0s,
@@ -497,33 +1035,42 @@ html:has(.v-application.theme--dark) body {
   }
 
   .widget-code-panel {
-    margin: 6px 0;
+    padding: 0;
+    margin: $space-block 0 0;
     overflow: hidden;
     color: #d4d4d4;
     background: $color-code-bg;
-    border: 1px solid #666;
+    border: 1px solid #3c3c3c;
     border-radius: $border-radius;
 
     &-header {
       display: flex;
+      gap: 1rem;
+      align-items: center;
       justify-content: space-between;
-      padding: 3px 8px;
+      padding: 0.375rem 0.5rem 0.375rem 0.875rem;
       color: #fff;
       background: $color-ugx-blue;
 
       // the header is dark in both modes
       button.expandable-button {
         margin: 0;
-        color: #90caf9;
+        color: #cfe6ff;
+        border-color: #6f9ccc;
+
+        &:hover {
+          background: rgb(255 255 255 / 10%);
+          border-color: #cfe6ff;
+        }
 
         &:focus-visible {
-          outline-color: #90caf9;
+          outline-color: #cfe6ff;
         }
       }
     }
 
     &-title {
-      font-weight: bold;
+      font-weight: 700;
     }
 
     &-content {
@@ -531,7 +1078,7 @@ html:has(.v-application.theme--dark) body {
     }
 
     .prismjs {
-      padding: 0.5rem 1rem 0.5rem 2.5rem;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
       margin: 0;
     }
   }
@@ -548,13 +1095,22 @@ html:has(.v-application.theme--dark) body {
     }
   }
 
-  // tabs: without JavaScript the tabs are shown one below the other
+  // tabs: a box with a tab strip, the selected tab merges into the panel.
+  // Without JavaScript the tabs are shown one below the other in the box.
   .widget-tabs {
-    margin: 10px 0;
+    padding: 0 1.25rem 1.25rem;
+    margin: $space-block 0 0;
+    border: 1px solid var(--ugx-border-strong);
+    border-radius: $border-radius;
+
+    &.is-ready {
+      padding: 0;
+    }
 
     .widget-tab-title {
-      margin-top: 10px;
-      font-weight: bold;
+      margin-top: 1rem;
+      font-weight: 700;
+      color: var(--ugx-heading);
     }
 
     &.is-ready .widget-tab-title {
@@ -564,24 +1120,34 @@ html:has(.v-application.theme--dark) body {
     &-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 2px;
-      border-bottom: 1px solid var(--ugx-border);
+      gap: 4px;
+      padding: 0.5rem 0.5rem 0;
+      background: var(--ugx-bg-raised);
+      border-bottom: 1px solid var(--ugx-border-strong);
+      border-radius: $border-radius - 1px $border-radius - 1px 0 0;
     }
 
     &-button {
-      padding: 6px 14px;
+      min-height: 40px;
+      padding: 0 1rem;
       margin-bottom: -1px;
-      color: var(--ugx-text);
-      border-bottom: 3px solid transparent;
+      font-weight: 500;
+      color: var(--ugx-text-muted);
+      border: 1px solid transparent;
+      border-radius: $border-radius-small + 2px $border-radius-small + 2px 0 0;
 
       &:hover {
         color: var(--ugx-link);
+        background: var(--ugx-hover);
       }
 
       &[aria-selected='true'] {
-        font-weight: bold;
-        color: var(--ugx-link);
-        border-bottom-color: var(--ugx-link);
+        font-weight: 700;
+        color: var(--ugx-heading);
+        background: var(--ugx-bg);
+        border-color: var(--ugx-border-strong);
+        border-bottom-color: var(--ugx-bg);
+        box-shadow: inset 0 3px 0 var(--ugx-accent);
       }
 
       &:focus-visible {
@@ -590,8 +1156,8 @@ html:has(.v-application.theme--dark) body {
       }
     }
 
-    .widget-tab-content {
-      padding: 5px 0;
+    &.is-ready .widget-tab-content {
+      padding: 1rem 1.25rem 1.25rem;
     }
   }
 
@@ -599,8 +1165,8 @@ html:has(.v-application.theme--dark) body {
   .widget-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin: 10px 0;
+    gap: 1rem;
+    margin: $space-block 0 0;
 
     figure {
       margin: 0;
@@ -617,9 +1183,9 @@ html:has(.v-application.theme--dark) body {
     }
 
     figcaption {
-      padding-top: 4px;
+      padding-top: 0.375rem;
       font-size: 0.875em;
-      color: var(--ugx-text);
+      color: var(--ugx-text-muted);
     }
 
     .widget-gallery-open {
@@ -640,20 +1206,100 @@ html:has(.v-application.theme--dark) body {
     }
   }
 
+  // child pages: a tree with guide lines, a flat list becomes a grid of cards
+  ul.widget-page-hierarchy {
+    padding: 0.75rem 1rem;
+    margin-top: $space-block;
+    list-style: none;
+    border: 1px solid var(--ugx-border);
+    border-radius: $border-radius;
+
+    li::before {
+      display: none;
+    }
+
+    li + li {
+      margin-top: 0;
+    }
+
+    ul {
+      padding: 0 0 0 1rem;
+      margin: 0 0 0.25rem 0.5rem;
+      list-style: none;
+      border-left: 1px solid var(--ugx-border);
+    }
+
+    a {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      margin-left: -0.5rem;
+      text-decoration: none;
+      border-radius: $border-radius-small;
+
+      &:hover {
+        text-decoration: underline;
+        background: var(--ugx-hover);
+      }
+    }
+
+    > li > a {
+      font-weight: 700;
+    }
+
+    &:not(:has(ul)) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+      padding: 0;
+      border: 0;
+
+      > li > a {
+        display: block;
+        height: 100%;
+        padding: 0.75rem 1rem;
+        margin: 0;
+        background: var(--ugx-bg-raised);
+        border: 1px solid var(--ugx-border);
+        border-radius: $border-radius;
+
+        &:hover {
+          background: var(--ugx-hover);
+          border-color: var(--ugx-link);
+        }
+      }
+    }
+  }
+
+  // info table at the top of a changelog: labels in the first column
+  table.widget-jira-info th {
+    width: 9rem;
+    color: var(--ugx-text-muted);
+  }
+
+  // ticket table: short columns stay on one line, only the summary wraps
+  .widget-jira-issues :is(th, td) {
+    white-space: nowrap;
+
+    &:nth-child(2) {
+      min-width: 16rem;
+      white-space: normal;
+    }
+  }
+
   // status badges of the imported jira tables (RELEASED, Done, Open, ...)
   .aui-lozenge {
     --ugx-badge: var(--ugx-badge-default);
 
     display: inline-block;
-    padding: 0 6px;
+    padding: 0 8px;
     font-size: 0.75em;
-    font-weight: bold;
-    line-height: 1.6;
+    font-weight: 700;
+    line-height: 1.7;
     color: var(--ugx-badge);
     text-transform: uppercase;
     white-space: nowrap;
     border: 1px solid currentcolor;
-    border-radius: 3px;
+    border-radius: $border-radius-small;
 
     &-success {
       --ugx-badge: var(--ugx-badge-success);
@@ -701,7 +1347,7 @@ html:has(.v-application.theme--dark) body {
   inset: 0;
   max-width: min(95vw, 1400px);
   max-height: 95vh;
-  padding: 10px;
+  padding: 12px;
   margin: auto;
   color: var(--ugx-text);
   background: var(--ugx-dialog-bg);
@@ -736,12 +1382,12 @@ html:has(.v-application.theme--dark) body {
     padding-top: 8px;
 
     button {
-      min-width: 36px;
-      min-height: 36px;
+      min-width: 40px;
+      min-height: 40px;
       font-size: 1.2em;
       color: var(--ugx-text);
-      border: 1px solid var(--ugx-border);
-      border-radius: $border-radius;
+      border: 1px solid var(--ugx-border-strong);
+      border-radius: $border-radius-small;
 
       &:hover {
         color: var(--ugx-link);
@@ -757,7 +1403,7 @@ html:has(.v-application.theme--dark) body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .v-main .contents .expandable-container {
+  #app .v-main .contents .expandable-container {
     button.expandable-button::before,
     .expandable-content {
       transition: none;
