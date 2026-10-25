@@ -1,6 +1,10 @@
 /**
  * Frontend JavaScript for WikiJs
  */
+import confluenceIds from './confluence-ids.json' with { type: 'json' };
+
+const CONFLUENCE_PAGE_URL =
+  'https://ugxmods.atlassian.net/wiki/pages/viewpage.action?pageId=';
 
 /**
  * Collapsible content (`.expandable-container`).
@@ -186,8 +190,44 @@ function initGalleries() {
   });
 }
 
+/**
+ * Admins only: a button to the Confluence page the page was imported from
+ * (`confluence-ids.json`, page path -> id). The Confluence space needs a login anyway.
+ */
+function initConfluenceLink() {
+  const state = window.WIKI?.$store?.state;
+  if (!state?.user?.permissions?.includes('manage:system')) return;
+  /** @type {Record<string, number>} */
+  const ids = confluenceIds;
+  const id = ids[state.page?.path ?? ''];
+  const header = document.querySelector('.page-header-section .is-page-header');
+  if (!id || !header) return;
+
+  // the edit buttons are optional (Administration > Theme), the wiki.js styles
+  // of their container position the button in the same place
+  let shortcuts = header.querySelector('.page-edit-shortcuts');
+  if (!shortcuts) {
+    shortcuts = document.createElement('div');
+    shortcuts.className = 'page-edit-shortcuts is-right';
+    header.append(shortcuts);
+  }
+
+  const link = document.createElement('a');
+  link.className = 'v-btn v-btn--depressed v-size--small ugx-confluence-link';
+  link.href = CONFLUENCE_PAGE_URL + id;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.title = `Open the original Confluence page (${id})`;
+  const label = document.createElement('span');
+  label.className = 'v-btn__content text-none';
+  label.textContent = 'Confluence';
+  link.append(label);
+  shortcuts.append(link);
+}
+
 window.boot.register('page-ready', () => {
   initExpandables();
   initTabs();
   initGalleries();
+  initConfluenceLink();
 });

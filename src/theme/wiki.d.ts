@@ -4,4 +4,13 @@ interface Window {
   boot: {
     register(event: 'page-ready' | (string & {}), callback: () => void): void;
   };
+  // vue app of wiki.js, its vuex store holds the user and the current page
+  WIKI?: {
+    $store?: {
+      state?: {
+        user?: { permissions?: string[] };
+        page?: { path?: string; locale?: string };
+      };
+    };
+  };
 }

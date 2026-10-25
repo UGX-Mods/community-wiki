@@ -191,8 +191,7 @@
   }
 
   // tags: outlined chips, product tags in their own color (matched by the
-  // tag link /t/<tag>, unknown tags stay neutral). confluence:<id> tags are
-  // only for the tooling and hidden here.
+  // tag link /t/<tag>, unknown tags stay neutral)
   .page-tags-card .v-chip {
     --ugx-tag: var(--ugx-text);
 
@@ -225,10 +224,6 @@
 
     &[href$='/t/legacy'] {
       border-style: dashed !important;
-    }
-
-    &[href*='/t/confluence:'] {
-      display: none;
     }
 
     span[class*='--text'] {
