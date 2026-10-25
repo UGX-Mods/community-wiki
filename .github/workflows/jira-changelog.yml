@@ -19,6 +19,10 @@ on:
         description: Jira fix version of the new release, e.g. v0.8.86-beta
         type: string
         required: false
+      force:
+        description: Refresh all changelogs, also the frozen ones (ticket tables and info rows only)
+        type: boolean
+        default: false
   schedule:
     - cron: '0 6 * * 1' # mondays 06:00 UTC, refresh only
 
@@ -61,6 +65,7 @@ jobs:
         env:
           JIRA_PROJECT: ${{ inputs.project }}
           JIRA_VERSION: ${{ inputs.version }}
+          JIRA_FORCE: ${{ inputs.force && '1' || '' }}
           JIRA_PROJECTS: ${{ vars.JIRA_PROJECTS }}
           JIRA_PLAN: ${{ runner.temp }}/jira-plan.json
         run: |
