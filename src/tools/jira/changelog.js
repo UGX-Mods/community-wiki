@@ -3,16 +3,17 @@
  * third-party code (see src/jira-fetch.js):
  *
  * 1. jira-plan: lists the releases to fetch, a new release (JIRA_PROJECT +
- *    JIRA_VERSION) and the release widgets that are due for a refresh
+ *    JIRA_VERSION) and the changelogs that are due for a refresh
  * 2. node src/jira-fetch.js: fetches them (the only step with the token)
- * 3. jira-render: creates the new page / refreshes the widgets
+ * 3. jira-render: creates the new page / refreshes the changelogs
  *
- * A release widget (`.widget-jira-issues` with data-project, data-version,
- * data-released, data-refreshed) is refreshed while the release is unreleased
- * and until REFRESH_DAYS after its release date, then it stays as it is.
+ * The page format is described in ./page.js. A changelog is refreshed while the
+ * release is unreleased and until REFRESH_DAYS after its release date, then it
+ * stays as it is (JIRA_FORCE=1 refreshes all). jira-adopt converts old pages
+ * into the format without asking Jira.
  *
  * Environment: JIRA_PROJECT, JIRA_VERSION (new page), JIRA_PROJECTS (allowed
- * keys), JIRA_PLAN / JIRA_DATA (file paths, default in the temp folder).
+ * keys), JIRA_FORCE, JIRA_PLAN / JIRA_DATA (file paths, default in the temp folder).
  */
 import fs from 'node:fs';
 import os from 'node:os';
@@ -20,10 +21,20 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { encoding } from '../lib/pages.js';
-import { formatHtml, parseHtmlContent } from '../lib/html.js';
+import { formatHtml } from '../lib/html.js';
 import { refreshPageHierarchy } from '../hierarchy.js';
+import {
+  escapeHtml,
+  formatDate,
+  searchUrl,
+  statusLozenge,
+  issueCount,
+  readChangelogData,
+  renderChangelogPage,
+  refreshChangelogPage,
+  adoptChangelogPage,
+} from './page.js';
 
-const ICONS = '/attachments/icons/jira';
 const REFRESH_DAYS = 30;
 const DEFAULT_PLAN = path.join(os.tmpdir(), 'ugx-wiki-jira-plan.json');
 const DEFAULT_DATA = path.join(os.tmpdir(), 'ugx-wiki-jira-data.json');
@@ -70,29 +81,8 @@ const PROJECTS = {
 // version names end up in JQL and file names
 const REGEX_VERSION = /^[\w.+-]{1,50}$/;
 
-/** @type {Record<string, string>} issue type -> local icon */
-const TYPE_ICONS = {
-  bug: 'type-bug.svg',
-  change: 'type-change.svg',
-  'crash report': 'type-crash-report.svg',
-  feedback: 'type-feedback.svg',
-  improvement: 'type-improvement.svg',
-  'new feature': 'type-new-feature.svg',
-  story: 'type-story.svg',
-  'sub-task': 'type-sub-task.svg',
-  subtask: 'type-sub-task.svg',
-  task: 'type-task.svg',
-};
-
-/** @type {Record<string, string>} status category -> lozenge class */
-const STATUS_LOZENGES = {
-  done: 'aui-lozenge-success',
-  indeterminate: 'aui-lozenge-current',
-  new: 'aui-lozenge-default',
-};
-
-/** @typedef {import('../../jira-fetch.js').Release} Release */
-/** @typedef {import('../../jira-fetch.js').Issue} Issue */
+/** @typedef {import('./page.js').FetchedRelease} FetchedRelease */
+/** @typedef {import('./page.js').ChangelogData} ChangelogData */
 
 /**
  * @typedef {object} PlanRequest
@@ -103,27 +93,6 @@ const STATUS_LOZENGES = {
  */
 
 /**
- * @typedef {object} FetchedRelease
- * @property {string} project
- * @property {Release} release
- * @property {Issue[]} issues
- * @property {number} hidden tickets left out because of a security level
- */
-
-/**
- * @param {unknown} value
- * @returns {string}
- */
-function escapeHtml(value) {
-  return String(value ?? '')
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;');
-}
-
-/**
  * @param {string} project
  * @param {string} version
  * @returns {string} page path with .html, e.g. UGXL/Changelog/UGXL-v0-8-1.html
@@ -132,194 +101,6 @@ function changelogPagePath(project, version) {
   const config = PROJECTS[project];
   const slug = version.replaceAll('.', '-').replace(/[^A-Za-z0-9_-]/g, '');
   return `${config.dir}/${config.prefix}${slug}.html`;
-}
-
-/**
- * @param {string|undefined} iso
- * @param {Intl.DateTimeFormatOptions} options
- * @param {string} locale
- * @returns {string}
- */
-function formatDate(iso, options, locale) {
-  if (!iso) return '';
-  const date = new Date(iso.length === 10 ? `${iso}T00:00:00Z` : iso);
-  return Number.isNaN(date.getTime())
-    ? ''
-    : date.toLocaleDateString(locale, { ...options, timeZone: 'UTC' });
-}
-
-/** @param {string|undefined} iso */
-const formatIssueDate = (iso) =>
-  formatDate(iso, { month: 'short', day: '2-digit', year: 'numeric' }, 'en-US');
-
-/** @param {string|undefined} iso */
-const formatReleaseDate = (iso) =>
-  formatDate(iso, { day: 'numeric', month: 'long', year: 'numeric' }, 'en-GB');
-
-/** @param {Date} date */
-const isoDay = (date) => date.toISOString().slice(0, 10);
-
-/**
- * @param {string} jiraUrl
- * @param {string} project
- * @param {string} version
- * @returns {string} issue search url of the release
- */
-function searchUrl(jiraUrl, project, version) {
-  const jql = `project = ${project} AND fixVersion = "${version}"`;
-  return `${jiraUrl}/issues/?jql=${encodeURIComponent(jql)}`;
-}
-
-/** @param {number} count */
-const issueCount = (count) => `${count} ${count === 1 ? 'issue' : 'issues'}`;
-
-/** @param {Release} release */
-const statusLozenge = (release) =>
-  release.released
-    ? '<span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">RELEASED</span>'
-    : '<span class="aui-lozenge aui-lozenge-subtle aui-lozenge-current">UNRELEASED</span>';
-
-/**
- * @param {string} name icon name (issue type or priority)
- * @param {string|undefined} file icon file
- * @returns {string} img or the escaped name if there is no local icon
- */
-function icon(name, file) {
-  if (!name) return '';
-  return file
-    ? `<img src="${ICONS}/${file}" alt="${escapeHtml(name)}" class="icon" />`
-    : escapeHtml(name);
-}
-
-/**
- * @param {Issue} issue
- * @param {string} jiraUrl
- * @returns {string} table row
- */
-function renderIssueRow(issue, jiraUrl) {
-  const href = `${jiraUrl}/browse/${encodeURIComponent(issue.key)}`;
-  const link = (/** @type {string} */ text) =>
-    `<a href="${href}" target="_blank">${text}</a>`;
-  const lozenge =
-    STATUS_LOZENGES[issue.statusCategory] ?? 'aui-lozenge-default';
-  const priority = issue.priority
-    ? `priority-${issue.priority.toLowerCase()}.svg`
-    : undefined;
-  return `<tr>
-  <td>${link(escapeHtml(issue.key))}</td>
-  <td>${link(escapeHtml(issue.summary))}</td>
-  <td>${link(icon(issue.type, TYPE_ICONS[issue.type.toLowerCase()]))}</td>
-  <td>${formatIssueDate(issue.created)}</td>
-  <td>${formatIssueDate(issue.updated)}</td>
-  <td>${escapeHtml(issue.assignee || 'Unassigned')}</td>
-  <td>${escapeHtml(issue.reporter)}</td>
-  <td>${icon(issue.priority, priority)}</td>
-  <td><span class="aui-lozenge aui-lozenge-subtle ${lozenge}">${escapeHtml(issue.status)}</span></td>
-  <td>${escapeHtml(issue.resolution || 'Unresolved')}</td>
-</tr>`;
-}
-
-/**
- * @param {FetchedRelease} fetched
- * @param {string} jiraUrl
- * @returns {string} info table of the release (date, issues, status, version)
- */
-function renderInfoTable({ project, release, issues }, jiraUrl) {
-  return `<table class="widget-jira-info">
-  <tbody>
-    <tr><th>Date</th><td>${formatReleaseDate(release.releaseDate) || '&nbsp;'}</td></tr>
-    <tr><th>Issues</th><td><a href="${searchUrl(jiraUrl, project, release.name)}" target="_blank">${issueCount(issues.length)}</a></td></tr>
-    <tr><th>Status</th><td>${statusLozenge(release)}</td></tr>
-    <tr><th>Version</th><td>${escapeHtml(release.name)}</td></tr>
-  </tbody>
-</table>`;
-}
-
-/**
- * @param {FetchedRelease} fetched
- * @param {string} jiraUrl
- * @param {Date} now
- * @returns {string} release widget with the ticket table
- */
-function renderIssuesWidget({ project, release, issues }, jiraUrl, now) {
-  return `<div
-  class="widget-jira-issues"
-  data-project="${escapeHtml(project)}"
-  data-version="${escapeHtml(release.name)}"
-  data-released="${release.released ? escapeHtml(release.releaseDate) : ''}"
-  data-refreshed="${isoDay(now)}">
-  <table>
-    <thead>
-      <tr>
-        <th>Key</th><th>Summary</th><th>T</th><th>Created</th><th>Updated</th>
-        <th>Assignee</th><th>Reporter</th><th>P</th><th>Status</th><th>Resolution</th>
-      </tr>
-    </thead>
-    <tbody>
-${issues.map((issue) => renderIssueRow(issue, jiraUrl)).join('\n')}
-    </tbody>
-  </table>
-</div>`;
-}
-
-/**
- * @param {FetchedRelease} fetched
- * @param {string} jiraUrl
- * @param {Date} now
- * @returns {string} page html (unformatted)
- */
-function renderChangelogPage(fetched, jiraUrl, now) {
-  const config = PROJECTS[fetched.project];
-  const { release } = fetched;
-  const month = formatDate(
-    release.releaseDate,
-    { month: 'long', year: 'numeric' },
-    'en-GB',
-  );
-  // description is YAML: no ": " or " #", see checkDescription
-  const description = `Release notes of ${config.title} ${release.name}${month ? ` (${month})` : ''}`;
-  const timestamp = now.toISOString();
-  const summary = release.description
-    ? `<p>${escapeHtml(release.description)}</p>`
-    : '<p>Release notes will follow.</p>';
-
-  return `<!--
-title: ${config.title} ${release.name}
-description: ${description}
-published: true
-date: ${timestamp}
-tags: ${config.tag}, changelog
-editor: ckeditor
-dateCreated: ${timestamp}
--->
-
-${renderInfoTable(fetched, jiraUrl)}
-<h2 id="Summary">Summary</h2>
-${summary}
-<h2 id="Alltickets">All tickets for this release</h2>
-${renderIssuesWidget(fetched, jiraUrl, now)}
-`;
-}
-
-/**
- * Replaces the info table and the release widget of an existing page, the rest
- * (summary, highlights) stays as it is.
- *
- * @param {string} html page
- * @param {FetchedRelease} fetched
- * @param {string} jiraUrl
- * @param {Date} now
- * @returns {string|null} changed html, null if the page has no release widget
- */
-function refreshChangelogPage(html, fetched, jiraUrl, now) {
-  const root = parseHtmlContent(html);
-  const widget = root.querySelector('div.widget-jira-issues');
-  if (!widget) return null;
-  widget.replaceWith(renderIssuesWidget(fetched, jiraUrl, now));
-  root
-    .querySelector('table.widget-jira-info')
-    ?.replaceWith(renderInfoTable(fetched, jiraUrl));
-  return root.toString();
 }
 
 /**
@@ -360,7 +141,7 @@ function addOverviewRow(html, { project, release, issues }, jiraUrl) {
 }
 
 /**
- * @param {{released: string, refreshed: string}} widget data attributes
+ * @param {{released: string}} data data attributes of the changelog
  * @param {Date} now
  * @returns {boolean} the release is unreleased or released less than REFRESH_DAYS ago
  */
@@ -379,23 +160,6 @@ function isDue({ released }, now) {
 function allowedProjects(value) {
   if (!value) return null;
   return new Set(value.split(',').map((k) => k.trim()));
-}
-
-/**
- * @param {string} html page
- * @returns {{project: string, version: string, released: string, refreshed: string}|null}
- * data attributes of the release widget
- */
-function readWidget(html) {
-  if (!html.includes('widget-jira-issues')) return null;
-  const widget = parseHtmlContent(html).querySelector('div.widget-jira-issues');
-  if (!widget) return null;
-  return {
-    project: widget.getAttribute('data-project') ?? '',
-    version: widget.getAttribute('data-version') ?? '',
-    released: widget.getAttribute('data-released') ?? '',
-    refreshed: widget.getAttribute('data-refreshed') ?? '',
-  };
 }
 
 /**
@@ -421,35 +185,52 @@ function planNewRelease({ root, project, version, allowed }) {
 }
 
 /**
- * @param {object} options
- * @param {string} options.root
- * @param {(key: string) => boolean} options.allowed
- * @param {Date} options.now
- * @returns {Promise<{requests: PlanRequest[], warnings: string[]}>} due release widgets
+ * @param {string} root
+ * @returns {Promise<{key: string, page: string, html: string}[]>} all changelog pages
  */
-async function planRefreshes({ root, allowed, now }) {
-  /** @type {PlanRequest[]} */
-  const requests = [];
-  /** @type {string[]} */
-  const warnings = [];
+async function readChangelogPages(root) {
+  const pages = [];
   for (const [key, config] of Object.entries(PROJECTS)) {
     const dir = path.join(root, config.dir);
     if (!fs.existsSync(dir)) continue;
     const files = fs.readdirSync(dir).filter((f) => f.endsWith('.html'));
     for (const file of files) {
       const page = `${config.dir}/${file}`;
-      const data = readWidget(
-        await fs.promises.readFile(path.join(root, page), encoding),
-      );
-      if (!data) continue;
-      // a page may only ask for its own project (folder) and a valid version
-      if (data.project !== key || !allowed(data.project)) {
-        warnings.push(`${page}: project ${data.project} is not allowed here`);
-      } else if (!REGEX_VERSION.test(data.version)) {
-        warnings.push(`${page}: invalid version ${data.version}`);
-      } else if (isDue(data, now)) {
-        requests.push({ ...data, page, mode: 'refresh' });
-      }
+      const html = await fs.promises.readFile(path.join(root, page), encoding);
+      pages.push({ key, page, html });
+    }
+  }
+  return pages;
+}
+
+/**
+ * @param {object} options
+ * @param {string} options.root
+ * @param {(key: string) => boolean} options.allowed
+ * @param {Date} options.now
+ * @param {boolean} options.force refresh all, ignore the refresh window
+ * @returns {Promise<{requests: PlanRequest[], warnings: string[]}>} due changelogs
+ */
+async function planRefreshes({ root, allowed, now, force }) {
+  /** @type {PlanRequest[]} */
+  const requests = [];
+  /** @type {string[]} */
+  const warnings = [];
+  for (const { key, page, html } of await readChangelogPages(root)) {
+    const data = readChangelogData(html);
+    if (!data) continue;
+    // a page may only ask for its own project (folder) and a valid version
+    if (data.project !== key || !allowed(data.project)) {
+      warnings.push(`${page}: project ${data.project} is not allowed here`);
+    } else if (!REGEX_VERSION.test(data.version)) {
+      warnings.push(`${page}: invalid version ${data.version}`);
+    } else if (force || isDue(data, now)) {
+      requests.push({
+        project: data.project,
+        version: data.version,
+        page,
+        mode: 'refresh',
+      });
     }
   }
   return { requests, warnings };
@@ -462,9 +243,10 @@ async function planRefreshes({ root, allowed, now }) {
  * @param {string} [options.version] new release
  * @param {Set<string>|null} options.allowlist null: all mapped projects
  * @param {Date} options.now
+ * @param {boolean} [options.force]
  * @returns {Promise<{requests: PlanRequest[], errors: string[], warnings: string[]}>}
  */
-async function planReleases({ root, project, version, allowlist, now }) {
+async function planReleases({ root, project, version, allowlist, now, force }) {
   const allowed = (/** @type {string} */ key) =>
     !!PROJECTS[key] && (!allowlist || allowlist.has(key));
   /** @type {string[]} */
@@ -481,7 +263,12 @@ async function planReleases({ root, project, version, allowlist, now }) {
     if (planned.error) errors.push(planned.error);
     if (planned.request) requests.push(planned.request);
   }
-  const refreshes = await planRefreshes({ root, allowed, now });
+  const refreshes = await planRefreshes({
+    root,
+    allowed,
+    now,
+    force: !!force,
+  });
   requests.push(...refreshes.requests);
   return { requests, errors, warnings: refreshes.warnings };
 }
@@ -499,6 +286,7 @@ async function jiraPlan(root = process.cwd()) {
     version: process.env.JIRA_VERSION,
     allowlist: allowedProjects(process.env.JIRA_PROJECTS),
     now: new Date(),
+    force: !!process.env.JIRA_FORCE,
   });
   warnings.forEach((w) => console.warn('⚠️', w));
   errors.forEach((e) => console.error('🚨', e));
@@ -541,7 +329,10 @@ async function createReleasePage(root, request, fetched, jiraUrl, now) {
     console.error('🚨', request.page, 'exists already');
     return 1;
   }
-  await writeFormatted(pagePath, renderChangelogPage(fetched, jiraUrl, now));
+  await writeFormatted(
+    pagePath,
+    renderChangelogPage({ fetched, jiraUrl, now, page: config }),
+  );
   console.log('Created', request.page, `(${fetched.issues.length} issues) 📝`);
 
   // the overview lists the releases in a table or as child page list
@@ -632,6 +423,33 @@ async function jiraRender(root = process.cwd()) {
 }
 
 /**
+ * Converts the old changelog pages of JIRA_PROJECT into the changelog format,
+ * without asking Jira (the tables stay until a refresh, e.g. JIRA_FORCE=1).
+ *
+ * @param {string} root
+ * @returns {Promise<number>} errors
+ */
+async function jiraAdopt(root = process.cwd()) {
+  const project = process.env.JIRA_PROJECT ?? '';
+  if (!PROJECTS[project]) {
+    console.error(
+      `🚨 JIRA_PROJECT must be one of ${Object.keys(PROJECTS).join(', ')}`,
+    );
+    return 1;
+  }
+  let adopted = 0;
+  for (const { key, page, html } of await readChangelogPages(root)) {
+    if (key !== project) continue;
+    const converted = adoptChangelogPage(html, project);
+    if (!converted) continue;
+    await writeFormatted(path.join(root, page), converted);
+    adopted++;
+  }
+  console.log('Converted', adopted, `${project} changelog page(s) 🧩`);
+  return 0;
+}
+
+/**
  * Local shortcut: plan, fetch (separate process, reads the token from .env
  * itself) and render.
  *
@@ -646,11 +464,9 @@ async function jiraChangelog(root = process.cwd()) {
   const fetched = spawnSync(
     process.execPath,
     [FETCH_SCRIPT, planPath, dataPath],
-    {
-      cwd: root,
-      stdio: 'inherit',
-    },
+    { cwd: root, stdio: 'inherit' },
   );
+  // refreshes of versions that are missing in Jira are warnings, see jira-fetch
   if (fetched.status !== 0) return 1;
   return jiraRender(root);
 }
@@ -658,14 +474,12 @@ async function jiraChangelog(root = process.cwd()) {
 export {
   PROJECTS,
   REFRESH_DAYS,
-  escapeHtml,
   changelogPagePath,
-  renderChangelogPage,
-  refreshChangelogPage,
   addOverviewRow,
   isDue,
   planReleases,
   jiraPlan,
   jiraRender,
+  jiraAdopt,
   jiraChangelog,
 };

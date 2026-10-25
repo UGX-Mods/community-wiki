@@ -29,7 +29,12 @@ import { setAltTexts } from './tools/content/alt-texts.js';
 import { tagPages } from './tools/content/tag-pages.js';
 import { setDescriptions } from './tools/content/descriptions.js';
 import { cleanupConfluenceMarkup } from './tools/content/confluence-markup.js';
-import { jiraChangelog, jiraPlan, jiraRender } from './tools/jira/changelog.js';
+import {
+  jiraChangelog,
+  jiraPlan,
+  jiraRender,
+  jiraAdopt,
+} from './tools/jira/changelog.js';
 
 const STEPS = {
   none: 'NONE',
@@ -54,6 +59,7 @@ const STEPS = {
   jiraChangelog: 'jira-changelog',
   jiraPlan: 'jira-plan',
   jiraRender: 'jira-render',
+  jiraAdopt: 'jira-adopt',
 };
 
 const STEP_CHOICES = [
@@ -161,6 +167,12 @@ const STEP_CHOICES = [
     name: 'Jira changelog: render',
     description:
       '[CI] Write the pages from the fetched data (JIRA_PLAN, JIRA_DATA)',
+  },
+  {
+    value: STEPS.jiraAdopt,
+    name: 'Jira changelog: adopt',
+    description:
+      'Convert the old changelog pages of JIRA_PROJECT into the changelog format (no Jira access)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -308,6 +320,9 @@ async function main() {
       break;
     case STEPS.jiraRender:
       errors += await jiraRender();
+      break;
+    case STEPS.jiraAdopt:
+      errors += await jiraAdopt();
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);

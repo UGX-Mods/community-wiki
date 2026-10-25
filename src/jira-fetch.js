@@ -184,20 +184,22 @@ async function getIssues(client, project, version) {
 
 /**
  * @param {object} options
- * @param {{project: string, version: string}[]} options.requests from the plan
+ * @param {{project: string, version: string, mode?: string}[]} options.requests from the plan
  * @param {Set<string>} options.allowlist
  * @param {JiraClient} options.client
- * @returns {Promise<{releases: object[], errors: string[]}>}
+ * @returns {Promise<{releases: object[], errors: string[], warnings: string[]}>}
  */
 async function fetchReleases({ requests, allowlist, client }) {
   /** @type {object[]} */
   const releases = [];
   /** @type {string[]} */
   const errors = [];
+  /** @type {string[]} */
+  const warnings = [];
   /** @type {Map<string, Release[]>} */
   const versionsByProject = new Map();
 
-  for (const { project, version } of requests) {
+  for (const { project, version, mode } of requests) {
     // the plan is built from page content, so it is checked again here
     if (!allowlist.has(project)) {
       errors.push(`${project} is not in JIRA_PROJECTS`);
@@ -217,15 +219,16 @@ async function fetchReleases({ requests, allowlist, client }) {
         .slice(-10)
         .reverse()
         .map((v) => v.name);
-      errors.push(
-        `Version ${version} not found in ${project}. Newest versions: ${newest.join(', ') || 'none'}`,
-      );
+      const message = `Version ${version} not found in ${project}. Newest versions: ${newest.join(', ') || 'none'}`;
+      // an existing page of an old version just keeps its tables
+      if (mode === 'refresh') warnings.push(`${message} (page not refreshed)`);
+      else errors.push(message);
       continue;
     }
     const { issues, hidden } = await getIssues(client, project, version);
     releases.push({ project, release, issues, hidden });
   }
-  return { releases, errors };
+  return { releases, errors, warnings };
 }
 
 async function main() {
@@ -266,11 +269,12 @@ async function main() {
   }
 
   const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
-  const { releases, errors } = await fetchReleases({
+  const { releases, errors, warnings } = await fetchReleases({
     requests: plan.requests ?? [],
     allowlist,
     client,
   });
+  warnings.forEach((w) => console.warn('⚠️', w));
   errors.forEach((e) => console.error('🚨', e));
   fs.writeFileSync(
     dataPath,
