@@ -60,14 +60,6 @@ async function getPageFiles(
 }
 
 /**
- * @param {string} root directory to search in
- * @returns {Promise<string[]>} html page paths relative to root
- */
-function getHtmlFiles(root = process.cwd()) {
-  return getPageFiles(root, [HTML_EXTENSION]);
-}
-
-/**
  * Path of the page without extension, which is also the folder of its child pages
  *
  * @param {string} filePath
@@ -114,7 +106,6 @@ export {
   PAGE_EXTENSIONS,
   isPage,
   getPageFiles,
-  getHtmlFiles,
   stripPageExtension,
   filterPagesWithChildren,
   readPage,

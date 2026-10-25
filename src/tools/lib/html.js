@@ -62,40 +62,4 @@ async function writeFileFormat(source, filePath) {
   }
 }
 
-/**
- * @param {HTMLParser.Node} rootNode
- * @returns
- */
-function getWikiJsCommentNode(rootNode) {
-  return rootNode.childNodes
-    .filter((n) => n.nodeType === HTMLParser.NodeType.COMMENT_NODE)
-    .find((n) => n.text.includes('title:'));
-}
-
-/**
- *
- * @param {HTMLParser.HTMLElement} node
- * @param {string|string[]} className single or array of classnames to remove
- */
-function removeClassFromNode(node, className) {
-  if (!Array.isArray(className)) {
-    className = [className];
-  }
-
-  for (const clName of className) {
-    node.classList.remove(clName);
-  }
-
-  if (node.classList.length === 0) {
-    node.removeAttribute('class');
-  }
-}
-
-export {
-  HTMLParser,
-  parseHtmlContent,
-  formatHtml,
-  writeFileFormat,
-  getWikiJsCommentNode,
-  removeClassFromNode,
-};
+export { HTMLParser, parseHtmlContent, formatHtml, writeFileFormat };
