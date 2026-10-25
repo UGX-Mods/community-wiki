@@ -83,6 +83,22 @@ Security:
 
 Locally, put `JIRA_EMAIL`, `JIRA_API_TOKEN`, `JIRA_CLOUD_ID` and `JIRA_PROJECTS` into `.env` in the repository root (gitignored, shell variables win) and run `JIRA_PROJECT=UGXSMF JIRA_VERSION=v0.8.86-beta node src/main.js jira-changelog`. Without project and version it only refreshes. Existing pages are never overwritten, an unknown version lists the newest versions of the project.
 
+#### How to: changelog of a new release
+
+1. In Jira, set the fix version on all tickets of the release (tickets with a security level are left out automatically).
+2. Run the workflow **Jira changelog** with the project (e.g. `UGXSMF`) and the version (e.g. `v0.8.86-beta`), or run it locally (see above).
+3. Open the pull request from the link in the run summary. On the new page, write the hand-written parts: Version Mode in the info table, Summary, Important highlights, Known issues and Whats next? (Special Thanks has a default text).
+4. Merge. While the release is unreleased and up to 30 days after its release date, the weekly run updates the ticket table and the generated info rows; the hand-written parts stay.
+
+Own sections (e.g. "Did you know...?") can be added anywhere inside the changelog: inside a section or as an own `<h2>` between two sections. They are kept by every refresh and stay after the section they follow. Only the generated info rows and the ticket table are replaced, so do not edit those by hand.
+
+#### How to: changelogs of a new app
+
+1. Jira: create the project and use fix versions for the releases (not only sprints). Give the read-only account browse permission for the project.
+2. GitHub: add the project key to the variable `JIRA_PROJECTS` of the environment `jira` (`gh variable set JIRA_PROJECTS --env jira --body "UGXSMF,UGXL,UGXLIN,UGXMAPP,NEWKEY"`), and to `.env` for local runs.
+3. Repository: add the project to `PROJECTS` in `src/tools/jira/changelog.js` (`dir` of the changelog folder, file name `prefix`, page `title`, product `tag` from `src/tools/lib/tags.js`), and create the changelog overview page `<dir>.html` (with a table like `Applications-and-Services/UGX-Mods-Forum/Changelog.html`, or the child page list `widget-page-hierarchy`). Open a pull request with both.
+4. After the merge, create the first changelog as above.
+
 Run `npm run check` (or at least `npm run lint` + `npm run validate`) before committing. `validate` must report **0 errors**. Warnings (empty descriptions etc.) are known backlog.
 
 ### Dependencies
