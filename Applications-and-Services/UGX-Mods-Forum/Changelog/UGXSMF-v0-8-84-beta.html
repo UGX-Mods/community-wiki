@@ -8,885 +8,935 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:34:48.220Z
 -->
 
-<table>
-  <tbody>
-    <tr>
-      <th>Date</th>
-      <td>17 Feb 2024</td>
-    </tr>
-    <tr>
-      <th>Issues</th>
-      <td>
-        <p>
-          <a
-            href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.84-beta"
-            target="_blank">
-            15 issues
-          </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>
-        <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
-          RELEASED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th>Version</th>
-      <td>v0.8.84-beta</td>
-    </tr>
-    <tr>
-      <th>Version Mode</th>
-      <td>production ⭐</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="UGXSMFv0.8.84beta-Summary">Summary</h2>
-<p>
-  Finally a new update. This one took a long time, especially because of
-  performance testing and fixing.
-</p>
-<p>
-  Better performance, new Avatar Editor and other great improvements + fixes.
-</p>
-<p>
-  You can now finally upload (or use an URL) and modify the image (crop &amp;
-  filters) before uploading it.
-  <a
-    href="https://www.ugx-mods.com/forum/profile/area=forumprofile"
-    target="_blank">
-    Try it out now
-  </a>
-  .
-</p>
-<h2 id="UGXSMFv0.8.84beta-Importanthighlightsfromthisrelease">
-  Important highlights from this release
-</h2>
-<ul>
-  <li>
-    New Features
-    <ul>
-      <li>Post attachments can be sorted now.</li>
-      <li>
-        New posts attachments can be added easily with drag & drop of one or
-        multiple files
-      </li>
-      <li>
-        Audio / video elements are embedded now (if browser is supported) and
-        better thumbnails
-      </li>
-    </ul>
-  </li>
-  <li>
-    Improvements
-    <ul>
-      <li>
-        Better &quot;Jump to&quot; list with search term highlight and search
-        keeps hierarchy during search intact now.
-        <ul>
-          <li>
-            Before...
-            <br />
-            <img
-              src="/attachments/changelog/UGXSMF-v0-8-84-beta/select-before.png"
-              height="250"
-              alt="Board selection dropdown before the change: search for modd lists many identical Modding entries" />
-          </li>
-          <li>
-            <strong>After...</strong>
-            <br />
-            <img
-              src="/attachments/changelog/UGXSMF-v0-8-84-beta/select-after.png"
-              alt="Board selection dropdown after the change: the Modding boards are shown with their game categories" />
-          </li>
-        </ul>
-      </li>
-      <li>
-        Better explanation for new users why their post / topic is unapproved
-      </li>
-      <li>Better display of deleted users and new avatar for them</li>
-      <li>
-        Reworked the social share buttons &amp; popup (faster and fully working
-        in 2023^^)
-      </li>
-      <li>
-        New radio and checkbox input style (also optimized / faster)
-        <ul>
-          <li>
-            <img
-              src="/attachments/changelog/UGXSMF-v0-8-84-beta/radioboxes.gif"
-              height="156"
-              alt="Animation of the new radio buttons in the profile picture settings" />
-            <img
-              src="/attachments/changelog/UGXSMF-v0-8-84-beta/checkboxes.gif"
-              height="150"
-              alt="Animation of the new checkboxes" />
-          </li>
-        </ul>
-      </li>
-      <li>
-        Image orientation of uploaded attachments are properly set for the
-        thumbnail
-      </li>
-      <li>
-        Better Discord Sync information, especially if user did not join our
-        Discord yet (or uses a different account).
-      </li>
-      <li>Added latest emojis (v15.1) [twitter is currently unavailable]</li>
-      <li>
-        Removed some javascript / css bloat -> faster page load / smaller page
-        download size
-      </li>
-      <li>Security improvements (some cookies are secure & http only now)</li>
-      <li>(Also updated the UGX Web Chat & some root / landing pages)</li>
-    </ul>
-  </li>
-  <li>
-    Fixes
-    <ul>
-      <li>Fixed a couple of reported issues from Sentry</li>
-      <li>"Fixed compatibility issues with newer PHP version</li>
-    </ul>
-  </li>
-  <li>
-    Development Improvements
-    <br />
-    <ul>
-      <li>
-        Removed old dependencies for faster page loads (less resources to load).
-      </li>
-      <li>Migrated to Jira Cloud (API)</li>
-      <li>Migrated Confluence to WikiJS</li>
-      <li>Updated all dependencies with bug & security fixes</li>
-      <li>
-        Cleanup of older images, reduced asset loads and general some
-        housekeeping (project is over 10 years old 😀)
-      </li>
-    </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.84beta-Allticketsforthisrelease">
-  All tickets for this release
-</h2>
-
-<div class="confluence-jim-macro" resolved>
-  <div style="width: 100%; overflow: auto">
-    <table>
-      <tbody>
-        <tr>
-          <th style="text-align: left; text-transform: capitalize">Key</th>
-
-          <th style="text-align: left; text-transform: capitalize">Summary</th>
-
-          <th style="text-align: left; text-transform: capitalize">T</th>
-
-          <th style="text-align: left; text-transform: capitalize">Created</th>
-
-          <th style="text-align: left; text-transform: capitalize">Updated</th>
-
-          <th style="text-align: left; text-transform: capitalize">Assignee</th>
-
-          <th style="text-align: left; text-transform: capitalize">Reporter</th>
-
-          <th style="text-align: left; text-transform: capitalize">P</th>
-
-          <th style="text-align: left; text-transform: capitalize">Status</th>
-
-          <th style="text-align: left; text-transform: capitalize">
-            Resolution
-          </th>
-        </tr>
-
-        <tr>
-          <td>
+<div
+  class="widget-jira-changelog"
+  data-project="UGXSMF"
+  data-version="v0.8.84-beta"
+  data-released="2024-02-17"
+  data-refreshed="">
+  <table class="widget-jira-info">
+    <tbody>
+      <tr>
+        <th>Date</th>
+        <td>17 Feb 2024</td>
+      </tr>
+      <tr>
+        <th>Issues</th>
+        <td>
+          <p>
             <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-427"
+              href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.84-beta"
               target="_blank">
-              UGXSMF-427
+              15 issues
             </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-427"
-              target="_blank">
-              Migrate to WikiJS
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-427"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-task.svg"
-                alt="Task"
-                class="icon" />
-            </a>
-          </td>
-          <td>06 Feb 24, 7:17 PM</td>
-          <td>Yesterday 5:51 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-critical.svg"
-              alt="Critical"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-425"
-              target="_blank">
-              UGXSMF-425
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-425"
-              target="_blank">
-              Migrate to Jira Cloud API
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-425"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-task.svg"
-                alt="Task"
-                class="icon" />
-            </a>
-          </td>
-          <td>05 Feb 24, 4:22 PM</td>
-          <td>06 Feb 24, 7:05 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-423"
-              target="_blank">
-              UGXSMF-423
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-423"
-              target="_blank">
-              z-index issue for notifications
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-423"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-bug.svg"
-                alt="Bug"
-                class="icon" />
-            </a>
-          </td>
-          <td>06 Dec 23, 4:55 PM</td>
-          <td>06 Feb 24, 6:56 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-417"
-              target="_blank">
-              UGXSMF-417
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-417"
-              target="_blank">
-              Replace iCheck with native solution
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-417"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-task.svg"
-                alt="Task"
-                class="icon" />
-            </a>
-          </td>
-          <td>29 Jul 23, 11:10 PM</td>
-          <td>10 Feb 24, 12:51 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-413"
-              target="_blank">
-              UGXSMF-413
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-413"
-              target="_blank">
-              Improve post attachments display &amp; distinguish with reply
-              options better
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-413"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>27 May 23, 9:11 PM</td>
-          <td>10 Feb 24, 12:51 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-412"
-              target="_blank">
-              UGXSMF-412
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-412"
-              target="_blank">
-              Explain unapproved topic / message better for new users
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-412"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-task.svg"
-                alt="Task"
-                class="icon" />
-            </a>
-          </td>
-          <td>27 May 23, 9:07 PM</td>
-          <td>15 Sep 23, 10:49 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-402"
-              target="_blank">
-              UGXSMF-402
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-402"
-              target="_blank">
-              Remove / replace jquery-ui
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-402"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>08 Apr 23, 9:40 PM</td>
-          <td>07 Feb 24, 6:59 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-401"
-              target="_blank">
-              UGXSMF-401
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-401"
-              target="_blank">
-              Jump To list should include hierachy information
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-401"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>08 Apr 23, 9:12 PM</td>
-          <td>15 Sep 23, 10:49 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-400"
-              target="_blank">
-              UGXSMF-400
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-400"
-              target="_blank">
-              Replace share dialog with share popup
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-400"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>08 Apr 23, 11:45 AM</td>
-          <td>10 Feb 24, 12:50 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-391"
-              target="_blank">
-              UGXSMF-391
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-391"
-              target="_blank">
-              OpenGraph / SEO Improvements
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-391"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>28 Mar 23, 11:57 PM</td>
-          <td>Sunday 4:03 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-388"
-              target="_blank">
-              UGXSMF-388
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-388"
-              target="_blank">
-              Deleted User improvements (and fixes)
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-388"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>28 Mar 23, 8:45 PM</td>
-          <td>16 Sep 23, 2:19 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-386"
-              target="_blank">
-              UGXSMF-386
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-386"
-              target="_blank">
-              Moderation: find user by third party provider ID for support
-              inquiries
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-386"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>28 Mar 23, 8:44 PM</td>
-          <td>07 Feb 24, 11:33 AM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-384"
-              target="_blank">
-              UGXSMF-384
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-384"
-              target="_blank">
-              Topic / post approve improvements
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-384"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>28 Mar 23, 8:41 PM</td>
-          <td>10 Feb 24, 12:07 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-383"
-              target="_blank">
-              UGXSMF-383
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-383"
-              target="_blank">
-              Moderation: Delete user improvements
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-383"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-improvement.svg"
-                alt="Improvement"
-                class="icon" />
-            </a>
-          </td>
-          <td>28 Mar 23, 8:39 PM</td>
-          <td>16 Sep 23, 8:47 AM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-        <tr>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-382"
-              target="_blank">
-              UGXSMF-382
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-382"
-              target="_blank">
-              Add info if Discord user is on UGX-Mods discord
-            </a>
-          </td>
-          <td>
-            <a
-              href="https://ugxmods.atlassian.net/browse/UGXSMF-382"
-              target="_blank">
-              <img
-                src="/attachments/icons/jira/type-new-feature.svg"
-                alt="New Feature"
-                class="icon" />
-            </a>
-          </td>
-          <td>28 Mar 23, 8:01 PM</td>
-          <td>07 Feb 24, 1:16 PM</td>
-          <td>Alexander Diller</td>
-          <td>Alexander Diller</td>
-          <td>
-            <img
-              src="/attachments/icons/jira/priority-minor.svg"
-              alt="Minor"
-              class="icon" />
-          </td>
-          <td>
-            <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
-            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-              Done
-            </span>
-          </td>
-          <td>Done</td>
-        </tr>
-      </tbody>
-    </table>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>
+          <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+            RELEASED
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th>Version</th>
+        <td>v0.8.84-beta</td>
+      </tr>
+      <tr>
+        <th>Version Mode</th>
+        <td>production ⭐</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="changelog-summary">
+    <h2 id="UGXSMFv0.8.84beta-Summary">Summary</h2>
+    <p>
+      Finally a new update. This one took a long time, especially because of
+      performance testing and fixing.
+    </p>
+    <p>
+      Better performance, new Avatar Editor and other great improvements +
+      fixes.
+    </p>
+    <p>
+      You can now finally upload (or use an URL) and modify the image (crop
+      &amp; filters) before uploading it.
+      <a
+        href="https://www.ugx-mods.com/forum/profile/area=forumprofile"
+        target="_blank">
+        Try it out now
+      </a>
+      .
+    </p>
   </div>
-  <div>
-    <a
-      title="View all matching issues in JIRA."
-      href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.84-beta++&amp;src=confmacro"
-      target="_blank">
-      15 issues
-    </a>
+  <div class="changelog-highlights">
+    <h2 id="UGXSMFv0.8.84beta-Importanthighlightsfromthisrelease">
+      Important highlights from this release
+    </h2>
+    <ul>
+      <li>
+        New Features
+        <ul>
+          <li>Post attachments can be sorted now.</li>
+          <li>
+            New posts attachments can be added easily with drag & drop of one or
+            multiple files
+          </li>
+          <li>
+            Audio / video elements are embedded now (if browser is supported)
+            and better thumbnails
+          </li>
+        </ul>
+      </li>
+      <li>
+        Improvements
+        <ul>
+          <li>
+            Better &quot;Jump to&quot; list with search term highlight and
+            search keeps hierarchy during search intact now.
+            <ul>
+              <li>
+                Before...
+                <br />
+                <img
+                  src="/attachments/changelog/UGXSMF-v0-8-84-beta/select-before.png"
+                  height="250"
+                  alt="Board selection dropdown before the change: search for modd lists many identical Modding entries" />
+              </li>
+              <li>
+                <strong>After...</strong>
+                <br />
+                <img
+                  src="/attachments/changelog/UGXSMF-v0-8-84-beta/select-after.png"
+                  alt="Board selection dropdown after the change: the Modding boards are shown with their game categories" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            Better explanation for new users why their post / topic is
+            unapproved
+          </li>
+          <li>Better display of deleted users and new avatar for them</li>
+          <li>
+            Reworked the social share buttons &amp; popup (faster and fully
+            working in 2023^^)
+          </li>
+          <li>
+            New radio and checkbox input style (also optimized / faster)
+            <ul>
+              <li>
+                <img
+                  src="/attachments/changelog/UGXSMF-v0-8-84-beta/radioboxes.gif"
+                  height="156"
+                  alt="Animation of the new radio buttons in the profile picture settings" />
+                <img
+                  src="/attachments/changelog/UGXSMF-v0-8-84-beta/checkboxes.gif"
+                  height="150"
+                  alt="Animation of the new checkboxes" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            Image orientation of uploaded attachments are properly set for the
+            thumbnail
+          </li>
+          <li>
+            Better Discord Sync information, especially if user did not join our
+            Discord yet (or uses a different account).
+          </li>
+          <li>
+            Added latest emojis (v15.1) [twitter is currently unavailable]
+          </li>
+          <li>
+            Removed some javascript / css bloat -> faster page load / smaller
+            page download size
+          </li>
+          <li>
+            Security improvements (some cookies are secure & http only now)
+          </li>
+          <li>(Also updated the UGX Web Chat & some root / landing pages)</li>
+        </ul>
+      </li>
+      <li>
+        Fixes
+        <ul>
+          <li>Fixed a couple of reported issues from Sentry</li>
+          <li>"Fixed compatibility issues with newer PHP version</li>
+        </ul>
+      </li>
+      <li>
+        Development Improvements
+        <br />
+        <ul>
+          <li>
+            Removed old dependencies for faster page loads (less resources to
+            load).
+          </li>
+          <li>Migrated to Jira Cloud (API)</li>
+          <li>Migrated Confluence to WikiJS</li>
+          <li>Updated all dependencies with bug & security fixes</li>
+          <li>
+            Cleanup of older images, reduced asset loads and general some
+            housekeeping (project is over 10 years old 😀)
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-tickets">
+    <h2 id="UGXSMFv0.8.84beta-Allticketsforthisrelease">
+      All tickets for this release
+    </h2>
+
+    <div class="confluence-jim-macro" resolved>
+      <div style="width: 100%; overflow: auto">
+        <table>
+          <tbody>
+            <tr>
+              <th style="text-align: left; text-transform: capitalize">Key</th>
+
+              <th style="text-align: left; text-transform: capitalize">
+                Summary
+              </th>
+
+              <th style="text-align: left; text-transform: capitalize">T</th>
+
+              <th style="text-align: left; text-transform: capitalize">
+                Created
+              </th>
+
+              <th style="text-align: left; text-transform: capitalize">
+                Updated
+              </th>
+
+              <th style="text-align: left; text-transform: capitalize">
+                Assignee
+              </th>
+
+              <th style="text-align: left; text-transform: capitalize">
+                Reporter
+              </th>
+
+              <th style="text-align: left; text-transform: capitalize">P</th>
+
+              <th style="text-align: left; text-transform: capitalize">
+                Status
+              </th>
+
+              <th style="text-align: left; text-transform: capitalize">
+                Resolution
+              </th>
+            </tr>
+
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-427"
+                  target="_blank">
+                  UGXSMF-427
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-427"
+                  target="_blank">
+                  Migrate to WikiJS
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-427"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-task.svg"
+                    alt="Task"
+                    class="icon" />
+                </a>
+              </td>
+              <td>06 Feb 24, 7:17 PM</td>
+              <td>Yesterday 5:51 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-critical.svg"
+                  alt="Critical"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-425"
+                  target="_blank">
+                  UGXSMF-425
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-425"
+                  target="_blank">
+                  Migrate to Jira Cloud API
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-425"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-task.svg"
+                    alt="Task"
+                    class="icon" />
+                </a>
+              </td>
+              <td>05 Feb 24, 4:22 PM</td>
+              <td>06 Feb 24, 7:05 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-423"
+                  target="_blank">
+                  UGXSMF-423
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-423"
+                  target="_blank">
+                  z-index issue for notifications
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-423"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-bug.svg"
+                    alt="Bug"
+                    class="icon" />
+                </a>
+              </td>
+              <td>06 Dec 23, 4:55 PM</td>
+              <td>06 Feb 24, 6:56 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-417"
+                  target="_blank">
+                  UGXSMF-417
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-417"
+                  target="_blank">
+                  Replace iCheck with native solution
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-417"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-task.svg"
+                    alt="Task"
+                    class="icon" />
+                </a>
+              </td>
+              <td>29 Jul 23, 11:10 PM</td>
+              <td>10 Feb 24, 12:51 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-413"
+                  target="_blank">
+                  UGXSMF-413
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-413"
+                  target="_blank">
+                  Improve post attachments display &amp; distinguish with reply
+                  options better
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-413"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>27 May 23, 9:11 PM</td>
+              <td>10 Feb 24, 12:51 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-412"
+                  target="_blank">
+                  UGXSMF-412
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-412"
+                  target="_blank">
+                  Explain unapproved topic / message better for new users
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-412"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-task.svg"
+                    alt="Task"
+                    class="icon" />
+                </a>
+              </td>
+              <td>27 May 23, 9:07 PM</td>
+              <td>15 Sep 23, 10:49 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-402"
+                  target="_blank">
+                  UGXSMF-402
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-402"
+                  target="_blank">
+                  Remove / replace jquery-ui
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-402"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>08 Apr 23, 9:40 PM</td>
+              <td>07 Feb 24, 6:59 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-401"
+                  target="_blank">
+                  UGXSMF-401
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-401"
+                  target="_blank">
+                  Jump To list should include hierachy information
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-401"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>08 Apr 23, 9:12 PM</td>
+              <td>15 Sep 23, 10:49 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-400"
+                  target="_blank">
+                  UGXSMF-400
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-400"
+                  target="_blank">
+                  Replace share dialog with share popup
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-400"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>08 Apr 23, 11:45 AM</td>
+              <td>10 Feb 24, 12:50 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-391"
+                  target="_blank">
+                  UGXSMF-391
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-391"
+                  target="_blank">
+                  OpenGraph / SEO Improvements
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-391"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>28 Mar 23, 11:57 PM</td>
+              <td>Sunday 4:03 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-388"
+                  target="_blank">
+                  UGXSMF-388
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-388"
+                  target="_blank">
+                  Deleted User improvements (and fixes)
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-388"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>28 Mar 23, 8:45 PM</td>
+              <td>16 Sep 23, 2:19 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-386"
+                  target="_blank">
+                  UGXSMF-386
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-386"
+                  target="_blank">
+                  Moderation: find user by third party provider ID for support
+                  inquiries
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-386"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>28 Mar 23, 8:44 PM</td>
+              <td>07 Feb 24, 11:33 AM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-384"
+                  target="_blank">
+                  UGXSMF-384
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-384"
+                  target="_blank">
+                  Topic / post approve improvements
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-384"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>28 Mar 23, 8:41 PM</td>
+              <td>10 Feb 24, 12:07 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-383"
+                  target="_blank">
+                  UGXSMF-383
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-383"
+                  target="_blank">
+                  Moderation: Delete user improvements
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-383"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-improvement.svg"
+                    alt="Improvement"
+                    class="icon" />
+                </a>
+              </td>
+              <td>28 Mar 23, 8:39 PM</td>
+              <td>16 Sep 23, 8:47 AM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-382"
+                  target="_blank">
+                  UGXSMF-382
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-382"
+                  target="_blank">
+                  Add info if Discord user is on UGX-Mods discord
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://ugxmods.atlassian.net/browse/UGXSMF-382"
+                  target="_blank">
+                  <img
+                    src="/attachments/icons/jira/type-new-feature.svg"
+                    alt="New Feature"
+                    class="icon" />
+                </a>
+              </td>
+              <td>28 Mar 23, 8:01 PM</td>
+              <td>07 Feb 24, 1:16 PM</td>
+              <td>Alexander Diller</td>
+              <td>Alexander Diller</td>
+              <td>
+                <img
+                  src="/attachments/icons/jira/priority-minor.svg"
+                  alt="Minor"
+                  class="icon" />
+              </td>
+              <td>
+                <!-- The new status lozengens support for JIRA 6.2 or later. Otherwise we use the icon.-->
+                <span
+                  class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                  Done
+                </span>
+              </td>
+              <td>Done</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <a
+          title="View all matching issues in JIRA."
+          href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.84-beta++&amp;src=confmacro"
+          target="_blank">
+          15 issues
+        </a>
+      </div>
+    </div>
+
+    (Not all changes are listed here, always check the highlights above)
+  </div>
+  <div class="changelog-known-issues">
+    <h2 id="UGXSMFv0.8.84beta-Knownissues">Known issues</h2>
+    <ul>
+      <li>
+        Supported Browsers / Devices
+        <br />
+        <ul>
+          <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
+          <li>Edge has been partially tested</li>
+          <li>There was no extensive testing on mobile devices yet</li>
+          <li>
+            <strong>
+              We need your feedback if something isn't working on your device
+            </strong>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-special-thanks">
+    <h2 id="UGXSMFv0.8.84beta-SpecialThanks">Special Thanks</h2>
+    <p>To your issue reports through Discord ❤️</p>
+  </div>
+  <div class="changelog-whats-next">
+    <h2 id="UGXSMFv0.8.84beta-Whatsnext?">Whats next?</h2>
+    <p>
+      To get a complete overview of our development plans, visit
+      <a href="https://www.ugx-mods.com/roadmap" target="_blank">
+        https://www.ugx-mods.com/roadmap
+      </a>
+    </p>
   </div>
 </div>
-
-(Not all changes are listed here, always check the highlights above)
-
-<h2 id="UGXSMFv0.8.84beta-Knownissues">Known issues</h2>
-<ul>
-  <li>
-    Supported Browsers / Devices
-    <br />
-    <ul>
-      <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
-      <li>Edge has been partially tested</li>
-      <li>There was no extensive testing on mobile devices yet</li>
-      <li>
-        <strong>
-          We need your feedback if something isn't working on your device
-        </strong>
-      </li>
-    </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.84beta-SpecialThanks">Special Thanks</h2>
-<p>To your issue reports through Discord ❤️</p>
-
-<h2 id="UGXSMFv0.8.84beta-Whatsnext?">Whats next?</h2>
-<p>
-  To get a complete overview of our development plans, visit
-  <a href="https://www.ugx-mods.com/roadmap" target="_blank">
-    https://www.ugx-mods.com/roadmap
-  </a>
-</p>

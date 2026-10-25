@@ -8,341 +8,372 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:34:25.336Z
 -->
 
-<table>
-  <tbody>
-    <tr>
-      <th>Date</th>
-      <td>01 Oct 2018</td>
-    </tr>
-    <tr>
-      <th>Issues</th>
-      <td>
-        <p>
-          <a
-            href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.1-beta"
-            target="_blank">
-            2 issues
-          </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>
-        <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
-          RELEASED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th>Version</th>
-      <td>v0.8.1-beta</td>
-    </tr>
-    <tr>
-      <th>Version Mode</th>
-      <td>production ⭐</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="UGXSMFv0.8.1beta-Summary">Summary</h2>
-<p>
-  This update fixes all known issues from the site overhaul release and some
-  improvements were made.
-</p>
-<h2 id="UGXSMFv0.8.1beta-Importanthighlightsfromthisrelease">
-  Important highlights from this release
-</h2>
-<ul>
-  <li>
-    General Improvements
-    <ul>
-      <li>
-        @mention user now uses a bcc tag instead of generating a link
-        →[user]uid[/user]
-      </li>
-      <li>
-        Registration form page 1 will distinguish the age restriction buttons
-        better now
-        <ul>
-          <li>
-            Also added an example and better instructions for a signed coppa
-            form
-          </li>
-        </ul>
-      </li>
-      <li>
-        Download file buttons do show the hostname now:
-        <br />
-
-        <img
-          width="300"
-          src="/attachments/applications-and-services/ugx-mods-forum/changelog/ugxsmf-v0-8-1-beta/important-highlights-from-this-release.png"
-          alt="Download file buttons for mega.nz and www.mediafire.com" />
-      </li>
-    </ul>
-  </li>
-  <li>
-    Bugfixes
-    <ul>
-      <li>
-        Fixed footer not staying at the bottom caused by wrong stage environment
-        detection
-      </li>
-      <li>Fixed a couple of typos</li>
-      <li>
-        Fixed invalid html document caused by error in index file on
-        <a href="https://www.ugx-mods.com" target="_blank">
-          https://www.ugx-mods.com
-        </a>
-      </li>
-      <li>Fixed double scrollbar on code blocks</li>
-      <li>Fixed missing board icons</li>
-      <li>Fix coppa form &quot;no access error&quot; due to bug in SMF core</li>
-      <li>
-        Fix attachments url (plugin bug) - download of attachments should be
-        possible for all odd filenames again 😉
-      </li>
-      <li>Reduce reported error clutter in sentry</li>
-      <li>fixed a couple of js and php errors happening in rare cases</li>
-      <li>
-        fix color scheme &amp; emoji style selection and selected value display
-      </li>
-      <li>user mention uses a new bbc tag + styling for it</li>
-      <li>removed stumbleupon from ugx_share widgets</li>
-      <li>
-        Fix critical bug in SEO Plugin which hopefully fixes malformed urls
-      </li>
-      <li>
-        Fix white pages with &quot;content not found&quot; - The normal 404 page
-        will be shown now 👍
-      </li>
-      <li>
-        Error report sending will only be mentioned if it actually sent one.
-      </li>
-      <li>fix white bg color in ckeditor select fields (now dark blue)</li>
-      <li>
-        Enabled 3rd party social authentications (login &amp; registration)
-        (most of them)
-      </li>
-      <li>
-        Fixed cache issues with service worker and introduce a new update popup
-        to reload all tabs at once
-      </li>
-      <li>
-        Fix page loading throbber does appear if you want to download a file
-      </li>
-      <li>Fixed issue with email check on the registration form</li>
-      <li>
-        CKEditor
-        <ul>
-          <li>Fixed CKEditor url paste caused a crash</li>
-          <li>
-            CKEditor recognizes emojis from (pasted) Discord message and other
-            tools properly now
-          </li>
-        </ul>
-        <ul>
-          <li>
-            On CKEditor crash the submit / save button is functional now and you
-            can actually save content with the legacy editor
-          </li>
-        </ul>
-        <ul>
-          <li>
-            Image urls in CKEditor are decoded properly now (all images should
-            be properly displayed now)
-          </li>
-        </ul>
-      </li>
-      <li>Fixed a couple of undefined variables in front &amp; backend</li>
-    </ul>
-  </li>
-  <li>
-    Development
-    <ul>
-      <li>
-        We now use a local hosted instance (instead of google cdn) of workbox
-        for our service worker to hopefully overcome some blocking issues
-      </li>
-      <li>
-        Updated to brand new stable released@sentry/browser sdk (replacing the
-        legacy raven-js client)
-        <ul>
-          <li>
-            CKEditor issues will be also reported to sentry now, which helps us
-            to identify the root issue better 👍
-          </li>
-        </ul>
-      </li>
-      <li>Updated other dependencies as well</li>
-      <li>
-        improved deployment by excluding Smileys &amp; Emojis by default
-        (reducing overall size of release package for faster deployments)
-      </li>
-    </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.1beta-Allticketsforthisrelease">
-  All tickets for this release
-</h2>
-
-<div style="width: 100%; overflow: auto">
-  <table>
+<div
+  class="widget-jira-changelog"
+  data-project="UGXSMF"
+  data-version="v0.8.1-beta"
+  data-released="2018-10-01"
+  data-refreshed="">
+  <table class="widget-jira-info">
     <tbody>
       <tr>
-        <th>Key</th>
-        <th>Summary</th>
-        <th>T</th>
-        <th>Created</th>
-        <th>Updated</th>
-        <th>Assignee</th>
-        <th>Reporter</th>
-        <th>P</th>
+        <th>Date</th>
+        <td>01 Oct 2018</td>
+      </tr>
+      <tr>
+        <th>Issues</th>
+        <td>
+          <p>
+            <a
+              href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.1-beta"
+              target="_blank">
+              2 issues
+            </a>
+          </p>
+        </td>
+      </tr>
+      <tr>
         <th>Status</th>
-        <th>Resolution</th>
-      </tr>
-      <tr>
         <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-313"
-            target="_blank">
-            UGXSMF-313
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-313"
-            target="_blank">
-            Fix bugs found in production deployment v0.8.0-beta
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-313"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-bug.svg"
-              alt="Bug"
-              class="icon" />
-          </a>
-        </td>
-        <td>Sept 11, 2018</td>
-        <td>Oct 01, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
+          <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+            RELEASED
           </span>
         </td>
-        <td>Fixed</td>
       </tr>
       <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-305"
-            target="_blank">
-            UGXSMF-305
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-305"
-            target="_blank">
-            Add TLD to download buttons
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-305"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Apr 26, 2018</td>
-        <td>Oct 01, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
+        <th>Version</th>
+        <td>v0.8.1-beta</td>
+      </tr>
+      <tr>
+        <th>Version Mode</th>
+        <td>production ⭐</td>
       </tr>
     </tbody>
   </table>
-</div>
-<div>
-  <a
-    title="View all matching issues in Jira."
-    href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.1-beta"
-    target="_blank">
-    2 issues
-  </a>
-</div>
-
-(Not all changes are listed here, always check the highlights above)
-
-<h2 id="UGXSMFv0.8.1beta-Knownissues">Known issues</h2>
-<ul>
-  <li>
-    Supported Browsers / Devices
-    <br />
-    <ul>
-      <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
-      <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
-      <li>There was no extensive testing on mobile devices yet</li>
-      <li>
-        <strong>
-          We need your feedback if something isn't working on your device
-        </strong>
-      </li>
-    </ul>
-  </li>
-  <li>
-    HTML Emails:
-    <br />
+  <div class="changelog-summary">
+    <h2 id="UGXSMFv0.8.1beta-Summary">Summary</h2>
+    <p>
+      This update fixes all known issues from the site overhaul release and some
+      improvements were made.
+    </p>
+  </div>
+  <div class="changelog-highlights">
+    <h2 id="UGXSMFv0.8.1beta-Importanthighlightsfromthisrelease">
+      Important highlights from this release
+    </h2>
     <ul>
       <li>
-        Outlook has some quirks (odd spacing around the email) - Blame the
-        developers of it for using the Word HTML rendering engine
+        General Improvements
+        <ul>
+          <li>
+            @mention user now uses a bcc tag instead of generating a link
+            →[user]uid[/user]
+          </li>
+          <li>
+            Registration form page 1 will distinguish the age restriction
+            buttons better now
+            <ul>
+              <li>
+                Also added an example and better instructions for a signed coppa
+                form
+              </li>
+            </ul>
+          </li>
+          <li>
+            Download file buttons do show the hostname now:
+            <br />
+
+            <img
+              width="300"
+              src="/attachments/applications-and-services/ugx-mods-forum/changelog/ugxsmf-v0-8-1-beta/important-highlights-from-this-release.png"
+              alt="Download file buttons for mega.nz and www.mediafire.com" />
+          </li>
+        </ul>
+      </li>
+      <li>
+        Bugfixes
+        <ul>
+          <li>
+            Fixed footer not staying at the bottom caused by wrong stage
+            environment detection
+          </li>
+          <li>Fixed a couple of typos</li>
+          <li>
+            Fixed invalid html document caused by error in index file on
+            <a href="https://www.ugx-mods.com" target="_blank">
+              https://www.ugx-mods.com
+            </a>
+          </li>
+          <li>Fixed double scrollbar on code blocks</li>
+          <li>Fixed missing board icons</li>
+          <li>
+            Fix coppa form &quot;no access error&quot; due to bug in SMF core
+          </li>
+          <li>
+            Fix attachments url (plugin bug) - download of attachments should be
+            possible for all odd filenames again 😉
+          </li>
+          <li>Reduce reported error clutter in sentry</li>
+          <li>fixed a couple of js and php errors happening in rare cases</li>
+          <li>
+            fix color scheme &amp; emoji style selection and selected value
+            display
+          </li>
+          <li>user mention uses a new bbc tag + styling for it</li>
+          <li>removed stumbleupon from ugx_share widgets</li>
+          <li>
+            Fix critical bug in SEO Plugin which hopefully fixes malformed urls
+          </li>
+          <li>
+            Fix white pages with &quot;content not found&quot; - The normal 404
+            page will be shown now 👍
+          </li>
+          <li>
+            Error report sending will only be mentioned if it actually sent one.
+          </li>
+          <li>fix white bg color in ckeditor select fields (now dark blue)</li>
+          <li>
+            Enabled 3rd party social authentications (login &amp; registration)
+            (most of them)
+          </li>
+          <li>
+            Fixed cache issues with service worker and introduce a new update
+            popup to reload all tabs at once
+          </li>
+          <li>
+            Fix page loading throbber does appear if you want to download a file
+          </li>
+          <li>Fixed issue with email check on the registration form</li>
+          <li>
+            CKEditor
+            <ul>
+              <li>Fixed CKEditor url paste caused a crash</li>
+              <li>
+                CKEditor recognizes emojis from (pasted) Discord message and
+                other tools properly now
+              </li>
+            </ul>
+            <ul>
+              <li>
+                On CKEditor crash the submit / save button is functional now and
+                you can actually save content with the legacy editor
+              </li>
+            </ul>
+            <ul>
+              <li>
+                Image urls in CKEditor are decoded properly now (all images
+                should be properly displayed now)
+              </li>
+            </ul>
+          </li>
+          <li>Fixed a couple of undefined variables in front &amp; backend</li>
+        </ul>
+      </li>
+      <li>
+        Development
+        <ul>
+          <li>
+            We now use a local hosted instance (instead of google cdn) of
+            workbox for our service worker to hopefully overcome some blocking
+            issues
+          </li>
+          <li>
+            Updated to brand new stable released@sentry/browser sdk (replacing
+            the legacy raven-js client)
+            <ul>
+              <li>
+                CKEditor issues will be also reported to sentry now, which helps
+                us to identify the root issue better 👍
+              </li>
+            </ul>
+          </li>
+          <li>Updated other dependencies as well</li>
+          <li>
+            improved deployment by excluding Smileys &amp; Emojis by default
+            (reducing overall size of release package for faster deployments)
+          </li>
+        </ul>
       </li>
     </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.1beta-Whatsnext?">Whats next?</h2>
-<p>We will listen to community feedback as usual ❤️ .</p>
-<p>
-  The focus is now on stability and maintenance for a while.
-  <strong>We look into performance and try to get rid of the 502 errors</strong>
-  .
-</p>
-<p>
-  More time imto the
-  <a href="/UGXL">UGX Launcher</a>
-  and UGX Play will be put and hopefully some new announcement about it will be
-  made in the upcoming weeks.
-</p>
-<p>
-  To get a complete overview of our development plans, visit
-  <a href="https://www.ugx-mods.com/roadmap" target="_blank">
-    https://www.ugx-mods.com/roadmap
-  </a>
-</p>
+  </div>
+  <div class="changelog-tickets">
+    <h2 id="UGXSMFv0.8.1beta-Allticketsforthisrelease">
+      All tickets for this release
+    </h2>
+
+    <div style="width: 100%; overflow: auto">
+      <table>
+        <tbody>
+          <tr>
+            <th>Key</th>
+            <th>Summary</th>
+            <th>T</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Assignee</th>
+            <th>Reporter</th>
+            <th>P</th>
+            <th>Status</th>
+            <th>Resolution</th>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-313"
+                target="_blank">
+                UGXSMF-313
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-313"
+                target="_blank">
+                Fix bugs found in production deployment v0.8.0-beta
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-313"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-bug.svg"
+                  alt="Bug"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Sept 11, 2018</td>
+            <td>Oct 01, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Fixed</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-305"
+                target="_blank">
+                UGXSMF-305
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-305"
+                target="_blank">
+                Add TLD to download buttons
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-305"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Apr 26, 2018</td>
+            <td>Oct 01, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <a
+        title="View all matching issues in Jira."
+        href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.1-beta"
+        target="_blank">
+        2 issues
+      </a>
+    </div>
+
+    (Not all changes are listed here, always check the highlights above)
+  </div>
+  <div class="changelog-known-issues">
+    <h2 id="UGXSMFv0.8.1beta-Knownissues">Known issues</h2>
+    <ul>
+      <li>
+        Supported Browsers / Devices
+        <br />
+        <ul>
+          <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
+          <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
+          <li>There was no extensive testing on mobile devices yet</li>
+          <li>
+            <strong>
+              We need your feedback if something isn't working on your device
+            </strong>
+          </li>
+        </ul>
+      </li>
+      <li>
+        HTML Emails:
+        <br />
+        <ul>
+          <li>
+            Outlook has some quirks (odd spacing around the email) - Blame the
+            developers of it for using the Word HTML rendering engine
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-special-thanks">
+    <h2 id="special-thanks">Special Thanks</h2>
+    <p>
+      For your support and issue reports ❤️
+      <br />
+      Report issues / features via
+      <a href="/Applications-and-Services/UGX-Mods-Discord-Server">Discord</a>
+      or other report options.
+    </p>
+  </div>
+  <div class="changelog-whats-next">
+    <h2 id="UGXSMFv0.8.1beta-Whatsnext?">Whats next?</h2>
+    <p>We will listen to community feedback as usual ❤️ .</p>
+    <p>
+      The focus is now on stability and maintenance for a while.
+      <strong>
+        We look into performance and try to get rid of the 502 errors
+      </strong>
+      .
+    </p>
+    <p>
+      More time imto the
+      <a href="/UGXL">UGX Launcher</a>
+      and UGX Play will be put and hopefully some new announcement about it will
+      be made in the upcoming weeks.
+    </p>
+    <p>
+      To get a complete overview of our development plans, visit
+      <a href="https://www.ugx-mods.com/roadmap" target="_blank">
+        https://www.ugx-mods.com/roadmap
+      </a>
+    </p>
+  </div>
+</div>

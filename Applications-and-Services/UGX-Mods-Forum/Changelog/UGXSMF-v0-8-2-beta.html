@@ -8,408 +8,437 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:34:27.326Z
 -->
 
-<table>
-  <tbody>
-    <tr>
-      <th>Date</th>
-      <td>12 Nov 2018</td>
-    </tr>
-    <tr>
-      <th>Issues</th>
-      <td>
-        <p>
-          <a
-            href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.2-beta"
-            target="_blank">
-            5 issues
-          </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>
-        <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
-          RELEASED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th>Version</th>
-      <td>v0.8.2-beta</td>
-    </tr>
-    <tr>
-      <th>Version Mode</th>
-      <td>production ⭐</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="UGXSMFv0.8.2beta-Summary">Summary</h2>
-<p>
-  This update fixes a couple of issues and introduces autosave for our
-  texteditor (CkEditor).
-</p>
-<h2 id="UGXSMFv0.8.2beta-Importanthighlightsfromthisrelease">
-  Important highlights from this release
-</h2>
-<ul>
-  <li>
-    CKEditor improvements
-    <ul>
-      <li>
-        Autosave for texteditor
-        <ul>
-          <li>content will be saved every 10s to your browser localStorage</li>
-          <li>content older than 24h will be deleted / ignored</li>
-          <li>
-            content will be stored per board + topic or pm action.
-            <ul>
-              <li>that means you can technically store multiple posts, etc.</li>
-            </ul>
-          </li>
-          <li>
-            auto saved content will be cleared on submit for this particular
-            content
-          </li>
-        </ul>
-      </li>
-      <li>
-        A crash / error won't display the legacy texteditor now. Instead a
-        warning box appears with information and you can manuelly trigger to
-        launch the texteditor.
-        <ul>
-          <li>
-            In most cases, the editor content will be copied to the legacy
-            texteditor -
-            <strong>but</strong>
-            it sometimes can't do that if it crashed completely.
-            <br />
-            Your content is then lost during the switch - but with the new
-            autosave feature you could recover with a browser tab reload.
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>Small improvements here and there</li>
-  <li>
-    Bugfixes
-    <ul>
-      <li>
-        Fix issues with odd url encoding which broke hybridauth (social login)
-        and probably other parts as well.
-      </li>
-      <li>Fixed disallowed emotes check[hotfixed 03 Oct 2018]</li>
-      <li>
-        Fixed rare case cases where the social login buttons were not
-        displayed[hotfixed 03 Oct 2018]
-      </li>
-      <li>Lots of reported sentry errors fixed. 👍</li>
-    </ul>
-  </li>
-  <li>
-    System
-    <ul>
-      <li>
-        new (good looking) http error pages which you hopefully should never see
-        🙂
-      </li>
-    </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.2beta-Allticketsforthisrelease">
-  All tickets for this release
-</h2>
-
-<div style="width: 100%; overflow: auto">
-  <table>
+<div
+  class="widget-jira-changelog"
+  data-project="UGXSMF"
+  data-version="v0.8.2-beta"
+  data-released="2018-11-12"
+  data-refreshed="">
+  <table class="widget-jira-info">
     <tbody>
       <tr>
-        <th>Key</th>
-        <th>Summary</th>
-        <th>T</th>
-        <th>Created</th>
-        <th>Updated</th>
-        <th>Assignee</th>
-        <th>Reporter</th>
-        <th>P</th>
+        <th>Date</th>
+        <td>12 Nov 2018</td>
+      </tr>
+      <tr>
+        <th>Issues</th>
+        <td>
+          <p>
+            <a
+              href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.2-beta"
+              target="_blank">
+              5 issues
+            </a>
+          </p>
+        </td>
+      </tr>
+      <tr>
         <th>Status</th>
-        <th>Resolution</th>
-      </tr>
-      <tr>
         <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-319"
-            target="_blank">
-            UGXSMF-319
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-319"
-            target="_blank">
-            Add CKEditor autosave capability
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-319"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Oct 31, 2018</td>
-        <td>Nov 12, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
+          <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+            RELEASED
           </span>
         </td>
-        <td>Done</td>
       </tr>
       <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-318"
-            target="_blank">
-            UGXSMF-318
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-318"
-            target="_blank">
-            Better ckeditor crash handling
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-318"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-improvement.svg"
-              alt="Improvement"
-              class="icon" />
-          </a>
-        </td>
-        <td>Oct 04, 2018</td>
-        <td>Nov 12, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-critical.svg"
-            alt="Critical"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Fixed</td>
+        <th>Version</th>
+        <td>v0.8.2-beta</td>
       </tr>
       <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-317"
-            target="_blank">
-            UGXSMF-317
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-317"
-            target="_blank">
-            Create root error &amp; maintenance page
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-317"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-new-feature.svg"
-              alt="New Feature"
-              class="icon" />
-          </a>
-        </td>
-        <td>Oct 02, 2018</td>
-        <td>Nov 04, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-316"
-            target="_blank">
-            UGXSMF-316
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-316"
-            target="_blank">
-            Resolve some issues with Social Authentication (hybridauth)
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-316"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-bug.svg"
-              alt="Bug"
-              class="icon" />
-          </a>
-        </td>
-        <td>Oct 02, 2018</td>
-        <td>Nov 12, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Alexander Diller</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Fixed</td>
-      </tr>
-      <tr>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-314"
-            target="_blank">
-            UGXSMF-314
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-314"
-            target="_blank">
-            Personal messaging bug - disallowed emotes
-          </a>
-        </td>
-        <td>
-          <a
-            href="https://ugxmods.atlassian.net/browse/UGXSMF-314"
-            target="_blank">
-            <img
-              src="/attachments/icons/jira/type-bug.svg"
-              alt="Bug"
-              class="icon" />
-          </a>
-        </td>
-        <td>Oct 01, 2018</td>
-        <td>Oct 03, 2018</td>
-        <td>Alexander Diller</td>
-        <td>Community Reporter</td>
-        <td>
-          <img
-            src="/attachments/icons/jira/priority-minor.svg"
-            alt="Minor"
-            class="icon" />
-        </td>
-        <td>
-          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-            Done
-          </span>
-        </td>
-        <td>Done</td>
+        <th>Version Mode</th>
+        <td>production ⭐</td>
       </tr>
     </tbody>
   </table>
-</div>
-<div>
-  <a
-    title="View all matching issues in Jira."
-    href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.2-beta"
-    target="_blank">
-    5 issues
-  </a>
-</div>
-
-(Not all changes are listed here, always check the highlights above)
-
-<h2 id="UGXSMFv0.8.2beta-Knownissues">Known issues</h2>
-<ul>
-  <li>
-    Supported Browsers / Devices
-    <br />
-    <ul>
-      <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
-      <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
-      <li>There was no extensive testing on mobile devices yet</li>
-      <li>
-        <strong>
-          We need your feedback if something isn't working on your device
-        </strong>
-      </li>
-    </ul>
-  </li>
-  <li>
-    5xx errors
+  <div class="changelog-summary">
+    <h2 id="UGXSMFv0.8.2beta-Summary">Summary</h2>
+    <p>
+      This update fixes a couple of issues and introduces autosave for our
+      texteditor (CkEditor).
+    </p>
+  </div>
+  <div class="changelog-highlights">
+    <h2 id="UGXSMFv0.8.2beta-Importanthighlightsfromthisrelease">
+      Important highlights from this release
+    </h2>
     <ul>
       <li>
-        they are still but we might have a solution for this, which we deploy
-        and then monitor for a bit
+        CKEditor improvements
+        <ul>
+          <li>
+            Autosave for texteditor
+            <ul>
+              <li>
+                content will be saved every 10s to your browser localStorage
+              </li>
+              <li>content older than 24h will be deleted / ignored</li>
+              <li>
+                content will be stored per board + topic or pm action.
+                <ul>
+                  <li>
+                    that means you can technically store multiple posts, etc.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                auto saved content will be cleared on submit for this particular
+                content
+              </li>
+            </ul>
+          </li>
+          <li>
+            A crash / error won't display the legacy texteditor now. Instead a
+            warning box appears with information and you can manuelly trigger to
+            launch the texteditor.
+            <ul>
+              <li>
+                In most cases, the editor content will be copied to the legacy
+                texteditor -
+                <strong>but</strong>
+                it sometimes can't do that if it crashed completely.
+                <br />
+                Your content is then lost during the switch - but with the new
+                autosave feature you could recover with a browser tab reload.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Small improvements here and there</li>
+      <li>
+        Bugfixes
+        <ul>
+          <li>
+            Fix issues with odd url encoding which broke hybridauth (social
+            login) and probably other parts as well.
+          </li>
+          <li>Fixed disallowed emotes check[hotfixed 03 Oct 2018]</li>
+          <li>
+            Fixed rare case cases where the social login buttons were not
+            displayed[hotfixed 03 Oct 2018]
+          </li>
+          <li>Lots of reported sentry errors fixed. 👍</li>
+        </ul>
+      </li>
+      <li>
+        System
+        <ul>
+          <li>
+            new (good looking) http error pages which you hopefully should never
+            see 🙂
+          </li>
+        </ul>
       </li>
     </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.8.2beta-Whatsnext?">Whats next?</h2>
-<p>We will listen to community feedback as usual ❤️ .</p>
-<p>
-  The focus is now on stability and maintenance for a while.
-  <strong>
-    We look into performance and try to get rid of the 5xx errors (issues have
-    been identified)
-  </strong>
-  .
-</p>
-<p>
-  The last update for this year will introduce a new feature and some
-  improvements to the mobile / responsive view on the forum.
-</p>
-<p>
-  More time imto the
-  <a href="/UGXL">UGX Launcher</a>
-  and UGX Play will be put and hopefully some new announcement about it will be
-  made in the upcoming weeks.
-</p>
-<p>
-  To get a complete overview of our development plans, visit
-  <a href="https://www.ugx-mods.com/roadmap" target="_blank">
-    https://www.ugx-mods.com/roadmap
-  </a>
-</p>
+  </div>
+  <div class="changelog-tickets">
+    <h2 id="UGXSMFv0.8.2beta-Allticketsforthisrelease">
+      All tickets for this release
+    </h2>
+
+    <div style="width: 100%; overflow: auto">
+      <table>
+        <tbody>
+          <tr>
+            <th>Key</th>
+            <th>Summary</th>
+            <th>T</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Assignee</th>
+            <th>Reporter</th>
+            <th>P</th>
+            <th>Status</th>
+            <th>Resolution</th>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-319"
+                target="_blank">
+                UGXSMF-319
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-319"
+                target="_blank">
+                Add CKEditor autosave capability
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-319"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Oct 31, 2018</td>
+            <td>Nov 12, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-318"
+                target="_blank">
+                UGXSMF-318
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-318"
+                target="_blank">
+                Better ckeditor crash handling
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-318"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Oct 04, 2018</td>
+            <td>Nov 12, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-critical.svg"
+                alt="Critical"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Fixed</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-317"
+                target="_blank">
+                UGXSMF-317
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-317"
+                target="_blank">
+                Create root error &amp; maintenance page
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-317"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-new-feature.svg"
+                  alt="New Feature"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Oct 02, 2018</td>
+            <td>Nov 04, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-316"
+                target="_blank">
+                UGXSMF-316
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-316"
+                target="_blank">
+                Resolve some issues with Social Authentication (hybridauth)
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-316"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-bug.svg"
+                  alt="Bug"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Oct 02, 2018</td>
+            <td>Nov 12, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Fixed</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-314"
+                target="_blank">
+                UGXSMF-314
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-314"
+                target="_blank">
+                Personal messaging bug - disallowed emotes
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-314"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-bug.svg"
+                  alt="Bug"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Oct 01, 2018</td>
+            <td>Oct 03, 2018</td>
+            <td>Alexander Diller</td>
+            <td>Community Reporter</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <a
+        title="View all matching issues in Jira."
+        href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.2-beta"
+        target="_blank">
+        5 issues
+      </a>
+    </div>
+
+    (Not all changes are listed here, always check the highlights above)
+  </div>
+  <div class="changelog-known-issues">
+    <h2 id="UGXSMFv0.8.2beta-Knownissues">Known issues</h2>
+    <ul>
+      <li>
+        Supported Browsers / Devices
+        <br />
+        <ul>
+          <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
+          <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
+          <li>There was no extensive testing on mobile devices yet</li>
+          <li>
+            <strong>
+              We need your feedback if something isn't working on your device
+            </strong>
+          </li>
+        </ul>
+      </li>
+      <li>
+        5xx errors
+        <ul>
+          <li>
+            they are still but we might have a solution for this, which we
+            deploy and then monitor for a bit
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-special-thanks">
+    <h2 id="special-thanks">Special Thanks</h2>
+    <p>
+      For your support and issue reports ❤️
+      <br />
+      Report issues / features via
+      <a href="/Applications-and-Services/UGX-Mods-Discord-Server">Discord</a>
+      or other report options.
+    </p>
+  </div>
+  <div class="changelog-whats-next">
+    <h2 id="UGXSMFv0.8.2beta-Whatsnext?">Whats next?</h2>
+    <p>We will listen to community feedback as usual ❤️ .</p>
+    <p>
+      The focus is now on stability and maintenance for a while.
+      <strong>
+        We look into performance and try to get rid of the 5xx errors (issues
+        have been identified)
+      </strong>
+      .
+    </p>
+    <p>
+      The last update for this year will introduce a new feature and some
+      improvements to the mobile / responsive view on the forum.
+    </p>
+    <p>
+      More time imto the
+      <a href="/UGXL">UGX Launcher</a>
+      and UGX Play will be put and hopefully some new announcement about it will
+      be made in the upcoming weeks.
+    </p>
+    <p>
+      To get a complete overview of our development plans, visit
+      <a href="https://www.ugx-mods.com/roadmap" target="_blank">
+        https://www.ugx-mods.com/roadmap
+      </a>
+    </p>
+  </div>
+</div>

@@ -8,664 +8,699 @@ editor: ckeditor
 dateCreated: 2024-02-04T15:34:00.987Z
 -->
 
-<table>
-  <tbody>
-    <tr>
-      <th>Date</th>
-      <td>02 Dev 2017</td>
-    </tr>
-    <tr>
-      <th>Issues</th>
-      <td>
+<div
+  class="widget-jira-changelog"
+  data-project="UGXSMF"
+  data-version="v0.5.3-donor-beta"
+  data-released="unknown"
+  data-refreshed="">
+  <table class="widget-jira-info">
+    <tbody>
+      <tr>
+        <th>Date</th>
+        <td>02 Dev 2017</td>
+      </tr>
+      <tr>
+        <th>Issues</th>
+        <td>
+          <p>
+            <a
+              href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.5.3-donor-beta"
+              target="_blank">
+              9 issues
+            </a>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>
+          <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+            RELEASED
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th>Version</th>
+        <td>v0.5.3-donor-beta</td>
+      </tr>
+      <tr>
+        <th>Version Mode</th>
+        <td>Donor Beta</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="changelog-summary">
+    <h2 id="UGXSMFv0.5.3donorbeta-Summary">Summary</h2>
+    <p>
+      This release contains forum software updates which were also applied to
+      the production site.
+      <br />
+      From now on both sites will use SSL/TLS encryption and http has been
+      deprecated.
+    </p>
+    <p>
+      The Personal Message view has been updated and minor improvements have
+      been made.
+    </p>
+  </div>
+  <div class="changelog-highlights">
+    <h2 id="UGXSMFv0.5.3donorbeta-Importanthighlightsfromthisrelease">
+      Important highlights from this release
+    </h2>
+    <ul>
+      <li>
+        Update SMF Forum to 2.0.15
+        <ul>
+          <li>
+            Full support for https now via image proxy
+            <br />
+            <ul>
+              <li>
+                This is currently only working for img tags and we will
+                integrate this into other parts of our software soon
+              </li>
+            </ul>
+          </li>
+          <li>Include improvements &amp; bug fixes</li>
+        </ul>
+      </li>
+      <li>Fix bugs with usercard</li>
+      <li>
+        Fix display issues (odd shadow / flicker bug with webkit browsers) and
+        improve some general sites (like personal message pages)
+      </li>
+      <li>You can now vote for Feedback tickets 👍</li>
+      <li>
         <p>
+          Personal Messages uses conversation view now and reduced unrelated
+          settings for it
+        </p>
+      </li>
+      <li>Fix redirect issue after login</li>
+      <li>
+        Updated SimplePortal to 2.3.7 to ensure compatibility with latest forum
+        software
+        <ul>
+          <li>Includes security &amp; bug fixes.</li>
+        </ul>
+      </li>
+      <li>Updated some external development dependencies</li>
+    </ul>
+    <h2 id="UGXSMFv0.5.3donorbeta-FullChangelog">Full Changelog</h2>
+    <div class="expandable-container">
+      <button class="expandable-button" type="button">
+        Click here to expand...
+      </button>
+      <div class="expandable-content">
+        <h2 id="UGXSMFv0.5.3donorbeta-Change">Change</h2>
+        <ul>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
+              target="_blank">
+              UGXSMF-181
+            </a>
+            ] - Upgrade SimplePortal to 2.3.7
+          </li>
+        </ul>
+        <h2 id="UGXSMFv0.5.3donorbeta-Bug">Bug</h2>
+        <ul>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
+              target="_blank">
+              UGXSMF-278
+            </a>
+            ] - Fix login redirects wrong (to a resouce, like an image)
+          </li>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
+              target="_blank">
+              UGXSMF-279
+            </a>
+            ] - Loading throbber of notification does odd shadow effect
+          </li>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
+              target="_blank">
+              UGXSMF-280
+            </a>
+            ] - Fix display issues with usercard in mobile view
+          </li>
+        </ul>
+        <h2 id="UGXSMFv0.5.3donorbeta-NewFeature">New Feature</h2>
+        <ul>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
+              target="_blank">
+              UGXSMF-147
+            </a>
+            ] - Redirect to Thank You page after donation with information
+          </li>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
+              target="_blank">
+              UGXSMF-166
+            </a>
+            ] - add voting to UGX Feedback
+          </li>
+        </ul>
+        <h2 id="UGXSMFv0.5.3donorbeta-Task">Task</h2>
+        <ul>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
+              target="_blank">
+              UGXSMF-45
+            </a>
+            ] - PM: Nicer conversation view &amp; force people to use it
+          </li>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
+              target="_blank">
+              UGXSMF-246
+            </a>
+            ] - Upgrade to SMF 2.0.15
+          </li>
+        </ul>
+        <h2 id="UGXSMFv0.5.3donorbeta-Improvement">Improvement</h2>
+        <ul>
+          <li>
+            [
+            <a
+              href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
+              target="_blank">
+              UGXSMF-276
+            </a>
+            ] - Update (dev) package dependencies
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="changelog-tickets">
+    <h2 id="UGXSMFv0.5.3donorbeta-Allticketsforthisrelease">
+      All tickets for this release
+    </h2>
+    <div class="expandable-container">
+      <button class="expandable-button" type="button">
+        Click here to expand...
+      </button>
+      <div class="expandable-content">
+        <div style="width: 100%; overflow: auto">
+          <table>
+            <tbody>
+              <tr>
+                <th>Key</th>
+                <th>Summary</th>
+                <th>T</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Assignee</th>
+                <th>Reporter</th>
+                <th>P</th>
+                <th>Status</th>
+                <th>Resolution</th>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
+                    target="_blank">
+                    UGXSMF-280
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
+                    target="_blank">
+                    Fix display issues with usercard in mobile view
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-bug.svg"
+                      alt="Bug"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Dec 01, 2017</td>
+                <td>Dec 01, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-major.svg"
+                    alt="Major"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Fixed</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
+                    target="_blank">
+                    UGXSMF-279
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
+                    target="_blank">
+                    Loading throbber of notification does odd shadow effect
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-bug.svg"
+                      alt="Bug"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Nov 25, 2017</td>
+                <td>Nov 26, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-major.svg"
+                    alt="Major"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Fixed</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
+                    target="_blank">
+                    UGXSMF-278
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
+                    target="_blank">
+                    Fix login redirects wrong (to a resouce, like an image)
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-bug.svg"
+                      alt="Bug"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Nov 25, 2017</td>
+                <td>Nov 26, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-major.svg"
+                    alt="Major"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Fixed</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
+                    target="_blank">
+                    UGXSMF-276
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
+                    target="_blank">
+                    Update (dev) package dependencies
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-improvement.svg"
+                      alt="Improvement"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Nov 08, 2017</td>
+                <td>Nov 26, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-minor.svg"
+                    alt="Minor"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Done</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
+                    target="_blank">
+                    UGXSMF-246
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
+                    target="_blank">
+                    Upgrade to SMF 2.0.15
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-task.svg"
+                      alt="Task"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>May 15, 2017</td>
+                <td>Dec 02, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-blocker.svg"
+                    alt="Blocker"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Done</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
+                    target="_blank">
+                    UGXSMF-181
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
+                    target="_blank">
+                    Upgrade SimplePortal to 2.3.7
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-change.svg"
+                      alt="Change"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Oct 24, 2016</td>
+                <td>Dec 01, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-critical.svg"
+                    alt="Critical"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Done</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
+                    target="_blank">
+                    UGXSMF-166
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
+                    target="_blank">
+                    add voting to UGX Feedback
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-new-feature.svg"
+                      alt="New Feature"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Oct 19, 2016</td>
+                <td>Nov 18, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-minor.svg"
+                    alt="Minor"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Done</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
+                    target="_blank">
+                    UGXSMF-147
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
+                    target="_blank">
+                    Redirect to Thank You page after donation with information
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-new-feature.svg"
+                      alt="New Feature"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Sept 24, 2016</td>
+                <td>Nov 26, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Alexander Diller</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-minor.svg"
+                    alt="Minor"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Done</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
+                    target="_blank">
+                    UGXSMF-45
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
+                    target="_blank">
+                    PM: Nicer conversation view &amp; force people to use it
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
+                    target="_blank">
+                    <img
+                      src="/attachments/icons/jira/type-task.svg"
+                      alt="Task"
+                      class="icon" />
+                  </a>
+                </td>
+                <td>Jun 13, 2016</td>
+                <td>Dec 02, 2017</td>
+                <td>Alexander Diller</td>
+                <td>Andy King</td>
+                <td>
+                  <img
+                    src="/attachments/icons/jira/priority-major.svg"
+                    alt="Major"
+                    class="icon" />
+                </td>
+                <td>
+                  <span
+                    class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                    Done
+                  </span>
+                </td>
+                <td>Done</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
           <a
+            title="View all matching issues in Jira."
             href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.5.3-donor-beta"
             target="_blank">
             9 issues
           </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>
-        <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
-          RELEASED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <th>Version</th>
-      <td>v0.5.3-donor-beta</td>
-    </tr>
-    <tr>
-      <th>Version Mode</th>
-      <td>Donor Beta</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="UGXSMFv0.5.3donorbeta-Summary">Summary</h2>
-<p>
-  This release contains forum software updates which were also applied to the
-  production site.
-  <br />
-  From now on both sites will use SSL/TLS encryption and http has been
-  deprecated.
-</p>
-<p>
-  The Personal Message view has been updated and minor improvements have been
-  made.
-</p>
-<h2 id="UGXSMFv0.5.3donorbeta-Importanthighlightsfromthisrelease">
-  Important highlights from this release
-</h2>
-<ul>
-  <li>
-    Update SMF Forum to 2.0.15
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="changelog-known-issues">
+    <h2 id="UGXSMFv0.5.3donorbeta-Knownissues">
+      <br />
+      Known issues
+    </h2>
     <ul>
       <li>
-        Full support for https now via image proxy
+        Supported Browsers / Devices
         <br />
         <ul>
+          <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
+          <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
+          <li>There was no extensive testing on mobile devices yet</li>
           <li>
-            This is currently only working for img tags and we will integrate
-            this into other parts of our software soon
+            <strong>
+              We need your feedback if something isn't working on your device
+            </strong>
           </li>
         </ul>
       </li>
-      <li>Include improvements &amp; bug fixes</li>
+      <li>
+        There are (apparently) still some annoying issues with CKEditor. We
+        spent a lot of time to improve it, so keep reporting issues!
+      </li>
+      <li>
+        The green lock (https info) might be not fully green and might show
+        &quot;Insecure content&quot; - This is due some resources are still
+        fetched over http instead of https
+        <ul>
+          <li>We will resolve this over time.</li>
+        </ul>
+      </li>
     </ul>
-  </li>
-  <li>Fix bugs with usercard</li>
-  <li>
-    Fix display issues (odd shadow / flicker bug with webkit browsers) and
-    improve some general sites (like personal message pages)
-  </li>
-  <li>You can now vote for Feedback tickets 👍</li>
-  <li>
+  </div>
+  <div class="changelog-special-thanks">
+    <h2 id="special-thanks">Special Thanks</h2>
     <p>
-      Personal Messages uses conversation view now and reduced unrelated
-      settings for it
+      For your support and issue reports ❤️
+      <br />
+      Report issues / features via
+      <a href="/Applications-and-Services/UGX-Mods-Discord-Server">Discord</a>
+      or other report options.
     </p>
-  </li>
-  <li>Fix redirect issue after login</li>
-  <li>
-    Updated SimplePortal to 2.3.7 to ensure compatibility with latest forum
-    software
-    <ul>
-      <li>Includes security &amp; bug fixes.</li>
-    </ul>
-  </li>
-  <li>Updated some external development dependencies</li>
-</ul>
-<h2 id="UGXSMFv0.5.3donorbeta-FullChangelog">Full Changelog</h2>
-<div class="expandable-container">
-  <button class="expandable-button" type="button">
-    Click here to expand...
-  </button>
-  <div class="expandable-content">
-    <h2 id="UGXSMFv0.5.3donorbeta-Change">Change</h2>
-    <ul>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
-          target="_blank">
-          UGXSMF-181
-        </a>
-        ] - Upgrade SimplePortal to 2.3.7
-      </li>
-    </ul>
-    <h2 id="UGXSMFv0.5.3donorbeta-Bug">Bug</h2>
-    <ul>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
-          target="_blank">
-          UGXSMF-278
-        </a>
-        ] - Fix login redirects wrong (to a resouce, like an image)
-      </li>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
-          target="_blank">
-          UGXSMF-279
-        </a>
-        ] - Loading throbber of notification does odd shadow effect
-      </li>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
-          target="_blank">
-          UGXSMF-280
-        </a>
-        ] - Fix display issues with usercard in mobile view
-      </li>
-    </ul>
-    <h2 id="UGXSMFv0.5.3donorbeta-NewFeature">New Feature</h2>
-    <ul>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
-          target="_blank">
-          UGXSMF-147
-        </a>
-        ] - Redirect to Thank You page after donation with information
-      </li>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
-          target="_blank">
-          UGXSMF-166
-        </a>
-        ] - add voting to UGX Feedback
-      </li>
-    </ul>
-    <h2 id="UGXSMFv0.5.3donorbeta-Task">Task</h2>
-    <ul>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
-          target="_blank">
-          UGXSMF-45
-        </a>
-        ] - PM: Nicer conversation view &amp; force people to use it
-      </li>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
-          target="_blank">
-          UGXSMF-246
-        </a>
-        ] - Upgrade to SMF 2.0.15
-      </li>
-    </ul>
-    <h2 id="UGXSMFv0.5.3donorbeta-Improvement">Improvement</h2>
-    <ul>
-      <li>
-        [
-        <a
-          href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
-          target="_blank">
-          UGXSMF-276
-        </a>
-        ] - Update (dev) package dependencies
-      </li>
-    </ul>
+  </div>
+  <div class="changelog-whats-next">
+    <h2 id="UGXSMFv0.5.3donorbeta-Whatsnext?">Whats next?</h2>
+    <p>
+      We await (your) community feedback now ❤️ While working on additional
+      improvements and features, the feedback from the community will be put
+      together into more frequent updates.
+    </p>
+    <p>
+      The next update (v0.6.0-donor-beta) will fix some quirks with CKEditor
+      (previously planned for this release, but the forum software update was
+      more important)
+      <br />
+      There will be also finally HTML emails, instead of plain emails. You'll
+      see shortly the improvement 🙂
+    </p>
+    <p>
+      It has been a busy year and there will be soon progress on other
+      <a href="/Applications-and-Services">Applications &amp; Services</a>
+      again - stay tuned!
+    </p>
+    <p><br /></p>
   </div>
 </div>
-<h2 id="UGXSMFv0.5.3donorbeta-Allticketsforthisrelease">
-  All tickets for this release
-</h2>
-<div class="expandable-container">
-  <button class="expandable-button" type="button">
-    Click here to expand...
-  </button>
-  <div class="expandable-content">
-    <div style="width: 100%; overflow: auto">
-      <table>
-        <tbody>
-          <tr>
-            <th>Key</th>
-            <th>Summary</th>
-            <th>T</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Assignee</th>
-            <th>Reporter</th>
-            <th>P</th>
-            <th>Status</th>
-            <th>Resolution</th>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
-                target="_blank">
-                UGXSMF-280
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
-                target="_blank">
-                Fix display issues with usercard in mobile view
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-280"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-bug.svg"
-                  alt="Bug"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Dec 01, 2017</td>
-            <td>Dec 01, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-major.svg"
-                alt="Major"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Fixed</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
-                target="_blank">
-                UGXSMF-279
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
-                target="_blank">
-                Loading throbber of notification does odd shadow effect
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-279"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-bug.svg"
-                  alt="Bug"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Nov 25, 2017</td>
-            <td>Nov 26, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-major.svg"
-                alt="Major"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Fixed</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
-                target="_blank">
-                UGXSMF-278
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
-                target="_blank">
-                Fix login redirects wrong (to a resouce, like an image)
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-278"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-bug.svg"
-                  alt="Bug"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Nov 25, 2017</td>
-            <td>Nov 26, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-major.svg"
-                alt="Major"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Fixed</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
-                target="_blank">
-                UGXSMF-276
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
-                target="_blank">
-                Update (dev) package dependencies
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-276"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-improvement.svg"
-                  alt="Improvement"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Nov 08, 2017</td>
-            <td>Nov 26, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Done</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
-                target="_blank">
-                UGXSMF-246
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
-                target="_blank">
-                Upgrade to SMF 2.0.15
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-246"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-task.svg"
-                  alt="Task"
-                  class="icon" />
-              </a>
-            </td>
-            <td>May 15, 2017</td>
-            <td>Dec 02, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-blocker.svg"
-                alt="Blocker"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Done</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
-                target="_blank">
-                UGXSMF-181
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
-                target="_blank">
-                Upgrade SimplePortal to 2.3.7
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-181"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-change.svg"
-                  alt="Change"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Oct 24, 2016</td>
-            <td>Dec 01, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-critical.svg"
-                alt="Critical"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Done</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
-                target="_blank">
-                UGXSMF-166
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
-                target="_blank">
-                add voting to UGX Feedback
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-166"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-new-feature.svg"
-                  alt="New Feature"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Oct 19, 2016</td>
-            <td>Nov 18, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Done</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
-                target="_blank">
-                UGXSMF-147
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
-                target="_blank">
-                Redirect to Thank You page after donation with information
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-147"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-new-feature.svg"
-                  alt="New Feature"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Sept 24, 2016</td>
-            <td>Nov 26, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Alexander Diller</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Done</td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
-                target="_blank">
-                UGXSMF-45
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
-                target="_blank">
-                PM: Nicer conversation view &amp; force people to use it
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-45"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-task.svg"
-                  alt="Task"
-                  class="icon" />
-              </a>
-            </td>
-            <td>Jun 13, 2016</td>
-            <td>Dec 02, 2017</td>
-            <td>Alexander Diller</td>
-            <td>Andy King</td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-major.svg"
-                alt="Major"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-            <td>Done</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <a
-        title="View all matching issues in Jira."
-        href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.5.3-donor-beta"
-        target="_blank">
-        9 issues
-      </a>
-    </div>
-  </div>
-</div>
-<h2 id="UGXSMFv0.5.3donorbeta-Knownissues">
-  <br />
-  Known issues
-</h2>
-<ul>
-  <li>
-    Supported Browsers / Devices
-    <br />
-    <ul>
-      <li>Currently only Firefox &amp; Chrome has been heavily test.</li>
-      <li>Internet Explorer 11 &amp; Edge has been partially tested.</li>
-      <li>There was no extensive testing on mobile devices yet</li>
-      <li>
-        <strong>
-          We need your feedback if something isn't working on your device
-        </strong>
-      </li>
-    </ul>
-  </li>
-  <li>
-    There are (apparently) still some annoying issues with CKEditor. We spent a
-    lot of time to improve it, so keep reporting issues!
-  </li>
-  <li>
-    The green lock (https info) might be not fully green and might show
-    &quot;Insecure content&quot; - This is due some resources are still fetched
-    over http instead of https
-    <ul>
-      <li>We will resolve this over time.</li>
-    </ul>
-  </li>
-</ul>
-<h2 id="UGXSMFv0.5.3donorbeta-Whatsnext?">Whats next?</h2>
-<p>
-  We await (your) community feedback now ❤️ While working on additional
-  improvements and features, the feedback from the community will be put
-  together into more frequent updates.
-</p>
-<p>
-  The next update (v0.6.0-donor-beta) will fix some quirks with CKEditor
-  (previously planned for this release, but the forum software update was more
-  important)
-  <br />
-  There will be also finally HTML emails, instead of plain emails. You'll see
-  shortly the improvement 🙂
-</p>
-<p>
-  It has been a busy year and there will be soon progress on other
-  <a href="/Applications-and-Services">Applications &amp; Services</a>
-  again - stay tuned!
-</p>
-<p><br /></p>
