@@ -400,6 +400,45 @@ function sectionOfHeading(node) {
  */
 
 /**
+ * Hand-written content between the sections (e.g. an own h2 section) is kept
+ * and stays after the section it follows.
+ *
+ * @param {HTMLParser.HTMLElement} wrapper div.widget-jira-changelog
+ * @returns {{info: HTMLParser.HTMLElement|null, sections: Record<string, string>}}
+ */
+function readWrapper(wrapper) {
+  /** @type {Record<string, string>} */
+  const sections = {};
+  /** @type {HTMLParser.HTMLElement|null} */
+  let info = null;
+  let current = '';
+  /** @type {string[]} */
+  let pending = [];
+  for (const node of wrapper.childNodes) {
+    const el = isElement(node)
+      ? /** @type {HTMLParser.HTMLElement} */ (node)
+      : null;
+    const section = SECTIONS.find((s) =>
+      el?.classList.contains(`changelog-${s.key}`),
+    );
+    if (el && !info && el.classList.contains('widget-jira-info')) {
+      info = el;
+    } else if (el && section) {
+      current = section.key;
+      sections[current] = [...pending, el.innerHTML.trim()].join('\n');
+      pending = [];
+    } else if (node.toString().trim()) {
+      if (current) sections[current] += `\n${node.toString()}`;
+      else pending.push(node.toString());
+    }
+  }
+  if (pending.length) {
+    sections.summary = [...pending, sections.summary ?? ''].join('\n');
+  }
+  return { info, sections };
+}
+
+/**
  * Reads a changelog page in the wrapper format or in the old format (info table
  * followed by h2 sections).
  *
@@ -420,18 +459,11 @@ function readChangelog(html) {
 
   if (wrapper) {
     const index = rest.indexOf(wrapper);
-    /** @type {Record<string, string>} */
-    const sections = {};
-    for (const s of SECTIONS) {
-      const div = wrapper.querySelector(`div.changelog-${s.key}`);
-      if (div) sections[s.key] = div.innerHTML.trim();
-    }
     return {
       header,
       before: rest.slice(0, index).join(''),
       after: rest.slice(index + 1).join(''),
-      info: wrapper.querySelector('table.widget-jira-info'),
-      sections,
+      ...readWrapper(wrapper),
       data: {
         project: wrapper.getAttribute('data-project') ?? '',
         version: wrapper.getAttribute('data-version') ?? '',

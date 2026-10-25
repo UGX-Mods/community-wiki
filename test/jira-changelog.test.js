@@ -309,3 +309,15 @@ test('adopt takes the version from the issues query and freezes unreadable dates
   assert.equal(isDue({ released: 'unknown' }, NOW), false);
   assert.equal(parseReleaseDate('02 Sep2018'), '2018-09-02');
 });
+
+test('own sections between the sections survive a refresh', () => {
+  const page = newPage().replace(
+    '<div class="changelog-whats-next">',
+    '<h2 id="did-you-know">Did you know...?</h2>\n<p>Own section</p>\n<div class="changelog-whats-next">',
+  );
+  const refreshed = refreshChangelogPage(page, fetched, JIRA, NOW) ?? '';
+  const own = refreshed.indexOf('Own section');
+  assert.ok(own > 0);
+  assert.ok(own > refreshed.indexOf('class="changelog-special-thanks"'));
+  assert.ok(own < refreshed.indexOf('class="changelog-whats-next"'));
+});
