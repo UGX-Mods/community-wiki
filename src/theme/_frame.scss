@@ -1,0 +1,280 @@
+@use 'settings' as *;
+
+/************************************
+ * Page frame: top bar, navigation, breadcrumbs, page header, side column, footer
+ ************************************/
+
+#app {
+  &,
+  .v-application--wrap {
+    background: var(--ugx-bg);
+  }
+
+  // top bar: dark in both modes, so the logo (white) keeps working
+  header.nav-header {
+    border-bottom: 1px solid $color-header-border;
+
+    &,
+    .nav-header-inner {
+      background-color: $color-header !important;
+    }
+
+    .v-input__slot {
+      background: rgb(255 255 255 / 8%) !important;
+      border: 1px solid rgb(255 255 255 / 20%);
+    }
+
+    .v-input--is-focused .v-input__slot {
+      border-color: #8cc4ff;
+    }
+  }
+
+  // navigation: the same quiet surface as the side cards (wiki.js colors it
+  // with grey / primary helper classes and white text)
+  nav.v-navigation-drawer {
+    background-color: var(--ugx-bg-raised) !important;
+    border-right: 1px solid var(--ugx-border);
+
+    .v-navigation-drawer__border {
+      display: none;
+    }
+
+    .pa-3.d-flex,
+    .v-list {
+      background-color: transparent !important;
+    }
+
+    hr.v-divider {
+      border-color: var(--ugx-border) !important;
+    }
+
+    .pa-3 .v-btn {
+      color: var(--ugx-text) !important;
+      background-color: var(--ugx-bg) !important;
+      border: 1px solid var(--ugx-border) !important;
+
+      &:hover {
+        border-color: var(--ugx-link) !important;
+      }
+
+      .v-icon {
+        color: inherit !important;
+      }
+    }
+
+    .v-list-item {
+      min-height: 40px;
+      margin: 0 8px;
+      color: var(--ugx-text) !important;
+      border-radius: $border-radius-small;
+
+      .v-icon {
+        color: var(--ugx-text-muted) !important;
+      }
+
+      &:hover .v-icon,
+      &--active,
+      &--active .v-icon {
+        color: var(--ugx-link) !important;
+      }
+    }
+
+    .v-list-item__title {
+      font-size: 0.875rem !important;
+      font-weight: 500 !important;
+      line-height: 1.35;
+      white-space: normal;
+    }
+
+    .v-subheader {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ugx-text-muted) !important;
+      text-transform: uppercase;
+    }
+  }
+
+  .v-main__wrap > header.v-toolbar {
+    background-color: var(--ugx-bg) !important;
+  }
+
+  // title and description of the page
+  // (wiki.js sets an inline height of 90px, too small for longer titles)
+  .page-header-section {
+    height: auto !important;
+    min-height: 90px;
+    padding: 1.25rem 0 0;
+    background: var(--ugx-bg-raised);
+
+    // room for the edit buttons, which are positioned in this column
+    > .is-page-header {
+      padding-bottom: 3.25rem;
+    }
+
+    .headline {
+      font-size: 2rem !important;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ugx-heading) !important;
+
+      @media (width <= 600px) {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    // edit buttons inside the band instead of over the first paragraph
+    .page-edit-shortcuts {
+      bottom: 0.625rem;
+    }
+
+    .caption {
+      margin-top: 0.375rem;
+      font-size: 1rem !important;
+      line-height: 1.5;
+      color: var(--ugx-text-muted) !important;
+    }
+
+    .page-edit-shortcuts .v-btn {
+      color: var(--ugx-text-muted);
+      background-color: var(--ugx-bg) !important;
+      border: 1px solid var(--ugx-border) !important;
+
+      &:hover {
+        color: var(--ugx-link);
+      }
+    }
+  }
+
+  // cards next to the content: page contents, tags, last edited by, share
+  .page-col-sd {
+    .v-card {
+      color: var(--ugx-text);
+      background-color: var(--ugx-bg-raised) !important;
+      border: 1px solid var(--ugx-border);
+      border-radius: $border-radius !important;
+      box-shadow: none !important;
+    }
+
+    .overline {
+      font-size: 0.75rem !important;
+      font-weight: 700;
+      color: var(--ugx-text-muted) !important;
+    }
+
+    .v-toolbar,
+    .v-list {
+      background-color: transparent !important;
+    }
+
+    .v-icon {
+      color: var(--ugx-text-muted) !important;
+    }
+  }
+
+  .page-toc-card {
+    .v-list-item {
+      min-height: 34px;
+      border-radius: $border-radius-small;
+
+      &:hover {
+        background: var(--ugx-hover);
+      }
+    }
+
+    .v-list-item__title {
+      font-size: 0.875rem !important;
+      font-weight: 500 !important;
+      line-height: 1.35;
+      color: var(--ugx-text);
+      white-space: normal;
+    }
+  }
+
+  // tags: outlined chips, product tags in their own color (matched by the
+  // tag link /t/<tag>, unknown tags stay neutral). confluence:<id> tags are
+  // only for the tooling and hidden here.
+  .page-tags-card .v-chip {
+    --ugx-tag: var(--ugx-text);
+
+    height: 30px;
+    padding: 0 12px;
+    background-color: transparent !important;
+    border: 1px solid var(--ugx-border-strong) !important;
+    border-radius: 999px !important;
+
+    @each $tag in $colored-tags {
+      &[href$='/t/#{$tag}'] {
+        --ugx-tag: var(--ugx-tag-#{$tag});
+
+        background-color: color-mix(
+          in srgb,
+          var(--ugx-tag) 12%,
+          transparent
+        ) !important;
+        border-color: var(--ugx-tag) !important;
+
+        span[class*='--text'] {
+          font-weight: 700;
+        }
+
+        .v-icon {
+          color: var(--ugx-tag) !important;
+        }
+      }
+    }
+
+    &[href$='/t/legacy'] {
+      border-style: dashed !important;
+    }
+
+    &[href*='/t/confluence:'] {
+      display: none;
+    }
+
+    span[class*='--text'] {
+      font-weight: 500;
+      color: var(--ugx-tag) !important;
+    }
+
+    .v-icon {
+      font-size: 16px !important;
+    }
+
+    &:hover {
+      border-color: var(--ugx-link) !important;
+
+      span[class*='--text'],
+      .v-icon {
+        color: var(--ugx-link) !important;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ugx-focus);
+      outline-offset: 2px;
+    }
+  }
+
+  .page-author-card {
+    &-name {
+      color: var(--ugx-text) !important;
+    }
+
+    &-date {
+      color: var(--ugx-text-muted) !important;
+    }
+  }
+
+  footer.v-footer {
+    background-color: var(--ugx-bg-raised) !important;
+    border-top: 1px solid var(--ugx-border);
+
+    .caption {
+      color: var(--ugx-text-muted) !important;
+    }
+
+    a {
+      color: var(--ugx-link);
+    }
+  }
+}

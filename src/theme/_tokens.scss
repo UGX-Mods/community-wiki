@@ -1,0 +1,108 @@
+@use 'settings' as *;
+
+.v-application {
+  --ugx-bg: #fff;
+  --ugx-bg-raised: #f6f8fa;
+  --ugx-text: #1f2328;
+  --ugx-text-muted: #59636e;
+  --ugx-heading: #0f1419;
+  --ugx-heading-sub: #0a4a8c;
+  --ugx-link: #0b5cad;
+  --ugx-link-hover: #083f78;
+  --ugx-accent: #0b5cad;
+  --ugx-focus: #0b5cad;
+  --ugx-hover: rgb(11 92 173 / 8%);
+  --ugx-surface: #f6f8fa;
+  --ugx-border: #d1d9e0;
+  --ugx-border-strong: #818b98;
+  --ugx-table-head: #eef2f6;
+  --ugx-table-stripe: #f8fafc;
+  --ugx-code-inline-bg: #eff2f5;
+  --ugx-dialog-bg: #fff;
+  --ugx-shadow: rgb(0 0 0 / 20%);
+  --ugx-info: #0b5cad;
+  --ugx-info-bg: #eaf3fd;
+  --ugx-tip: #1a7f37;
+  --ugx-tip-bg: #e9f6ec;
+  --ugx-note: #9a6700;
+  --ugx-note-bg: #fff8e5;
+  --ugx-warning: #c62828;
+  --ugx-warning-bg: #fdecec;
+  --ugx-badge-success: #1b5e20;
+  --ugx-badge-default: #424242;
+  --ugx-badge-current: #0d47a1;
+
+  // product tags (src/tools/lib/tags.js), 4.5:1 on their tinted chip
+  --ugx-tag-waw: #3f6212;
+  --ugx-tag-bo3: #c2410c;
+  --ugx-tag-ugxl: #0b5cad;
+  --ugx-tag-ugxlin: #0b6177;
+  --ugx-tag-forum: #7c3aed;
+  --ugx-tag-ugxmp: #be185d;
+  --ugx-tag-services: #475569;
+  --ugx-tag-ai-generated: #9a6700;
+
+  // inline text colors of imported pages, readable on light backgrounds
+  --ugx-color-green: #1e7b4f;
+  --ugx-color-red: #c62828;
+  --ugx-color-navy: #036;
+  --ugx-color-dark-green: #008000;
+  --ugx-color-yellow: #8a6d00;
+  --ugx-color-maroon: #800000;
+
+  // the banner icons are white, darken them on light backgrounds
+  --ugx-icon-filter: brightness(0) opacity(0.75);
+}
+
+.v-application.theme--dark {
+  --ugx-bg: #{$color-bg-dark};
+  --ugx-bg-raised: #1d2026;
+  --ugx-text: #e6e8eb;
+  --ugx-text-muted: #a7afba;
+  --ugx-heading: #fff;
+  --ugx-heading-sub: #8cc4ff;
+  --ugx-link: #6db3ff;
+  --ugx-link-hover: #a6d1ff;
+  --ugx-accent: #4c9bf0;
+  --ugx-focus: #8cc4ff;
+  --ugx-hover: rgb(109 179 255 / 10%);
+  --ugx-surface: #1d2026;
+  --ugx-border: #343a43;
+  --ugx-border-strong: #6e7781;
+  --ugx-table-head: #22262d;
+  --ugx-table-stripe: #1a1d22;
+  --ugx-code-inline-bg: #252a31;
+  --ugx-dialog-bg: #1d2026;
+  --ugx-shadow: #000;
+  --ugx-info: #4c9bf0;
+  --ugx-info-bg: #14253a;
+  --ugx-tip: #3fb950;
+  --ugx-tip-bg: #11281a;
+  --ugx-note: #d29922;
+  --ugx-note-bg: #2e2410;
+  --ugx-warning: #f85149;
+  --ugx-warning-bg: #3a1618;
+  --ugx-badge-success: #81c995;
+  --ugx-badge-default: #e0e0e0;
+  --ugx-badge-current: #90caf9;
+  --ugx-tag-waw: #9bd255;
+  --ugx-tag-bo3: #ff9a5c;
+  --ugx-tag-ugxl: #6db3ff;
+  --ugx-tag-ugxlin: #5cc8e0;
+  --ugx-tag-forum: #b69cff;
+  --ugx-tag-ugxmp: #f584b8;
+  --ugx-tag-services: #a7b4c6;
+  --ugx-tag-ai-generated: #d29922;
+  --ugx-color-green: #81c995;
+  --ugx-color-red: #ff9e94;
+  --ugx-color-navy: #90caf9;
+  --ugx-color-dark-green: #81c995;
+  --ugx-color-yellow: #fc0;
+  --ugx-color-maroon: #ef9a9a;
+  --ugx-icon-filter: none;
+}
+
+html:has(.v-application.theme--dark),
+html:has(.v-application.theme--dark) body {
+  background: $color-bg-dark;
+}

@@ -37,7 +37,7 @@ Consequences:
 | `UGXL/`, `UGXLIN/`                              | UGX Launcher and UGX Launcher Installer docs (incl. changelogs, legacy docs)        |
 | `Careers.html`, `UGX-Help-Center.html`          | Standalone pages                                                                    |
 | `attachments/`                                  | Images, videos, downloads (Git LFS), grouped by area                                |
-| `src/theme/`                                    | Theme overrides for Wiki.js: `wiki.scss` (widgets, banners, code panels), `wiki.js` |
+| `src/theme/`                                    | Theme for Wiki.js: `wiki.scss` and its partials (`_tokens`, `widgets/*`), `wiki.js` |
 | `src/main.js`, `src/tools/`                     | Tooling CLI and its steps: validation, hierarchy, theme, content helpers, Jira      |
 | `test/`                                         | `node:test` unit tests for `src/tools/` (fixtures are created in a temp folder)     |
 | `dist/`                                         | Build output of the theme (gitignored)                                              |
@@ -184,7 +184,7 @@ When the main content of a page is written by AI (a new page or a rewrite), mark
 </div>
 ```
 
-### Custom widgets (styled by `src/theme/wiki.scss`)
+### Custom widgets (styled by `src/theme/widgets/`)
 
 Banner / callout (`banner-info`, `banner-tip`, `banner-note`, `banner-warning`, icons in `/attachments/icons/`):
 
@@ -247,7 +247,7 @@ Image gallery: a grid of thumbnails, a click opens the image large (dialog with 
 </div>
 ```
 
-All widget colors are CSS custom properties with a light and a dark variant (`--ugx-*` in `wiki.scss`). Use them for new styles and keep text at 4.5:1 contrast in both modes.
+All widget colors are CSS custom properties with a light and a dark variant (`--ugx-*` in `src/theme/_tokens.scss`). Use them for new styles and keep text at 4.5:1 contrast in both modes.
 
 Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. After adding/removing child pages run `node src/main.js refresh-hierarchy` instead of editing it by hand.
 

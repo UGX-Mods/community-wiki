@@ -56,7 +56,7 @@ VSCode in combination with prettier is used (see the recommended extensions in `
 
 ### Stylesheet
 
-The `src/theme/wiki.scss` is used to compile css which is used to override and extend WikiJS theme.
+The `src/theme/wiki.scss` (with its partials in `src/theme/`) is used to compile css which is used to override and extend WikiJS theme.
 
 To build it, simply run `npm run build:css` and the `dist/wiki.min.css` is generated (used as `Administration > Theme > Code Injection > CSS Override`).
 

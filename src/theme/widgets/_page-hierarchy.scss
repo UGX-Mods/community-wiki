@@ -1,0 +1,67 @@
+@use '../settings' as *;
+
+#app .v-main .contents {
+  // child pages: a tree with guide lines, a flat list becomes a grid of cards
+  ul.widget-page-hierarchy {
+    padding: 0.75rem 1rem;
+    margin-top: $space-block;
+    list-style: none;
+    border: 1px solid var(--ugx-border);
+    border-radius: $border-radius;
+
+    li::before {
+      display: none;
+    }
+
+    li + li {
+      margin-top: 0;
+    }
+
+    ul {
+      padding: 0 0 0 1rem;
+      margin: 0 0 0.25rem 0.5rem;
+      list-style: none;
+      border-left: 1px solid var(--ugx-border);
+    }
+
+    a {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      margin-left: -0.5rem;
+      text-decoration: none;
+      border-radius: $border-radius-small;
+
+      &:hover {
+        text-decoration: underline;
+        background: var(--ugx-hover);
+      }
+    }
+
+    > li > a {
+      font-weight: 700;
+    }
+
+    &:not(:has(ul)) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+      padding: 0;
+      border: 0;
+
+      > li > a {
+        display: block;
+        height: 100%;
+        padding: 0.75rem 1rem;
+        margin: 0;
+        background: var(--ugx-bg-raised);
+        border: 1px solid var(--ugx-border);
+        border-radius: $border-radius;
+
+        &:hover {
+          background: var(--ugx-hover);
+          border-color: var(--ugx-link);
+        }
+      }
+    }
+  }
+}

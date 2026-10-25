@@ -1,0 +1,61 @@
+@use '../settings' as *;
+
+#app .v-main .contents {
+  .banner {
+    --ugx-accent-banner: var(--ugx-info);
+
+    position: relative;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    margin: $space-block 0 0;
+    color: var(--ugx-text);
+    background: var(--ugx-surface);
+    border: 1px solid var(--ugx-border);
+    border-left: 4px solid var(--ugx-accent-banner);
+    border-radius: $border-radius;
+
+    a {
+      color: var(--ugx-link);
+    }
+
+    &-info {
+      --ugx-accent-banner: var(--ugx-info);
+
+      background: var(--ugx-info-bg);
+    }
+
+    &-tip {
+      --ugx-accent-banner: var(--ugx-tip);
+
+      background: var(--ugx-tip-bg);
+    }
+
+    &-note {
+      --ugx-accent-banner: var(--ugx-note);
+
+      background: var(--ugx-note-bg);
+    }
+
+    &-warning {
+      --ugx-accent-banner: var(--ugx-warning);
+
+      background: var(--ugx-warning-bg);
+    }
+
+    &-title {
+      padding: 0;
+      margin: 0 0 0.25rem;
+      font-weight: 700;
+      color: var(--ugx-heading);
+    }
+
+    &-icon {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.875rem;
+      width: 22px;
+      height: 22px;
+      border-radius: 0;
+      filter: var(--ugx-icon-filter);
+    }
+  }
+}
