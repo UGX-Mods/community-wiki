@@ -28,6 +28,7 @@ import { setAltTexts } from './tools/content/alt-texts.js';
 import { tagPages } from './tools/content/tag-pages.js';
 import { setDescriptions } from './tools/content/descriptions.js';
 import { cleanupConfluenceMarkup } from './tools/content/confluence-markup.js';
+import { jiraChangelog } from './tools/jira/changelog.js';
 
 const STEPS = {
   none: 'NONE',
@@ -49,6 +50,7 @@ const STEPS = {
   tagPages: 'tag-pages',
   descriptions: 'descriptions',
   confluenceMarkup: 'confluence-markup',
+  jiraChangelog: 'jira-changelog',
 };
 
 const STEP_CHOICES = [
@@ -139,6 +141,12 @@ const STEP_CHOICES = [
     name: 'Confluence markup',
     description:
       'Remove leftover Confluence wrappers, classes, macro attributes and no-op inline styles',
+  },
+  {
+    value: STEPS.jiraChangelog,
+    name: 'Jira changelog',
+    description:
+      'Create the changelog page of a release from Jira (JIRA_PROJECT, JIRA_VERSION, JIRA_EMAIL, JIRA_API_TOKEN, DRY_RUN=1)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -266,6 +274,9 @@ async function main() {
       break;
     case STEPS.confluenceMarkup:
       errors += await cleanupConfluenceMarkup(htmlFiles);
+      break;
+    case STEPS.jiraChangelog:
+      errors += await jiraChangelog();
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);
