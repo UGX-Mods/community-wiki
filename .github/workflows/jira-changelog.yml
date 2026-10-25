@@ -1,0 +1,85 @@
+name: Jira changelog
+
+# creates the changelog page of a release from Jira (node src/main.js jira-changelog)
+# and pushes it to a branch; the pull request is opened by hand from the run summary
+# (workflows are not allowed to create pull requests in this repository)
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Jira project
+        type: choice
+        options: [UGXSMF, UGXL, UGXLIN, UGXMAPP]
+      version:
+        description: Jira fix version, e.g. v0.8.86-beta
+        type: string
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: jira-changelog
+  cancel-in-progress: false
+
+jobs:
+  changelog:
+    name: Create changelog page
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    # JIRA_EMAIL and JIRA_API_TOKEN (read-only account) are environment secrets
+    environment: jira
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          lfs: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: package.json
+          # no dependency cache in a job with secrets (cache poisoning)
+          package-manager-cache: false
+
+      - run: npm ci
+
+      - name: Verify registry signatures
+        run: npm audit signatures
+
+      # inputs only reach the shell as environment variables (no script injection),
+      # the step validates the version before it is used in JQL or file names
+      - name: Generate the page
+        env:
+          JIRA_PROJECT: ${{ inputs.project }}
+          JIRA_VERSION: ${{ inputs.version }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: node src/main.js jira-changelog
+
+      - name: Push a branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JIRA_PROJECT: ${{ inputs.project }}
+          JIRA_VERSION: ${{ inputs.version }}
+        run: |
+          slug=$(printf '%s' "$JIRA_VERSION" | tr -c 'A-Za-z0-9.-' '-')
+          branch="docs/changelog-$(printf '%s' "$JIRA_PROJECT" | tr 'A-Z' 'a-z')-$slug"
+          title="docs(content): changelog of $JIRA_PROJECT $JIRA_VERSION"
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$branch"
+          git add --all
+          git commit -m "$title"
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+            push origin "$branch"
+
+          title_url=$(printf '%s' "$title" | jq -sRr @uri)
+          {
+            echo "### Changelog of $JIRA_PROJECT $JIRA_VERSION"
+            echo
+            echo "Branch \`$branch\` is ready. Add a summary of the release to the page, then"
+            echo "[create the pull request]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1&title=$title_url)."
+          } >> "$GITHUB_STEP_SUMMARY"
