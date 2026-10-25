@@ -325,15 +325,23 @@ async function jiraGet(client, apiPath) {
 /**
  * @param {JiraClient} client
  * @param {string} project
+ * @returns {Promise<JiraVersion[]>} all versions of the project, oldest first
+ */
+function getVersions(client, project) {
+  return jiraGet(
+    client,
+    `/rest/api/3/project/${encodeURIComponent(project)}/versions`,
+  );
+}
+
+/**
+ * @param {JiraClient} client
+ * @param {string} project
  * @param {string} versionName
  * @returns {Promise<JiraVersion|undefined>}
  */
 async function getVersion(client, project, versionName) {
-  /** @type {JiraVersion[]} */
-  const versions = await jiraGet(
-    client,
-    `/rest/api/3/project/${encodeURIComponent(project)}/versions`,
-  );
+  const versions = await getVersions(client, project);
   return versions.find((v) => v.name === versionName);
 }
 
@@ -396,16 +404,34 @@ async function jiraChangelog(root = process.cwd()) {
     return 1;
   }
 
-  const version = await getVersion(client, project, versionName);
-  if (!version) {
-    console.error(`🚨 Version ${versionName} not found in ${project}`);
-    return 1;
-  }
-  const issues = await getIssues(client, project, versionName);
   const pagePath = path.join(
     root,
     `${changelogPagePath(project, versionName)}.html`,
   );
+  // existing pages are never overwritten, check before asking jira
+  if (!process.env.DRY_RUN && fs.existsSync(pagePath)) {
+    console.error(`🚨 ${path.relative(root, pagePath)} exists already`);
+    return 1;
+  }
+
+  const versions = await getVersions(client, project);
+  const version = versions.find((v) => v.name === versionName);
+  if (!version) {
+    const newest = versions
+      .slice(-10)
+      .reverse()
+      .map((v) => v.name);
+    console.error(
+      `🚨 Version ${versionName} not found in ${project}. Newest versions: ${newest.join(', ') || 'none'}`,
+    );
+    return 1;
+  }
+  const issues = await getIssues(client, project, versionName);
+  if (!issues.length) {
+    console.warn(
+      `⚠️ ${project} ${versionName} has no tickets (fix version not set on the issues?), the page gets an empty ticket table`,
+    );
+  }
   const page = await formatHtml(
     renderChangelogPage({
       project,
@@ -420,10 +446,6 @@ async function jiraChangelog(root = process.cwd()) {
   if (process.env.DRY_RUN) {
     console.log(page);
     return 0;
-  }
-  if (fs.existsSync(pagePath)) {
-    console.error(`🚨 ${path.relative(root, pagePath)} exists already`);
-    return 1;
   }
   await fs.promises.writeFile(pagePath, page, encoding);
   console.log(

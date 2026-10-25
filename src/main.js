@@ -184,6 +184,9 @@ function printUsage() {
 async function main() {
   const [stepArg, ...fileArgs] = process.argv.slice(2);
 
+  // local secrets (JIRA_*, WIKI_API_KEY), gitignored; variables of the shell win
+  if (fs.existsSync('.env')) process.loadEnvFile('.env');
+
   if (stepArg === '--help' || stepArg === '-h') {
     printUsage();
     return;

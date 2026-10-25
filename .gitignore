@@ -4,3 +4,7 @@ dist/
 
 # maintainer notes, never commit (every .md file becomes a wiki page)
 PERSONAL.md
+
+# local secrets for src/main.js (JIRA_*, WIKI_API_KEY), never commit: every
+# committed file is served by the wiki
+.env
