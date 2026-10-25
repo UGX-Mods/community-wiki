@@ -11,7 +11,7 @@ editor: ckeditor
   data-project="UGXSMF"
   data-version="v0.8.85-beta"
   data-released="2024-05-29"
-  data-refreshed="">
+  data-refreshed="2026-10-25">
   <table class="widget-jira-info">
     <tbody>
       <tr>
@@ -21,19 +21,17 @@ editor: ckeditor
       <tr>
         <th>Issues</th>
         <td>
-          <p>
-            <a
-              href="https://ugxmods.atlassian.net/issues/?jql=project+%3D+UGXSMF+AND+fixVersion+%3D+v0.8.85-beta"
-              target="_blank">
-              11 issues
-            </a>
-          </p>
+          <a
+            href="https://ugxmods.atlassian.net/issues/?jql=project%20%3D%20UGXSMF%20AND%20fixVersion%20%3D%20%22v0.8.85-beta%22"
+            target="_blank">
+            12 issues
+          </a>
         </td>
       </tr>
       <tr>
         <th>Status</th>
         <td>
-          <span class="aui-lozenge aui-lozenge-success aui-lozenge-subtle">
+          <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
             RELEASED
           </span>
         </td>
@@ -160,23 +158,23 @@ editor: ckeditor
   <div class="changelog-tickets">
     <h2 id="all-tickets">All tickets for this release</h2>
     <!-- Tickets -->
-    <div style="width: 100%; overflow: auto">
+    <div class="widget-jira-issues" style="width: 100%; overflow: auto">
       <table>
-        <tbody>
+        <thead>
           <tr>
-            <th style="text-align: left; text-transform: capitalize">Key</th>
-
-            <th style="text-align: left; text-transform: capitalize">
-              Summary
-            </th>
-
-            <th style="text-align: left; text-transform: capitalize">T</th>
-
-            <th style="text-align: left; text-transform: capitalize">P</th>
-
-            <th style="text-align: left; text-transform: capitalize">Status</th>
+            <th>Key</th>
+            <th>Summary</th>
+            <th>T</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Assignee</th>
+            <th>Reporter</th>
+            <th>P</th>
+            <th>Status</th>
+            <th>Resolution</th>
           </tr>
-
+        </thead>
+        <tbody>
           <tr>
             <td>
               <a
@@ -202,6 +200,10 @@ editor: ckeditor
                   class="icon" />
               </a>
             </td>
+            <td>May 27, 2024</td>
+            <td>May 29, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
             <td>
               <img
                 src="/attachments/icons/jira/priority-critical.svg"
@@ -213,6 +215,7 @@ editor: ckeditor
                 Done
               </span>
             </td>
+            <td>Done</td>
           </tr>
           <tr>
             <td>
@@ -239,6 +242,10 @@ editor: ckeditor
                   class="icon" />
               </a>
             </td>
+            <td>May 27, 2024</td>
+            <td>May 29, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
             <td>
               <img
                 src="/attachments/icons/jira/priority-major.svg"
@@ -250,6 +257,7 @@ editor: ckeditor
                 Done
               </span>
             </td>
+            <td>Done</td>
           </tr>
           <tr>
             <td>
@@ -276,6 +284,10 @@ editor: ckeditor
                   class="icon" />
               </a>
             </td>
+            <td>Apr 18, 2024</td>
+            <td>May 28, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
             <td>
               <img
                 src="/attachments/icons/jira/priority-major.svg"
@@ -287,62 +299,26 @@ editor: ckeditor
                 Done
               </span>
             </td>
+            <td>Done</td>
           </tr>
           <tr>
             <td>
               <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-562"
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-560"
                 target="_blank">
-                UGXSMF-562
+                UGXSMF-560
               </a>
             </td>
             <td>
               <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-562"
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-560"
                 target="_blank">
-                Privacy (Writing, Refactoring, Changes)
+                General Improvements Q1 2024
               </a>
             </td>
             <td>
               <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-562"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-task.svg"
-                  alt="Task"
-                  class="icon" />
-              </a>
-            </td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-critical.svg"
-                alt="Critical"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
-                target="_blank">
-                UGXSMF-511
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
-                target="_blank">
-                Moderation Improvements
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-560"
                 target="_blank">
                 <img
                   src="/attachments/icons/jira/type-improvement.svg"
@@ -350,10 +326,14 @@ editor: ckeditor
                   class="icon" />
               </a>
             </td>
+            <td>Mar 01, 2024</td>
+            <td>May 30, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
             <td>
               <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
+                src="/attachments/icons/jira/priority-major.svg"
+                alt="Major"
                 class="icon" />
             </td>
             <td>
@@ -361,43 +341,7 @@ editor: ckeditor
                 Done
               </span>
             </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
-                target="_blank">
-                UGXSMF-443
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
-                target="_blank">
-                Bulk b8 processing
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-improvement.svg"
-                  alt="Improvement"
-                  class="icon" />
-              </a>
-            </td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
+            <td>Done</td>
           </tr>
           <tr>
             <td>
@@ -424,6 +368,10 @@ editor: ckeditor
                   class="icon" />
               </a>
             </td>
+            <td>Feb 19, 2024</td>
+            <td>May 29, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
             <td>
               <img
                 src="/attachments/icons/jira/priority-major.svg"
@@ -435,117 +383,7 @@ editor: ckeditor
                 Done
               </span>
             </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
-                target="_blank">
-                UGXSMF-392
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
-                target="_blank">
-                Improve forum reply / quote to prevent false usage
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-improvement.svg"
-                  alt="Improvement"
-                  class="icon" />
-              </a>
-            </td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
-                target="_blank">
-                UGXSMF-389
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
-                target="_blank">
-                shocking / nsfw - spoiler tags to hide explicit content
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-improvement.svg"
-                  alt="Improvement"
-                  class="icon" />
-              </a>
-            </td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
-                target="_blank">
-                UGXSMF-387
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
-                target="_blank">
-                Moderation: GDPR bulk delete for emails
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
-                target="_blank">
-                <img
-                  src="/attachments/icons/jira/type-improvement.svg"
-                  alt="Improvement"
-                  class="icon" />
-              </a>
-            </td>
-            <td>
-              <img
-                src="/attachments/icons/jira/priority-minor.svg"
-                alt="Minor"
-                class="icon" />
-            </td>
-            <td>
-              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
-                Done
-              </span>
-            </td>
+            <td>Done</td>
           </tr>
           <tr>
             <td>
@@ -572,6 +410,10 @@ editor: ckeditor
                   class="icon" />
               </a>
             </td>
+            <td>Nov 05, 2018</td>
+            <td>May 29, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
             <td>
               <img
                 src="/attachments/icons/jira/priority-major.svg"
@@ -583,6 +425,259 @@ editor: ckeditor
                 Done
               </span>
             </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-554"
+                target="_blank">
+                UGXSMF-554
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-554"
+                target="_blank">
+                Better cron execution and handling
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-554"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Mar 01, 2024</td>
+            <td>May 30, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
+                target="_blank">
+                UGXSMF-511
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
+                target="_blank">
+                Moderation Improvements
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-511"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Feb 22, 2024</td>
+            <td>May 29, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
+                target="_blank">
+                UGXSMF-443
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
+                target="_blank">
+                Bulk b8 processing
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-443"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Feb 19, 2024</td>
+            <td>Mar 03, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
+                target="_blank">
+                UGXSMF-392
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
+                target="_blank">
+                Improve forum reply / quote to prevent false usage
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-392"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Mar 28, 2023</td>
+            <td>Mar 20, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
+                target="_blank">
+                UGXSMF-389
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
+                target="_blank">
+                shocking / nsfw - spoiler tags to hide explicit content
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-389"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Mar 28, 2023</td>
+            <td>May 29, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
+                target="_blank">
+                UGXSMF-387
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
+                target="_blank">
+                Moderation: GDPR bulk delete for emails
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://ugxmods.atlassian.net/browse/UGXSMF-387"
+                target="_blank">
+                <img
+                  src="/attachments/icons/jira/type-improvement.svg"
+                  alt="Improvement"
+                  class="icon" />
+              </a>
+            </td>
+            <td>Mar 28, 2023</td>
+            <td>Mar 03, 2024</td>
+            <td>Alexander Diller</td>
+            <td>Alexander Diller</td>
+            <td>
+              <img
+                src="/attachments/icons/jira/priority-minor.svg"
+                alt="Minor"
+                class="icon" />
+            </td>
+            <td>
+              <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success">
+                Done
+              </span>
+            </td>
+            <td>Done</td>
           </tr>
         </tbody>
       </table>
