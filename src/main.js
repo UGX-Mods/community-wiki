@@ -4,6 +4,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseEnv } from 'node:util';
 import { select, Separator } from '@inquirer/prompts';
 import { getPageFiles, isPage, HTML_EXTENSION } from './tools/lib/pages.js';
 import { setupPageHierarchy, refreshPageHierarchy } from './tools/hierarchy.js';
@@ -28,7 +29,7 @@ import { setAltTexts } from './tools/content/alt-texts.js';
 import { tagPages } from './tools/content/tag-pages.js';
 import { setDescriptions } from './tools/content/descriptions.js';
 import { cleanupConfluenceMarkup } from './tools/content/confluence-markup.js';
-import { jiraChangelog } from './tools/jira/changelog.js';
+import { jiraChangelog, jiraPlan, jiraRender } from './tools/jira/changelog.js';
 
 const STEPS = {
   none: 'NONE',
@@ -51,6 +52,8 @@ const STEPS = {
   descriptions: 'descriptions',
   confluenceMarkup: 'confluence-markup',
   jiraChangelog: 'jira-changelog',
+  jiraPlan: 'jira-plan',
+  jiraRender: 'jira-render',
 };
 
 const STEP_CHOICES = [
@@ -146,7 +149,18 @@ const STEP_CHOICES = [
     value: STEPS.jiraChangelog,
     name: 'Jira changelog',
     description:
-      'Create the changelog page of a release from Jira (JIRA_PROJECT, JIRA_VERSION, JIRA_EMAIL, JIRA_API_TOKEN, DRY_RUN=1)',
+      'Create the page of a new release (JIRA_PROJECT, JIRA_VERSION) and refresh the release widgets that are due (token in .env)',
+  },
+  {
+    value: STEPS.jiraPlan,
+    name: 'Jira changelog: plan',
+    description: '[CI] List the releases to fetch (JIRA_PLAN)',
+  },
+  {
+    value: STEPS.jiraRender,
+    name: 'Jira changelog: render',
+    description:
+      '[CI] Write the pages from the fetched data (JIRA_PLAN, JIRA_DATA)',
   },
   new Separator('--- Confluence Migration: ---'),
   {
@@ -184,8 +198,16 @@ function printUsage() {
 async function main() {
   const [stepArg, ...fileArgs] = process.argv.slice(2);
 
-  // local secrets (JIRA_*, WIKI_API_KEY), gitignored; variables of the shell win
-  if (fs.existsSync('.env')) process.loadEnvFile('.env');
+  // local settings (.env, gitignored), variables of the shell win. The Jira
+  // credentials are skipped: only src/jira-fetch.js reads them, this process
+  // loads third-party packages
+  if (fs.existsSync('.env')) {
+    const local = parseEnv(fs.readFileSync('.env', 'utf8'));
+    for (const [key, value] of Object.entries(local)) {
+      if (['JIRA_EMAIL', 'JIRA_API_TOKEN'].includes(key)) continue;
+      process.env[key] ??= value;
+    }
+  }
 
   if (stepArg === '--help' || stepArg === '-h') {
     printUsage();
@@ -280,6 +302,12 @@ async function main() {
       break;
     case STEPS.jiraChangelog:
       errors += await jiraChangelog();
+      break;
+    case STEPS.jiraPlan:
+      errors += await jiraPlan();
+      break;
+    case STEPS.jiraRender:
+      errors += await jiraRender();
       break;
     case STEPS.confluenceId:
       await addConfluenceCommentAsTag(htmlFiles);

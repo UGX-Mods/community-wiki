@@ -3,73 +3,71 @@ import assert from 'node:assert/strict';
 import {
   changelogPagePath,
   renderChangelogPage,
+  refreshChangelogPage,
   addOverviewRow,
-  getIssues,
-  getVersion,
+  isDue,
+  planReleases,
 } from '../src/tools/jira/changelog.js';
 import { checkPageMetadata } from '../src/tools/validate/metadata.js';
 import { checkDescription } from '../src/tools/content/descriptions.js';
+import { createFixture, removeFixture, htmlPage } from './helpers.js';
 
 const JIRA = 'https://example.atlassian.net';
+const NOW = new Date('2026-11-04T12:00:00.000Z');
 
-/** @type {import('../src/tools/jira/changelog.js').JiraVersion} */
-const version = {
-  name: 'v0.8.86-beta',
-  released: true,
-  releaseDate: '2026-11-03',
-  description: 'Bug fixes & <improvements>',
-};
-
-/** @type {import('../src/tools/jira/changelog.js').JiraIssue[]} */
-const issues = [
-  {
-    key: 'UGXSMF-400',
-    fields: {
+/** @type {import('../src/tools/jira/changelog.js').FetchedRelease} */
+const fetched = {
+  project: 'UGXSMF',
+  release: {
+    name: 'v0.8.86-beta',
+    released: true,
+    releaseDate: '2026-11-03',
+    description: 'Bug fixes & <improvements>',
+  },
+  issues: [
+    {
+      key: 'UGXSMF-400',
       summary: 'Fix <script>alert("x")</script> in posts',
-      issuetype: { name: 'Bug' },
-      priority: { name: 'Major' },
-      status: { name: 'Done', statusCategory: { key: 'done' } },
-      resolution: { name: 'Done' },
+      type: 'Bug',
+      priority: 'Major',
+      status: 'Done',
+      statusCategory: 'done',
+      resolution: 'Done',
       created: '2026-10-01T10:00:00.000+0000',
       updated: '2026-11-02T10:00:00.000+0000',
-      assignee: { displayName: 'Alexander Diller' },
-      reporter: { displayName: 'Community Reporter' },
+      assignee: 'Alexander Diller',
+      reporter: 'Community Reporter',
     },
-  },
-  {
-    key: 'UGXSMF-401',
-    fields: {
+    {
+      key: 'UGXSMF-401',
       summary: 'Unknown type',
-      issuetype: { name: 'Epic' },
-      status: { name: 'In Progress', statusCategory: { key: 'indeterminate' } },
-      resolution: null,
-      assignee: null,
+      type: 'Epic',
+      priority: '',
+      status: 'In Progress',
+      statusCategory: 'indeterminate',
+      resolution: '',
+      created: '',
+      updated: '',
+      assignee: '',
+      reporter: '',
     },
-  },
-];
-
-const render = () =>
-  renderChangelogPage({
-    project: 'UGXSMF',
-    version,
-    issues,
-    jiraUrl: JIRA,
-    now: new Date('2026-11-04T12:00:00.000Z'),
-  });
+  ],
+  hidden: 0,
+};
 
 test('changelogPagePath follows the wiki.js naming restrictions', () => {
   assert.equal(
     changelogPagePath('UGXSMF', 'v0.8.86-beta'),
-    'Applications-and-Services/UGX-Mods-Forum/Changelog/UGXSMF-v0-8-86-beta',
+    'Applications-and-Services/UGX-Mods-Forum/Changelog/UGXSMF-v0-8-86-beta.html',
   );
   assert.equal(
     changelogPagePath('UGXLIN', 'v0.8.1-rc.1'),
-    'UGXLIN/Changelog/UGXLIN_v0-8-1-rc-1',
+    'UGXLIN/Changelog/UGXLIN_v0-8-1-rc-1.html',
   );
 });
 
 test('renderChangelogPage escapes jira content and maps icons and states', () => {
-  const html = render();
+  const html = renderChangelogPage(fetched, JIRA, NOW);
   assert.ok(!html.includes('<script>'));
   assert.ok(
     html.includes('Fix &lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;'),
@@ -79,7 +77,6 @@ test('renderChangelogPage escapes jira content and maps icons and states', () =>
     html.includes('src="/attachments/icons/jira/type-bug.svg" alt="Bug"'),
   );
   assert.ok(html.includes('src="/attachments/icons/jira/priority-major.svg"'));
-  // unknown issue type: plain text instead of a broken image
   assert.ok(html.includes('>Epic</a>'));
   assert.ok(html.includes('aui-lozenge-success">Done</span>'));
   assert.ok(html.includes('aui-lozenge-current">In Progress</span>'));
@@ -88,11 +85,13 @@ test('renderChangelogPage escapes jira content and maps icons and states', () =>
   assert.ok(html.includes('<td>3 November 2026</td>'));
   assert.ok(html.includes('<td>Oct 01, 2026</td>'));
   assert.ok(html.includes('>2 issues</a>'));
-  assert.ok(html.includes(`${JIRA}/browse/UGXSMF-400`));
+  assert.ok(html.includes('data-project="UGXSMF"'));
+  assert.ok(html.includes('data-released="2026-11-03"'));
+  assert.ok(html.includes('data-refreshed="2026-11-04"'));
 });
 
 test('renderChangelogPage creates a valid page header', () => {
-  const html = render();
+  const html = renderChangelogPage(fetched, JIRA, NOW);
   const result = checkPageMetadata(
     'Applications-and-Services/UGX-Mods-Forum/Changelog/UGXSMF-v0-8-86-beta.html',
     html,
@@ -106,94 +105,102 @@ test('renderChangelogPage creates a valid page header', () => {
   assert.equal(checkDescription(description), null);
 });
 
+test('refreshChangelogPage replaces the tables and keeps the summary', () => {
+  const unreleased = {
+    ...fetched,
+    release: { ...fetched.release, released: false, releaseDate: '' },
+    issues: [fetched.issues[0]],
+  };
+  const page = renderChangelogPage(unreleased, JIRA, NOW).replace(
+    '<p>Bug fixes &amp; &lt;improvements&gt;</p>',
+    '<p>Written by hand</p>',
+  );
+  assert.ok(page.includes('UNRELEASED'));
+  const later = new Date('2026-11-20T00:00:00.000Z');
+  const refreshed = refreshChangelogPage(page, fetched, JIRA, later) ?? '';
+  assert.ok(refreshed.includes('<p>Written by hand</p>'));
+  assert.ok(refreshed.includes('>RELEASED<'));
+  assert.ok(!refreshed.includes('UNRELEASED'));
+  assert.ok(refreshed.includes('>2 issues</a>'));
+  assert.ok(refreshed.includes('data-refreshed="2026-11-20"'));
+  assert.equal(
+    refreshChangelogPage('<p>no widget</p>', fetched, JIRA, NOW),
+    null,
+  );
+});
+
+test('isDue refreshes until 30 days after the release', () => {
+  assert.equal(isDue({ released: '', refreshed: '' }, NOW), true);
+  assert.equal(isDue({ released: '2026-10-10', refreshed: '' }, NOW), true);
+  assert.equal(isDue({ released: '2026-09-01', refreshed: '' }, NOW), false);
+  assert.equal(isDue({ released: 'garbage', refreshed: '' }, NOW), false);
+});
+
 test('addOverviewRow adds the release as first row once', () => {
   const overview =
     '<table><thead><tr><th>Title</th></tr></thead><tbody>\n<tr><td><a href="UGXSMF-v0-8-85-beta">old</a></td></tr></tbody></table>';
-  const options = { project: 'UGXSMF', version, issueCount: 1, jiraUrl: JIRA };
-  const updated = addOverviewRow(overview, options);
+  const updated = addOverviewRow(overview, fetched, JIRA);
   assert.ok(updated);
   assert.ok(
     updated.indexOf('UGXSMF-v0-8-86-beta') <
       updated.indexOf('UGXSMF-v0-8-85-beta'),
   );
-  assert.ok(updated.includes('>1 issue</a>'));
   assert.ok(updated.includes('<td>3 Nov 2026</td>'));
-  assert.equal(addOverviewRow(updated, options), null);
+  assert.equal(addOverviewRow(updated, fetched, JIRA), null);
   assert.equal(
-    addOverviewRow('<ul class="widget-page-hierarchy"></ul>', options),
+    addOverviewRow('<ul class="widget-page-hierarchy"></ul>', fetched, JIRA),
     null,
   );
 });
 
-test('getIssues follows the pages and authenticates', async () => {
-  /** @type {string[]} */
-  const urls = [];
-  /** @type {(string|null)[]} */
-  const auths = [];
-  /** @type {typeof fetch} */
-  const fakeFetch = async (url, init) => {
-    urls.push(String(url));
-    auths.push(new Headers(init?.headers).get('authorization'));
-    const second = String(url).includes('nextPageToken=abc');
-    return Response.json(
-      second
-        ? { issues: [issues[1]], isLast: true }
-        : { issues: [issues[0]], isLast: false, nextPageToken: 'abc' },
+test('planReleases finds due widgets and rejects foreign projects', async () => {
+  const widget = (/** @type {string} */ attrs) =>
+    htmlPage(
+      'Page',
+      `<div class="widget-jira-issues" ${attrs}><table></table></div>`,
     );
-  };
-  const client = { url: JIRA, email: 'a@b.c', token: 't', fetch: fakeFetch };
-  const result = await getIssues(client, 'UGXSMF', 'v0.8.86-beta');
-  assert.deepEqual(
-    result.map((i) => i.key),
-    ['UGXSMF-400', 'UGXSMF-401'],
-  );
-  assert.equal(urls.length, 2);
-  assert.ok(urls[0].includes('fixVersion+%3D+%22v0.8.86-beta%22'));
-  assert.equal(auths[0], `Basic ${Buffer.from('a@b.c:t').toString('base64')}`);
-});
+  const dir = 'Applications-and-Services/UGX-Mods-Forum/Changelog';
+  const root = createFixture({
+    [`${dir}/UGXSMF-v1-0.html`]: widget(
+      'data-project="UGXSMF" data-version="v1.0" data-released="" data-refreshed="2026-11-01"',
+    ),
+    [`${dir}/UGXSMF-v0-9.html`]: widget(
+      'data-project="UGXSMF" data-version="v0.9" data-released="2026-01-01" data-refreshed="2026-01-05"',
+    ),
+    [`${dir}/Foreign.html`]: widget(
+      'data-project="UGXL" data-version="v1.0" data-released=""',
+    ),
+    [`${dir}/Injection.html`]: widget(
+      'data-project="UGXSMF" data-version="v1&quot; OR x" data-released=""',
+    ),
+  });
+  try {
+    const plan = await planReleases({
+      root,
+      project: 'UGXSMF',
+      version: 'v1.1',
+      allowlist: new Set(['UGXSMF', 'UGXL']),
+      now: NOW,
+    });
+    assert.deepEqual(
+      plan.requests.map((r) => `${r.mode} ${r.project} ${r.version}`),
+      ['create UGXSMF v1.1', 'refresh UGXSMF v1.0'],
+    );
+    assert.equal(plan.errors.length, 0);
+    assert.equal(plan.warnings.length, 2);
 
-test('getVersion finds the release and reports http errors', async () => {
-  /** @type {typeof fetch} */
-  const ok = async () => Response.json([{ name: 'v1' }, version]);
-  const client = { url: JIRA, email: 'a@b.c', token: 't', fetch: ok };
-  assert.equal(
-    (await getVersion(client, 'UGXSMF', 'v0.8.86-beta'))?.releaseDate,
-    '2026-11-03',
-  );
-  /** @type {typeof fetch} */
-  const denied = async () => new Response('', { status: 401 });
-  await assert.rejects(
-    getVersion({ ...client, fetch: denied }, 'UGXSMF', 'v1'),
-    /401/,
-  );
-});
-
-test('requests use the api gateway for scoped tokens, links the site', async () => {
-  /** @type {string[]} */
-  const urls = [];
-  /** @type {typeof fetch} */
-  const fakeFetch = async (url) => {
-    urls.push(String(url));
-    return Response.json([version]);
-  };
-  const gateway =
-    'https://api.atlassian.com/ex/jira/00000000-0000-0000-0000-000000000000';
-  const client = {
-    url: JIRA,
-    apiUrl: gateway,
-    email: 'a@b.c',
-    token: 't',
-    fetch: fakeFetch,
-  };
-  await getVersion(client, 'UGXSMF', 'v0.8.86-beta');
-  assert.ok(
-    urls[0].startsWith(`${gateway}/rest/api/3/project/UGXSMF/versions`),
-  );
-
-  /** @type {typeof fetch} */
-  const expired = async () => new Response('', { status: 401 });
-  await assert.rejects(
-    getVersion({ ...client, fetch: expired }, 'UGXSMF', 'v1'),
-    /expired, revoked or misses the scope read:jira-work/,
-  );
+    const denied = await planReleases({
+      root,
+      project: 'UGXSMF',
+      version: 'v1.0',
+      allowlist: new Set(['UGXL']),
+      now: NOW,
+    });
+    assert.deepEqual(denied.errors, [
+      'JIRA_PROJECT UGXSMF is not an allowed project',
+    ]);
+    assert.equal(denied.requests.length, 0);
+  } finally {
+    removeFixture(root);
+  }
 });
