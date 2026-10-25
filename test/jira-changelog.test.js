@@ -15,7 +15,7 @@ import {
   parseReleaseDate,
 } from '../src/tools/jira/page.js';
 import { checkPageMetadata } from '../src/tools/validate/metadata.js';
-import { checkDescription } from '../src/tools/content/descriptions.js';
+import { checkDescription } from '../src/tools/lib/header.js';
 import { createFixture, removeFixture, htmlPage } from './helpers.js';
 
 const JIRA = 'https://example.atlassian.net';

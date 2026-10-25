@@ -4,6 +4,7 @@ import {
   parsePageHeader,
   getPageTitle,
   PAGE_HEADER_FIELDS,
+  checkDescription,
 } from '../src/tools/lib/header.js';
 import { checkPageMetadata } from '../src/tools/validate/metadata.js';
 import { htmlPage } from './helpers.js';
@@ -106,4 +107,24 @@ test('checkPageMetadata ignores AI banner examples in markdown code', () => {
     '',
   ].join('\n');
   assert.deepEqual(checkPageMetadata('Docs.md', page).errors, []);
+});
+
+test('checkDescription only accepts plain one-line YAML values', () => {
+  assert.equal(checkDescription('How to add zones to a Black Ops 3 map'), null);
+  assert.equal(checkDescription(''), 'empty');
+  assert.equal(checkDescription('a\nb'), 'line break');
+  assert.match(checkDescription('Note: something') ?? '', /YAML/);
+  assert.match(checkDescription('Item #1') ?? '', /YAML/);
+  assert.match(checkDescription('"quoted"') ?? '', /special character/);
+  assert.match(checkDescription('x'.repeat(201)) ?? '', /longer/);
+});
+
+test('checkPageMetadata warns about descriptions that break the YAML header', () => {
+  assert.deepEqual(
+    checkPageMetadata(
+      'Foo.html',
+      htmlPage('Foo', '', { description: 'Note: x' }),
+    ).warnings,
+    ['"description" contains ": " or " #" (YAML)'],
+  );
 });

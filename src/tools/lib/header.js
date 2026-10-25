@@ -53,4 +53,29 @@ function stripFrontMatter(content) {
   return content.replace(REGEX_FRONT_MATTER, '');
 }
 
-export { PAGE_HEADER_FIELDS, parsePageHeader, getPageTitle, stripFrontMatter };
+const MAX_DESCRIPTION_LENGTH = 200;
+
+/**
+ * Wiki.js reads the header as YAML, a description must be a plain one-line scalar
+ *
+ * @param {string} description
+ * @returns {string|null} problem or null if valid
+ */
+function checkDescription(description) {
+  if (!description.trim()) return 'empty';
+  if (/[\r\n]/.test(description)) return 'line break';
+  if (/: |\s#/.test(description)) return 'contains ": " or " #" (YAML)';
+  if (/^[-?:,[\]{}#&*!|>'"%@`]/.test(description))
+    return 'starts with a YAML special character';
+  if (description.length > MAX_DESCRIPTION_LENGTH)
+    return `longer than ${MAX_DESCRIPTION_LENGTH} characters`;
+  return null;
+}
+
+export {
+  PAGE_HEADER_FIELDS,
+  parsePageHeader,
+  getPageTitle,
+  stripFrontMatter,
+  checkDescription,
+};

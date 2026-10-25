@@ -1,5 +1,6 @@
 /**
- * Tooling CLI for the wiki: validation, page hierarchy widgets and the confluence migration helpers.
+ * Tooling CLI for the wiki: validation, page hierarchy widgets, theme deployment, content helpers
+ * and the changelog pages from Jira.
  * The steps are implemented in ./tools, the theme sources are in ./theme
  */
 import fs from 'node:fs';
@@ -11,24 +12,10 @@ import { setupPageHierarchy, refreshPageHierarchy } from './tools/hierarchy.js';
 import { validateAllLinks } from './tools/validate/links.js';
 import { securityValidation } from './tools/validate/security.js';
 import { metadataValidation } from './tools/validate/metadata.js';
-import {
-  fixFileNames,
-  fixNumberFileNameOnly,
-} from './tools/confluence/filenames.js';
-import {
-  cleanupConfluenceHtml,
-  fixCodeBlocks,
-} from './tools/confluence/cleanup.js';
-import { addConfluenceCommentAsTag } from './tools/confluence/ids.js';
 import { deployTheme } from './tools/theme.js';
-import { localizeJiraIcons } from './tools/content/jira-icons.js';
 import { demotePageHeadings } from './tools/content/headings.js';
 import { mirrorImages } from './tools/content/mirror-images.js';
-import { renameImages } from './tools/content/rename-images.js';
-import { setAltTexts } from './tools/content/alt-texts.js';
 import { tagPages } from './tools/content/tag-pages.js';
-import { setDescriptions } from './tools/content/descriptions.js';
-import { cleanupConfluenceMarkup } from './tools/content/confluence-markup.js';
 import {
   jiraChangelog,
   jiraPlan,
@@ -45,17 +32,9 @@ const STEPS = {
   linkValidation: 'link-validation',
   securityValidation: 'security-validation',
   metadataValidation: 'metadata-validation',
-  confluenceFixFilenames: 'confluence-fix-filenames',
-  confluenceCleanup: 'confluence-cleanup',
-  confluenceId: 'confluence-id',
-  jiraIcons: 'jira-icons',
   demoteHeadings: 'demote-headings',
   mirrorImages: 'mirror-images',
-  renameImages: 'rename-images',
-  altTexts: 'alt-texts',
   tagPages: 'tag-pages',
-  descriptions: 'descriptions',
-  confluenceMarkup: 'confluence-markup',
   jiraChangelog: 'jira-changelog',
   jiraPlan: 'jira-plan',
   jiraRender: 'jira-render',
@@ -104,12 +83,6 @@ const STEP_CHOICES = [
   },
   new Separator('--- CONTENT ---'),
   {
-    value: STEPS.jiraIcons,
-    name: 'Jira icons',
-    description:
-      'Point hotlinked Jira priority / issue type icons to attachments/icons/jira',
-  },
-  {
     value: STEPS.demoteHeadings,
     name: 'Demote headings',
     description:
@@ -122,40 +95,16 @@ const STEP_CHOICES = [
       'Download external Imgur images into attachments/ and link the copies (DRY_RUN=1)',
   },
   {
-    value: STEPS.renameImages,
-    name: 'Rename images',
-    description:
-      'Give images with meaningless names (imgur ids, hashes) names from alt text / heading (DRY_RUN=1)',
-  },
-  {
-    value: STEPS.altTexts,
-    name: 'Alt texts',
-    description:
-      'Set missing image alt texts from a JSON file (ALT_TEXTS=path, src -> alt)',
-  },
-  {
     value: STEPS.tagPages,
     name: 'Tag pages',
     description:
       'Add product / type / topic tags of the tag set (DRY_RUN=1, TAG_OVERRIDES=path)',
   },
   {
-    value: STEPS.descriptions,
-    name: 'Descriptions',
-    description:
-      'Set empty page descriptions from a JSON file (DESCRIPTIONS=path, page -> text)',
-  },
-  {
-    value: STEPS.confluenceMarkup,
-    name: 'Confluence markup',
-    description:
-      'Remove leftover Confluence wrappers, classes, macro attributes and no-op inline styles',
-  },
-  {
     value: STEPS.jiraChangelog,
     name: 'Jira changelog',
     description:
-      'Create the page of a new release (JIRA_PROJECT, JIRA_VERSION) and refresh the release widgets that are due (token in .env)',
+      'Create the page of a new release (JIRA_PROJECT, JIRA_VERSION) and refresh the changelogs that are due, JIRA_FORCE=1 all (token in .env)',
   },
   {
     value: STEPS.jiraPlan,
@@ -173,24 +122,6 @@ const STEP_CHOICES = [
     name: 'Jira changelog: adopt',
     description:
       'Convert the old changelog pages of JIRA_PROJECT into the changelog format (no Jira access)',
-  },
-  new Separator('--- Confluence Migration: ---'),
-  {
-    value: STEPS.confluenceCleanup,
-    name: 'Cleanup files',
-    description:
-      '[confluence migration] cleanup files from confluence boilerplate & fix code blocks',
-  },
-  {
-    value: STEPS.confluenceFixFilenames,
-    name: 'Fix filenames',
-    description: '[confluence migration] fix the filenames',
-  },
-  {
-    value: STEPS.confluenceId,
-    name: 'Confluence ID',
-    description:
-      '[confluence migration] will add the confluence id (if found) as a tag',
   },
 ];
 
@@ -252,7 +183,7 @@ async function main() {
         .filter((f) => isPage(f) && fs.existsSync(f))
     : await getPageFiles();
   console.log('Found', files.length, 'pages 🔎');
-  // the confluence migration only deals with exported html pages
+  // these steps only handle html pages
   const htmlFiles = files.filter((f) => f.endsWith(HTML_EXTENSION));
 
   let errors = 0;
@@ -280,37 +211,14 @@ async function main() {
     case STEPS.metadataValidation:
       errors += await metadataValidation(files);
       break;
-    case STEPS.confluenceFixFilenames:
-      fixFileNames(htmlFiles);
-      fixNumberFileNameOnly(htmlFiles);
-      break;
-    case STEPS.confluenceCleanup:
-      await cleanupConfluenceHtml(htmlFiles);
-      fixCodeBlocks(htmlFiles);
-      break;
-    case STEPS.jiraIcons:
-      errors += await localizeJiraIcons(htmlFiles);
-      break;
     case STEPS.demoteHeadings:
       errors += await demotePageHeadings(htmlFiles);
       break;
     case STEPS.mirrorImages:
       errors += await mirrorImages(files);
       break;
-    case STEPS.renameImages:
-      errors += await renameImages(files);
-      break;
-    case STEPS.altTexts:
-      errors += await setAltTexts(files);
-      break;
     case STEPS.tagPages:
       errors += await tagPages(files);
-      break;
-    case STEPS.descriptions:
-      errors += await setDescriptions(files);
-      break;
-    case STEPS.confluenceMarkup:
-      errors += await cleanupConfluenceMarkup(htmlFiles);
       break;
     case STEPS.jiraChangelog:
       errors += await jiraChangelog();
@@ -323,9 +231,6 @@ async function main() {
       break;
     case STEPS.jiraAdopt:
       errors += await jiraAdopt();
-      break;
-    case STEPS.confluenceId:
-      await addConfluenceCommentAsTag(htmlFiles);
       break;
     case STEPS.none:
     default:
