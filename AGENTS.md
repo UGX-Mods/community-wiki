@@ -106,7 +106,7 @@ Run `npm run check` (or at least `npm run lint` + `npm run validate`) before com
 `.npmrc` hardens installs, do not weaken it:
 
 - Only the public npm registry, no git / URL / local file dependencies (`allow-git`, `allow-remote`, `allow-file`, `allow-directory` are `none`).
-- `min-release-age=7`: new versions must be public for 7 days (Dependabot uses the same cooldown).
+- `min-release-age=3`: new versions must be public for 3 days (Dependabot uses the same cooldown).
 - `save-exact=true`: `package.json` holds exact versions, `package-lock.json` pins the rest. Commit both.
 - `strict-allow-scripts=true`: install fails if a dependency has install scripts that are not listed in `allowScripts` (`package.json`). Review the script, then run `npm approve-scripts <pkg>` or `npm deny-scripts <pkg>`. `@parcel/watcher` (optional sass dependency, only for `--watch`) is denied. `esbuild` is allowed: npm currently also skips the bin links of denied packages, and its postinstall only verifies the prebuilt binary.
 - GitHub Actions are pinned to commit SHAs with a `# vX.Y.Z` comment.
@@ -266,4 +266,4 @@ Child page list: `<ul class="widget-page-hierarchy">…</ul>` is **generated**. 
 - CommonJS (`require`) in `src/` or `test/`: the code is ES modules (`"type": "module"`), local imports need the `.js` extension.
 - Removing the header comment or entries of `src/theme/confluence-ids.json` (only together with the page).
 - Inventing facts about UGX products, mods or game versions. Mark uncertain content for maintainer review instead.
-- Upgrading dependencies to versions published less than 7 days ago, using version ranges (`^`, `~`), or `--ignore-scripts` / `--dangerously-allow-all-scripts` to get around the script policy.
+- Upgrading dependencies to versions published less than 3 days ago, using version ranges (`^`, `~`), or `--ignore-scripts` / `--dangerously-allow-all-scripts` to get around the script policy.

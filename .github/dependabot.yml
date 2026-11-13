@@ -7,9 +7,9 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    # give the ecosystem a week to spot compromised / broken releases
+    # give the ecosystem 3 days to spot compromised / broken releases (same as min-release-age in .npmrc)
     cooldown:
-      default-days: 7
+      default-days: 3
     # keep the exact pins in package.json (see save-exact in .npmrc)
     versioning-strategy: increase
     ignore:
@@ -29,6 +29,6 @@ updates:
     schedule:
       interval: monthly
     cooldown:
-      default-days: 7
+      default-days: 3
     commit-message:
       prefix: ci
