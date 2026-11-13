@@ -17,6 +17,7 @@ import { deployTheme } from './tools/theme.js';
 import { demotePageHeadings } from './tools/content/headings.js';
 import { mirrorImages } from './tools/content/mirror-images.js';
 import { tagPages } from './tools/content/tag-pages.js';
+import { absolutePageLinks } from './tools/content/absolute-links.js';
 import {
   jiraChangelog,
   jiraPlan,
@@ -36,6 +37,7 @@ const STEPS = {
   demoteHeadings: 'demote-headings',
   mirrorImages: 'mirror-images',
   tagPages: 'tag-pages',
+  absoluteLinks: 'absolute-links',
   jiraChangelog: 'jira-changelog',
   jiraPlan: 'jira-plan',
   jiraRender: 'jira-render',
@@ -100,6 +102,12 @@ const STEP_CHOICES = [
     name: 'Tag pages',
     description:
       'Add product / type / topic tags of the tag set (DRY_RUN=1, TAG_OVERRIDES=path)',
+  },
+  {
+    value: STEPS.absoluteLinks,
+    name: 'Absolute links',
+    description:
+      'Change relative page links to absolute paths, they work in wiki.js 2 and 3 (DRY_RUN=1)',
   },
   {
     value: STEPS.jiraChangelog,
@@ -221,6 +229,9 @@ async function main() {
       break;
     case STEPS.tagPages:
       errors += await tagPages(files);
+      break;
+    case STEPS.absoluteLinks:
+      errors += await absolutePageLinks(htmlFiles);
       break;
     case STEPS.jiraChangelog:
       errors += await jiraChangelog();

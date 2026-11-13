@@ -109,8 +109,8 @@ test('page hierarchy lists markdown child pages', async (t) => {
   t.after(() => removeFixture(root));
 
   assert.equal(
-    await createPageHierarchy(path.join(root, 'Guide.html')),
-    '<ul class="widget-page-hierarchy"><li><a href="Notes">Notes</a></li></ul>',
+    await createPageHierarchy(path.join(root, 'Guide.html'), root),
+    '<ul class="widget-page-hierarchy"><li><a href="/Guide/Notes">Notes</a></li></ul>',
   );
 });
 

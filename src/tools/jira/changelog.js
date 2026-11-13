@@ -113,7 +113,8 @@ function changelogPagePath(project, version) {
  */
 function addOverviewRow(html, { project, release, issues }, jiraUrl) {
   const config = PROJECTS[project];
-  const file = path.basename(changelogPagePath(project, release.name), '.html');
+  // absolute path: wiki.js 2 and 3 resolve relative links differently
+  const file = `/${changelogPagePath(project, release.name).slice(0, -'.html'.length)}`;
   const tableStart = html.indexOf('<th>Title</th>');
   if (tableStart === -1 || html.includes(`href="${file}"`)) return null;
   const tbody = html.indexOf('<tbody>', tableStart);
