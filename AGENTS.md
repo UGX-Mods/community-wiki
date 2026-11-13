@@ -157,7 +157,7 @@ Follow the [Wiki.js naming restrictions](https://docs.requarks.io/guide/pages#na
 
 - Content is English, CKEditor-compatible HTML. No `<script>`, `<style>` or inline event handlers.
 - Start body headings at `<h2>` (the title is the `<h1>`). Give headings an `id` if you link to them.
-- Internal links: prefer absolute paths without extension, e.g. `<a href="/Modding/Black-Ops-3-Modtools/Mapping/Adding-Zones">`. Relative links (`href="Adding-Zones"`) resolve against the page's folder. Anchors are validated too.
+- Internal links: absolute paths without extension, e.g. `<a href="/Modding/Black-Ops-3-Modtools/Mapping/Adding-Zones">`. Relative links (`href="Adding-Zones"`) are an error in `validate`: Wiki.js 2 and 3 resolve them differently. `node src/main.js absolute-links` rewrites them (`DRY_RUN=1` to preview). Anchors are validated too.
 - External links get `target="_blank"`. Use `https://`.
 - Images: store files under `attachments/<area>/<topic>/` and reference them absolutely (`/attachments/...`). Always set `alt`. Do not hotlink new images from imgur/gyazo/Jira.
 - Videos: `.webm` in `attachments/`, embedded with `<video controls>`.
