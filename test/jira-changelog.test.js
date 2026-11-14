@@ -236,6 +236,11 @@ test('addOverviewRow adds the release as first row once', () => {
       updated.indexOf('UGXSMF-v0-8-85-beta'),
   );
   assert.ok(updated.includes('<td>3 Nov 2026</td>'));
+  assert.ok(
+    updated.includes(
+      '<a href="/Applications-and-Services/UGX-Mods-Forum/Changelog/UGXSMF-v0-8-86-beta">',
+    ),
+  );
   assert.equal(addOverviewRow(updated, fetched, JIRA), null);
   assert.equal(
     addOverviewRow('<ul class="widget-page-hierarchy"></ul>', fetched, JIRA),

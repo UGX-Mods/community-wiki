@@ -86,12 +86,20 @@ async function refreshPageHierarchy(files) {
 }
 
 /**
+ * The links are absolute paths: they work in wiki.js 2 and 3, which resolve
+ * relative links differently.
  *
  * @param {string} filePath
+ * @param {string} root repository root
  * @returns {Promise<string|null>}
  */
-async function createPageHierarchy(filePath) {
-  const lis = await createPageHierarchyLiElements(stripPageExtension(filePath));
+async function createPageHierarchy(filePath, root = process.cwd()) {
+  const folder = stripPageExtension(filePath);
+  const urlPath = path.relative(root, path.resolve(folder));
+  const lis = await createPageHierarchyLiElements(
+    folder,
+    `/${urlPath.split(path.sep).join('/')}/`,
+  );
   if (!lis) return null;
 
   return `<ul class="widget-page-hierarchy"><li>${lis}</li></ul>`;
@@ -114,10 +122,10 @@ function compareFileNames(a, b) {
 /**
  *
  * @param {string} rootFolderPath
- * @param {string} subPaths optional sub path with ending forward slash
+ * @param {string} subPaths absolute url path of the folder with ending forward slash
  * @returns {Promise<string|null>}
  */
-async function createPageHierarchyLiElements(rootFolderPath, subPaths = '') {
+async function createPageHierarchyLiElements(rootFolderPath, subPaths) {
   const childPages = (await fs.promises.readdir(rootFolderPath).catch(() => []))
     .filter((f) => isPage(f))
     .sort(compareFileNames);

@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   encoding,
+  HTML_EXTENSION,
   PAGE_EXTENSIONS,
   readPage,
   stripPageExtension,
@@ -20,9 +21,36 @@ const REGEX_EXTERNAL_HREF = /^(https?:|\/\/|mailto:)/;
  * @property {string} error
  * @property {string} [text] html of the link (empty href)
  * @property {number} [amount] number of matching anchors
+ * @property {string} [fix] absolute path of a relative link (node src/main.js absolute-links)
  */
 
 const ERROR_NO_ANCHOR = 'No anchor id found!';
+const ERROR_RELATIVE = 'Relative link!';
+
+/**
+ * @param {string} href
+ * @returns {boolean} link to a page / file which does not start at the root
+ */
+function isRelativeLink(href) {
+  return (
+    !!href &&
+    !REGEX_EXTERNAL_HREF.test(href) &&
+    !href.startsWith('#') &&
+    !href.startsWith('/')
+  );
+}
+
+/**
+ * Absolute wiki path of a link target, without page extension
+ *
+ * @param {string} target result of findLinkTarget
+ * @param {string} root
+ * @returns {string}
+ */
+function toAbsoluteHref(target, root) {
+  const relative = stripPageExtension(path.relative(root, target));
+  return `/${relative.split(path.sep).join('/')}`;
+}
 
 /**
  * Compares ids instead of using an `#id` selector: confluence ids contain
@@ -148,6 +176,17 @@ async function checkPageLinks(filePath, fileContent, root) {
       continue;
     }
 
+    // wiki.js 3 resolves relative links differently (like GitHub), absolute
+    // paths work in both versions. Markdown pages are the repository docs,
+    // their relative links are for GitHub
+    if (isRelativeLink(href) && filePath.endsWith(HTML_EXTENSION)) {
+      invalid.push({
+        href,
+        error: ERROR_RELATIVE,
+        fix: toAbsoluteHref(foundFile, root),
+      });
+    }
+
     const anchor = href.split('#').at(1);
     if (!anchor) continue;
 
@@ -221,4 +260,11 @@ async function validateAllLinks(files, root = process.cwd()) {
   return invalidCounter;
 }
 
-export { getLinkCandidates, findLinkTarget, checkPageLinks, validateAllLinks };
+export {
+  getLinkCandidates,
+  findLinkTarget,
+  isRelativeLink,
+  toAbsoluteHref,
+  checkPageLinks,
+  validateAllLinks,
+};

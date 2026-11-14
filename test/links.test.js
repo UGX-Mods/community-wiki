@@ -43,12 +43,31 @@ test('absolute links to pages, folders and assets', async () => {
   );
 });
 
-test('relative links resolve to child and sibling pages', async () => {
-  assert.deepEqual(await errorsOf('Foo.html', '<a href="Bar">child</a>'), []);
+test('relative links to child and sibling pages are reported with the absolute path', async () => {
+  const relative = async (
+    /** @type {string} */ filePath,
+    /** @type {string} */ body,
+  ) =>
+    (
+      await checkPageLinks(filePath.split('/').join(path.sep), page(body), root)
+    ).map((i) => `${i.href} ${i.error} ${i.fix}`);
+
+  assert.deepEqual(await relative('Foo.html', '<a href="Bar">child</a>'), [
+    'Bar Relative link! /Foo/Bar',
+  ]);
   assert.deepEqual(
-    await errorsOf('Foo/Bar.html', '<a href="Baz">sibling</a>'),
-    [],
+    await relative('Foo/Bar.html', '<a href="Baz.html">sibling</a>'),
+    ['Baz.html Relative link! /Foo/Baz'],
   );
+});
+
+test('relative links of markdown pages (repository docs) are fine', async () => {
+  const issues = await checkPageLinks(
+    'Foo.md',
+    '---\ntitle: Test\n---\n\n[child](Foo/Bar.html)\n',
+    root,
+  );
+  assert.deepEqual(issues, []);
 });
 
 test('local images must exist', async () => {
@@ -103,7 +122,11 @@ test('anchors on other pages', async () => {
       'Foo.html',
       '<a href="/Foo/Bar#setup">ok</a><a href="Bar#dup">dup</a><a href="/Foo/Bar#nope">missing</a>',
     ),
-    ['Bar#dup Multiple anchors found!', `/Foo/Bar#nope ${missingAnchor}`],
+    [
+      'Bar#dup Relative link!',
+      'Bar#dup Multiple anchors found!',
+      `/Foo/Bar#nope ${missingAnchor}`,
+    ],
   );
 });
 
