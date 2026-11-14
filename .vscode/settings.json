@@ -1,4 +1,5 @@
 {
+  "window.title": "📖 ${rootName} | ${activeEditorShort}${dirty} (${activeRepositoryBranchName})",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "html.format.wrapAttributes": "force-expand-multiline",
